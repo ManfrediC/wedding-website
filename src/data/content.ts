@@ -69,7 +69,7 @@ export const homeContent: Record<
       },
       {
         title: 'Travel',
-        body: 'How to get to Zurich from Chicago, New York, the UK, Italy, and elsewhere.',
+        body: 'How to get to Zurich from Chicago, New York, London, Sardinia, and elsewhere.',
         href: '/en/travel/',
         image: '/images/minted/minted-photo-08.jpeg',
         imageAlt: 'Zurich and Lake Zurich from above',
@@ -109,7 +109,7 @@ export const homeContent: Record<
       },
       {
         title: 'Viaggio',
-        body: "Come arrivare a Zurigo da Chicago, New York, Regno Unito, Italia e dall'estero.",
+        body: "Come arrivare a Zurigo da Chicago, New York, Londra, Sardegna e dall'estero.",
         href: '/it/travel/',
         image: '/images/minted/minted-photo-08.jpeg',
         imageAlt: "Zurigo e il Lago di Zurigo dall'alto",
@@ -149,7 +149,7 @@ export const homeContent: Record<
       },
       {
         title: 'Anreise',
-        body: 'Anreise nach Zürich aus Chicago, New York, Grossbritannien, Italien und weiteren Orten.',
+        body: 'Anreise nach Zürich aus Chicago, New York, London, Sardinien und weiteren Orten.',
         href: '/de/travel/',
         image: '/images/minted/minted-photo-08.jpeg',
         imageAlt: 'Zurich und der Zurichsee von oben',
@@ -209,15 +209,16 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       title: 'Travel Advice',
       kicker: 'How to get to Zurich',
       intro:
-        'Zurich Airport is the main arrival point. Public transport is usually the simplest way to reach Zurich city centre, Küsnacht, and the wedding venues.',
+        'Zurich Airport is the main arrival point. The notes below are based on current published routes and should be checked again when June 2027 timetables open.',
       notice:
         'Please recheck official entry requirements before booking and again before travelling. Switzerland is part of the Schengen area and rules may change before June 2027.',
       sections: [
         {
           title: 'From Chicago',
-          body: 'Search for flights from Chicago to Zurich Airport (ZRH). June 2027 schedules are not fully bookable yet, so route details should be treated as planning guidance.',
-          items: ['Arrive by Thursday, 10 June 2027 at the latest.', 'Wednesday, 9 June 2027 is better for jet lag.', 'Use public transport from Zurich Airport where possible.'],
+          body: 'Chicago O\'Hare (ORD) is the relevant airport. Current published schedules include nonstop ORD-ZRH flights, but June 2027 should be confirmed once bookings open.',
+          items: ['Check nonstop flights first, especially SWISS and United-operated services.', 'If nonstop prices are high, compare one-stop routes through major European hubs such as Frankfurt, Munich, Amsterdam, Paris, or London.', 'Arrive by Thursday, 10 June 2027 at the latest; Wednesday, 9 June 2027 is better for jet lag and delayed bags.', 'Use public transport from Zurich Airport unless a wider Swiss or Italian road trip makes a car necessary.'],
           links: [
+            { label: 'SWISS Chicago-Zurich', href: 'https://www.swiss.com/lhg/us/en/o-d/cy-cy/chicago-zurich' },
             { label: 'Google Flights', href: 'https://www.google.com/travel/flights?q=Flights%20from%20Chicago%20to%20Zurich' },
             { label: 'Expedia', href: 'https://www.expedia.com/Flights' },
           ],
@@ -226,9 +227,11 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'From New York',
-          body: 'Search for flights from New York City to Zurich Airport (ZRH). June 2027 schedules are not fully bookable yet, so compare airports and routes once your dates are available.',
-          items: ['Compare JFK, Newark (EWR), and LaGuardia (LGA), with JFK and Newark usually the most relevant for transatlantic itineraries.', 'Arrive by Thursday, 10 June 2027 at the latest; Wednesday, 9 June 2027 gives more breathing room.', 'Use public transport from Zurich Airport unless your wider trip genuinely needs a car.'],
+          body: 'For New York, compare JFK and Newark (EWR). Current published schedules include nonstop flights from both airports to Zurich.',
+          items: ['Check JFK and Newark before considering LaGuardia; LaGuardia is usually useful only for domestic connections.', 'Nonstop flights are the most practical option when the price is reasonable; one-stop options can be useful if travelling from outside New York City.', 'Arrive by Thursday, 10 June 2027 at the latest; Wednesday, 9 June 2027 gives more breathing room.', 'Use public transport from Zurich Airport unless your wider trip genuinely needs a car.'],
           links: [
+            { label: 'SWISS New York-Zurich', href: 'https://www.swiss.com/lhg/us/en/o-d/cy-cy/new-york-zurich' },
+            { label: 'Delta Zurich flights', href: 'https://www.delta.com/us/en/flight-deals/europe-flights/flights-to-zurich' },
             { label: 'Google Flights', href: 'https://www.google.com/travel/flights?q=Flights%20from%20New%20York%20to%20Zurich' },
             { label: 'Expedia', href: 'https://www.expedia.com/Flights' },
           ],
@@ -236,11 +239,15 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           imageAlt: 'A boat on Lake Zurich near Hotel Sonne',
         },
         {
-          title: 'From the UK',
-          body: 'Flights to Zurich are usually simplest for most UK guests. Rail through continental Europe can be a scenic alternative for guests who enjoy slower travel.',
-          items: ['Search from London, Manchester, Edinburgh, or your nearest regional airport.', 'Zurich Airport to Zurich HB is usually quick by train.', 'Check SBB for Swiss connections.'],
+          title: 'From London and the UK',
+          body: 'From London, direct flights are usually the simplest option. EasyJet can be budget-friendly, but check baggage rules carefully before comparing prices.',
+          items: ['Compare London Heathrow, Gatwick, City, Luton, and Stansted depending on where you live; Heathrow, Gatwick, and City are usually the most relevant for Zurich.', 'For guests outside London, also compare Manchester, Edinburgh, Bristol, and other regional airports with direct or one-stop routes.', 'On EasyJet, the lowest fare may include only one small under-seat cabin bag, currently 45 x 36 x 20 cm including handles and wheels; add any large cabin bag or hold luggage online when booking if you need it.', 'The rail route is London St Pancras to Paris by Eurostar, transfer from Gare du Nord to Gare de Lyon, then TGV Lyria to Zurich HB; allow a generous connection in Paris.'],
           links: [
-            { label: 'Google Flights', href: 'https://www.google.com/travel/flights?q=Flights%20from%20United%20Kingdom%20to%20Zurich' },
+            { label: 'SWISS London-Zurich', href: 'https://www.swiss.com/lhg/gb/en/o-d/cy-cy/london-zurich' },
+            { label: 'easyJet London-Zurich', href: 'https://www.easyjet.com/en/flights-from-london/to-zurich/' },
+            { label: 'easyJet baggage', href: 'https://www.easyjet.com/en/help/preparing-to-fly/baggage' },
+            { label: 'Eurostar London-Zurich', href: 'https://www.eurostar.com/uk-en/train/london-to-zurich' },
+            { label: 'Google Flights', href: 'https://www.google.com/travel/flights?q=Flights%20from%20London%20to%20Zurich' },
             { label: 'Expedia UK', href: 'https://www.expedia.co.uk/Flights' },
             { label: 'SBB', href: 'https://www.sbb.ch/en' },
           ],
@@ -248,16 +255,33 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           imageAlt: 'A boat on Lake Zurich near Hotel Sonne',
         },
         {
-          title: 'From Italy',
-          body: 'Guests from northern Italy may find train travel attractive, especially from Milan. From central and southern Italy, flights will often be easier.',
-          items: ['Compare flights and trains before booking.', 'Milan to Zurich can be practical by rail.', 'SBB and Trenitalia are the main rail references.'],
+          title: 'From Sardinia',
+          body: 'Most Italian guests are expected to travel from Sardinia, so start with Cagliari and Olbia rather than a generic Italy search.',
+          items: ['For flying, check Cagliari (CAG) and Olbia (OLB) to Zurich (ZRH) first. Current Edelweiss schedules show seasonal Zurich routes for both airports, but June 2027 is not yet fully bookable.', 'EasyJet can be a budget-friendly option for Olbia-Zurich when available. Check the baggage allowance carefully, because the lowest fare may include only one small under-seat cabin bag, currently 45 x 36 x 20 cm including handles and wheels.', 'If there is no convenient direct flight, compare Cagliari or Olbia via Milan, Rome, or another European hub. Alghero may also work with a connection, but it is less likely to be the simplest route to Zurich.', 'For driving, take an overnight ferry from Sardinia to Genoa, then drive from Genoa to Zurich. The ferry leg is usually about 10-13 hours depending on route and operator; the Genoa-Zurich drive is roughly five hours before stops, border delays, and Gotthard or San Bernardino traffic.', 'If driving into Switzerland, buy the Swiss motorway vignette from the official Swiss portal and check Alpine tunnel traffic before leaving Genoa. Parking in Zurich and Küsnacht should be planned in advance.'],
           links: [
-            { label: 'Google Flights', href: 'https://www.google.com/travel/flights?q=Flights%20from%20Italy%20to%20Zurich' },
+            { label: 'Edelweiss Cagliari-Zurich', href: 'https://www.flyedelweiss.com/ch/en/fly/flight-information/timetable.html?destination=CAG' },
+            { label: 'Edelweiss Olbia-Zurich', href: 'https://www.flyedelweiss.com/ch/en/fly/flight-information/timetable.html?destination=OLB' },
+            { label: 'easyJet Olbia-Zurich', href: 'https://www.easyjet.com/en/cheap-flights/sardinia-olbia/zurich' },
+            { label: 'easyJet baggage', href: 'https://www.easyjet.com/en/help/preparing-to-fly/baggage' },
+            { label: 'GNV Genoa-Porto Torres', href: 'https://www.gnv.it/en/ferries-destinations/sardinia/genoa-porto-torres' },
+            { label: 'Moby Genoa-Olbia', href: 'https://www.moby.it/rotte/traghetti-sardegna/genova-olbia-genova/' },
+            { label: 'Swiss e-vignette', href: 'https://www.bazg.admin.ch/en/electronic-vignette-via-portal-purchase' },
+            { label: 'Google Flights', href: 'https://www.google.com/travel/flights?q=Flights%20from%20Sardinia%20to%20Zurich' },
             { label: 'Trenitalia', href: 'https://www.trenitalia.com/en.html' },
             { label: 'SBB', href: 'https://www.sbb.ch/en' },
           ],
           image: '/images/places/st-peter-zurich.jpg',
           imageAlt: 'Kirche St. Peter in Zurich',
+        },
+        {
+          title: 'From Zurich Airport',
+          body: 'Once in Zurich, public transport is usually the simplest way to reach Zurich city centre, Küsnacht, and the wedding venues.',
+          items: ['The train or S-Bahn from Zurich Airport to Zurich HB usually takes about 10-15 minutes.', 'For Küsnacht or Hotel Sonne, use SBB or ZVV from the airport or from Zurich HB and buy the ticket shown by the app.', 'Taxis and ride-hailing can be useful with children or heavy luggage, but they are usually much more expensive than public transport.', 'A rental car is not recommended for Zurich-only wedding logistics.'],
+          links: [
+            { label: 'Zurich Airport to city', href: 'https://www.zuerich.com/en/zurich-airport-to-zurich-city-center' },
+            { label: 'SBB', href: 'https://www.sbb.ch/en' },
+            { label: 'ZVV', href: 'https://www.zvv.ch/en' },
+          ],
         },
         {
           title: 'Official links',
@@ -505,7 +529,7 @@ function mirrorLanguage(lang: Exclude<Lang, 'en'>): Record<PageKey, PageContent>
     it: {
       suffix: 'Bozza in italiano da rivedere.',
       schedule: ['Il giorno del matrimonio', 'Programma', 'Gli orari esatti sono ancora da confermare.'],
-      travel: ['Viaggio', 'Come arrivare a Zurigo', "Indicazioni pratiche per raggiungere Zurigo e muoversi con facilità."],
+      travel: ['Viaggio', 'Come arrivare a Zurigo', 'Indicazioni pratiche per arrivare da Sardegna, Londra, New York, Chicago e altre località.'],
       stay: ['Dove dormire', 'Alloggio', 'Küsnacht è più comoda per la festa; il centro di Zurigo è ideale per visitare la città.'],
       'things-to-do': ['Cosa fare', 'Zurigo e Svizzera', 'Idee tranquille per esplorare Zurigo, il lago e le montagne.'],
       'switzerland-guide': ['Guida alla Svizzera', 'Note pratiche', 'Trasporti, valuta, meteo, telefoni e consigli utili.'],
@@ -518,7 +542,7 @@ function mirrorLanguage(lang: Exclude<Lang, 'en'>): Record<PageKey, PageContent>
     de: {
       suffix: 'Deutscher Entwurf zur Prüfung.',
       schedule: ['Unser Hochzeitstag', 'Ablauf', 'Die genauen Zeiten werden noch bestätigt.'],
-      travel: ['Anreise', 'Anreise nach Zürich', 'Praktische Hinweise für die Reise nach Zürich und die Fortbewegung vor Ort.'],
+      travel: ['Anreise', 'Anreise nach Zürich', 'Praktische Hinweise zur Anreise aus Sardinien, London, New York, Chicago und weiteren Orten.'],
       stay: ['Unterkunft', 'Übernachten', 'Küsnacht ist am praktischsten für die Feier; Zürich Zentrum eignet sich gut zum Erkunden.'],
       'things-to-do': ['Aktivitäten', 'Zürich und Schweiz', 'Ruhige Ideen für Zürich, den See, Berge und Tagesausflüge.'],
       'switzerland-guide': ['Schweiz-Guide', 'Praktische Hinweise', 'Öffentlicher Verkehr, Währung, Wetter, Telefon und nützliche Tipps.'],

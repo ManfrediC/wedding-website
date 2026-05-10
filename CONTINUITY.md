@@ -46,3 +46,4 @@ Start Phase 0/1 from the build specification:
 - 2026-05-10: Added local-network preview sharing via `bin/dev/share-local.ps1` and `SHARE_PREVIEW.md`.
 - 2026-05-10: Expanded Things to Do content from `doc/plans/activity_ideas.md` with Zurich, lake/water, museum/chocolate, day-trip, and longer-trip cards.
 - 2026-05-10: Applied `doc/plans/website_edits.txt` to expand the Switzerland Guide with ticket advice, child fares, Zürich Card, budgeting, car/taxi guidance, weather, and socket notes.
+- 2026-05-10: Researched and revised travel guidance for Chicago, New York, London, and Sardinia, including EasyJet baggage caveats and Sardinia ferry-to-Genoa driving options.
