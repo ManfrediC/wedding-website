@@ -365,9 +365,10 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Day trips',
           body: 'These are practical day trips from Zurich if you would like a longer excursion without changing hotels.',
-          items: ['Lucerne, ideally with a boat on Lake Lucerne.', 'Alpstein for beautiful hikes at different ability levels.', 'Rhine Falls near Schaffhausen.', 'Bern for its old town, or Basel for art museums including Fondation Beyeler and Kunstmuseum Basel.'],
+          items: ['Lucerne, ideally with a boat on Lake Lucerne.', 'Alpstein for hikes such as Seealpsee, Hoher Kasten, and Säntis, with routes at different difficulty levels.', 'Rhine Falls near Schaffhausen.', 'Bern for its old town, or Basel for art museums including Fondation Beyeler and Kunstmuseum Basel.'],
           links: [
             { label: 'Lake Lucerne boats', href: 'https://www.luzern.com/en/the-region/excursions/by-boat' },
+            { label: 'Alpstein hikes', href: 'https://www.appenzell.ch/en/summer/hiking.html' },
             { label: 'Rhine Falls', href: 'https://schaffhauserland.ch/en/regions/the-rhine-falls.html' },
             { label: 'Fondation Beyeler', href: 'https://www.fondationbeyeler.ch/en/' },
           ],
