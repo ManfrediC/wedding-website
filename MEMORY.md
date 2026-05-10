@@ -15,6 +15,7 @@ Durable project notes for the wedding website.
 - Reference visuals favour an editorial ivory layout, refined serif headings, restrained navigation, thin dividers, practical cards, and Zurich/lake imagery.
 - Avoid a generic SaaS or marketing feel. This should feel like an elegant private wedding site that also works as a travel guide.
 - Use visual assets, but final couple/venue photography is not yet selected. Placeholder imagery should be easy to swap.
+- Use original Minted upload URLs for couple photos where available; avoid re-downloading the 400px preview assets.
 
 ## Content Memory
 
@@ -24,6 +25,7 @@ Durable project notes for the wedding website.
 - Website edit requests may arrive in `doc/plans/website_edits.txt`; apply them as concrete content updates and preserve evidence for travel/ticket claims.
 - Italian guest travel should focus on Sardinia, especially Cagliari/Olbia flights and ferry-to-Genoa plus driving options; EasyJet can be budget-friendly but baggage rules need a clear warning.
 - Boat transfer wording must stay careful: host-arranged boat transfer, details to be confirmed.
+- Cambridge and UK photos from the Minted draft are intentionally excluded because the wedding location is Zurich and Kuesnacht.
 - Children and plus ones are currently interpreted as welcome, but invitation policy may later become more specific.
 - Do not imply guests need to buy boat tickets unless that is confirmed.
 

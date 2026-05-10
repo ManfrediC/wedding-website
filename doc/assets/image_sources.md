@@ -24,3 +24,4 @@ This file tracks non-couple imagery used in the website prototype.
 - Wikimedia rate limiting blocked some additional Commons downloads during the first setup pass.
 - Before launch, either confirm official venue image permission or replace official venue images with clearly licensed alternatives.
 - Cambridge and UK photos from the Minted draft are intentionally excluded from local public assets because the wedding location is Zurich/Kuesnacht.
+- Minted couple photos should use the original upload URLs from the draft site's embedded page data where available, not the low-resolution `preview` URLs. See `doc/assets/minted_photo_manifest.json`.

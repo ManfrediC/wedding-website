@@ -47,3 +47,4 @@ Start Phase 0/1 from the build specification:
 - 2026-05-10: Expanded Things to Do content from `doc/plans/activity_ideas.md` with Zurich, lake/water, museum/chocolate, day-trip, and longer-trip cards.
 - 2026-05-10: Applied `doc/plans/website_edits.txt` to expand the Switzerland Guide with ticket advice, child fares, Zürich Card, budgeting, car/taxi guidance, weather, and socket notes.
 - 2026-05-10: Researched and revised travel guidance for Chicago, New York, London, and Sardinia, including EasyJet baggage caveats and Sardinia ferry-to-Genoa driving options.
+- 2026-05-10: Replaced low-resolution Minted preview photos with original upload assets from the draft site's embedded photo data; visible couple/location photos are now mostly 1536-2048px on the long side.
