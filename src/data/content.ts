@@ -349,8 +349,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
             { label: 'Museum Rietberg', href: 'https://www.zuerich.com/en/visit/culture/museum-rietberg' },
             { label: 'Lindt', href: 'https://www.lindt-home-of-chocolate.com/en/' },
           ],
-          image: '/images/places/st-peter-zurich.jpg',
-          imageAlt: 'Kirche St. Peter in Zurich',
+          image: '/images/places/kunsthaus-zurich.jpg',
+          imageAlt: 'Kunsthaus Zurich at Heimplatz',
         },
         {
           title: 'Lake and water',
@@ -506,6 +506,11 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           title: 'Kirche St. Peter',
           body: 'Photo by Photones via Wikimedia Commons, licensed under CC BY-SA 3.0.',
           links: [{ label: 'Source', href: 'https://commons.wikimedia.org/wiki/File:Kirche_St._Peter_Z%C3%BCrich.jpg' }],
+        },
+        {
+          title: 'Kunsthaus Zurich',
+          body: 'Photo by Roland zh via Wikimedia Commons, licensed under CC BY-SA 3.0.',
+          links: [{ label: 'Source', href: 'https://commons.wikimedia.org/wiki/File:Kunsthaus_Z%C3%BCrich_-_Heimplatz_2011-08-06_18-46-28_ShiftN.jpg' }],
         },
         {
           title: 'Hotel Sonne Küsnacht',

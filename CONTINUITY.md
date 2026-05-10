@@ -48,3 +48,4 @@ Start Phase 0/1 from the build specification:
 - 2026-05-10: Applied `doc/plans/website_edits.txt` to expand the Switzerland Guide with ticket advice, child fares, Zürich Card, budgeting, car/taxi guidance, weather, and socket notes.
 - 2026-05-10: Researched and revised travel guidance for Chicago, New York, London, and Sardinia, including EasyJet baggage caveats and Sardinia ferry-to-Genoa driving options.
 - 2026-05-10: Replaced low-resolution Minted preview photos with original upload assets from the draft site's embedded photo data; visible couple/location photos are now mostly 1536-2048px on the long side.
+- 2026-05-10: Replaced the Things to Do museums placeholder image with a Kunsthaus Zurich exterior photo from Wikimedia Commons and added the source to credits.

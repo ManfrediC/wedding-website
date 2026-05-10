@@ -8,6 +8,7 @@ This file tracks non-couple imagery used in the website prototype.
 |---|---|---|---|---|
 | `public/images/places/zurich-old-town.jpg` | Wikimedia Commons, `Old town Zurich.jpg` | Tiia Monto | CC BY-SA 3.0 | Downloaded at reduced width for prototype use. |
 | `public/images/places/st-peter-zurich.jpg` | Wikimedia Commons, `Kirche St. Peter Zürich.jpg` | Photones | CC BY-SA 3.0 | Downloaded at reduced width for prototype use. |
+| `public/images/places/kunsthaus-zurich.jpg` | Wikimedia Commons, `Kunsthaus Zürich - Heimplatz 2011-08-06 18-46-28 ShiftN.jpg` | Roland zh | CC BY-SA 3.0 | Exterior Kunsthaus image for the Things to Do museums card, downloaded at 1280px width. |
 | `public/images/places/hotel-sonne-kuesnacht.jpg` | Hotel Sonne location page | Hotel Sonne / site media owner | User-approved private wedding-site reuse; confirm before public launch | Exterior hotel image from the official venue website. |
 | `public/images/places/hotel-sonne-festsaal.jpg` | Hotel Sonne wedding page | Hotel Sonne / site media owner | User-approved private wedding-site reuse; confirm before public launch | Ballroom image from the official venue website. |
 | `public/images/places/hotel-sonne-lake-arrival.jpg` | Hotel Sonne location page | Hotel Sonne / site media owner | User-approved private wedding-site reuse; confirm before public launch | Lake/boat arrival image from the official venue website. |
