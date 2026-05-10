@@ -10,6 +10,7 @@ Build a private, custom, multilingual wedding website for Gabriela Dago and Manf
 
 - Treat `doc/plans/wedding_website_build_spec.md` as the product specification.
 - Preserve the site tone: warm, elegant, formal, practical, and guest-friendly.
+- Keep guest-facing copy professional and genuine. Avoid marketing-style claims, slogans, sales language, and colloquial phrasing; prefer specific, useful wording.
 - Use British English in docs, comments, commit messages, and internal prose. Guest-facing copy may use natural wording for each language.
 - Do not add secrets, real passwords, private guest details, RSVP data, or unpublished personal contact details to tracked files.
 - Keep factual wedding details provisional when they are not confirmed. Prefer `TBD` or "details to be confirmed" over guessing.

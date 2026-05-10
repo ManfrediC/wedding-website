@@ -21,6 +21,7 @@ Durable project notes for the wedding website.
 - English is the source language.
 - Italian and German drafts should remain marked as needing fluent review.
 - Activity ideas live in `doc/plans/activity_ideas.md`; keep refining them with Manfredi and his brothers.
+- Website edit requests may arrive in `doc/plans/website_edits.txt`; apply them as concrete content updates and preserve evidence for travel/ticket claims.
 - Boat transfer wording must stay careful: host-arranged boat transfer, details to be confirmed.
 - Children and plus ones are currently interpreted as welcome, but invitation policy may later become more specific.
 - Do not imply guests need to buy boat tickets unless that is confirmed.

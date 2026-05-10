@@ -306,8 +306,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         'If you are making a trip of it, Zurich is a gentle base for lake walks, old town wandering, mountain views, museums, and day trips.',
       sections: [
         {
-          title: 'Easy Zurich classics',
-          body: 'Good first-day options if you are arriving from far away: stay outdoors, keep plans flexible, and let the city do most of the work.',
+          title: 'Zurich first-day options',
+          body: 'For a first day after travel, choose simple outdoor plans and keep the schedule flexible.',
           items: ['Walk the Old Town, Lindenhof, and the Limmat.', 'Walk or run along the Limmat and the lake promenade.', 'Take the train up Uetliberg, or hike up if you want a little more effort.'],
           links: [
             { label: 'Uetliberg', href: 'https://www.ueetliberg.ch/en/uetliberg' },
@@ -318,7 +318,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'Museums and chocolate',
-          body: 'For a culture or rainy-day plan, Zurich has excellent museums and a very reliable chocolate option for children and adults.',
+          body: 'For a culture or rainy-day plan, Zurich has excellent museums and a well-organised chocolate museum for children and adults.',
           items: ['Kunsthaus Zurich has art from the Middle Ages to contemporary work, with Swiss painters, Impressionism, Classical Modernism, Dada, Giacometti, and Munch among the highlights.', 'Museum Rietberg focuses on arts and cultures from Asia, Africa, the Americas, and Oceania.', 'Lindt Home of Chocolate in Kilchberg is interactive and especially fun with children.'],
           links: [
             { label: 'Kunsthaus', href: 'https://www.kunsthaus.ch/en/sammlung/' },
@@ -330,8 +330,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'Lake and water',
-          body: 'In warm weather, Zurich is at its best by the water. Swimming can be wonderful, but the Limmat current is strong and should be treated with respect.',
-          items: ['Swim in Lake Zurich or the Limmat only where it is permitted and sensible.', 'The Limmat is for confident swimmers; avoid it if the current feels strong.', 'A Lake Zurich boat excursion is the gentlest way to see the city and shoreline.'],
+          body: 'Warm days are well suited to time by the water. Swimming can be enjoyable, but the Limmat current is strong and should be treated with respect.',
+          items: ['Swim in Lake Zurich or the Limmat only where it is permitted and sensible.', 'The Limmat is for confident swimmers; avoid it if the current feels strong.', 'A Lake Zurich boat excursion is a relaxed way to see the city and shoreline.'],
           links: [
             { label: 'Lake Zurich boats', href: 'https://www.zsg.ch/en/' },
           ],
@@ -340,7 +340,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'Day trips',
-          body: 'These work as day trips from Zurich if you want a bigger Swiss day without changing hotels.',
+          body: 'These are practical day trips from Zurich if you would like a longer excursion without changing hotels.',
           items: ['Lucerne, ideally with a boat on Lake Lucerne.', 'Alpstein for beautiful hikes at different ability levels.', 'Rhine Falls near Schaffhausen.', 'Bern for its old town, or Basel for art museums including Fondation Beyeler and Kunstmuseum Basel.'],
           links: [
             { label: 'Lake Lucerne boats', href: 'https://www.luzern.com/en/the-region/excursions/by-boat' },
@@ -363,8 +363,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           imageAlt: 'Gabriela and Manfredi in the Swiss Alps',
         },
         {
-          title: 'Still collecting ideas',
-          body: 'This page is a working list. We will keep refining it with Manfredi and the brothers so it feels personal, realistic, and useful for different ages and energy levels.',
+          title: 'Local advice',
+          body: 'Guests are welcome to get in touch with Manfredi and family for personal recommendations, especially for longer Swiss trips, family plans, or routes suited to a particular hiking level.',
         },
       ],
     },
@@ -372,28 +372,47 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       title: 'Switzerland Guide',
       kicker: 'Practical notes',
       intro:
-        'A few practical notes for guests visiting Switzerland: public transport, currency, weather, phones, and how to keep the trip easy.',
+        'A few practical notes for guests visiting Switzerland: public transport, currency, weather, mobile phones, and straightforward planning.',
       sections: [
         {
           title: 'Public transport',
-          body: 'Trains, trams, buses, and boats are punctual and well connected. For most wedding logistics, public transport will be better than a car.',
-          items: ['Use SBB for national trains.', 'Use ZVV for Zurich regional travel.', 'Check whether a Zürich Card or travel pass makes sense for your itinerary.'],
+          body: 'Trains, trams, buses, and boats are punctual, clean, safe, and usually easier than driving. Ticket checks are strict: buy the right ticket before boarding and keep it ready with ID if required.',
+          items: ['Use SBB for national trains and ZVV for Zurich-area tickets. ZVV tickets are zone-based; Zurich city is zone 110, Küsnacht is zone 140, and Richterswil is zone 153.', 'For central Zurich, a ZVV single or 24h ticket is usually easiest. For Küsnacht or Richterswil, enter the destination in the SBB/ZVV app and buy the zones it assigns.', 'For day trips beyond Zurich, compare a normal point-to-point ticket, a Supersaver ticket, and a Saver Day Pass. Supersaver tickets can be cheaper when bought in advance, but they are tied to a specific train and are less flexible.', 'Children up to 5.99 years travel free in the Zurich network. Children aged 6 to 15.99 pay the reduced fare; for longer Swiss travel, check SBB child tickets and Junior Travelcard options.'],
           links: [
             { label: 'SBB', href: 'https://www.sbb.ch/en' },
             { label: 'ZVV', href: 'https://www.zvv.ch/en' },
-            { label: 'ZSG boats', href: 'https://www.zsg.ch/en/' },
-            { label: 'Zürich Card', href: 'https://www.zuerich.com/en/zurich-card' },
+            { label: 'ZVV tickets', href: 'https://www.zvv.ch/en/travelcards-and-tickets/tickets.html' },
+            { label: 'ZVV ticket inspection', href: 'https://www.zvv.ch/en/travelcards-and-tickets/sales-and-support/ticket-inspection/inspection.html' },
+            { label: 'SBB children', href: 'https://www.sbb.ch/en/travelcards-and-tickets/tickets-for-switzerland/children.html' },
+          ],
+        },
+        {
+          title: 'Choosing tickets',
+          body: 'There is no single best ticket for every guest. These notes are intended as practical starting points.',
+          items: ['To move around Zurich: use a ZVV city ticket, 24h ticket, or the Zürich Card if you also want museums, airport transfer, Uetliberg, and short boat rides.', 'To get to Küsnacht for the reception area: buy a ZVV/SBB ticket from your starting stop to Küsnacht ZH or Hotel Sonne’s nearest stop; the app will choose the necessary zones.', 'To go to Richterswil: buy a ZVV/SBB ticket to Richterswil, or consider an all-zone/day ticket if you are making several Zurich-network trips that day.', 'For bigger day trips such as Lucerne, Bern, Basel, or mountain areas: check SBB early for Supersaver tickets or Saver Day Passes, but avoid inflexible tickets if your plans depend on a flight arrival or weather.'],
+          links: [
+            { label: 'Zürich Card', href: 'https://www.zuerich.com/en/zurichcard' },
+            { label: 'Zürich Card transport', href: 'https://www.zuerich.com/en/zurichcard/public-transportation' },
+            { label: 'ZVV zone maps', href: 'https://www.zvv.ch/en/timetable-and-information/zone-map.html' },
+            { label: 'SBB Supersaver', href: 'https://news.sbb.ch/en/019d7b77-c8f8-7a8a-bd93-3942eee934ca/supersaver-tickets' },
           ],
         },
         {
           title: 'Money and budgeting',
-          body: 'Switzerland uses Swiss francs. Cards are widely accepted, but a small amount of cash can be useful. Euros should not be assumed to be accepted.',
-          items: ['Paying in CHF is usually better than accepting dynamic currency conversion.', 'Coop and Migros are useful for snacks, breakfasts, and picnic supplies.', 'Free activities include lake walks, parks, viewpoints, and Old Town wandering.'],
+          body: 'Switzerland uses Swiss francs and is often expensive, but planning ahead can keep costs manageable.',
+          items: ['Migros and Coop are the largest supermarket chains and are useful for breakfasts, snacks, picnic supplies, and children’s basics.', 'Taxis are usually very expensive. Uber usually works, but public transport is normally cheaper, cleaner, safer, and easier.', 'We advise against renting a car for Zurich and wedding logistics; parking and city traffic make it difficult.', 'Low-cost options include lake walks, Old Town wandering, viewpoints, parks, supermarket picnics, and choosing accommodation near a tram or train stop.'],
         },
         {
-          title: 'Weather, packing, and phones',
-          body: 'June is usually pleasant, but rain is possible. Bring layers, sunglasses, a light rain jacket, and comfortable formal shoes for the wedding day.',
-          items: ['Switzerland uses Type J power sockets.', 'Some generic European adapters may not fit Swiss sockets.', 'Check roaming charges or consider an eSIM for a longer stay.'],
+          title: 'Weather, packing, and practical tips',
+          body: 'June is usually pleasant, but Swiss weather can change quickly. Pack for both sunshine and rain, especially if you are doing lake or mountain activities.',
+          items: ['Bring sunglasses, layers, a light rain jacket, and comfortable shoes for walking on cobbles or lake paths.', 'For the wedding day, choose formal shoes you can actually walk in, plus a light layer for the boat or lakefront evening.', 'Switzerland uses Type J sockets. Slim European Type C two-pin plugs usually fit, but larger European Schuko/Type F plugs, UK plugs, and US plugs need an adapter.', 'Most modern phone and laptop chargers handle 230V, but check the label on hair tools and other higher-power devices.'],
+          links: [
+            { label: 'Swiss plug guide', href: 'https://www.worldstandards.eu/electricity/plug-voltage-by-country/switzerland/' },
+          ],
+        },
+        {
+          title: 'Personal recommendations',
+          body: 'Guests can get in touch with Manfredi and family for practical advice, especially around hikes, family-friendly plans, longer trips, or whether a specific itinerary is worth the travel time.',
         },
       ],
     },
