@@ -1,0 +1,74 @@
+---
+import FAQAccordion from '../../components/FAQAccordion.astro';
+import Timeline from '../../components/Timeline.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { faqs } from '../../data/faqs';
+import { isLang, languages } from '../../data/locales';
+import { pageKeys, pages, type PageKey } from '../../data/content';
+import { weddingSchedule } from '../../data/schedule';
+
+export function getStaticPaths() {
+  return languages.flatMap((lang) => pageKeys.map((page) => ({ params: { lang, page } })));
+}
+
+const langParam = Astro.params.lang;
+const pageParam = Astro.params.page;
+const lang = isLang(langParam) ? langParam : 'en';
+const page = pageKeys.includes(pageParam as PageKey) ? (pageParam as PageKey) : 'schedule';
+const content = pages[lang][page];
+const currentPath = `/${page}/`;
+---
+
+<BaseLayout lang={lang} currentPath={currentPath} title={`${content.title} | Gabriela & Manfredi`}>
+  <section class="page-hero">
+    <p class="eyebrow">{content.kicker}</p>
+    <h1>{content.title}</h1>
+    <p>{content.intro}</p>
+  </section>
+
+  {content.notice && (
+    <section class="notice-band" aria-label="Important note">
+      <p>{content.notice}</p>
+    </section>
+  )}
+
+  {page === 'schedule' && (
+    <section class="content-band narrow">
+      <Timeline lang={lang} entries={weddingSchedule} />
+    </section>
+  )}
+
+  {page === 'faq' && (
+    <section class="content-band narrow">
+      <FAQAccordion items={faqs[lang]} />
+    </section>
+  )}
+
+  {content.sections.length > 0 && (
+    <section class="content-band">
+      <div class="page-card-grid">
+        {content.sections.map((section) => (
+          <article class="info-card">
+            {section.image && <img src={section.image} alt={section.imageAlt ?? ''} loading="lazy" />}
+            <div>
+              <h2>{section.title}</h2>
+              <p>{section.body}</p>
+              {section.items && (
+                <ul>
+                  {section.items.map((item) => <li>{item}</li>)}
+                </ul>
+              )}
+              {section.links && (
+                <div class="link-list">
+                  {section.links.map((link) => (
+                    <a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+</BaseLayout>

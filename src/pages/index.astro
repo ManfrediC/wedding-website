@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { languages, languageNames } from '../data/locales';
+import { wedding } from '../data/site';
+---
+
+<BaseLayout title={wedding.metadataTitle} currentPath="/">
+  <section class="language-landing">
+    <p class="eyebrow">Private wedding website</p>
+    <h1>{wedding.couple.display}</h1>
+    <p>{wedding.dateDisplay.en}</p>
+    <p>{wedding.location.en}</p>
+    <div class="language-grid" aria-label="Choose your language">
+      {languages.map((lang) => (
+        <a href={`/${lang}/`}>{languageNames[lang]}</a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

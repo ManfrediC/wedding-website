@@ -1,0 +1,44 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { navItems, type Lang } from '../data/locales';
+import { wedding } from '../data/site';
+
+type Props = {
+  lang: Lang;
+  currentPath?: string;
+};
+
+const { lang, currentPath = '/' } = Astro.props;
+---
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header">
+  <a class="monogram" href={`/${lang}/`} aria-label="Gabriela and Manfredi home">
+    {wedding.couple.monogram}
+  </a>
+
+  <nav class="desktop-nav" aria-label="Primary navigation">
+    {navItems.map((item) => (
+      <a
+        href={`/${lang}${item.path}`}
+        aria-current={currentPath === item.path ? 'page' : undefined}
+      >
+        {item.labels[lang]}
+      </a>
+    ))}
+  </nav>
+
+  <div class="header-language">
+    <LanguageSwitcher lang={lang} path={currentPath} />
+  </div>
+
+  <details class="mobile-menu">
+    <summary>Menu</summary>
+    <nav aria-label="Mobile navigation">
+      {navItems.map((item) => (
+        <a href={`/${lang}${item.path}`}>{item.labels[lang]}</a>
+      ))}
+      <LanguageSwitcher lang={lang} path={currentPath} />
+    </nav>
+  </details>
+</header>

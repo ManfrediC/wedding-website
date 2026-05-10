@@ -1,0 +1,26 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { type Lang } from '../data/locales';
+import { wedding } from '../data/site';
+
+type Props = {
+  lang: Lang;
+  currentPath?: string;
+};
+
+const { lang, currentPath = '/' } = Astro.props;
+---
+
+<footer class="site-footer">
+  <div>
+    <p class="footer-monogram">{wedding.couple.monogram}</p>
+    <p>{wedding.dateDisplay[lang]}</p>
+    <p>{wedding.location[lang]}</p>
+  </div>
+  <div>
+    <p class="footer-heading">Private wedding website</p>
+    <p>For invited guests only. Please do not share the link or password publicly.</p>
+    <p><a class="footer-link" href={`/${lang}/credits/`}>Image credits</a></p>
+  </div>
+  <LanguageSwitcher lang={lang} path={currentPath} />
+</footer>

@@ -1,0 +1,26 @@
+---
+import type { Lang } from '../data/locales';
+import type { ScheduleEntry } from '../data/schedule';
+
+type Props = {
+  lang: Lang;
+  entries: ScheduleEntry[];
+};
+
+const { lang, entries } = Astro.props;
+---
+
+<ol class="timeline">
+  {entries.map((entry) => (
+    <li>
+      <div class="timeline-time">{entry.time}</div>
+      <div class="timeline-marker" aria-hidden="true"></div>
+      <div class="timeline-content">
+        <p class="eyebrow">{entry.status[lang]}</p>
+        <h2>{entry.title[lang]}</h2>
+        <p class="timeline-location">{entry.location}</p>
+        <p>{entry.body[lang]}</p>
+      </div>
+    </li>
+  ))}
+</ol>

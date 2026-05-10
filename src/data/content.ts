@@ -1,0 +1,530 @@
+import type { Lang } from './locales';
+
+export const pageKeys = [
+  'schedule',
+  'travel',
+  'stay',
+  'things-to-do',
+  'switzerland-guide',
+  'faq',
+  'rsvp',
+  'gifts',
+  'contact',
+  'credits',
+] as const;
+
+export type PageKey = (typeof pageKeys)[number];
+
+type Link = {
+  label: string;
+  href: string;
+};
+
+type Section = {
+  title: string;
+  body: string;
+  items?: string[];
+  links?: Link[];
+  image?: string;
+  imageAlt?: string;
+};
+
+export type PageContent = {
+  title: string;
+  kicker: string;
+  intro: string;
+  notice?: string;
+  sections: Section[];
+};
+
+export const homeContent: Record<
+  Lang,
+  {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    intro: string;
+    primaryCta: string;
+    secondaryCta: string;
+    cards: { title: string; body: string; href: string; image: string; imageAlt: string }[];
+    closing: string;
+  }
+> = {
+  en: {
+    eyebrow: 'Gabriela Dago & Manfredi Carta',
+    title: 'Gabriela & Manfredi',
+    subtitle: 'Friday, 11 June 2027 · Zurich & Küsnacht, Switzerland',
+    intro:
+      'We cannot wait to celebrate with you in Zurich. The day will begin in the old town at Kirche St. Peter, followed by a journey on Lake Zurich to Küsnacht and an evening by the water at Hotel Sonne.',
+    primaryCta: 'View the schedule',
+    secondaryCta: 'Travel and stay',
+    closing: 'We are so grateful that you will be joining us in Switzerland.',
+    cards: [
+      {
+        title: 'Schedule',
+        body: 'Ceremony, boat transfer, dinner, dancing, and details as they are confirmed.',
+        href: '/en/schedule/',
+        image: '/images/places/st-peter-zurich.jpg',
+        imageAlt: 'Kirche St. Peter in Zurich',
+      },
+      {
+        title: 'Travel',
+        body: 'How to get to Zurich from Chicago, New York, the UK, Italy, and elsewhere.',
+        href: '/en/travel/',
+        image: '/images/minted/minted-photo-08.jpeg',
+        imageAlt: 'Zurich and Lake Zurich from above',
+      },
+      {
+        title: 'Stay',
+        body: 'Recommended areas, Hotel Sonne, nearby options, and room-block updates.',
+        href: '/en/stay/',
+        image: '/images/places/hotel-sonne-kuesnacht.jpg',
+        imageAlt: 'Hotel Sonne in Küsnacht',
+      },
+      {
+        title: 'Things to Do',
+        body: 'Zurich, Lake Zurich, mountain views, day trips, and gentle pre-wedding ideas.',
+        href: '/en/things-to-do/',
+        image: '/images/minted/minted-gallery-07.jpg',
+        imageAlt: 'A mountain lake in Switzerland',
+      },
+    ],
+  },
+  it: {
+    eyebrow: 'Gabriela Dago & Manfredi Carta',
+    title: 'Gabriela & Manfredi',
+    subtitle: 'Venerdì 11 giugno 2027 · Zurigo e Küsnacht, Svizzera',
+    intro:
+      "Non vediamo l'ora di festeggiare con voi a Zurigo. La giornata inizierà nel centro storico alla Kirche St. Peter, proseguirà sul Lago di Zurigo verso Küsnacht e continuerà con una serata sul lago all'Hotel Sonne.",
+    primaryCta: 'Vedi il programma',
+    secondaryCta: 'Viaggio e alloggio',
+    closing: 'Siamo felicissimi di poter condividere con voi questa giornata in Svizzera.',
+    cards: [
+      {
+        title: 'Programma',
+        body: 'Cerimonia, trasferimento in barca, cena, festa e dettagli appena confermati.',
+        href: '/it/schedule/',
+        image: '/images/places/st-peter-zurich.jpg',
+        imageAlt: 'Kirche St. Peter a Zurigo',
+      },
+      {
+        title: 'Viaggio',
+        body: "Come arrivare a Zurigo da Chicago, New York, Regno Unito, Italia e dall'estero.",
+        href: '/it/travel/',
+        image: '/images/minted/minted-photo-08.jpeg',
+        imageAlt: "Zurigo e il Lago di Zurigo dall'alto",
+      },
+      {
+        title: 'Dove dormire',
+        body: "Zone consigliate, Hotel Sonne, opzioni vicine e aggiornamenti sui blocchi camere.",
+        href: '/it/stay/',
+        image: '/images/places/hotel-sonne-kuesnacht.jpg',
+        imageAlt: "Hotel Sonne a Küsnacht",
+      },
+      {
+        title: 'Cosa fare',
+        body: 'Zurigo, Lago di Zurigo, panorami alpini, gite e idee prima del matrimonio.',
+        href: '/it/things-to-do/',
+        image: '/images/minted/minted-gallery-07.jpg',
+        imageAlt: 'Un lago di montagna in Svizzera',
+      },
+    ],
+  },
+  de: {
+    eyebrow: 'Gabriela Dago & Manfredi Carta',
+    title: 'Gabriela & Manfredi',
+    subtitle: 'Freitag, 11. Juni 2027 · Zürich & Küsnacht, Schweiz',
+    intro:
+      'Wir freuen uns sehr, mit euch in Zürich zu feiern. Der Tag beginnt in der Altstadt in der Kirche St. Peter, führt über den Zürichsee nach Küsnacht und endet mit einem Abend am Wasser im Hotel Sonne.',
+    primaryCta: 'Ablauf ansehen',
+    secondaryCta: 'Anreise und Unterkunft',
+    closing: 'Wir sind sehr dankbar, dass ihr mit uns in der Schweiz feiert.',
+    cards: [
+      {
+        title: 'Ablauf',
+        body: 'Trauung, Bootstransfer, Abendessen, Feier und Details, sobald sie bestätigt sind.',
+        href: '/de/schedule/',
+        image: '/images/places/st-peter-zurich.jpg',
+        imageAlt: 'Kirche St. Peter in Zürich',
+      },
+      {
+        title: 'Anreise',
+        body: 'Anreise nach Zürich aus Chicago, New York, Grossbritannien, Italien und weiteren Orten.',
+        href: '/de/travel/',
+        image: '/images/minted/minted-photo-08.jpeg',
+        imageAlt: 'Zurich und der Zurichsee von oben',
+      },
+      {
+        title: 'Unterkunft',
+        body: 'Empfohlene Gegenden, Hotel Sonne, nahe Optionen und Zimmerblock-Updates.',
+        href: '/de/stay/',
+        image: '/images/places/hotel-sonne-kuesnacht.jpg',
+        imageAlt: 'Hotel Sonne in Küsnacht',
+      },
+      {
+        title: 'Aktivitäten',
+        body: 'Zürich, Zürichsee, Bergblicke, Tagesausflüge und entspannte Ideen vor der Hochzeit.',
+        href: '/de/things-to-do/',
+        image: '/images/minted/minted-gallery-07.jpg',
+        imageAlt: 'Ein Bergsee in der Schweiz',
+      },
+    ],
+  },
+};
+
+export const pages: Record<Lang, Record<PageKey, PageContent>> = {
+  en: {
+    schedule: {
+      title: 'Our Wedding Day',
+      kicker: 'Schedule',
+      intro:
+        'The exact timing is still being confirmed. This page will become the day-of reference for ceremony arrival, the boat transfer, dinner, dancing, and return travel.',
+      notice:
+        'Boat details are provisional: we are planning a host-arranged transfer from Zurich towards Küsnacht, with boarding point and rain plan to follow.',
+      sections: [
+        {
+          title: 'Ceremony',
+          body: 'The ceremony will take place at Kirche St. Peter in Zurich old town.',
+          items: ['Exact start time: TBD', 'Guest arrival time: TBD', 'Ceremony languages: TBD'],
+          image: '/images/places/st-peter-zurich.jpg',
+          imageAlt: 'Kirche St. Peter in Zurich',
+        },
+        {
+          title: 'Boat transfer',
+          body: 'After the ceremony, we are planning a host-arranged boat transfer from Zurich towards Küsnacht.',
+          items: ['Boarding point: TBD', 'Tickets: to be confirmed', 'Rain plan and accessibility details: TBD'],
+          image: '/images/places/hotel-sonne-lake-arrival.jpg',
+          imageAlt: 'A boat on Lake Zurich near Hotel Sonne',
+        },
+        {
+          title: 'Reception and party',
+          body: 'The evening celebration will be at Hotel Sonne in Küsnacht, beside Lake Zurich.',
+          items: ['Aperitivo: TBD', 'Dinner: TBD', 'Dancing and party: TBD', 'Late-night return transport: TBD'],
+          image: '/images/places/hotel-sonne-festsaal.jpg',
+          imageAlt: 'The ballroom at Hotel Sonne Küsnacht',
+        },
+      ],
+    },
+    travel: {
+      title: 'Travel Advice',
+      kicker: 'How to get to Zurich',
+      intro:
+        'Zurich Airport is the main arrival point. Public transport is usually the simplest way to reach Zurich city centre, Küsnacht, and the wedding venues.',
+      notice:
+        'Please recheck official entry requirements before booking and again before travelling. Switzerland is part of the Schengen area and rules may change before June 2027.',
+      sections: [
+        {
+          title: 'From Chicago',
+          body: 'Search for flights from Chicago to Zurich Airport (ZRH). June 2027 schedules are not fully bookable yet, so route details should be treated as planning guidance.',
+          items: ['Arrive by Thursday, 10 June 2027 at the latest.', 'Wednesday, 9 June 2027 is better for jet lag.', 'Use public transport from Zurich Airport where possible.'],
+          links: [
+            { label: 'Google Flights', href: 'https://www.google.com/travel/flights?q=Flights%20from%20Chicago%20to%20Zurich' },
+            { label: 'Expedia', href: 'https://www.expedia.com/Flights' },
+          ],
+          image: '/images/places/zurich-old-town.jpg',
+          imageAlt: 'Zurich old town and the Limmat river',
+        },
+        {
+          title: 'From New York',
+          body: 'Search for flights from New York City to Zurich Airport (ZRH). June 2027 schedules are not fully bookable yet, so compare airports and routes once your dates are available.',
+          items: ['Compare JFK, Newark (EWR), and LaGuardia (LGA), with JFK and Newark usually the most relevant for transatlantic itineraries.', 'Arrive by Thursday, 10 June 2027 at the latest; Wednesday, 9 June 2027 gives more breathing room.', 'Use public transport from Zurich Airport unless your wider trip genuinely needs a car.'],
+          links: [
+            { label: 'Google Flights', href: 'https://www.google.com/travel/flights?q=Flights%20from%20New%20York%20to%20Zurich' },
+            { label: 'Expedia', href: 'https://www.expedia.com/Flights' },
+          ],
+          image: '/images/places/hotel-sonne-lake-arrival.jpg',
+          imageAlt: 'A boat on Lake Zurich near Hotel Sonne',
+        },
+        {
+          title: 'From the UK',
+          body: 'Flights to Zurich are usually simplest for most UK guests. Rail through continental Europe can be a scenic alternative for guests who enjoy slower travel.',
+          items: ['Search from London, Manchester, Edinburgh, or your nearest regional airport.', 'Zurich Airport to Zurich HB is usually quick by train.', 'Check SBB for Swiss connections.'],
+          links: [
+            { label: 'Google Flights', href: 'https://www.google.com/travel/flights?q=Flights%20from%20United%20Kingdom%20to%20Zurich' },
+            { label: 'Expedia UK', href: 'https://www.expedia.co.uk/Flights' },
+            { label: 'SBB', href: 'https://www.sbb.ch/en' },
+          ],
+          image: '/images/places/hotel-sonne-lake-arrival.jpg',
+          imageAlt: 'A boat on Lake Zurich near Hotel Sonne',
+        },
+        {
+          title: 'From Italy',
+          body: 'Guests from northern Italy may find train travel attractive, especially from Milan. From central and southern Italy, flights will often be easier.',
+          items: ['Compare flights and trains before booking.', 'Milan to Zurich can be practical by rail.', 'SBB and Trenitalia are the main rail references.'],
+          links: [
+            { label: 'Google Flights', href: 'https://www.google.com/travel/flights?q=Flights%20from%20Italy%20to%20Zurich' },
+            { label: 'Trenitalia', href: 'https://www.trenitalia.com/en.html' },
+            { label: 'SBB', href: 'https://www.sbb.ch/en' },
+          ],
+          image: '/images/places/st-peter-zurich.jpg',
+          imageAlt: 'Kirche St. Peter in Zurich',
+        },
+        {
+          title: 'Official links',
+          body: 'Use official sources for passport, visa, ETIAS, and transport guidance.',
+          links: [
+            { label: 'Swiss entry documents', href: 'https://www.ch.ch/en/travel-and-emigrate/holidays-in-switzerland/travel-documents-for-entering-switzerland/' },
+            { label: 'Swiss ETIAS information', href: 'https://www.sem.admin.ch/sem/en/home/themen/einreise/info-einreise/voraussetzungen-nach-staat/etias.html' },
+            { label: 'EU ETIAS information', href: 'https://travel-europe.europa.eu/en/etias' },
+            { label: 'UK travel advice', href: 'https://www.gov.uk/foreign-travel-advice/switzerland' },
+            { label: 'US travel advice', href: 'https://travel.state.gov/' },
+          ],
+        },
+      ],
+    },
+    stay: {
+      title: 'Where to Stay',
+      kicker: 'Accommodation',
+      intro:
+        'Küsnacht is most convenient for the party, while central Zurich is best for sightseeing and transport. Room-block information will be added once confirmed.',
+      sections: [
+        {
+          title: 'Closest to the party: Küsnacht',
+          body: 'Staying in Küsnacht keeps you near Hotel Sonne after dinner and dancing. This is likely the easiest choice for guests who value convenience at the end of the evening.',
+          items: ['Hotel Sonne Küsnacht: likely priority for a room block.', 'OXEN Küsnacht: nearby option to confirm.', 'Late-night transport plan: TBD.'],
+          image: '/images/places/hotel-sonne-kuesnacht.jpg',
+          imageAlt: 'Hotel Sonne in Küsnacht',
+        },
+        {
+          title: 'Central Zurich',
+          body: 'Zurich city centre is practical for guests who want restaurants, sightseeing, train connections, and easy airport access.',
+          items: ['Look near Zurich HB, the Old Town, Bellevue, or Stadelhofen.', 'Choose accommodation near a tram or train stop.', 'Public transport is usually easier than renting a car.'],
+          image: '/images/places/zurich-old-town.jpg',
+          imageAlt: 'Zurich old town and the Limmat river',
+        },
+        {
+          title: 'Booking guidance',
+          body: 'Zurich can be expensive in June. We recommend booking early, checking cancellation terms, and comparing hotels with apartments if you are staying longer.',
+          items: ['Booking codes: TBD', 'Room-block deadlines: TBD', 'Approximate price bands: TBD'],
+        },
+      ],
+    },
+    'things-to-do': {
+      title: 'Things to Do',
+      kicker: 'Zurich & Switzerland',
+      intro:
+        'If you are making a trip of it, Zurich is a gentle base for lake walks, old town wandering, mountain views, museums, and day trips.',
+      sections: [
+        {
+          title: 'Easy Zurich classics',
+          body: 'Good first-day options if you are arriving from far away: stay outdoors, keep plans flexible, and let the city do most of the work.',
+          items: ['Walk the Old Town, Lindenhof, and the Limmat.', 'Walk or run along the Limmat and the lake promenade.', 'Take the train up Uetliberg, or hike up if you want a little more effort.'],
+          links: [
+            { label: 'Uetliberg', href: 'https://www.ueetliberg.ch/en/uetliberg' },
+            { label: 'Zurich tourism', href: 'https://www.zuerich.com/en' },
+          ],
+          image: '/images/minted/minted-photo-08.jpeg',
+          imageAlt: 'Zurich and Lake Zurich from above',
+        },
+        {
+          title: 'Museums and chocolate',
+          body: 'For a culture or rainy-day plan, Zurich has excellent museums and a very reliable chocolate option for children and adults.',
+          items: ['Kunsthaus Zurich has art from the Middle Ages to contemporary work, with Swiss painters, Impressionism, Classical Modernism, Dada, Giacometti, and Munch among the highlights.', 'Museum Rietberg focuses on arts and cultures from Asia, Africa, the Americas, and Oceania.', 'Lindt Home of Chocolate in Kilchberg is interactive and especially fun with children.'],
+          links: [
+            { label: 'Kunsthaus', href: 'https://www.kunsthaus.ch/en/sammlung/' },
+            { label: 'Museum Rietberg', href: 'https://www.zuerich.com/en/visit/culture/museum-rietberg' },
+            { label: 'Lindt', href: 'https://www.lindt-home-of-chocolate.com/en/' },
+          ],
+          image: '/images/places/st-peter-zurich.jpg',
+          imageAlt: 'Kirche St. Peter in Zurich',
+        },
+        {
+          title: 'Lake and water',
+          body: 'In warm weather, Zurich is at its best by the water. Swimming can be wonderful, but the Limmat current is strong and should be treated with respect.',
+          items: ['Swim in Lake Zurich or the Limmat only where it is permitted and sensible.', 'The Limmat is for confident swimmers; avoid it if the current feels strong.', 'A Lake Zurich boat excursion is the gentlest way to see the city and shoreline.'],
+          links: [
+            { label: 'Lake Zurich boats', href: 'https://www.zsg.ch/en/' },
+          ],
+          image: '/images/places/hotel-sonne-lake-arrival.jpg',
+          imageAlt: 'A boat on Lake Zurich near Hotel Sonne',
+        },
+        {
+          title: 'Day trips',
+          body: 'These work as day trips from Zurich if you want a bigger Swiss day without changing hotels.',
+          items: ['Lucerne, ideally with a boat on Lake Lucerne.', 'Alpstein for beautiful hikes at different ability levels.', 'Rhine Falls near Schaffhausen.', 'Bern for its old town, or Basel for art museums including Fondation Beyeler and Kunstmuseum Basel.'],
+          links: [
+            { label: 'Lake Lucerne boats', href: 'https://www.luzern.com/en/the-region/excursions/by-boat' },
+            { label: 'Rhine Falls', href: 'https://schaffhauserland.ch/en/regions/the-rhine-falls.html' },
+            { label: 'Fondation Beyeler', href: 'https://www.fondationbeyeler.ch/en/' },
+          ],
+          image: '/images/minted/minted-gallery-07.jpg',
+          imageAlt: 'A mountain lake in Switzerland',
+        },
+        {
+          title: 'Further away',
+          body: 'If Switzerland is part of a longer holiday, these are better with extra nights rather than squeezed around the wedding.',
+          items: ['Swiss National Park in Graubunden.', 'Lauterbrunnen and Jungfraujoch for classic high-Alpine scenery.', 'Hiking ideas: Pizol 5-Lakes Hike, Aletsch Glacier viewpoints, the Bernese Oberland, Graubunden, and Valais.'],
+          links: [
+            { label: 'Swiss National Park', href: 'https://www.nationalpark.ch/en/' },
+            { label: 'Jungfraujoch', href: 'https://www.jungfrau.ch/en/tourism/' },
+            { label: 'Pizol 5-Lakes Hike', href: 'https://pizol.com/en/hiking-trails/5-lakes-hiking/' },
+          ],
+          image: '/images/minted/minted-gallery-06.jpg',
+          imageAlt: 'Gabriela and Manfredi in the Swiss Alps',
+        },
+        {
+          title: 'Still collecting ideas',
+          body: 'This page is a working list. We will keep refining it with Manfredi and the brothers so it feels personal, realistic, and useful for different ages and energy levels.',
+        },
+      ],
+    },
+    'switzerland-guide': {
+      title: 'Switzerland Guide',
+      kicker: 'Practical notes',
+      intro:
+        'A few practical notes for guests visiting Switzerland: public transport, currency, weather, phones, and how to keep the trip easy.',
+      sections: [
+        {
+          title: 'Public transport',
+          body: 'Trains, trams, buses, and boats are punctual and well connected. For most wedding logistics, public transport will be better than a car.',
+          items: ['Use SBB for national trains.', 'Use ZVV for Zurich regional travel.', 'Check whether a Zürich Card or travel pass makes sense for your itinerary.'],
+          links: [
+            { label: 'SBB', href: 'https://www.sbb.ch/en' },
+            { label: 'ZVV', href: 'https://www.zvv.ch/en' },
+            { label: 'ZSG boats', href: 'https://www.zsg.ch/en/' },
+            { label: 'Zürich Card', href: 'https://www.zuerich.com/en/zurich-card' },
+          ],
+        },
+        {
+          title: 'Money and budgeting',
+          body: 'Switzerland uses Swiss francs. Cards are widely accepted, but a small amount of cash can be useful. Euros should not be assumed to be accepted.',
+          items: ['Paying in CHF is usually better than accepting dynamic currency conversion.', 'Coop and Migros are useful for snacks, breakfasts, and picnic supplies.', 'Free activities include lake walks, parks, viewpoints, and Old Town wandering.'],
+        },
+        {
+          title: 'Weather, packing, and phones',
+          body: 'June is usually pleasant, but rain is possible. Bring layers, sunglasses, a light rain jacket, and comfortable formal shoes for the wedding day.',
+          items: ['Switzerland uses Type J power sockets.', 'Some generic European adapters may not fit Swiss sockets.', 'Check roaming charges or consider an eSIM for a longer stay.'],
+        },
+      ],
+    },
+    faq: {
+      title: 'Details & FAQ',
+      kicker: 'Helpful answers',
+      intro: 'Answers to the questions guests are most likely to ask. More details will be added as the day becomes final.',
+      sections: [],
+    },
+    rsvp: {
+      title: 'RSVP',
+      kicker: 'Response details',
+      intro:
+        'The RSVP form is not open yet. Once ready, this page will embed the Tally form for your language and collect attendance, dietary needs, transport, and accommodation details.',
+      notice:
+        'We will use RSVP information only to plan the wedding, including attendance, seating, dietary requirements, transport, and accommodation logistics.',
+      sections: [
+        {
+          title: 'What the RSVP will ask',
+          body: 'The form will collect only the practical details needed for wedding planning.',
+          items: ['Guest names and email', 'Adults and children attending', 'Attendance by event', 'Dietary requirements and allergies', 'Accessibility or mobility considerations', 'Travel origin and accommodation status'],
+        },
+        {
+          title: 'Invitation codes',
+          body: 'If invitation codes are used, we will add instructions here before RSVP opens.',
+          items: ['RSVP opening date: TBD', 'RSVP deadline: TBD', 'Edit-later policy: TBD'],
+        },
+      ],
+    },
+    gifts: {
+      title: 'Gifts',
+      kicker: 'With gratitude',
+      intro:
+        'Your presence in Switzerland is already the greatest gift. We are so grateful that you are travelling to celebrate with us.',
+      sections: [
+        {
+          title: 'Details to follow',
+          body: 'If we add a registry, honeymoon fund, or any further guidance, we will share it here before invitations are sent.',
+        },
+      ],
+    },
+    contact: {
+      title: 'Contact',
+      kicker: 'Questions',
+      intro:
+        'For now, please use the travel, stay, and FAQ pages for planning. A shared wedding contact route will be added once the domain and guest support plan are confirmed.',
+      sections: [
+        {
+          title: 'Wedding questions',
+          body: 'A shared wedding email address is planned, but should only be created after the domain is chosen.',
+          items: ['General questions: TBD', 'RSVP support: TBD', 'Wedding-week urgent contact: TBD'],
+        },
+      ],
+    },
+    credits: {
+      title: 'Image Credits',
+      kicker: 'Credits',
+      intro: 'Prototype venue and Zurich imagery used for this private wedding website.',
+      sections: [
+        {
+          title: 'Zurich Old Town',
+          body: 'Photo by Tiia Monto via Wikimedia Commons, licensed under CC BY-SA 3.0.',
+          links: [{ label: 'Source', href: 'https://commons.wikimedia.org/wiki/File:Old_town_Zurich.jpg' }],
+        },
+        {
+          title: 'Kirche St. Peter',
+          body: 'Photo by Photones via Wikimedia Commons, licensed under CC BY-SA 3.0.',
+          links: [{ label: 'Source', href: 'https://commons.wikimedia.org/wiki/File:Kirche_St._Peter_Z%C3%BCrich.jpg' }],
+        },
+        {
+          title: 'Hotel Sonne Küsnacht',
+          body: 'Prototype images from the official Hotel Sonne website, included for private wedding-site review. Permission should be confirmed before public launch.',
+          links: [
+            { label: 'Wedding page', href: 'https://sonne.ch/en/event-venues/wedding/' },
+            { label: 'Location page', href: 'https://sonne.ch/en/location-getting-here/' },
+          ],
+        },
+      ],
+    },
+  },
+  it: {} as Record<PageKey, PageContent>,
+  de: {} as Record<PageKey, PageContent>,
+};
+
+pages.it = mirrorLanguage('it');
+pages.de = mirrorLanguage('de');
+
+function mirrorLanguage(lang: Exclude<Lang, 'en'>): Record<PageKey, PageContent> {
+  const labels = {
+    it: {
+      suffix: 'Bozza in italiano da rivedere.',
+      schedule: ['Il giorno del matrimonio', 'Programma', 'Gli orari esatti sono ancora da confermare.'],
+      travel: ['Viaggio', 'Come arrivare a Zurigo', "Indicazioni pratiche per raggiungere Zurigo e muoversi con facilità."],
+      stay: ['Dove dormire', 'Alloggio', 'Küsnacht è più comoda per la festa; il centro di Zurigo è ideale per visitare la città.'],
+      'things-to-do': ['Cosa fare', 'Zurigo e Svizzera', 'Idee tranquille per esplorare Zurigo, il lago e le montagne.'],
+      'switzerland-guide': ['Guida alla Svizzera', 'Note pratiche', 'Trasporti, valuta, meteo, telefoni e consigli utili.'],
+      faq: ['Dettagli e FAQ', 'Risposte utili', 'Domande frequenti. Altri dettagli saranno aggiunti più avanti.'],
+      rsvp: ['RSVP', 'Conferma di presenza', 'La RSVP non è ancora aperta. Il modulo sarà aggiunto qui.'],
+      gifts: ['Regali', 'Con gratitudine', 'La vostra presenza in Svizzera è già il regalo più bello.'],
+      contact: ['Contatti', 'Domande', 'Aggiungeremo un contatto dedicato al matrimonio appena confermato.'],
+      credits: ['Crediti immagini', 'Crediti', 'Immagini usate nel prototipo del sito privato del matrimonio.'],
+    },
+    de: {
+      suffix: 'Deutscher Entwurf zur Prüfung.',
+      schedule: ['Unser Hochzeitstag', 'Ablauf', 'Die genauen Zeiten werden noch bestätigt.'],
+      travel: ['Anreise', 'Anreise nach Zürich', 'Praktische Hinweise für die Reise nach Zürich und die Fortbewegung vor Ort.'],
+      stay: ['Unterkunft', 'Übernachten', 'Küsnacht ist am praktischsten für die Feier; Zürich Zentrum eignet sich gut zum Erkunden.'],
+      'things-to-do': ['Aktivitäten', 'Zürich und Schweiz', 'Ruhige Ideen für Zürich, den See, Berge und Tagesausflüge.'],
+      'switzerland-guide': ['Schweiz-Guide', 'Praktische Hinweise', 'Öffentlicher Verkehr, Währung, Wetter, Telefon und nützliche Tipps.'],
+      faq: ['Details und FAQ', 'Hilfreiche Antworten', 'Häufige Fragen. Weitere Details folgen.'],
+      rsvp: ['RSVP', 'Rückmeldung', 'Die RSVP ist noch nicht geöffnet. Das Formular wird hier ergänzt.'],
+      gifts: ['Geschenke', 'Mit Dankbarkeit', 'Eure Anwesenheit in der Schweiz ist für uns schon das schönste Geschenk.'],
+      contact: ['Kontakt', 'Fragen', 'Ein Hochzeitskontakt wird ergänzt, sobald er bestätigt ist.'],
+      credits: ['Bildnachweise', 'Credits', 'Bilder, die im Prototyp dieser privaten Hochzeitswebsite verwendet werden.'],
+    },
+  }[lang];
+
+  return Object.fromEntries(
+    pageKeys.map((key) => {
+      const [title, kicker, intro] = labels[key];
+      const englishPage = pages.en[key];
+      return [
+        key,
+        {
+          ...englishPage,
+          title,
+          kicker,
+          intro,
+          notice: englishPage.notice ? `${labels.suffix} ${englishPage.notice}` : labels.suffix,
+        },
+      ];
+    }),
+  ) as Record<PageKey, PageContent>;
+}

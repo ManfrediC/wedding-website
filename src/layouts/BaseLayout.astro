@@ -1,0 +1,42 @@
+---
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import { defaultLang, type Lang } from '../data/locales';
+import { wedding } from '../data/site';
+import '../styles/global.css';
+
+type Props = {
+  title?: string;
+  description?: string;
+  lang?: Lang;
+  currentPath?: string;
+  hideChrome?: boolean;
+};
+
+const {
+  title = wedding.metadataTitle,
+  description = wedding.metadataDescription,
+  lang = defaultLang,
+  currentPath = '/',
+  hideChrome = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body class={hideChrome ? 'plain-page' : undefined}>
+    {!hideChrome && <SiteHeader lang={lang} currentPath={currentPath} />}
+    <main id="main-content">
+      <slot />
+    </main>
+    {!hideChrome && <SiteFooter lang={lang} currentPath={currentPath} />}
+  </body>
+</html>

@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { homeContent } from '../../data/content';
+import { isLang, languages } from '../../data/locales';
+import { homePhotoStrip } from '../../data/photos';
+import { heroImage, wedding } from '../../data/site';
+
+export function getStaticPaths() {
+  return languages.map((lang) => ({ params: { lang } }));
+}
+
+const langParam = Astro.params.lang;
+const lang = isLang(langParam) ? langParam : 'en';
+const content = homeContent[lang];
+const photoStrip = homePhotoStrip[lang];
+---
+
+<BaseLayout lang={lang} currentPath="/" title={`${content.title} | Wedding Website`}>
+  <section class="home-hero" style={`--hero-image: url('${heroImage.src}')`}>
+    <div class="hero-copy">
+      <p class="eyebrow">{content.eyebrow}</p>
+      <h1>{content.title}</h1>
+      <p class="hero-subtitle">{content.subtitle}</p>
+      <p>{content.intro}</p>
+      <div class="hero-actions">
+        <a class="button primary" href={`/${lang}/schedule/`}>{content.primaryCta}</a>
+        <a class="button secondary" href={`/${lang}/travel/`}>{content.secondaryCta}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-band intro-band">
+    <div class="section-heading">
+      <p class="eyebrow">{wedding.dateDisplay[lang]}</p>
+      <h2>{wedding.location[lang]}</h2>
+      <p>{content.closing}</p>
+    </div>
+    <div class="feature-grid">
+      {content.cards.map((card) => (
+        <a class="feature-card" href={card.href}>
+          <img src={card.image} alt={card.imageAlt} loading="lazy" />
+          <span>{card.title}</span>
+          <p>{card.body}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-band photo-band" aria-labelledby="home-photos-heading">
+    <div class="section-heading">
+      <p class="eyebrow">{content.eyebrow}</p>
+      <h2 id="home-photos-heading">{photoStrip.title}</h2>
+      <p>{photoStrip.body}</p>
+    </div>
+    <div class="photo-grid">
+      {photoStrip.photos.map((photo) => (
+        <img src={photo.src} alt={photo.alt} loading="lazy" />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

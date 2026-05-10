@@ -1,0 +1,52 @@
+﻿[
+    {
+        "Name":  "minted-hero.jpg",
+        "Url":  "https://dsl6tultd74kr.cloudfront.net/cropped/48012884-efd2-4bbc-a42b-a12c41cf7240.jpg",
+        "Kind":  "theme"
+    },
+    {
+        "Name":  "minted-gallery-01.jpeg",
+        "Url":  "https://dsl6tultd74kr.cloudfront.net/image-uploads/2025/07/01/005006-ec9d6b9e-aaf6-4a68-a0a9-9cc2421080b6-1751331010-preview.JPEG",
+        "Kind":  "gallery"
+    },
+    {
+        "Name":  "minted-gallery-02.jpg",
+        "Url":  "https://dsl6tultd74kr.cloudfront.net/image-uploads/2025/07/01/005000-262f8d3a-2bfb-4854-81bb-ac94ace10c1a-1751331015-preview.JPG",
+        "Kind":  "gallery"
+    },
+    {
+        "Name":  "minted-gallery-03.jpg",
+        "Url":  "https://dsl6tultd74kr.cloudfront.net/image-uploads/2025/07/01/004936-3b8b3cc9-b717-42f9-a060-04829fb8e050-1751330988-preview.JPG",
+        "Kind":  "gallery"
+    },
+    {
+        "Name":  "minted-gallery-04.jpg",
+        "Url":  "https://dsl6tultd74kr.cloudfront.net/image-uploads/2025/07/01/004947-caaab296-8670-4d9c-9735-d1127a99e3b1-1751330993-preview.JPG",
+        "Kind":  "gallery"
+    },
+    {
+        "Name":  "minted-gallery-05.jpg",
+        "Url":  "https://dsl6tultd74kr.cloudfront.net/image-uploads/2025/07/01/024212-348b8282-1c96-4f25-9f43-b796623bd5ad-1751337737-preview.JPG",
+        "Kind":  "gallery"
+    },
+    {
+        "Name":  "minted-gallery-06.jpg",
+        "Url":  "https://dsl6tultd74kr.cloudfront.net/image-uploads/2025/07/01/004941-6c701d0a-fb71-45d0-93c8-4d28df856672-1751330992-preview.JPG",
+        "Kind":  "gallery"
+    },
+    {
+        "Name":  "minted-gallery-07.jpg",
+        "Url":  "https://dsl6tultd74kr.cloudfront.net/image-uploads/2025/07/01/024157-60a1d86c-41a8-438c-a156-fa3c467b5f51-1751337729-preview.JPG",
+        "Kind":  "gallery"
+    },
+    {
+        "Name":  "minted-photo-08.jpeg",
+        "Url":  "https://dsl6tultd74kr.cloudfront.net/image-uploads/2026/04/03/183919-35928a83-346a-4408-82aa-19c628e8d2e6-1775241563-preview.JPEG",
+        "Kind":  "photo"
+    },
+    {
+        "Name":  "minted-photo-09.jpeg",
+        "Url":  "https://dsl6tultd74kr.cloudfront.net/image-uploads/2026/04/03/181810-6dc0ff6f-56bd-4b26-a788-82895d6c5c03-1775240291-preview.JPEG",
+        "Kind":  "photo"
+    }
+]

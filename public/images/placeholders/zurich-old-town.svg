@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-label="Illustrated Zurich old town street and tram">
+  <rect width="720" height="520" fill="#efe8dc"/>
+  <rect y="350" width="720" height="170" fill="#d3c2a5"/>
+  <g fill="#d8c7aa">
+    <rect x="35" y="125" width="140" height="230"/>
+    <rect x="200" y="85" width="170" height="270"/>
+    <rect x="395" y="145" width="120" height="210"/>
+    <rect x="540" y="110" width="145" height="245"/>
+  </g>
+  <g fill="#faf6ef">
+    <rect x="70" y="165" width="34" height="48"/>
+    <rect x="120" y="165" width="34" height="48"/>
+    <rect x="235" y="130" width="38" height="52"/>
+    <rect x="305" y="130" width="38" height="52"/>
+    <rect x="425" y="190" width="34" height="48"/>
+    <rect x="575" y="155" width="34" height="48"/>
+    <rect x="625" y="155" width="34" height="48"/>
+  </g>
+  <g transform="translate(225 330)">
+    <rect width="280" height="88" rx="6" fill="#31483d"/>
+    <rect x="30" y="18" width="60" height="36" fill="#f7f2e9"/>
+    <rect x="112" y="18" width="60" height="36" fill="#f7f2e9"/>
+    <rect x="194" y="18" width="60" height="36" fill="#f7f2e9"/>
+    <circle cx="65" cy="91" r="16" fill="#252525"/>
+    <circle cx="215" cy="91" r="16" fill="#252525"/>
+  </g>
+</svg>

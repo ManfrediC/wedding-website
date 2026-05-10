@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-label="Illustrated Zurich church by the river">
+  <rect width="720" height="520" fill="#f3ece1"/>
+  <rect y="350" width="720" height="170" fill="#9fb4b5"/>
+  <rect x="250" y="210" width="220" height="150" fill="#d8c8aa"/>
+  <rect x="315" y="100" width="58" height="260" fill="#31483d"/>
+  <path d="M344 30 L392 100 H296 Z" fill="#31483d"/>
+  <rect x="105" y="285" width="120" height="75" fill="#e6d8c0"/>
+  <rect x="500" y="265" width="110" height="95" fill="#d5c2a4"/>
+  <path d="M0 365 C135 342 245 382 380 358 C510 334 608 366 720 342 L720 520 L0 520 Z" fill="#728f91" opacity=".45"/>
+</svg>
