@@ -375,6 +375,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           links: [
             { label: 'Airbnb Zurich, June 2027', href: 'https://www.airbnb.com/s/Zurich--Switzerland/homes?checkin=2027-06-10&checkout=2027-06-13&adults=2' },
           ],
+          image: '/images/places/hotel-sonne-lake-arrival.jpg',
+          imageAlt: 'Lake Zurich shoreline near Küsnacht',
         },
       ],
     },
