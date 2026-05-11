@@ -80,3 +80,4 @@ Start Phase 0/1 from the build specification:
 - 2026-05-11: Shortened the Zurich wedding map body copy in English, Italian, and German by removing the longer OpenStreetMap orientation sentence. Verified with `npm run check` and `npm run build`.
 - 2026-05-11: Replaced the distorted Kunsthaus image with a bright, straight-on Wikimedia Commons photo of the Kunsthaus Zürich Chipperfield building and updated attribution. Verified with `npm run check`, `npm run build`, targeted Playwright coverage across 8 browser/mobile projects, and direct visual inspection of the selected asset.
 - 2026-05-11: Removed the explicit "Minted draft" wording from the homepage photo-strip text. Verified with `npm run check` and `npm run build`.
+- 2026-05-11: Removed remaining guest-facing Minted wording from the Italian and German homepage photo-strip text. Verified with `npm run check` and `npm run build`.
