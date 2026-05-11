@@ -63,7 +63,12 @@ async function handleLogin(context: EventContext<Env, string, unknown>, password
   }
 
   const cookieValue = await buildCookieValue(password, context.env.WEDDING_AUTH_SECRET);
-  const response = Response.redirect(new URL(next, url.origin).toString(), 302);
+  const response = new Response(null, {
+    status: 302,
+    headers: {
+      Location: new URL(next, url.origin).toString(),
+    },
+  });
   const secureAttribute = url.protocol === 'https:' ? '; Secure' : '';
   response.headers.set(
     'Set-Cookie',
