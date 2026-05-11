@@ -112,6 +112,10 @@ test('English pages include requested travel and contact details', async ({ page
   );
   await expect(page.getByText('For ordinary wedding logistics, use the train rather than driving or taking a taxi.')).toBeVisible();
   await expect(page.getByRole('heading', { name: 'By train to Küsnacht' })).toBeVisible();
+  await expect(page.locator('img[src="/images/places/kuesnacht-lake-view.jpg"]')).toHaveAttribute(
+    'alt',
+    'Küsnacht village seen from Lake Zurich',
+  );
   await expect(page.getByText('From Zurich HB: take an S6 or S16')).toBeVisible();
   await expect(page.getByText('From Zurich Airport: the simplest direct train is usually the S16')).toBeVisible();
   await expect(page.getByText('From Richterswil: travel by train to Zurich HB')).toBeVisible();

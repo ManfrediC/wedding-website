@@ -19,6 +19,7 @@ This file tracks non-couple imagery used in the website prototype.
 | `public/images/places/swiss-francs.jpg` | Unsplash, `Pile of swiss francs coins and banknotes` | Markus Kammermann | Unsplash License | Switzerland Guide money card image, downloaded at 1600px width. |
 | `public/images/places/zurich-rainy-day.jpg` | Wikimedia Commons, `Rain in the city (16382935143).jpg` | Thomas8047 | CC BY 2.0 | Switzerland Guide weather card image, downloaded at 1600px width. |
 | `public/images/places/zurich-airport-station.jpg` | Wikimedia Commons, `Bahnhof Zürich Flughafen 01.jpg` | Chris j wood | CC BY-SA 3.0 | Zurich Airport travel card image showing the underground railway platforms, downloaded at 1600px width. |
+| `public/images/places/kuesnacht-lake-view.jpg` | Wikimedia Commons, `Blick vom Zürichsee auf Küsnacht (2009).jpg` | Jochen Teufel | CC BY-SA 3.0 | Travel card image for the "By train to Küsnacht" section, downloaded at 1600px width. |
 | `public/images/places/richterswil-lake.jpg` | Wikimedia Commons, `Richterswil - Zürichsee 2010-08-03 17-49-52.JPG` | Roland zh | CC BY-SA 3.0 | Richterswil accommodation card image, downloaded at 1600px width. |
 | `public/images/places/zurich-tram.jpg` | Wikimedia Commons, `Tram E, Bahnhofstrasse, Zurich, Switzerland.JPG` | Eluveitie | CC BY-SA 3.0 | Public transport gallery image. |
 | `public/images/places/santis-cablecar.jpg` | Wikimedia Commons, `Säntis LSB Blaue Kabine von Talstation.jpg` | Der Messer | CC BY-SA 4.0 | Public transport gallery image, downloaded at 1280px width. |

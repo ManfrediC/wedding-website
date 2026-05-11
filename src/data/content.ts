@@ -306,6 +306,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           title: 'By train to Küsnacht',
           body: 'Küsnacht ZH is on Zurich’s right-bank S-Bahn line. Use SBB Mobile or ZVV for the exact train, platform, and ticket zones on the day.',
           items: ['From Zurich HB: take an S6 or S16 towards the right bank of Lake Zurich and get off at Küsnacht ZH. From the station, Hotel Sonne is a short walk downhill towards the lake.', 'From Zurich Airport: the simplest direct train is usually the S16 towards Herrliberg-Feldmeilen or Meilen, getting off at Küsnacht ZH. If the timing is better, take any fast airport train to Zurich HB and change there to S6 or S16.', 'From Richterswil: travel by train to Zurich HB, then change to S6 or S16 towards Küsnacht ZH. This is usually clearer than trying to cross the lake late in the evening.', 'Buy the full journey in SBB Mobile or the ZVV app before boarding; the app will choose the required zones.'],
+          image: '/images/places/kuesnacht-lake-view.jpg',
+          imageAlt: 'Küsnacht village seen from Lake Zurich',
           links: [
             { label: 'SBB Mobile', href: 'https://www.sbb.ch/en/timetable/mobile-apps/sbb-mobile.html' },
             { label: 'ZVV S-Bahn lines', href: 'https://www.zvv.ch/de/fahrplan-und-informationen/fahrplanverfahren/bahn-und-schiff.html' },
@@ -629,6 +631,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
             { label: 'London', href: 'https://commons.wikimedia.org/wiki/File:View_of_the_Tower_Bridge_from_the_Thames_from_northwest._London.jpg' },
             { label: 'Ogliastra', href: 'https://commons.wikimedia.org/wiki/File:Coast_and_sea_at_Santa_Maria_Navarrese,_Sardinia,_Italy.jpg' },
             { label: 'Zurich Airport station', href: 'https://commons.wikimedia.org/wiki/File:Bahnhof_Z%C3%BCrich_Flughafen_01.jpg' },
+            { label: 'Küsnacht lake view', href: 'https://commons.wikimedia.org/wiki/File:Blick_vom_Z%C3%BCrichsee_auf_K%C3%BCsnacht_(2009).jpg' },
             { label: 'Richterswil', href: 'https://commons.wikimedia.org/wiki/File:Richterswil_-_Z%C3%BCrichsee_2010-08-03_17-49-52.JPG' },
             { label: 'Zurich Lindenhof view', href: 'https://commons.wikimedia.org/wiki/File:Z%C3%BCrich_-_Lindenhof_-_Limmat_-_rechtsseitige_Altstadt.jpg' },
             { label: 'SBB train', href: 'https://commons.wikimedia.org/wiki/File:SBB_RABe_511_(50852815551).jpg' },
@@ -735,6 +738,8 @@ applyLocalizedCopy('it', {
         body:
           'Küsnacht ZH si trova sulla linea S-Bahn della riva destra del Lago di Zurigo. Usate SBB Mobile o ZVV per treno, binario e zone tariffarie esatte nel giorno del viaggio.',
         items: ['Da Zurich HB: prendete un S6 o S16 verso la riva destra del Lago di Zurigo e scendete a Küsnacht ZH. Dalla stazione, Hotel Sonne è a pochi minuti a piedi in discesa verso il lago.', 'Dall’aeroporto di Zurigo: il treno diretto più semplice è di solito l’S16 verso Herrliberg-Feldmeilen o Meilen, scendendo a Küsnacht ZH. Se gli orari sono migliori, prendete un treno veloce per Zurich HB e cambiate lì con S6 o S16.', 'Da Richterswil: viaggiate in treno fino a Zurich HB, poi cambiate con S6 o S16 verso Küsnacht ZH. Di solito è più chiaro che attraversare il lago la sera tardi.', 'Comprate l’intero percorso in SBB Mobile o nell’app ZVV prima di salire; l’app sceglierà le zone necessarie.'],
+        image: '/images/places/kuesnacht-lake-view.jpg',
+        imageAlt: 'Küsnacht vista dal Lago di Zurigo',
       },
       {
         title: 'Mappa dei luoghi del matrimonio a Zurigo',
@@ -1057,6 +1062,8 @@ applyLocalizedCopy('de', {
         body:
           'Küsnacht ZH liegt an der S-Bahn-Linie am rechten Zürichseeufer. Nutzt SBB Mobile oder ZVV für den genauen Zug, das Gleis und die nötigen Zonen am Reisetag.',
         items: ['Ab Zürich HB: nehmt S6 oder S16 in Richtung rechtes Zürichseeufer und steigt in Küsnacht ZH aus. Vom Bahnhof ist Hotel Sonne ein kurzer Fussweg bergab Richtung See.', 'Ab Flughafen Zürich: die einfachste direkte Verbindung ist meist die S16 Richtung Herrliberg-Feldmeilen oder Meilen bis Küsnacht ZH. Wenn es zeitlich besser passt, nehmt einen schnellen Zug zum Zürich HB und steigt dort in S6 oder S16 um.', 'Ab Richterswil: fahrt mit dem Zug zum Zürich HB und steigt dort in S6 oder S16 Richtung Küsnacht ZH um. Das ist meist übersichtlicher als eine späte Seequerung.', 'Kauft die ganze Verbindung vor dem Einsteigen in SBB Mobile oder in der ZVV-App; die App wählt die nötigen Zonen.'],
+        image: '/images/places/kuesnacht-lake-view.jpg',
+        imageAlt: 'Küsnacht vom Zürichsee aus gesehen',
       },
       {
         title: 'Hochzeitskarte Zürich',
@@ -1357,7 +1364,7 @@ function mirrorLanguage(lang: Exclude<Lang, 'en'>): Record<PageKey, PageContent>
   ) as Record<PageKey, PageContent>;
 }
 
-type LocalizedSectionCopy = Partial<Pick<Section, 'title' | 'body' | 'items' | 'links' | 'imageAlt' | 'exchangeRates' | 'gallery'>>;
+type LocalizedSectionCopy = Partial<Pick<Section, 'title' | 'body' | 'items' | 'links' | 'image' | 'imageAlt' | 'exchangeRates' | 'gallery'>>;
 
 type LocalizedPageCopy = Partial<Omit<PageContent, 'sections'> & { sections: LocalizedSectionCopy[] }>;
 
