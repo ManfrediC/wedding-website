@@ -24,6 +24,6 @@ export const wedding = {
 };
 
 export const heroImage = {
-  src: '/images/minted/minted-hero.jpg',
+  src: '/images/minted/minted-photo-08.jpeg',
   alt: 'Zurich, Lake Zurich, and the mountains at sunset',
 };
