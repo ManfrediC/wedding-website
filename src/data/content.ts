@@ -447,6 +447,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Local advice',
           body: 'Guests are welcome to get in touch with Manfredi and family for personal recommendations, especially for longer Swiss trips, family plans, or routes suited to a particular hiking level.',
+          image: '/images/minted/minted-photo-08.jpeg',
+          imageAlt: 'Zurich and Lake Zurich from above',
         },
       ],
     },
