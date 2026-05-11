@@ -83,11 +83,11 @@ test('home hero keeps the Zurich image positioned below the spire', async ({ pag
   });
 
   if (page.viewportSize()?.width && page.viewportSize()!.width <= 700) {
-    expect(backgroundPosition).toContain('58% 0%');
+    expect(backgroundPosition).toContain('58% 22%');
     return;
   }
 
-  expect(backgroundPosition).toContain('50% 0%');
+  expect(backgroundPosition).toContain('50% 22%');
 });
 
 test('Schedule uses the selected Hotel Sonne reception image', async ({ page }) => {

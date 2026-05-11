@@ -147,7 +147,7 @@ img {
     linear-gradient(90deg, rgba(250, 246, 239, 0.96) 0%, rgba(250, 246, 239, 0.82) 37%, rgba(250, 246, 239, 0.18) 72%),
     var(--hero-image);
   background-size: cover;
-  background-position: center top;
+  background-position: center 22%;
   border-bottom: 1px solid var(--colour-line);
 }
 
@@ -926,7 +926,7 @@ button {
   .home-hero {
     min-height: 600px;
     padding: 4rem 1.2rem;
-    background-position: 58% top;
+    background-position: 58% 22%;
   }
 
   .hero-actions {
