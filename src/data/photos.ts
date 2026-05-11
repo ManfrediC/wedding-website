@@ -21,7 +21,7 @@ const sharedPhotos = [
 export const homePhotoStrip: Record<Lang, HomePhotoStrip> = {
   en: {
     title: 'A little Switzerland, a little us',
-    body: 'A few photos from our Minted draft, from Zurich and our favourite Swiss corners.',
+    body: 'A few photos from Zurich and our favourite Swiss corners.',
     photos: [
       { src: sharedPhotos[0], alt: 'Gabriela and Manfredi dressed for an evening out' },
       { src: sharedPhotos[1], alt: 'Gabriela and Manfredi overlooking snowy Zurich' },
