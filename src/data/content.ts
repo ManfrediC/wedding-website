@@ -725,20 +725,31 @@ applyLocalizedCopy('it', {
       {
         title: 'Opzione a Richterswil',
         body:
-          'Richterswil si trova piÃ¹ a sud lungo il Lago di Zurigo, ma puÃ² essere una base tranquilla per chi desidera stare vicino alla famiglia di Manfredi o preferisce un piccolo B&B.',
-        items: ['B & B CaffÃ¨tino-Vino Richterswil ha cinque camere nel centro storico del paese, vicino al lago e alla stazione.', 'Ãˆ un B&B, non un hotel; la casa non ha ascensore e le camere si trovano al 2Â° e 3Â° piano.', 'Controllate il rientro serale da KÃ¼snacht prima di prenotare, soprattutto dopo la festa.'],
+          'Richterswil si trova più a sud lungo il Lago di Zurigo, ma può essere una base tranquilla per chi desidera stare vicino alla famiglia di Manfredi o preferisce un piccolo B&B.',
+        items: ['B & B Caffètino-Vino Richterswil ha cinque camere nel centro storico del paese, vicino al lago e alla stazione.', 'È un B&B, non un hotel; la casa non ha ascensore e le camere si trovano al 2° e 3° piano.', 'Controllate il rientro serale da Küsnacht prima di prenotare, soprattutto dopo la festa.'],
       },
       {
         title: 'Indicazioni per prenotare',
         body:
           'Zurigo può essere costosa a giugno. Consigliamo di prenotare presto, controllare le condizioni di cancellazione e confrontare hotel e appartamenti se vi fermate più a lungo.',
         items: ['Codici di prenotazione: TBD', 'Scadenze per eventuali blocchi camere: TBD', 'Fasce di prezzo indicative: TBD'],
+        links: [
+          { label: 'Airbnb Zurigo, giugno 2027', href: 'https://www.airbnb.com/s/Zurich--Switzerland/homes?checkin=2027-06-10&checkout=2027-06-13&adults=2' },
+        ],
       },
       {
         title: 'Accessibilità e mobilità',
         body:
-          'Segnalateci nella RSVP o via email se scale, distanze a piedi, supporto uditivo o trasporti possono influire sui vostri piani. Confermeremo i dettagli specifici dei luoghi quando la logistica sarà definitiva.',
-        items: ['Kirche St. Peter: la FAQ ufficiale della chiesa indica che il piano terra è accessibile in sedia a rotelle, con un ascensore segnalato da St. Peterhofstatt alla chiesa; galleria e coro non sono accessibili in sedia a rotelle. È indicato un sistema a induzione magnetica.', 'Trasferimento in barca: ZSG/ZVV indicano che i battelli del Lago di Zurigo possono trasportare sedie a rotelle fino a 80 cm di larghezza in 2a classe, con assistenza dell’equipaggio agli approdi. La barca e il punto d’imbarco del matrimonio devono ancora essere confermati.', 'Hotel Sonne: l’accessibilità delle camere varia in base alla categoria. Alcune pagine indicano che non tutte le camere sono raggiungibili in ascensore, mentre alcune camere sono indicate come accessibili con ascensore; contattate l’hotel prima di prenotare se l’ascensore è importante.', 'OXEN: le informazioni pubblicate collocano le camere all’ultimo piano con bagni condivisi; contattate direttamente OXEN prima di prenotare se scale o accesso al bagno possono essere un problema.', 'B & B Caffètino-Vino Richterswil: il B&B indica che la casa storica non ha ascensore e che le camere sono al 2° e 3° piano.', 'Per hotel a Zurigo o appartamenti Airbnb, usate i filtri di accessibilità ma confermate direttamente con la struttura ingresso senza gradini, bagno, dimensioni dell’ascensore e distanza dai mezzi pubblici.'],
+          'Segnalateci nella RSVP o via email se scale, distanze a piedi, supporto uditivo o trasporti possono influire sui vostri piani. Confermeremo i dettagli specifici con le sedi appena la logistica del matrimonio sarà definitiva.',
+        items: ['Kirche St. Peter: secondo la FAQ ufficiale della chiesa, il piano terra è accessibile in sedia a rotelle. È indicato un ascensore da St. Peterhofstatt alla chiesa; galleria e coro non sono accessibili in sedia a rotelle. È inoltre indicato un sistema a induzione magnetica.', 'Trasferimento in barca: ZSG/ZVV indicano che i battelli del Lago di Zurigo possono trasportare sedie a rotelle fino a 80 cm di larghezza in 2a classe, con assistenza dell’equipaggio agli approdi. La barca e il punto d’imbarco del matrimonio devono ancora essere confermati.', 'Hotel Sonne: l’accessibilità varia in base alla categoria di camera. Alcune pagine indicano che non tutte le camere sono raggiungibili in ascensore; altre camere sono indicate come accessibili con ascensore. Contattate l’hotel prima di prenotare se l’ascensore è importante.', 'OXEN: le informazioni pubblicate indicano che le camere si trovano all’ultimo piano e hanno bagni condivisi. Contattate direttamente OXEN prima di prenotare se scale o accesso al bagno possono essere un problema.', 'B & B Caffètino-Vino Richterswil: il B&B indica che la casa storica non ha ascensore e che le camere sono al 2° e 3° piano.', 'Per hotel a Zurigo o appartamenti Airbnb, usate i filtri di accessibilità, ma confermate direttamente con la struttura ingresso senza gradini, accesso al bagno, dimensioni dell’ascensore e distanza dai mezzi pubblici.'],
+        links: [
+          { label: 'FAQ accessibilità St. Peter', href: 'https://www.st-peter-zh.ch/-4/besuch~2695/faq~3108/' },
+          { label: 'Battelli accessibili ZVV', href: 'https://www.zvv.ch/en/service/travel-without-barriers/limited-mobility/ships.html' },
+          { label: 'Camere Hotel Sonne', href: 'https://sonne.ch/en/Rooms-Suites' },
+          { label: 'Camere OXEN', href: 'https://www.oxen.ch/zimmer' },
+          { label: 'B & B Caffètino-Vino', href: 'https://www.bnb-caffetino-vino.ch/' },
+          { label: 'Filtri accessibilità Airbnb', href: 'https://www.airbnb.com/help/article/3740' },
+        ],
       },
     ],
   },
@@ -889,20 +900,31 @@ applyLocalizedCopy('de', {
       {
         title: 'Option in Richterswil',
         body:
-          'Richterswil liegt weiter sÃ¼dlich am ZÃ¼richsee, kann aber eine ruhige Basis fÃ¼r GÃ¤ste sein, die nahe bei Manfredis Familie wohnen oder ein kleineres B&B bevorzugen.',
-        items: ['B & B CaffÃ¨tino-Vino Richterswil hat fÃ¼nf Zimmer im historischen Dorfkern, nahe beim See und Bahnhof.', 'Es ist ein B&B und kein Hotel; das Haus hat keinen Lift, und die Zimmer liegen im 2. und 3. Obergeschoss.', 'PrÃ¼ft vor der Buchung die spÃ¤te RÃ¼ckfahrt ab KÃ¼snacht, besonders nach der Feier.'],
+          'Richterswil liegt weiter südlich am Zürichsee, kann aber eine ruhige Basis für Gäste sein, die nahe bei Manfredis Familie wohnen oder ein kleineres B&B bevorzugen.',
+        items: ['B & B Caffètino-Vino Richterswil hat fünf Zimmer im historischen Dorfkern, nahe beim See und Bahnhof.', 'Es ist ein B&B und kein Hotel; das Haus hat keinen Lift, und die Zimmer liegen im 2. und 3. Obergeschoss.', 'Prüft vor der Buchung die späte Rückfahrt ab Küsnacht, besonders nach der Feier.'],
       },
       {
         title: 'Buchungshinweise',
         body:
           'Zürich kann im Juni teuer sein. Wir empfehlen früh zu buchen, Stornierungsbedingungen zu prüfen und bei längeren Aufenthalten Hotels mit Apartments zu vergleichen.',
         items: ['Buchungscodes: TBD', 'Fristen für Zimmerkontingente: TBD', 'Ungefähre Preisbereiche: TBD'],
+        links: [
+          { label: 'Airbnb Zürich, Juni 2027', href: 'https://www.airbnb.com/s/Zurich--Switzerland/homes?checkin=2027-06-10&checkout=2027-06-13&adults=2' },
+        ],
       },
       {
         title: 'Barrierefreiheit und Mobilität',
         body:
-          'Bitte teilt uns in der RSVP oder per E-Mail mit, wenn Stufen, Gehstrecken, Hörunterstützung oder Transportfragen eure Planung beeinflussen. Wir bestätigen die Details zu den einzelnen Orten, sobald die Hochzeitslogistik final ist.',
-        items: ['Kirche St. Peter: Die offizielle FAQ der Kirche nennt das Erdgeschoss als rollstuhlgängig, mit ausgeschildertem Lift von der St. Peterhofstatt zur Kirche; Empore und Chorbereich sind nicht rollstuhlgängig. Eine Hörschlaufe ist aufgeführt.', 'Bootstransfer: ZSG/ZVV geben an, dass Zürichsee-Schiffe Rollstühle bis 80 cm Breite in der 2. Klasse mitnehmen können, mit Unterstützung der Crew an den Anlegestellen. Das genaue Hochzeitsboot und der Einstiegspunkt müssen noch bestätigt werden.', 'Hotel Sonne: Die Barrierefreiheit der Zimmer hängt von der Kategorie ab. Einige Zimmerseiten sagen, dass nicht alle Zimmer mit dem Lift erreichbar sind; einzelne Zimmer werden als liftzugänglich beschrieben. Kontaktiert das Hotel vor der Buchung, wenn Liftzugang wichtig ist.', 'OXEN: Die veröffentlichten Zimmerinformationen verorten die Zimmer im obersten Stock mit Gemeinschaftsbädern; kontaktiert OXEN direkt vor der Buchung, wenn Treppen oder Badzugang ein Thema sind.', 'B & B Caffètino-Vino Richterswil: Das B&B schreibt, dass das alte Haus keinen Lift hat und die Zimmer im 2. und 3. Stock liegen.', 'Für Hotels in Zürich oder Airbnb-Wohnungen: Nutzt Barrierefreiheitsfilter, bestätigt aber stufenfreien Zugang, Badezimmer, Liftgrösse und Entfernung zum öffentlichen Verkehr direkt mit der Unterkunft.'],
+          'Bitte teilt uns in der RSVP oder per E-Mail mit, wenn Stufen, Gehstrecken, Hörunterstützung oder Transportfragen eure Planung beeinflussen. Wir klären die Details mit den jeweiligen Orten, sobald die Hochzeitslogistik final ist.',
+        items: ['Kirche St. Peter: Laut offizieller FAQ der Kirche ist das Erdgeschoss rollstuhlgängig. Es gibt einen ausgeschilderten Lift von der St. Peterhofstatt zur Kirche; Empore und Chorbereich sind nicht rollstuhlgängig. Eine Hörschlaufe ist ebenfalls aufgeführt.', 'Bootstransfer: ZSG/ZVV geben an, dass Zürichsee-Schiffe Rollstühle bis 80 cm Breite in der 2. Klasse mitnehmen können, mit Unterstützung der Crew an den Anlegestellen. Das genaue Hochzeitsboot und der Einstiegspunkt müssen noch bestätigt werden.', 'Hotel Sonne: Die Barrierefreiheit hängt von der Zimmerkategorie ab. Einige Zimmerseiten sagen, dass nicht alle Zimmer mit dem Lift erreichbar sind; einzelne Zimmer werden als liftzugänglich beschrieben. Kontaktiert das Hotel vor der Buchung, wenn Liftzugang wichtig ist.', 'OXEN: Die veröffentlichten Zimmerinformationen nennen Zimmer im obersten Stock mit Gemeinschaftsbädern. Kontaktiert OXEN direkt vor der Buchung, wenn Treppen oder Badzugang ein Thema sind.', 'B & B Caffètino-Vino Richterswil: Das B&B schreibt, dass das alte Haus keinen Lift hat und die Zimmer im 2. und 3. Stock liegen.', 'Für Hotels in Zürich oder Airbnb-Wohnungen: Nutzt Barrierefreiheitsfilter, bestätigt aber stufenfreien Zugang, Badezimmerzugang, Liftgrösse und Entfernung zum öffentlichen Verkehr direkt mit der Unterkunft.'],
+        links: [
+          { label: 'Barrierefreiheit St. Peter', href: 'https://www.st-peter-zh.ch/-4/besuch~2695/faq~3108/' },
+          { label: 'Barrierefreie Schiffe ZVV', href: 'https://www.zvv.ch/en/service/travel-without-barriers/limited-mobility/ships.html' },
+          { label: 'Zimmer Hotel Sonne', href: 'https://sonne.ch/en/Rooms-Suites' },
+          { label: 'Zimmer OXEN', href: 'https://www.oxen.ch/zimmer' },
+          { label: 'B & B Caffètino-Vino', href: 'https://www.bnb-caffetino-vino.ch/' },
+          { label: 'Airbnb-Barrierefreiheitsfilter', href: 'https://www.airbnb.com/help/article/3740' },
+        ],
       },
     ],
   },
@@ -1022,7 +1044,7 @@ function mirrorLanguage(lang: Exclude<Lang, 'en'>): Record<PageKey, PageContent>
   ) as Record<PageKey, PageContent>;
 }
 
-type LocalizedSectionCopy = Partial<Pick<Section, 'title' | 'body' | 'items' | 'imageAlt' | 'exchangeRates'>>;
+type LocalizedSectionCopy = Partial<Pick<Section, 'title' | 'body' | 'items' | 'links' | 'imageAlt' | 'exchangeRates'>>;
 
 type LocalizedPageCopy = Partial<Omit<PageContent, 'sections'> & { sections: LocalizedSectionCopy[] }>;
 

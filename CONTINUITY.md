@@ -64,3 +64,4 @@ Start Phase 0/1 from the build specification:
 - 2026-05-11: Replaced the inaccurate Zurich wedding map schematic with an OpenStreetMap-derived SVG asset, retaining crisp SVG labels for Zurich Airport, Zurich HB, Kirche St. Peter, Hotel Sonne, Küsnacht, Altstetten, Oerlikon, and Richterswil. Updated English, Italian, and German map copy to mention Richterswil.
 - 2026-05-11: Added Lake and water guidance for Oberer Letten and major Zurich lake badis, with official Stadt Zurich bathing links and a mobile screenshot check.
 - 2026-05-11: Researched venue and accommodation accessibility, added Stay page guidance for mobility needs, and recorded source notes in doc/assets/accessibility_research.md.
+- 2026-05-11: Polished Italian and German Stay page accessibility copy and repaired encoding damage in the localized Richterswil accommodation text.

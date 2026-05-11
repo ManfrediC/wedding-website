@@ -169,3 +169,35 @@ test('Italian and German guide copy reflects child fares and SBB Mobile', async 
   await expect(page.getByText('Nutzt SBB Mobile für Fahrpläne und Tickets in der ganzen Schweiz')).toBeVisible();
   await expect(page.getByText('Kinder unter 6 Jahren fahren im Zürcher Verkehrsverbund kostenlos')).toBeVisible();
 });
+
+test('Italian and German stay copy is localised and cleanly encoded', async ({ page }) => {
+  await page.goto('/it/stay/');
+  await expect(page.getByRole('heading', { name: 'Accessibilità e mobilità' })).toBeVisible();
+  await expect(page.getByText('il piano terra è accessibile in sedia a rotelle')).toBeVisible();
+  await expect(page.getByText('B & B Caffètino-Vino Richterswil ha cinque camere')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'FAQ accessibilità St. Peter' })).toHaveAttribute(
+    'href',
+    'https://www.st-peter-zh.ch/-4/besuch~2695/faq~3108/',
+  );
+  await expect(page.getByRole('link', { name: 'Airbnb Zurigo, giugno 2027' })).toHaveAttribute(
+    'href',
+    'https://www.airbnb.com/s/Zurich--Switzerland/homes?checkin=2027-06-10&checkout=2027-06-13&adults=2',
+  );
+  await expect(page.locator('body')).not.toContainText('Ã');
+  await expect(page.locator('body')).not.toContainText('Â');
+
+  await page.goto('/de/stay/');
+  await expect(page.getByRole('heading', { name: 'Barrierefreiheit und Mobilität' })).toBeVisible();
+  await expect(page.getByText('Laut offizieller FAQ der Kirche ist das Erdgeschoss rollstuhlgängig')).toBeVisible();
+  await expect(page.getByText('B & B Caffètino-Vino Richterswil hat fünf Zimmer')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Barrierefreiheit St. Peter' })).toHaveAttribute(
+    'href',
+    'https://www.st-peter-zh.ch/-4/besuch~2695/faq~3108/',
+  );
+  await expect(page.getByRole('link', { name: 'Airbnb Zürich, Juni 2027' })).toHaveAttribute(
+    'href',
+    'https://www.airbnb.com/s/Zurich--Switzerland/homes?checkin=2027-06-10&checkout=2027-06-13&adults=2',
+  );
+  await expect(page.locator('body')).not.toContainText('Ã');
+  await expect(page.locator('body')).not.toContainText('Â');
+});
