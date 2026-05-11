@@ -130,15 +130,19 @@ test('English pages include requested travel and contact details', async ({ page
     'OpenStreetMap-based map of Zurich, Küsnacht, Richterswil, Zurich Airport, Kirche St. Peter, and Hotel Sonne',
   );
   await expect(page.getByText('For ordinary wedding logistics, use the train rather than driving or taking a taxi.')).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'By train to Küsnacht' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'By train to Küsnacht ZH' })).toBeVisible();
   await expect(page.locator('img[src="/images/places/kuesnacht-lake-view.jpg"]')).toHaveAttribute(
     'alt',
     'Küsnacht village seen from Lake Zurich',
   );
   await expect(page.getByText('From Zurich HB: take an S6 or S16')).toBeVisible();
   await expect(page.getByText('From Zurich Airport: the simplest direct train is usually the S16')).toBeVisible();
+  await expect(page.getByText('departures around 01 and 31 minutes past the hour')).toBeVisible();
   await expect(page.getByText('From Richterswil: travel by train to Zurich HB')).toBeVisible();
   await expect(page.getByText('Also compare fares with a layover in New York')).toBeVisible();
+  await expect(page.getByText('London Luton may also have useful easyJet flights')).toBeVisible();
+  await expect(page.getByText('Bus 50 from EuroAirport to Basel SBB')).toBeVisible();
+  await expect(page.getByText('passports must be issued less than 10 years before arrival')).toBeVisible();
 
   await page.goto('/en/stay/');
   await expect(page.getByRole('link', { name: 'Hotel Sonne Küsnacht' })).toHaveAttribute('href', 'https://sonne.ch/en/');
@@ -208,20 +212,23 @@ test('English pages include requested travel and contact details', async ({ page
   await page.goto('/en/faq/');
   await page.locator('summary').filter({ hasText: 'How do I buy a train ticket?' }).click();
   await expect(page.getByText('The easiest option is the SBB Mobile app')).toBeVisible();
+  await expect(page.getByText('search for "Küsnacht ZH"')).toBeVisible();
   await expect(page.getByRole('link', { name: 'SBB: buy tickets online' })).toHaveAttribute(
     'href',
     'https://www.sbb.ch/en/tickets-offers/buy.html',
   );
+  await page.locator('summary').filter({ hasText: 'What should UK guests check before travelling?' }).click();
+  await expect(page.getByText('date of issue less than 10 years before arrival')).toBeVisible();
 });
 
 test('Italian and German guide copy reflects child fares and SBB Mobile', async ({ page }) => {
   await page.goto('/it/switzerland-guide/');
-  await expect(page.getByText('Usate SBB Mobile per orari e biglietti in tutta la Svizzera')).toBeVisible();
+  await expect(page.getByText('Scaricate SBB Mobile prima del viaggio')).toBeVisible();
   await expect(page.getByText('I bambini sotto i 6 anni viaggiano gratis')).toBeVisible();
 
   await page.goto('/de/switzerland-guide/');
   await expect(page.getByRole('heading', { name: 'Hinweise zur Schweiz' })).toBeVisible();
-  await expect(page.getByText('Nutzt SBB Mobile für Fahrpläne und Tickets in der ganzen Schweiz')).toBeVisible();
+  await expect(page.getByText('Ladet SBB Mobile vor der Reise herunter')).toBeVisible();
   await expect(page.getByText('Kinder unter 6 Jahren fahren im Zürcher Verkehrsverbund kostenlos')).toBeVisible();
 });
 
@@ -284,9 +291,9 @@ test('Switzerland Guide uses the selected section imagery', async ({ page }) => 
     'alt',
     'SBB ticket machines at Zurich Airport railway station',
   );
-  await expect(page.locator('img[src="/images/places/swiss-francs.jpg"]')).toHaveAttribute(
+  await expect(page.locator('img[src="/images/places/zurich-lindenhof-view.jpg"]')).toHaveAttribute(
     'alt',
-    'Swiss franc banknotes and coins',
+    'Zurich old town and the Limmat from Lindenhof',
   );
   await expect(page.locator('img[src="/images/places/zurich-rainy-day.jpg"]')).toHaveAttribute(
     'alt',

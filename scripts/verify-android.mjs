@@ -3,17 +3,29 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 const port = process.env.PORT ?? '4321';
-const baseUrl = `http://127.0.0.1:${port}`;
+const host = process.env.ANDROID_HOST ?? 'localhost';
+const baseUrl = `http://${host}:${port}`;
 const screenshotDir = join(process.cwd(), 'tmp', 'android');
 const paths = ['/en/travel/', '/en/stay/', '/en/switzerland-guide/'];
 const chromePackage = 'com.android.chrome';
 
 function adb(...args) {
-  return execFileSync('adb', args);
+  return execFileSync('adb', args, { maxBuffer: 20 * 1024 * 1024 });
 }
 
 function adbText(...args) {
   return adb(...args).toString('utf8').trim();
+}
+
+function openAndroidUrl(url) {
+  try {
+    adb('shell', 'am', 'start', '-a', 'android.intent.action.VIEW', '-d', url, chromePackage);
+  } catch (error) {
+    const output = error?.stdout?.toString('utf8') ?? '';
+    if (!output.startsWith('Starting: Intent')) {
+      throw error;
+    }
+  }
 }
 
 function delay(ms) {
@@ -44,7 +56,7 @@ for (const path of paths) {
   const screenshotPath = join(screenshotDir, `${name}.png`);
 
   console.log(`Opening ${url} in Android Chrome`);
-  adb('shell', 'am', 'start', '-a', 'android.intent.action.VIEW', '-d', url, chromePackage);
+  openAndroidUrl(url);
   await delay(3500);
 
   await writeFile(screenshotPath, adb('exec-out', 'screencap', '-p'));

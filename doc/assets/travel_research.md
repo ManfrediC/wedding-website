@@ -20,13 +20,19 @@ Researched on 2026-05-10 for the wedding website travel page. June 2027 flight a
 ## London and the UK
 
 - Main route: direct London-Zurich flights, especially from Heathrow, Gatwick, and London City.
+- London Luton is also worth checking: easyJet publishes a London Luton-Zurich route page, but June 2027 schedules must be rechecked when booking opens.
 - EasyJet can be budget-friendly, especially from Gatwick and other London airports, but the lowest fare may include only a small under-seat cabin bag.
 - Current easyJet cabin-bag guidance says all customers get one small under-seat cabin bag, currently 45 x 36 x 20 cm including handles and wheels, while a large cabin bag must be included in the fare, membership, seat choice, or added booking.
+- Basel/EuroAirport can be a fallback if fares are much better. EuroAirport's official transport page says Bus 50 runs from the terminal forecourt to Basel SBB about every 7-10 minutes, with an approximate 20-minute bus ride; guests would then need Basel SBB-Zurich HB by train and S6/S16 onward to Kuesnacht ZH.
+- GOV.UK Switzerland entry requirements currently say British citizen passports must be issued less than 10 years before arrival and expire at least 3 months after planned departure from the Schengen area. Do not simplify this to a generic 6-month rule.
 - Rail option: Eurostar from London to Paris, transfer across Paris, then TGV Lyria to Zurich. Eurostar publishes the London-Zurich rail journey as about 7 h 25 min.
 - Sources:
   - <https://www.swiss.com/lhg/gb/en/o-d/cy-cy/london-zurich>
   - <https://www.easyjet.com/en/flights-from-london/to-zurich/>
+  - <https://www.easyjet.com/en/cheap-flights/london-luton/zurich>
   - <https://www.easyjet.com/en/help/preparing-to-fly/baggage>
+  - <https://www.euroairport.com/en/transport>
+  - <https://www.gov.uk/foreign-travel-advice/switzerland/entry-requirements>
   - <https://www.eurostar.com/uk-en/train/london-to-zurich>
 
 ## Sardinia
@@ -56,6 +62,7 @@ Researched on 2026-05-10 for the wedding website travel page. June 2027 flight a
 
 - ZVV currently lists S6 as Baden - Regensdorf-Watt - Zurich Oerlikon - Zurich HB - Meilen - Uetikon, serving Kuesnacht ZH.
 - ZVV currently lists S16 as Zurich Flughafen - Zurich HB - Herrliberg-Feldmeilen (- Meilen), serving Kuesnacht ZH.
+- User-supplied SBB check for Zurich Airport to Kuesnacht ZH: direct S16 departures around 01 and 31 minutes past the hour, often platform 3, about 26 minutes. Keep this phrased as a current/typical pattern because platforms and exact timetables can change before June 2027.
 - For Richterswil to Kuesnacht, advise guests to use SBB Mobile/ZVV and expect a train connection via Zurich HB unless the app suggests a better timed route on the day.
 - Sources:
   - <https://www.zvv.ch/de/fahrplan-und-informationen/fahrplanverfahren/bahn-und-schiff.html>

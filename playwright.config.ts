@@ -8,6 +8,7 @@ declare const process: {
 };
 
 const port = process.env.PORT ?? '4321';
+const host = 'localhost';
 const desktopViewport = { width: 1365, height: 900 };
 const narrowViewport = { width: 390, height: 844 };
 const firefoxLaunchOptions = {
@@ -21,12 +22,12 @@ export default defineConfig({
   fullyParallel: true,
   reporter: [['list'], ['html', { open: 'never' }]],
   use: {
-    baseURL: `http://127.0.0.1:${port}`,
+    baseURL: `http://${host}:${port}`,
     trace: 'retain-on-failure',
   },
   webServer: {
-    command: `npm run dev -- --port ${port} --host 127.0.0.1`,
-    url: `http://127.0.0.1:${port}/en/`,
+    command: `npm run dev -- --port ${port} --host ${host}`,
+    url: `http://${host}:${port}/en/`,
     reuseExistingServer: !process.env.CI,
     timeout: 60_000,
   },

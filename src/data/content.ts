@@ -257,12 +257,15 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'From the UK',
           body: 'From London, direct flights are usually the simplest option. EasyJet can be budget-friendly, but check baggage rules carefully before comparing prices.',
-          items: ['Compare London Heathrow, Gatwick, City, Luton, and Stansted depending on where you live; Heathrow, Gatwick, and City are usually the most relevant for Zurich.', 'For guests outside London, also compare Manchester, Edinburgh, Bristol, and other regional airports with direct or one-stop routes.', 'On EasyJet, the lowest fare may include only one small under-seat cabin bag, currently 45 x 36 x 20 cm including handles and wheels; add any large cabin bag or hold luggage online when booking if you need it.', 'The rail route is London St Pancras to Paris by Eurostar, transfer from Gare du Nord to Gare de Lyon, then TGV Lyria to Zurich HB; allow a generous connection in Paris.'],
+          items: ['Compare London Heathrow, Gatwick, City, Luton, and Stansted depending on where you live; Heathrow, Gatwick, and City are usually the most relevant for Zurich, but London Luton may also have useful easyJet flights.', 'For guests outside London, also compare Manchester, Edinburgh, Bristol, and other regional airports with direct or one-stop routes.', 'On EasyJet, the lowest fare may include only one small under-seat cabin bag, currently 45 x 36 x 20 cm including handles and wheels; add any large cabin bag or hold luggage online when booking if you need it.', 'Basel can be worth comparing if fares are much better, but it is less convenient: take Bus 50 from EuroAirport to Basel SBB, then a train to Zurich HB, then S6 or S16 to Küsnacht ZH. Expect roughly two or more hours in total and extra Swiss transport cost.', 'UK nationals should check passport validity before booking: current UK guidance for Switzerland says passports must be issued less than 10 years before arrival and expire at least 3 months after leaving the Schengen area.', 'The rail route is London St Pancras to Paris by Eurostar, transfer from Gare du Nord to Gare de Lyon, then TGV Lyria to Zurich HB; allow a generous connection in Paris.'],
           links: [
             { label: 'SWISS London-Zurich', href: 'https://www.swiss.com/lhg/gb/en/o-d/cy-cy/london-zurich' },
             { label: 'easyJet London-Zurich', href: 'https://www.easyjet.com/en/flights-from-london/to-zurich/' },
+            { label: 'easyJet Luton-Zurich', href: 'https://www.easyjet.com/en/cheap-flights/london-luton/zurich' },
             { label: 'easyJet baggage', href: 'https://www.easyjet.com/en/help/preparing-to-fly/baggage' },
             { label: 'Eurostar London-Zurich', href: 'https://www.eurostar.com/uk-en/train/london-to-zurich' },
+            { label: 'EuroAirport public transport', href: 'https://www.euroairport.com/en/transport' },
+            { label: 'UK passport advice', href: 'https://www.gov.uk/foreign-travel-advice/switzerland/entry-requirements' },
             { label: 'Google Flights', href: 'https://www.google.com/travel/flights?q=Flights%20from%20London%20to%20Zurich' },
             { label: 'Expedia UK', href: 'https://www.expedia.co.uk/Flights' },
             { label: 'SBB', href: 'https://www.sbb.ch/en' },
@@ -291,8 +294,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'From Zurich Airport',
-          body: 'Zurich Airport has a very convenient train and S-Bahn connection to Zurich HB, with onward public transport to Küsnacht and the wedding venues. For ordinary wedding logistics, use the train rather than driving or taking a taxi.',
-          items: ['SBB trains usually leave for Zurich HB about every 10 minutes, and the journey takes about 15 minutes.', 'For Küsnacht or Hotel Sonne, use SBB Mobile or ZVV from the airport or from Zurich HB and buy the ticket shown by the app.', 'Taxis and ride-hailing can be useful with children, heavy luggage, or accessibility needs, but they are usually much more expensive than public transport.', 'A rental car is not recommended for Zurich-only wedding logistics.'],
+          body: 'Zurich Airport has a very convenient train and S-Bahn connection to Zurich HB, with onward public transport to Küsnacht ZH and the wedding venues. For ordinary wedding logistics, use the train rather than driving or taking a taxi.',
+          items: ['Download SBB Mobile before travelling, then search to Küsnacht ZH rather than just Küsnacht.', 'The direct S16 from Zürich Flughafen to Küsnacht ZH is usually the simplest airport route. Current timetable patterns show departures around 01 and 31 minutes past the hour, often from platform 3, with a journey of about 26 minutes; confirm the exact platform and time in SBB Mobile on the day.', 'SBB trains usually leave for Zurich HB about every 10 minutes, and the journey takes about 15 minutes. This is a good fallback if the next direct S16 is not convenient.', 'For Küsnacht ZH or Hotel Sonne, use SBB Mobile or ZVV from the airport or from Zurich HB and buy the ticket shown by the app before boarding.', 'Taxis and ride-hailing can be useful with children, heavy luggage, or accessibility needs, but they are usually much more expensive than public transport.', 'A rental car is not recommended for Zurich-only wedding logistics.'],
           links: [
             { label: 'Zurich Airport public transport', href: 'https://www.flughafen-zuerich.ch/en/passengers/practical/parking-and-transport/train-tram-and-bus' },
             { label: 'SBB', href: 'https://www.sbb.ch/en' },
@@ -303,9 +306,9 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           imageAlt: 'Trains at Zürich Flughafen railway station',
         },
         {
-          title: 'By train to Küsnacht',
+          title: 'By train to Küsnacht ZH',
           body: 'Küsnacht ZH is on Zurich’s right-bank S-Bahn line. Use SBB Mobile or ZVV for the exact train, platform, and ticket zones on the day.',
-          items: ['From Zurich HB: take an S6 or S16 towards the right bank of Lake Zurich and get off at Küsnacht ZH. From the station, Hotel Sonne is a short walk downhill towards the lake.', 'From Zurich Airport: the simplest direct train is usually the S16 towards Herrliberg-Feldmeilen or Meilen, getting off at Küsnacht ZH. If the timing is better, take any fast airport train to Zurich HB and change there to S6 or S16.', 'From Richterswil: travel by train to Zurich HB, then change to S6 or S16 towards Küsnacht ZH. This is usually clearer than trying to cross the lake late in the evening.', 'Buy the full journey in SBB Mobile or the ZVV app before boarding; the app will choose the required zones.'],
+          items: ['From Zurich HB: take an S6 or S16 towards the right bank of Lake Zurich and get off at Küsnacht ZH. From the station, Hotel Sonne is a short walk downhill towards the lake.', 'From Zurich Airport: the simplest direct train is usually the S16 towards Herrliberg-Feldmeilen or Meilen, getting off at Küsnacht ZH. Current timetable patterns show this direct route around 01 and 31 minutes past the hour and taking about 26 minutes, but platforms and times should be checked in SBB Mobile before boarding.', 'From Richterswil: travel by train to Zurich HB, then change to S6 or S16 towards Küsnacht ZH. This is usually clearer than trying to cross the lake late in the evening.', 'Buy the full journey in SBB Mobile or the ZVV app before boarding; enter Küsnacht ZH so the app chooses the right destination and required zones.'],
           image: '/images/places/kuesnacht-lake-view.jpg',
           imageAlt: 'Küsnacht village seen from Lake Zurich',
           links: [
@@ -316,7 +319,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Zurich wedding map',
           body: 'Key reference points for the wedding weekend:',
-          items: ['Kirche St. Peter is in Zurich old town, close to the lake and central tram connections.', 'Hotel Sonne is in Küsnacht on the right bank of Lake Zurich.', "Richterswil, where Manfredi's parents live, is further south on the lake and is reachable by train.", 'Zurich Airport and Zurich HB are connected by frequent trains; use SBB Mobile or ZVV for the exact journey on the day.'],
+          items: ['Kirche St. Peter is in Zurich old town, close to the lake and central tram connections.', 'Hotel Sonne is in Küsnacht ZH on the right bank of Lake Zurich.', "Richterswil, where Manfredi's parents live, is further south on the lake and is reachable by train.", 'Zurich Airport and Zurich HB are connected by frequent trains; use SBB Mobile or ZVV for the exact journey on the day.'],
           links: [
             { label: 'OpenStreetMap: Zurich, Küsnacht, and Richterswil', href: 'https://www.openstreetmap.org/#map=11/47.3370/8.5950' },
           ],
@@ -483,7 +486,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Public transport',
           body: 'Zurich is easy to navigate by tram, train, bus, and boat. Use public transport for travelling around Zurich; driving by car is not recommended for ordinary wedding logistics.',
-          items: ['Use SBB Mobile for Swiss-wide timetable searches and tickets; use ZVV for Zurich-area zones and local tickets.', 'ZVV tickets are zone-based; Zurich city is zone 110, Küsnacht is zone 140, and Richterswil is zone 153.', 'For central Zurich, a ZVV single or 24h ticket is usually easiest. For Küsnacht or Richterswil, enter the destination in SBB Mobile or the ZVV app and buy the zones it assigns.', 'For day trips beyond Zurich, compare a normal point-to-point ticket, a Supersaver ticket, and a Saver Day Pass. Supersaver tickets can be cheaper when bought in advance, but they are tied to a specific train and are less flexible.', 'Children under 6 travel free in the Zurich network. Children aged 6 to 15 pay the reduced fare; for longer Swiss travel, check SBB child tickets and Junior Travelcard options.', 'For relaxed city exploring, consider renting a bike when weather and traffic confidence make it sensible.'],
+          items: ['Download SBB Mobile before travelling and use it for Swiss-wide timetable searches, live platform checks, and tickets; use ZVV for Zurich-area zones and local tickets.', 'ZVV tickets are zone-based; Zurich city is zone 110, Küsnacht ZH is zone 140, and Richterswil is zone 153.', 'For central Zurich, a ZVV single or 24h ticket is usually easiest. For Küsnacht ZH or Richterswil, enter the destination in SBB Mobile or the ZVV app and buy the zones it assigns.', 'For day trips beyond Zurich, compare a normal point-to-point ticket, a Supersaver ticket, and a Saver Day Pass. Supersaver tickets can be cheaper when bought in advance, but they are tied to a specific train and are less flexible.', 'Children under 6 travel free in the Zurich network. Children aged 6 to 15 pay the reduced fare; for longer Swiss travel, check SBB child tickets and Junior Travelcard options.', 'For relaxed city exploring, consider renting a bike when weather and traffic confidence make it sensible.'],
           gallery: [
             { src: '/images/places/sbb-train.jpg', alt: 'SBB train travelling through the Swiss countryside' },
             { src: '/images/places/zurich-tram.jpg', alt: 'Zurich tram on Bahnhofstrasse' },
@@ -503,7 +506,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Choosing tickets',
           body: 'There is no single best ticket for every guest. These notes are intended as practical starting points.',
-          items: ['To move around Zurich by tram, train, or bus: use a ZVV city ticket, 24h ticket, or the Zürich Card if you also want museums, airport transfer, Uetliberg, and short boat rides.', 'To get to Küsnacht for the reception area: buy a ZVV/SBB ticket from your starting stop to Küsnacht ZH or Hotel Sonne’s nearest stop; the app will choose the necessary zones.', 'To go to Richterswil: buy a ZVV/SBB ticket to Richterswil, or consider an all-zone/day ticket if you are making several Zurich-network trips that day.', 'For bigger day trips such as Lucerne, Bern, Basel, or mountain areas: check SBB early for Supersaver tickets or Saver Day Passes, but avoid inflexible tickets if your plans depend on a flight arrival or weather.'],
+          items: ['To move around Zurich by tram, train, or bus: use a ZVV city ticket, 24h ticket, or the Zürich Card if you also want museums, airport transfer, Uetliberg, and short boat rides.', 'To get to the reception area, search for Küsnacht ZH in SBB Mobile or ZVV and buy a ticket from your starting stop to Küsnacht ZH or Hotel Sonne’s nearest stop; the app will choose the necessary zones.', 'To go to Richterswil: buy a ZVV/SBB ticket to Richterswil, or consider an all-zone/day ticket if you are making several Zurich-network trips that day.', 'For bigger day trips such as Lucerne, Bern, Basel, or mountain areas: check SBB early for Supersaver tickets or Saver Day Passes, but avoid inflexible tickets if your plans depend on a flight arrival or weather.'],
           image: '/images/places/sbb-ticket-machine.jpg',
           imageAlt: 'SBB ticket machines at Zurich Airport railway station',
           links: [
@@ -517,8 +520,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           title: 'Money and budgeting',
           body: 'Switzerland uses Swiss francs and is often expensive, but planning ahead can keep costs manageable.',
           items: ['Migros and Coop are the largest supermarket chains and are useful for breakfasts, snacks, picnic supplies, and children’s basics.', 'Taxis are usually expensive. Use them only when luggage, children, or accessibility needs make them genuinely useful.', 'Use public transport for travelling around Zurich; driving by car is not recommended for ordinary wedding logistics.', 'Low-cost options include lake walks, Old Town wandering, viewpoints, parks, supermarket picnics, and choosing accommodation near a tram, train, or bus stop.'],
-          image: '/images/places/swiss-francs.jpg',
-          imageAlt: 'Swiss franc banknotes and coins',
+          image: '/images/places/zurich-lindenhof-view.jpg',
+          imageAlt: 'Zurich old town and the Limmat from Lindenhof',
           exchangeRates: true,
         },
         {
@@ -638,7 +641,6 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
             { label: 'Zurich tram', href: 'https://commons.wikimedia.org/wiki/File:Tram_E,_Bahnhofstrasse,_Zurich,_Switzerland.JPG' },
             { label: 'Säntis cable car', href: 'https://commons.wikimedia.org/wiki/File:S%C3%A4ntis_LSB_Blaue_Kabine_von_Talstation.jpg' },
             { label: 'SBB ticket machines', href: 'https://commons.wikimedia.org/wiki/File:Bahnhof_Z%C3%BCrich_Flughafen_Billettautomat.jpg' },
-            { label: 'Swiss francs', href: 'https://unsplash.com/photos/pile-of-swiss-francs-coins-and-banknotes-7ozi8PiLvNc' },
             { label: 'Rainy Zurich', href: 'https://commons.wikimedia.org/wiki/File:Rain_in_the_city_(16382935143).jpg' },
           ],
         },
@@ -716,7 +718,7 @@ applyLocalizedCopy('it', {
         title: 'Dal Regno Unito',
         body:
           'Dal Regno Unito, i voli diretti per Zurigo sono di solito la soluzione più semplice. EasyJet può essere conveniente, ma controllate con attenzione le regole sui bagagli prima di confrontare i prezzi.',
-        items: ['Confrontate Heathrow, Gatwick, City, Luton e Stansted in base a dove vivete; Heathrow, Gatwick e City sono di solito i più rilevanti per Zurigo.', 'Per chi vive fuori Londra, confrontate anche Manchester, Edimburgo, Bristol e altri aeroporti regionali con voli diretti o con uno scalo.', 'Con EasyJet, la tariffa più bassa può includere solo un piccolo bagaglio da mettere sotto il sedile, attualmente 45 x 36 x 20 cm incluse maniglie e ruote; aggiungete bagaglio a mano grande o bagaglio da stiva online se necessario.', 'Il viaggio in treno è Londra St Pancras-Parigi con Eurostar, trasferimento da Gare du Nord a Gare de Lyon, poi TGV Lyria per Zurich HB; prevedete una coincidenza ampia a Parigi.'],
+        items: ['Confrontate Heathrow, Gatwick, City, Luton e Stansted in base a dove vivete; Heathrow, Gatwick e City sono di solito i più rilevanti per Zurigo, ma London Luton può avere voli easyJet utili.', 'Per chi vive fuori Londra, confrontate anche Manchester, Edimburgo, Bristol e altri aeroporti regionali con voli diretti o con uno scalo.', 'Con EasyJet, la tariffa più bassa può includere solo un piccolo bagaglio da mettere sotto il sedile, attualmente 45 x 36 x 20 cm incluse maniglie e ruote; aggiungete bagaglio a mano grande o bagaglio da stiva online se necessario.', 'Basilea può valere un confronto se le tariffe sono molto migliori, ma è meno comoda: dall’EuroAirport prendete il bus 50 per Basel SBB, poi un treno per Zurich HB e infine S6 o S16 per Küsnacht ZH. Calcolate circa due ore o più in totale e un costo extra per i trasporti svizzeri.', 'I cittadini britannici dovrebbero controllare la validità del passaporto prima di prenotare: secondo le indicazioni attuali del governo britannico per la Svizzera, il passaporto deve essere stato emesso meno di 10 anni prima dell’arrivo e scadere almeno 3 mesi dopo l’uscita dall’area Schengen.', 'Il viaggio in treno è Londra St Pancras-Parigi con Eurostar, trasferimento da Gare du Nord a Gare de Lyon, poi TGV Lyria per Zurich HB; prevedete una coincidenza ampia a Parigi.'],
         imageAlt: 'Tower Bridge sul Tamigi a Londra',
       },
       {
@@ -729,15 +731,15 @@ applyLocalizedCopy('it', {
       {
         title: 'Dall’aeroporto di Zurigo',
         body:
-          'L’aeroporto di Zurigo ha un collegamento ferroviario e S-Bahn molto comodo con Zurich HB, con proseguimento in mezzi pubblici verso Küsnacht e i luoghi del matrimonio. Per gli spostamenti del matrimonio, usate il treno invece di guidare o prendere un taxi.',
-        items: ['I treni SBB per Zurich HB partono di solito circa ogni 10 minuti e il viaggio dura circa 15 minuti.', 'Per Küsnacht o Hotel Sonne, usate SBB Mobile o ZVV dall’aeroporto o da Zurich HB e acquistate il biglietto indicato dall’app.', 'Taxi e servizi ride-hailing possono essere utili con bambini, bagagli pesanti o necessità di accessibilità, ma di solito sono molto più costosi dei mezzi pubblici.', 'Un’auto a noleggio non è consigliata per gli spostamenti del matrimonio a Zurigo.'],
+          'L’aeroporto di Zurigo ha un collegamento ferroviario e S-Bahn molto comodo con Zurich HB, con proseguimento in mezzi pubblici verso Küsnacht ZH e i luoghi del matrimonio. Per gli spostamenti del matrimonio, usate il treno invece di guidare o prendere un taxi.',
+        items: ['Scaricate SBB Mobile prima del viaggio e cercate Küsnacht ZH, non solo Küsnacht.', 'Il collegamento diretto S16 da Zürich Flughafen a Küsnacht ZH è di solito il percorso più semplice dall’aeroporto. Gli orari attuali mostrano spesso partenze intorno ai minuti 01 e 31, spesso dal binario 3, con un viaggio di circa 26 minuti; controllate sempre orario e binario in SBB Mobile il giorno stesso.', 'I treni SBB per Zurich HB partono di solito circa ogni 10 minuti e il viaggio dura circa 15 minuti, utile come alternativa se il prossimo S16 diretto non è comodo.', 'Per Küsnacht ZH o Hotel Sonne, usate SBB Mobile o ZVV dall’aeroporto o da Zurich HB e acquistate il biglietto indicato dall’app prima di salire.', 'Taxi e servizi ride-hailing possono essere utili con bambini, bagagli pesanti o necessità di accessibilità, ma di solito sono molto più costosi dei mezzi pubblici.', 'Un’auto a noleggio non è consigliata per gli spostamenti del matrimonio a Zurigo.'],
         imageAlt: "Treni alla stazione ferroviaria dell'aeroporto di Zurigo",
       },
       {
-        title: 'In treno verso Küsnacht',
+        title: 'In treno verso Küsnacht ZH',
         body:
           'Küsnacht ZH si trova sulla linea S-Bahn della riva destra del Lago di Zurigo. Usate SBB Mobile o ZVV per treno, binario e zone tariffarie esatte nel giorno del viaggio.',
-        items: ['Da Zurich HB: prendete un S6 o S16 verso la riva destra del Lago di Zurigo e scendete a Küsnacht ZH. Dalla stazione, Hotel Sonne è a pochi minuti a piedi in discesa verso il lago.', 'Dall’aeroporto di Zurigo: il treno diretto più semplice è di solito l’S16 verso Herrliberg-Feldmeilen o Meilen, scendendo a Küsnacht ZH. Se gli orari sono migliori, prendete un treno veloce per Zurich HB e cambiate lì con S6 o S16.', 'Da Richterswil: viaggiate in treno fino a Zurich HB, poi cambiate con S6 o S16 verso Küsnacht ZH. Di solito è più chiaro che attraversare il lago la sera tardi.', 'Comprate l’intero percorso in SBB Mobile o nell’app ZVV prima di salire; l’app sceglierà le zone necessarie.'],
+        items: ['Da Zurich HB: prendete un S6 o S16 verso la riva destra del Lago di Zurigo e scendete a Küsnacht ZH. Dalla stazione, Hotel Sonne è a pochi minuti a piedi in discesa verso il lago.', 'Dall’aeroporto di Zurigo: il treno diretto più semplice è di solito l’S16 verso Herrliberg-Feldmeilen o Meilen, scendendo a Küsnacht ZH. Gli orari attuali mostrano spesso questa tratta diretta intorno ai minuti 01 e 31 e circa 26 minuti di viaggio, ma orari e binari vanno controllati in SBB Mobile prima di salire.', 'Da Richterswil: viaggiate in treno fino a Zurich HB, poi cambiate con S6 o S16 verso Küsnacht ZH. Di solito è più chiaro che attraversare il lago la sera tardi.', 'Comprate l’intero percorso in SBB Mobile o nell’app ZVV prima di salire; inserite Küsnacht ZH così l’app sceglie la destinazione giusta e le zone necessarie.'],
         image: '/images/places/kuesnacht-lake-view.jpg',
         imageAlt: 'Küsnacht vista dal Lago di Zurigo',
       },
@@ -745,7 +747,7 @@ applyLocalizedCopy('it', {
         title: 'Mappa dei luoghi del matrimonio a Zurigo',
         body:
           'Punti di riferimento principali per il fine settimana del matrimonio:',
-        items: ['Kirche St. Peter si trova nel centro storico di Zurigo, vicino al lago e ai collegamenti tram centrali.', 'Hotel Sonne si trova a Küsnacht, sulla sponda destra del Lago di Zurigo.', 'Richterswil, dove vivono i genitori di Manfredi, si trova più a sud lungo il lago ed è raggiungibile in treno.', 'L’aeroporto di Zurigo e Zurich HB sono collegati da treni frequenti; usate SBB Mobile o ZVV per il percorso esatto nel giorno del viaggio.'],
+        items: ['Kirche St. Peter si trova nel centro storico di Zurigo, vicino al lago e ai collegamenti tram centrali.', 'Hotel Sonne si trova a Küsnacht ZH, sulla sponda destra del Lago di Zurigo.', 'Richterswil, dove vivono i genitori di Manfredi, si trova più a sud lungo il lago ed è raggiungibile in treno.', 'L’aeroporto di Zurigo e Zurich HB sono collegati da treni frequenti; usate SBB Mobile o ZVV per il percorso esatto nel giorno del viaggio.'],
         imageAlt: 'Mappa basata su OpenStreetMap di Zurigo, Küsnacht, Richterswil, aeroporto di Zurigo, Kirche St. Peter e Hotel Sonne',
       },
       {
@@ -860,7 +862,7 @@ applyLocalizedCopy('it', {
         title: 'Trasporti pubblici',
         body:
           'A Zurigo ci si muove facilmente con tram, treni, autobus e battelli. Usate i mezzi pubblici per muovervi a Zurigo; viaggiare in auto non è consigliato per la normale logistica del matrimonio.',
-        items: ['Usate SBB Mobile per orari e biglietti in tutta la Svizzera; usate ZVV per le zone e i biglietti dell’area di Zurigo.', 'I biglietti ZVV sono basati sulle zone; la città di Zurigo è la zona 110, Küsnacht la zona 140 e Richterswil la zona 153.', 'Per il centro di Zurigo, di solito è più semplice un biglietto singolo ZVV o un biglietto 24 ore. Per Küsnacht o Richterswil, inserite la destinazione in SBB Mobile o nell’app ZVV e acquistate le zone indicate.', 'Per gite fuori Zurigo, confrontate un biglietto punto-punto, un Supersaver ticket e un Saver Day Pass. I Supersaver possono costare meno se acquistati in anticipo, ma sono legati a un treno specifico e sono meno flessibili.', 'I bambini sotto i 6 anni viaggiano gratis nella rete di Zurigo. I bambini dai 6 ai 15 anni pagano la tariffa ridotta; per viaggi più lunghi in Svizzera, controllate i biglietti bambini SBB e la Junior Travelcard.', 'Per esplorare la città con calma, valutate il noleggio di una bici quando meteo e traffico lo rendono sensato.'],
+        items: ['Scaricate SBB Mobile prima del viaggio e usatela per orari in tutta la Svizzera, controllo dei binari in tempo reale e biglietti; usate ZVV per le zone e i biglietti dell’area di Zurigo.', 'I biglietti ZVV sono basati sulle zone; la città di Zurigo è la zona 110, Küsnacht ZH la zona 140 e Richterswil la zona 153.', 'Per il centro di Zurigo, di solito è più semplice un biglietto singolo ZVV o un biglietto 24 ore. Per Küsnacht ZH o Richterswil, inserite la destinazione in SBB Mobile o nell’app ZVV e acquistate le zone indicate.', 'Per gite fuori Zurigo, confrontate un biglietto punto-punto, un Supersaver ticket e un Saver Day Pass. I Supersaver possono costare meno se acquistati in anticipo, ma sono legati a un treno specifico e sono meno flessibili.', 'I bambini sotto i 6 anni viaggiano gratis nella rete di Zurigo. I bambini dai 6 ai 15 anni pagano la tariffa ridotta; per viaggi più lunghi in Svizzera, controllate i biglietti bambini SBB e la Junior Travelcard.', 'Per esplorare la città con calma, valutate il noleggio di una bici quando meteo e traffico lo rendono sensato.'],
         gallery: [
           { src: '/images/places/sbb-train.jpg', alt: 'Treno SBB nella campagna svizzera' },
           { src: '/images/places/zurich-tram.jpg', alt: 'Tram di Zurigo sulla Bahnhofstrasse' },
@@ -871,7 +873,7 @@ applyLocalizedCopy('it', {
       {
         title: 'Come scegliere i biglietti',
         body: 'Non esiste un biglietto migliore per tutti. Queste note sono un punto di partenza pratico.',
-        items: ['Per muoversi a Zurigo in tram, treno o autobus: usate un biglietto ZVV per la città, un biglietto 24 ore o la Zürich Card se volete includere anche musei, trasferimento dall’aeroporto, Uetliberg e brevi tratte in battello.', 'Per arrivare a Küsnacht nella zona del ricevimento: acquistate un biglietto ZVV/SBB dal punto di partenza a Küsnacht ZH o alla fermata più vicina all’Hotel Sonne; l’app sceglierà le zone necessarie.', 'Per andare a Richterswil: acquistate un biglietto ZVV/SBB per Richterswil, oppure considerate un giornaliero/all-zone se fate diversi spostamenti nella rete di Zurigo nello stesso giorno.', 'Per gite più lunghe, come Lucerna, Berna, Basilea o zone di montagna: controllate SBB in anticipo per Supersaver tickets o Saver Day Passes, ma evitate biglietti poco flessibili se il piano dipende da arrivi aerei o meteo.'],
+        items: ['Per muoversi a Zurigo in tram, treno o autobus: usate un biglietto ZVV per la città, un biglietto 24 ore o la Zürich Card se volete includere anche musei, trasferimento dall’aeroporto, Uetliberg e brevi tratte in battello.', 'Per arrivare nella zona del ricevimento, cercate Küsnacht ZH in SBB Mobile o ZVV e acquistate un biglietto dal punto di partenza a Küsnacht ZH o alla fermata più vicina all’Hotel Sonne; l’app sceglierà le zone necessarie.', 'Per andare a Richterswil: acquistate un biglietto ZVV/SBB per Richterswil, oppure considerate un giornaliero/all-zone se fate diversi spostamenti nella rete di Zurigo nello stesso giorno.', 'Per gite più lunghe, come Lucerna, Berna, Basilea o zone di montagna: controllate SBB in anticipo per Supersaver tickets o Saver Day Passes, ma evitate biglietti poco flessibili se il piano dipende da arrivi aerei o meteo.'],
         imageAlt: 'Biglietteria automatica SBB in una stazione svizzera',
       },
       {
@@ -879,7 +881,8 @@ applyLocalizedCopy('it', {
         body:
           'La Svizzera usa il franco svizzero ed è spesso costosa, ma una buona pianificazione aiuta a contenere le spese.',
         items: ['Migros e Coop sono le principali catene di supermercati e sono utili per colazioni, snack, picnic e necessità per bambini.', 'I taxi sono di solito costosi. Usateli solo quando bagagli, bambini o esigenze di accessibilità li rendono davvero utili.', 'Usate i mezzi pubblici per muovervi a Zurigo; viaggiare in auto non è consigliato per la normale logistica del matrimonio.', 'Opzioni economiche includono passeggiate sul lago, centro storico, punti panoramici, parchi, picnic con prodotti del supermercato e alloggi vicino a tram, treno o autobus.'],
-        imageAlt: 'Banconote e monete in franchi svizzeri',
+        image: '/images/places/zurich-lindenhof-view.jpg',
+        imageAlt: 'Centro storico di Zurigo e la Limmat dal Lindenhof',
         exchangeRates: true,
       },
       {
@@ -1040,7 +1043,7 @@ applyLocalizedCopy('de', {
         title: 'Aus dem Vereinigten Königreich',
         body:
           'Aus dem Vereinigten Königreich sind Direktflüge nach Zürich meistens die einfachste Option. EasyJet kann preislich attraktiv sein, aber prüft die Gepäckregeln sorgfältig, bevor ihr Preise vergleicht.',
-        items: ['Vergleicht London Heathrow, Gatwick, City, Luton und Stansted je nach Wohnort; Heathrow, Gatwick und City sind für Zürich meist am relevantesten.', 'Ausserhalb Londons lohnt sich auch der Vergleich von Manchester, Edinburgh, Bristol und anderen Regionalflughäfen mit Direkt- oder Umsteigeverbindungen.', 'Bei EasyJet kann der günstigste Tarif nur ein kleines Gepäckstück unter dem Sitz enthalten, derzeit 45 x 36 x 20 cm inklusive Griffe und Rollen; bucht grosses Handgepäck oder Aufgabegepäck online dazu, wenn ihr es braucht.', 'Die Bahnroute führt von London St Pancras mit Eurostar nach Paris, dann von Gare du Nord nach Gare de Lyon und mit TGV Lyria nach Zürich HB; plant in Paris grosszügig Zeit für den Wechsel ein.'],
+        items: ['Vergleicht London Heathrow, Gatwick, City, Luton und Stansted je nach Wohnort; Heathrow, Gatwick und City sind für Zürich meist am relevantesten, aber London Luton kann ebenfalls nützliche easyJet-Flüge haben.', 'Ausserhalb Londons lohnt sich auch der Vergleich von Manchester, Edinburgh, Bristol und anderen Regionalflughäfen mit Direkt- oder Umsteigeverbindungen.', 'Bei EasyJet kann der günstigste Tarif nur ein kleines Gepäckstück unter dem Sitz enthalten, derzeit 45 x 36 x 20 cm inklusive Griffe und Rollen; bucht grosses Handgepäck oder Aufgabegepäck online dazu, wenn ihr es braucht.', 'Basel kann einen Vergleich wert sein, wenn die Flugpreise deutlich besser sind, ist aber weniger bequem: vom EuroAirport mit Bus 50 nach Basel SBB, dann mit dem Zug nach Zürich HB und weiter mit S6 oder S16 nach Küsnacht ZH. Rechnet insgesamt mit ungefähr zwei Stunden oder mehr und zusätzlichen Schweizer Transportkosten.', 'Britische Staatsangehörige sollten vor der Buchung die Passgültigkeit prüfen: Die aktuelle britische Reiseinformation für die Schweiz verlangt, dass der Pass weniger als 10 Jahre vor Einreise ausgestellt wurde und mindestens 3 Monate nach Verlassen des Schengen-Raums gültig bleibt.', 'Die Bahnroute führt von London St Pancras mit Eurostar nach Paris, dann von Gare du Nord nach Gare de Lyon und mit TGV Lyria nach Zürich HB; plant in Paris grosszügig Zeit für den Wechsel ein.'],
         imageAlt: 'Tower Bridge über der Themse in London',
       },
       {
@@ -1053,15 +1056,15 @@ applyLocalizedCopy('de', {
       {
         title: 'Ab Flughafen Zürich',
         body:
-          'Der Flughafen Zürich hat eine sehr bequeme Zug- und S-Bahn-Verbindung zum Zürich HB, mit weiterem öffentlichem Verkehr nach Küsnacht und zu den Hochzeitsorten. Für die normale Hochzeitslogistik nutzt den Zug statt Auto oder Taxi.',
-        items: ['SBB-Züge nach Zürich HB fahren in der Regel etwa alle 10 Minuten; die Fahrt dauert ungefähr 15 Minuten.', 'Für Küsnacht oder Hotel Sonne nutzt SBB Mobile oder ZVV ab Flughafen oder ab Zürich HB und kauft das von der App angezeigte Ticket.', 'Taxis und Ride-Hailing können mit Kindern, schwerem Gepäck oder Barrierefreiheitsbedarf sinnvoll sein, sind aber meist deutlich teurer als der öffentliche Verkehr.', 'Ein Mietwagen ist für Hochzeitslogistik innerhalb Zürichs nicht empfohlen.'],
+          'Der Flughafen Zürich hat eine sehr bequeme Zug- und S-Bahn-Verbindung zum Zürich HB, mit weiterem öffentlichem Verkehr nach Küsnacht ZH und zu den Hochzeitsorten. Für die normale Hochzeitslogistik nutzt den Zug statt Auto oder Taxi.',
+        items: ['Ladet SBB Mobile vor der Reise herunter und sucht nach Küsnacht ZH, nicht nur nach Küsnacht.', 'Die direkte S16 von Zürich Flughafen nach Küsnacht ZH ist meist die einfachste Verbindung ab Flughafen. Aktuelle Fahrplanmuster zeigen Abfahrten etwa um Minute 01 und 31, oft ab Gleis 3, mit rund 26 Minuten Fahrzeit; prüft genaue Zeit und Gleis am Reisetag in SBB Mobile.', 'SBB-Züge nach Zürich HB fahren in der Regel etwa alle 10 Minuten; die Fahrt dauert ungefähr 15 Minuten. Das ist eine gute Alternative, wenn die nächste direkte S16 zeitlich nicht passt.', 'Für Küsnacht ZH oder Hotel Sonne nutzt SBB Mobile oder ZVV ab Flughafen oder ab Zürich HB und kauft das von der App angezeigte Ticket vor dem Einsteigen.', 'Taxis und Ride-Hailing können mit Kindern, schwerem Gepäck oder Barrierefreiheitsbedarf sinnvoll sein, sind aber meist deutlich teurer als der öffentliche Verkehr.', 'Ein Mietwagen ist für Hochzeitslogistik innerhalb Zürichs nicht empfohlen.'],
         imageAlt: 'Züge im Bahnhof Zürich Flughafen',
       },
       {
-        title: 'Mit dem Zug nach Küsnacht',
+        title: 'Mit dem Zug nach Küsnacht ZH',
         body:
           'Küsnacht ZH liegt an der S-Bahn-Linie am rechten Zürichseeufer. Nutzt SBB Mobile oder ZVV für den genauen Zug, das Gleis und die nötigen Zonen am Reisetag.',
-        items: ['Ab Zürich HB: nehmt S6 oder S16 in Richtung rechtes Zürichseeufer und steigt in Küsnacht ZH aus. Vom Bahnhof ist Hotel Sonne ein kurzer Fussweg bergab Richtung See.', 'Ab Flughafen Zürich: die einfachste direkte Verbindung ist meist die S16 Richtung Herrliberg-Feldmeilen oder Meilen bis Küsnacht ZH. Wenn es zeitlich besser passt, nehmt einen schnellen Zug zum Zürich HB und steigt dort in S6 oder S16 um.', 'Ab Richterswil: fahrt mit dem Zug zum Zürich HB und steigt dort in S6 oder S16 Richtung Küsnacht ZH um. Das ist meist übersichtlicher als eine späte Seequerung.', 'Kauft die ganze Verbindung vor dem Einsteigen in SBB Mobile oder in der ZVV-App; die App wählt die nötigen Zonen.'],
+        items: ['Ab Zürich HB: nehmt S6 oder S16 in Richtung rechtes Zürichseeufer und steigt in Küsnacht ZH aus. Vom Bahnhof ist Hotel Sonne ein kurzer Fussweg bergab Richtung See.', 'Ab Flughafen Zürich: die einfachste direkte Verbindung ist meist die S16 Richtung Herrliberg-Feldmeilen oder Meilen bis Küsnacht ZH. Aktuelle Fahrplanmuster zeigen diese direkte Verbindung etwa um Minute 01 und 31 mit rund 26 Minuten Fahrzeit; Zeiten und Gleise bitte vor dem Einsteigen in SBB Mobile prüfen.', 'Ab Richterswil: fahrt mit dem Zug zum Zürich HB und steigt dort in S6 oder S16 Richtung Küsnacht ZH um. Das ist meist übersichtlicher als eine späte Seequerung.', 'Kauft die ganze Verbindung vor dem Einsteigen in SBB Mobile oder in der ZVV-App; gebt Küsnacht ZH ein, damit die App das richtige Ziel und die nötigen Zonen wählt.'],
         image: '/images/places/kuesnacht-lake-view.jpg',
         imageAlt: 'Küsnacht vom Zürichsee aus gesehen',
       },
@@ -1069,7 +1072,7 @@ applyLocalizedCopy('de', {
         title: 'Hochzeitskarte Zürich',
         body:
           'Wichtige Orientierungspunkte für das Hochzeitswochenende:',
-        items: ['Die Kirche St. Peter liegt in der Zürcher Altstadt, nahe beim See und bei zentralen Tramverbindungen.', 'Hotel Sonne liegt in Küsnacht am rechten Zürichseeufer.', 'Richterswil, wo Manfredis Eltern wohnen, liegt weiter südlich am See und ist mit dem Zug erreichbar.', 'Flughafen Zürich und Zürich HB sind mit häufigen Zügen verbunden; nutzt SBB Mobile oder ZVV für die genaue Verbindung am Reisetag.'],
+        items: ['Die Kirche St. Peter liegt in der Zürcher Altstadt, nahe beim See und bei zentralen Tramverbindungen.', 'Hotel Sonne liegt in Küsnacht ZH am rechten Zürichseeufer.', 'Richterswil, wo Manfredis Eltern wohnen, liegt weiter südlich am See und ist mit dem Zug erreichbar.', 'Flughafen Zürich und Zürich HB sind mit häufigen Zügen verbunden; nutzt SBB Mobile oder ZVV für die genaue Verbindung am Reisetag.'],
         imageAlt: 'Auf OpenStreetMap basierende Karte von Zürich, Küsnacht, Richterswil, Flughafen Zürich, Kirche St. Peter und Hotel Sonne',
       },
       {
@@ -1184,7 +1187,7 @@ applyLocalizedCopy('de', {
         title: 'Öffentlicher Verkehr',
         body:
           'In Zürich bewegt ihr euch gut mit Tram, Zug, Bus und Schiff. Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist für die normale Hochzeitslogistik nicht empfohlen.',
-        items: ['Nutzt SBB Mobile für Fahrpläne und Tickets in der ganzen Schweiz; nutzt ZVV für Zonen und lokale Tickets im Raum Zürich.', 'ZVV-Tickets sind zonenbasiert; Zürich Stadt ist Zone 110, Küsnacht Zone 140 und Richterswil Zone 153.', 'Für Zürich Zentrum ist meistens ein ZVV-Einzelticket oder ein 24h-Ticket am einfachsten. Für Küsnacht oder Richterswil gebt das Ziel in SBB Mobile oder der ZVV-App ein und kauft die angezeigten Zonen.', 'Für Tagesausflüge ausserhalb Zürichs vergleicht ein normales Punkt-zu-Punkt-Ticket, ein Supersaver Ticket und einen Saver Day Pass. Supersaver Tickets können günstiger sein, wenn sie früh gekauft werden, sind aber an einen bestimmten Zug gebunden und weniger flexibel.', 'Kinder unter 6 Jahren fahren im Zürcher Verkehrsverbund kostenlos. Kinder von 6 bis 15 Jahren zahlen den reduzierten Tarif; für längere Reisen in der Schweiz prüft SBB-Kindertickets und Junior Travelcard-Optionen.', 'Für entspanntes Erkunden der Stadt könnt ihr ein Velo mieten, wenn Wetter und Verkehrssituation für euch passen.'],
+        items: ['Ladet SBB Mobile vor der Reise herunter und nutzt die App für Fahrpläne in der ganzen Schweiz, aktuelle Gleisangaben und Tickets; nutzt ZVV für Zonen und lokale Tickets im Raum Zürich.', 'ZVV-Tickets sind zonenbasiert; Zürich Stadt ist Zone 110, Küsnacht ZH Zone 140 und Richterswil Zone 153.', 'Für Zürich Zentrum ist meistens ein ZVV-Einzelticket oder ein 24h-Ticket am einfachsten. Für Küsnacht ZH oder Richterswil gebt das Ziel in SBB Mobile oder der ZVV-App ein und kauft die angezeigten Zonen.', 'Für Tagesausflüge ausserhalb Zürichs vergleicht ein normales Punkt-zu-Punkt-Ticket, ein Supersaver Ticket und einen Saver Day Pass. Supersaver Tickets können günstiger sein, wenn sie früh gekauft werden, sind aber an einen bestimmten Zug gebunden und weniger flexibel.', 'Kinder unter 6 Jahren fahren im Zürcher Verkehrsverbund kostenlos. Kinder von 6 bis 15 Jahren zahlen den reduzierten Tarif; für längere Reisen in der Schweiz prüft SBB-Kindertickets und Junior Travelcard-Optionen.', 'Für entspanntes Erkunden der Stadt könnt ihr ein Velo mieten, wenn Wetter und Verkehrssituation für euch passen.'],
         gallery: [
           { src: '/images/places/sbb-train.jpg', alt: 'SBB-Zug in der Schweizer Landschaft' },
           { src: '/images/places/zurich-tram.jpg', alt: 'Zürcher Tram auf der Bahnhofstrasse' },
@@ -1195,7 +1198,7 @@ applyLocalizedCopy('de', {
       {
         title: 'Tickets wählen',
         body: 'Es gibt nicht ein einziges bestes Ticket für alle Gäste. Diese Hinweise sind als praktische Ausgangspunkte gedacht.',
-        items: ['Für Wege in Zürich mit Tram, Zug oder Bus: nutzt ein ZVV-Stadtticket, 24h-Ticket oder die Zürich Card, wenn ihr auch Museen, Flughafentransfer, Uetliberg und kurze Schiffsfahrten einschliessen möchtet.', 'Für Küsnacht beim Empfang: kauft ein ZVV/SBB-Ticket von eurer Start-Haltestelle nach Küsnacht ZH oder zur nächsten Haltestelle des Hotel Sonne; die App wählt die nötigen Zonen.', 'Für Richterswil: kauft ein ZVV/SBB-Ticket nach Richterswil oder erwägt ein All-Zones/Tagesticket, wenn ihr an diesem Tag mehrere Fahrten im Zürcher Verkehrsverbund macht.', 'Für grössere Tagesausflüge wie Luzern, Bern, Basel oder Bergregionen: prüft früh SBB für Supersaver Tickets oder Saver Day Passes, aber vermeidet unflexible Tickets, wenn eure Pläne von Flugankunft oder Wetter abhängen.'],
+        items: ['Für Wege in Zürich mit Tram, Zug oder Bus: nutzt ein ZVV-Stadtticket, 24h-Ticket oder die Zürich Card, wenn ihr auch Museen, Flughafentransfer, Uetliberg und kurze Schiffsfahrten einschliessen möchtet.', 'Für die Fahrt in den Empfangsbereich sucht in SBB Mobile oder ZVV nach Küsnacht ZH und kauft ein Ticket von eurer Start-Haltestelle nach Küsnacht ZH oder zur nächsten Haltestelle des Hotel Sonne; die App wählt die nötigen Zonen.', 'Für Richterswil: kauft ein ZVV/SBB-Ticket nach Richterswil oder erwägt ein All-Zones/Tagesticket, wenn ihr an diesem Tag mehrere Fahrten im Zürcher Verkehrsverbund macht.', 'Für grössere Tagesausflüge wie Luzern, Bern, Basel oder Bergregionen: prüft früh SBB für Supersaver Tickets oder Saver Day Passes, aber vermeidet unflexible Tickets, wenn eure Pläne von Flugankunft oder Wetter abhängen.'],
         imageAlt: 'SBB-Billettautomat in einem Schweizer Bahnhof',
       },
       {
@@ -1203,7 +1206,8 @@ applyLocalizedCopy('de', {
         body:
           'Die Schweiz verwendet Schweizer Franken und ist oft teuer, aber gute Planung hilft, die Kosten überschaubar zu halten.',
         items: ['Migros und Coop sind die grössten Supermarktketten und nützlich für Frühstück, Snacks, Picknick und Kinderbedarf.', 'Taxis sind meist teuer. Nutzt sie nur, wenn Gepäck, Kinder oder Barrierefreiheitsbedarf sie wirklich sinnvoll machen.', 'Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist für die normale Hochzeitslogistik nicht empfohlen.', 'Günstige Optionen sind Spaziergänge am See, Altstadt, Aussichtspunkte, Parks, Picknicks aus dem Supermarkt und Unterkunft nahe Tram, Zug oder Bus.'],
-        imageAlt: 'Schweizer Franken in Banknoten und Münzen',
+        image: '/images/places/zurich-lindenhof-view.jpg',
+        imageAlt: 'Zürcher Altstadt und Limmat vom Lindenhof',
         exchangeRates: true,
       },
       {
