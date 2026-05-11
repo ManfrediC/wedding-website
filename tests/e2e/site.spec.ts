@@ -96,6 +96,10 @@ test('English pages include requested travel and contact details', async ({ page
     'alt',
     'Tower Bridge over the River Thames in London',
   );
+  await expect(page.locator('img[src="/images/places/zurich-airport-station.jpg"]')).toHaveAttribute(
+    'alt',
+    'Trains at Zürich Flughafen railway station',
+  );
   await expect(page.getByRole('heading', { name: 'Zurich wedding map' })).toBeVisible();
   await expect(page.getByText("Richterswil, where Manfredi's parents live")).toBeVisible();
   await expect(page.getByRole('link', { name: 'OpenStreetMap: Zurich, Küsnacht, and Richterswil' })).toHaveAttribute(

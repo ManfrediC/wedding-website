@@ -299,8 +299,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
             { label: 'SBB Mobile', href: 'https://www.sbb.ch/en/timetable/mobile-apps/sbb-mobile.html' },
             { label: 'ZVV', href: 'https://www.zvv.ch/en' },
           ],
-          image: '/images/places/sbb-train.jpg',
-          imageAlt: 'SBB train travelling through the Swiss countryside',
+          image: '/images/places/zurich-airport-station.jpg',
+          imageAlt: 'Trains at Zürich Flughafen railway station',
         },
         {
           title: 'By train to Küsnacht',
@@ -616,6 +616,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
             { label: 'New York', href: 'https://commons.wikimedia.org/wiki/File:Manhattan_Skyline_night.jpg' },
             { label: 'London', href: 'https://commons.wikimedia.org/wiki/File:View_of_the_Tower_Bridge_from_the_Thames_from_northwest._London.jpg' },
             { label: 'Ogliastra', href: 'https://commons.wikimedia.org/wiki/File:Coast_and_sea_at_Santa_Maria_Navarrese,_Sardinia,_Italy.jpg' },
+            { label: 'Zurich Airport station', href: 'https://commons.wikimedia.org/wiki/File:Bahnhof_Z%C3%BCrich_Flughafen_01.jpg' },
             { label: 'SBB train', href: 'https://commons.wikimedia.org/wiki/File:SBB_RABe_511_(50852815551).jpg' },
             { label: 'Zurich tram', href: 'https://commons.wikimedia.org/wiki/File:Tram_E,_Bahnhofstrasse,_Zurich,_Switzerland.JPG' },
             { label: 'Säntis cable car', href: 'https://commons.wikimedia.org/wiki/File:S%C3%A4ntis_LSB_Blaue_Kabine_von_Talstation.jpg' },
@@ -682,7 +683,7 @@ applyLocalizedCopy('it', {
         body:
           'L’aeroporto di Zurigo ha un collegamento ferroviario e S-Bahn molto comodo con Zurich HB, con proseguimento in mezzi pubblici verso Küsnacht e i luoghi del matrimonio. Per gli spostamenti del matrimonio, usate il treno invece di guidare o prendere un taxi.',
         items: ['I treni SBB per Zurich HB partono di solito circa ogni 10 minuti e il viaggio dura circa 15 minuti.', 'Per Küsnacht o Hotel Sonne, usate SBB Mobile o ZVV dall’aeroporto o da Zurich HB e acquistate il biglietto indicato dall’app.', 'Taxi e servizi ride-hailing possono essere utili con bambini, bagagli pesanti o necessità di accessibilità, ma di solito sono molto più costosi dei mezzi pubblici.', 'Un’auto a noleggio non è consigliata per gli spostamenti del matrimonio a Zurigo.'],
-        imageAlt: 'Treno SBB nella campagna svizzera',
+        imageAlt: "Treni alla stazione ferroviaria dell'aeroporto di Zurigo",
       },
       {
         title: 'In treno verso Küsnacht',
@@ -857,7 +858,7 @@ applyLocalizedCopy('de', {
         body:
           'Der Flughafen Zürich hat eine sehr bequeme Zug- und S-Bahn-Verbindung zum Zürich HB, mit weiterem öffentlichem Verkehr nach Küsnacht und zu den Hochzeitsorten. Für die normale Hochzeitslogistik nutzt den Zug statt Auto oder Taxi.',
         items: ['SBB-Züge nach Zürich HB fahren in der Regel etwa alle 10 Minuten; die Fahrt dauert ungefähr 15 Minuten.', 'Für Küsnacht oder Hotel Sonne nutzt SBB Mobile oder ZVV ab Flughafen oder ab Zürich HB und kauft das von der App angezeigte Ticket.', 'Taxis und Ride-Hailing können mit Kindern, schwerem Gepäck oder Barrierefreiheitsbedarf sinnvoll sein, sind aber meist deutlich teurer als der öffentliche Verkehr.', 'Ein Mietwagen ist für Hochzeitslogistik innerhalb Zürichs nicht empfohlen.'],
-        imageAlt: 'SBB-Zug in der Schweizer Landschaft',
+        imageAlt: 'Züge im Bahnhof Zürich Flughafen',
       },
       {
         title: 'Mit dem Zug nach Küsnacht',

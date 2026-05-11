@@ -67,3 +67,4 @@ Start Phase 0/1 from the build specification:
 - 2026-05-11: Polished Italian and German Stay page accessibility copy and repaired encoding damage in the localized Richterswil accommodation text.
 - 2026-05-11: Replaced the Schedule reception card with a different official Hotel Sonne wide Festsaal ballroom photo and recorded the new image source.
 - 2026-05-11: Replaced the skewed Chicago and London travel photos with straighter Wikimedia Commons images, using Tower Bridge for the UK card, and changed the Schedule reception card to a lake-facing Hotel Sonne view from Lake Zurich.
+- 2026-05-11: Replaced the From Zurich Airport travel card image with a Wikimedia Commons photo of the Zürich Flughafen underground railway platforms.
