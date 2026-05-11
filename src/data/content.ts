@@ -389,9 +389,10 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Zurich first-day options',
           body: 'For a first day after travel, choose simple outdoor plans and keep the schedule flexible.',
-          items: ['Walk the Old Town, Lindenhof, and the Limmat.', 'Walk or run along the Limmat and the lake promenade.', 'Take the train up Uetliberg, or hike up if you want a little more effort.'],
+          items: ['Walk the Old Town, Lindenhof, and the Limmat.', 'Walk or run along the Limmat and the lake promenade.', 'Take the train up Uetliberg, or hike up if you want a little more effort.', 'Children may also enjoy Zurich Zoo, especially if you would like a structured half-day activity after travelling.'],
           links: [
             { label: 'Uetliberg', href: 'https://www.ueetliberg.ch/en/uetliberg' },
+            { label: 'Zurich Zoo', href: 'https://www.zoo.ch/en' },
             { label: 'Zurich tourism', href: 'https://www.zuerich.com/en' },
           ],
           image: '/images/minted/minted-photo-08.jpeg',
