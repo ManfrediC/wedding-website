@@ -124,6 +124,11 @@ test('English pages include requested travel and contact details', async ({ page
     'href',
     'https://www.bnb-caffetino-vino.ch/',
   );
+  await expect(page.getByRole('heading', { name: 'Richterswil' })).toBeVisible();
+  await expect(page.locator('img[src="/images/places/richterswil-lake.jpg"]')).toHaveAttribute(
+    'alt',
+    'Richterswil village seen from Lake Zurich',
+  );
   await expect(page.getByText('the house has no lift')).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Accessibility and mobility' })).toBeVisible();
   await expect(page.getByText('the ground floor is wheelchair-accessible')).toBeVisible();

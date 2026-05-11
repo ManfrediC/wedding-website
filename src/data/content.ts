@@ -361,12 +361,14 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           imageAlt: 'Zurich old town and the Limmat river',
         },
         {
-          title: 'Richterswil option',
+          title: 'Richterswil',
           body: "Richterswil is farther down Lake Zurich, but it can be a quiet lakeside base for guests who would like to stay near Manfredi's family or who prefer a smaller B&B.",
           items: ['B & B Caffètino-Vino Richterswil has five rooms in the historic village centre, close to the lake and station.', 'It is a B&B rather than a hotel; the house has no lift, and rooms are on the 2nd and 3rd floors.', 'Check the late-evening return journey from Küsnacht before booking, especially after the party.'],
           links: [
             { label: 'B & B Caffètino-Vino Richterswil', href: 'https://www.bnb-caffetino-vino.ch/' },
           ],
+          image: '/images/places/richterswil-lake.jpg',
+          imageAlt: 'Richterswil village seen from Lake Zurich',
         },
         {
           title: 'Booking guidance',
@@ -617,6 +619,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
             { label: 'London', href: 'https://commons.wikimedia.org/wiki/File:View_of_the_Tower_Bridge_from_the_Thames_from_northwest._London.jpg' },
             { label: 'Ogliastra', href: 'https://commons.wikimedia.org/wiki/File:Coast_and_sea_at_Santa_Maria_Navarrese,_Sardinia,_Italy.jpg' },
             { label: 'Zurich Airport station', href: 'https://commons.wikimedia.org/wiki/File:Bahnhof_Z%C3%BCrich_Flughafen_01.jpg' },
+            { label: 'Richterswil', href: 'https://commons.wikimedia.org/wiki/File:Richterswil_-_Z%C3%BCrichsee_2010-08-03_17-49-52.JPG' },
             { label: 'SBB train', href: 'https://commons.wikimedia.org/wiki/File:SBB_RABe_511_(50852815551).jpg' },
             { label: 'Zurich tram', href: 'https://commons.wikimedia.org/wiki/File:Tram_E,_Bahnhofstrasse,_Zurich,_Switzerland.JPG' },
             { label: 'Säntis cable car', href: 'https://commons.wikimedia.org/wiki/File:S%C3%A4ntis_LSB_Blaue_Kabine_von_Talstation.jpg' },
@@ -725,10 +728,11 @@ applyLocalizedCopy('it', {
         imageAlt: 'Centro storico di Zurigo e fiume Limmat',
       },
       {
-        title: 'Opzione a Richterswil',
+        title: 'Richterswil',
         body:
           'Richterswil si trova più a sud lungo il Lago di Zurigo, ma può essere una base tranquilla per chi desidera stare vicino alla famiglia di Manfredi o preferisce un piccolo B&B.',
         items: ['B & B Caffètino-Vino Richterswil ha cinque camere nel centro storico del paese, vicino al lago e alla stazione.', 'È un B&B, non un hotel; la casa non ha ascensore e le camere si trovano al 2° e 3° piano.', 'Controllate il rientro serale da Küsnacht prima di prenotare, soprattutto dopo la festa.'],
+        imageAlt: 'Richterswil vista dal Lago di Zurigo',
       },
       {
         title: 'Indicazioni per prenotare',
@@ -900,10 +904,11 @@ applyLocalizedCopy('de', {
         imageAlt: 'Zürcher Altstadt und Limmat',
       },
       {
-        title: 'Option in Richterswil',
+        title: 'Richterswil',
         body:
           'Richterswil liegt weiter südlich am Zürichsee, kann aber eine ruhige Basis für Gäste sein, die nahe bei Manfredis Familie wohnen oder ein kleineres B&B bevorzugen.',
         items: ['B & B Caffètino-Vino Richterswil hat fünf Zimmer im historischen Dorfkern, nahe beim See und Bahnhof.', 'Es ist ein B&B und kein Hotel; das Haus hat keinen Lift, und die Zimmer liegen im 2. und 3. Obergeschoss.', 'Prüft vor der Buchung die späte Rückfahrt ab Küsnacht, besonders nach der Feier.'],
+        imageAlt: 'Richterswil vom Zürichsee aus gesehen',
       },
       {
         title: 'Buchungshinweise',
