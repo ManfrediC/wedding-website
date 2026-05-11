@@ -80,6 +80,7 @@ test('English pages include requested travel and contact details', async ({ page
   await expect(page.getByRole('heading', { name: 'From Sardinia' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Zurich wedding map' })).toBeVisible();
   await expect(page.getByText('For ordinary wedding logistics, use the train rather than driving or taking a taxi.')).toBeVisible();
+  await expect(page.getByText('Also compare fares with a layover in New York')).toBeVisible();
 
   await page.goto('/en/stay/');
   await expect(page.getByRole('link', { name: 'Hotel Sonne Küsnacht' })).toHaveAttribute('href', 'https://sonne.ch/en/');
@@ -95,10 +96,31 @@ test('English pages include requested travel and contact details', async ({ page
     'mailto:gabyandmanfredi@gmail.com',
   );
 
+  await page.route('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/chf.json', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        date: '2026-05-11',
+        chf: { usd: 1.12, eur: 1.03, gbp: 0.88 },
+      }),
+    }),
+  );
+
   await page.goto('/en/switzerland-guide/');
   await expect(page.getByRole('link', { name: 'Type J' })).toHaveAttribute(
     'href',
     'https://en.wikipedia.org/wiki/SN_441011',
+  );
+  await expect(page.getByText('1 CHF = 1.1200 USD')).toBeVisible();
+  await expect(page.getByText('1 USD = 0.8929 CHF')).toBeVisible();
+  await expect(page.getByText('1 CHF = 1.0300 EUR')).toBeVisible();
+  await expect(page.getByText('1 EUR = 0.9709 CHF')).toBeVisible();
+  await expect(page.getByText('1 CHF = 0.8800 GBP')).toBeVisible();
+  await expect(page.getByText('1 GBP = 1.1364 CHF')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'exchange-api' })).toHaveAttribute(
+    'href',
+    'https://github.com/fawazahmed0/exchange-api',
   );
 
   await page.goto('/en/faq/');

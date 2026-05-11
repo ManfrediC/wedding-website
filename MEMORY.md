@@ -25,9 +25,11 @@ Durable project notes for the wedding website.
 - Website edit requests may arrive in `doc/plans/website_edits.txt`; apply them as concrete content updates and preserve evidence for travel/ticket claims.
 - Italian guest travel should focus on Sardinia, especially Cagliari/Olbia flights and ferry-to-Genoa plus driving options; EasyJet can be budget-friendly but baggage rules need a clear warning.
 - Travel photo choices should match the origin/place: Chicago skyline, New York skyline, Westminster for London/UK, and Sardinia imagery for Italian guests. Avoid the disliked previous London, SBB train, Zurich tram, and distorted Saentis cablecar photos.
+- Chicago travel guidance should invite guests to compare fares with a New York layover, as Chicago-Zurich itineraries via New York can sometimes be cheaper than nonstop flights.
 - Zurich guidance should strongly favour public transport: tram, train, bus, boat, SBB Mobile, and optional bike rental. Ordinary Zurich wedding logistics should discourage driving, taxis, and rental cars.
 - Zurich Airport guidance should highlight the convenient train/S-Bahn connection and advise guests to use the train rather than driving or taking a taxi unless luggage, children, or accessibility make that useful.
 - Train-ticket guidance should point guests first to SBB Mobile, with ZVV app/ticket machines as Zurich-area alternatives. Tickets must be bought before boarding; ZVV tickets are zone-based and cover trains, trams, buses, and boats in the selected zones.
+- The Switzerland Guide exchange-rate widget uses the free open-source `fawazahmed0/exchange-api` source, served through jsDelivr with a Cloudflare fallback, and shows CHF/USD, CHF/EUR, and CHF/GBP in both directions.
 - Accommodation guidance should mention Hotel Sonne Kuesnacht, OXEN Kuesnacht, Airbnb searches for Zurich in June 2027, and more economical hotel areas in Zurich Altstetten or Oerlikon.
 - Guest-facing contact email is `gabyandmanfredi@gmail.com`.
 - Boat transfer wording must stay careful: host-arranged boat transfer, details to be confirmed.

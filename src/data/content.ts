@@ -40,6 +40,7 @@ type Section = {
   image?: string;
   imageAlt?: string;
   imageFit?: 'cover' | 'contain';
+  exchangeRates?: boolean;
   gallery?: SectionImage[];
   variant?: 'wide';
 };
@@ -231,7 +232,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'From Chicago',
           body: 'Chicago O\'Hare (ORD) is the relevant airport. Current published schedules include nonstop ORD-ZRH flights, but June 2027 should be confirmed once bookings open.',
-          items: ['Check nonstop flights first, especially SWISS and United-operated services.', 'If nonstop prices are high, compare one-stop routes through major European hubs such as Frankfurt, Munich, Amsterdam, Paris, or London.', 'Arrive by Thursday, 10 June 2027 at the latest; Wednesday, 9 June 2027 is better for jet lag and delayed bags.', 'Use public transport from Zurich Airport unless a wider Swiss or Italian road trip makes a car necessary.'],
+          items: ['Check nonstop flights first, especially SWISS and United-operated services.', 'If nonstop prices are high, compare one-stop routes through major European hubs such as Frankfurt, Munich, Amsterdam, Paris, or London.', 'Also compare fares with a layover in New York, as Chicago-Zurich itineraries via New York can sometimes be cheaper than nonstop options.', 'Arrive by Thursday, 10 June 2027 at the latest; Wednesday, 9 June 2027 is better for jet lag and delayed bags.', 'Use public transport from Zurich Airport unless a wider Swiss or Italian road trip makes a car necessary.'],
           links: [
             { label: 'SWISS Chicago-Zurich', href: 'https://www.swiss.com/lhg/us/en/o-d/cy-cy/chicago-zurich' },
             { label: 'Google Flights', href: 'https://www.google.com/travel/flights?q=Flights%20from%20Chicago%20to%20Zurich' },
@@ -471,6 +472,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           title: 'Money and budgeting',
           body: 'Switzerland uses Swiss francs and is often expensive, but planning ahead can keep costs manageable.',
           items: ['Migros and Coop are the largest supermarket chains and are useful for breakfasts, snacks, picnic supplies, and children’s basics.', 'Taxis are usually expensive. Use them only when luggage, children, or accessibility needs make them genuinely useful.', 'Use public transport for travelling around Zurich; driving by car is not recommended for ordinary wedding logistics.', 'Low-cost options include lake walks, Old Town wandering, viewpoints, parks, supermarket picnics, and choosing accommodation near a tram, train, or bus stop.'],
+          exchangeRates: true,
         },
         {
           title: 'Weather, packing, and practical tips',
@@ -613,7 +615,7 @@ applyLocalizedCopy('it', {
         title: 'Da Chicago',
         body:
           "Chicago O'Hare (ORD) è l'aeroporto di riferimento. Gli orari attualmente pubblicati includono voli diretti ORD-ZRH, ma giugno 2027 andrà verificato quando le prenotazioni saranno aperte.",
-        items: ['Controllate prima i voli diretti, in particolare SWISS e i servizi operati da United.', 'Se i voli diretti sono costosi, confrontate itinerari con uno scalo in hub europei come Francoforte, Monaco, Amsterdam, Parigi o Londra.', 'Arrivate entro giovedì 10 giugno 2027 al più tardi; mercoledì 9 giugno 2027 è preferibile per jet lag e possibili ritardi dei bagagli.', 'Dall’aeroporto di Zurigo usate i mezzi pubblici, salvo che un viaggio più ampio in Svizzera o Italia renda davvero necessaria l’auto.'],
+        items: ['Controllate prima i voli diretti, in particolare SWISS e i servizi operati da United.', 'Se i voli diretti sono costosi, confrontate itinerari con uno scalo in hub europei come Francoforte, Monaco, Amsterdam, Parigi o Londra.', 'Confrontate anche tariffe con scalo a New York: gli itinerari Chicago-Zurigo via New York possono talvolta costare meno dei voli diretti.', 'Arrivate entro giovedì 10 giugno 2027 al più tardi; mercoledì 9 giugno 2027 è preferibile per jet lag e possibili ritardi dei bagagli.', 'Dall’aeroporto di Zurigo usate i mezzi pubblici, salvo che un viaggio più ampio in Svizzera o Italia renda davvero necessaria l’auto.'],
         imageAlt: 'Skyline di Chicago sul Lago Michigan',
       },
       {
@@ -707,6 +709,7 @@ applyLocalizedCopy('it', {
         body:
           'La Svizzera usa il franco svizzero ed è spesso costosa, ma una buona pianificazione aiuta a contenere le spese.',
         items: ['Migros e Coop sono le principali catene di supermercati e sono utili per colazioni, snack, picnic e necessità per bambini.', 'I taxi sono di solito costosi. Usateli solo quando bagagli, bambini o esigenze di accessibilità li rendono davvero utili.', 'Usate i mezzi pubblici per muovervi a Zurigo; viaggiare in auto non è consigliato per la normale logistica del matrimonio.', 'Opzioni economiche includono passeggiate sul lago, centro storico, punti panoramici, parchi, picnic con prodotti del supermercato e alloggi vicino a tram, treno o autobus.'],
+        exchangeRates: true,
       },
       {
         title: 'Meteo, bagagli e consigli pratici',
@@ -758,7 +761,7 @@ applyLocalizedCopy('de', {
         title: 'Aus Chicago',
         body:
           "Chicago O'Hare (ORD) ist der relevante Flughafen. Aktuell veröffentlichte Flugpläne enthalten Direktflüge ORD-ZRH; Juni 2027 sollte geprüft werden, sobald Buchungen möglich sind.",
-        items: ['Prüft zuerst Direktflüge, insbesondere SWISS und von United durchgeführte Verbindungen.', 'Wenn Direktflüge teuer sind, vergleicht Verbindungen mit einem Umstieg über europäische Drehkreuze wie Frankfurt, München, Amsterdam, Paris oder London.', 'Kommt spätestens am Donnerstag, 10. Juni 2027 an; Mittwoch, 9. Juni 2027 ist wegen Jetlag und möglicher Gepäckverspätungen besser.', 'Nutzt ab Flughafen Zürich den öffentlichen Verkehr, sofern nicht eine längere Schweiz- oder Italienreise ein Auto wirklich nötig macht.'],
+        items: ['Prüft zuerst Direktflüge, insbesondere SWISS und von United durchgeführte Verbindungen.', 'Wenn Direktflüge teuer sind, vergleicht Verbindungen mit einem Umstieg über europäische Drehkreuze wie Frankfurt, München, Amsterdam, Paris oder London.', 'Vergleicht auch Tarife mit Umstieg in New York; Chicago-Zürich-Verbindungen über New York können manchmal günstiger sein als Direktflüge.', 'Kommt spätestens am Donnerstag, 10. Juni 2027 an; Mittwoch, 9. Juni 2027 ist wegen Jetlag und möglicher Gepäckverspätungen besser.', 'Nutzt ab Flughafen Zürich den öffentlichen Verkehr, sofern nicht eine längere Schweiz- oder Italienreise ein Auto wirklich nötig macht.'],
         imageAlt: 'Skyline von Chicago am Lake Michigan',
       },
       {
@@ -852,6 +855,7 @@ applyLocalizedCopy('de', {
         body:
           'Die Schweiz verwendet Schweizer Franken und ist oft teuer, aber gute Planung hilft, die Kosten überschaubar zu halten.',
         items: ['Migros und Coop sind die grössten Supermarktketten und nützlich für Frühstück, Snacks, Picknick und Kinderbedarf.', 'Taxis sind meist teuer. Nutzt sie nur, wenn Gepäck, Kinder oder Barrierefreiheitsbedarf sie wirklich sinnvoll machen.', 'Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist für die normale Hochzeitslogistik nicht empfohlen.', 'Günstige Optionen sind Spaziergänge am See, Altstadt, Aussichtspunkte, Parks, Picknicks aus dem Supermarkt und Unterkunft nahe Tram, Zug oder Bus.'],
+        exchangeRates: true,
       },
       {
         title: 'Wetter, Packen und praktische Tipps',
@@ -945,7 +949,7 @@ function mirrorLanguage(lang: Exclude<Lang, 'en'>): Record<PageKey, PageContent>
   ) as Record<PageKey, PageContent>;
 }
 
-type LocalizedSectionCopy = Partial<Pick<Section, 'title' | 'body' | 'items' | 'imageAlt'>>;
+type LocalizedSectionCopy = Partial<Pick<Section, 'title' | 'body' | 'items' | 'imageAlt' | 'exchangeRates'>>;
 
 type LocalizedPageCopy = Partial<Omit<PageContent, 'sections'> & { sections: LocalizedSectionCopy[] }>;
 

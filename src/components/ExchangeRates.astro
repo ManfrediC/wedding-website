@@ -1,0 +1,174 @@
+---
+import type { Lang } from '../data/locales';
+
+type Props = {
+  lang: Lang;
+};
+
+const { lang } = Astro.props;
+const endpoints = [
+  'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/chf.json',
+  'https://latest.currency-api.pages.dev/v1/currencies/chf.json',
+];
+const currencies = ['USD', 'EUR', 'GBP'] as const;
+const copy = {
+  en: {
+    title: 'Reference exchange rates',
+    loading: 'Updating latest rates...',
+    updated: 'Updated from daily open-source exchange-rate data for',
+    unavailable: 'Live rates are unavailable. Please check your banking app for current rates.',
+    note: 'Indicative reference rates only. Card, cash, and bank rates may differ.',
+    source: 'Source:',
+    sourceDetail: 'free open-source exchange-rate API, served via jsDelivr with a Cloudflare fallback.',
+  },
+  it: {
+    title: 'Tassi di cambio indicativi',
+    loading: 'Aggiornamento dei tassi in corso...',
+    updated: 'Aggiornato con dati giornalieri open-source sui tassi di cambio del',
+    unavailable: "I tassi live non sono disponibili. Controllate l'app della vostra banca per i tassi attuali.",
+    note: 'Tassi indicativi. Carte, contanti e banche possono applicare valori diversi.',
+    source: 'Fonte:',
+    sourceDetail: 'API gratuita e open-source per tassi di cambio, servita tramite jsDelivr con fallback Cloudflare.',
+  },
+  de: {
+    title: 'Referenz-Wechselkurse',
+    loading: 'Aktuelle Kurse werden geladen...',
+    updated: 'Aktualisiert mit täglichen Open-Source-Wechselkursdaten vom',
+    unavailable: 'Live-Kurse sind nicht verfügbar. Bitte prüft aktuelle Kurse in eurer Banking-App.',
+    note: 'Nur indikative Referenzkurse. Karten-, Bargeld- und Bankkurse können abweichen.',
+    source: 'Quelle:',
+    sourceDetail: 'kostenlose Open-Source-API für Wechselkurse, ausgeliefert über jsDelivr mit Cloudflare-Fallback.',
+  },
+}[lang];
+---
+
+<aside
+  class="exchange-rates"
+  data-exchange-rates
+  data-endpoints={JSON.stringify(endpoints)}
+  data-updated={copy.updated}
+  data-unavailable={copy.unavailable}
+  aria-live="polite"
+>
+  <div class="exchange-rates-header">
+    <h3>{copy.title}</h3>
+    <p data-exchange-status>{copy.loading}</p>
+  </div>
+  <dl class="exchange-rates-grid">
+    {currencies.map((currency) => (
+      <div>
+        <dt>{`CHF/${currency}`}</dt>
+        <dd>
+          <span data-direct-rate={currency}>1 CHF = -- {currency}</span>
+          <span data-inverse-rate={currency}>1 {currency} = -- CHF</span>
+        </dd>
+      </div>
+    ))}
+  </dl>
+  <p class="small-note">{copy.note}</p>
+  <p class="small-note exchange-rates-source">
+    {copy.source} <a href="https://github.com/fawazahmed0/exchange-api" target="_blank" rel="noreferrer">exchange-api</a>, {copy.sourceDetail}
+  </p>
+</aside>
+
+<script>
+  const quoteCurrencies = ['USD', 'EUR', 'GBP'];
+
+  function parseEndpointList(rawValue: string | undefined) {
+    if (!rawValue) {
+      return [];
+    }
+
+    const parsed = JSON.parse(rawValue);
+    return Array.isArray(parsed) ? parsed.filter((endpoint) => typeof endpoint === 'string') : [];
+  }
+
+  function parseRatesResponse(data: unknown) {
+    if (typeof data !== 'object' || data === null) {
+      throw new Error('Exchange-rate response was not an object.');
+    }
+
+    const value = data as { date?: unknown; chf?: unknown; rates?: unknown };
+    const rawRates = value.chf ?? value.rates;
+
+    if (typeof rawRates !== 'object' || rawRates === null) {
+      throw new Error('Exchange-rate response did not include rates.');
+    }
+
+    const sourceRates = rawRates as Record<string, unknown>;
+    const rates: Record<string, number> = {};
+
+    for (const currency of quoteCurrencies) {
+      const rate = sourceRates[currency.toLowerCase()] ?? sourceRates[currency];
+
+      if (typeof rate === 'number') {
+        rates[currency] = rate;
+      }
+    }
+
+    return {
+      date: typeof value.date === 'string' ? value.date : undefined,
+      rates,
+    };
+  }
+
+  async function fetchRates(endpoints: string[]) {
+    for (const endpoint of endpoints) {
+      try {
+        const response = await fetch(endpoint);
+
+        if (!response.ok) {
+          continue;
+        }
+
+        return parseRatesResponse(await response.json());
+      } catch {
+        continue;
+      }
+    }
+
+    throw new Error('No exchange-rate endpoint returned usable data.');
+  }
+
+  const root = document.querySelector('[data-exchange-rates]');
+
+  if (root instanceof HTMLElement) {
+    const status = root.querySelector('[data-exchange-status]');
+    const endpoints = parseEndpointList(root.dataset.endpoints);
+    const unavailable = root.dataset.unavailable ?? 'Live rates are unavailable.';
+    const updated = root.dataset.updated ?? 'Updated for';
+
+    if (endpoints.length === 0) {
+      if (status) {
+        status.textContent = unavailable;
+      }
+    } else {
+      fetchRates(endpoints)
+        .then((ratesData) => {
+          for (const [currency, rate] of Object.entries(ratesData.rates)) {
+            const directRateElement = root.querySelector(`[data-direct-rate="${currency}"]`);
+            const inverseRateElement = root.querySelector(`[data-inverse-rate="${currency}"]`);
+
+            if (Number.isFinite(rate) && rate > 0) {
+              if (directRateElement) {
+                directRateElement.textContent = `1 CHF = ${rate.toFixed(4)} ${currency}`;
+              }
+
+              if (inverseRateElement) {
+                inverseRateElement.textContent = `1 ${currency} = ${(1 / rate).toFixed(4)} CHF`;
+              }
+            }
+          }
+
+          if (status) {
+            status.textContent = ratesData.date ? `${updated} ${ratesData.date}.` : updated;
+          }
+        })
+        .catch(() => {
+          if (status) {
+            status.textContent = unavailable;
+          }
+        });
+    }
+  }
+</script>
