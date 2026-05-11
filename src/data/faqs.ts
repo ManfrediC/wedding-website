@@ -1,6 +1,6 @@
 import type { Lang } from './locales';
 
-export const faqs: Record<Lang, { question: string; answer: string }[]> = {
+export const faqs: Record<Lang, { question: string; answer: string; links?: { label: string; href: string }[] }[]> = {
   en: [
     {
       question: 'What is the dress code?',
@@ -24,7 +24,21 @@ export const faqs: Record<Lang, { question: string; answer: string }[]> = {
     },
     {
       question: 'Do I need a car?',
-      answer: 'No. For most guests, public transport will be easier than renting a car for Zurich and the wedding logistics.',
+      answer:
+        'No. Please use public transport for travelling around Zurich; driving by car is not recommended for ordinary wedding logistics.',
+    },
+    {
+      question: 'How do I buy a train ticket?',
+      answer:
+        'The easiest option is the SBB Mobile app: enter your journey, choose the connection, add passengers, and buy the ticket before boarding. For journeys within Zurich, the ZVV app and station ticket machines also work; ZVV tickets are zone-based and cover trains, trams, buses and boats in the selected zones. Keep the ticket and a matching ID or payment card available for inspection.',
+      links: [
+        { label: 'SBB: buy tickets online', href: 'https://www.sbb.ch/en/tickets-offers/buy.html' },
+        { label: 'ZVV tickets', href: 'https://www.zvv.ch/en/travelcards-and-tickets/tickets.html' },
+        {
+          label: 'ZVV app ticket purchase FAQ',
+          href: 'https://www.zvv.ch/en/service/apps/zvv-app/ticket-purchase-faq.html',
+        },
+      ],
     },
   ],
   it: [
@@ -50,7 +64,21 @@ export const faqs: Record<Lang, { question: string; answer: string }[]> = {
     },
     {
       question: "Serve un'auto?",
-      answer: "No. Per la maggior parte degli ospiti, i mezzi pubblici saranno più semplici dell'auto per Zurigo e per gli spostamenti del matrimonio.",
+      answer:
+        'No. Vi consigliamo di usare i mezzi pubblici per muovervi a Zurigo; spostarsi in auto non è consigliato per la normale logistica del matrimonio.',
+    },
+    {
+      question: 'Come compro un biglietto del treno?',
+      answer:
+        "L'opzione più semplice è l'app SBB Mobile: inserite il tragitto, scegliete il collegamento, aggiungete i passeggeri e comprate il biglietto prima di salire. Per gli spostamenti a Zurigo potete usare anche l'app ZVV o le biglietterie automatiche in stazione; i biglietti ZVV sono a zone e valgono su treni, tram, autobus e battelli nelle zone scelte. Tenete il biglietto e un documento o la carta di pagamento a portata di mano per eventuali controlli.",
+      links: [
+        { label: 'SBB: acquistare biglietti online', href: 'https://www.sbb.ch/en/tickets-offers/buy.html' },
+        { label: 'Biglietti ZVV', href: 'https://www.zvv.ch/en/travelcards-and-tickets/tickets.html' },
+        {
+          label: "FAQ ZVV sull'acquisto nell'app",
+          href: 'https://www.zvv.ch/en/service/apps/zvv-app/ticket-purchase-faq.html',
+        },
+      ],
     },
   ],
   de: [
@@ -76,7 +104,21 @@ export const faqs: Record<Lang, { question: string; answer: string }[]> = {
     },
     {
       question: 'Brauche ich ein Auto?',
-      answer: 'Nein. Für die meisten Gäste ist der öffentliche Verkehr in Zürich und für die Hochzeitslogistik einfacher als ein Mietwagen.',
+      answer:
+        'Nein. Bitte nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist für die normale Hochzeitslogistik nicht empfohlen.',
+    },
+    {
+      question: 'Wie kaufe ich ein Zugticket?',
+      answer:
+        'Am einfachsten ist die App SBB Mobile: Verbindung eingeben, passende Fahrt auswählen, Reisende hinzufügen und das Ticket vor dem Einsteigen kaufen. Für Fahrten innerhalb von Zürich funktionieren auch die ZVV-App und die Automaten am Bahnhof; ZVV-Tickets gelten zonenbasiert für Züge, Trams, Busse und Schiffe in den gewählten Zonen. Haltet Ticket und einen passenden Ausweis oder die Zahlungskarte für Kontrollen bereit.',
+      links: [
+        { label: 'SBB: Tickets online kaufen', href: 'https://www.sbb.ch/en/tickets-offers/buy.html' },
+        { label: 'ZVV-Tickets', href: 'https://www.zvv.ch/en/travelcards-and-tickets/tickets.html' },
+        {
+          label: 'ZVV-FAQ zum Ticketkauf in der App',
+          href: 'https://www.zvv.ch/en/service/apps/zvv-app/ticket-purchase-faq.html',
+        },
+      ],
     },
   ],
 };

@@ -1,6 +1,6 @@
 ---
 type Props = {
-  items: { question: string; answer: string }[];
+  items: { question: string; answer: string; links?: { label: string; href: string }[] }[];
 };
 
 const { items } = Astro.props;
@@ -11,6 +11,15 @@ const { items } = Astro.props;
     <details>
       <summary>{item.question}</summary>
       <p>{item.answer}</p>
+      {item.links && (
+        <ul class="faq-links">
+          {item.links.map((link) => (
+            <li>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      )}
     </details>
   ))}
 </div>

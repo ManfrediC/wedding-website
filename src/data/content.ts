@@ -20,6 +20,11 @@ type Link = {
   href: string;
 };
 
+type SectionImage = {
+  src: string;
+  alt: string;
+};
+
 type Section = {
   title: string;
   body: string;
@@ -27,6 +32,9 @@ type Section = {
   links?: Link[];
   image?: string;
   imageAlt?: string;
+  imageFit?: 'cover' | 'contain';
+  gallery?: SectionImage[];
+  variant?: 'wide';
 };
 
 export type PageContent = {
@@ -222,8 +230,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
             { label: 'Google Flights', href: 'https://www.google.com/travel/flights?q=Flights%20from%20Chicago%20to%20Zurich' },
             { label: 'Expedia', href: 'https://www.expedia.com/Flights' },
           ],
-          image: '/images/places/zurich-old-town.jpg',
-          imageAlt: 'Zurich old town and the Limmat river',
+          image: '/images/places/chicago-skyline.jpg',
+          imageAlt: 'Chicago skyline by Lake Michigan',
         },
         {
           title: 'From New York',
@@ -235,8 +243,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
             { label: 'Google Flights', href: 'https://www.google.com/travel/flights?q=Flights%20from%20New%20York%20to%20Zurich' },
             { label: 'Expedia', href: 'https://www.expedia.com/Flights' },
           ],
-          image: '/images/places/hotel-sonne-lake-arrival.jpg',
-          imageAlt: 'A boat on Lake Zurich near Hotel Sonne',
+          image: '/images/places/new-york-skyline.jpg',
+          imageAlt: 'New York City skyline',
         },
         {
           title: 'From London and the UK',
@@ -251,8 +259,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
             { label: 'Expedia UK', href: 'https://www.expedia.co.uk/Flights' },
             { label: 'SBB', href: 'https://www.sbb.ch/en' },
           ],
-          image: '/images/places/hotel-sonne-lake-arrival.jpg',
-          imageAlt: 'A boat on Lake Zurich near Hotel Sonne',
+          image: '/images/places/london-skyline.jpg',
+          imageAlt: 'Westminster and the Houses of Parliament in London',
         },
         {
           title: 'From Sardinia',
@@ -270,18 +278,33 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
             { label: 'Trenitalia', href: 'https://www.trenitalia.com/en.html' },
             { label: 'SBB', href: 'https://www.sbb.ch/en' },
           ],
-          image: '/images/places/st-peter-zurich.jpg',
-          imageAlt: 'Kirche St. Peter in Zurich',
+          image: '/images/places/sardinia-cagliari.jpg',
+          imageAlt: 'The Castello district in Cagliari, Sardinia',
         },
         {
           title: 'From Zurich Airport',
-          body: 'Once in Zurich, public transport is usually the simplest way to reach Zurich city centre, Küsnacht, and the wedding venues.',
-          items: ['The train or S-Bahn from Zurich Airport to Zurich HB usually takes about 10-15 minutes.', 'For Küsnacht or Hotel Sonne, use SBB or ZVV from the airport or from Zurich HB and buy the ticket shown by the app.', 'Taxis and ride-hailing can be useful with children or heavy luggage, but they are usually much more expensive than public transport.', 'A rental car is not recommended for Zurich-only wedding logistics.'],
+          body: 'Zurich Airport has a very convenient train and S-Bahn connection to Zurich HB, with onward public transport to Küsnacht and the wedding venues. For ordinary wedding logistics, use the train rather than driving or taking a taxi.',
+          items: ['SBB trains usually leave for Zurich HB about every 10 minutes, and the journey takes about 15 minutes.', 'For Küsnacht or Hotel Sonne, use SBB Mobile or ZVV from the airport or from Zurich HB and buy the ticket shown by the app.', 'Taxis and ride-hailing can be useful with children, heavy luggage, or accessibility needs, but they are usually much more expensive than public transport.', 'A rental car is not recommended for Zurich-only wedding logistics.'],
           links: [
-            { label: 'Zurich Airport to city', href: 'https://www.zuerich.com/en/zurich-airport-to-zurich-city-center' },
+            { label: 'Zurich Airport public transport', href: 'https://www.flughafen-zuerich.ch/en/passengers/practical/parking-and-transport/train-tram-and-bus' },
             { label: 'SBB', href: 'https://www.sbb.ch/en' },
+            { label: 'SBB Mobile', href: 'https://www.sbb.ch/en/timetable/mobile-apps/sbb-mobile.html' },
             { label: 'ZVV', href: 'https://www.zvv.ch/en' },
           ],
+          image: '/images/places/sbb-train.jpg',
+          imageAlt: 'SBB train travelling through the Swiss countryside',
+        },
+        {
+          title: 'Zurich wedding map',
+          body: 'This schematic map is intended for orientation rather than route planning. It shows the relationship between Zurich Airport, Zurich HB, the ceremony in the old town, and the reception in Küsnacht.',
+          items: ['Kirche St. Peter is in Zurich old town, close to the lake and central tram connections.', 'Hotel Sonne is in Küsnacht on the right bank of Lake Zurich.', 'Zurich Airport and Zurich HB are connected by frequent trains; use SBB Mobile or ZVV for the exact journey on the day.'],
+          links: [
+            { label: 'OpenStreetMap: Zurich and Küsnacht', href: 'https://www.openstreetmap.org/#map=12/47.3365/8.5920' },
+          ],
+          image: '/images/places/zurich-wedding-map.svg',
+          imageAlt: 'Schematic map of Zurich, Küsnacht, Zurich Airport, Kirche St. Peter, and Hotel Sonne',
+          imageFit: 'contain',
+          variant: 'wide',
         },
         {
           title: 'Official links',
@@ -305,14 +328,18 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Closest to the party: Küsnacht',
           body: 'Staying in Küsnacht keeps you near Hotel Sonne after dinner and dancing. This is likely the easiest choice for guests who value convenience at the end of the evening.',
-          items: ['Hotel Sonne Küsnacht: likely priority for a room block.', 'OXEN Küsnacht: nearby option to confirm.', 'Late-night transport plan: TBD.'],
+          items: ['Hotel Sonne Küsnacht: likely priority for a room block.', 'OXEN Küsnacht: nearby option with a small number of rooms.', 'Late-night transport plan: TBD.'],
+          links: [
+            { label: 'Hotel Sonne Küsnacht', href: 'https://sonne.ch/en/' },
+            { label: 'OXEN Küsnacht', href: 'https://www.oxen.ch/' },
+          ],
           image: '/images/places/hotel-sonne-kuesnacht.jpg',
           imageAlt: 'Hotel Sonne in Küsnacht',
         },
         {
           title: 'Central Zurich',
           body: 'Zurich city centre is practical for guests who want restaurants, sightseeing, train connections, and easy airport access.',
-          items: ['Look near Zurich HB, the Old Town, Bellevue, or Stadelhofen.', 'Choose accommodation near a tram or train stop.', 'Public transport is usually easier than renting a car.'],
+          items: ['Look near Zurich HB, the Old Town, Bellevue, or Stadelhofen for the most convenient city-centre stay.', 'More economical hotels may be easier to find in Zurich Altstetten or Oerlikon; both are connected to the centre and airport by public transport.', 'Choose accommodation near a tram, train, or bus stop.', 'Use public transport for travelling around Zurich; driving by car is not recommended for ordinary wedding logistics.'],
           image: '/images/places/zurich-old-town.jpg',
           imageAlt: 'Zurich old town and the Limmat river',
         },
@@ -320,6 +347,9 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           title: 'Booking guidance',
           body: 'Zurich can be expensive in June. We recommend booking early, checking cancellation terms, and comparing hotels with apartments if you are staying longer.',
           items: ['Booking codes: TBD', 'Room-block deadlines: TBD', 'Approximate price bands: TBD'],
+          links: [
+            { label: 'Airbnb Zurich, June 2027', href: 'https://www.airbnb.com/s/Zurich--Switzerland/homes?checkin=2027-06-10&checkout=2027-06-13&adults=2' },
+          ],
         },
       ],
     },
@@ -401,20 +431,28 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       sections: [
         {
           title: 'Public transport',
-          body: 'Trains, trams, buses, and boats are punctual, clean, safe, and usually easier than driving. Ticket checks are strict: buy the right ticket before boarding and keep it ready with ID if required.',
-          items: ['Use SBB for national trains and ZVV for Zurich-area tickets. ZVV tickets are zone-based; Zurich city is zone 110, Küsnacht is zone 140, and Richterswil is zone 153.', 'For central Zurich, a ZVV single or 24h ticket is usually easiest. For Küsnacht or Richterswil, enter the destination in the SBB/ZVV app and buy the zones it assigns.', 'For day trips beyond Zurich, compare a normal point-to-point ticket, a Supersaver ticket, and a Saver Day Pass. Supersaver tickets can be cheaper when bought in advance, but they are tied to a specific train and are less flexible.', 'Children up to 5.99 years travel free in the Zurich network. Children aged 6 to 15.99 pay the reduced fare; for longer Swiss travel, check SBB child tickets and Junior Travelcard options.'],
+          body: 'Zurich is easy to navigate by tram, train, bus, and boat. Use public transport for travelling around Zurich; driving by car is not recommended for ordinary wedding logistics.',
+          items: ['Use SBB Mobile for Swiss-wide timetable searches and tickets; use ZVV for Zurich-area zones and local tickets.', 'ZVV tickets are zone-based; Zurich city is zone 110, Küsnacht is zone 140, and Richterswil is zone 153.', 'For central Zurich, a ZVV single or 24h ticket is usually easiest. For Küsnacht or Richterswil, enter the destination in SBB Mobile or the ZVV app and buy the zones it assigns.', 'For day trips beyond Zurich, compare a normal point-to-point ticket, a Supersaver ticket, and a Saver Day Pass. Supersaver tickets can be cheaper when bought in advance, but they are tied to a specific train and are less flexible.', 'Children under 6 travel free in the Zurich network. Children aged 6 to 15 pay the reduced fare; for longer Swiss travel, check SBB child tickets and Junior Travelcard options.', 'For relaxed city exploring, consider renting a bike when weather and traffic confidence make it sensible.'],
+          gallery: [
+            { src: '/images/places/sbb-train.jpg', alt: 'SBB train travelling through the Swiss countryside' },
+            { src: '/images/places/zurich-tram.jpg', alt: 'Zurich tram on Bahnhofstrasse' },
+            { src: '/images/places/hotel-sonne-lake-arrival.jpg', alt: 'Lake Zurich boat near Küsnacht' },
+            { src: '/images/places/santis-cablecar.jpg', alt: 'Säntis cable car in the Alpstein' },
+          ],
           links: [
             { label: 'SBB', href: 'https://www.sbb.ch/en' },
+            { label: 'SBB Mobile', href: 'https://www.sbb.ch/en/timetable/mobile-apps/sbb-mobile.html' },
             { label: 'ZVV', href: 'https://www.zvv.ch/en' },
             { label: 'ZVV tickets', href: 'https://www.zvv.ch/en/travelcards-and-tickets/tickets.html' },
             { label: 'ZVV ticket inspection', href: 'https://www.zvv.ch/en/travelcards-and-tickets/sales-and-support/ticket-inspection/inspection.html' },
             { label: 'SBB children', href: 'https://www.sbb.ch/en/travelcards-and-tickets/tickets-for-switzerland/children.html' },
+            { label: 'Züri rollt bike rental', href: 'https://www.zuerich.com/en/visit/sport/zurich-on-wheels' },
           ],
         },
         {
           title: 'Choosing tickets',
           body: 'There is no single best ticket for every guest. These notes are intended as practical starting points.',
-          items: ['To move around Zurich: use a ZVV city ticket, 24h ticket, or the Zürich Card if you also want museums, airport transfer, Uetliberg, and short boat rides.', 'To get to Küsnacht for the reception area: buy a ZVV/SBB ticket from your starting stop to Küsnacht ZH or Hotel Sonne’s nearest stop; the app will choose the necessary zones.', 'To go to Richterswil: buy a ZVV/SBB ticket to Richterswil, or consider an all-zone/day ticket if you are making several Zurich-network trips that day.', 'For bigger day trips such as Lucerne, Bern, Basel, or mountain areas: check SBB early for Supersaver tickets or Saver Day Passes, but avoid inflexible tickets if your plans depend on a flight arrival or weather.'],
+          items: ['To move around Zurich by tram, train, or bus: use a ZVV city ticket, 24h ticket, or the Zürich Card if you also want museums, airport transfer, Uetliberg, and short boat rides.', 'To get to Küsnacht for the reception area: buy a ZVV/SBB ticket from your starting stop to Küsnacht ZH or Hotel Sonne’s nearest stop; the app will choose the necessary zones.', 'To go to Richterswil: buy a ZVV/SBB ticket to Richterswil, or consider an all-zone/day ticket if you are making several Zurich-network trips that day.', 'For bigger day trips such as Lucerne, Bern, Basel, or mountain areas: check SBB early for Supersaver tickets or Saver Day Passes, but avoid inflexible tickets if your plans depend on a flight arrival or weather.'],
           links: [
             { label: 'Zürich Card', href: 'https://www.zuerich.com/en/zurichcard' },
             { label: 'Zürich Card transport', href: 'https://www.zuerich.com/en/zurichcard/public-transportation' },
@@ -425,7 +463,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Money and budgeting',
           body: 'Switzerland uses Swiss francs and is often expensive, but planning ahead can keep costs manageable.',
-          items: ['Migros and Coop are the largest supermarket chains and are useful for breakfasts, snacks, picnic supplies, and children’s basics.', 'Taxis are usually very expensive. Uber usually works, but public transport is normally cheaper, cleaner, safer, and easier.', 'We advise against renting a car for Zurich and wedding logistics; parking and city traffic make it difficult.', 'Low-cost options include lake walks, Old Town wandering, viewpoints, parks, supermarket picnics, and choosing accommodation near a tram or train stop.'],
+          items: ['Migros and Coop are the largest supermarket chains and are useful for breakfasts, snacks, picnic supplies, and children’s basics.', 'Taxis are usually expensive. Use them only when luggage, children, or accessibility needs make them genuinely useful.', 'Use public transport for travelling around Zurich; driving by car is not recommended for ordinary wedding logistics.', 'Low-cost options include lake walks, Old Town wandering, viewpoints, parks, supermarket picnics, and choosing accommodation near a tram, train, or bus stop.'],
         },
         {
           title: 'Weather, packing, and practical tips',
@@ -483,12 +521,15 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       title: 'Contact',
       kicker: 'Questions',
       intro:
-        'For now, please use the travel, stay, and FAQ pages for planning. A shared wedding contact route will be added once the domain and guest support plan are confirmed.',
+        'For questions about the wedding website, travel, accommodation, or RSVP, please contact us at gabyandmanfredi@gmail.com.',
       sections: [
         {
           title: 'Wedding questions',
-          body: 'A shared wedding email address is planned, but should only be created after the domain is chosen.',
-          items: ['General questions: TBD', 'RSVP support: TBD', 'Wedding-week urgent contact: TBD'],
+          body: 'We will use one shared email address for practical wedding questions while the site is being prepared.',
+          items: ['General questions: gabyandmanfredi@gmail.com', 'RSVP support: gabyandmanfredi@gmail.com', 'Wedding-week urgent contact: TBD'],
+          links: [
+            { label: 'gabyandmanfredi@gmail.com', href: 'mailto:gabyandmanfredi@gmail.com' },
+          ],
         },
       ],
     },
@@ -513,6 +554,19 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           links: [{ label: 'Source', href: 'https://commons.wikimedia.org/wiki/File:Kunsthaus_Z%C3%BCrich_-_Heimplatz_2011-08-06_18-46-28_ShiftN.jpg' }],
         },
         {
+          title: 'Travel and public transport images',
+          body: 'Travel-origin and public-transport photos are from Wikimedia Commons. Source details are also tracked in doc/assets/image_sources.md.',
+          links: [
+            { label: 'Chicago', href: 'https://commons.wikimedia.org/wiki/File:Chicago_Skyline_and_Lake_Michigan.JPG' },
+            { label: 'New York', href: 'https://commons.wikimedia.org/wiki/File:Manhattan_Skyline_night.jpg' },
+            { label: 'London', href: 'https://commons.wikimedia.org/wiki/File:London_Houses_of_Parliament_and_Westminster_Bridge.jpg' },
+            { label: 'Cagliari', href: 'https://commons.wikimedia.org/wiki/File:Castello,_Cagliari.jpg' },
+            { label: 'SBB train', href: 'https://commons.wikimedia.org/wiki/File:SBB_RABe_511_(50852815551).jpg' },
+            { label: 'Zurich tram', href: 'https://commons.wikimedia.org/wiki/File:Tram_E,_Bahnhofstrasse,_Zurich,_Switzerland.JPG' },
+            { label: 'Säntis cable car', href: 'https://commons.wikimedia.org/wiki/File:S%C3%A4ntis_LSB_Blaue_Kabine_von_Talstation.jpg' },
+          ],
+        },
+        {
           title: 'Hotel Sonne Küsnacht',
           body: 'Prototype images from the official Hotel Sonne website, included for private wedding-site review. Permission should be confirmed before public launch.',
           links: [
@@ -529,6 +583,278 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
 
 pages.it = mirrorLanguage('it');
 pages.de = mirrorLanguage('de');
+
+applyLocalizedCopy('it', {
+  travel: {
+    title: 'Viaggio',
+    kicker: 'Come arrivare a Zurigo',
+    intro:
+      'L’aeroporto di Zurigo è il principale punto di arrivo. Queste indicazioni si basano sulle rotte attualmente pubblicate e andranno ricontrollate quando saranno disponibili gli orari per giugno 2027.',
+    notice:
+      'Bozza in italiano da rivedere. Ricontrollate i requisiti ufficiali di ingresso prima di prenotare e di nuovo prima di partire. La Svizzera fa parte dell’area Schengen e le regole potrebbero cambiare prima di giugno 2027.',
+    sections: [
+      {
+        title: 'Da Chicago',
+        body:
+          "Chicago O'Hare (ORD) è l'aeroporto di riferimento. Gli orari attualmente pubblicati includono voli diretti ORD-ZRH, ma giugno 2027 andrà verificato quando le prenotazioni saranno aperte.",
+        items: ['Controllate prima i voli diretti, in particolare SWISS e i servizi operati da United.', 'Se i voli diretti sono costosi, confrontate itinerari con uno scalo in hub europei come Francoforte, Monaco, Amsterdam, Parigi o Londra.', 'Arrivate entro giovedì 10 giugno 2027 al più tardi; mercoledì 9 giugno 2027 è preferibile per jet lag e possibili ritardi dei bagagli.', 'Dall’aeroporto di Zurigo usate i mezzi pubblici, salvo che un viaggio più ampio in Svizzera o Italia renda davvero necessaria l’auto.'],
+        imageAlt: 'Skyline di Chicago sul Lago Michigan',
+      },
+      {
+        title: 'Da New York',
+        body:
+          'Per New York, confrontate JFK e Newark (EWR). Gli orari attualmente pubblicati includono voli diretti da entrambi gli aeroporti a Zurigo.',
+        items: ['Controllate JFK e Newark prima di considerare LaGuardia; LaGuardia è di solito utile solo per coincidenze interne.', 'I voli diretti sono l’opzione più pratica quando il prezzo è ragionevole; uno scalo può essere utile per chi parte da fuori New York City.', 'Arrivate entro giovedì 10 giugno 2027 al più tardi; mercoledì 9 giugno 2027 lascia più margine.', 'Dall’aeroporto di Zurigo usate i mezzi pubblici, salvo che il resto del viaggio richieda davvero un’auto.'],
+        imageAlt: 'Skyline di New York City',
+      },
+      {
+        title: 'Da Londra e dal Regno Unito',
+        body:
+          'Da Londra, i voli diretti sono di solito la soluzione più semplice. EasyJet può essere conveniente, ma controllate con attenzione le regole sui bagagli prima di confrontare i prezzi.',
+        items: ['Confrontate Heathrow, Gatwick, City, Luton e Stansted in base a dove vivete; Heathrow, Gatwick e City sono di solito i più rilevanti per Zurigo.', 'Per chi vive fuori Londra, confrontate anche Manchester, Edimburgo, Bristol e altri aeroporti regionali con voli diretti o con uno scalo.', 'Con EasyJet, la tariffa più bassa può includere solo un piccolo bagaglio da mettere sotto il sedile, attualmente 45 x 36 x 20 cm incluse maniglie e ruote; aggiungete bagaglio a mano grande o bagaglio da stiva online se necessario.', 'Il viaggio in treno è Londra St Pancras-Parigi con Eurostar, trasferimento da Gare du Nord a Gare de Lyon, poi TGV Lyria per Zurich HB; prevedete una coincidenza ampia a Parigi.'],
+        imageAlt: 'Westminster e le Houses of Parliament a Londra',
+      },
+      {
+        title: 'Dalla Sardegna',
+        body:
+          'La maggior parte degli ospiti italiani dovrebbe partire dalla Sardegna: iniziate quindi da Cagliari e Olbia, invece di fare una ricerca generica dall’Italia.',
+        items: ['Per volare, controllate prima Cagliari (CAG) e Olbia (OLB) verso Zurigo (ZRH). Gli orari attuali di Edelweiss mostrano rotte stagionali per Zurigo da entrambi gli aeroporti, ma giugno 2027 non è ancora completamente prenotabile.', 'EasyJet può essere conveniente per Olbia-Zurigo quando disponibile. Controllate con attenzione il bagaglio incluso, perché la tariffa più bassa può includere solo un piccolo bagaglio da mettere sotto il sedile, attualmente 45 x 36 x 20 cm incluse maniglie e ruote.', 'Se non c’è un volo diretto comodo, confrontate Cagliari o Olbia via Milano, Roma o un altro hub europeo. Alghero può funzionare con una coincidenza, ma è meno probabile che sia la soluzione più semplice per Zurigo.', 'Per arrivare in auto, prendete un traghetto notturno dalla Sardegna a Genova e poi guidate da Genova a Zurigo. Il traghetto dura di solito circa 10-13 ore a seconda della tratta e dell’operatore; Genova-Zurigo richiede circa cinque ore prima di pause, frontiera e traffico al Gottardo o al San Bernardino.', 'Se entrate in Svizzera in auto, acquistate la vignetta autostradale dal portale ufficiale svizzero e controllate il traffico nei tunnel alpini prima di lasciare Genova. Il parcheggio a Zurigo e Küsnacht va pianificato in anticipo.'],
+        imageAlt: 'Il quartiere Castello a Cagliari, Sardegna',
+      },
+      {
+        title: 'Dall’aeroporto di Zurigo',
+        body:
+          'L’aeroporto di Zurigo ha un collegamento ferroviario e S-Bahn molto comodo con Zurich HB, con proseguimento in mezzi pubblici verso Küsnacht e i luoghi del matrimonio. Per gli spostamenti del matrimonio, usate il treno invece di guidare o prendere un taxi.',
+        items: ['I treni SBB per Zurich HB partono di solito circa ogni 10 minuti e il viaggio dura circa 15 minuti.', 'Per Küsnacht o Hotel Sonne, usate SBB Mobile o ZVV dall’aeroporto o da Zurich HB e acquistate il biglietto indicato dall’app.', 'Taxi e servizi ride-hailing possono essere utili con bambini, bagagli pesanti o necessità di accessibilità, ma di solito sono molto più costosi dei mezzi pubblici.', 'Un’auto a noleggio non è consigliata per gli spostamenti del matrimonio a Zurigo.'],
+        imageAlt: 'Treno SBB nella campagna svizzera',
+      },
+      {
+        title: 'Mappa dei luoghi del matrimonio a Zurigo',
+        body:
+          'Questa mappa schematica serve solo per orientarsi. Mostra il rapporto tra l’aeroporto di Zurigo, Zurich HB, la cerimonia nel centro storico e il ricevimento a Küsnacht.',
+        items: ['Kirche St. Peter si trova nel centro storico di Zurigo, vicino al lago e ai collegamenti tram centrali.', 'Hotel Sonne si trova a Küsnacht, sulla sponda destra del Lago di Zurigo.', 'L’aeroporto di Zurigo e Zurich HB sono collegati da treni frequenti; usate SBB Mobile o ZVV per il percorso esatto nel giorno del viaggio.'],
+        imageAlt: 'Mappa schematica di Zurigo, Küsnacht, aeroporto di Zurigo, Kirche St. Peter e Hotel Sonne',
+      },
+      {
+        title: 'Link ufficiali',
+        body: 'Usate le fonti ufficiali per passaporti, visti, ETIAS e trasporti.',
+      },
+    ],
+  },
+  stay: {
+    title: 'Dove dormire',
+    kicker: 'Alloggio',
+    intro:
+      'Küsnacht è più comoda per la festa, mentre il centro di Zurigo è ideale per visitare la città e muoversi con i mezzi pubblici. Informazioni su eventuali camere riservate saranno aggiunte appena confermate.',
+    sections: [
+      {
+        title: 'Più vicino alla festa: Küsnacht',
+        body:
+          'Dormire a Küsnacht vi tiene vicino all’Hotel Sonne dopo cena e dopo la festa. È probabilmente la scelta più comoda per chi preferisce semplificare il rientro serale.',
+        items: ['Hotel Sonne Küsnacht: probabilmente la prima opzione per un eventuale blocco camere.', 'OXEN Küsnacht: opzione vicina con un piccolo numero di camere.', 'Piano per il rientro notturno: TBD.'],
+        imageAlt: 'Hotel Sonne a Küsnacht',
+      },
+      {
+        title: 'Centro di Zurigo',
+        body:
+          'Il centro di Zurigo è pratico per chi desidera ristoranti, visite, collegamenti ferroviari e facile accesso all’aeroporto.',
+        items: ['Cercate vicino a Zurich HB, centro storico, Bellevue o Stadelhofen per la soluzione più comoda in centro.', 'Hotel più economici possono essere più facili da trovare a Zurich Altstetten o Oerlikon; entrambe le zone sono collegate al centro e all’aeroporto con i mezzi pubblici.', 'Scegliete un alloggio vicino a una fermata di tram, treno o autobus.', 'Usate i mezzi pubblici per muovervi a Zurigo; spostarsi in auto non è consigliato per la normale logistica del matrimonio.'],
+        imageAlt: 'Centro storico di Zurigo e fiume Limmat',
+      },
+      {
+        title: 'Indicazioni per prenotare',
+        body:
+          'Zurigo può essere costosa a giugno. Consigliamo di prenotare presto, controllare le condizioni di cancellazione e confrontare hotel e appartamenti se vi fermate più a lungo.',
+        items: ['Codici di prenotazione: TBD', 'Scadenze per eventuali blocchi camere: TBD', 'Fasce di prezzo indicative: TBD'],
+      },
+    ],
+  },
+  'switzerland-guide': {
+    title: 'Guida alla Svizzera',
+    kicker: 'Note pratiche',
+    intro:
+      'Alcune note pratiche per chi visita la Svizzera: mezzi pubblici, valuta, meteo, telefoni e pianificazione semplice.',
+    sections: [
+      {
+        title: 'Trasporti pubblici',
+        body:
+          'A Zurigo ci si muove facilmente con tram, treni, autobus e battelli. Usate i mezzi pubblici per muovervi a Zurigo; viaggiare in auto non è consigliato per la normale logistica del matrimonio.',
+        items: ['Usate SBB Mobile per orari e biglietti in tutta la Svizzera; usate ZVV per le zone e i biglietti dell’area di Zurigo.', 'I biglietti ZVV sono basati sulle zone; la città di Zurigo è la zona 110, Küsnacht la zona 140 e Richterswil la zona 153.', 'Per il centro di Zurigo, di solito è più semplice un biglietto singolo ZVV o un biglietto 24 ore. Per Küsnacht o Richterswil, inserite la destinazione in SBB Mobile o nell’app ZVV e acquistate le zone indicate.', 'Per gite fuori Zurigo, confrontate un biglietto punto-punto, un Supersaver ticket e un Saver Day Pass. I Supersaver possono costare meno se acquistati in anticipo, ma sono legati a un treno specifico e sono meno flessibili.', 'I bambini sotto i 6 anni viaggiano gratis nella rete di Zurigo. I bambini dai 6 ai 15 anni pagano la tariffa ridotta; per viaggi più lunghi in Svizzera, controllate i biglietti bambini SBB e la Junior Travelcard.', 'Per esplorare la città con calma, valutate il noleggio di una bici quando meteo e traffico lo rendono sensato.'],
+      },
+      {
+        title: 'Come scegliere i biglietti',
+        body: 'Non esiste un biglietto migliore per tutti. Queste note sono un punto di partenza pratico.',
+        items: ['Per muoversi a Zurigo in tram, treno o autobus: usate un biglietto ZVV per la città, un biglietto 24 ore o la Zürich Card se volete includere anche musei, trasferimento dall’aeroporto, Uetliberg e brevi tratte in battello.', 'Per arrivare a Küsnacht nella zona del ricevimento: acquistate un biglietto ZVV/SBB dal punto di partenza a Küsnacht ZH o alla fermata più vicina all’Hotel Sonne; l’app sceglierà le zone necessarie.', 'Per andare a Richterswil: acquistate un biglietto ZVV/SBB per Richterswil, oppure considerate un giornaliero/all-zone se fate diversi spostamenti nella rete di Zurigo nello stesso giorno.', 'Per gite più lunghe, come Lucerna, Berna, Basilea o zone di montagna: controllate SBB in anticipo per Supersaver tickets o Saver Day Passes, ma evitate biglietti poco flessibili se il piano dipende da arrivi aerei o meteo.'],
+      },
+      {
+        title: 'Costi e spese pratiche',
+        body:
+          'La Svizzera usa il franco svizzero ed è spesso costosa, ma una buona pianificazione aiuta a contenere le spese.',
+        items: ['Migros e Coop sono le principali catene di supermercati e sono utili per colazioni, snack, picnic e necessità per bambini.', 'I taxi sono di solito costosi. Usateli solo quando bagagli, bambini o esigenze di accessibilità li rendono davvero utili.', 'Usate i mezzi pubblici per muovervi a Zurigo; viaggiare in auto non è consigliato per la normale logistica del matrimonio.', 'Opzioni economiche includono passeggiate sul lago, centro storico, punti panoramici, parchi, picnic con prodotti del supermercato e alloggi vicino a tram, treno o autobus.'],
+      },
+      {
+        title: 'Meteo, bagagli e consigli pratici',
+        body:
+          'Giugno è di solito piacevole, ma il meteo svizzero può cambiare rapidamente. Portate abiti adatti sia al sole sia alla pioggia, soprattutto per lago e montagna.',
+        items: ['Portate occhiali da sole, strati leggeri, una giacca antipioggia e scarpe comode per camminare su ciottoli o lungolago.', 'Per il giorno del matrimonio, scegliete scarpe formali con cui possiate davvero camminare e uno strato leggero per la barca o la serata sul lago.', 'La Svizzera usa prese di tipo J. Le spine europee sottili di tipo C di solito entrano, ma spine Schuko/Tipo F più grandi, UK e USA richiedono un adattatore.', 'La maggior parte dei caricabatterie moderni per telefoni e computer supporta 230V, ma controllate l’etichetta di asciugacapelli e altri dispositivi più potenti.'],
+      },
+      {
+        title: 'Consigli personali',
+        body:
+          'Gli ospiti possono contattare Manfredi e la famiglia per consigli pratici, soprattutto su escursioni, programmi con bambini, viaggi più lunghi o itinerari con un livello di cammino specifico.',
+      },
+    ],
+  },
+  contact: {
+    title: 'Contatti',
+    kicker: 'Domande',
+    intro:
+      'Per domande sul sito, sul viaggio, sull’alloggio o sulla RSVP, potete scriverci a gabyandmanfredi@gmail.com.',
+    sections: [
+      {
+        title: 'Domande sul matrimonio',
+        body: 'Useremo un unico indirizzo email condiviso per le domande pratiche mentre il sito viene preparato.',
+        items: ['Domande generali: gabyandmanfredi@gmail.com', 'Supporto RSVP: gabyandmanfredi@gmail.com', 'Contatto urgente durante la settimana del matrimonio: TBD'],
+      },
+    ],
+  },
+});
+
+applyLocalizedCopy('de', {
+  travel: {
+    title: 'Anreise',
+    kicker: 'Anreise nach Zürich',
+    intro:
+      'Der Flughafen Zürich ist der wichtigste Ankunftsort. Diese Hinweise beruhen auf derzeit veröffentlichten Verbindungen und sollten nochmals geprüft werden, sobald die Fahrpläne und Flugpläne für Juni 2027 verfügbar sind.',
+    notice:
+      'Deutscher Entwurf zur Prüfung. Bitte prüft die offiziellen Einreisebestimmungen vor der Buchung und nochmals vor der Reise. Die Schweiz gehört zum Schengen-Raum; die Regeln können sich bis Juni 2027 ändern.',
+    sections: [
+      {
+        title: 'Aus Chicago',
+        body:
+          "Chicago O'Hare (ORD) ist der relevante Flughafen. Aktuell veröffentlichte Flugpläne enthalten Direktflüge ORD-ZRH; Juni 2027 sollte geprüft werden, sobald Buchungen möglich sind.",
+        items: ['Prüft zuerst Direktflüge, insbesondere SWISS und von United durchgeführte Verbindungen.', 'Wenn Direktflüge teuer sind, vergleicht Verbindungen mit einem Umstieg über europäische Drehkreuze wie Frankfurt, München, Amsterdam, Paris oder London.', 'Kommt spätestens am Donnerstag, 10. Juni 2027 an; Mittwoch, 9. Juni 2027 ist wegen Jetlag und möglicher Gepäckverspätungen besser.', 'Nutzt ab Flughafen Zürich den öffentlichen Verkehr, sofern nicht eine längere Schweiz- oder Italienreise ein Auto wirklich nötig macht.'],
+        imageAlt: 'Skyline von Chicago am Lake Michigan',
+      },
+      {
+        title: 'Aus New York',
+        body:
+          'Für New York lohnt sich der Vergleich von JFK und Newark (EWR). Aktuell veröffentlichte Flugpläne enthalten Direktflüge von beiden Flughäfen nach Zürich.',
+        items: ['Prüft JFK und Newark, bevor ihr LaGuardia berücksichtigt; LaGuardia ist meistens nur für Inlandanschlüsse sinnvoll.', 'Direktflüge sind am praktischsten, wenn der Preis vernünftig ist; Umsteigeverbindungen können hilfreich sein, wenn ihr nicht direkt aus New York City reist.', 'Kommt spätestens am Donnerstag, 10. Juni 2027 an; Mittwoch, 9. Juni 2027 gibt mehr Spielraum.', 'Nutzt ab Flughafen Zürich den öffentlichen Verkehr, sofern eure weitere Reise nicht wirklich ein Auto erfordert.'],
+        imageAlt: 'Skyline von New York City',
+      },
+      {
+        title: 'Aus London und dem Vereinigten Königreich',
+        body:
+          'Aus London sind Direktflüge meistens die einfachste Option. EasyJet kann preislich attraktiv sein, aber prüft die Gepäckregeln sorgfältig, bevor ihr Preise vergleicht.',
+        items: ['Vergleicht London Heathrow, Gatwick, City, Luton und Stansted je nach Wohnort; Heathrow, Gatwick und City sind für Zürich meist am relevantesten.', 'Ausserhalb Londons lohnt sich auch der Vergleich von Manchester, Edinburgh, Bristol und anderen Regionalflughäfen mit Direkt- oder Umsteigeverbindungen.', 'Bei EasyJet kann der günstigste Tarif nur ein kleines Gepäckstück unter dem Sitz enthalten, derzeit 45 x 36 x 20 cm inklusive Griffe und Rollen; bucht grosses Handgepäck oder Aufgabegepäck online dazu, wenn ihr es braucht.', 'Die Bahnroute führt von London St Pancras mit Eurostar nach Paris, dann von Gare du Nord nach Gare de Lyon und mit TGV Lyria nach Zürich HB; plant in Paris grosszügig Zeit für den Wechsel ein.'],
+        imageAlt: 'Westminster und die Houses of Parliament in London',
+      },
+      {
+        title: 'Aus Sardinien',
+        body:
+          'Die meisten italienischen Gäste werden voraussichtlich aus Sardinien reisen. Beginnt daher mit Cagliari und Olbia statt mit einer allgemeinen Italien-Suche.',
+        items: ['Für Flüge prüft zuerst Cagliari (CAG) und Olbia (OLB) nach Zürich (ZRH). Aktuelle Edelweiss-Flugpläne zeigen saisonale Zürich-Verbindungen von beiden Flughäfen, aber Juni 2027 ist noch nicht vollständig buchbar.', 'EasyJet kann für Olbia-Zürich günstig sein, wenn die Verbindung verfügbar ist. Prüft die Gepäckbestimmungen sorgfältig, da der günstigste Tarif nur ein kleines Gepäckstück unter dem Sitz enthalten kann, derzeit 45 x 36 x 20 cm inklusive Griffe und Rollen.', 'Wenn es keinen passenden Direktflug gibt, vergleicht Cagliari oder Olbia via Mailand, Rom oder ein anderes europäisches Drehkreuz. Alghero kann mit Umstieg funktionieren, ist aber wahrscheinlich seltener die einfachste Route nach Zürich.', 'Mit dem Auto: nehmt eine Nachtfähre von Sardinien nach Genua und fahrt dann von Genua nach Zürich. Die Fähre dauert je nach Strecke und Anbieter meist etwa 10-13 Stunden; Genua-Zürich dauert vor Pausen, Grenze und Gotthard- oder San-Bernardino-Verkehr ungefähr fünf Stunden.', 'Wenn ihr mit dem Auto in die Schweiz fahrt, kauft die Autobahnvignette über das offizielle Schweizer Portal und prüft vor der Abfahrt in Genua den Verkehr an den Alpentunnels. Parken in Zürich und Küsnacht sollte vorab geplant werden.'],
+        imageAlt: 'Das Castello-Viertel in Cagliari, Sardinien',
+      },
+      {
+        title: 'Ab Flughafen Zürich',
+        body:
+          'Der Flughafen Zürich hat eine sehr bequeme Zug- und S-Bahn-Verbindung zum Zürich HB, mit weiterem öffentlichem Verkehr nach Küsnacht und zu den Hochzeitsorten. Für die normale Hochzeitslogistik nutzt den Zug statt Auto oder Taxi.',
+        items: ['SBB-Züge nach Zürich HB fahren in der Regel etwa alle 10 Minuten; die Fahrt dauert ungefähr 15 Minuten.', 'Für Küsnacht oder Hotel Sonne nutzt SBB Mobile oder ZVV ab Flughafen oder ab Zürich HB und kauft das von der App angezeigte Ticket.', 'Taxis und Ride-Hailing können mit Kindern, schwerem Gepäck oder Barrierefreiheitsbedarf sinnvoll sein, sind aber meist deutlich teurer als der öffentliche Verkehr.', 'Ein Mietwagen ist für Hochzeitslogistik innerhalb Zürichs nicht empfohlen.'],
+        imageAlt: 'SBB-Zug in der Schweizer Landschaft',
+      },
+      {
+        title: 'Hochzeitskarte Zürich',
+        body:
+          'Diese schematische Karte dient der Orientierung, nicht der genauen Routenplanung. Sie zeigt die Lage von Flughafen Zürich, Zürich HB, der Trauung in der Altstadt und der Feier in Küsnacht.',
+        items: ['Die Kirche St. Peter liegt in der Zürcher Altstadt, nahe beim See und bei zentralen Tramverbindungen.', 'Hotel Sonne liegt in Küsnacht am rechten Zürichseeufer.', 'Flughafen Zürich und Zürich HB sind mit häufigen Zügen verbunden; nutzt SBB Mobile oder ZVV für die genaue Verbindung am Reisetag.'],
+        imageAlt: 'Schematische Karte von Zürich, Küsnacht, Flughafen Zürich, Kirche St. Peter und Hotel Sonne',
+      },
+      {
+        title: 'Offizielle Links',
+        body: 'Nutzt offizielle Quellen für Pass, Visum, ETIAS und Verkehr.',
+      },
+    ],
+  },
+  stay: {
+    title: 'Unterkunft',
+    kicker: 'Übernachten',
+    intro:
+      'Küsnacht ist am praktischsten für die Feier; Zürich Zentrum ist gut für Besichtigungen und Verkehrsanbindungen. Informationen zu Zimmerkontingenten werden ergänzt, sobald sie bestätigt sind.',
+    sections: [
+      {
+        title: 'Am nächsten zur Feier: Küsnacht',
+        body:
+          'Eine Unterkunft in Küsnacht hält euch nach Abendessen und Feier nahe beim Hotel Sonne. Das ist wahrscheinlich die einfachste Wahl, wenn der späte Rückweg möglichst unkompliziert sein soll.',
+        items: ['Hotel Sonne Küsnacht: voraussichtlich erste Option für ein mögliches Zimmerkontingent.', 'OXEN Küsnacht: nahe Option mit wenigen Zimmern.', 'Plan für späte Rückfahrt: TBD.'],
+        imageAlt: 'Hotel Sonne in Küsnacht',
+      },
+      {
+        title: 'Zürich Zentrum',
+        body:
+          'Zürich Zentrum ist praktisch für Restaurants, Besichtigungen, Zugverbindungen und einfache Anreise zum Flughafen.',
+        items: ['Sucht nahe Zürich HB, Altstadt, Bellevue oder Stadelhofen für die bequemste zentrale Lage.', 'Günstigere Hotels finden sich eventuell eher in Zürich Altstetten oder Oerlikon; beide Quartiere sind mit dem Zentrum und dem Flughafen durch öffentlichen Verkehr verbunden.', 'Wählt eine Unterkunft nahe bei Tram, Zug oder Bus.', 'Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist für die normale Hochzeitslogistik nicht empfohlen.'],
+        imageAlt: 'Zürcher Altstadt und Limmat',
+      },
+      {
+        title: 'Buchungshinweise',
+        body:
+          'Zürich kann im Juni teuer sein. Wir empfehlen früh zu buchen, Stornierungsbedingungen zu prüfen und bei längeren Aufenthalten Hotels mit Apartments zu vergleichen.',
+        items: ['Buchungscodes: TBD', 'Fristen für Zimmerkontingente: TBD', 'Ungefähre Preisbereiche: TBD'],
+      },
+    ],
+  },
+  'switzerland-guide': {
+    title: 'Schweiz-Guide',
+    kicker: 'Praktische Hinweise',
+    intro:
+      'Einige praktische Hinweise für Gäste in der Schweiz: öffentlicher Verkehr, Währung, Wetter, Mobiltelefone und einfache Planung.',
+    sections: [
+      {
+        title: 'Öffentlicher Verkehr',
+        body:
+          'In Zürich bewegt ihr euch gut mit Tram, Zug, Bus und Schiff. Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist für die normale Hochzeitslogistik nicht empfohlen.',
+        items: ['Nutzt SBB Mobile für Fahrpläne und Tickets in der ganzen Schweiz; nutzt ZVV für Zonen und lokale Tickets im Raum Zürich.', 'ZVV-Tickets sind zonenbasiert; Zürich Stadt ist Zone 110, Küsnacht Zone 140 und Richterswil Zone 153.', 'Für Zürich Zentrum ist meistens ein ZVV-Einzelticket oder ein 24h-Ticket am einfachsten. Für Küsnacht oder Richterswil gebt das Ziel in SBB Mobile oder der ZVV-App ein und kauft die angezeigten Zonen.', 'Für Tagesausflüge ausserhalb Zürichs vergleicht ein normales Punkt-zu-Punkt-Ticket, ein Supersaver Ticket und einen Saver Day Pass. Supersaver Tickets können günstiger sein, wenn sie früh gekauft werden, sind aber an einen bestimmten Zug gebunden und weniger flexibel.', 'Kinder unter 6 Jahren fahren im Zürcher Verkehrsverbund kostenlos. Kinder von 6 bis 15 Jahren zahlen den reduzierten Tarif; für längere Reisen in der Schweiz prüft SBB-Kindertickets und Junior Travelcard-Optionen.', 'Für entspanntes Erkunden der Stadt könnt ihr ein Velo mieten, wenn Wetter und Verkehrssituation für euch passen.'],
+      },
+      {
+        title: 'Tickets wählen',
+        body: 'Es gibt nicht ein einziges bestes Ticket für alle Gäste. Diese Hinweise sind als praktische Ausgangspunkte gedacht.',
+        items: ['Für Wege in Zürich mit Tram, Zug oder Bus: nutzt ein ZVV-Stadtticket, 24h-Ticket oder die Zürich Card, wenn ihr auch Museen, Flughafentransfer, Uetliberg und kurze Schiffsfahrten einschliessen möchtet.', 'Für Küsnacht beim Empfang: kauft ein ZVV/SBB-Ticket von eurer Start-Haltestelle nach Küsnacht ZH oder zur nächsten Haltestelle des Hotel Sonne; die App wählt die nötigen Zonen.', 'Für Richterswil: kauft ein ZVV/SBB-Ticket nach Richterswil oder erwägt ein All-Zones/Tagesticket, wenn ihr an diesem Tag mehrere Fahrten im Zürcher Verkehrsverbund macht.', 'Für grössere Tagesausflüge wie Luzern, Bern, Basel oder Bergregionen: prüft früh SBB für Supersaver Tickets oder Saver Day Passes, aber vermeidet unflexible Tickets, wenn eure Pläne von Flugankunft oder Wetter abhängen.'],
+      },
+      {
+        title: 'Geld und Budget',
+        body:
+          'Die Schweiz verwendet Schweizer Franken und ist oft teuer, aber gute Planung hilft, die Kosten überschaubar zu halten.',
+        items: ['Migros und Coop sind die grössten Supermarktketten und nützlich für Frühstück, Snacks, Picknick und Kinderbedarf.', 'Taxis sind meist teuer. Nutzt sie nur, wenn Gepäck, Kinder oder Barrierefreiheitsbedarf sie wirklich sinnvoll machen.', 'Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist für die normale Hochzeitslogistik nicht empfohlen.', 'Günstige Optionen sind Spaziergänge am See, Altstadt, Aussichtspunkte, Parks, Picknicks aus dem Supermarkt und Unterkunft nahe Tram, Zug oder Bus.'],
+      },
+      {
+        title: 'Wetter, Packen und praktische Tipps',
+        body:
+          'Juni ist meistens angenehm, aber Schweizer Wetter kann schnell wechseln. Packt für Sonne und Regen, besonders bei See- oder Bergplänen.',
+        items: ['Bringt Sonnenbrille, Schichten, eine leichte Regenjacke und bequeme Schuhe für Kopfsteinpflaster oder Seewege mit.', 'Für den Hochzeitstag wählt formelle Schuhe, in denen ihr wirklich gehen könnt, plus eine leichte Schicht für Boot oder Abend am See.', 'Die Schweiz verwendet Typ-J-Steckdosen. Schlanke europäische Typ-C-Stecker passen meist, grössere Schuko/Typ-F-Stecker sowie UK- und US-Stecker brauchen einen Adapter.', 'Die meisten modernen Handy- und Laptop-Ladegeräte funktionieren mit 230V, aber prüft das Etikett bei Haargeräten und anderen leistungsstärkeren Geräten.'],
+      },
+      {
+        title: 'Persönliche Empfehlungen',
+        body:
+          'Gäste können Manfredi und die Familie für praktische Hinweise kontaktieren, besonders zu Wanderungen, familienfreundlichen Plänen, längeren Reisen oder Routen für ein bestimmtes Wanderniveau.',
+      },
+    ],
+  },
+  contact: {
+    title: 'Kontakt',
+    kicker: 'Fragen',
+    intro:
+      'Bei Fragen zur Website, Anreise, Unterkunft oder RSVP schreibt uns bitte an gabyandmanfredi@gmail.com.',
+    sections: [
+      {
+        title: 'Fragen zur Hochzeit',
+        body: 'Wir verwenden eine gemeinsame E-Mail-Adresse für praktische Fragen, während die Website vorbereitet wird.',
+        items: ['Allgemeine Fragen: gabyandmanfredi@gmail.com', 'RSVP-Unterstützung: gabyandmanfredi@gmail.com', 'Dringender Kontakt in der Hochzeitswoche: TBD'],
+      },
+    ],
+  },
+});
 
 function mirrorLanguage(lang: Exclude<Lang, 'en'>): Record<PageKey, PageContent> {
   const labels = {
@@ -564,6 +890,12 @@ function mirrorLanguage(lang: Exclude<Lang, 'en'>): Record<PageKey, PageContent>
     pageKeys.map((key) => {
       const [title, kicker, intro] = labels[key];
       const englishPage = pages.en[key];
+      const sections = englishPage.sections.map((section) => ({
+        ...section,
+        items: section.items ? [...section.items] : undefined,
+        links: section.links ? section.links.map((link) => ({ ...link })) : undefined,
+        gallery: section.gallery ? section.gallery.map((image) => ({ ...image })) : undefined,
+      }));
       return [
         key,
         {
@@ -572,8 +904,29 @@ function mirrorLanguage(lang: Exclude<Lang, 'en'>): Record<PageKey, PageContent>
           kicker,
           intro,
           notice: englishPage.notice ? `${labels.suffix} ${englishPage.notice}` : labels.suffix,
+          sections,
         },
       ];
     }),
   ) as Record<PageKey, PageContent>;
+}
+
+type LocalizedSectionCopy = Partial<Pick<Section, 'title' | 'body' | 'items' | 'imageAlt'>>;
+
+type LocalizedPageCopy = Partial<Omit<PageContent, 'sections'> & { sections: LocalizedSectionCopy[] }>;
+
+function applyLocalizedCopy(lang: Exclude<Lang, 'en'>, copy: Partial<Record<PageKey, LocalizedPageCopy>>) {
+  (Object.entries(copy) as [PageKey, LocalizedPageCopy][]).forEach(([key, pageCopy]) => {
+    const page = pages[lang][key];
+    pages[lang][key] = {
+      ...page,
+      ...pageCopy,
+      sections: pageCopy.sections
+        ? page.sections.map((section, index) => ({
+            ...section,
+            ...(pageCopy.sections?.[index] ?? {}),
+          }))
+        : page.sections,
+    };
+  });
 }

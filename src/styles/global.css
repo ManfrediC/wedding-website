@@ -342,6 +342,10 @@ button {
   overflow: hidden;
 }
 
+.info-card-wide {
+  grid-column: 1 / -1;
+}
+
 .info-card > div {
   padding: 1.25rem;
 }
@@ -352,6 +356,11 @@ button {
   object-fit: cover;
   object-position: center;
   border-bottom: 1px solid var(--colour-line);
+}
+
+.info-card img.image-contain {
+  object-fit: contain;
+  background: #f4eadb;
 }
 
 .info-card h2 {
@@ -365,6 +374,22 @@ button {
 .info-card li {
   margin-bottom: 0.55rem;
   line-height: 1.55;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 1rem 0;
+}
+
+.media-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--colour-line);
+  border-radius: 4px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .timeline {
@@ -451,8 +476,22 @@ button {
   padding: 0 1.25rem 1.25rem;
 }
 
+.faq-links {
+  display: grid;
+  gap: 0.45rem;
+  margin: -0.6rem 0 1.25rem;
+  padding: 0 1.25rem 0 2.35rem;
+}
+
+.faq-links a {
+  border-bottom: 1px solid var(--colour-line);
+  color: var(--colour-green);
+  font-weight: 700;
+}
+
 .language-landing,
-.login-page {
+.login-page,
+.welcome-page {
   min-height: 100vh;
   display: grid;
   place-items: center;
@@ -463,6 +502,16 @@ button {
 
 .language-landing {
   min-height: 72vh;
+}
+
+.welcome-page {
+  min-height: 100vh;
+  background-image:
+    linear-gradient(90deg, rgba(250, 246, 239, 0.97) 0%, rgba(250, 246, 239, 0.9) 42%, rgba(250, 246, 239, 0.3) 78%),
+    var(--welcome-image);
+  background-position: center;
+  background-size: cover;
+  text-align: left;
 }
 
 .language-grid {
@@ -483,7 +532,8 @@ button {
   font-weight: 700;
 }
 
-.login-panel {
+.login-panel,
+.welcome-panel {
   width: min(100%, 430px);
   border: 1px solid var(--colour-line);
   border-radius: 4px;
@@ -491,24 +541,33 @@ button {
   padding: 2rem;
 }
 
-.login-panel h1 {
+.welcome-panel {
+  margin-right: auto;
+  margin-left: 5vw;
+}
+
+.login-panel h1,
+.welcome-panel h1 {
   font-size: 3rem;
 }
 
-.login-panel form {
+.login-panel form,
+.welcome-panel form {
   display: grid;
   gap: 0.8rem;
   margin-top: 1.5rem;
   text-align: left;
 }
 
-.login-panel label {
+.login-panel label,
+.welcome-panel label {
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
 }
 
-.login-panel input {
+.login-panel input,
+.welcome-panel input {
   width: 100%;
   min-height: 48px;
   border: 1px solid var(--colour-line);
@@ -517,6 +576,16 @@ button {
   background: white;
   color: var(--colour-charcoal);
   font-size: 1rem;
+}
+
+.form-error {
+  margin: 0;
+  color: #8a2d2d;
+  font-size: 0.9rem;
+}
+
+.form-error[hidden] {
+  display: none;
 }
 
 .small-note {
@@ -643,7 +712,7 @@ button {
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: 2.55rem;
   }
 
   h2 {
@@ -678,6 +747,25 @@ button {
 
   .notice-band {
     margin: 0 1.2rem;
+  }
+
+  .welcome-page {
+    align-items: end;
+    padding: 1.2rem;
+    background-image:
+      linear-gradient(180deg, rgba(250, 246, 239, 0.12) 0%, rgba(250, 246, 239, 0.96) 58%),
+      var(--welcome-image);
+    background-position: 62% center;
+  }
+
+  .welcome-panel {
+    width: 100%;
+    margin: 0;
+    padding: 1.4rem;
+  }
+
+  .welcome-panel h1 {
+    font-size: 2.45rem;
   }
 
   .timeline li {

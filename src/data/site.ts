@@ -3,7 +3,7 @@ export const wedding = {
     personOne: 'Gabriela Dago',
     personTwo: 'Manfredi Carta',
     display: 'Gabriela & Manfredi',
-    monogram: 'G | M',
+    monogram: 'G & M',
   },
   date: '2027-06-11',
   dateDisplay: {

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+  <title id="title">Schematic wedding map of Zurich and Küsnacht</title>
+  <desc id="desc">Schematic map showing Zurich Airport, Zurich HB, Kirche St. Peter, Lake Zurich, Hotel Sonne Küsnacht, Altstetten, and Oerlikon.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbf6ed; }
+      .land { fill: #f4eadb; }
+      .lake { fill: #b7d1d6; stroke: #78969b; stroke-width: 2; }
+      .route { fill: none; stroke: #736d5e; stroke-width: 4; stroke-linecap: round; }
+      .route-dash { fill: none; stroke: #736d5e; stroke-width: 4; stroke-dasharray: 10 12; stroke-linecap: round; }
+      .boat { fill: none; stroke: #2f6f78; stroke-width: 4; stroke-dasharray: 5 12; stroke-linecap: round; }
+      .pin { fill: #7e3f31; stroke: #fbf6ed; stroke-width: 4; }
+      .pin-secondary { fill: #315f53; stroke: #fbf6ed; stroke-width: 4; }
+      .label { fill: #2c332f; font-family: Georgia, 'Times New Roman', serif; font-size: 24px; font-weight: 700; }
+      .small { fill: #4c5149; font-family: Arial, sans-serif; font-size: 16px; }
+      .note { fill: #6f695f; font-family: Arial, sans-serif; font-size: 13px; letter-spacing: .02em; text-transform: uppercase; }
+    </style>
+  </defs>
+  <rect class="bg" width="900" height="620" rx="0" />
+  <path class="land" d="M0 0h900v620H0z" />
+  <path class="lake" d="M451 276c32 34 70 60 115 79 55 23 103 60 143 111 35 45 79 80 132 103l59 25V620H527c-10-28-17-57-21-87-7-53-25-96-55-131-21-25-43-48-67-68-18-15-27-31-26-48 1-23 21-35 55-35 11 0 24 8 38 25z" />
+  <path class="route-dash" d="M612 96c-34 32-70 51-109 59-45 9-84 34-116 76" />
+  <path class="route" d="M386 231c-19 25-30 53-33 83" />
+  <path class="route" d="M386 231c-62 14-117 31-165 52" />
+  <path class="route" d="M386 231c-2-37 9-70 34-99" />
+  <path class="route" d="M356 319c74 8 137 31 189 70" />
+  <path class="boat" d="M398 345c55 13 107 34 156 64" />
+
+  <circle class="pin-secondary" cx="612" cy="96" r="14" />
+  <text class="label" x="638" y="91">Zurich Airport</text>
+  <text class="small" x="638" y="115">frequent trains to Zurich HB</text>
+
+  <circle class="pin-secondary" cx="386" cy="231" r="14" />
+  <text class="label" x="404" y="224">Zurich HB</text>
+  <text class="small" x="404" y="248">main railway station</text>
+
+  <circle class="pin" cx="353" cy="319" r="15" />
+  <text class="label" x="72" y="319">Kirche St. Peter</text>
+  <text class="small" x="72" y="343">ceremony, old town</text>
+
+  <circle class="pin" cx="545" cy="389" r="15" />
+  <text class="label" x="570" y="386">Hotel Sonne</text>
+  <text class="small" x="570" y="410">reception, Küsnacht</text>
+
+  <circle class="pin-secondary" cx="567" cy="421" r="10" />
+  <text class="small" x="590" y="448">Küsnacht ZH</text>
+
+  <circle class="pin-secondary" cx="420" cy="132" r="10" />
+  <text class="small" x="443" y="138">Oerlikon</text>
+
+  <circle class="pin-secondary" cx="221" cy="283" r="10" />
+  <text class="small" x="76" y="285">Altstetten</text>
+
+  <text class="label" x="653" y="529">Lake Zurich</text>
+  <text class="small" x="653" y="552">boat route to be confirmed</text>
+  <text class="note" x="52" y="570">Schematic orientation map, not to scale</text>
+</svg>

@@ -48,8 +48,15 @@ const currentPath = `/${page}/`;
     <section class="content-band">
       <div class="page-card-grid">
         {content.sections.map((section) => (
-          <article class="info-card">
-            {section.image && <img src={section.image} alt={section.imageAlt ?? ''} loading="lazy" />}
+          <article class={`info-card${section.variant === 'wide' ? ' info-card-wide' : ''}`}>
+            {section.image && (
+              <img
+                class={section.imageFit === 'contain' ? 'image-contain' : undefined}
+                src={section.image}
+                alt={section.imageAlt ?? ''}
+                loading="lazy"
+              />
+            )}
             <div>
               <h2>{section.title}</h2>
               <p>{section.body}</p>
@@ -57,6 +64,11 @@ const currentPath = `/${page}/`;
                 <ul>
                   {section.items.map((item) => <li>{item}</li>)}
                 </ul>
+              )}
+              {section.gallery && (
+                <div class="media-grid">
+                  {section.gallery.map((image) => <img src={image.src} alt={image.alt} loading="lazy" />)}
+                </div>
               )}
               {section.links && (
                 <div class="link-list">
