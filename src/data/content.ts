@@ -384,7 +384,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       title: 'Things to Do',
       kicker: 'Zurich & Switzerland',
       intro:
-        'If you are making a trip of it, Zurich is a gentle base for lake walks, old town wandering, mountain views, museums, and day trips.',
+        'For guests with time around the wedding, Zurich offers lake walks, old town wandering, mountain views, museums, and day trips within easy reach.',
       sections: [
         {
           title: 'Zurich first-day options',
