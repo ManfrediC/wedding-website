@@ -412,9 +412,11 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'Lake and water',
-          body: 'Warm days are well suited to time by the water. Swimming can be enjoyable, but the Limmat current is strong and should be treated with respect.',
-          items: ['Swim in Lake Zurich or the Limmat only where it is permitted and sensible.', 'The Limmat is for confident swimmers; avoid it if the current feels strong.', 'A Lake Zurich boat excursion is a relaxed way to see the city and shoreline.'],
+          body: 'Warm days are well suited to time by the water. Use official bathing areas, and treat the Limmat current with respect.',
+          items: ['For river swimming, Oberer Letten is a well-known Limmat badi for confident swimmers.', 'For lake swimming, consider official badis such as Tiefenbrunnen, Mythenquai, Utoquai, and Enge.', 'Check opening hours, rules, and water conditions on the official city pages before going.', 'A Lake Zurich boat excursion is a relaxed way to see the city and shoreline.'],
           links: [
+            { label: 'Oberer Letten', href: 'https://www.stadt-zuerich.ch/de/stadtleben/sport-und-erholung/sport-und-badeanlagen/sommerbaeder/oberer-letten.html' },
+            { label: 'Zurich bathing facilities', href: 'https://www.stadt-zuerich.ch/de/stadtleben/sport-und-erholung/sport-und-badeanlagen.html' },
             { label: 'Lake Zurich boats', href: 'https://www.zsg.ch/en/' },
           ],
           image: '/images/places/hotel-sonne-lake-arrival.jpg',
