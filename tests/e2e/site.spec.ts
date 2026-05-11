@@ -71,6 +71,16 @@ test('welcome page renders the password gate', async ({ page }) => {
   await expect(page.locator('input[name="next"]')).toHaveValue('/en/travel/');
 });
 
+test('Schedule uses the selected Hotel Sonne reception image', async ({ page }) => {
+  await page.goto('/en/schedule/');
+
+  await expect(page.getByRole('heading', { name: 'Reception and party' })).toBeVisible();
+  await expect(page.locator('img[src="/images/places/hotel-sonne-festsaal-wide.jpg"]')).toHaveAttribute(
+    'alt',
+    'The Festsaal ballroom set for dinner at Hotel Sonne Küsnacht',
+  );
+});
+
 test('English pages include requested travel and contact details', async ({ page }) => {
   await page.goto('/en/travel/');
 
