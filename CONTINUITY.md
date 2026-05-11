@@ -70,3 +70,4 @@ Start Phase 0/1 from the build specification:
 - 2026-05-11: Replaced the From Zurich Airport travel card image with a Wikimedia Commons photo of the Zürich Flughafen underground railway platforms.
 - 2026-05-11: Renamed the Stay page Richterswil accommodation card from "Richterswil option" to "Richterswil" and added a Richterswil lakeside photo.
 - 2026-05-11: Added the existing Kirche St. Peter photo to the Stay page Accessibility and mobility card.
+- 2026-05-11: Replaced the Things to Do Local advice image with a distinct Lindenhof view of Zurich old town and the Limmat.

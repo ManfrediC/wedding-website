@@ -467,8 +467,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Local advice',
           body: 'Guests are welcome to get in touch with Manfredi and family for personal recommendations, especially for longer Swiss trips, family plans, or routes suited to a particular hiking level.',
-          image: '/images/minted/minted-photo-08.jpeg',
-          imageAlt: 'Zurich and Lake Zurich from above',
+          image: '/images/places/zurich-lindenhof-view.jpg',
+          imageAlt: 'Zurich old town and the Limmat from Lindenhof',
         },
       ],
     },
@@ -622,6 +622,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
             { label: 'Ogliastra', href: 'https://commons.wikimedia.org/wiki/File:Coast_and_sea_at_Santa_Maria_Navarrese,_Sardinia,_Italy.jpg' },
             { label: 'Zurich Airport station', href: 'https://commons.wikimedia.org/wiki/File:Bahnhof_Z%C3%BCrich_Flughafen_01.jpg' },
             { label: 'Richterswil', href: 'https://commons.wikimedia.org/wiki/File:Richterswil_-_Z%C3%BCrichsee_2010-08-03_17-49-52.JPG' },
+            { label: 'Zurich Lindenhof view', href: 'https://commons.wikimedia.org/wiki/File:Z%C3%BCrich_-_Lindenhof_-_Limmat_-_rechtsseitige_Altstadt.jpg' },
             { label: 'SBB train', href: 'https://commons.wikimedia.org/wiki/File:SBB_RABe_511_(50852815551).jpg' },
             { label: 'Zurich tram', href: 'https://commons.wikimedia.org/wiki/File:Tram_E,_Bahnhofstrasse,_Zurich,_Switzerland.JPG' },
             { label: 'Säntis cable car', href: 'https://commons.wikimedia.org/wiki/File:S%C3%A4ntis_LSB_Blaue_Kabine_von_Talstation.jpg' },

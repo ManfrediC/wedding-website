@@ -232,3 +232,13 @@ test('Italian and German stay copy is localised and cleanly encoded', async ({ p
   await expect(page.locator('body')).not.toContainText('Ã');
   await expect(page.locator('body')).not.toContainText('Â');
 });
+
+test('Things to Do uses a distinct Local advice Zurich image', async ({ page }) => {
+  await page.goto('/en/things-to-do/');
+
+  await expect(page.getByRole('heading', { name: 'Local advice' })).toBeVisible();
+  await expect(page.locator('img[src="/images/places/zurich-lindenhof-view.jpg"]')).toHaveAttribute(
+    'alt',
+    'Zurich old town and the Limmat from Lindenhof',
+  );
+});
