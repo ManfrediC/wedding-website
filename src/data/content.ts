@@ -304,13 +304,13 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'Zurich wedding map',
-          body: 'This schematic map is intended for orientation rather than route planning. It shows the relationship between Zurich Airport, Zurich HB, the ceremony in the old town, and the reception in Küsnacht.',
-          items: ['Kirche St. Peter is in Zurich old town, close to the lake and central tram connections.', 'Hotel Sonne is in Küsnacht on the right bank of Lake Zurich.', 'Zurich Airport and Zurich HB are connected by frequent trains; use SBB Mobile or ZVV for the exact journey on the day.'],
+          body: 'This OpenStreetMap-based map is intended for orientation rather than exact route planning. It shows Zurich Airport, Zurich HB, the ceremony in the old town, the reception in Küsnacht, and Richterswil.',
+          items: ['Kirche St. Peter is in Zurich old town, close to the lake and central tram connections.', 'Hotel Sonne is in Küsnacht on the right bank of Lake Zurich.', "Richterswil, where Manfredi's parents live, is further south on the lake and is reachable by train.", 'Zurich Airport and Zurich HB are connected by frequent trains; use SBB Mobile or ZVV for the exact journey on the day.'],
           links: [
-            { label: 'OpenStreetMap: Zurich and Küsnacht', href: 'https://www.openstreetmap.org/#map=12/47.3365/8.5920' },
+            { label: 'OpenStreetMap: Zurich, Küsnacht, and Richterswil', href: 'https://www.openstreetmap.org/#map=11/47.3370/8.5950' },
           ],
           image: '/images/places/zurich-wedding-map.svg',
-          imageAlt: 'Schematic map of Zurich, Küsnacht, Zurich Airport, Kirche St. Peter, and Hotel Sonne',
+          imageAlt: 'OpenStreetMap-based map of Zurich, Küsnacht, Richterswil, Zurich Airport, Kirche St. Peter, and Hotel Sonne',
           imageFit: 'contain',
           variant: 'wide',
         },
@@ -649,9 +649,9 @@ applyLocalizedCopy('it', {
       {
         title: 'Mappa dei luoghi del matrimonio a Zurigo',
         body:
-          'Questa mappa schematica serve solo per orientarsi. Mostra il rapporto tra l’aeroporto di Zurigo, Zurich HB, la cerimonia nel centro storico e il ricevimento a Küsnacht.',
-        items: ['Kirche St. Peter si trova nel centro storico di Zurigo, vicino al lago e ai collegamenti tram centrali.', 'Hotel Sonne si trova a Küsnacht, sulla sponda destra del Lago di Zurigo.', 'L’aeroporto di Zurigo e Zurich HB sono collegati da treni frequenti; usate SBB Mobile o ZVV per il percorso esatto nel giorno del viaggio.'],
-        imageAlt: 'Mappa schematica di Zurigo, Küsnacht, aeroporto di Zurigo, Kirche St. Peter e Hotel Sonne',
+          'Questa mappa basata su OpenStreetMap serve per orientarsi, non per pianificare un percorso preciso. Mostra l’aeroporto di Zurigo, Zurich HB, la cerimonia nel centro storico, il ricevimento a Küsnacht e Richterswil.',
+        items: ['Kirche St. Peter si trova nel centro storico di Zurigo, vicino al lago e ai collegamenti tram centrali.', 'Hotel Sonne si trova a Küsnacht, sulla sponda destra del Lago di Zurigo.', 'Richterswil, dove vivono i genitori di Manfredi, si trova più a sud lungo il lago ed è raggiungibile in treno.', 'L’aeroporto di Zurigo e Zurich HB sono collegati da treni frequenti; usate SBB Mobile o ZVV per il percorso esatto nel giorno del viaggio.'],
+        imageAlt: 'Mappa basata su OpenStreetMap di Zurigo, Küsnacht, Richterswil, aeroporto di Zurigo, Kirche St. Peter e Hotel Sonne',
       },
       {
         title: 'Link ufficiali',
@@ -795,9 +795,9 @@ applyLocalizedCopy('de', {
       {
         title: 'Hochzeitskarte Zürich',
         body:
-          'Diese schematische Karte dient der Orientierung, nicht der genauen Routenplanung. Sie zeigt die Lage von Flughafen Zürich, Zürich HB, der Trauung in der Altstadt und der Feier in Küsnacht.',
-        items: ['Die Kirche St. Peter liegt in der Zürcher Altstadt, nahe beim See und bei zentralen Tramverbindungen.', 'Hotel Sonne liegt in Küsnacht am rechten Zürichseeufer.', 'Flughafen Zürich und Zürich HB sind mit häufigen Zügen verbunden; nutzt SBB Mobile oder ZVV für die genaue Verbindung am Reisetag.'],
-        imageAlt: 'Schematische Karte von Zürich, Küsnacht, Flughafen Zürich, Kirche St. Peter und Hotel Sonne',
+          'Diese auf OpenStreetMap basierende Karte dient der Orientierung, nicht der genauen Routenplanung. Sie zeigt Flughafen Zürich, Zürich HB, die Trauung in der Altstadt, die Feier in Küsnacht und Richterswil.',
+        items: ['Die Kirche St. Peter liegt in der Zürcher Altstadt, nahe beim See und bei zentralen Tramverbindungen.', 'Hotel Sonne liegt in Küsnacht am rechten Zürichseeufer.', 'Richterswil, wo Manfredis Eltern wohnen, liegt weiter südlich am See und ist mit dem Zug erreichbar.', 'Flughafen Zürich und Zürich HB sind mit häufigen Zügen verbunden; nutzt SBB Mobile oder ZVV für die genaue Verbindung am Reisetag.'],
+        imageAlt: 'Auf OpenStreetMap basierende Karte von Zürich, Küsnacht, Richterswil, Flughafen Zürich, Kirche St. Peter und Hotel Sonne',
       },
       {
         title: 'Offizielle Links',

@@ -79,6 +79,15 @@ test('English pages include requested travel and contact details', async ({ page
   await expect(page.getByRole('heading', { name: 'From London and the UK' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'From Sardinia' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Zurich wedding map' })).toBeVisible();
+  await expect(page.getByText("Richterswil, where Manfredi's parents live")).toBeVisible();
+  await expect(page.getByRole('link', { name: 'OpenStreetMap: Zurich, Küsnacht, and Richterswil' })).toHaveAttribute(
+    'href',
+    'https://www.openstreetmap.org/#map=11/47.3370/8.5950',
+  );
+  await expect(page.locator('img[src="/images/places/zurich-wedding-map.svg"]')).toHaveAttribute(
+    'alt',
+    'OpenStreetMap-based map of Zurich, Küsnacht, Richterswil, Zurich Airport, Kirche St. Peter, and Hotel Sonne',
+  );
   await expect(page.getByText('For ordinary wedding logistics, use the train rather than driving or taking a taxi.')).toBeVisible();
   await expect(page.getByText('Also compare fares with a layover in New York')).toBeVisible();
 
