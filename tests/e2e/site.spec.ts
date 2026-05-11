@@ -292,9 +292,9 @@ test('Switzerland Guide uses the selected section imagery', async ({ page }) => 
     'alt',
     'Rainy day in Zurich old town',
   );
-  await expect(page.locator('img[src="/images/minted/minted-gallery-04.jpg"]')).toHaveAttribute(
+  await expect(page.locator('img[src="/images/minted/minted-gallery-01.jpeg"]')).toHaveAttribute(
     'alt',
-    'Gabriela and Manfredi above Zurich old town',
+    'Gabriela, Manfredi, and family in the Swiss countryside',
   );
 });
 

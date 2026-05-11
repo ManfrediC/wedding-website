@@ -543,8 +543,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Personal recommendations',
           body: 'Guests can get in touch with Manfredi and family for practical advice, especially around hikes, family-friendly plans, longer trips, or whether a specific itinerary is worth the travel time.',
-          image: '/images/minted/minted-gallery-04.jpg',
-          imageAlt: 'Gabriela and Manfredi above Zurich old town',
+          image: '/images/minted/minted-gallery-01.jpeg',
+          imageAlt: 'Gabriela, Manfredi, and family in the Swiss countryside',
         },
       ],
     },
@@ -902,7 +902,7 @@ applyLocalizedCopy('it', {
         title: 'Consigli personali',
         body:
           'Gli ospiti possono contattare Manfredi e la famiglia per consigli pratici, soprattutto su escursioni, programmi con bambini, viaggi più lunghi o itinerari con un livello di cammino specifico.',
-        imageAlt: 'Gabriela e Manfredi nel centro storico di Zurigo',
+        imageAlt: 'Gabriela, Manfredi e famiglia nella campagna svizzera',
       },
     ],
   },
@@ -1226,7 +1226,7 @@ applyLocalizedCopy('de', {
         title: 'Persönliche Empfehlungen',
         body:
           'Gäste können Manfredi und die Familie für praktische Hinweise kontaktieren, besonders zu Wanderungen, familienfreundlichen Plänen, längeren Reisen oder Routen für ein bestimmtes Wanderniveau.',
-        imageAlt: 'Gabriela und Manfredi in der Zürcher Altstadt',
+        imageAlt: 'Gabriela, Manfredi und Familie in der Schweizer Landschaft',
       },
     ],
   },
