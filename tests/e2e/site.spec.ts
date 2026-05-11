@@ -1,0 +1,115 @@
+import { expect, test, type Page } from '@playwright/test';
+
+const smokePaths = [
+  '/en/travel/',
+  '/en/stay/',
+  '/en/switzerland-guide/',
+  '/it/travel/',
+  '/de/switzerland-guide/',
+];
+
+async function expectNoBrokenImages(page: Page) {
+  await page.locator('img').evaluateAll(async (images) => {
+    const imageElements = images as HTMLImageElement[];
+
+    imageElements.forEach((image) => {
+      image.loading = 'eager';
+    });
+
+    await Promise.all(
+      imageElements.map((image) => {
+        if (image.complete) {
+          return Promise.resolve();
+        }
+
+        return new Promise<void>((resolve) => {
+          image.addEventListener('load', () => resolve(), { once: true });
+          image.addEventListener('error', () => resolve(), { once: true });
+        });
+      }),
+    );
+  });
+
+  const brokenImages = await page.locator('img').evaluateAll((images) =>
+    (images as HTMLImageElement[])
+      .filter((image) => !image.complete || image.naturalWidth === 0)
+      .map((image) => image.getAttribute('src') ?? image.getAttribute('alt') ?? 'unknown image'),
+  );
+
+  expect(brokenImages).toEqual([]);
+}
+
+async function expectNoHorizontalOverflow(page: Page) {
+  const overflow = await page.evaluate(() => ({
+    viewport: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+  }));
+
+  expect(overflow.scrollWidth).toBeLessThanOrEqual(overflow.viewport + 1);
+}
+
+for (const path of smokePaths) {
+  test(`renders ${path} without broken media or horizontal overflow`, async ({ page }, testInfo) => {
+    await page.goto(path);
+    await expect(page.locator('.page-hero h1')).toBeVisible();
+    await expectNoBrokenImages(page);
+    await expectNoHorizontalOverflow(page);
+    await testInfo.attach('screenshot', {
+      body: await page.screenshot({ fullPage: true }),
+      contentType: 'image/png',
+    });
+  });
+}
+
+test('welcome page renders the password gate', async ({ page }) => {
+  await page.goto('/welcome/?next=/en/travel/&error=1');
+
+  await expect(page.getByRole('heading', { name: 'Welcome' })).toBeVisible();
+  await expect(page.getByLabel('Wedding password')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Enter website' })).toBeVisible();
+  await expect(page.getByText('The password was not recognised')).toBeVisible();
+  await expect(page.locator('input[name="next"]')).toHaveValue('/en/travel/');
+});
+
+test('English pages include requested travel and contact details', async ({ page }) => {
+  await page.goto('/en/travel/');
+
+  await expect(page.getByRole('heading', { name: 'From Chicago' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'From New York' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'From London and the UK' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'From Sardinia' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Zurich wedding map' })).toBeVisible();
+  await expect(page.getByText('For ordinary wedding logistics, use the train rather than driving or taking a taxi.')).toBeVisible();
+
+  await page.goto('/en/stay/');
+  await expect(page.getByRole('link', { name: 'Hotel Sonne Küsnacht' })).toHaveAttribute('href', 'https://sonne.ch/en/');
+  await expect(page.getByRole('link', { name: 'OXEN Küsnacht' })).toHaveAttribute('href', 'https://www.oxen.ch/');
+  await expect(page.getByRole('link', { name: 'Airbnb Zurich, June 2027' })).toHaveAttribute(
+    'href',
+    'https://www.airbnb.com/s/Zurich--Switzerland/homes?checkin=2027-06-10&checkout=2027-06-13&adults=2',
+  );
+
+  await page.goto('/en/contact/');
+  await expect(page.getByRole('link', { name: 'gabyandmanfredi@gmail.com' })).toHaveAttribute(
+    'href',
+    'mailto:gabyandmanfredi@gmail.com',
+  );
+
+  await page.goto('/en/faq/');
+  await page.locator('summary').filter({ hasText: 'How do I buy a train ticket?' }).click();
+  await expect(page.getByText('The easiest option is the SBB Mobile app')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'SBB: buy tickets online' })).toHaveAttribute(
+    'href',
+    'https://www.sbb.ch/en/tickets-offers/buy.html',
+  );
+});
+
+test('Italian and German guide copy reflects child fares and SBB Mobile', async ({ page }) => {
+  await page.goto('/it/switzerland-guide/');
+  await expect(page.getByText('Usate SBB Mobile per orari e biglietti in tutta la Svizzera')).toBeVisible();
+  await expect(page.getByText('I bambini sotto i 6 anni viaggiano gratis')).toBeVisible();
+
+  await page.goto('/de/switzerland-guide/');
+  await expect(page.getByText('Nutzt SBB Mobile für Fahrpläne und Tickets in der ganzen Schweiz')).toBeVisible();
+  await expect(page.getByText('Kinder unter 6 Jahren fahren im Zürcher Verkehrsverbund kostenlos')).toBeVisible();
+});

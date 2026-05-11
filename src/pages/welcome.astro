@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { heroImage, wedding } from '../data/site';
+---
+
+<BaseLayout title={`Welcome | ${wedding.couple.display}`} hideChrome>
+  <section class="welcome-page" style={`--welcome-image: url('${heroImage.src}')`}>
+    <div class="welcome-panel">
+      <p class="monogram">{wedding.couple.monogram}</p>
+      <p class="eyebrow">Private wedding website</p>
+      <h1>Welcome</h1>
+      <p>
+        We are grateful to share these wedding details with our family and friends. Please enter the
+        password from your invitation to continue.
+      </p>
+      <form method="post" data-welcome-form>
+        <input type="hidden" name="next" value="/en/" data-next-input />
+        <label for="password">Wedding password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required />
+        <p class="form-error" data-error-message hidden>
+          The password was not recognised. Please check the invitation and try again.
+        </p>
+        <button type="submit">Enter website</button>
+      </form>
+      <p class="small-note">For invited guests only. Please do not share the link or password publicly.</p>
+    </div>
+  </section>
+
+  <script is:inline>
+    const params = new URLSearchParams(window.location.search);
+    const next = params.get('next');
+    const safeNext = next && next.startsWith('/') && !next.startsWith('//') ? next : '/en/';
+    const nextInput = document.querySelector('[data-next-input]');
+    const errorMessage = document.querySelector('[data-error-message]');
+
+    if (nextInput) {
+      nextInput.value = safeNext;
+    }
+
+    if (errorMessage && params.get('error') === '1') {
+      errorMessage.hidden = false;
+    }
+  </script>
+</BaseLayout>

@@ -5,13 +5,13 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $repoRoot = Resolve-Path (Join-Path $PSScriptRoot '..\..')
-$astro = Join-Path $repoRoot 'node_modules\.bin\astro.cmd'
+$serverScript = Join-Path $repoRoot 'scripts\serve-protected-preview.mjs'
 
 Set-Location $repoRoot
 $env:ASTRO_TELEMETRY_DISABLED = '1'
 
-if (-not (Test-Path $astro)) {
-  throw 'Astro is not installed. Run npm install first.'
+if (-not (Test-Path $serverScript)) {
+  throw 'Protected preview server script is missing.'
 }
 
 if (-not $SkipBuild) {
@@ -29,15 +29,16 @@ $addresses = [System.Net.Dns]::GetHostEntry([System.Net.Dns]::GetHostName()).Add
 Write-Host ''
 Write-Host 'Wedding website preview is starting.'
 Write-Host 'Keep this terminal window open while Gabriela is viewing the site.'
+Write-Host 'The preview uses the password from env\website_pw.env.'
 Write-Host ''
 Write-Host 'On this computer:'
-Write-Host "  http://127.0.0.1:$Port/en/"
+Write-Host "  http://127.0.0.1:$Port/welcome/"
 Write-Host ''
 
 if ($addresses) {
   Write-Host 'On the same Wi-Fi/network, share one of these URLs:'
   foreach ($address in $addresses) {
-    Write-Host "  http://$address`:$Port/en/"
+    Write-Host "  http://$address`:$Port/welcome/"
   }
 } else {
   Write-Host 'No LAN address was detected. Check Wi-Fi/network settings if another device needs access.'
@@ -47,4 +48,4 @@ Write-Host ''
 Write-Host 'If Windows Firewall asks, allow Node.js on private networks.'
 Write-Host ''
 
-& $astro preview --host 0.0.0.0 --port $Port
+node $serverScript --host 0.0.0.0 --port $Port

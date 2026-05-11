@@ -2,5 +2,14 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "types": ["@cloudflare/workers-types"]
-  }
+  },
+  "exclude": [
+    ".astro",
+    ".tmp",
+    "dist",
+    "node_modules",
+    "playwright-report",
+    "test-results",
+    "tmp"
+  ]
 }

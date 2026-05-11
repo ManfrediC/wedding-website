@@ -27,7 +27,14 @@ npm install
 npm run dev
 ```
 
-The local Astro dev server does not enforce the Cloudflare middleware password gate. The password screen and middleware are included for deployed Cloudflare Pages environments.
+The Astro dev server is intended for development and does not enforce the Cloudflare middleware password gate.
+
+To test or share the password-protected version locally, put the shared password in `env/website_pw.env` as `WEBSITE_PW=...`, then run:
+
+```bash
+npm run build
+npm run preview:protected
+```
 
 ## Sharing A Local Preview
 

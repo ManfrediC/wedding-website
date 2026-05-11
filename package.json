@@ -7,7 +7,10 @@
     "dev": "astro dev --host 127.0.0.1",
     "check": "astro check",
     "build": "astro check && astro build",
-    "preview": "astro preview --host 127.0.0.1"
+    "test:e2e": "playwright test",
+    "test:android": "node scripts/verify-android.mjs",
+    "preview": "astro preview --host 127.0.0.1",
+    "preview:protected": "node scripts/serve-protected-preview.mjs"
   },
   "dependencies": {
     "astro": "latest"
@@ -15,6 +18,7 @@
   "devDependencies": {
     "@astrojs/check": "latest",
     "@cloudflare/workers-types": "latest",
+    "@playwright/test": "^1.59.1",
     "typescript": "latest"
   }
 }

@@ -1,2 +1,2 @@
-WEDDING_SITE_PASSWORD=replace-with-shared-password
+WEBSITE_PW=replace-with-shared-password
 WEDDING_AUTH_SECRET=replace-with-random-secret
