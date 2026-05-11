@@ -310,6 +310,10 @@ test('Italian and German stay copy is localised and cleanly encoded', async ({ p
 test('Things to Do uses a distinct Local advice Zurich image', async ({ page }) => {
   await page.goto('/en/things-to-do/');
 
+  await expect(page.locator('img[src="/images/places/kunsthaus-zurich.jpg"]')).toHaveAttribute(
+    'alt',
+    'Kunsthaus Zurich at Heimplatz',
+  );
   await expect(page.getByRole('heading', { name: 'Local advice' })).toBeVisible();
   await expect(page.locator('img[src="/images/places/zurich-lindenhof-view.jpg"]')).toHaveAttribute(
     'alt',

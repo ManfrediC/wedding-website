@@ -617,8 +617,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'Kunsthaus Zurich',
-          body: 'Photo by Roland zh via Wikimedia Commons, licensed under CC BY-SA 3.0.',
-          links: [{ label: 'Source', href: 'https://commons.wikimedia.org/wiki/File:Kunsthaus_Z%C3%BCrich_-_Heimplatz_2011-08-06_18-46-28_ShiftN.jpg' }],
+          body: 'Photo by Micha L. Rieser via Wikimedia Commons, used with attribution-only permission.',
+          links: [{ label: 'Source', href: 'https://commons.wikimedia.org/wiki/File:Kunsthaus_Z%C3%BCrich_-_2014-09-24_-_Bild_4.JPG' }],
         },
         {
           title: 'Travel and public transport images',
@@ -966,7 +966,7 @@ applyLocalizedCopy('it', {
       },
       {
         title: 'Kunsthaus Zürich',
-        body: 'Foto di Roland zh tramite Wikimedia Commons, licenza CC BY-SA 3.0.',
+        body: 'Foto di Micha L. Rieser tramite Wikimedia Commons, usata con permesso di attribuzione.',
       },
       {
         title: 'Immagini di viaggio e trasporti pubblici',
@@ -1288,7 +1288,7 @@ applyLocalizedCopy('de', {
       },
       {
         title: 'Kunsthaus Zürich',
-        body: 'Foto von Roland zh via Wikimedia Commons, lizenziert unter CC BY-SA 3.0.',
+        body: 'Foto von Micha L. Rieser via Wikimedia Commons, mit Namensnennung verwendet.',
       },
       {
         title: 'Reise- und ÖV-Bilder',
