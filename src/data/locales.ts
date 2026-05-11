@@ -16,7 +16,7 @@ export const navItems = [
   { key: 'travel', path: '/travel/', labels: { en: 'Travel', it: 'Viaggio', de: 'Anreise' } },
   { key: 'stay', path: '/stay/', labels: { en: 'Stay', it: 'Dove dormire', de: 'Unterkunft' } },
   { key: 'things-to-do', path: '/things-to-do/', labels: { en: 'Things to Do', it: 'Cosa fare', de: 'Aktivitäten' } },
-  { key: 'switzerland-guide', path: '/switzerland-guide/', labels: { en: 'Switzerland Guide', it: 'Guida Svizzera', de: 'Schweiz-Guide' } },
+  { key: 'switzerland-guide', path: '/switzerland-guide/', labels: { en: 'Switzerland Guide', it: 'Guida Svizzera', de: 'Hinweise zur Schweiz' } },
   { key: 'faq', path: '/faq/', labels: { en: 'FAQ', it: 'FAQ', de: 'FAQ' } },
   { key: 'rsvp', path: '/rsvp/', labels: { en: 'RSVP', it: 'RSVP', de: 'RSVP' } },
 ] as const;

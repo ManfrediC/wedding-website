@@ -1168,7 +1168,7 @@ applyLocalizedCopy('de', {
     ],
   },
   'switzerland-guide': {
-    title: 'Schweiz-Guide',
+    title: 'Hinweise zur Schweiz',
     kicker: 'Praktische Hinweise',
     intro:
       'Einige praktische Hinweise für Gäste in der Schweiz: öffentlicher Verkehr, Währung, Wetter, Mobiltelefone und einfache Planung.',
@@ -1323,7 +1323,7 @@ function mirrorLanguage(lang: Exclude<Lang, 'en'>): Record<PageKey, PageContent>
       travel: ['Anreise', 'Anreise nach Zürich', 'Praktische Hinweise zur Anreise aus Sardinien, London, New York, Chicago und weiteren Orten.'],
       stay: ['Unterkunft', 'Übernachten', 'Küsnacht ist am praktischsten für die Feier; Zürich Zentrum eignet sich gut zum Erkunden.'],
       'things-to-do': ['Aktivitäten', 'Zürich und Schweiz', 'Ruhige Ideen für Zürich, den See, Berge und Tagesausflüge.'],
-      'switzerland-guide': ['Schweiz-Guide', 'Praktische Hinweise', 'Öffentlicher Verkehr, Währung, Wetter, Telefon und nützliche Tipps.'],
+      'switzerland-guide': ['Hinweise zur Schweiz', 'Praktische Hinweise', 'Öffentlicher Verkehr, Währung, Wetter, Telefon und nützliche Tipps.'],
       faq: ['Details und FAQ', 'Hilfreiche Antworten', 'Häufige Fragen. Weitere Details folgen.'],
       rsvp: ['RSVP', 'Rückmeldung', 'Die RSVP ist noch nicht geöffnet. Das Formular wird hier ergänzt.'],
       gifts: ['Geschenke', 'Mit Dankbarkeit', 'Eure Anwesenheit in der Schweiz ist für uns schon das schönste Geschenk.'],

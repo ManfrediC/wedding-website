@@ -197,6 +197,7 @@ test('Italian and German guide copy reflects child fares and SBB Mobile', async 
   await expect(page.getByText('I bambini sotto i 6 anni viaggiano gratis')).toBeVisible();
 
   await page.goto('/de/switzerland-guide/');
+  await expect(page.getByRole('heading', { name: 'Hinweise zur Schweiz' })).toBeVisible();
   await expect(page.getByText('Nutzt SBB Mobile für Fahrpläne und Tickets in der ganzen Schweiz')).toBeVisible();
   await expect(page.getByText('Kinder unter 6 Jahren fahren im Zürcher Verkehrsverbund kostenlos')).toBeVisible();
 });
