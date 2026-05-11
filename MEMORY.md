@@ -31,7 +31,7 @@ Durable project notes for the wedding website.
 - The Zurich wedding map should use an OpenStreetMap-derived geography, not a hand-drawn schematic, and should include Richterswil because Manfredi's parents live there.
 - Train-ticket guidance should point guests first to SBB Mobile, with ZVV app/ticket machines as Zurich-area alternatives. Tickets must be bought before boarding; ZVV tickets are zone-based and cover trains, trams, buses, and boats in the selected zones.
 - The Switzerland Guide exchange-rate widget uses the free open-source `fawazahmed0/exchange-api` source, served through jsDelivr with a Cloudflare fallback, and shows CHF/USD, CHF/EUR, and CHF/GBP in both directions.
-- Accommodation guidance should mention Hotel Sonne Kuesnacht, OXEN Kuesnacht, Airbnb searches for Zurich in June 2027, and more economical hotel areas in Zurich Altstetten or Oerlikon.
+- Accommodation guidance should mention Hotel Sonne Kuesnacht, OXEN Kuesnacht, B & B Caffetino-Vino Richterswil, Airbnb searches for Zurich in June 2027, and more economical hotel areas in Zurich Altstetten or Oerlikon.
 - Guest-facing contact email is `gabyandmanfredi@gmail.com`.
 - Boat transfer wording must stay careful: host-arranged boat transfer, details to be confirmed.
 - Cambridge and UK photos from the Minted draft are intentionally excluded because the wedding location is Zurich and Kuesnacht.

@@ -94,6 +94,11 @@ test('English pages include requested travel and contact details', async ({ page
   await page.goto('/en/stay/');
   await expect(page.getByRole('link', { name: 'Hotel Sonne Küsnacht' })).toHaveAttribute('href', 'https://sonne.ch/en/');
   await expect(page.getByRole('link', { name: 'OXEN Küsnacht' })).toHaveAttribute('href', 'https://www.oxen.ch/');
+  await expect(page.getByRole('link', { name: 'B & B Caffètino-Vino Richterswil' })).toHaveAttribute(
+    'href',
+    'https://www.bnb-caffetino-vino.ch/',
+  );
+  await expect(page.getByText('the house has no lift')).toBeVisible();
   await expect(page.getByRole('link', { name: 'Airbnb Zurich, June 2027' })).toHaveAttribute(
     'href',
     'https://www.airbnb.com/s/Zurich--Switzerland/homes?checkin=2027-06-10&checkout=2027-06-13&adults=2',

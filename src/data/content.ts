@@ -352,6 +352,14 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           imageAlt: 'Zurich old town and the Limmat river',
         },
         {
+          title: 'Richterswil option',
+          body: "Richterswil is farther down Lake Zurich, but it can be a quiet lakeside base for guests who would like to stay near Manfredi's family or who prefer a smaller B&B.",
+          items: ['B & B Caffètino-Vino Richterswil has five rooms in the historic village centre, close to the lake and station.', 'It is a B&B rather than a hotel; the house has no lift, and rooms are on the 2nd and 3rd floors.', 'Check the late-evening return journey from Küsnacht before booking, especially after the party.'],
+          links: [
+            { label: 'B & B Caffètino-Vino Richterswil', href: 'https://www.bnb-caffetino-vino.ch/' },
+          ],
+        },
+        {
           title: 'Booking guidance',
           body: 'Zurich can be expensive in June. We recommend booking early, checking cancellation terms, and comparing hotels with apartments if you are staying longer.',
           items: ['Booking codes: TBD', 'Room-block deadlines: TBD', 'Approximate price bands: TBD'],
@@ -680,6 +688,12 @@ applyLocalizedCopy('it', {
         imageAlt: 'Centro storico di Zurigo e fiume Limmat',
       },
       {
+        title: 'Opzione a Richterswil',
+        body:
+          'Richterswil si trova piÃ¹ a sud lungo il Lago di Zurigo, ma puÃ² essere una base tranquilla per chi desidera stare vicino alla famiglia di Manfredi o preferisce un piccolo B&B.',
+        items: ['B & B CaffÃ¨tino-Vino Richterswil ha cinque camere nel centro storico del paese, vicino al lago e alla stazione.', 'Ãˆ un B&B, non un hotel; la casa non ha ascensore e le camere si trovano al 2Â° e 3Â° piano.', 'Controllate il rientro serale da KÃ¼snacht prima di prenotare, soprattutto dopo la festa.'],
+      },
+      {
         title: 'Indicazioni per prenotare',
         body:
           'Zurigo può essere costosa a giugno. Consigliamo di prenotare presto, controllare le condizioni di cancellazione e confrontare hotel e appartamenti se vi fermate più a lungo.',
@@ -824,6 +838,12 @@ applyLocalizedCopy('de', {
           'Zürich Zentrum ist praktisch für Restaurants, Besichtigungen, Zugverbindungen und einfache Anreise zum Flughafen.',
         items: ['Sucht nahe Zürich HB, Altstadt, Bellevue oder Stadelhofen für die bequemste zentrale Lage.', 'Günstigere Hotels finden sich eventuell eher in Zürich Altstetten oder Oerlikon; beide Quartiere sind mit dem Zentrum und dem Flughafen durch öffentlichen Verkehr verbunden.', 'Wählt eine Unterkunft nahe bei Tram, Zug oder Bus.', 'Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist für die normale Hochzeitslogistik nicht empfohlen.'],
         imageAlt: 'Zürcher Altstadt und Limmat',
+      },
+      {
+        title: 'Option in Richterswil',
+        body:
+          'Richterswil liegt weiter sÃ¼dlich am ZÃ¼richsee, kann aber eine ruhige Basis fÃ¼r GÃ¤ste sein, die nahe bei Manfredis Familie wohnen oder ein kleineres B&B bevorzugen.',
+        items: ['B & B CaffÃ¨tino-Vino Richterswil hat fÃ¼nf Zimmer im historischen Dorfkern, nahe beim See und Bahnhof.', 'Es ist ein B&B und kein Hotel; das Haus hat keinen Lift, und die Zimmer liegen im 2. und 3. Obergeschoss.', 'PrÃ¼ft vor der Buchung die spÃ¤te RÃ¼ckfahrt ab KÃ¼snacht, besonders nach der Feier.'],
       },
       {
         title: 'Buchungshinweise',
