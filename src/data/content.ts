@@ -427,7 +427,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
             { label: 'Lindt', href: 'https://www.lindt-home-of-chocolate.com/en/' },
           ],
           image: '/images/places/kunsthaus-zurich.jpg',
-          imageAlt: 'Kunsthaus Zurich at Heimplatz',
+          imageAlt: 'Kunsthaus Zurich Chipperfield building at Heimplatz',
         },
         {
           title: 'Lake and water',
@@ -619,8 +619,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'Kunsthaus Zurich',
-          body: 'Photo by Micha L. Rieser via Wikimedia Commons, used with attribution-only permission.',
-          links: [{ label: 'Source', href: 'https://commons.wikimedia.org/wiki/File:Kunsthaus_Z%C3%BCrich_-_2014-09-24_-_Bild_4.JPG' }],
+          body: 'Photo by Kunsthaus Zürich MarKom via Wikimedia Commons, licensed under CC BY-SA 4.0.',
+          links: [{ label: 'Source', href: 'https://commons.wikimedia.org/wiki/File:Chipperfield_Candrian.jpg' }],
         },
         {
           title: 'Travel and public transport images',
@@ -823,7 +823,7 @@ applyLocalizedCopy('it', {
         title: 'Musei e cioccolato',
         body: 'Per un programma culturale o in caso di pioggia, Zurigo ha ottimi musei e un museo del cioccolato ben organizzato anche per famiglie.',
         items: ['Il Kunsthaus Zürich espone arte dal Medioevo al contemporaneo, con pittori svizzeri, Impressionismo, Modernismo classico, Dada, Giacometti e Munch tra i punti forti.', 'Il Museum Rietberg è dedicato ad arti e culture di Asia, Africa, Americhe e Oceania.', 'Lindt Home of Chocolate a Kilchberg è interattivo e particolarmente adatto anche ai bambini.'],
-        imageAlt: 'Kunsthaus Zürich a Heimplatz',
+        imageAlt: 'Edificio Chipperfield del Kunsthaus Zürich a Heimplatz',
       },
       {
         title: 'Lago e acqua',
@@ -971,7 +971,7 @@ applyLocalizedCopy('it', {
       },
       {
         title: 'Kunsthaus Zürich',
-        body: 'Foto di Micha L. Rieser tramite Wikimedia Commons, usata con permesso di attribuzione.',
+        body: 'Foto di Kunsthaus Zürich MarKom tramite Wikimedia Commons, licenza CC BY-SA 4.0.',
       },
       {
         title: 'Immagini di viaggio e trasporti pubblici',
@@ -1147,7 +1147,7 @@ applyLocalizedCopy('de', {
         title: 'Museen und Schokolade',
         body: 'Für Kultur oder einen Regentag hat Zürich sehr gute Museen und ein gut organisiertes Schokoladenmuseum für Kinder und Erwachsene.',
         items: ['Das Kunsthaus Zürich zeigt Kunst vom Mittelalter bis zur Gegenwart, mit Schweizer Malerei, Impressionismus, Klassischer Moderne, Dada, Giacometti und Munch als Schwerpunkten.', 'Das Museum Rietberg widmet sich Kunst und Kulturen aus Asien, Afrika, Amerika und Ozeanien.', 'Lindt Home of Chocolate in Kilchberg ist interaktiv und besonders auch mit Kindern geeignet.'],
-        imageAlt: 'Kunsthaus Zürich am Heimplatz',
+        imageAlt: 'Chipperfield-Bau des Kunsthaus Zürich am Heimplatz',
       },
       {
         title: 'See und Wasser',
@@ -1295,7 +1295,7 @@ applyLocalizedCopy('de', {
       },
       {
         title: 'Kunsthaus Zürich',
-        body: 'Foto von Micha L. Rieser via Wikimedia Commons, mit Namensnennung verwendet.',
+        body: 'Foto von Kunsthaus Zürich MarKom via Wikimedia Commons, lizenziert unter CC BY-SA 4.0.',
       },
       {
         title: 'Reise- und ÖV-Bilder',

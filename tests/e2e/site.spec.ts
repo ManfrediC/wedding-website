@@ -316,7 +316,7 @@ test('Things to Do uses a distinct Local advice Zurich image', async ({ page }) 
 
   await expect(page.locator('img[src="/images/places/kunsthaus-zurich.jpg"]')).toHaveAttribute(
     'alt',
-    'Kunsthaus Zurich at Heimplatz',
+    'Kunsthaus Zurich Chipperfield building at Heimplatz',
   );
   await expect(page.getByRole('heading', { name: 'Local advice' })).toBeVisible();
   await expect(page.locator('img[src="/images/places/zurich-lindenhof-view.jpg"]')).toHaveAttribute(
