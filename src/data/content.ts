@@ -168,7 +168,7 @@ export const homeContent: Record<
         body: 'Anreise nach Zürich aus den USA, dem Vereinigten Königreich, Sardinien und weiteren Orten.',
         href: '/de/travel/',
         image: '/images/minted/minted-photo-08.jpeg',
-        imageAlt: 'Zurich und der Zurichsee von oben',
+        imageAlt: 'Zürich und der Zürichsee von oben',
       },
       {
         title: 'Unterkunft',
@@ -659,6 +659,34 @@ pages.it = mirrorLanguage('it');
 pages.de = mirrorLanguage('de');
 
 applyLocalizedCopy('it', {
+  schedule: {
+    title: 'Il giorno del matrimonio',
+    kicker: 'Programma',
+    intro:
+      'Gli orari esatti sono ancora in fase di conferma. Questa pagina diventerà il riferimento per l’arrivo alla cerimonia, il trasferimento in barca, la cena, la festa e il rientro.',
+    notice:
+      'I dettagli della barca sono provvisori: stiamo pianificando un trasferimento organizzato dagli sposi da Zurigo verso Küsnacht; punto d’imbarco e piano in caso di pioggia saranno aggiunti più avanti.',
+    sections: [
+      {
+        title: 'Cerimonia',
+        body: 'La cerimonia si terrà alla Kirche St. Peter, nel centro storico di Zurigo.',
+        items: ['Orario di inizio: TBD', 'Arrivo degli ospiti: TBD', 'Lingue della cerimonia: TBD'],
+        imageAlt: 'Kirche St. Peter a Zurigo',
+      },
+      {
+        title: 'Trasferimento in barca',
+        body: 'Dopo la cerimonia stiamo pianificando un trasferimento in barca organizzato dagli sposi da Zurigo verso Küsnacht.',
+        items: ['Punto d’imbarco: TBD', 'Biglietti: da confermare', 'Piano in caso di pioggia e dettagli di accessibilità: TBD'],
+        imageAlt: 'Una barca sul Lago di Zurigo vicino all’Hotel Sonne',
+      },
+      {
+        title: 'Ricevimento e festa',
+        body: 'La serata si terrà all’Hotel Sonne di Küsnacht, sulle rive del Lago di Zurigo.',
+        items: ['Aperitivo: TBD', 'Cena: TBD', 'Ballo e festa: TBD', 'Rientro notturno: TBD'],
+        imageAlt: 'Hotel Sonne Küsnacht visto dal Lago di Zurigo',
+      },
+    ],
+  },
   travel: {
     title: 'Viaggio',
     kicker: 'Come arrivare a Zurigo',
@@ -682,9 +710,9 @@ applyLocalizedCopy('it', {
         imageAlt: 'Skyline di New York City',
       },
       {
-        title: 'Da Londra e dal Regno Unito',
+        title: 'Dal Regno Unito',
         body:
-          'Da Londra, i voli diretti sono di solito la soluzione più semplice. EasyJet può essere conveniente, ma controllate con attenzione le regole sui bagagli prima di confrontare i prezzi.',
+          'Dal Regno Unito, i voli diretti per Zurigo sono di solito la soluzione più semplice. EasyJet può essere conveniente, ma controllate con attenzione le regole sui bagagli prima di confrontare i prezzi.',
         items: ['Confrontate Heathrow, Gatwick, City, Luton e Stansted in base a dove vivete; Heathrow, Gatwick e City sono di solito i più rilevanti per Zurigo.', 'Per chi vive fuori Londra, confrontate anche Manchester, Edimburgo, Bristol e altri aeroporti regionali con voli diretti o con uno scalo.', 'Con EasyJet, la tariffa più bassa può includere solo un piccolo bagaglio da mettere sotto il sedile, attualmente 45 x 36 x 20 cm incluse maniglie e ruote; aggiungete bagaglio a mano grande o bagaglio da stiva online se necessario.', 'Il viaggio in treno è Londra St Pancras-Parigi con Eurostar, trasferimento da Gare du Nord a Gare de Lyon, poi TGV Lyria per Zurich HB; prevedete una coincidenza ampia a Parigi.'],
         imageAlt: 'Tower Bridge sul Tamigi a Londra',
       },
@@ -774,6 +802,49 @@ applyLocalizedCopy('it', {
       },
     ],
   },
+  'things-to-do': {
+    title: 'Cosa fare',
+    kicker: 'Zurigo e Svizzera',
+    intro:
+      'Per chi ha tempo prima o dopo il matrimonio, Zurigo offre passeggiate sul lago, centro storico, musei, cioccolato e gite in giornata facilmente raggiungibili.',
+    sections: [
+      {
+        title: 'Prime idee a Zurigo',
+        body: 'Se arrivate con un po’ di tempo, queste sono opzioni semplici per conoscere la città senza organizzare una giornata troppo intensa.',
+        items: ['Passeggiate nel centro storico: Niederdorf, Lindenhof, Grossmünster e le vie lungo la Limmat.', 'Uetliberg per una vista ampia sulla città e sul lago, se il tempo è buono.', 'Zurich Zoo, che può essere una buona idea per i più piccoli.', 'Caffè, gelaterie e una passeggiata lungo il lago a Bellevue, Bürkliplatz o Zürichhorn.'],
+        imageAlt: 'Zurigo e il Lago di Zurigo dall’alto',
+      },
+      {
+        title: 'Musei e cioccolato',
+        body: 'Per un programma culturale o in caso di pioggia, Zurigo ha ottimi musei e un museo del cioccolato ben organizzato anche per famiglie.',
+        items: ['Il Kunsthaus Zürich espone arte dal Medioevo al contemporaneo, con pittori svizzeri, Impressionismo, Modernismo classico, Dada, Giacometti e Munch tra i punti forti.', 'Il Museum Rietberg è dedicato ad arti e culture di Asia, Africa, Americhe e Oceania.', 'Lindt Home of Chocolate a Kilchberg è interattivo e particolarmente adatto anche ai bambini.'],
+        imageAlt: 'Kunsthaus Zürich a Heimplatz',
+      },
+      {
+        title: 'Lago e acqua',
+        body: 'Le giornate calde si prestano bene al lago e ai bagni pubblici. Usate le aree ufficiali e rispettate la corrente della Limmat.',
+        items: ['Per nuotare nel fiume, Oberer Letten è una badi nota sulla Limmat, adatta a nuotatori sicuri.', 'Per il lago, considerate badis ufficiali come Tiefenbrunnen, Mythenquai, Utoquai ed Enge.', 'Controllate orari, regole e condizioni dell’acqua sulle pagine ufficiali della città.', 'Un giro in battello sul Lago di Zurigo è un modo tranquillo per vedere la città e la riva del lago.'],
+        imageAlt: 'Una barca sul Lago di Zurigo vicino all’Hotel Sonne',
+      },
+      {
+        title: 'Gite in giornata',
+        body: 'Queste gite sono pratiche da Zurigo se volete fare un’escursione più lunga senza cambiare hotel.',
+        items: ['Lucerna, idealmente con un giro in battello sul Lago dei Quattro Cantoni.', 'Alpstein per escursioni come Seealpsee, Hoher Kasten e Säntis, con percorsi di diversa difficoltà.', 'Cascate del Reno vicino a Sciaffusa.', 'Berna per il centro storico, o Basilea per musei d’arte come Fondation Beyeler e Kunstmuseum Basel.'],
+        imageAlt: 'Un lago di montagna in Svizzera',
+      },
+      {
+        title: 'Più lontano',
+        body: 'Se la Svizzera fa parte di un viaggio più lungo, queste destinazioni sono più adatte con notti aggiuntive che non incastrate attorno al matrimonio.',
+        items: ['Parco Nazionale Svizzero nei Grigioni.', 'Lauterbrunnen e Jungfraujoch per paesaggi alpini classici.', 'Idee per escursioni: Pizol 5-Lakes Hike, punti panoramici sull’Aletsch Glacier, Oberland bernese, Grigioni e Vallese.'],
+        imageAlt: 'Gabriela e Manfredi nelle Alpi svizzere',
+      },
+      {
+        title: 'Consigli locali',
+        body: 'Gli ospiti possono contattare Manfredi e la famiglia per consigli personali, soprattutto per viaggi più lunghi in Svizzera, programmi con bambini o percorsi adatti a un certo livello di cammino.',
+        imageAlt: 'Centro storico di Zurigo e la Limmat dal Lindenhof',
+      },
+    ],
+  },
   'switzerland-guide': {
     title: 'Guida alla Svizzera',
     kicker: 'Note pratiche',
@@ -785,6 +856,12 @@ applyLocalizedCopy('it', {
         body:
           'A Zurigo ci si muove facilmente con tram, treni, autobus e battelli. Usate i mezzi pubblici per muovervi a Zurigo; viaggiare in auto non è consigliato per la normale logistica del matrimonio.',
         items: ['Usate SBB Mobile per orari e biglietti in tutta la Svizzera; usate ZVV per le zone e i biglietti dell’area di Zurigo.', 'I biglietti ZVV sono basati sulle zone; la città di Zurigo è la zona 110, Küsnacht la zona 140 e Richterswil la zona 153.', 'Per il centro di Zurigo, di solito è più semplice un biglietto singolo ZVV o un biglietto 24 ore. Per Küsnacht o Richterswil, inserite la destinazione in SBB Mobile o nell’app ZVV e acquistate le zone indicate.', 'Per gite fuori Zurigo, confrontate un biglietto punto-punto, un Supersaver ticket e un Saver Day Pass. I Supersaver possono costare meno se acquistati in anticipo, ma sono legati a un treno specifico e sono meno flessibili.', 'I bambini sotto i 6 anni viaggiano gratis nella rete di Zurigo. I bambini dai 6 ai 15 anni pagano la tariffa ridotta; per viaggi più lunghi in Svizzera, controllate i biglietti bambini SBB e la Junior Travelcard.', 'Per esplorare la città con calma, valutate il noleggio di una bici quando meteo e traffico lo rendono sensato.'],
+        gallery: [
+          { src: '/images/places/sbb-train.jpg', alt: 'Treno SBB nella campagna svizzera' },
+          { src: '/images/places/zurich-tram.jpg', alt: 'Tram di Zurigo sulla Bahnhofstrasse' },
+          { src: '/images/places/hotel-sonne-lake-arrival.jpg', alt: 'Battello sul Lago di Zurigo vicino a Küsnacht' },
+          { src: '/images/places/santis-cablecar.jpg', alt: 'Funivia del Säntis nell’Alpstein' },
+        ],
       },
       {
         title: 'Come scegliere i biglietti',
@@ -824,6 +901,43 @@ applyLocalizedCopy('it', {
       },
     ],
   },
+  faq: {
+    title: 'Dettagli e FAQ',
+    kicker: 'Risposte utili',
+    intro: 'Risposte alle domande più probabili degli ospiti. Aggiungeremo altri dettagli quando il programma sarà definitivo.',
+  },
+  rsvp: {
+    title: 'RSVP',
+    kicker: 'Conferma di presenza',
+    intro:
+      'Il modulo RSVP non è ancora aperto. Quando sarà pronto, questa pagina includerà il modulo Tally nella lingua corretta e raccoglierà presenza, esigenze alimentari, trasporti e alloggio.',
+    notice:
+      'Useremo le informazioni della RSVP solo per organizzare il matrimonio, inclusi presenza, posti a sedere, esigenze alimentari, trasporti e logistica degli alloggi.',
+    sections: [
+      {
+        title: 'Cosa chiederà la RSVP',
+        body: 'Il modulo raccoglierà solo i dettagli pratici necessari per organizzare il matrimonio.',
+        items: ['Nomi ed email degli ospiti', 'Adulti e bambini presenti', 'Partecipazione ai vari momenti', 'Esigenze alimentari e allergie', 'Esigenze di accessibilità o mobilità', 'Origine del viaggio e stato dell’alloggio'],
+      },
+      {
+        title: 'Codici invito',
+        body: 'Se useremo codici invito, aggiungeremo qui le istruzioni prima dell’apertura della RSVP.',
+        items: ['Apertura RSVP: TBD', 'Scadenza RSVP: TBD', 'Regole per eventuali modifiche: TBD'],
+      },
+    ],
+  },
+  gifts: {
+    title: 'Regali',
+    kicker: 'Con gratitudine',
+    intro:
+      'La vostra presenza in Svizzera è già il regalo più grande. Vi siamo molto grati per il viaggio che farete per festeggiare con noi.',
+    sections: [
+      {
+        title: 'Dettagli più avanti',
+        body: 'Se aggiungeremo una lista nozze, un fondo viaggio o altre indicazioni, le condivideremo qui prima dell’invio degli inviti.',
+      },
+    ],
+  },
   contact: {
     title: 'Contatti',
     kicker: 'Domande',
@@ -837,9 +951,64 @@ applyLocalizedCopy('it', {
       },
     ],
   },
+  credits: {
+    title: 'Crediti immagini',
+    kicker: 'Crediti',
+    intro: 'Immagini di luoghi, sedi e Zurigo usate nel prototipo di questo sito privato.',
+    sections: [
+      {
+        title: 'Centro storico di Zurigo',
+        body: 'Foto di Tiia Monto tramite Wikimedia Commons, licenza CC BY-SA 3.0.',
+      },
+      {
+        title: 'Kirche St. Peter',
+        body: 'Foto di Photones tramite Wikimedia Commons, licenza CC BY-SA 3.0.',
+      },
+      {
+        title: 'Kunsthaus Zürich',
+        body: 'Foto di Roland zh tramite Wikimedia Commons, licenza CC BY-SA 3.0.',
+      },
+      {
+        title: 'Immagini di viaggio e trasporti pubblici',
+        body: 'Le foto delle città di partenza e dei trasporti pubblici provengono da Wikimedia Commons e Unsplash. I dettagli delle fonti sono registrati anche in doc/assets/image_sources.md.',
+      },
+      {
+        title: 'Hotel Sonne Küsnacht',
+        body: 'Il prototipo include immagini dal sito ufficiale dell’Hotel Sonne per revisione privata del sito del matrimonio e una foto dal lago tramite Wikimedia Commons. Prima della pubblicazione sarà opportuno confermare i permessi per le immagini ufficiali della sede.',
+      },
+    ],
+  },
 });
 
 applyLocalizedCopy('de', {
+  schedule: {
+    title: 'Unser Hochzeitstag',
+    kicker: 'Ablauf',
+    intro:
+      'Die genauen Zeiten werden noch bestätigt. Diese Seite wird später der Tagesüberblick für Ankunft, Trauung, Bootstransfer, Abendessen, Feier und Rückfahrt.',
+    notice:
+      'Die Bootdetails sind vorläufig: Wir planen einen von uns organisierten Transfer von Zürich Richtung Küsnacht; Einstiegspunkt und Regenplan folgen.',
+    sections: [
+      {
+        title: 'Trauung',
+        body: 'Die Trauung findet in der Kirche St. Peter in der Zürcher Altstadt statt.',
+        items: ['Beginn: TBD', 'Ankunft der Gäste: TBD', 'Sprachen der Trauung: TBD'],
+        imageAlt: 'Kirche St. Peter in Zürich',
+      },
+      {
+        title: 'Bootstransfer',
+        body: 'Nach der Trauung planen wir einen von uns organisierten Bootstransfer von Zürich Richtung Küsnacht.',
+        items: ['Einstiegspunkt: TBD', 'Tickets: noch zu bestätigen', 'Regenplan und Barrierefreiheitsdetails: TBD'],
+        imageAlt: 'Ein Boot auf dem Zürichsee nahe beim Hotel Sonne',
+      },
+      {
+        title: 'Empfang und Feier',
+        body: 'Die Abendfeier findet im Hotel Sonne in Küsnacht direkt am Zürichsee statt.',
+        items: ['Aperitif: TBD', 'Abendessen: TBD', 'Tanz und Feier: TBD', 'Späte Rückfahrt: TBD'],
+        imageAlt: 'Hotel Sonne Küsnacht vom Zürichsee aus gesehen',
+      },
+    ],
+  },
   travel: {
     title: 'Anreise',
     kicker: 'Anreise nach Zürich',
@@ -863,9 +1032,9 @@ applyLocalizedCopy('de', {
         imageAlt: 'Skyline von New York City',
       },
       {
-        title: 'Aus London und dem Vereinigten Königreich',
+        title: 'Aus dem Vereinigten Königreich',
         body:
-          'Aus London sind Direktflüge meistens die einfachste Option. EasyJet kann preislich attraktiv sein, aber prüft die Gepäckregeln sorgfältig, bevor ihr Preise vergleicht.',
+          'Aus dem Vereinigten Königreich sind Direktflüge nach Zürich meistens die einfachste Option. EasyJet kann preislich attraktiv sein, aber prüft die Gepäckregeln sorgfältig, bevor ihr Preise vergleicht.',
         items: ['Vergleicht London Heathrow, Gatwick, City, Luton und Stansted je nach Wohnort; Heathrow, Gatwick und City sind für Zürich meist am relevantesten.', 'Ausserhalb Londons lohnt sich auch der Vergleich von Manchester, Edinburgh, Bristol und anderen Regionalflughäfen mit Direkt- oder Umsteigeverbindungen.', 'Bei EasyJet kann der günstigste Tarif nur ein kleines Gepäckstück unter dem Sitz enthalten, derzeit 45 x 36 x 20 cm inklusive Griffe und Rollen; bucht grosses Handgepäck oder Aufgabegepäck online dazu, wenn ihr es braucht.', 'Die Bahnroute führt von London St Pancras mit Eurostar nach Paris, dann von Gare du Nord nach Gare de Lyon und mit TGV Lyria nach Zürich HB; plant in Paris grosszügig Zeit für den Wechsel ein.'],
         imageAlt: 'Tower Bridge über der Themse in London',
       },
@@ -955,6 +1124,49 @@ applyLocalizedCopy('de', {
       },
     ],
   },
+  'things-to-do': {
+    title: 'Aktivitäten',
+    kicker: 'Zürich und Schweiz',
+    intro:
+      'Für Gäste mit Zeit rund um die Hochzeit bietet Zürich Seewege, Altstadt, Museen, Schokolade und gut erreichbare Tagesausflüge.',
+    sections: [
+      {
+        title: 'Erste Ideen in Zürich',
+        body: 'Wenn ihr etwas Zeit habt, sind dies einfache Möglichkeiten, die Stadt ohne ein zu volles Programm kennenzulernen.',
+        items: ['Spaziergänge durch die Altstadt: Niederdorf, Lindenhof, Grossmünster und die Wege an der Limmat.', 'Uetliberg für einen weiten Blick über Stadt und See, wenn das Wetter passt.', 'Der Zoo Zürich kann für kleinere Kinder eine gute Option sein.', 'Cafés, Gelaterias und ein Spaziergang am See bei Bellevue, Bürkliplatz oder Zürichhorn.'],
+        imageAlt: 'Zürich und der Zürichsee von oben',
+      },
+      {
+        title: 'Museen und Schokolade',
+        body: 'Für Kultur oder einen Regentag hat Zürich sehr gute Museen und ein gut organisiertes Schokoladenmuseum für Kinder und Erwachsene.',
+        items: ['Das Kunsthaus Zürich zeigt Kunst vom Mittelalter bis zur Gegenwart, mit Schweizer Malerei, Impressionismus, Klassischer Moderne, Dada, Giacometti und Munch als Schwerpunkten.', 'Das Museum Rietberg widmet sich Kunst und Kulturen aus Asien, Afrika, Amerika und Ozeanien.', 'Lindt Home of Chocolate in Kilchberg ist interaktiv und besonders auch mit Kindern geeignet.'],
+        imageAlt: 'Kunsthaus Zürich am Heimplatz',
+      },
+      {
+        title: 'See und Wasser',
+        body: 'Warme Tage eignen sich gut für Zeit am Wasser. Nutzt offizielle Badeanlagen und nehmt die Strömung der Limmat ernst.',
+        items: ['Zum Flussschwimmen ist Oberer Letten eine bekannte Limmat-Badi für sichere Schwimmerinnen und Schwimmer.', 'Für den See kommen offizielle Badis wie Tiefenbrunnen, Mythenquai, Utoquai und Enge infrage.', 'Prüft Öffnungszeiten, Regeln und Wasserbedingungen auf den offiziellen Seiten der Stadt.', 'Eine Zürichsee-Bootsfahrt ist eine ruhige Möglichkeit, Stadt und Ufer zu sehen.'],
+        imageAlt: 'Ein Boot auf dem Zürichsee nahe beim Hotel Sonne',
+      },
+      {
+        title: 'Tagesausflüge',
+        body: 'Diese Ziele sind praktische Tagesausflüge ab Zürich, wenn ihr eine längere Unternehmung machen möchtet, ohne das Hotel zu wechseln.',
+        items: ['Luzern, idealerweise mit einer Bootsfahrt auf dem Vierwaldstättersee.', 'Alpstein für Wanderungen wie Seealpsee, Hoher Kasten und Säntis, mit Routen verschiedener Schwierigkeitsgrade.', 'Rheinfall bei Schaffhausen.', 'Bern für die Altstadt oder Basel für Kunstmuseen wie Fondation Beyeler und Kunstmuseum Basel.'],
+        imageAlt: 'Ein Bergsee in der Schweiz',
+      },
+      {
+        title: 'Weiter entfernt',
+        body: 'Wenn die Schweiz Teil einer längeren Reise ist, eignen sich diese Ziele besser mit zusätzlichen Übernachtungen als rund um den Hochzeitstag.',
+        items: ['Schweizerischer Nationalpark in Graubünden.', 'Lauterbrunnen und Jungfraujoch für klassische Hochalpenlandschaft.', 'Wanderideen: Pizol 5-Seen-Wanderung, Aussichtspunkte am Aletschgletscher, Berner Oberland, Graubünden und Wallis.'],
+        imageAlt: 'Gabriela und Manfredi in den Schweizer Alpen',
+      },
+      {
+        title: 'Lokale Hinweise',
+        body: 'Gäste können Manfredi und seine Familie gerne um persönliche Empfehlungen bitten, besonders für längere Schweizreisen, Familienpläne oder Routen mit einem bestimmten Wanderniveau.',
+        imageAlt: 'Zürcher Altstadt und Limmat vom Lindenhof',
+      },
+    ],
+  },
   'switzerland-guide': {
     title: 'Schweiz-Guide',
     kicker: 'Praktische Hinweise',
@@ -966,6 +1178,12 @@ applyLocalizedCopy('de', {
         body:
           'In Zürich bewegt ihr euch gut mit Tram, Zug, Bus und Schiff. Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist für die normale Hochzeitslogistik nicht empfohlen.',
         items: ['Nutzt SBB Mobile für Fahrpläne und Tickets in der ganzen Schweiz; nutzt ZVV für Zonen und lokale Tickets im Raum Zürich.', 'ZVV-Tickets sind zonenbasiert; Zürich Stadt ist Zone 110, Küsnacht Zone 140 und Richterswil Zone 153.', 'Für Zürich Zentrum ist meistens ein ZVV-Einzelticket oder ein 24h-Ticket am einfachsten. Für Küsnacht oder Richterswil gebt das Ziel in SBB Mobile oder der ZVV-App ein und kauft die angezeigten Zonen.', 'Für Tagesausflüge ausserhalb Zürichs vergleicht ein normales Punkt-zu-Punkt-Ticket, ein Supersaver Ticket und einen Saver Day Pass. Supersaver Tickets können günstiger sein, wenn sie früh gekauft werden, sind aber an einen bestimmten Zug gebunden und weniger flexibel.', 'Kinder unter 6 Jahren fahren im Zürcher Verkehrsverbund kostenlos. Kinder von 6 bis 15 Jahren zahlen den reduzierten Tarif; für längere Reisen in der Schweiz prüft SBB-Kindertickets und Junior Travelcard-Optionen.', 'Für entspanntes Erkunden der Stadt könnt ihr ein Velo mieten, wenn Wetter und Verkehrssituation für euch passen.'],
+        gallery: [
+          { src: '/images/places/sbb-train.jpg', alt: 'SBB-Zug in der Schweizer Landschaft' },
+          { src: '/images/places/zurich-tram.jpg', alt: 'Zürcher Tram auf der Bahnhofstrasse' },
+          { src: '/images/places/hotel-sonne-lake-arrival.jpg', alt: 'Zürichsee-Schiff nahe Küsnacht' },
+          { src: '/images/places/santis-cablecar.jpg', alt: 'Säntis-Seilbahn im Alpstein' },
+        ],
       },
       {
         title: 'Tickets wählen',
@@ -978,7 +1196,7 @@ applyLocalizedCopy('de', {
         body:
           'Die Schweiz verwendet Schweizer Franken und ist oft teuer, aber gute Planung hilft, die Kosten überschaubar zu halten.',
         items: ['Migros und Coop sind die grössten Supermarktketten und nützlich für Frühstück, Snacks, Picknick und Kinderbedarf.', 'Taxis sind meist teuer. Nutzt sie nur, wenn Gepäck, Kinder oder Barrierefreiheitsbedarf sie wirklich sinnvoll machen.', 'Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist für die normale Hochzeitslogistik nicht empfohlen.', 'Günstige Optionen sind Spaziergänge am See, Altstadt, Aussichtspunkte, Parks, Picknicks aus dem Supermarkt und Unterkunft nahe Tram, Zug oder Bus.'],
-        imageAlt: 'Schweizer Franken in Banknoten und Muenzen',
+        imageAlt: 'Schweizer Franken in Banknoten und Münzen',
         exchangeRates: true,
       },
       {
@@ -995,13 +1213,50 @@ applyLocalizedCopy('de', {
           ],
           'Die meisten modernen Handy- und Laptop-Ladegeräte funktionieren mit 230V, aber prüft das Etikett bei Haargeräten und anderen leistungsstärkeren Geräten.',
         ],
-        imageAlt: 'Regentag in Zuerich',
+        imageAlt: 'Regentag in Zürich',
       },
       {
         title: 'Persönliche Empfehlungen',
         body:
           'Gäste können Manfredi und die Familie für praktische Hinweise kontaktieren, besonders zu Wanderungen, familienfreundlichen Plänen, längeren Reisen oder Routen für ein bestimmtes Wanderniveau.',
-        imageAlt: 'Gabriela und Manfredi in der Zuercher Altstadt',
+        imageAlt: 'Gabriela und Manfredi in der Zürcher Altstadt',
+      },
+    ],
+  },
+  faq: {
+    title: 'Details und FAQ',
+    kicker: 'Hilfreiche Antworten',
+    intro: 'Antworten auf die häufigsten Fragen der Gäste. Weitere Details werden ergänzt, sobald der Tagesablauf final ist.',
+  },
+  rsvp: {
+    title: 'RSVP',
+    kicker: 'Rückmeldung',
+    intro:
+      'Das RSVP-Formular ist noch nicht geöffnet. Sobald es bereit ist, wird diese Seite das Tally-Formular in eurer Sprache enthalten und Teilnahme, Ernährung, Transport und Unterkunft abfragen.',
+    notice:
+      'Wir verwenden RSVP-Informationen nur für die Hochzeitsplanung, einschliesslich Teilnahme, Sitzordnung, Ernährungsanforderungen, Transport und Unterkunftslogistik.',
+    sections: [
+      {
+        title: 'Was die RSVP abfragen wird',
+        body: 'Das Formular wird nur die praktischen Angaben erfassen, die für die Hochzeitsplanung nötig sind.',
+        items: ['Namen und E-Mail-Adressen der Gäste', 'Teilnehmende Erwachsene und Kinder', 'Teilnahme an den einzelnen Programmpunkten', 'Ernährungsanforderungen und Allergien', 'Hinweise zu Barrierefreiheit oder Mobilität', 'Anreiseort und Unterkunftsstatus'],
+      },
+      {
+        title: 'Einladungscodes',
+        body: 'Falls wir Einladungscodes verwenden, ergänzen wir die Anleitung hier, bevor die RSVP geöffnet wird.',
+        items: ['Öffnung der RSVP: TBD', 'RSVP-Frist: TBD', 'Regel für spätere Änderungen: TBD'],
+      },
+    ],
+  },
+  gifts: {
+    title: 'Geschenke',
+    kicker: 'Mit Dankbarkeit',
+    intro:
+      'Eure Anwesenheit in der Schweiz ist für uns schon das grösste Geschenk. Wir sind sehr dankbar, dass ihr die Reise auf euch nehmt, um mit uns zu feiern.',
+    sections: [
+      {
+        title: 'Details folgen',
+        body: 'Falls wir eine Geschenkeliste, einen Reisefonds oder weitere Hinweise ergänzen, teilen wir sie hier, bevor die Einladungen verschickt werden.',
       },
     ],
   },
@@ -1015,6 +1270,33 @@ applyLocalizedCopy('de', {
         title: 'Fragen zur Hochzeit',
         body: 'Wir verwenden eine gemeinsame E-Mail-Adresse für praktische Fragen, während die Website vorbereitet wird.',
         items: ['Allgemeine Fragen: gabyandmanfredi@gmail.com', 'RSVP-Unterstützung: gabyandmanfredi@gmail.com', 'Dringender Kontakt in der Hochzeitswoche: TBD'],
+      },
+    ],
+  },
+  credits: {
+    title: 'Bildnachweise',
+    kicker: 'Credits',
+    intro: 'Bilder von Orten, Zürich und Veranstaltungsorten, die im Prototyp dieser privaten Hochzeitswebsite verwendet werden.',
+    sections: [
+      {
+        title: 'Zürcher Altstadt',
+        body: 'Foto von Tiia Monto via Wikimedia Commons, lizenziert unter CC BY-SA 3.0.',
+      },
+      {
+        title: 'Kirche St. Peter',
+        body: 'Foto von Photones via Wikimedia Commons, lizenziert unter CC BY-SA 3.0.',
+      },
+      {
+        title: 'Kunsthaus Zürich',
+        body: 'Foto von Roland zh via Wikimedia Commons, lizenziert unter CC BY-SA 3.0.',
+      },
+      {
+        title: 'Reise- und ÖV-Bilder',
+        body: 'Die Bilder zu Herkunftsorten und öffentlichem Verkehr stammen von Wikimedia Commons und Unsplash. Die Quellen sind zusätzlich in doc/assets/image_sources.md dokumentiert.',
+      },
+      {
+        title: 'Hotel Sonne Küsnacht',
+        body: 'Der Prototyp enthält offizielle Bilder der Hotel-Sonne-Website für die private Prüfung der Hochzeitswebsite sowie ein Wikimedia-Commons-Bild vom See aus. Die Erlaubnis für offizielle Veranstaltungsortbilder sollte vor einer Veröffentlichung bestätigt werden.',
       },
     ],
   },
@@ -1075,7 +1357,7 @@ function mirrorLanguage(lang: Exclude<Lang, 'en'>): Record<PageKey, PageContent>
   ) as Record<PageKey, PageContent>;
 }
 
-type LocalizedSectionCopy = Partial<Pick<Section, 'title' | 'body' | 'items' | 'links' | 'imageAlt' | 'exchangeRates'>>;
+type LocalizedSectionCopy = Partial<Pick<Section, 'title' | 'body' | 'items' | 'links' | 'imageAlt' | 'exchangeRates' | 'gallery'>>;
 
 type LocalizedPageCopy = Partial<Omit<PageContent, 'sections'> & { sections: LocalizedSectionCopy[] }>;
 

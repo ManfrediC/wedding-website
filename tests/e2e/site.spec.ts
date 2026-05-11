@@ -201,6 +201,52 @@ test('Italian and German guide copy reflects child fares and SBB Mobile', async 
   await expect(page.getByText('Kinder unter 6 Jahren fahren im Zürcher Verkehrsverbund kostenlos')).toBeVisible();
 });
 
+test('Italian and German pages have localised core content', async ({ page }) => {
+  await page.goto('/it/schedule/');
+  await expect(page.getByRole('heading', { name: 'Il giorno del matrimonio' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Ricevimento e festa' })).toBeVisible();
+  await expect(page.getByText('La serata si terrà all’Hotel Sonne di Küsnacht')).toBeVisible();
+
+  await page.goto('/it/things-to-do/');
+  await expect(page.getByRole('heading', { name: 'Cosa fare' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Prime idee a Zurigo' })).toBeVisible();
+  await expect(page.getByText('Zurich Zoo, che può essere una buona idea per i più piccoli')).toBeVisible();
+
+  await page.goto('/it/rsvp/');
+  await expect(page.getByRole('heading', { name: 'Cosa chiederà la RSVP' })).toBeVisible();
+  await expect(page.getByText('Esigenze alimentari e allergie')).toBeVisible();
+
+  await page.goto('/it/gifts/');
+  await expect(page.getByRole('heading', { name: 'Regali' })).toBeVisible();
+  await expect(page.getByText('La vostra presenza in Svizzera è già il regalo più grande')).toBeVisible();
+
+  await page.goto('/it/credits/');
+  await expect(page.getByRole('heading', { name: 'Crediti immagini' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Immagini di viaggio e trasporti pubblici' })).toBeVisible();
+
+  await page.goto('/de/schedule/');
+  await expect(page.getByRole('heading', { name: 'Unser Hochzeitstag' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Empfang und Feier' })).toBeVisible();
+  await expect(page.getByText('Die Abendfeier findet im Hotel Sonne in Küsnacht')).toBeVisible();
+
+  await page.goto('/de/things-to-do/');
+  await expect(page.getByRole('heading', { name: 'Aktivitäten' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Erste Ideen in Zürich' })).toBeVisible();
+  await expect(page.getByText('Der Zoo Zürich kann für kleinere Kinder eine gute Option sein')).toBeVisible();
+
+  await page.goto('/de/rsvp/');
+  await expect(page.getByRole('heading', { name: 'Was die RSVP abfragen wird' })).toBeVisible();
+  await expect(page.getByText('Ernährungsanforderungen und Allergien')).toBeVisible();
+
+  await page.goto('/de/gifts/');
+  await expect(page.getByRole('heading', { name: 'Geschenke' })).toBeVisible();
+  await expect(page.getByText('Eure Anwesenheit in der Schweiz ist für uns schon das grösste Geschenk')).toBeVisible();
+
+  await page.goto('/de/credits/');
+  await expect(page.getByRole('heading', { name: 'Bildnachweise' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Reise- und ÖV-Bilder' })).toBeVisible();
+});
+
 test('Switzerland Guide uses the selected section imagery', async ({ page }) => {
   await page.goto('/en/switzerland-guide/');
 

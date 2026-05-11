@@ -41,11 +41,11 @@ export const homePhotoStrip: Record<Lang, HomePhotoStrip> = {
   },
   de: {
     title: 'Ein bisschen Schweiz, ein bisschen wir',
-    body: 'Ein paar Fotos von unserer Minted-Seite, aus Zurich und unseren liebsten Ecken der Schweiz.',
+    body: 'Ein paar Fotos von unserer Minted-Seite, aus Zürich und unseren liebsten Ecken der Schweiz.',
     photos: [
       { src: sharedPhotos[0], alt: 'Gabriela und Manfredi festlich angezogen' },
-      { src: sharedPhotos[1], alt: 'Gabriela und Manfredi mit Blick auf das verschneite Zurich' },
-      { src: sharedPhotos[2], alt: 'Gabriela und Manfredi am Zurichsee' },
+      { src: sharedPhotos[1], alt: 'Gabriela und Manfredi mit Blick auf das verschneite Zürich' },
+      { src: sharedPhotos[2], alt: 'Gabriela und Manfredi am Zürichsee' },
       { src: sharedPhotos[3], alt: 'Gabriela und Manfredi in den Schweizer Alpen' },
     ],
   },
