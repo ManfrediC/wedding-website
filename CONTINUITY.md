@@ -69,3 +69,4 @@ Start Phase 0/1 from the build specification:
 - 2026-05-11: Replaced the skewed Chicago and London travel photos with straighter Wikimedia Commons images, using Tower Bridge for the UK card, and changed the Schedule reception card to a lake-facing Hotel Sonne view from Lake Zurich.
 - 2026-05-11: Replaced the From Zurich Airport travel card image with a Wikimedia Commons photo of the Zürich Flughafen underground railway platforms.
 - 2026-05-11: Renamed the Stay page Richterswil accommodation card from "Richterswil option" to "Richterswil" and added a Richterswil lakeside photo.
+- 2026-05-11: Added the existing Kirche St. Peter photo to the Stay page Accessibility and mobility card.

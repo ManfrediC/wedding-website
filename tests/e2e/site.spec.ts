@@ -131,6 +131,10 @@ test('English pages include requested travel and contact details', async ({ page
   );
   await expect(page.getByText('the house has no lift')).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Accessibility and mobility' })).toBeVisible();
+  await expect(page.locator('img[src="/images/places/st-peter-zurich.jpg"]')).toHaveAttribute(
+    'alt',
+    'Kirche St. Peter in Zurich',
+  );
   await expect(page.getByText('the ground floor is wheelchair-accessible')).toBeVisible();
   await expect(page.getByRole('link', { name: 'St. Peter accessibility FAQ' })).toHaveAttribute(
     'href',
