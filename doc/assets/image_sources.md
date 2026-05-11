@@ -12,7 +12,7 @@ This file tracks non-couple imagery used in the website prototype.
 | `public/images/places/chicago-skyline.jpg` | Wikimedia Commons, `Chicago Skyline and Lake Michigan.JPG` | Raidarmax | CC BY-SA 3.0 | Chicago travel card image, downloaded at 1280px width. |
 | `public/images/places/new-york-skyline.jpg` | Wikimedia Commons, `Manhattan Skyline night.jpg` | Kai Pilger | CC BY-SA 4.0 | New York travel card image, downloaded at 1280px width. |
 | `public/images/places/london-skyline.jpg` | Wikimedia Commons, `London Houses of Parliament and Westminster Bridge.jpg` | Francesco Gasparetti | CC BY 2.0 | Westminster travel card image, downloaded at 1280px width. |
-| `public/images/places/sardinia-cagliari.jpg` | Wikimedia Commons, `Castello, Cagliari.jpg` | Cernegaja28 | CC BY-SA 4.0 | Sardinia travel card image, downloaded at 1280px width. |
+| `public/images/places/sardinia-ogliastra.jpg` | Wikimedia Commons, `Coast and sea at Santa Maria Navarrese, Sardinia, Italy.jpg` | Fabio Pani | CC BY-SA 4.0 | Sardinia travel card image for the Ogliastra region, downloaded at 1280px width. |
 | `public/images/places/sbb-train.jpg` | Wikimedia Commons, `SBB RABe 511 (50852815551).jpg` | Nelso Silva | CC BY-SA 2.0 | Public transport gallery image, downloaded at 1280px width. |
 | `public/images/places/zurich-tram.jpg` | Wikimedia Commons, `Tram E, Bahnhofstrasse, Zurich, Switzerland.JPG` | Eluveitie | CC BY-SA 3.0 | Public transport gallery image. |
 | `public/images/places/santis-cablecar.jpg` | Wikimedia Commons, `Säntis LSB Blaue Kabine von Talstation.jpg` | Der Messer | CC BY-SA 4.0 | Public transport gallery image, downloaded at 1280px width. |

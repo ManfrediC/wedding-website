@@ -24,7 +24,7 @@ Durable project notes for the wedding website.
 - Activity ideas live in `doc/plans/activity_ideas.md`; keep refining them with Manfredi and his brothers.
 - Website edit requests may arrive in `doc/plans/website_edits.txt`; apply them as concrete content updates and preserve evidence for travel/ticket claims.
 - Italian guest travel should focus on Sardinia, especially Cagliari/Olbia flights and ferry-to-Genoa plus driving options; EasyJet can be budget-friendly but baggage rules need a clear warning.
-- Travel photo choices should match the origin/place: Chicago skyline, New York skyline, Westminster for London/UK, and Sardinia imagery for Italian guests. Avoid the disliked previous London, SBB train, Zurich tram, and distorted Saentis cablecar photos.
+- Travel photo choices should match the origin/place: Chicago skyline, New York skyline, Westminster for London/UK, and scenic Ogliastra imagery for Sardinian guests. Avoid the disliked previous London, SBB train, Zurich tram, and distorted Saentis cablecar photos.
 - Chicago travel guidance should invite guests to compare fares with a New York layover, as Chicago-Zurich itineraries via New York can sometimes be cheaper than nonstop flights.
 - Zurich guidance should strongly favour public transport: tram, train, bus, boat, SBB Mobile, and optional bike rental. Ordinary Zurich wedding logistics should discourage driving, taxis, and rental cars.
 - Zurich Airport guidance should highlight the convenient train/S-Bahn connection and advise guests to use the train rather than driving or taking a taxi unless luggage, children, or accessibility make that useful.
