@@ -75,6 +75,21 @@ test('welcome page renders the password gate', async ({ page }) => {
   await expect(page.locator('input[name="next"]')).toHaveValue('/en/travel/');
 });
 
+test('home hero keeps the Zurich image positioned below the spire', async ({ page }) => {
+  await page.goto('/en/');
+
+  const backgroundPosition = await page.locator('.home-hero').evaluate((element) => {
+    return window.getComputedStyle(element).backgroundPosition;
+  });
+
+  if (page.viewportSize()?.width && page.viewportSize()!.width <= 700) {
+    expect(backgroundPosition).toContain('58% 55%');
+    return;
+  }
+
+  expect(backgroundPosition).toContain('50% 58%');
+});
+
 test('Schedule uses the selected Hotel Sonne reception image', async ({ page }) => {
   await page.goto('/en/schedule/');
 
