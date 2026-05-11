@@ -95,6 +95,12 @@ test('English pages include requested travel and contact details', async ({ page
     'mailto:gabyandmanfredi@gmail.com',
   );
 
+  await page.goto('/en/switzerland-guide/');
+  await expect(page.getByRole('link', { name: 'Type J' })).toHaveAttribute(
+    'href',
+    'https://en.wikipedia.org/wiki/SN_441011',
+  );
+
   await page.goto('/en/faq/');
   await page.locator('summary').filter({ hasText: 'How do I buy a train ticket?' }).click();
   await expect(page.getByText('The easiest option is the SBB Mobile app')).toBeVisible();

@@ -17,6 +17,10 @@ const lang = isLang(langParam) ? langParam : 'en';
 const page = pageKeys.includes(pageParam as PageKey) ? (pageParam as PageKey) : 'schedule';
 const content = pages[lang][page];
 const currentPath = `/${page}/`;
+
+function isInlineLink(part: unknown): part is { text: string; href: string } {
+  return typeof part === 'object' && part !== null && 'text' in part && 'href' in part;
+}
 ---
 
 <BaseLayout lang={lang} currentPath={currentPath} title={`${content.title} | Gabriela & Manfredi`}>
@@ -62,7 +66,19 @@ const currentPath = `/${page}/`;
               <p>{section.body}</p>
               {section.items && (
                 <ul>
-                  {section.items.map((item) => <li>{item}</li>)}
+                  {section.items.map((item) => (
+                    <li>
+                      {Array.isArray(item)
+                        ? item.map((part) =>
+                            isInlineLink(part) ? (
+                              <a href={part.href} target="_blank" rel="noreferrer">{part.text}</a>
+                            ) : (
+                              part
+                            ),
+                          )
+                        : item}
+                    </li>
+                  ))}
                 </ul>
               )}
               {section.gallery && (

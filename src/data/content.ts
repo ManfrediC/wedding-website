@@ -20,6 +20,13 @@ type Link = {
   href: string;
 };
 
+type InlineLink = {
+  text: string;
+  href: string;
+};
+
+type SectionItem = string | (string | InlineLink)[];
+
 type SectionImage = {
   src: string;
   alt: string;
@@ -28,7 +35,7 @@ type SectionImage = {
 type Section = {
   title: string;
   body: string;
-  items?: string[];
+  items?: SectionItem[];
   links?: Link[];
   image?: string;
   imageAlt?: string;
@@ -468,7 +475,16 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Weather, packing, and practical tips',
           body: 'June is usually pleasant, but Swiss weather can change quickly. Pack for both sunshine and rain, especially if you are doing lake or mountain activities.',
-          items: ['Bring sunglasses, layers, a light rain jacket, and comfortable shoes for walking on cobbles or lake paths.', 'For the wedding day, choose formal shoes you can actually walk in, plus a light layer for the boat or lakefront evening.', 'Switzerland uses Type J sockets. Slim European Type C two-pin plugs usually fit, but larger European Schuko/Type F plugs, UK plugs, and US plugs need an adapter.', 'Most modern phone and laptop chargers handle 230V, but check the label on hair tools and other higher-power devices.'],
+          items: [
+            'Bring sunglasses, layers, a light rain jacket, and comfortable shoes for walking on cobbles or lake paths.',
+            'For the wedding day, choose formal shoes you can actually walk in, plus a light layer for the boat or lakefront evening.',
+            [
+              'Switzerland uses ',
+              { text: 'Type J', href: 'https://en.wikipedia.org/wiki/SN_441011' },
+              ' sockets. Slim European Type C two-pin plugs usually fit, but larger European Schuko/Type F plugs, UK plugs, and US plugs need an adapter.',
+            ],
+            'Most modern phone and laptop chargers handle 230V, but check the label on hair tools and other higher-power devices.',
+          ],
           links: [
             { label: 'Swiss plug guide', href: 'https://www.worldstandards.eu/electricity/plug-voltage-by-country/switzerland/' },
           ],
@@ -696,7 +712,16 @@ applyLocalizedCopy('it', {
         title: 'Meteo, bagagli e consigli pratici',
         body:
           'Giugno è di solito piacevole, ma il meteo svizzero può cambiare rapidamente. Portate abiti adatti sia al sole sia alla pioggia, soprattutto per lago e montagna.',
-        items: ['Portate occhiali da sole, strati leggeri, una giacca antipioggia e scarpe comode per camminare su ciottoli o lungolago.', 'Per il giorno del matrimonio, scegliete scarpe formali con cui possiate davvero camminare e uno strato leggero per la barca o la serata sul lago.', 'La Svizzera usa prese di tipo J. Le spine europee sottili di tipo C di solito entrano, ma spine Schuko/Tipo F più grandi, UK e USA richiedono un adattatore.', 'La maggior parte dei caricabatterie moderni per telefoni e computer supporta 230V, ma controllate l’etichetta di asciugacapelli e altri dispositivi più potenti.'],
+        items: [
+          'Portate occhiali da sole, strati leggeri, una giacca antipioggia e scarpe comode per camminare su ciottoli o lungolago.',
+          'Per il giorno del matrimonio, scegliete scarpe formali con cui possiate davvero camminare e uno strato leggero per la barca o la serata sul lago.',
+          [
+            'La Svizzera usa prese di ',
+            { text: 'tipo J', href: 'https://en.wikipedia.org/wiki/SN_441011' },
+            '. Le spine europee sottili di tipo C di solito entrano, ma spine Schuko/Tipo F più grandi, UK e USA richiedono un adattatore.',
+          ],
+          'La maggior parte dei caricabatterie moderni per telefoni e computer supporta 230V, ma controllate l’etichetta di asciugacapelli e altri dispositivi più potenti.',
+        ],
       },
       {
         title: 'Consigli personali',
@@ -832,7 +857,16 @@ applyLocalizedCopy('de', {
         title: 'Wetter, Packen und praktische Tipps',
         body:
           'Juni ist meistens angenehm, aber Schweizer Wetter kann schnell wechseln. Packt für Sonne und Regen, besonders bei See- oder Bergplänen.',
-        items: ['Bringt Sonnenbrille, Schichten, eine leichte Regenjacke und bequeme Schuhe für Kopfsteinpflaster oder Seewege mit.', 'Für den Hochzeitstag wählt formelle Schuhe, in denen ihr wirklich gehen könnt, plus eine leichte Schicht für Boot oder Abend am See.', 'Die Schweiz verwendet Typ-J-Steckdosen. Schlanke europäische Typ-C-Stecker passen meist, grössere Schuko/Typ-F-Stecker sowie UK- und US-Stecker brauchen einen Adapter.', 'Die meisten modernen Handy- und Laptop-Ladegeräte funktionieren mit 230V, aber prüft das Etikett bei Haargeräten und anderen leistungsstärkeren Geräten.'],
+        items: [
+          'Bringt Sonnenbrille, Schichten, eine leichte Regenjacke und bequeme Schuhe für Kopfsteinpflaster oder Seewege mit.',
+          'Für den Hochzeitstag wählt formelle Schuhe, in denen ihr wirklich gehen könnt, plus eine leichte Schicht für Boot oder Abend am See.',
+          [
+            'Die Schweiz verwendet ',
+            { text: 'Typ-J-Steckdosen', href: 'https://en.wikipedia.org/wiki/SN_441011' },
+            '. Schlanke europäische Typ-C-Stecker passen meist, grössere Schuko/Typ-F-Stecker sowie UK- und US-Stecker brauchen einen Adapter.',
+          ],
+          'Die meisten modernen Handy- und Laptop-Ladegeräte funktionieren mit 230V, aber prüft das Etikett bei Haargeräten und anderen leistungsstärkeren Geräten.',
+        ],
       },
       {
         title: 'Persönliche Empfehlungen',
