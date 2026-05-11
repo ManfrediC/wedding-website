@@ -24,13 +24,27 @@ Durable project notes for the wedding website.
 - Activity ideas live in `doc/plans/activity_ideas.md`; keep refining them with Manfredi and his brothers.
 - Website edit requests may arrive in `doc/plans/website_edits.txt`; apply them as concrete content updates and preserve evidence for travel/ticket claims.
 - Italian guest travel should focus on Sardinia, especially Cagliari/Olbia flights and ferry-to-Genoa plus driving options; EasyJet can be budget-friendly but baggage rules need a clear warning.
+- Travel photo choices should match the origin/place: Chicago skyline, New York skyline, Westminster for London/UK, and Sardinia imagery for Italian guests. Avoid the disliked previous London, SBB train, Zurich tram, and distorted Saentis cablecar photos.
+- Zurich guidance should strongly favour public transport: tram, train, bus, boat, SBB Mobile, and optional bike rental. Ordinary Zurich wedding logistics should discourage driving, taxis, and rental cars.
+- Zurich Airport guidance should highlight the convenient train/S-Bahn connection and advise guests to use the train rather than driving or taking a taxi unless luggage, children, or accessibility make that useful.
+- Train-ticket guidance should point guests first to SBB Mobile, with ZVV app/ticket machines as Zurich-area alternatives. Tickets must be bought before boarding; ZVV tickets are zone-based and cover trains, trams, buses, and boats in the selected zones.
+- Accommodation guidance should mention Hotel Sonne Kuesnacht, OXEN Kuesnacht, Airbnb searches for Zurich in June 2027, and more economical hotel areas in Zurich Altstetten or Oerlikon.
+- Guest-facing contact email is `gabyandmanfredi@gmail.com`.
 - Boat transfer wording must stay careful: host-arranged boat transfer, details to be confirmed.
 - Cambridge and UK photos from the Minted draft are intentionally excluded because the wedding location is Zurich and Kuesnacht.
 - Children and plus ones are currently interpreted as welcome, but invitation policy may later become more specific.
 - Do not imply guests need to buy boat tickets unless that is confirmed.
 
+## Development Memory
+
+- Local Git trust has been set with `safe.directory` for `C:/Projects/wedding-website`.
+- Standard verification before a checkpoint: `npm run check`, `npm run build`, `npm run test:e2e`, and, when the phone is connected, `npm run test:android`.
+- `npm run test:e2e` covers Chrome, Edge, Firefox, and WebKit/Safari-like rendering. Firefox requires `MOZ_DISABLE_CONTENT_SANDBOX=1` in the Playwright launch options on this Windows workstation.
+- The Android device seen on 2026-05-11 was `RFCW30AS8RE` in ADB debug mode; Android screenshots are saved under `tmp/android`.
+
 ## Privacy Memory
 
 - The deployed site should be password-protected before guests receive the link.
+- Use `WEBSITE_PW` for the site password in Cloudflare/local protected preview environments. The local secret source is `env/website_pw.env`, which must remain untracked.
 - Use `noindex, nofollow` and restrictive `robots.txt`.
 - Never commit the real password, guest list, RSVP submissions, private addresses, or unpublished contact details.
