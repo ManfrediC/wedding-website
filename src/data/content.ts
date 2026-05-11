@@ -303,6 +303,15 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           imageAlt: 'SBB train travelling through the Swiss countryside',
         },
         {
+          title: 'By train to Küsnacht',
+          body: 'Küsnacht ZH is on Zurich’s right-bank S-Bahn line. Use SBB Mobile or ZVV for the exact train, platform, and ticket zones on the day.',
+          items: ['From Zurich HB: take an S6 or S16 towards the right bank of Lake Zurich and get off at Küsnacht ZH. From the station, Hotel Sonne is a short walk downhill towards the lake.', 'From Zurich Airport: the simplest direct train is usually the S16 towards Herrliberg-Feldmeilen or Meilen, getting off at Küsnacht ZH. If the timing is better, take any fast airport train to Zurich HB and change there to S6 or S16.', 'From Richterswil: travel by train to Zurich HB, then change to S6 or S16 towards Küsnacht ZH. This is usually clearer than trying to cross the lake late in the evening.', 'Buy the full journey in SBB Mobile or the ZVV app before boarding; the app will choose the required zones.'],
+          links: [
+            { label: 'SBB Mobile', href: 'https://www.sbb.ch/en/timetable/mobile-apps/sbb-mobile.html' },
+            { label: 'ZVV S-Bahn lines', href: 'https://www.zvv.ch/de/fahrplan-und-informationen/fahrplanverfahren/bahn-und-schiff.html' },
+          ],
+        },
+        {
           title: 'Zurich wedding map',
           body: 'This OpenStreetMap-based map is intended for orientation rather than exact route planning. It shows Zurich Airport, Zurich HB, the ceremony in the old town, the reception in Küsnacht, and Richterswil.',
           items: ['Kirche St. Peter is in Zurich old town, close to the lake and central tram connections.', 'Hotel Sonne is in Küsnacht on the right bank of Lake Zurich.', "Richterswil, where Manfredi's parents live, is further south on the lake and is reachable by train.", 'Zurich Airport and Zurich HB are connected by frequent trains; use SBB Mobile or ZVV for the exact journey on the day.'],
@@ -655,6 +664,12 @@ applyLocalizedCopy('it', {
         imageAlt: 'Treno SBB nella campagna svizzera',
       },
       {
+        title: 'In treno verso Küsnacht',
+        body:
+          'Küsnacht ZH si trova sulla linea S-Bahn della riva destra del Lago di Zurigo. Usate SBB Mobile o ZVV per treno, binario e zone tariffarie esatte nel giorno del viaggio.',
+        items: ['Da Zurich HB: prendete un S6 o S16 verso la riva destra del Lago di Zurigo e scendete a Küsnacht ZH. Dalla stazione, Hotel Sonne è a pochi minuti a piedi in discesa verso il lago.', 'Dall’aeroporto di Zurigo: il treno diretto più semplice è di solito l’S16 verso Herrliberg-Feldmeilen o Meilen, scendendo a Küsnacht ZH. Se gli orari sono migliori, prendete un treno veloce per Zurich HB e cambiate lì con S6 o S16.', 'Da Richterswil: viaggiate in treno fino a Zurich HB, poi cambiate con S6 o S16 verso Küsnacht ZH. Di solito è più chiaro che attraversare il lago la sera tardi.', 'Comprate l’intero percorso in SBB Mobile o nell’app ZVV prima di salire; l’app sceglierà le zone necessarie.'],
+      },
+      {
         title: 'Mappa dei luoghi del matrimonio a Zurigo',
         body:
           'Questa mappa basata su OpenStreetMap serve per orientarsi, non per pianificare un percorso preciso. Mostra l’aeroporto di Zurigo, Zurich HB, la cerimonia nel centro storico, il ricevimento a Küsnacht e Richterswil.',
@@ -805,6 +820,12 @@ applyLocalizedCopy('de', {
           'Der Flughafen Zürich hat eine sehr bequeme Zug- und S-Bahn-Verbindung zum Zürich HB, mit weiterem öffentlichem Verkehr nach Küsnacht und zu den Hochzeitsorten. Für die normale Hochzeitslogistik nutzt den Zug statt Auto oder Taxi.',
         items: ['SBB-Züge nach Zürich HB fahren in der Regel etwa alle 10 Minuten; die Fahrt dauert ungefähr 15 Minuten.', 'Für Küsnacht oder Hotel Sonne nutzt SBB Mobile oder ZVV ab Flughafen oder ab Zürich HB und kauft das von der App angezeigte Ticket.', 'Taxis und Ride-Hailing können mit Kindern, schwerem Gepäck oder Barrierefreiheitsbedarf sinnvoll sein, sind aber meist deutlich teurer als der öffentliche Verkehr.', 'Ein Mietwagen ist für Hochzeitslogistik innerhalb Zürichs nicht empfohlen.'],
         imageAlt: 'SBB-Zug in der Schweizer Landschaft',
+      },
+      {
+        title: 'Mit dem Zug nach Küsnacht',
+        body:
+          'Küsnacht ZH liegt an der S-Bahn-Linie am rechten Zürichseeufer. Nutzt SBB Mobile oder ZVV für den genauen Zug, das Gleis und die nötigen Zonen am Reisetag.',
+        items: ['Ab Zürich HB: nehmt S6 oder S16 in Richtung rechtes Zürichseeufer und steigt in Küsnacht ZH aus. Vom Bahnhof ist Hotel Sonne ein kurzer Fussweg bergab Richtung See.', 'Ab Flughafen Zürich: die einfachste direkte Verbindung ist meist die S16 Richtung Herrliberg-Feldmeilen oder Meilen bis Küsnacht ZH. Wenn es zeitlich besser passt, nehmt einen schnellen Zug zum Zürich HB und steigt dort in S6 oder S16 um.', 'Ab Richterswil: fahrt mit dem Zug zum Zürich HB und steigt dort in S6 oder S16 Richtung Küsnacht ZH um. Das ist meist übersichtlicher als eine späte Seequerung.', 'Kauft die ganze Verbindung vor dem Einsteigen in SBB Mobile oder in der ZVV-App; die App wählt die nötigen Zonen.'],
       },
       {
         title: 'Hochzeitskarte Zürich',

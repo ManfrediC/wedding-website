@@ -28,6 +28,7 @@ Durable project notes for the wedding website.
 - Chicago travel guidance should invite guests to compare fares with a New York layover, as Chicago-Zurich itineraries via New York can sometimes be cheaper than nonstop flights.
 - Zurich guidance should strongly favour public transport: tram, train, bus, boat, SBB Mobile, and optional bike rental. Ordinary Zurich wedding logistics should discourage driving, taxis, and rental cars.
 - Zurich Airport guidance should highlight the convenient train/S-Bahn connection and advise guests to use the train rather than driving or taking a taxi unless luggage, children, or accessibility make that useful.
+- Train guidance to Kuesnacht should mention S6/S16 from Zurich HB, S16 from Zurich Airport when convenient, and Richterswil to Kuesnacht by train via Zurich HB.
 - The Zurich wedding map should use an OpenStreetMap-derived geography, not a hand-drawn schematic, and should include Richterswil because Manfredi's parents live there.
 - Train-ticket guidance should point guests first to SBB Mobile, with ZVV app/ticket machines as Zurich-area alternatives. Tickets must be bought before boarding; ZVV tickets are zone-based and cover trains, trams, buses, and boats in the selected zones.
 - The Switzerland Guide exchange-rate widget uses the free open-source `fawazahmed0/exchange-api` source, served through jsDelivr with a Cloudflare fallback, and shows CHF/USD, CHF/EUR, and CHF/GBP in both directions.

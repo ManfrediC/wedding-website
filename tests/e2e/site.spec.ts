@@ -89,6 +89,10 @@ test('English pages include requested travel and contact details', async ({ page
     'OpenStreetMap-based map of Zurich, Küsnacht, Richterswil, Zurich Airport, Kirche St. Peter, and Hotel Sonne',
   );
   await expect(page.getByText('For ordinary wedding logistics, use the train rather than driving or taking a taxi.')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'By train to Küsnacht' })).toBeVisible();
+  await expect(page.getByText('From Zurich HB: take an S6 or S16')).toBeVisible();
+  await expect(page.getByText('From Zurich Airport: the simplest direct train is usually the S16')).toBeVisible();
+  await expect(page.getByText('From Richterswil: travel by train to Zurich HB')).toBeVisible();
   await expect(page.getByText('Also compare fares with a layover in New York')).toBeVisible();
 
   await page.goto('/en/stay/');

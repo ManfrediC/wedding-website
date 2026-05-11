@@ -51,3 +51,12 @@ Researched on 2026-05-10 for the wedding website travel page. June 2027 flight a
 
 - Zurich Tourism states train/S-Bahn from Zurich Airport to Zurich city centre usually takes about 10-15 minutes.
 - Source: <https://www.zuerich.com/en/zurich-airport-to-zurich-city-center>
+
+## Zurich-Area Train Routes To Kuesnacht
+
+- ZVV currently lists S6 as Baden - Regensdorf-Watt - Zurich Oerlikon - Zurich HB - Meilen - Uetikon, serving Kuesnacht ZH.
+- ZVV currently lists S16 as Zurich Flughafen - Zurich HB - Herrliberg-Feldmeilen (- Meilen), serving Kuesnacht ZH.
+- For Richterswil to Kuesnacht, advise guests to use SBB Mobile/ZVV and expect a train connection via Zurich HB unless the app suggests a better timed route on the day.
+- Sources:
+  - <https://www.zvv.ch/de/fahrplan-und-informationen/fahrplanverfahren/bahn-und-schiff.html>
+  - <https://www.sbb.ch/en/timetable/mobile-apps/sbb-mobile.html>
