@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
   <title id="title">OpenStreetMap wedding map of Zurich, Küsnacht, and Richterswil</title>
-  <desc id="desc">OpenStreetMap-based map labelled with Zurich Airport, Zurich HB, Kirche St. Peter, Hotel Sonne Küsnacht, Küsnacht, Altstetten, Oerlikon, and Richterswil.</desc>
+  <desc id="desc">OpenStreetMap-based map labelled with Zurich Airport, Zurich HB, Kirche St. Peter, Hotel Sonne Küsnacht, Küsnacht, and Richterswil.</desc>
   <defs>
     <filter id="label-shadow" x="-10%" y="-30%" width="120%" height="160%">
       <feDropShadow dx="0" dy="1" stdDeviation="1.2" flood-color="#fbf6ed" flood-opacity="0.95" />
@@ -25,22 +25,6 @@
     <line class="leader" x1="527.3" y1="56.3" x2="544.3" y2="94.3" />
     <text class="map-label" x="553.3" y="74.3" text-anchor="start" fill="#315f53">
       <tspan>Zurich Airport</tspan>
-    </text>
-    </g>
-    <g class="marker marker-area">
-      <circle cx="512.1" cy="191.4" r="10" fill="#315f53" />
-
-    <line class="leader" x1="512.1" y1="191.4" x2="529.1" y2="177.4" />
-    <text class="map-label" x="538.1" y="157.4" text-anchor="start" fill="#315f53">
-      <tspan>Oerlikon</tspan>
-    </text>
-    </g>
-    <g class="marker marker-area">
-      <circle cx="416.8" cy="240.1" r="10" fill="#315f53" />
-
-    <line class="leader" x1="416.8" y1="240.1" x2="401.8" y2="278.1" />
-    <text class="map-label" x="392.8" y="258.1" text-anchor="end" fill="#315f53">
-      <tspan>Altstetten</tspan>
     </text>
     </g>
     <g class="marker marker-transport">
