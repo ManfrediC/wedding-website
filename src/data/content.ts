@@ -216,8 +216,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           title: 'Reception and party',
           body: 'The evening celebration will be at Hotel Sonne in Küsnacht, beside Lake Zurich.',
           items: ['Aperitivo: TBD', 'Dinner: TBD', 'Dancing and party: TBD', 'Late-night return transport: TBD'],
-          image: '/images/places/hotel-sonne-festsaal-wide.jpg',
-          imageAlt: 'The Festsaal ballroom set for dinner at Hotel Sonne Küsnacht',
+          image: '/images/places/hotel-sonne-lake-view.jpg',
+          imageAlt: 'Hotel Sonne Küsnacht seen from Lake Zurich',
         },
       ],
     },
@@ -239,7 +239,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
             { label: 'Expedia', href: 'https://www.expedia.com/Flights' },
           ],
           image: '/images/places/chicago-skyline.jpg',
-          imageAlt: 'Chicago skyline by Lake Michigan',
+          imageAlt: 'Chicago skyline from Lake Michigan',
         },
         {
           title: 'From New York',
@@ -268,7 +268,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
             { label: 'SBB', href: 'https://www.sbb.ch/en' },
           ],
           image: '/images/places/london-skyline.jpg',
-          imageAlt: 'Westminster and the Houses of Parliament in London',
+          imageAlt: 'Tower Bridge over the River Thames in London',
         },
         {
           title: 'From Sardinia',
@@ -612,9 +612,9 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           title: 'Travel and public transport images',
           body: 'Travel-origin and public-transport photos are from Wikimedia Commons. Source details are also tracked in doc/assets/image_sources.md.',
           links: [
-            { label: 'Chicago', href: 'https://commons.wikimedia.org/wiki/File:Chicago_Skyline_and_Lake_Michigan.JPG' },
+            { label: 'Chicago', href: 'https://commons.wikimedia.org/wiki/File:Chicago_Skyline_from_Lake_Michigan.jpg' },
             { label: 'New York', href: 'https://commons.wikimedia.org/wiki/File:Manhattan_Skyline_night.jpg' },
-            { label: 'London', href: 'https://commons.wikimedia.org/wiki/File:London_Houses_of_Parliament_and_Westminster_Bridge.jpg' },
+            { label: 'London', href: 'https://commons.wikimedia.org/wiki/File:View_of_the_Tower_Bridge_from_the_Thames_from_northwest._London.jpg' },
             { label: 'Ogliastra', href: 'https://commons.wikimedia.org/wiki/File:Coast_and_sea_at_Santa_Maria_Navarrese,_Sardinia,_Italy.jpg' },
             { label: 'SBB train', href: 'https://commons.wikimedia.org/wiki/File:SBB_RABe_511_(50852815551).jpg' },
             { label: 'Zurich tram', href: 'https://commons.wikimedia.org/wiki/File:Tram_E,_Bahnhofstrasse,_Zurich,_Switzerland.JPG' },
@@ -623,10 +623,11 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'Hotel Sonne Küsnacht',
-          body: 'Prototype images from the official Hotel Sonne website, included for private wedding-site review. Permission should be confirmed before public launch.',
+          body: 'Prototype images include official Hotel Sonne website images for private wedding-site review and one lake-facing Wikimedia Commons image. Permission for official venue images should be confirmed before public launch.',
           links: [
             { label: 'Wedding page', href: 'https://sonne.ch/en/event-venues/wedding/' },
             { label: 'Location page', href: 'https://sonne.ch/en/location-getting-here/' },
+            { label: 'Lake-facing Sonne photo', href: 'https://commons.wikimedia.org/wiki/File:K%C3%BCsnacht_-_Z%C3%BCrichsee_2010-08-08_18-54-36_ShiftN.jpg' },
           ],
         },
       ],
@@ -653,7 +654,7 @@ applyLocalizedCopy('it', {
         body:
           "Chicago O'Hare (ORD) è l'aeroporto di riferimento. Gli orari attualmente pubblicati includono voli diretti ORD-ZRH, ma giugno 2027 andrà verificato quando le prenotazioni saranno aperte.",
         items: ['Controllate prima i voli diretti, in particolare SWISS e i servizi operati da United.', 'Se i voli diretti sono costosi, confrontate itinerari con uno scalo in hub europei come Francoforte, Monaco, Amsterdam, Parigi o Londra.', 'Confrontate anche tariffe con scalo a New York: gli itinerari Chicago-Zurigo via New York possono talvolta costare meno dei voli diretti.', 'Arrivate entro giovedì 10 giugno 2027 al più tardi; mercoledì 9 giugno 2027 è preferibile per jet lag e possibili ritardi dei bagagli.', 'Dall’aeroporto di Zurigo usate i mezzi pubblici, salvo che un viaggio più ampio in Svizzera o Italia renda davvero necessaria l’auto.'],
-        imageAlt: 'Skyline di Chicago sul Lago Michigan',
+        imageAlt: 'Skyline di Chicago dal Lago Michigan',
       },
       {
         title: 'Da New York',
@@ -667,7 +668,7 @@ applyLocalizedCopy('it', {
         body:
           'Da Londra, i voli diretti sono di solito la soluzione più semplice. EasyJet può essere conveniente, ma controllate con attenzione le regole sui bagagli prima di confrontare i prezzi.',
         items: ['Confrontate Heathrow, Gatwick, City, Luton e Stansted in base a dove vivete; Heathrow, Gatwick e City sono di solito i più rilevanti per Zurigo.', 'Per chi vive fuori Londra, confrontate anche Manchester, Edimburgo, Bristol e altri aeroporti regionali con voli diretti o con uno scalo.', 'Con EasyJet, la tariffa più bassa può includere solo un piccolo bagaglio da mettere sotto il sedile, attualmente 45 x 36 x 20 cm incluse maniglie e ruote; aggiungete bagaglio a mano grande o bagaglio da stiva online se necessario.', 'Il viaggio in treno è Londra St Pancras-Parigi con Eurostar, trasferimento da Gare du Nord a Gare de Lyon, poi TGV Lyria per Zurich HB; prevedete una coincidenza ampia a Parigi.'],
-        imageAlt: 'Westminster e le Houses of Parliament a Londra',
+        imageAlt: 'Tower Bridge sul Tamigi a Londra',
       },
       {
         title: 'Dalla Sardegna',
@@ -828,7 +829,7 @@ applyLocalizedCopy('de', {
         body:
           "Chicago O'Hare (ORD) ist der relevante Flughafen. Aktuell veröffentlichte Flugpläne enthalten Direktflüge ORD-ZRH; Juni 2027 sollte geprüft werden, sobald Buchungen möglich sind.",
         items: ['Prüft zuerst Direktflüge, insbesondere SWISS und von United durchgeführte Verbindungen.', 'Wenn Direktflüge teuer sind, vergleicht Verbindungen mit einem Umstieg über europäische Drehkreuze wie Frankfurt, München, Amsterdam, Paris oder London.', 'Vergleicht auch Tarife mit Umstieg in New York; Chicago-Zürich-Verbindungen über New York können manchmal günstiger sein als Direktflüge.', 'Kommt spätestens am Donnerstag, 10. Juni 2027 an; Mittwoch, 9. Juni 2027 ist wegen Jetlag und möglicher Gepäckverspätungen besser.', 'Nutzt ab Flughafen Zürich den öffentlichen Verkehr, sofern nicht eine längere Schweiz- oder Italienreise ein Auto wirklich nötig macht.'],
-        imageAlt: 'Skyline von Chicago am Lake Michigan',
+        imageAlt: 'Skyline von Chicago vom Lake Michigan',
       },
       {
         title: 'Aus New York',
@@ -842,7 +843,7 @@ applyLocalizedCopy('de', {
         body:
           'Aus London sind Direktflüge meistens die einfachste Option. EasyJet kann preislich attraktiv sein, aber prüft die Gepäckregeln sorgfältig, bevor ihr Preise vergleicht.',
         items: ['Vergleicht London Heathrow, Gatwick, City, Luton und Stansted je nach Wohnort; Heathrow, Gatwick und City sind für Zürich meist am relevantesten.', 'Ausserhalb Londons lohnt sich auch der Vergleich von Manchester, Edinburgh, Bristol und anderen Regionalflughäfen mit Direkt- oder Umsteigeverbindungen.', 'Bei EasyJet kann der günstigste Tarif nur ein kleines Gepäckstück unter dem Sitz enthalten, derzeit 45 x 36 x 20 cm inklusive Griffe und Rollen; bucht grosses Handgepäck oder Aufgabegepäck online dazu, wenn ihr es braucht.', 'Die Bahnroute führt von London St Pancras mit Eurostar nach Paris, dann von Gare du Nord nach Gare de Lyon und mit TGV Lyria nach Zürich HB; plant in Paris grosszügig Zeit für den Wechsel ein.'],
-        imageAlt: 'Westminster und die Houses of Parliament in London',
+        imageAlt: 'Tower Bridge über der Themse in London',
       },
       {
         title: 'Aus Sardinien',

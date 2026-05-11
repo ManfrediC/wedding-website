@@ -75,9 +75,9 @@ test('Schedule uses the selected Hotel Sonne reception image', async ({ page }) 
   await page.goto('/en/schedule/');
 
   await expect(page.getByRole('heading', { name: 'Reception and party' })).toBeVisible();
-  await expect(page.locator('img[src="/images/places/hotel-sonne-festsaal-wide.jpg"]')).toHaveAttribute(
+  await expect(page.locator('img[src="/images/places/hotel-sonne-lake-view.jpg"]')).toHaveAttribute(
     'alt',
-    'The Festsaal ballroom set for dinner at Hotel Sonne Küsnacht',
+    'Hotel Sonne Küsnacht seen from Lake Zurich',
   );
 });
 
@@ -88,6 +88,14 @@ test('English pages include requested travel and contact details', async ({ page
   await expect(page.getByRole('heading', { name: 'From New York' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'From the UK' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'From Sardinia' })).toBeVisible();
+  await expect(page.locator('img[src="/images/places/chicago-skyline.jpg"]')).toHaveAttribute(
+    'alt',
+    'Chicago skyline from Lake Michigan',
+  );
+  await expect(page.locator('img[src="/images/places/london-skyline.jpg"]')).toHaveAttribute(
+    'alt',
+    'Tower Bridge over the River Thames in London',
+  );
   await expect(page.getByRole('heading', { name: 'Zurich wedding map' })).toBeVisible();
   await expect(page.getByText("Richterswil, where Manfredi's parents live")).toBeVisible();
   await expect(page.getByRole('link', { name: 'OpenStreetMap: Zurich, Küsnacht, and Richterswil' })).toHaveAttribute(
