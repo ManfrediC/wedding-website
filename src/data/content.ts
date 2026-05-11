@@ -272,7 +272,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'From Sardinia',
-          body: 'Most Italian guests are expected to travel from Sardinia, so start with Cagliari and Olbia rather than a generic Italy search.',
+          body: 'For guests travelling from Sardinia, Cagliari and Olbia are likely to be the most useful airports to compare first.',
           items: ['For flying, check Cagliari (CAG) and Olbia (OLB) to Zurich (ZRH) first. Current Edelweiss schedules show seasonal Zurich routes for both airports, but June 2027 is not yet fully bookable.', 'EasyJet can be a budget-friendly option for Olbia-Zurich when available. Check the baggage allowance carefully, because the lowest fare may include only one small under-seat cabin bag, currently 45 x 36 x 20 cm including handles and wheels.', 'If there is no convenient direct flight, compare Cagliari or Olbia via Milan, Rome, or another European hub. Alghero may also work with a connection, but it is less likely to be the simplest route to Zurich.', 'For driving, take an overnight ferry from Sardinia to Genoa, then drive from Genoa to Zurich. The ferry leg is usually about 10-13 hours depending on route and operator; the Genoa-Zurich drive is roughly five hours before stops, border delays, and Gotthard or San Bernardino traffic.', 'If driving into Switzerland, buy the Swiss motorway vignette from the official Swiss portal and check Alpine tunnel traffic before leaving Genoa. Parking in Zurich and Küsnacht should be planned in advance.'],
           links: [
             { label: 'Edelweiss Cagliari-Zurich', href: 'https://www.flyedelweiss.com/ch/en/fly/flight-information/timetable.html?destination=CAG' },
@@ -652,7 +652,7 @@ applyLocalizedCopy('it', {
       {
         title: 'Dalla Sardegna',
         body:
-          'La maggior parte degli ospiti italiani dovrebbe partire dalla Sardegna: iniziate quindi da Cagliari e Olbia, invece di fare una ricerca generica dall’Italia.',
+          'Per chi parte dalla Sardegna, Cagliari e Olbia sono probabilmente gli aeroporti più utili da confrontare per primi.',
         items: ['Per volare, controllate prima Cagliari (CAG) e Olbia (OLB) verso Zurigo (ZRH). Gli orari attuali di Edelweiss mostrano rotte stagionali per Zurigo da entrambi gli aeroporti, ma giugno 2027 non è ancora completamente prenotabile.', 'EasyJet può essere conveniente per Olbia-Zurigo quando disponibile. Controllate con attenzione il bagaglio incluso, perché la tariffa più bassa può includere solo un piccolo bagaglio da mettere sotto il sedile, attualmente 45 x 36 x 20 cm incluse maniglie e ruote.', 'Se non c’è un volo diretto comodo, confrontate Cagliari o Olbia via Milano, Roma o un altro hub europeo. Alghero può funzionare con una coincidenza, ma è meno probabile che sia la soluzione più semplice per Zurigo.', 'Per arrivare in auto, prendete un traghetto notturno dalla Sardegna a Genova e poi guidate da Genova a Zurigo. Il traghetto dura di solito circa 10-13 ore a seconda della tratta e dell’operatore; Genova-Zurigo richiede circa cinque ore prima di pause, frontiera e traffico al Gottardo o al San Bernardino.', 'Se entrate in Svizzera in auto, acquistate la vignetta autostradale dal portale ufficiale svizzero e controllate il traffico nei tunnel alpini prima di lasciare Genova. Il parcheggio a Zurigo e Küsnacht va pianificato in anticipo.'],
         imageAlt: 'La costa vicino a Santa Maria Navarrese in Ogliastra, Sardegna',
       },
@@ -810,7 +810,7 @@ applyLocalizedCopy('de', {
       {
         title: 'Aus Sardinien',
         body:
-          'Die meisten italienischen Gäste werden voraussichtlich aus Sardinien reisen. Beginnt daher mit Cagliari und Olbia statt mit einer allgemeinen Italien-Suche.',
+          'Für Gäste aus Sardinien sind Cagliari und Olbia wahrscheinlich die sinnvollsten Flughäfen für den ersten Vergleich.',
         items: ['Für Flüge prüft zuerst Cagliari (CAG) und Olbia (OLB) nach Zürich (ZRH). Aktuelle Edelweiss-Flugpläne zeigen saisonale Zürich-Verbindungen von beiden Flughäfen, aber Juni 2027 ist noch nicht vollständig buchbar.', 'EasyJet kann für Olbia-Zürich günstig sein, wenn die Verbindung verfügbar ist. Prüft die Gepäckbestimmungen sorgfältig, da der günstigste Tarif nur ein kleines Gepäckstück unter dem Sitz enthalten kann, derzeit 45 x 36 x 20 cm inklusive Griffe und Rollen.', 'Wenn es keinen passenden Direktflug gibt, vergleicht Cagliari oder Olbia via Mailand, Rom oder ein anderes europäisches Drehkreuz. Alghero kann mit Umstieg funktionieren, ist aber wahrscheinlich seltener die einfachste Route nach Zürich.', 'Mit dem Auto: nehmt eine Nachtfähre von Sardinien nach Genua und fahrt dann von Genua nach Zürich. Die Fähre dauert je nach Strecke und Anbieter meist etwa 10-13 Stunden; Genua-Zürich dauert vor Pausen, Grenze und Gotthard- oder San-Bernardino-Verkehr ungefähr fünf Stunden.', 'Wenn ihr mit dem Auto in die Schweiz fahrt, kauft die Autobahnvignette über das offizielle Schweizer Portal und prüft vor der Abfahrt in Genua den Verkehr an den Alpentunnels. Parken in Zürich und Küsnacht sollte vorab geplant werden.'],
         imageAlt: 'Die Kueste bei Santa Maria Navarrese in Ogliastra, Sardinien',
       },
