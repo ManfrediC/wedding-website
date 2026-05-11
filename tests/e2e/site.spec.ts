@@ -103,6 +103,16 @@ test('English pages include requested travel and contact details', async ({ page
     'https://www.bnb-caffetino-vino.ch/',
   );
   await expect(page.getByText('the house has no lift')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Accessibility and mobility' })).toBeVisible();
+  await expect(page.getByText('the ground floor is wheelchair-accessible')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'St. Peter accessibility FAQ' })).toHaveAttribute(
+    'href',
+    'https://www.st-peter-zh.ch/-4/besuch~2695/faq~3108/',
+  );
+  await expect(page.getByRole('link', { name: 'ZVV accessible boats' })).toHaveAttribute(
+    'href',
+    'https://www.zvv.ch/en/service/travel-without-barriers/limited-mobility/ships.html',
+  );
   await expect(page.getByRole('link', { name: 'Airbnb Zurich, June 2027' })).toHaveAttribute(
     'href',
     'https://www.airbnb.com/s/Zurich--Switzerland/homes?checkin=2027-06-10&checkout=2027-06-13&adults=2',
