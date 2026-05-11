@@ -85,7 +85,7 @@ export const homeContent: Record<
       },
       {
         title: 'Travel',
-        body: 'How to get to Zurich from Chicago, New York, London, Sardinia, and elsewhere.',
+        body: 'How to get to Zurich from the USA, the UK, Sardinia, and elsewhere.',
         href: '/en/travel/',
         image: '/images/minted/minted-photo-08.jpeg',
         imageAlt: 'Zurich and Lake Zurich from above',
@@ -125,7 +125,7 @@ export const homeContent: Record<
       },
       {
         title: 'Viaggio',
-        body: "Come arrivare a Zurigo da Chicago, New York, Londra, Sardegna e dall'estero.",
+        body: "Come arrivare a Zurigo dagli USA, dal Regno Unito, dalla Sardegna e dall'estero.",
         href: '/it/travel/',
         image: '/images/minted/minted-photo-08.jpeg',
         imageAlt: "Zurigo e il Lago di Zurigo dall'alto",
@@ -165,7 +165,7 @@ export const homeContent: Record<
       },
       {
         title: 'Anreise',
-        body: 'Anreise nach Zürich aus Chicago, New York, London, Sardinien und weiteren Orten.',
+        body: 'Anreise nach Zürich aus den USA, dem Vereinigten Königreich, Sardinien und weiteren Orten.',
         href: '/de/travel/',
         image: '/images/minted/minted-photo-08.jpeg',
         imageAlt: 'Zurich und der Zurichsee von oben',
