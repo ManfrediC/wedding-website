@@ -62,6 +62,11 @@ function isInlineLink(part: unknown): part is { text: string; href: string } {
                 loading="lazy"
               />
             )}
+            {section.gallery && (
+              <div class="media-grid media-grid-top">
+                {section.gallery.map((image) => <img src={image.src} alt={image.alt} loading="lazy" />)}
+              </div>
+            )}
             <div>
               <h2>{section.title}</h2>
               <p>{section.body}</p>
@@ -83,11 +88,6 @@ function isInlineLink(part: unknown): part is { text: string; href: string } {
                 </ul>
               )}
               {section.exchangeRates && <ExchangeRates lang={lang} />}
-              {section.gallery && (
-                <div class="media-grid">
-                  {section.gallery.map((image) => <img src={image.src} alt={image.alt} loading="lazy" />)}
-                </div>
-              )}
               {section.links && (
                 <div class="link-list">
                   {section.links.map((link) => (

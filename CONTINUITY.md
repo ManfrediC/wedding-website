@@ -71,3 +71,4 @@ Start Phase 0/1 from the build specification:
 - 2026-05-11: Renamed the Stay page Richterswil accommodation card from "Richterswil option" to "Richterswil" and added a Richterswil lakeside photo.
 - 2026-05-11: Added the existing Kirche St. Peter photo to the Stay page Accessibility and mobility card.
 - 2026-05-11: Replaced the Things to Do Local advice image with a distinct Lindenhof view of Zurich old town and the Limmat.
+- 2026-05-11: Updated the Switzerland Guide imagery: moved the public-transport four-photo panel to the top of its card; added photos for ticket machines, Swiss francs, rainy Zurich, and personal recommendations; updated image credits and source tracking. Verified with `npm run check`, `npm run build`, `npm run test:e2e` (96 passed), and manual Playwright screenshots on desktop and mobile.

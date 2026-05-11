@@ -502,6 +502,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           title: 'Choosing tickets',
           body: 'There is no single best ticket for every guest. These notes are intended as practical starting points.',
           items: ['To move around Zurich by tram, train, or bus: use a ZVV city ticket, 24h ticket, or the Zürich Card if you also want museums, airport transfer, Uetliberg, and short boat rides.', 'To get to Küsnacht for the reception area: buy a ZVV/SBB ticket from your starting stop to Küsnacht ZH or Hotel Sonne’s nearest stop; the app will choose the necessary zones.', 'To go to Richterswil: buy a ZVV/SBB ticket to Richterswil, or consider an all-zone/day ticket if you are making several Zurich-network trips that day.', 'For bigger day trips such as Lucerne, Bern, Basel, or mountain areas: check SBB early for Supersaver tickets or Saver Day Passes, but avoid inflexible tickets if your plans depend on a flight arrival or weather.'],
+          image: '/images/places/sbb-ticket-machine.jpg',
+          imageAlt: 'SBB ticket machines at Zurich Airport railway station',
           links: [
             { label: 'Zürich Card', href: 'https://www.zuerich.com/en/zurichcard' },
             { label: 'Zürich Card transport', href: 'https://www.zuerich.com/en/zurichcard/public-transportation' },
@@ -513,6 +515,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           title: 'Money and budgeting',
           body: 'Switzerland uses Swiss francs and is often expensive, but planning ahead can keep costs manageable.',
           items: ['Migros and Coop are the largest supermarket chains and are useful for breakfasts, snacks, picnic supplies, and children’s basics.', 'Taxis are usually expensive. Use them only when luggage, children, or accessibility needs make them genuinely useful.', 'Use public transport for travelling around Zurich; driving by car is not recommended for ordinary wedding logistics.', 'Low-cost options include lake walks, Old Town wandering, viewpoints, parks, supermarket picnics, and choosing accommodation near a tram, train, or bus stop.'],
+          image: '/images/places/swiss-francs.jpg',
+          imageAlt: 'Swiss franc banknotes and coins',
           exchangeRates: true,
         },
         {
@@ -531,10 +535,14 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           links: [
             { label: 'Swiss plug guide', href: 'https://www.worldstandards.eu/electricity/plug-voltage-by-country/switzerland/' },
           ],
+          image: '/images/places/zurich-rainy-day.jpg',
+          imageAlt: 'Rainy day in Zurich old town',
         },
         {
           title: 'Personal recommendations',
           body: 'Guests can get in touch with Manfredi and family for practical advice, especially around hikes, family-friendly plans, longer trips, or whether a specific itinerary is worth the travel time.',
+          image: '/images/minted/minted-gallery-04.jpg',
+          imageAlt: 'Gabriela and Manfredi above Zurich old town',
         },
       ],
     },
@@ -614,7 +622,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'Travel and public transport images',
-          body: 'Travel-origin and public-transport photos are from Wikimedia Commons. Source details are also tracked in doc/assets/image_sources.md.',
+          body: 'Travel-origin and public-transport photos are from Wikimedia Commons and Unsplash. Source details are also tracked in doc/assets/image_sources.md.',
           links: [
             { label: 'Chicago', href: 'https://commons.wikimedia.org/wiki/File:Chicago_Skyline_from_Lake_Michigan.jpg' },
             { label: 'New York', href: 'https://commons.wikimedia.org/wiki/File:Manhattan_Skyline_night.jpg' },
@@ -626,6 +634,9 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
             { label: 'SBB train', href: 'https://commons.wikimedia.org/wiki/File:SBB_RABe_511_(50852815551).jpg' },
             { label: 'Zurich tram', href: 'https://commons.wikimedia.org/wiki/File:Tram_E,_Bahnhofstrasse,_Zurich,_Switzerland.JPG' },
             { label: 'Säntis cable car', href: 'https://commons.wikimedia.org/wiki/File:S%C3%A4ntis_LSB_Blaue_Kabine_von_Talstation.jpg' },
+            { label: 'SBB ticket machines', href: 'https://commons.wikimedia.org/wiki/File:Bahnhof_Z%C3%BCrich_Flughafen_Billettautomat.jpg' },
+            { label: 'Swiss francs', href: 'https://unsplash.com/photos/pile-of-swiss-francs-coins-and-banknotes-7ozi8PiLvNc' },
+            { label: 'Rainy Zurich', href: 'https://commons.wikimedia.org/wiki/File:Rain_in_the_city_(16382935143).jpg' },
           ],
         },
         {
@@ -779,12 +790,14 @@ applyLocalizedCopy('it', {
         title: 'Come scegliere i biglietti',
         body: 'Non esiste un biglietto migliore per tutti. Queste note sono un punto di partenza pratico.',
         items: ['Per muoversi a Zurigo in tram, treno o autobus: usate un biglietto ZVV per la città, un biglietto 24 ore o la Zürich Card se volete includere anche musei, trasferimento dall’aeroporto, Uetliberg e brevi tratte in battello.', 'Per arrivare a Küsnacht nella zona del ricevimento: acquistate un biglietto ZVV/SBB dal punto di partenza a Küsnacht ZH o alla fermata più vicina all’Hotel Sonne; l’app sceglierà le zone necessarie.', 'Per andare a Richterswil: acquistate un biglietto ZVV/SBB per Richterswil, oppure considerate un giornaliero/all-zone se fate diversi spostamenti nella rete di Zurigo nello stesso giorno.', 'Per gite più lunghe, come Lucerna, Berna, Basilea o zone di montagna: controllate SBB in anticipo per Supersaver tickets o Saver Day Passes, ma evitate biglietti poco flessibili se il piano dipende da arrivi aerei o meteo.'],
+        imageAlt: 'Biglietteria automatica SBB in una stazione svizzera',
       },
       {
         title: 'Costi e spese pratiche',
         body:
           'La Svizzera usa il franco svizzero ed è spesso costosa, ma una buona pianificazione aiuta a contenere le spese.',
         items: ['Migros e Coop sono le principali catene di supermercati e sono utili per colazioni, snack, picnic e necessità per bambini.', 'I taxi sono di solito costosi. Usateli solo quando bagagli, bambini o esigenze di accessibilità li rendono davvero utili.', 'Usate i mezzi pubblici per muovervi a Zurigo; viaggiare in auto non è consigliato per la normale logistica del matrimonio.', 'Opzioni economiche includono passeggiate sul lago, centro storico, punti panoramici, parchi, picnic con prodotti del supermercato e alloggi vicino a tram, treno o autobus.'],
+        imageAlt: 'Banconote e monete in franchi svizzeri',
         exchangeRates: true,
       },
       {
@@ -801,11 +814,13 @@ applyLocalizedCopy('it', {
           ],
           'La maggior parte dei caricabatterie moderni per telefoni e computer supporta 230V, ma controllate l’etichetta di asciugacapelli e altri dispositivi più potenti.',
         ],
+        imageAlt: 'Giornata di pioggia a Zurigo',
       },
       {
         title: 'Consigli personali',
         body:
           'Gli ospiti possono contattare Manfredi e la famiglia per consigli pratici, soprattutto su escursioni, programmi con bambini, viaggi più lunghi o itinerari con un livello di cammino specifico.',
+        imageAlt: 'Gabriela e Manfredi nel centro storico di Zurigo',
       },
     ],
   },
@@ -956,12 +971,14 @@ applyLocalizedCopy('de', {
         title: 'Tickets wählen',
         body: 'Es gibt nicht ein einziges bestes Ticket für alle Gäste. Diese Hinweise sind als praktische Ausgangspunkte gedacht.',
         items: ['Für Wege in Zürich mit Tram, Zug oder Bus: nutzt ein ZVV-Stadtticket, 24h-Ticket oder die Zürich Card, wenn ihr auch Museen, Flughafentransfer, Uetliberg und kurze Schiffsfahrten einschliessen möchtet.', 'Für Küsnacht beim Empfang: kauft ein ZVV/SBB-Ticket von eurer Start-Haltestelle nach Küsnacht ZH oder zur nächsten Haltestelle des Hotel Sonne; die App wählt die nötigen Zonen.', 'Für Richterswil: kauft ein ZVV/SBB-Ticket nach Richterswil oder erwägt ein All-Zones/Tagesticket, wenn ihr an diesem Tag mehrere Fahrten im Zürcher Verkehrsverbund macht.', 'Für grössere Tagesausflüge wie Luzern, Bern, Basel oder Bergregionen: prüft früh SBB für Supersaver Tickets oder Saver Day Passes, aber vermeidet unflexible Tickets, wenn eure Pläne von Flugankunft oder Wetter abhängen.'],
+        imageAlt: 'SBB-Billettautomat in einem Schweizer Bahnhof',
       },
       {
         title: 'Geld und Budget',
         body:
           'Die Schweiz verwendet Schweizer Franken und ist oft teuer, aber gute Planung hilft, die Kosten überschaubar zu halten.',
         items: ['Migros und Coop sind die grössten Supermarktketten und nützlich für Frühstück, Snacks, Picknick und Kinderbedarf.', 'Taxis sind meist teuer. Nutzt sie nur, wenn Gepäck, Kinder oder Barrierefreiheitsbedarf sie wirklich sinnvoll machen.', 'Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist für die normale Hochzeitslogistik nicht empfohlen.', 'Günstige Optionen sind Spaziergänge am See, Altstadt, Aussichtspunkte, Parks, Picknicks aus dem Supermarkt und Unterkunft nahe Tram, Zug oder Bus.'],
+        imageAlt: 'Schweizer Franken in Banknoten und Muenzen',
         exchangeRates: true,
       },
       {
@@ -978,11 +995,13 @@ applyLocalizedCopy('de', {
           ],
           'Die meisten modernen Handy- und Laptop-Ladegeräte funktionieren mit 230V, aber prüft das Etikett bei Haargeräten und anderen leistungsstärkeren Geräten.',
         ],
+        imageAlt: 'Regentag in Zuerich',
       },
       {
         title: 'Persönliche Empfehlungen',
         body:
           'Gäste können Manfredi und die Familie für praktische Hinweise kontaktieren, besonders zu Wanderungen, familienfreundlichen Plänen, längeren Reisen oder Routen für ein bestimmtes Wanderniveau.',
+        imageAlt: 'Gabriela und Manfredi in der Zuercher Altstadt',
       },
     ],
   },

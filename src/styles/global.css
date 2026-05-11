@@ -466,6 +466,12 @@ button {
   margin: 1rem 0;
 }
 
+.info-card > .media-grid-top {
+  margin: 0;
+  border-bottom: 1px solid var(--colour-line);
+  padding: 0.65rem;
+}
+
 .media-grid img {
   width: 100%;
   aspect-ratio: 4 / 3;

@@ -201,6 +201,33 @@ test('Italian and German guide copy reflects child fares and SBB Mobile', async 
   await expect(page.getByText('Kinder unter 6 Jahren fahren im Zürcher Verkehrsverbund kostenlos')).toBeVisible();
 });
 
+test('Switzerland Guide uses the selected section imagery', async ({ page }) => {
+  await page.goto('/en/switzerland-guide/');
+
+  const publicTransportCard = page
+    .getByRole('heading', { name: 'Public transport' })
+    .locator('xpath=ancestor::article[1]');
+  const firstChildClass = await publicTransportCard.evaluate((article) => article.firstElementChild?.className ?? '');
+  expect(String(firstChildClass)).toContain('media-grid-top');
+  await expect(publicTransportCard.locator('.media-grid-top img')).toHaveCount(4);
+  await expect(page.locator('img[src="/images/places/sbb-ticket-machine.jpg"]')).toHaveAttribute(
+    'alt',
+    'SBB ticket machines at Zurich Airport railway station',
+  );
+  await expect(page.locator('img[src="/images/places/swiss-francs.jpg"]')).toHaveAttribute(
+    'alt',
+    'Swiss franc banknotes and coins',
+  );
+  await expect(page.locator('img[src="/images/places/zurich-rainy-day.jpg"]')).toHaveAttribute(
+    'alt',
+    'Rainy day in Zurich old town',
+  );
+  await expect(page.locator('img[src="/images/minted/minted-gallery-04.jpg"]')).toHaveAttribute(
+    'alt',
+    'Gabriela and Manfredi above Zurich old town',
+  );
+});
+
 test('Italian and German stay copy is localised and cleanly encoded', async ({ page }) => {
   await page.goto('/it/stay/');
   await expect(page.getByRole('heading', { name: 'Accessibilità e mobilità' })).toBeVisible();

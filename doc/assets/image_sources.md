@@ -15,6 +15,9 @@ This file tracks non-couple imagery used in the website prototype.
 | `public/images/places/london-skyline.jpg` | Wikimedia Commons, `View of the Tower Bridge from the Thames from northwest. London.jpg` | Ввласенко | CC BY-SA 3.0 | London travel card image, downloaded at 1600px width. |
 | `public/images/places/sardinia-ogliastra.jpg` | Wikimedia Commons, `Coast and sea at Santa Maria Navarrese, Sardinia, Italy.jpg` | Fabio Pani | CC BY-SA 4.0 | Sardinia travel card image for the Ogliastra region, downloaded at 1280px width. |
 | `public/images/places/sbb-train.jpg` | Wikimedia Commons, `SBB RABe 511 (50852815551).jpg` | Nelso Silva | CC BY-SA 2.0 | Public transport gallery image, downloaded at 1280px width. |
+| `public/images/places/sbb-ticket-machine.jpg` | Wikimedia Commons, `Bahnhof Zürich Flughafen Billettautomat.jpg` | Mike Knell | CC BY-SA 2.0 | Switzerland Guide ticket card image, downloaded at 1600px width. |
+| `public/images/places/swiss-francs.jpg` | Unsplash, `Pile of swiss francs coins and banknotes` | Markus Kammermann | Unsplash License | Switzerland Guide money card image, downloaded at 1600px width. |
+| `public/images/places/zurich-rainy-day.jpg` | Wikimedia Commons, `Rain in the city (16382935143).jpg` | Thomas8047 | CC BY 2.0 | Switzerland Guide weather card image, downloaded at 1600px width. |
 | `public/images/places/zurich-airport-station.jpg` | Wikimedia Commons, `Bahnhof Zürich Flughafen 01.jpg` | Chris j wood | CC BY-SA 3.0 | Zurich Airport travel card image showing the underground railway platforms, downloaded at 1600px width. |
 | `public/images/places/richterswil-lake.jpg` | Wikimedia Commons, `Richterswil - Zürichsee 2010-08-03 17-49-52.JPG` | Roland zh | CC BY-SA 3.0 | Richterswil accommodation card image, downloaded at 1600px width. |
 | `public/images/places/zurich-tram.jpg` | Wikimedia Commons, `Tram E, Bahnhofstrasse, Zurich, Switzerland.JPG` | Eluveitie | CC BY-SA 3.0 | Public transport gallery image. |
