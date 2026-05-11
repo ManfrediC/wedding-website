@@ -255,7 +255,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           imageAlt: 'New York City skyline',
         },
         {
-          title: 'From London and the UK',
+          title: 'From the UK',
           body: 'From London, direct flights are usually the simplest option. EasyJet can be budget-friendly, but check baggage rules carefully before comparing prices.',
           items: ['Compare London Heathrow, Gatwick, City, Luton, and Stansted depending on where you live; Heathrow, Gatwick, and City are usually the most relevant for Zurich.', 'For guests outside London, also compare Manchester, Edinburgh, Bristol, and other regional airports with direct or one-stop routes.', 'On EasyJet, the lowest fare may include only one small under-seat cabin bag, currently 45 x 36 x 20 cm including handles and wheels; add any large cabin bag or hold luggage online when booking if you need it.', 'The rail route is London St Pancras to Paris by Eurostar, transfer from Gare du Nord to Gare de Lyon, then TGV Lyria to Zurich HB; allow a generous connection in Paris.'],
           links: [

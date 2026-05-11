@@ -76,7 +76,7 @@ test('English pages include requested travel and contact details', async ({ page
 
   await expect(page.getByRole('heading', { name: 'From Chicago' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'From New York' })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'From London and the UK' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'From the UK' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'From Sardinia' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Zurich wedding map' })).toBeVisible();
   await expect(page.getByText("Richterswil, where Manfredi's parents live")).toBeVisible();
