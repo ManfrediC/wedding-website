@@ -64,10 +64,14 @@ for (const path of smokePaths) {
 test('welcome page renders the password gate', async ({ page }) => {
   await page.goto('/welcome/?next=/en/travel/&error=1');
 
-  await expect(page.getByRole('heading', { name: 'Welcome' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Gabriela & Manfredi' })).toBeVisible();
+  await expect(page.getByText('11 June 2027')).toBeVisible();
+  await expect(page.getByText('Please enter the password to view our wedding website')).toBeVisible();
   await expect(page.getByLabel('Wedding password')).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Enter website' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Enter' })).toBeVisible();
   await expect(page.getByText('The password was not recognised')).toBeVisible();
+  await expect(page.getByText('Kirche St. Peter')).toHaveCount(0);
+  await expect(page.getByText('Hotel Sonne')).toHaveCount(0);
   await expect(page.locator('input[name="next"]')).toHaveValue('/en/travel/');
 });
 

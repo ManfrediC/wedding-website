@@ -1,28 +1,45 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { heroImage, wedding } from '../data/site';
+import { wedding } from '../data/site';
 ---
 
 <BaseLayout title={`Welcome | ${wedding.couple.display}`} hideChrome>
-  <section class="welcome-page" style={`--welcome-image: url('${heroImage.src}')`}>
-    <div class="welcome-panel">
-      <p class="monogram">{wedding.couple.monogram}</p>
-      <p class="eyebrow">Private wedding website</p>
-      <h1>Welcome</h1>
-      <p>
-        We are grateful to share these wedding details with our family and friends. Please enter the
-        password from your invitation to continue.
-      </p>
-      <form method="post" data-welcome-form>
+  <section class="welcome-page" aria-labelledby="welcome-title">
+    <div class="welcome-border" aria-hidden="true"></div>
+    <div class="welcome-shell">
+      <p class="welcome-logo">{wedding.couple.monogram}</p>
+      <h1 id="welcome-title">{wedding.couple.display}</h1>
+      <div class="welcome-rule" aria-hidden="true"></div>
+      <p class="welcome-date">11 June 2027</p>
+
+      <form class="welcome-panel" method="post" data-welcome-form>
         <input type="hidden" name="next" value="/en/" data-next-input />
-        <label for="password">Wedding password</label>
-        <input id="password" name="password" type="password" autocomplete="current-password" required />
+        <div class="panel-ornament" aria-hidden="true">◇</div>
+        <p>Please enter the password to view our wedding website</p>
+        <label class="sr-only" for="password">Wedding password</label>
+        <div class="password-field">
+          <input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Password"
+            required
+          />
+          <span aria-hidden="true">□</span>
+        </div>
         <p class="form-error" data-error-message hidden>
           The password was not recognised. Please check the invitation and try again.
         </p>
-        <button type="submit">Enter website</button>
+        <button type="submit">Enter</button>
+        <div class="panel-ornament" aria-hidden="true">◇</div>
       </form>
-      <p class="small-note">For invited guests only. Please do not share the link or password publicly.</p>
+
+      <nav class="welcome-language-links" aria-label="Choose destination language after entering the password">
+        <a href="/welcome/?next=/en/">English</a>
+        <a href="/welcome/?next=/it/">Italiano</a>
+        <a href="/welcome/?next=/de/">Deutsch</a>
+      </nav>
     </div>
   </section>
 
