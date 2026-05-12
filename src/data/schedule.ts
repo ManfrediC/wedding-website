@@ -1,16 +1,46 @@
 import type { Lang } from './locales';
 
 export type ScheduleEntry = {
-  time: string;
+  date: Record<Lang, string>;
+  time: Record<Lang, string>;
   title: Record<Lang, string>;
   location: string;
   body: Record<Lang, string>;
   status: Record<Lang, string>;
 };
 
+const weddingDate = {
+  en: 'Friday, 11 June 2027',
+  it: 'Venerdì 11 giugno 2027',
+  de: 'Freitag, 11. Juni 2027',
+};
+
+const toBeConfirmed = {
+  en: 'TBD',
+  it: 'TBD',
+  de: 'TBD',
+};
+
 export const weddingSchedule: ScheduleEntry[] = [
   {
-    time: 'TBD',
+    date: toBeConfirmed,
+    time: toBeConfirmed,
+    title: {
+      en: 'Civil Ceremony at Stadthaus Zürich',
+      it: 'Cerimonia civile allo Stadthaus Zürich',
+      de: 'Zivile Trauung im Stadthaus Zürich',
+    },
+    location: 'Stadthaus Zürich',
+    body: {
+      en: 'The legal civil ceremony will be a private step before the wedding celebration. Because of visitor constraints at Stadthaus Zürich, only immediate family will be able to attend.',
+      it: 'La cerimonia civile legale sarà un momento privato prima della celebrazione. Per i limiti di accesso allo Stadthaus Zürich potranno partecipare solo i familiari più stretti.',
+      de: 'Die zivile Trauung ist ein privater rechtlicher Schritt vor der Hochzeitsfeier. Wegen Besucherbeschränkungen im Stadthaus Zürich können nur die engsten Familienmitglieder teilnehmen.',
+    },
+    status: { en: 'Private', it: 'Privata', de: 'Privat' },
+  },
+  {
+    date: weddingDate,
+    time: toBeConfirmed,
     title: {
       en: 'Guest arrival',
       it: 'Arrivo degli ospiti',
@@ -25,7 +55,8 @@ export const weddingSchedule: ScheduleEntry[] = [
     status: { en: 'To confirm', it: 'Da confermare', de: 'Noch zu bestätigen' },
   },
   {
-    time: 'TBD',
+    date: weddingDate,
+    time: toBeConfirmed,
     title: {
       en: 'Ceremony',
       it: 'Cerimonia',
@@ -40,7 +71,8 @@ export const weddingSchedule: ScheduleEntry[] = [
     status: { en: 'To confirm', it: 'Da confermare', de: 'Noch zu bestätigen' },
   },
   {
-    time: 'TBD',
+    date: weddingDate,
+    time: toBeConfirmed,
     title: {
       en: 'Boat transfer towards Küsnacht',
       it: 'Trasferimento in barca verso Küsnacht',
@@ -55,7 +87,8 @@ export const weddingSchedule: ScheduleEntry[] = [
     status: { en: 'Planned', it: 'Previsto', de: 'Geplant' },
   },
   {
-    time: 'TBD',
+    date: weddingDate,
+    time: toBeConfirmed,
     title: {
       en: 'Aperitivo, dinner, and dancing',
       it: 'Aperitivo, cena e festa',
@@ -70,7 +103,8 @@ export const weddingSchedule: ScheduleEntry[] = [
     status: { en: 'To confirm', it: 'Da confermare', de: 'Noch zu bestätigen' },
   },
   {
-    time: 'TBD',
+    date: weddingDate,
+    time: toBeConfirmed,
     title: {
       en: 'Return travel',
       it: 'Rientro',

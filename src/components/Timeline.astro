@@ -13,7 +13,10 @@ const { lang, entries } = Astro.props;
 <ol class="timeline">
   {entries.map((entry) => (
     <li>
-      <div class="timeline-time">{entry.time}</div>
+      <div class="timeline-meta">
+        <div class="timeline-date">{entry.date[lang]}</div>
+        <div class="timeline-time">{entry.time[lang]}</div>
+      </div>
       <div class="timeline-marker" aria-hidden="true"></div>
       <div class="timeline-content">
         <p class="eyebrow">{entry.status[lang]}</p>
