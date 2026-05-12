@@ -42,6 +42,7 @@ Start Phase 0/1 from the build specification:
 
 ## Checkpoint Log
 
+- 2026-05-12: Completed local verification for item 4 from `doc/plans/2026-05-12_edits.md`: replaced the Kunsthaus Things to Do image with a cropped Wikimedia Commons `Heimplatz 2.jpeg` derivative that keeps the full Pipilotti Rist sculpture top visible and reduces the pavement-heavy foreground. Updated alt text, image credits, and source notes. Verified locally with `npm run check`, `npm run build`, protected-preview Chrome login plus Things to Do assertions/screenshots on desktop and mobile, and the targeted Chrome Playwright test (reported passing, runner hung during teardown).
 - 2026-05-10: Repo contained `doc` only. Began scaffold from the build spec and global `.codex` instructions.
 - 2026-05-10: Added local-network preview sharing via `bin/dev/share-local.ps1` and `SHARE_PREVIEW.md`.
 - 2026-05-10: Expanded Things to Do content from `doc/plans/activity_ideas.md` with Zurich, lake/water, museum/chocolate, day-trip, and longer-trip cards.
