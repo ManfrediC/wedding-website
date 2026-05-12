@@ -4,7 +4,7 @@ export type ScheduleEntry = {
   date: Record<Lang, string>;
   time: Record<Lang, string>;
   title: Record<Lang, string>;
-  location: string;
+  location: Record<Lang, string>;
   body: Record<Lang, string>;
   status: Record<Lang, string>;
 };
@@ -30,7 +30,7 @@ export const weddingSchedule: ScheduleEntry[] = [
       it: 'Cerimonia civile allo Stadthaus Zürich',
       de: 'Zivile Trauung im Stadthaus Zürich',
     },
-    location: 'Stadthaus Zürich',
+    location: { en: 'Stadthaus Zürich', it: 'Stadthaus Zürich', de: 'Stadthaus Zürich' },
     body: {
       en: 'The legal civil ceremony will be a private step before the wedding celebration. Because of visitor constraints at Stadthaus Zürich, only immediate family will be able to attend.',
       it: 'La cerimonia civile legale sarà un momento privato prima della celebrazione. Per i limiti di accesso allo Stadthaus Zürich potranno partecipare solo i familiari più stretti.',
@@ -46,7 +46,7 @@ export const weddingSchedule: ScheduleEntry[] = [
       it: 'Arrivo degli ospiti',
       de: 'Ankunft der Gäste',
     },
-    location: 'Kirche St. Peter, Zurich',
+    location: { en: 'Kirche St. Peter, Zurich', it: 'Kirche St. Peter, Zurigo', de: 'Kirche St. Peter, Zürich' },
     body: {
       en: 'Please plan to arrive with time to settle in before the ceremony. The exact arrival time will be added once confirmed.',
       it: "Vi consigliamo di arrivare con un po' di anticipo prima della cerimonia. L'orario preciso sarà aggiunto appena confermato.",
@@ -62,7 +62,7 @@ export const weddingSchedule: ScheduleEntry[] = [
       it: 'Cerimonia',
       de: 'Trauung',
     },
-    location: 'Kirche St. Peter, Zurich',
+    location: { en: 'Kirche St. Peter, Zurich', it: 'Kirche St. Peter, Zurigo', de: 'Kirche St. Peter, Zürich' },
     body: {
       en: 'The day begins in Zurich old town at Kirche St. Peter.',
       it: 'La giornata inizierà nel centro storico di Zurigo, alla Kirche St. Peter.',
@@ -78,7 +78,7 @@ export const weddingSchedule: ScheduleEntry[] = [
       it: 'Trasferimento in barca verso Küsnacht',
       de: 'Bootstransfer nach Küsnacht',
     },
-    location: 'Lake Zurich',
+    location: { en: 'Lake Zurich', it: 'Lago di Zurigo', de: 'Zürichsee' },
     body: {
       en: 'We are planning a host-arranged boat transfer after the ceremony. Boarding point, timing, and rain plan are still to be confirmed.',
       it: 'Stiamo pianificando un trasferimento in barca organizzato dagli sposi dopo la cerimonia. Punto di partenza, orari e piano in caso di pioggia sono ancora da confermare.',
@@ -94,7 +94,7 @@ export const weddingSchedule: ScheduleEntry[] = [
       it: 'Aperitivo, cena e festa',
       de: 'Aperitif, Abendessen und Feier',
     },
-    location: 'Hotel Sonne, Küsnacht',
+    location: { en: 'Hotel Sonne, Küsnacht', it: 'Hotel Sonne, Küsnacht', de: 'Hotel Sonne, Küsnacht' },
     body: {
       en: 'The celebration continues by the water at Hotel Sonne in Küsnacht.',
       it: "La celebrazione continuerà sul lago all'Hotel Sonne di Küsnacht.",
@@ -110,7 +110,7 @@ export const weddingSchedule: ScheduleEntry[] = [
       it: 'Rientro',
       de: 'Rückreise',
     },
-    location: 'Küsnacht to Zurich',
+    location: { en: 'Küsnacht to Zurich', it: 'Da Küsnacht a Zurigo', de: 'Küsnacht nach Zürich' },
     body: {
       en: 'Late-night transport options will be added once the party timing is final.',
       it: 'Le opzioni per il rientro serale saranno aggiunte quando gli orari della festa saranno definitivi.',

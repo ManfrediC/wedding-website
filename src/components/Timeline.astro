@@ -21,7 +21,7 @@ const { lang, entries } = Astro.props;
       <div class="timeline-content">
         <p class="eyebrow">{entry.status[lang]}</p>
         <h2>{entry.title[lang]}</h2>
-        <p class="timeline-location">{entry.location}</p>
+        <p class="timeline-location">{entry.location[lang]}</p>
         <p>{entry.body[lang]}</p>
       </div>
     </li>

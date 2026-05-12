@@ -286,6 +286,10 @@ test('Italian and German pages have localised core content', async ({ page }) =>
   await expect(page.getByRole('heading', { name: 'Il giorno del matrimonio' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Cerimonia civile allo Stadthaus Zürich' })).toBeVisible();
   await expect(page.getByText('familiari più stretti')).toHaveCount(2);
+  await expect(page.locator('.timeline-location').filter({ hasText: 'Lago di Zurigo' })).toBeVisible();
+  await expect(page.locator('.timeline-location').filter({ hasText: 'Da Küsnacht a Zurigo' })).toBeVisible();
+  await expect(page.locator('body')).not.toContainText('Lake Zurich');
+  await expect(page.locator('body')).not.toContainText('Küsnacht to Zurich');
   await expect(page.getByRole('heading', { name: 'Ricevimento e festa' })).toBeVisible();
   await expect(page.getByText('La serata si terrà all’Hotel Sonne di Küsnacht')).toBeVisible();
 
@@ -310,6 +314,10 @@ test('Italian and German pages have localised core content', async ({ page }) =>
   await expect(page.getByRole('heading', { name: 'Unser Hochzeitstag' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Zivile Trauung im Stadthaus Zürich' })).toBeVisible();
   await expect(page.getByText('engsten Familienmitglieder')).toHaveCount(2);
+  await expect(page.locator('.timeline-location').filter({ hasText: 'Zürichsee' })).toBeVisible();
+  await expect(page.locator('.timeline-location').filter({ hasText: 'Küsnacht nach Zürich' })).toBeVisible();
+  await expect(page.locator('body')).not.toContainText('Lake Zurich');
+  await expect(page.locator('body')).not.toContainText('Küsnacht to Zurich');
   await expect(page.getByRole('heading', { name: 'Empfang und Feier' })).toBeVisible();
   await expect(page.getByText('Die Abendfeier findet im Hotel Sonne in Küsnacht')).toBeVisible();
 
@@ -371,6 +379,10 @@ test('Italian and German stay copy is localised and cleanly encoded', async ({ p
   await expect(page.getByText('B & B Caffètino-Vino Richterswil ha cinque camere')).toBeVisible();
   await expect(page.getByText('l’S2 è di solito il miglior treno diretto per Richterswil')).toBeVisible();
   await expect(page.getByText('mancanza di parcheggi e la scarsa praticità')).toBeVisible();
+  await expect(page.locator('img[src="/images/places/hotel-sonne-lake-arrival.jpg"]')).toHaveAttribute(
+    'alt',
+    'Riva del Lago di Zurigo vicino a Küsnacht',
+  );
   await expect(page.getByRole('link', { name: 'FAQ accessibilità St. Peter' })).toHaveAttribute(
     'href',
     'https://www.st-peter-zh.ch/-4/besuch~2695/faq~3108/',
@@ -388,6 +400,10 @@ test('Italian and German stay copy is localised and cleanly encoded', async ({ p
   await expect(page.getByText('B & B Caffètino-Vino Richterswil hat fünf Zimmer')).toBeVisible();
   await expect(page.getByText('die S2 meist der beste direkte Zug nach Richterswil')).toBeVisible();
   await expect(page.getByText('wegen fehlender Parkplätze und geringer Bequemlichkeit')).toBeVisible();
+  await expect(page.locator('img[src="/images/places/hotel-sonne-lake-arrival.jpg"]')).toHaveAttribute(
+    'alt',
+    'Zürichseeufer nahe Küsnacht',
+  );
   await expect(page.getByRole('link', { name: 'Barrierefreiheit St. Peter' })).toHaveAttribute(
     'href',
     'https://www.st-peter-zh.ch/-4/besuch~2695/faq~3108/',

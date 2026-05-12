@@ -802,6 +802,7 @@ applyLocalizedCopy('it', {
         body:
           'Zurigo può essere costosa a giugno. Consigliamo di prenotare presto, controllare le condizioni di cancellazione e confrontare hotel e appartamenti se vi fermate più a lungo.',
         items: ['Codici di prenotazione: TBD', 'Scadenze per eventuali blocchi camere: TBD', 'Fasce di prezzo indicative: TBD'],
+        imageAlt: 'Riva del Lago di Zurigo vicino a Küsnacht',
         links: [
           { label: 'Airbnb Zurigo, giugno 2027', href: 'https://www.airbnb.com/s/Zurich--Switzerland/homes?checkin=2027-06-10&checkout=2027-06-13&adults=2' },
         ],
@@ -1133,6 +1134,7 @@ applyLocalizedCopy('de', {
         body:
           'Zürich kann im Juni teuer sein. Wir empfehlen früh zu buchen, Stornierungsbedingungen zu prüfen und bei längeren Aufenthalten Hotels mit Apartments zu vergleichen.',
         items: ['Buchungscodes: TBD', 'Fristen für Zimmerkontingente: TBD', 'Ungefähre Preisbereiche: TBD'],
+        imageAlt: 'Zürichseeufer nahe Küsnacht',
         links: [
           { label: 'Airbnb Zürich, Juni 2027', href: 'https://www.airbnb.com/s/Zurich--Switzerland/homes?checkin=2027-06-10&checkout=2027-06-13&adults=2' },
         ],
