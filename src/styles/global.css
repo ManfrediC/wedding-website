@@ -610,6 +610,7 @@ button {
 }
 
 .welcome-page {
+  --welcome-page-fill: var(--colour-ivory);
   --welcome-serif-display: 'Cormorant Garamond', 'Playfair Display', Didot, serif;
   --welcome-sans-small: Montserrat, 'Avenir Next', 'Helvetica Neue', sans-serif;
   position: relative;
@@ -636,16 +637,18 @@ button {
   width: 100%;
   height: 100%;
   object-fit: fill;
+  z-index: 0;
 }
 
 .welcome-frame-ornament {
   position: absolute;
   left: 50%;
-  bottom: -1.05rem;
+  bottom: 0.65rem;
   width: 4.65rem;
   height: 1.2rem;
   transform: translateX(-50%);
-  background: var(--colour-ivory);
+  z-index: 2;
+  background-color: var(--welcome-page-fill);
   color: var(--colour-gold);
   display: grid;
   place-items: center;
