@@ -20,16 +20,16 @@
     </g>
   </defs>
 
-  <!-- full outer rim -->
-  <rect x="24" y="24" width="1624" height="893"
+  <!-- outer rim, with a centre gap at the bottom for the ornament -->
+  <path d="M24 917 V24 H1648 V917 H900 M772 917 H24"
         fill="none"
         stroke="#c8a264"
         stroke-width="1.45"
         stroke-linecap="round"
         stroke-linejoin="round"/>
 
-  <!-- full inner rim -->
-  <rect x="30" y="30" width="1612" height="881"
+  <!-- inner rim, with a centre gap at the bottom for the ornament -->
+  <path d="M30 911 V30 H1642 V911 H894 M778 911 H30"
         fill="none"
         stroke="#c8a264"
         stroke-width="1.45"

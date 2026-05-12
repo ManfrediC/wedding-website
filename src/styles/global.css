@@ -650,8 +650,7 @@ button {
   height: 1.2rem;
   transform: translateX(-50%);
   z-index: 2;
-  background: var(--welcome-page-background);
-  background-attachment: fixed, fixed;
+  background: transparent;
   color: var(--colour-gold);
   display: grid;
   place-items: center;
