@@ -8,7 +8,12 @@ import '@fontsource/montserrat/latin-700.css';
 ---
 
 <section class="welcome-page" aria-labelledby="welcome-title">
-  <div class="welcome-border" aria-hidden="true"></div>
+  <div class="welcome-border" aria-hidden="true">
+    <span class="welcome-corner welcome-corner-top-left"></span>
+    <span class="welcome-corner welcome-corner-top-right"></span>
+    <span class="welcome-corner welcome-corner-bottom-left"></span>
+    <span class="welcome-corner welcome-corner-bottom-right"></span>
+  </div>
   <div class="welcome-shell">
     <h1 id="welcome-title">
       <span>Gabriela</span>
@@ -33,7 +38,13 @@ import '@fontsource/montserrat/latin-700.css';
           data-password-input
           required
         />
-        <span aria-hidden="true">&#128274;</span>
+        <span class="password-lock" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <rect x="6.75" y="10" width="10.5" height="9.25" rx="1.4"></rect>
+            <path d="M8.8 10V7.6a3.2 3.2 0 0 1 6.4 0V10"></path>
+            <path d="M12 13.75v2"></path>
+          </svg>
+        </span>
       </div>
       <p class="form-error" data-error-message data-welcome-text="error" hidden>
         The password was not recognised. Please check the invitation and try again.
@@ -44,7 +55,9 @@ import '@fontsource/montserrat/latin-700.css';
 
     <nav class="welcome-language-links" aria-label="Choose destination language after entering the password">
       <a href="/welcome/?next=/en/" data-language-link="en">English</a>
+      <span aria-hidden="true">|</span>
       <a href="/welcome/?next=/it/" data-language-link="it">Italiano</a>
+      <span aria-hidden="true">|</span>
       <a href="/welcome/?next=/de/" data-language-link="de">Deutsch</a>
     </nav>
   </div>
