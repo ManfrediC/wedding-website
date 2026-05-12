@@ -87,6 +87,7 @@ img {
 }
 
 .site-header {
+  --site-header-inline-padding: 6vw;
   position: sticky;
   top: 0;
   z-index: 20;
@@ -95,7 +96,7 @@ img {
   align-items: center;
   gap: 1.25rem;
   min-height: 72px;
-  padding: 0 6vw;
+  padding: 0 var(--site-header-inline-padding);
   border-bottom: 1px solid var(--colour-line);
   background: rgba(250, 246, 239, 0.96);
   backdrop-filter: blur(12px);
@@ -134,7 +135,8 @@ img {
   font-size: 0.75rem;
 }
 
-.mobile-menu {
+.mobile-header-controls,
+.mobile-disclosure {
   display: none;
 }
 
@@ -1061,38 +1063,91 @@ button {
     grid-template-columns: auto 1fr;
   }
 
-  .mobile-menu {
+  .mobile-header-controls {
+    display: flex;
+    justify-self: end;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .mobile-disclosure {
     display: block;
+    position: static;
     justify-self: end;
   }
 
-  .mobile-menu summary {
+  .mobile-disclosure summary {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
     cursor: pointer;
     color: var(--colour-green);
     font-size: 0.78rem;
     font-weight: 700;
+    list-style: none;
     text-transform: uppercase;
   }
 
-  .mobile-menu nav {
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 100%;
+  .mobile-disclosure summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-disclosure summary::after {
+    content: '';
+    width: 0.4rem;
+    height: 0.4rem;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: translateY(-0.1rem) rotate(45deg);
+  }
+
+  .mobile-disclosure[open] summary::after {
+    transform: translateY(0.1rem) rotate(225deg);
+  }
+
+  .mobile-disclosure > nav {
+    position: fixed;
     top: 72px;
-    display: grid;
-    gap: 0.25rem;
+    z-index: 30;
     border-bottom: 1px solid var(--colour-line);
     background: var(--colour-ivory);
-    padding: 1rem 6vw;
+  }
+
+  .mobile-menu > nav {
+    left: 0;
+    right: 0;
+    display: grid;
+    gap: 0.25rem;
+    padding: 1rem var(--site-header-inline-padding);
   }
 
   .mobile-menu nav a {
     padding: 0.65rem 0;
   }
 
-  .mobile-menu:not([open]) nav {
-    display: none;
+  .mobile-menu nav a[aria-current='page'] {
+    color: var(--colour-green);
+    font-weight: 700;
+  }
+
+  .mobile-language-menu > .language-switcher {
+    right: var(--site-header-inline-padding);
+    display: grid;
+    min-width: 10.5rem;
+    gap: 0.2rem;
+    border: 1px solid var(--colour-line);
+    border-top: 0;
+    padding: 0.75rem 1rem 0.85rem;
+    box-shadow: 0 14px 26px rgba(49, 72, 61, 0.1);
+  }
+
+  .mobile-language-menu .language-switcher a {
+    padding: 0.55rem 0;
+  }
+
+  .mobile-language-menu .language-switcher a[aria-current='true'] {
+    color: var(--colour-green);
+    font-weight: 700;
   }
 
   .feature-grid,
@@ -1108,7 +1163,7 @@ button {
 
 @media (max-width: 700px) {
   .site-header {
-    padding: 0 1rem;
+    --site-header-inline-padding: 1rem;
   }
 
   .home-hero {

@@ -70,6 +70,7 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
     page.getByRole('button', { name: 'Öffnen' }).click(),
   ]);
   await waitForVisibleText(page, 'Gabriela & Manfredi', 'authenticated home');
+  await assertMobileHeaderDisclosures(page);
 
   await page.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
   await waitForVisibleText(page, 'Please enter the password from your invitation.', 'authenticated root landing');
@@ -188,6 +189,40 @@ async function assertNoHorizontalOverflow(page, label) {
   }
 
   return Math.max(0, delta);
+}
+
+async function assertMobileHeaderDisclosures(page) {
+  await page.setViewportSize({ width: 390, height: 844 });
+
+  await page.locator('.mobile-menu > summary').click();
+  await page.locator('.mobile-menu[open] nav').waitFor({ state: 'visible', timeout: 10_000 });
+  await page.locator('.mobile-menu nav').getByText('Ablauf', { exact: true }).waitFor({ state: 'visible', timeout: 10_000 });
+
+  const languageInsideMenu = await page.locator('.mobile-menu nav .language-switcher').count();
+  if (languageInsideMenu > 0) {
+    throw new Error('Mobile header: language switcher is still inside the Menu dropdown.');
+  }
+
+  if (await page.locator('.mobile-language-menu .language-switcher').isVisible()) {
+    throw new Error('Mobile header: language dropdown is visible while Menu is open.');
+  }
+
+  await page.locator('.mobile-language-menu > summary').click();
+  await page.locator('.mobile-language-menu[open] .language-switcher').waitFor({ state: 'visible', timeout: 10_000 });
+  await page.locator('.mobile-language-menu .language-switcher').getByText('English', { exact: true }).waitFor({
+    state: 'visible',
+    timeout: 10_000,
+  });
+
+  if ((await page.locator('.mobile-menu[open]').count()) > 0) {
+    throw new Error('Mobile header: Menu dropdown remained open after opening Language.');
+  }
+
+  if (await page.locator('.mobile-menu nav').isVisible()) {
+    throw new Error('Mobile header: page menu is visible while Language is open.');
+  }
+
+  await page.setViewportSize({ width: 1365, height: 900 });
 }
 
 async function startProtectedPreview(port) {

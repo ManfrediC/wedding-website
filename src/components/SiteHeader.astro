@@ -9,6 +9,12 @@ type Props = {
 };
 
 const { lang, currentPath = '/' } = Astro.props;
+
+const mobileLanguageLabels: Record<Lang, string> = {
+  en: 'Language',
+  it: 'Lingua',
+  de: 'Sprache',
+};
 ---
 
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -32,13 +38,52 @@ const { lang, currentPath = '/' } = Astro.props;
     <LanguageSwitcher lang={lang} path={currentPath} />
   </div>
 
-  <details class="mobile-menu">
-    <summary>Menu</summary>
-    <nav aria-label="Mobile navigation">
-      {navItems.map((item) => (
-        <a href={`/${lang}${item.path}`}>{item.labels[lang]}</a>
-      ))}
+  <div class="mobile-header-controls">
+    <details class="mobile-disclosure mobile-language-menu" name="mobile-header-disclosure" data-mobile-header-disclosure>
+      <summary>{mobileLanguageLabels[lang]}</summary>
       <LanguageSwitcher lang={lang} path={currentPath} />
-    </nav>
-  </details>
+    </details>
+
+    <details class="mobile-disclosure mobile-menu" name="mobile-header-disclosure" data-mobile-header-disclosure>
+      <summary>Menu</summary>
+      <nav aria-label="Mobile navigation">
+        {navItems.map((item) => (
+          <a
+            href={`/${lang}${item.path}`}
+            aria-current={currentPath === item.path ? 'page' : undefined}
+          >
+            {item.labels[lang]}
+          </a>
+        ))}
+      </nav>
+    </details>
+  </div>
 </header>
+
+<script is:inline>
+  (() => {
+    const mobileHeaderDisclosures = document.querySelectorAll('[data-mobile-header-disclosure]');
+
+    const closeOtherMobileHeaderDisclosures = (activeDisclosure) => {
+      mobileHeaderDisclosures.forEach((disclosure) => {
+        if (disclosure !== activeDisclosure) {
+          disclosure.removeAttribute('open');
+        }
+      });
+    };
+
+    mobileHeaderDisclosures.forEach((disclosure) => {
+      disclosure.querySelector('summary')?.addEventListener('click', () => {
+        closeOtherMobileHeaderDisclosures(disclosure);
+      });
+
+      disclosure.addEventListener('toggle', () => {
+        if (!disclosure.open) {
+          return;
+        }
+
+        closeOtherMobileHeaderDisclosures(disclosure);
+      });
+    });
+  })();
+</script>
