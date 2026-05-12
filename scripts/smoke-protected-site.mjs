@@ -51,7 +51,7 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
 
   await page.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
   await waitForVisibleText(page, 'Gabriela & Manfredi', 'password gate heading');
-  await waitForVisibleText(page, 'Enter the password from your invitation.', 'password prompt');
+  await waitForVisibleText(page, 'Please enter the password from your invitation.', 'password prompt');
   await assertAbsent(page, 'Private wedding website', 'password gate private wording');
   await assertAbsent(page, 'Kirche St. Peter', 'password gate venue leak');
   await assertAbsent(page, 'Hotel Sonne', 'password gate venue leak');
@@ -64,7 +64,7 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
   await waitForVisibleText(page, 'Gabriela & Manfredi', 'authenticated home');
 
   await page.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
-  await waitForVisibleText(page, 'Enter the password from your invitation.', 'authenticated root landing');
+  await waitForVisibleText(page, 'Please enter the password from your invitation.', 'authenticated root landing');
   await assertAbsent(page, 'Kirche St. Peter', 'authenticated root venue leak');
   await assertAbsent(page, 'Hotel Sonne', 'authenticated root venue leak');
 

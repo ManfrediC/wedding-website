@@ -7,7 +7,7 @@ import { wedding } from '../data/site';
   <div class="welcome-shell">
     <div class="welcome-monogram" aria-label={wedding.couple.monogram}>
       <span aria-hidden="true"></span>
-      <p>{wedding.couple.monogram}</p>
+      <p>G<br />M</p>
       <span aria-hidden="true"></span>
     </div>
     <h1 id="welcome-title">{wedding.couple.display}</h1>
@@ -17,7 +17,7 @@ import { wedding } from '../data/site';
     <form class="welcome-panel" method="post" action="/welcome/" data-welcome-form>
       <input type="hidden" name="next" value="/en/" data-next-input />
       <div class="panel-ornament" aria-hidden="true">&#9671;</div>
-      <p>Enter the password from your invitation.</p>
+      <p>Please enter the password from your invitation.</p>
       <label class="sr-only" for="password">Wedding password</label>
       <div class="password-field">
         <input

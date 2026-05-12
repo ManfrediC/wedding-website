@@ -66,7 +66,7 @@ test('welcome page renders the password gate', async ({ page }) => {
 
   await expect(page.getByRole('heading', { name: 'Gabriela & Manfredi' })).toBeVisible();
   await expect(page.getByText('11 June 2027')).toBeVisible();
-  await expect(page.getByText('Enter the password from your invitation.')).toBeVisible();
+  await expect(page.getByText('Please enter the password from your invitation.')).toBeVisible();
   await expect(page.getByLabel('Wedding password')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Enter' })).toBeVisible();
   await expect(page.getByText('The password was not recognised')).toBeVisible();
@@ -84,7 +84,7 @@ test('root page renders the redesigned password gate', async ({ page }) => {
   await page.goto('/');
 
   await expect(page.getByRole('heading', { name: 'Gabriela & Manfredi' })).toBeVisible();
-  await expect(page.getByText('Enter the password from your invitation.')).toBeVisible();
+  await expect(page.getByText('Please enter the password from your invitation.')).toBeVisible();
   await expect(page.getByLabel('Wedding password')).toBeVisible();
   await expect(page.getByRole('navigation', { name: 'Primary navigation' })).toHaveCount(0);
   await expect(page.getByText('Kirche St. Peter')).toHaveCount(0);
