@@ -638,18 +638,24 @@ button {
   border: 1px solid rgba(180, 154, 106, 0.34);
 }
 
-.welcome-border::after {
-  content: '◇';
+.welcome-frame-ornament {
   position: absolute;
   left: 50%;
-  bottom: -0.85rem;
-  width: 4.9rem;
+  bottom: -1.05rem;
+  width: 4.65rem;
+  height: 1.2rem;
   transform: translateX(-50%);
   background: var(--colour-ivory);
   color: var(--colour-gold);
-  font-family: var(--welcome-serif-display);
-  font-size: 1.15rem;
-  line-height: 1;
+  display: grid;
+  place-items: center;
+  padding: 0 0.58rem;
+}
+
+.welcome-frame-ornament svg {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .welcome-shell {
@@ -830,9 +836,22 @@ button {
 }
 
 .panel-ornament {
+  position: relative;
+  z-index: 1;
+  width: 4.6rem;
+  height: 1.05rem;
+  margin: 0 auto;
   color: var(--colour-gold);
-  font-size: 1.05rem;
-  line-height: 1;
+}
+
+.panel-ornament svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.panel-ornament-bottom {
+  transform: scaleY(-1);
 }
 
 .login-panel label,
@@ -964,9 +983,12 @@ button {
   letter-spacing: 0;
 }
 
-.welcome-language-links a[aria-current='page'],
 .welcome-language-links a:hover {
   border-color: var(--colour-gold);
+  color: var(--colour-green);
+}
+
+.welcome-language-links a[aria-current='page'] {
   color: var(--colour-green);
 }
 
