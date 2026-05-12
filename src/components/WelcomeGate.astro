@@ -5,17 +5,14 @@ import '@fontsource/cormorant-garamond/latin-400.css';
 import '@fontsource/montserrat/latin-400.css';
 import '@fontsource/montserrat/latin-500.css';
 import '@fontsource/montserrat/latin-700.css';
-
-import ornament from '../../doc/plans/ornament.svg?raw';
 ---
 
 <section class="welcome-page" aria-labelledby="welcome-title">
   <div class="welcome-border" aria-hidden="true">
-    <span class="welcome-corner welcome-corner-top-left"></span>
-    <span class="welcome-corner welcome-corner-top-right"></span>
-    <span class="welcome-corner welcome-corner-bottom-left"></span>
-    <span class="welcome-corner welcome-corner-bottom-right"></span>
-    <span class="welcome-frame-ornament" set:html={ornament}></span>
+    <img class="welcome-frame" src="/images/landing/frame.svg" alt="" />
+    <span class="welcome-frame-ornament">
+      <img src="/images/landing/ornament.svg" alt="" />
+    </span>
   </div>
   <div class="welcome-shell">
     <h1 id="welcome-title">
@@ -28,7 +25,9 @@ import ornament from '../../doc/plans/ornament.svg?raw';
 
     <form class="welcome-panel" method="post" action="/welcome/" data-welcome-form>
       <input type="hidden" name="next" value="/en/" data-next-input />
-      <div class="panel-ornament panel-ornament-top" aria-hidden="true" set:html={ornament}></div>
+      <div class="panel-ornament panel-ornament-top" aria-hidden="true">
+        <img src="/images/landing/ornament.svg" alt="" />
+      </div>
       <p data-welcome-text="prompt">Please enter the password from your invitation.</p>
       <label class="sr-only" for="password" data-welcome-text="label">Wedding password</label>
       <div class="password-field">
@@ -53,7 +52,9 @@ import ornament from '../../doc/plans/ornament.svg?raw';
         The password was not recognised. Please check the invitation and try again.
       </p>
       <button type="submit" data-welcome-text="button">Enter</button>
-      <div class="panel-ornament panel-ornament-bottom" aria-hidden="true" set:html={ornament}></div>
+      <div class="panel-ornament panel-ornament-bottom" aria-hidden="true">
+        <img src="/images/landing/ornament.svg" alt="" />
+      </div>
     </form>
 
     <nav class="welcome-language-links" aria-label="Choose destination language after entering the password">

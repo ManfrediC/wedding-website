@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1672 941" width="1672" height="941" preserveAspectRatio="none">
+  <defs>
+    <g id="page-corner"
+       fill="none"
+       stroke="#c8a264"
+       stroke-width="1.45"
+       stroke-linecap="round"
+       stroke-linejoin="round">
+
+      <!-- short corner cap lines -->
+      <path d="M18 18 h8"/>
+      <path d="M24 24 h8"/>
+
+      <!-- inset quarter-curve -->
+      <path d="M24 41
+               C34 41 41 34 41 24"/>
+
+      <!-- small inner box / return -->
+      <path d="M25 35 h9 v-11"/>
+    </g>
+  </defs>
+
+  <!-- full outer rim -->
+  <rect x="24" y="24" width="1624" height="893"
+        fill="none"
+        stroke="#c8a264"
+        stroke-width="1.45"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <!-- full inner rim -->
+  <rect x="30" y="30" width="1612" height="881"
+        fill="none"
+        stroke="#c8a264"
+        stroke-width="1.45"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <!-- top-left -->
+  <g transform="translate(6 6)">
+    <use href="#page-corner"/>
+  </g>
+
+  <!-- top-right -->
+  <g transform="translate(1666 6) scale(-1 1)">
+    <use href="#page-corner"/>
+  </g>
+
+  <!-- bottom-left -->
+  <g transform="translate(6 935) scale(1 -1)">
+    <use href="#page-corner"/>
+  </g>
+
+  <!-- bottom-right -->
+  <g transform="translate(1666 935) scale(-1 -1)">
+    <use href="#page-corner"/>
+  </g>
+</svg>

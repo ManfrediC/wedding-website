@@ -75,6 +75,7 @@ function isPublicAsset(pathname: string) {
     pathname === '/robots.txt' ||
     pathname === '/favicon.svg' ||
     pathname === '/images/minted/minted-hero.jpg' ||
+    pathname.startsWith('/images/landing/') ||
     pathname.startsWith('/_astro/')
   );
 }

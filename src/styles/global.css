@@ -627,15 +627,15 @@ button {
 .welcome-border {
   position: absolute;
   inset: clamp(1rem, 1.55vw, 1.75rem);
-  border: 1px solid rgba(180, 154, 106, 0.72);
   pointer-events: none;
 }
 
-.welcome-border::before {
-  content: '';
+.welcome-frame {
   position: absolute;
-  inset: 0.38rem;
-  border: 1px solid rgba(180, 154, 106, 0.34);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
 }
 
 .welcome-frame-ornament {
@@ -652,7 +652,7 @@ button {
   padding: 0 0.58rem;
 }
 
-.welcome-frame-ornament svg {
+.welcome-frame-ornament img {
   display: block;
   width: 100%;
   height: auto;
@@ -666,57 +666,6 @@ button {
   justify-items: center;
   gap: 1rem;
   transform: translateY(1vh);
-}
-
-.welcome-corner {
-  position: absolute;
-  width: 1.65rem;
-  height: 1.65rem;
-  border-color: rgba(180, 154, 106, 0.8);
-}
-
-.welcome-corner-top-left {
-  top: -1px;
-  left: -1px;
-  border-top: 1px solid;
-  border-left: 1px solid;
-  border-top-left-radius: 0.55rem;
-  box-shadow:
-    0.34rem 0 0 -0.29rem rgba(180, 154, 106, 0.74),
-    0 0.34rem 0 -0.29rem rgba(180, 154, 106, 0.74);
-}
-
-.welcome-corner-top-right {
-  top: -1px;
-  right: -1px;
-  border-top: 1px solid;
-  border-right: 1px solid;
-  border-top-right-radius: 0.55rem;
-  box-shadow:
-    -0.34rem 0 0 -0.29rem rgba(180, 154, 106, 0.74),
-    0 0.34rem 0 -0.29rem rgba(180, 154, 106, 0.74);
-}
-
-.welcome-corner-bottom-left {
-  bottom: -1px;
-  left: -1px;
-  border-bottom: 1px solid;
-  border-left: 1px solid;
-  border-bottom-left-radius: 0.55rem;
-  box-shadow:
-    0.34rem 0 0 -0.29rem rgba(180, 154, 106, 0.74),
-    0 -0.34rem 0 -0.29rem rgba(180, 154, 106, 0.74);
-}
-
-.welcome-corner-bottom-right {
-  right: -1px;
-  bottom: -1px;
-  border-right: 1px solid;
-  border-bottom: 1px solid;
-  border-bottom-right-radius: 0.55rem;
-  box-shadow:
-    -0.34rem 0 0 -0.29rem rgba(180, 154, 106, 0.74),
-    0 -0.34rem 0 -0.29rem rgba(180, 154, 106, 0.74);
 }
 
 .welcome-shell h1 {
@@ -844,7 +793,7 @@ button {
   color: var(--colour-gold);
 }
 
-.panel-ornament svg {
+.panel-ornament img {
   display: block;
   width: 100%;
   height: auto;
