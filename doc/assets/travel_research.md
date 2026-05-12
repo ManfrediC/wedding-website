@@ -86,3 +86,24 @@ Researched on 2026-05-10 for the wedding website travel page. June 2027 flight a
 - The same page lists the 2026 one-month price as CHF 150 in both 1st and 2nd class.
 - Guest-facing wording should refer to the visitor product as the Swiss Half Fare Card rather than the resident annual Half Fare Travelcard/Halbtax. It should frame the card as something to compare for guests planning several longer Swiss journeys, lake trips, or mountain excursions, because the upfront cost only makes sense if expected savings exceed CHF 150.
 - Source: <https://www.myswitzerland.com/en-ch/planning/transport-accommodation/tickets-public-transport/swiss-half-fare-card/>
+
+## Entry, Visas, And Customs
+
+- Researched again on 2026-05-12 for the FAQ visa/customs item.
+- SEM's general entry page says EU/EFTA citizens do not require a visa to enter Switzerland; non-EU/EFTA citizens should check the ID and visa overview. SEM says ETIAS is planned for the last quarter of 2026, but no applications are currently collected.
+- SEM's entry-without-visa page says EU/EFTA citizens must present a valid ID card or passport and must not pose a threat to public order and security.
+- GOV.UK says British citizen passport holders may travel visa-free to the Schengen area, including Switzerland, for up to 90 days in any 180-day period. It also states that a passport must have been issued less than 10 years before arrival and expire at least 3 months after the planned departure from the Schengen area.
+- The US State Department says no tourist visa is required for Switzerland for stays of 90 days or less. Its Switzerland page currently advises a passport valid for at least 6 months from entry, and says travellers may need sufficient proof of funds and a return plane ticket.
+- FOCBS/BAZG says goods for personal use or gifts can be imported VAT-free only up to CHF 150 total value per person per day. Alcohol, tobacco, meat, butter/cream, oils/fats, and similar sensitive goods have separate quantity allowances.
+- FOCBS/BAZG states that animal products are permitted only from EU member states, Iceland, Northern Ireland, and Norway, and are prohibited from other countries. Guest-facing wording should therefore distinguish EU/Northern Ireland from Great Britain and the USA for meat, cheese, butter, cream, and similar animal-product food gifts.
+- FOCBS/BAZG airport guidance says the green channel is a binding customs declaration; once customs agents begin a check, a traveller cannot change their mind and go back. If unsure, use QuickZoll before crossing or the red channel at the airport.
+- The note that land-border checks can be strict and airport checks are less likely is practical guest guidance; the official rule remains that customs requirements apply at every Swiss border crossing and airport arrival.
+- Sources:
+  - <https://www.sem.admin.ch/sem/en/home/overview-einreise.html>
+  - <https://www.sem.admin.ch/sem/en/home/themen/einreise/info-einreise/voraussetzungen-nach-staat/ohne-visum.html>
+  - <https://www.gov.uk/foreign-travel-advice/switzerland/entry-requirements>
+  - <https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Switzerland.html>
+  - <https://www.bazg.admin.ch/en/value-added-tax-vat-chf-150-tax-free-limit>
+  - <https://www.bazg.admin.ch/en/duty-free-allowances-foodstuffs-alcohol-and-tobacco>
+  - <https://www.bazg.admin.ch/bazg/en/home/services/services-individuals/services-private-einfuhr/quickzoll-app.html>
+  - <https://www.bazg.admin.ch/en/air-travel-customs-border-crossing>

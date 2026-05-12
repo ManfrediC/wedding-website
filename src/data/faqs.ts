@@ -42,13 +42,45 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
       ],
     },
     {
-      question: 'What should UK guests check before travelling?',
+      question: 'Are there visa requirements for Switzerland?',
       answer:
-        'UK nationals should check the official Switzerland entry requirements before booking and again before travelling. Current UK guidance says passports must have a date of issue less than 10 years before arrival and an expiry date at least 3 months after the day you plan to leave the Schengen area.',
+        'For a normal wedding trip, EU/EFTA citizens do not need a visa but should carry a valid national ID card or passport. UK British citizen passport holders can visit Switzerland and the Schengen area visa-free for up to 90 days in any 180-day period; current UK guidance says the passport must have been issued less than 10 years before arrival and expire at least 3 months after the planned departure from the Schengen area. US citizens do not need a tourist visa for stays under 90 days; the US State Department advises a passport valid for at least 6 months from entry, plus proof of funds and a return or onward ticket. ETIAS is expected for visa-exempt non-EU travellers after launch, so UK and US guests should check the official guidance again closer to June 2027.',
       links: [
+        { label: 'Swiss SEM entry guidance', href: 'https://www.sem.admin.ch/sem/en/home/overview-einreise.html' },
+        {
+          label: 'Swiss SEM: EU/EFTA entry',
+          href: 'https://www.sem.admin.ch/sem/en/home/themen/einreise/info-einreise/voraussetzungen-nach-staat/ohne-visum.html',
+        },
         {
           label: 'GOV.UK Switzerland entry requirements',
           href: 'https://www.gov.uk/foreign-travel-advice/switzerland/entry-requirements',
+        },
+        {
+          label: 'US State Department: Switzerland',
+          href: 'https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Switzerland.html',
+        },
+      ],
+    },
+    {
+      question: 'What should I know about Swiss customs?',
+      answer:
+        'Swiss customs rules are separate from passport control. As a starting point, goods for personal use or gifts are VAT-free only up to CHF 150 total value per person per day, and alcohol, tobacco, meat, butter, cream, oils, and similar sensitive goods have separate quantity allowances. Animal products are permitted only from EU member states, Iceland, Northern Ireland, and Norway; they are prohibited from other countries, so guests arriving from Great Britain or the USA should avoid packing meat, cheese, butter, cream, or similar animal-product food gifts. EU guests still need to stay within the allowances or declare and pay what is due. Swiss customs and border officers can be very strict at land borders, especially if you are driving or arriving by train with shopping, food, alcohol, or gifts. Checks are less likely at the airport, but they can still happen and the same rules apply. Use QuickZoll or the red channel if you are unsure.',
+      links: [
+        {
+          label: 'Swiss customs allowances',
+          href: 'https://www.bazg.admin.ch/en/duty-free-allowances-foodstuffs-alcohol-and-tobacco',
+        },
+        {
+          label: 'Swiss VAT-free limit',
+          href: 'https://www.bazg.admin.ch/en/value-added-tax-vat-chf-150-tax-free-limit',
+        },
+        {
+          label: 'QuickZoll app',
+          href: 'https://www.bazg.admin.ch/bazg/en/home/services/services-individuals/services-private-einfuhr/quickzoll-app.html',
+        },
+        {
+          label: 'Swiss airport customs channels',
+          href: 'https://www.bazg.admin.ch/en/air-travel-customs-border-crossing',
         },
       ],
     },
@@ -94,13 +126,45 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
       ],
     },
     {
-      question: 'Cosa devono controllare gli ospiti britannici prima del viaggio?',
+      question: 'Ci sono requisiti di visto per la Svizzera?',
       answer:
-        'I cittadini britannici dovrebbero controllare i requisiti ufficiali di ingresso in Svizzera prima di prenotare e di nuovo prima di partire. Secondo le indicazioni attuali del governo britannico, il passaporto deve essere stato emesso meno di 10 anni prima dell’arrivo e scadere almeno 3 mesi dopo il giorno previsto di uscita dall’area Schengen.',
+        'Per un normale viaggio per il matrimonio, i cittadini UE/AELS non hanno bisogno di visto, ma devono portare una carta d’identità nazionale o un passaporto validi. I cittadini britannici con passaporto British citizen possono visitare la Svizzera e l’area Schengen senza visto fino a 90 giorni in un periodo di 180 giorni; secondo le indicazioni attuali del governo britannico, il passaporto deve essere stato emesso meno di 10 anni prima dell’arrivo e scadere almeno 3 mesi dopo l’uscita prevista dall’area Schengen. I cittadini statunitensi non hanno bisogno di visto turistico per soggiorni inferiori a 90 giorni; il Dipartimento di Stato USA raccomanda un passaporto valido almeno 6 mesi dalla data di ingresso, oltre a prova di mezzi sufficienti e biglietto di ritorno o proseguimento. ETIAS è previsto per i viaggiatori non UE esenti da visto dopo il lancio, quindi ospiti britannici e statunitensi dovrebbero ricontrollare le indicazioni ufficiali vicino a giugno 2027.',
       links: [
+        { label: 'SEM svizzero: ingresso', href: 'https://www.sem.admin.ch/sem/en/home/overview-einreise.html' },
+        {
+          label: 'SEM svizzero: ingresso UE/AELS',
+          href: 'https://www.sem.admin.ch/sem/en/home/themen/einreise/info-einreise/voraussetzungen-nach-staat/ohne-visum.html',
+        },
         {
           label: 'GOV.UK: requisiti di ingresso in Svizzera',
           href: 'https://www.gov.uk/foreign-travel-advice/switzerland/entry-requirements',
+        },
+        {
+          label: 'Dipartimento di Stato USA: Svizzera',
+          href: 'https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Switzerland.html',
+        },
+      ],
+    },
+    {
+      question: 'Cosa bisogna sapere sulla dogana svizzera?',
+      answer:
+        'Le regole doganali svizzere sono separate dal controllo passaporti. Come punto di partenza, i beni per uso personale o regalo sono esenti da IVA solo fino a CHF 150 di valore totale per persona al giorno, e alcool, tabacco, carne, burro, panna, oli e altri prodotti sensibili hanno limiti quantitativi separati. I prodotti di origine animale sono ammessi solo dagli Stati membri UE, Islanda, Irlanda del Nord e Norvegia; sono vietati dagli altri paesi, quindi chi arriva dalla Gran Bretagna o dagli Stati Uniti dovrebbe evitare carne, formaggi, burro, panna o regali alimentari simili di origine animale. Anche chi arriva dall’UE deve rispettare le franchigie oppure dichiarare e pagare quanto dovuto. Le guardie doganali e di frontiera svizzere possono essere molto severe ai confini terrestri, soprattutto se si arriva in auto o in treno con acquisti, cibo, alcool o regali. I controlli sono meno probabili in aeroporto, ma possono comunque avvenire e valgono le stesse regole. In caso di dubbi, usate QuickZoll o il canale rosso.',
+      links: [
+        {
+          label: 'Franchigie doganali svizzere',
+          href: 'https://www.bazg.admin.ch/en/duty-free-allowances-foodstuffs-alcohol-and-tobacco',
+        },
+        {
+          label: 'Limite svizzero esente IVA',
+          href: 'https://www.bazg.admin.ch/en/value-added-tax-vat-chf-150-tax-free-limit',
+        },
+        {
+          label: 'App QuickZoll',
+          href: 'https://www.bazg.admin.ch/bazg/en/home/services/services-individuals/services-private-einfuhr/quickzoll-app.html',
+        },
+        {
+          label: 'Canali doganali negli aeroporti svizzeri',
+          href: 'https://www.bazg.admin.ch/en/air-travel-customs-border-crossing',
         },
       ],
     },
@@ -146,13 +210,45 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
       ],
     },
     {
-      question: 'Was sollten Gäste aus dem Vereinigten Königreich vor der Reise prüfen?',
+      question: 'Brauche ich ein Visum für die Schweiz?',
       answer:
-        'Britische Staatsangehörige sollten die offiziellen Einreisebestimmungen für die Schweiz vor der Buchung und nochmals vor der Reise prüfen. Die aktuelle britische Reiseinformation sagt, dass der Pass weniger als 10 Jahre vor der Einreise ausgestellt worden sein muss und mindestens 3 Monate nach dem geplanten Verlassen des Schengen-Raums gültig sein muss.',
+        'Für eine normale Hochzeitsreise brauchen EU-/EFTA-Bürgerinnen und -Bürger kein Visum, müssen aber eine gültige nationale Identitätskarte oder einen Pass mitführen. Britische Staatsangehörige mit British-citizen-Pass können die Schweiz und den Schengen-Raum bis zu 90 Tage innerhalb von 180 Tagen visumfrei besuchen; laut aktueller britischer Reiseinformation muss der Pass weniger als 10 Jahre vor der Einreise ausgestellt worden sein und mindestens 3 Monate nach dem geplanten Verlassen des Schengen-Raums gültig sein. US-Staatsangehörige brauchen für touristische Aufenthalte unter 90 Tagen kein Visum; das US-Aussenministerium empfiehlt einen Pass, der ab Einreise mindestens 6 Monate gültig ist, sowie Nachweise über ausreichende Mittel und ein Rück- oder Weiterreiseticket. ETIAS ist nach der Einführung für visumfreie Nicht-EU-Reisende vorgesehen, daher sollten Gäste aus Grossbritannien und den USA die offiziellen Hinweise vor Juni 2027 erneut prüfen.',
       links: [
+        { label: 'Schweizer SEM: Einreise', href: 'https://www.sem.admin.ch/sem/en/home/overview-einreise.html' },
+        {
+          label: 'Schweizer SEM: Einreise EU/EFTA',
+          href: 'https://www.sem.admin.ch/sem/en/home/themen/einreise/info-einreise/voraussetzungen-nach-staat/ohne-visum.html',
+        },
         {
           label: 'GOV.UK: Einreisebestimmungen Schweiz',
           href: 'https://www.gov.uk/foreign-travel-advice/switzerland/entry-requirements',
+        },
+        {
+          label: 'US-Aussenministerium: Schweiz',
+          href: 'https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Switzerland.html',
+        },
+      ],
+    },
+    {
+      question: 'Was sollte ich zum Schweizer Zoll wissen?',
+      answer:
+        'Die Schweizer Zollregeln sind vom Passkontrollrecht getrennt. Als Ausgangspunkt gilt: Waren für den persönlichen Gebrauch oder als Geschenk sind nur bis zu einem Gesamtwert von CHF 150 pro Person und Tag mehrwertsteuerfrei; für Alkohol, Tabak, Fleisch, Butter, Rahm, Öle und ähnliche sensible Waren gelten zusätzliche Mengenfreigrenzen. Tierische Produkte sind nur aus EU-Mitgliedstaaten, Island, Nordirland und Norwegen erlaubt; aus anderen Ländern sind sie verboten. Gäste aus Grossbritannien oder den USA sollten daher kein Fleisch, keinen Käse, keine Butter, keinen Rahm und keine ähnlichen Lebensmittelgeschenke tierischen Ursprungs einpacken. Auch Gäste aus der EU müssen innerhalb der Freigrenzen bleiben oder die Waren deklarieren und die Abgaben bezahlen. Schweizer Zoll- und Grenzbeamte können an Landgrenzen sehr streng sein, besonders bei der Einreise mit Auto oder Zug und mit Einkäufen, Lebensmitteln, Alkohol oder Geschenken. Kontrollen sind am Flughafen weniger wahrscheinlich, können aber trotzdem stattfinden; die Regeln gelten gleich. Nutzt QuickZoll oder den roten Ausgang, wenn ihr unsicher seid.',
+      links: [
+        {
+          label: 'Schweizer Zollfreigrenzen',
+          href: 'https://www.bazg.admin.ch/en/duty-free-allowances-foodstuffs-alcohol-and-tobacco',
+        },
+        {
+          label: 'Schweizer Mehrwertsteuerfreigrenze',
+          href: 'https://www.bazg.admin.ch/en/value-added-tax-vat-chf-150-tax-free-limit',
+        },
+        {
+          label: 'QuickZoll-App',
+          href: 'https://www.bazg.admin.ch/bazg/en/home/services/services-individuals/services-private-einfuhr/quickzoll-app.html',
+        },
+        {
+          label: 'Schweizer Zollkanäle am Flughafen',
+          href: 'https://www.bazg.admin.ch/en/air-travel-customs-border-crossing',
         },
       ],
     },

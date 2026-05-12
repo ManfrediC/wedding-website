@@ -235,8 +235,35 @@ test('English pages include requested travel and contact details', async ({ page
   );
   await page.locator('summary').filter({ hasText: 'Do I need a car?' }).click();
   await expect(page.getByText('lack of parking space and poor convenience')).toBeVisible();
-  await page.locator('summary').filter({ hasText: 'What should UK guests check before travelling?' }).click();
-  await expect(page.getByText('date of issue less than 10 years before arrival')).toBeVisible();
+  await page.locator('summary').filter({ hasText: 'Are there visa requirements for Switzerland?' }).click();
+  await expect(page.getByText('EU/EFTA citizens do not need a visa')).toBeVisible();
+  await expect(page.getByText('passport must have been issued less than 10 years before arrival')).toBeVisible();
+  await expect(page.getByText('US citizens do not need a tourist visa for stays under 90 days')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Swiss SEM entry guidance' })).toHaveAttribute(
+    'href',
+    'https://www.sem.admin.ch/sem/en/home/overview-einreise.html',
+  );
+  await page.locator('summary').filter({ hasText: 'What should I know about Swiss customs?' }).click();
+  await expect(page.getByText('VAT-free only up to CHF 150 total value per person per day')).toBeVisible();
+  await expect(page.getByText('Animal products are permitted only from EU member states')).toBeVisible();
+  await expect(page.getByText('Swiss customs and border officers can be very strict at land borders')).toBeVisible();
+  await expect(page.getByText('Checks are less likely at the airport')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Swiss customs allowances' })).toHaveAttribute(
+    'href',
+    'https://www.bazg.admin.ch/en/duty-free-allowances-foodstuffs-alcohol-and-tobacco',
+  );
+
+  await page.goto('/it/faq/');
+  await page.locator('summary').filter({ hasText: 'Ci sono requisiti di visto per la Svizzera?' }).click();
+  await expect(page.getByText('i cittadini UE/AELS non hanno bisogno di visto')).toBeVisible();
+  await page.locator('summary').filter({ hasText: 'Cosa bisogna sapere sulla dogana svizzera?' }).click();
+  await expect(page.getByText('I controlli sono meno probabili in aeroporto')).toBeVisible();
+
+  await page.goto('/de/faq/');
+  await page.locator('summary').filter({ hasText: 'Brauche ich ein Visum für die Schweiz?' }).click();
+  await expect(page.getByText('EU-/EFTA-Bürgerinnen und -Bürger kein Visum')).toBeVisible();
+  await page.locator('summary').filter({ hasText: 'Was sollte ich zum Schweizer Zoll wissen?' }).click();
+  await expect(page.getByText('Kontrollen sind am Flughafen weniger wahrscheinlich')).toBeVisible();
 });
 
 test('Italian and German guide copy reflects child fares and SBB Mobile', async ({ page }) => {
