@@ -4,13 +4,21 @@ import { wedding } from '../data/site';
 ---
 
 <BaseLayout title={`Welcome | ${wedding.couple.display}`} hideChrome>
-  <section class="welcome-page" style="--welcome-image: url('/images/minted/minted-hero.jpg')">
-    <div class="welcome-panel">
-      <p class="monogram">{wedding.couple.monogram}</p>
-      <p class="eyebrow">Private wedding website</p>
-      <h1>Welcome</h1>
-      <p>The password page has moved to the welcome page.</p>
-      <p><a class="button primary" href="/welcome/">Continue to welcome page</a></p>
+  <meta http-equiv="refresh" content="0; url=/welcome/" />
+  <section class="welcome-page" aria-labelledby="login-title">
+    <div class="welcome-border" aria-hidden="true"></div>
+    <div class="welcome-shell">
+      <div class="welcome-monogram" aria-label={wedding.couple.monogram}>
+        <span aria-hidden="true"></span>
+        <p>{wedding.couple.monogram}</p>
+        <span aria-hidden="true"></span>
+      </div>
+      <h1 id="login-title">{wedding.couple.display}</h1>
+      <p class="welcome-date">11 June 2027</p>
+      <p class="welcome-redirect">
+        Redirecting to the welcome page.
+        <a href="/welcome/">Continue</a>
+      </p>
     </div>
   </section>
 </BaseLayout>

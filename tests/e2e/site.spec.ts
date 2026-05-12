@@ -66,10 +66,15 @@ test('welcome page renders the password gate', async ({ page }) => {
 
   await expect(page.getByRole('heading', { name: 'Gabriela & Manfredi' })).toBeVisible();
   await expect(page.getByText('11 June 2027')).toBeVisible();
-  await expect(page.getByText('Please enter the password to view our wedding website')).toBeVisible();
+  await expect(page.getByText('Enter the password from your invitation.')).toBeVisible();
   await expect(page.getByLabel('Wedding password')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Enter' })).toBeVisible();
   await expect(page.getByText('The password was not recognised')).toBeVisible();
+  await expect(page.getByRole('navigation', { name: 'Primary navigation' })).toHaveCount(0);
+  await expect(page.getByText('Private wedding website')).toHaveCount(0);
+  await expect(page.getByText('HOME')).toHaveCount(0);
+  await expect(page.getByText('SCHEDULE')).toHaveCount(0);
+  await expect(page.getByText('TRAVEL')).toHaveCount(0);
   await expect(page.getByText('Kirche St. Peter')).toHaveCount(0);
   await expect(page.getByText('Hotel Sonne')).toHaveCount(0);
   await expect(page.locator('input[name="next"]')).toHaveValue('/en/travel/');

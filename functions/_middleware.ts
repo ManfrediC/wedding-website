@@ -107,7 +107,7 @@ function normaliseNext(value: string | null) {
   }
 
   const pathname = value.split('?')[0];
-  if (isWelcomePath(pathname) || isLegacyLoginPath(pathname)) {
+  if (pathname === '/' || isWelcomePath(pathname) || isLegacyLoginPath(pathname)) {
     return '/en/';
   }
 
