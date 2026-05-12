@@ -615,6 +615,7 @@ button {
     radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.86), transparent 28rem),
     linear-gradient(180deg, rgba(255, 250, 242, 0.78), rgba(232, 216, 189, 0.2)),
     var(--welcome-page-fill);
+  --welcome-frame-bottom-rim-centre: 2.8693%;
   --welcome-serif-display: 'Cormorant Garamond', 'Playfair Display', Didot, serif;
   --welcome-sans-small: Montserrat, 'Avenir Next', 'Helvetica Neue', sans-serif;
   position: relative;
@@ -645,7 +646,7 @@ button {
 .welcome-frame-ornament {
   position: absolute;
   left: 50%;
-  bottom: 0.65rem;
+  bottom: calc(var(--welcome-frame-bottom-rim-centre) - 0.6rem);
   width: 4.65rem;
   height: 1.2rem;
   transform: translateX(-50%);
