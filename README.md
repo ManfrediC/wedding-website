@@ -51,7 +51,16 @@ The script builds the site, starts a network-accessible preview, and prints the 
 ```bash
 npm run check
 npm run build
+npm run smoke:protected
 ```
+
+After a pushed Cloudflare Pages deployment, run:
+
+```bash
+npm run smoke:live
+```
+
+Both smoke commands read `env/website_pw.env` without printing the password. `smoke:protected` starts the local protected preview automatically after `npm run build`; `smoke:live` checks the deployed Pages URL.
 
 ## Privacy
 
