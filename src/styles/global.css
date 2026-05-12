@@ -611,16 +611,18 @@ button {
 
 .welcome-page {
   --welcome-page-fill: var(--colour-ivory);
+  --welcome-page-background:
+    radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.86), transparent 28rem),
+    linear-gradient(180deg, rgba(255, 250, 242, 0.78), rgba(232, 216, 189, 0.2)),
+    var(--welcome-page-fill);
   --welcome-serif-display: 'Cormorant Garamond', 'Playfair Display', Didot, serif;
   --welcome-sans-small: Montserrat, 'Avenir Next', 'Helvetica Neue', sans-serif;
   position: relative;
   min-height: 100vh;
   padding: clamp(1.9rem, 3.2vw, 3.2rem);
   overflow: hidden;
-  background:
-    radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.86), transparent 28rem),
-    linear-gradient(180deg, rgba(255, 250, 242, 0.78), rgba(232, 216, 189, 0.2)),
-    var(--colour-ivory);
+  background: var(--welcome-page-background);
+  background-attachment: fixed, fixed;
   color: var(--colour-charcoal);
   text-align: center;
 }
@@ -648,7 +650,8 @@ button {
   height: 1.2rem;
   transform: translateX(-50%);
   z-index: 2;
-  background-color: var(--welcome-page-fill);
+  background: var(--welcome-page-background);
+  background-attachment: fixed, fixed;
   color: var(--colour-gold);
   display: grid;
   place-items: center;
