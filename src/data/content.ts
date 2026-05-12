@@ -493,7 +493,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Public transport',
           body: 'Zurich is easy to navigate by tram, train, bus, and boat. Use public transport for travelling around Zurich; driving by car is not recommended due to lack of parking space and poor convenience.',
-          items: ['Download SBB Mobile before travelling and use it for Swiss-wide timetable searches, live platform checks, and tickets; use ZVV for Zurich-area zones and local tickets.', 'ZVV tickets are zone-based; Zurich city is zone 110, Küsnacht ZH is zone 140, and Richterswil is zone 153.', 'For central Zurich, a ZVV single or 24h ticket is usually easiest. For Küsnacht ZH or Richterswil, enter the destination in SBB Mobile or the ZVV app and buy the zones it assigns.', 'For day trips beyond Zurich, compare a normal point-to-point ticket, a Supersaver ticket, and a Saver Day Pass. Supersaver tickets can be cheaper when bought in advance, but they are tied to a specific train and are less flexible.', 'Children under 6 travel free in the Zurich network. Children aged 6 to 15 pay the reduced fare; for longer Swiss travel, check SBB child tickets and Junior Travelcard options.', 'For relaxed city exploring, consider renting a bike when weather and traffic confidence make it sensible.'],
+          items: ['Download SBB Mobile before travelling and use it for Swiss-wide timetable searches, live platform checks, and tickets; use ZVV for Zurich-area zones and local tickets.', 'ZVV tickets are zone-based; Zurich city is zone 110, Küsnacht ZH is zone 140, and Richterswil is zone 153.', 'For central Zurich, a ZVV single or 24h ticket is usually easiest. For Küsnacht ZH or Richterswil, enter the destination in SBB Mobile or the ZVV app and buy the zones it assigns.', 'For day trips beyond Zurich, compare a normal point-to-point ticket, a Supersaver ticket, and a Saver Day Pass. Supersaver tickets can be cheaper when bought in advance, but they are tied to a specific train and are less flexible.', 'Guests planning several longer Swiss journeys, lake trips, or mountain excursions should compare the Swiss Half Fare Card for visitors: in 2026 it costs CHF 150 for one month and gives up to 50% off many train, bus, boat, city-transport, and most mountain-railway journeys. It only makes sense if the expected savings are higher than the upfront cost.', 'Children under 6 travel free in the Zurich network. Children aged 6 to 15 pay the reduced fare; for longer Swiss travel, check SBB child tickets and Junior Travelcard options.', 'For relaxed city exploring, consider renting a bike when weather and traffic confidence make it sensible.'],
           gallery: [
             { src: '/images/places/sbb-train.jpg', alt: 'SBB train travelling through the Swiss countryside' },
             { src: '/images/places/zurich-tram.jpg', alt: 'Zurich tram on Bahnhofstrasse' },
@@ -507,6 +507,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
             { label: 'ZVV tickets', href: 'https://www.zvv.ch/en/travelcards-and-tickets/tickets.html' },
             { label: 'ZVV ticket inspection', href: 'https://www.zvv.ch/en/travelcards-and-tickets/sales-and-support/ticket-inspection/inspection.html' },
             { label: 'SBB children', href: 'https://www.sbb.ch/en/travelcards-and-tickets/tickets-for-switzerland/children.html' },
+            { label: 'Swiss Half Fare Card', href: 'https://www.myswitzerland.com/en-ch/planning/transport-accommodation/tickets-public-transport/swiss-half-fare-card/' },
             { label: 'Züri rollt bike rental', href: 'https://www.zuerich.com/en/visit/sport/zurich-on-wheels' },
           ],
         },
@@ -515,7 +516,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           body: 'There is no single best ticket for every guest. These notes are intended as practical starting points.',
           items: ['To move around Zurich by tram, train, or bus: use a ZVV city ticket, 24h ticket, or the Zürich Card if you also want museums, airport transfer, Uetliberg, and short boat rides.', 'To get to the reception area, search for Küsnacht ZH in SBB Mobile or ZVV and buy a ticket from your starting stop to Küsnacht ZH or Hotel Sonne’s nearest stop; the app will choose the necessary zones.', 'To go to Richterswil: buy a ZVV/SBB ticket to Richterswil, or consider an all-zone/day ticket if you are making several Zurich-network trips that day.', 'For bigger day trips such as Lucerne, Bern, Basel, or mountain areas: check SBB early for Supersaver tickets or Saver Day Passes, but avoid inflexible tickets if your plans depend on a flight arrival or weather.'],
           image: '/images/places/sbb-ticket-machine.jpg',
-          imageAlt: 'SBB ticket machines at Zurich Airport railway station',
+          imageAlt: 'ZVV ticket machine at Zurich Airport tram stop',
           links: [
             { label: 'Zürich Card', href: 'https://www.zuerich.com/en/zurichcard' },
             { label: 'Zürich Card transport', href: 'https://www.zuerich.com/en/zurichcard/public-transportation' },
@@ -548,7 +549,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
             { label: 'Swiss plug guide', href: 'https://www.worldstandards.eu/electricity/plug-voltage-by-country/switzerland/' },
           ],
           image: '/images/places/zurich-rainy-day.jpg',
-          imageAlt: 'Rainy day in Zurich old town',
+          imageAlt: 'Rainy day by Schwarzenbach in Zurich old town',
         },
         {
           title: 'Personal recommendations',
@@ -647,8 +648,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
             { label: 'SBB train', href: 'https://commons.wikimedia.org/wiki/File:SBB_RABe_511_(50852815551).jpg' },
             { label: 'Zurich tram', href: 'https://commons.wikimedia.org/wiki/File:Tram_E,_Bahnhofstrasse,_Zurich,_Switzerland.JPG' },
             { label: 'Säntis cable car', href: 'https://commons.wikimedia.org/wiki/File:S%C3%A4ntis_LSB_Blaue_Kabine_von_Talstation.jpg' },
-            { label: 'SBB ticket machines', href: 'https://commons.wikimedia.org/wiki/File:Bahnhof_Z%C3%BCrich_Flughafen_Billettautomat.jpg' },
-            { label: 'Rainy Zurich', href: 'https://commons.wikimedia.org/wiki/File:Rain_in_the_city_(16382935143).jpg' },
+            { label: 'ZVV ticket machine', href: 'https://commons.wikimedia.org/wiki/File:Ticket_machine_at_Zurich_Airport_tram_stop_03.jpg' },
+            { label: 'Rainy Zurich', href: 'https://unsplash.com/photos/a-man-walking-down-a-street-holding-an-umbrella-ESr01gk08uA' },
           ],
         },
         {
@@ -875,7 +876,7 @@ applyLocalizedCopy('it', {
         title: 'Trasporti pubblici',
         body:
           'A Zurigo ci si muove facilmente con tram, treni, autobus e battelli. Usate i mezzi pubblici per muovervi a Zurigo; viaggiare in auto non è consigliato per la mancanza di parcheggi e la scarsa praticità.',
-        items: ['Scaricate SBB Mobile prima del viaggio e usatela per orari in tutta la Svizzera, controllo dei binari in tempo reale e biglietti; usate ZVV per le zone e i biglietti dell’area di Zurigo.', 'I biglietti ZVV sono basati sulle zone; la città di Zurigo è la zona 110, Küsnacht ZH la zona 140 e Richterswil la zona 153.', 'Per il centro di Zurigo, di solito è più semplice un biglietto singolo ZVV o un biglietto 24 ore. Per Küsnacht ZH o Richterswil, inserite la destinazione in SBB Mobile o nell’app ZVV e acquistate le zone indicate.', 'Per gite fuori Zurigo, confrontate un biglietto punto-punto, un Supersaver ticket e un Saver Day Pass. I Supersaver possono costare meno se acquistati in anticipo, ma sono legati a un treno specifico e sono meno flessibili.', 'I bambini sotto i 6 anni viaggiano gratis nella rete di Zurigo. I bambini dai 6 ai 15 anni pagano la tariffa ridotta; per viaggi più lunghi in Svizzera, controllate i biglietti bambini SBB e la Junior Travelcard.', 'Per esplorare la città con calma, valutate il noleggio di una bici quando meteo e traffico lo rendono sensato.'],
+        items: ['Scaricate SBB Mobile prima del viaggio e usatela per orari in tutta la Svizzera, controllo dei binari in tempo reale e biglietti; usate ZVV per le zone e i biglietti dell’area di Zurigo.', 'I biglietti ZVV sono basati sulle zone; la città di Zurigo è la zona 110, Küsnacht ZH la zona 140 e Richterswil la zona 153.', 'Per il centro di Zurigo, di solito è più semplice un biglietto singolo ZVV o un biglietto 24 ore. Per Küsnacht ZH o Richterswil, inserite la destinazione in SBB Mobile o nell’app ZVV e acquistate le zone indicate.', 'Per gite fuori Zurigo, confrontate un biglietto punto-punto, un Supersaver ticket e un Saver Day Pass. I Supersaver possono costare meno se acquistati in anticipo, ma sono legati a un treno specifico e sono meno flessibili.', 'Chi prevede diversi viaggi più lunghi in Svizzera, gite sul lago o escursioni in montagna dovrebbe confrontare la Swiss Half Fare Card per visitatori: nel 2026 costa CHF 150 per un mese e offre fino al 50% di sconto su molti treni, autobus, battelli, trasporti urbani e gran parte degli impianti di montagna. Ha senso solo se il risparmio previsto supera il costo iniziale.', 'I bambini sotto i 6 anni viaggiano gratis nella rete di Zurigo. I bambini dai 6 ai 15 anni pagano la tariffa ridotta; per viaggi più lunghi in Svizzera, controllate i biglietti bambini SBB e la Junior Travelcard.', 'Per esplorare la città con calma, valutate il noleggio di una bici quando meteo e traffico lo rendono sensato.'],
         gallery: [
           { src: '/images/places/sbb-train.jpg', alt: 'Treno SBB nella campagna svizzera' },
           { src: '/images/places/zurich-tram.jpg', alt: 'Tram di Zurigo sulla Bahnhofstrasse' },
@@ -887,7 +888,7 @@ applyLocalizedCopy('it', {
         title: 'Come scegliere i biglietti',
         body: 'Non esiste un biglietto migliore per tutti. Queste note sono un punto di partenza pratico.',
         items: ['Per muoversi a Zurigo in tram, treno o autobus: usate un biglietto ZVV per la città, un biglietto 24 ore o la Zürich Card se volete includere anche musei, trasferimento dall’aeroporto, Uetliberg e brevi tratte in battello.', 'Per arrivare nella zona del ricevimento, cercate Küsnacht ZH in SBB Mobile o ZVV e acquistate un biglietto dal punto di partenza a Küsnacht ZH o alla fermata più vicina all’Hotel Sonne; l’app sceglierà le zone necessarie.', 'Per andare a Richterswil: acquistate un biglietto ZVV/SBB per Richterswil, oppure considerate un giornaliero/all-zone se fate diversi spostamenti nella rete di Zurigo nello stesso giorno.', 'Per gite più lunghe, come Lucerna, Berna, Basilea o zone di montagna: controllate SBB in anticipo per Supersaver tickets o Saver Day Passes, ma evitate biglietti poco flessibili se il piano dipende da arrivi aerei o meteo.'],
-        imageAlt: 'Biglietteria automatica SBB in una stazione svizzera',
+        imageAlt: 'Biglietteria automatica ZVV alla fermata del tram dell’aeroporto di Zurigo',
       },
       {
         title: 'Costi e spese pratiche',
@@ -912,7 +913,7 @@ applyLocalizedCopy('it', {
           ],
           'La maggior parte dei caricabatterie moderni per telefoni e computer supporta 230V, ma controllate l’etichetta di asciugacapelli e altri dispositivi più potenti.',
         ],
-        imageAlt: 'Giornata di pioggia a Zurigo',
+        imageAlt: 'Giornata di pioggia da Schwarzenbach nel centro storico di Zurigo',
       },
       {
         title: 'Consigli personali',
@@ -1206,7 +1207,7 @@ applyLocalizedCopy('de', {
         title: 'Öffentlicher Verkehr',
         body:
           'In Zürich bewegt ihr euch gut mit Tram, Zug, Bus und Schiff. Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist wegen fehlender Parkplätze und geringer Bequemlichkeit nicht empfohlen.',
-        items: ['Ladet SBB Mobile vor der Reise herunter und nutzt die App für Fahrpläne in der ganzen Schweiz, aktuelle Gleisangaben und Tickets; nutzt ZVV für Zonen und lokale Tickets im Raum Zürich.', 'ZVV-Tickets sind zonenbasiert; Zürich Stadt ist Zone 110, Küsnacht ZH Zone 140 und Richterswil Zone 153.', 'Für Zürich Zentrum ist meistens ein ZVV-Einzelticket oder ein 24h-Ticket am einfachsten. Für Küsnacht ZH oder Richterswil gebt das Ziel in SBB Mobile oder der ZVV-App ein und kauft die angezeigten Zonen.', 'Für Tagesausflüge ausserhalb Zürichs vergleicht ein normales Punkt-zu-Punkt-Ticket, ein Supersaver Ticket und einen Saver Day Pass. Supersaver Tickets können günstiger sein, wenn sie früh gekauft werden, sind aber an einen bestimmten Zug gebunden und weniger flexibel.', 'Kinder unter 6 Jahren fahren im Zürcher Verkehrsverbund kostenlos. Kinder von 6 bis 15 Jahren zahlen den reduzierten Tarif; für längere Reisen in der Schweiz prüft SBB-Kindertickets und Junior Travelcard-Optionen.', 'Für entspanntes Erkunden der Stadt könnt ihr ein Velo mieten, wenn Wetter und Verkehrssituation für euch passen.'],
+        items: ['Ladet SBB Mobile vor der Reise herunter und nutzt die App für Fahrpläne in der ganzen Schweiz, aktuelle Gleisangaben und Tickets; nutzt ZVV für Zonen und lokale Tickets im Raum Zürich.', 'ZVV-Tickets sind zonenbasiert; Zürich Stadt ist Zone 110, Küsnacht ZH Zone 140 und Richterswil Zone 153.', 'Für Zürich Zentrum ist meistens ein ZVV-Einzelticket oder ein 24h-Ticket am einfachsten. Für Küsnacht ZH oder Richterswil gebt das Ziel in SBB Mobile oder der ZVV-App ein und kauft die angezeigten Zonen.', 'Für Tagesausflüge ausserhalb Zürichs vergleicht ein normales Punkt-zu-Punkt-Ticket, ein Supersaver Ticket und einen Saver Day Pass. Supersaver Tickets können günstiger sein, wenn sie früh gekauft werden, sind aber an einen bestimmten Zug gebunden und weniger flexibel.', 'Wer mehrere längere Reisen in der Schweiz, Seefahrten oder Bergausflüge plant, sollte die Swiss Half Fare Card für Besucherinnen und Besucher vergleichen: 2026 kostet sie CHF 150 für einen Monat und gibt bis zu 50% Rabatt auf viele Zug-, Bus-, Schiff-, Stadtverkehrs- und die meisten Bergbahnfahrten. Sie lohnt sich nur, wenn die erwartete Ersparnis höher ist als der Kaufpreis.', 'Kinder unter 6 Jahren fahren im Zürcher Verkehrsverbund kostenlos. Kinder von 6 bis 15 Jahren zahlen den reduzierten Tarif; für längere Reisen in der Schweiz prüft SBB-Kindertickets und Junior Travelcard-Optionen.', 'Für entspanntes Erkunden der Stadt könnt ihr ein Velo mieten, wenn Wetter und Verkehrssituation für euch passen.'],
         gallery: [
           { src: '/images/places/sbb-train.jpg', alt: 'SBB-Zug in der Schweizer Landschaft' },
           { src: '/images/places/zurich-tram.jpg', alt: 'Zürcher Tram auf der Bahnhofstrasse' },
@@ -1218,7 +1219,7 @@ applyLocalizedCopy('de', {
         title: 'Tickets wählen',
         body: 'Es gibt nicht ein einziges bestes Ticket für alle Gäste. Diese Hinweise sind als praktische Ausgangspunkte gedacht.',
         items: ['Für Wege in Zürich mit Tram, Zug oder Bus: nutzt ein ZVV-Stadtticket, 24h-Ticket oder die Zürich Card, wenn ihr auch Museen, Flughafentransfer, Uetliberg und kurze Schiffsfahrten einschliessen möchtet.', 'Für die Fahrt in den Empfangsbereich sucht in SBB Mobile oder ZVV nach Küsnacht ZH und kauft ein Ticket von eurer Start-Haltestelle nach Küsnacht ZH oder zur nächsten Haltestelle des Hotel Sonne; die App wählt die nötigen Zonen.', 'Für Richterswil: kauft ein ZVV/SBB-Ticket nach Richterswil oder erwägt ein All-Zones/Tagesticket, wenn ihr an diesem Tag mehrere Fahrten im Zürcher Verkehrsverbund macht.', 'Für grössere Tagesausflüge wie Luzern, Bern, Basel oder Bergregionen: prüft früh SBB für Supersaver Tickets oder Saver Day Passes, aber vermeidet unflexible Tickets, wenn eure Pläne von Flugankunft oder Wetter abhängen.'],
-        imageAlt: 'SBB-Billettautomat in einem Schweizer Bahnhof',
+        imageAlt: 'ZVV-Billettautomat an der Tramhaltestelle Zürich Flughafen',
       },
       {
         title: 'Geld und Budget',
@@ -1243,7 +1244,7 @@ applyLocalizedCopy('de', {
           ],
           'Die meisten modernen Handy- und Laptop-Ladegeräte funktionieren mit 230V, aber prüft das Etikett bei Haargeräten und anderen leistungsstärkeren Geräten.',
         ],
-        imageAlt: 'Regentag in Zürich',
+        imageAlt: 'Regentag bei Schwarzenbach in der Zürcher Altstadt',
       },
       {
         title: 'Persönliche Empfehlungen',

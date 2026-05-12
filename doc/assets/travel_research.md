@@ -79,3 +79,10 @@ Researched on 2026-05-10 for the wedding website travel page. June 2027 flight a
   - <https://www.zvv.ch/de/fahrplan-und-informationen/fahrplanverfahren/bahn-und-schiff.html>
   - <https://www.zvv.ch/de/freizeit-und-events/freizeittipps/events/the-lake.html>
   - <https://www.sbb.ch/en/timetable/mobile-apps/sbb-mobile.html>
+
+## Swiss Half Fare Card
+
+- Switzerland Tourism's Swiss Half Fare Card page states that the visitor card is valid for one month, is available to people resident outside Switzerland and Liechtenstein, and gives up to 50% discount on train, bus, boat, city public transport, and most mountain excursions.
+- The same page lists the 2026 one-month price as CHF 150 in both 1st and 2nd class.
+- Guest-facing wording should refer to the visitor product as the Swiss Half Fare Card rather than the resident annual Half Fare Travelcard/Halbtax. It should frame the card as something to compare for guests planning several longer Swiss journeys, lake trips, or mountain excursions, because the upfront cost only makes sense if expected savings exceed CHF 150.
+- Source: <https://www.myswitzerland.com/en-ch/planning/transport-accommodation/tickets-public-transport/swiss-half-fare-card/>

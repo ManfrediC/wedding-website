@@ -470,6 +470,8 @@ button {
   margin: 0;
   border-bottom: 1px solid var(--colour-line);
   padding: 0.65rem;
+  aspect-ratio: 5 / 3;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
 }
 
 .media-grid img {
@@ -479,6 +481,11 @@ button {
   border-radius: 4px;
   object-fit: cover;
   object-position: center;
+}
+
+.info-card > .media-grid-top img {
+  height: 100%;
+  aspect-ratio: auto;
 }
 
 .timeline {

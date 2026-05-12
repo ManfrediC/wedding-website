@@ -242,11 +242,15 @@ test('English pages include requested travel and contact details', async ({ page
 test('Italian and German guide copy reflects child fares and SBB Mobile', async ({ page }) => {
   await page.goto('/it/switzerland-guide/');
   await expect(page.getByText('Scaricate SBB Mobile prima del viaggio')).toBeVisible();
+  await expect(page.getByText('Swiss Half Fare Card per visitatori')).toBeVisible();
+  await expect(page.getByText('costa CHF 150 per un mese')).toBeVisible();
   await expect(page.getByText('I bambini sotto i 6 anni viaggiano gratis')).toBeVisible();
 
   await page.goto('/de/switzerland-guide/');
   await expect(page.getByRole('heading', { name: 'Hinweise zur Schweiz' })).toBeVisible();
   await expect(page.getByText('Ladet SBB Mobile vor der Reise herunter')).toBeVisible();
+  await expect(page.getByText('Swiss Half Fare Card für Besucherinnen und Besucher')).toBeVisible();
+  await expect(page.getByText('kostet sie CHF 150 für einen Monat')).toBeVisible();
   await expect(page.getByText('Kinder unter 6 Jahren fahren im Zürcher Verkehrsverbund kostenlos')).toBeVisible();
 });
 
@@ -309,9 +313,15 @@ test('Switzerland Guide uses the selected section imagery', async ({ page }) => 
   const firstChildClass = await publicTransportCard.evaluate((article) => article.firstElementChild?.className ?? '');
   expect(String(firstChildClass)).toContain('media-grid-top');
   await expect(publicTransportCard.locator('.media-grid-top img')).toHaveCount(4);
+  await expect(page.getByText('Swiss Half Fare Card for visitors')).toBeVisible();
+  await expect(page.getByText('CHF 150 for one month')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Swiss Half Fare Card' })).toHaveAttribute(
+    'href',
+    'https://www.myswitzerland.com/en-ch/planning/transport-accommodation/tickets-public-transport/swiss-half-fare-card/',
+  );
   await expect(page.locator('img[src="/images/places/sbb-ticket-machine.jpg"]')).toHaveAttribute(
     'alt',
-    'SBB ticket machines at Zurich Airport railway station',
+    'ZVV ticket machine at Zurich Airport tram stop',
   );
   await expect(page.locator('img[src="/images/places/zurich-lindenhof-view.jpg"]')).toHaveAttribute(
     'alt',
@@ -319,7 +329,7 @@ test('Switzerland Guide uses the selected section imagery', async ({ page }) => 
   );
   await expect(page.locator('img[src="/images/places/zurich-rainy-day.jpg"]')).toHaveAttribute(
     'alt',
-    'Rainy day in Zurich old town',
+    'Rainy day by Schwarzenbach in Zurich old town',
   );
   await expect(page.locator('img[src="/images/minted/minted-gallery-01.jpeg"]')).toHaveAttribute(
     'alt',
