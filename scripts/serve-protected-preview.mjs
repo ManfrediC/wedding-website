@@ -47,6 +47,11 @@ const server = createServer(async (request, response) => {
         return;
       }
 
+      if (isAuthenticated(request)) {
+        redirect(response, normaliseNext(url.searchParams.get('next')));
+        return;
+      }
+
       await serveStatic(WELCOME_PATH, response);
       return;
     }

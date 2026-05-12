@@ -28,13 +28,14 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       return handleLogin(context, password);
     }
 
+    if (await isAuthenticated(context, password)) {
+      return Response.redirect(new URL(normaliseNext(url.searchParams.get('next')), url.origin).toString(), 302);
+    }
+
     return context.next();
   }
 
-  const expectedCookie = await buildCookieValue(password, context.env.WEDDING_AUTH_SECRET);
-  const actualCookie = readCookie(context.request.headers.get('Cookie') ?? '', COOKIE_NAME);
-
-  if (actualCookie === expectedCookie) {
+  if (await isAuthenticated(context, password)) {
     return context.next();
   }
 
@@ -68,6 +69,12 @@ async function handleLogin(context: EventContext<Env, string, unknown>, password
   );
 
   return response;
+}
+
+async function isAuthenticated(context: EventContext<Env, string, unknown>, password: string) {
+  const expectedCookie = await buildCookieValue(password, context.env.WEDDING_AUTH_SECRET);
+  const actualCookie = readCookie(context.request.headers.get('Cookie') ?? '', COOKIE_NAME);
+  return actualCookie === expectedCookie;
 }
 
 function isPublicAsset(pathname: string) {

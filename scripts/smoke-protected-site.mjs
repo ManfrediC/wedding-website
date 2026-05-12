@@ -7,6 +7,7 @@ import { chromium } from '@playwright/test';
 
 const DEFAULT_LIVE_URL = 'https://wedding-website-2ng.pages.dev';
 const DEFAULT_CHANNELS = ['chrome', 'msedge'];
+const AUTH_COOKIE_NAME = 'gm_wedding_auth';
 
 const args = parseArgs(process.argv.slice(2));
 const startPreview = Boolean(args['start-preview']);
@@ -70,12 +71,13 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
     page.getByRole('button', { name: 'Öffnen' }).click(),
   ]);
   await waitForVisibleText(page, 'Gabriela & Manfredi', 'authenticated home');
+  await assertPersistentAuthCookie(context, baseUrl);
+  await assertReturningVisitorUsesCookie(browser, context, baseUrl);
   await assertMobileHeaderDisclosures(page);
 
   await page.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
-  await waitForVisibleText(page, 'Please enter the password from your invitation.', 'authenticated root landing');
-  await assertAbsent(page, 'Kirche St. Peter', 'authenticated root venue leak');
-  await assertAbsent(page, 'Hotel Sonne', 'authenticated root venue leak');
+  await waitForVisibleText(page, 'We cannot wait to celebrate with you in Zurich.', 'authenticated root home');
+  await assertAbsent(page, 'Please enter the password from your invitation.', 'authenticated root password prompt');
 
   await page.goto(`${baseUrl}/it/schedule/`, { waitUntil: 'networkidle' });
   await waitForVisibleText(page, 'Il giorno del matrimonio', 'Italian schedule heading');
@@ -223,6 +225,53 @@ async function assertMobileHeaderDisclosures(page) {
   }
 
   await page.setViewportSize({ width: 1365, height: 900 });
+}
+
+async function assertPersistentAuthCookie(context, baseUrl) {
+  const cookies = await context.cookies(baseUrl);
+  const authCookie = cookies.find((cookie) => cookie.name === AUTH_COOKIE_NAME);
+
+  if (!authCookie) {
+    throw new Error(`Auth cookie ${AUTH_COOKIE_NAME} was not set after password entry.`);
+  }
+
+  const minimumExpiry = Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 7;
+  if (!authCookie.expires || authCookie.expires < minimumExpiry) {
+    throw new Error(`Auth cookie ${AUTH_COOKIE_NAME} is not persistent enough.`);
+  }
+
+  if (!authCookie.httpOnly) {
+    throw new Error(`Auth cookie ${AUTH_COOKIE_NAME} is not HttpOnly.`);
+  }
+
+  if (authCookie.sameSite !== 'Lax') {
+    throw new Error(`Auth cookie ${AUTH_COOKIE_NAME} should use SameSite=Lax.`);
+  }
+}
+
+async function assertReturningVisitorUsesCookie(browser, context, baseUrl) {
+  const returningContext = await browser.newContext({
+    viewport: { width: 1365, height: 900 },
+    storageState: await context.storageState(),
+  });
+  const returningPage = await returningContext.newPage();
+
+  try {
+    await returningPage.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
+    await waitForVisibleText(returningPage, 'We cannot wait to celebrate with you in Zurich.', 'returning visitor home');
+    await assertAbsent(
+      returningPage,
+      'Please enter the password from your invitation.',
+      'returning visitor password prompt',
+    );
+
+    const returningPath = new URL(returningPage.url()).pathname;
+    if (returningPath !== '/en/') {
+      throw new Error(`Returning visitor should land on /en/, received ${returningPath}.`);
+    }
+  } finally {
+    await returningContext.close();
+  }
 }
 
 async function startProtectedPreview(port) {
