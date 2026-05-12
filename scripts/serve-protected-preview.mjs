@@ -47,11 +47,6 @@ const server = createServer(async (request, response) => {
         return;
       }
 
-      if (isAuthenticated(request)) {
-        redirect(response, normaliseNext(url.searchParams.get('next')));
-        return;
-      }
-
       await serveStatic(WELCOME_PATH, response);
       return;
     }
@@ -168,7 +163,7 @@ function isPublicAsset(pathname) {
 }
 
 function isWelcomePath(pathname) {
-  return pathname === WELCOME_PATH || pathname === '/welcome';
+  return pathname === '/' || pathname === WELCOME_PATH || pathname === '/welcome';
 }
 
 function isLegacyLoginPath(pathname) {

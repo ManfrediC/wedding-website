@@ -80,6 +80,18 @@ test('welcome page renders the password gate', async ({ page }) => {
   await expect(page.locator('input[name="next"]')).toHaveValue('/en/travel/');
 });
 
+test('root page renders the redesigned password gate', async ({ page }) => {
+  await page.goto('/');
+
+  await expect(page.getByRole('heading', { name: 'Gabriela & Manfredi' })).toBeVisible();
+  await expect(page.getByText('Enter the password from your invitation.')).toBeVisible();
+  await expect(page.getByLabel('Wedding password')).toBeVisible();
+  await expect(page.getByRole('navigation', { name: 'Primary navigation' })).toHaveCount(0);
+  await expect(page.getByText('Kirche St. Peter')).toHaveCount(0);
+  await expect(page.getByText('Hotel Sonne')).toHaveCount(0);
+  await expect(page.locator('input[name="next"]')).toHaveValue('/en/');
+});
+
 test('home hero keeps the Zurich image positioned below the spire', async ({ page }) => {
   await page.goto('/en/');
 

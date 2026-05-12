@@ -42,6 +42,7 @@ Durable project notes for the wedding website.
 ## Development Memory
 
 - Local Git trust has been set with `safe.directory` for `C:/Projects/wedding-website`.
+- When an npm/scripted check needs outbound network access, ask for explicit approval instead of failing silently or spending time on workarounds.
 - Standard verification before a checkpoint: `npm run check`, `npm run build`, `npm run test:e2e`, and, when the phone is connected, `npm run test:android`.
 - `npm run test:e2e` covers Chrome, Edge, Firefox, and WebKit/Safari-like rendering. Firefox requires `MOZ_DISABLE_CONTENT_SANDBOX=1` in the Playwright launch options on this Windows workstation.
 - The Android device seen on 2026-05-11 was `RFCW30AS8RE` in ADB debug mode; Android screenshots are saved under `tmp/android`.

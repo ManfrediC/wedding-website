@@ -1,76 +1,9 @@
 ---
+import WelcomeGate from '../components/WelcomeGate.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { wedding } from '../data/site';
 ---
 
 <BaseLayout title={`Welcome | ${wedding.couple.display}`} hideChrome>
-  <section class="welcome-page" aria-labelledby="welcome-title">
-    <div class="welcome-border" aria-hidden="true"></div>
-    <div class="welcome-shell">
-      <div class="welcome-monogram" aria-label={wedding.couple.monogram}>
-        <span aria-hidden="true"></span>
-        <p>{wedding.couple.monogram}</p>
-        <span aria-hidden="true"></span>
-      </div>
-      <h1 id="welcome-title">{wedding.couple.display}</h1>
-      <div class="welcome-rule" aria-hidden="true"></div>
-      <p class="welcome-date">11 June 2027</p>
-
-      <form class="welcome-panel" method="post" data-welcome-form>
-        <input type="hidden" name="next" value="/en/" data-next-input />
-        <div class="panel-ornament" aria-hidden="true">◇</div>
-        <p>Enter the password from your invitation.</p>
-        <label class="sr-only" for="password">Wedding password</label>
-        <div class="password-field">
-          <input
-            id="password"
-            name="password"
-            type="password"
-            autocomplete="current-password"
-            placeholder="Password"
-            required
-          />
-          <span aria-hidden="true">&#128274;</span>
-        </div>
-        <p class="form-error" data-error-message hidden>
-          The password was not recognised. Please check the invitation and try again.
-        </p>
-        <button type="submit">Enter</button>
-        <div class="panel-ornament" aria-hidden="true">◇</div>
-      </form>
-
-      <nav class="welcome-language-links" aria-label="Choose destination language after entering the password">
-        <a href="/welcome/?next=/en/">English</a>
-        <a href="/welcome/?next=/it/">Italiano</a>
-        <a href="/welcome/?next=/de/">Deutsch</a>
-      </nav>
-    </div>
-  </section>
-
-  <script is:inline>
-    const params = new URLSearchParams(window.location.search);
-    const next = params.get('next');
-    const nextPath = next ? next.split('?')[0] : '';
-    const safeNext =
-      next &&
-      next.startsWith('/') &&
-      !next.startsWith('//') &&
-      nextPath !== '/' &&
-      nextPath !== '/welcome' &&
-      nextPath !== '/welcome/' &&
-      nextPath !== '/login' &&
-      nextPath !== '/login/'
-        ? next
-        : '/en/';
-    const nextInput = document.querySelector('[data-next-input]');
-    const errorMessage = document.querySelector('[data-error-message]');
-
-    if (nextInput) {
-      nextInput.value = safeNext;
-    }
-
-    if (errorMessage && params.get('error') === '1') {
-      errorMessage.hidden = false;
-    }
-  </script>
+  <WelcomeGate />
 </BaseLayout>

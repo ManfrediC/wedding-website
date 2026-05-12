@@ -599,7 +599,6 @@ button {
   font-weight: 700;
 }
 
-.language-landing,
 .login-page,
 .welcome-page {
   min-height: 100vh;
@@ -608,10 +607,6 @@ button {
   padding: 2rem;
   background: var(--colour-ivory);
   text-align: center;
-}
-
-.language-landing {
-  min-height: 72vh;
 }
 
 .welcome-page {

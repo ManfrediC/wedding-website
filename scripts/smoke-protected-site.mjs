@@ -63,6 +63,11 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
   ]);
   await waitForVisibleText(page, 'Gabriela & Manfredi', 'authenticated home');
 
+  await page.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
+  await waitForVisibleText(page, 'Enter the password from your invitation.', 'authenticated root landing');
+  await assertAbsent(page, 'Kirche St. Peter', 'authenticated root venue leak');
+  await assertAbsent(page, 'Hotel Sonne', 'authenticated root venue leak');
+
   await page.goto(`${baseUrl}/it/schedule/`, { waitUntil: 'networkidle' });
   await waitForVisibleText(page, 'Il giorno del matrimonio', 'Italian schedule heading');
   await waitForVisibleText(page, 'Lago di Zurigo', 'Italian schedule lake location');

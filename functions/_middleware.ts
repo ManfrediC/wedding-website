@@ -28,14 +28,6 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       return handleLogin(context, password);
     }
 
-    const expectedCookie = await buildCookieValue(password, context.env.WEDDING_AUTH_SECRET);
-    const actualCookie = readCookie(context.request.headers.get('Cookie') ?? '', COOKIE_NAME);
-
-    if (actualCookie === expectedCookie) {
-      const next = normaliseNext(url.searchParams.get('next'));
-      return Response.redirect(new URL(next, url.origin).toString(), 302);
-    }
-
     return context.next();
   }
 
@@ -88,7 +80,7 @@ function isPublicAsset(pathname: string) {
 }
 
 function isWelcomePath(pathname: string) {
-  return pathname === WELCOME_PATH || pathname === '/welcome';
+  return pathname === '/' || pathname === WELCOME_PATH || pathname === '/welcome';
 }
 
 function isLegacyLoginPath(pathname: string) {
