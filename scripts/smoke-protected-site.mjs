@@ -11,6 +11,7 @@ const DEFAULT_CHANNELS = ['chrome', 'msedge'];
 const args = parseArgs(process.argv.slice(2));
 const startPreview = Boolean(args['start-preview']);
 const saveScreenshots = !args['no-screenshots'];
+const runId = new Date().toISOString().replace(/[:.]/g, '-');
 const envValues = await loadEnvFile(join(process.cwd(), 'env', 'website_pw.env'));
 const password = process.env.WEBSITE_PW ?? envValues.WEBSITE_PW;
 
@@ -32,7 +33,7 @@ try {
     baseUrl,
     password,
     saveScreenshots,
-    screenshotPrefix: startPreview ? 'local-protected-smoke' : 'live-protected-smoke',
+    screenshotPrefix: startPreview ? `local-protected-smoke-${runId}` : `live-protected-smoke-${runId}`,
     channelPreference: args['browser-channel'],
   });
 

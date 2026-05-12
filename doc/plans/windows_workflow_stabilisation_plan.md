@@ -4,7 +4,7 @@ This plan keeps `wedding-website` on native Windows at `C:\Projects\wedding-webs
 
 Do not implement this plan until it has been reviewed and approved.
 
-Implementation note, 2026-05-12: the safe part of this plan was implemented by adding reusable protected-site smoke scripts and documenting the Windows workflow. Persistent recursive ACL changes and Windows Defender exclusions were not applied, because those are security-sensitive system changes that need separate explicit approval with the exact blast radius.
+Implementation note, 2026-05-12: the safe scripting part of this plan was implemented by adding reusable protected-site smoke scripts and documenting the Windows workflow. After separate explicit approval, a repo-local ACL repair granted `HP-MC\CodexSandboxOffline` Modify access to the write-heavy project folders named below. Windows Defender exclusions were not applied.
 
 ## Goal
 
