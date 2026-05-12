@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1672 941" width="1672" height="941" preserveAspectRatio="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1672 941" width="1672" height="941">
   <defs>
     <g id="page-corner"
        fill="none"
@@ -20,16 +20,16 @@
     </g>
   </defs>
 
-  <!-- outer rim, with a centre gap at the bottom for the ornament -->
-  <path d="M24 917 V24 H1648 V917 H900 M772 917 H24"
+  <!-- outer rim; the bottom horizontal stroke is drawn in CSS so its centre gap stays fixed -->
+  <path d="M24 917 V24 H1648 V917"
         fill="none"
         stroke="#c8a264"
         stroke-width="1.45"
         stroke-linecap="round"
         stroke-linejoin="round"/>
 
-  <!-- inner rim, with a centre gap at the bottom for the ornament -->
-  <path d="M30 911 V30 H1642 V911 H894 M778 911 H30"
+  <!-- inner rim; the bottom horizontal stroke is drawn in CSS so its centre gap stays fixed -->
+  <path d="M30 911 V30 H1642 V911"
         fill="none"
         stroke="#c8a264"
         stroke-width="1.45"
