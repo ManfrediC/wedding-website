@@ -56,10 +56,18 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
   await assertAbsent(page, 'Kirche St. Peter', 'password gate venue leak');
   await assertAbsent(page, 'Hotel Sonne', 'password gate venue leak');
 
-  await page.getByLabel('Wedding password').fill(password);
+  await page.getByRole('link', { name: 'Italiano' }).click();
+  await waitForVisibleText(page, 'Inserite la password indicata nel vostro invito.', 'Italian password prompt');
+  await assertInputValue(page, 'input[name="next"]', '/it/', 'Italian post-login destination');
+
+  await page.getByRole('link', { name: 'Deutsch' }).click();
+  await waitForVisibleText(page, 'Bitte gebt das Passwort aus eurer Einladung ein.', 'German password prompt');
+  await assertInputValue(page, 'input[name="next"]', '/de/', 'German post-login destination');
+
+  await page.locator('#password').fill(password);
   await Promise.all([
-    page.waitForURL('**/en/**', { timeout: 20_000 }),
-    page.getByRole('button', { name: 'Enter' }).click(),
+    page.waitForURL('**/de/**', { timeout: 20_000 }),
+    page.getByRole('button', { name: 'Öffnen' }).click(),
   ]);
   await waitForVisibleText(page, 'Gabriela & Manfredi', 'authenticated home');
 
@@ -157,6 +165,14 @@ async function assertAbsent(page, text, label) {
   const count = await page.getByText(text, { exact: false }).count();
   if (count > 0) {
     throw new Error(`${label}: unexpected text ${JSON.stringify(text)} appeared ${count} time(s).`);
+  }
+}
+
+async function assertInputValue(page, selector, expectedValue, label) {
+  const actualValue = await page.locator(selector).inputValue();
+
+  if (actualValue !== expectedValue) {
+    throw new Error(`${label}: expected ${JSON.stringify(expectedValue)}, received ${JSON.stringify(actualValue)}.`);
   }
 }
 

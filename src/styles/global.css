@@ -857,6 +857,7 @@ button {
   border-bottom: 1px solid transparent;
 }
 
+.welcome-language-links a[aria-current='page'],
 .welcome-language-links a:hover {
   border-color: var(--colour-gold);
   color: var(--colour-green);

@@ -80,6 +80,29 @@ test('welcome page renders the password gate', async ({ page }) => {
   await expect(page.locator('input[name="next"]')).toHaveValue('/en/travel/');
 });
 
+test('welcome page language links localise the password gate', async ({ page }) => {
+  await page.goto('/welcome/?next=/en/travel/');
+
+  await expect(page.getByText('Please enter the password from your invitation.')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'English' })).toHaveAttribute('aria-current', 'page');
+
+  await page.getByRole('link', { name: 'Italiano' }).click();
+  await expect(page).toHaveURL(/\/welcome\/\?next=\/it\/travel\/$/);
+  await expect(page.getByText('Inserite la password indicata nel vostro invito.')).toBeVisible();
+  await expect(page.getByLabel('Password del matrimonio')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Entra' })).toBeVisible();
+  await expect(page.locator('input[name="next"]')).toHaveValue('/it/travel/');
+  await expect(page.getByRole('link', { name: 'Italiano' })).toHaveAttribute('aria-current', 'page');
+
+  await page.goto('/welcome/?next=/de/&error=1');
+  await expect(page.getByText('Bitte gebt das Passwort aus eurer Einladung ein.')).toBeVisible();
+  await expect(page.getByLabel('Hochzeitspasswort')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Öffnen' })).toBeVisible();
+  await expect(page.getByText('Das Passwort wurde nicht erkannt')).toBeVisible();
+  await expect(page.locator('input[name="next"]')).toHaveValue('/de/');
+  await expect(page.getByRole('link', { name: 'Deutsch' })).toHaveAttribute('aria-current', 'page');
+});
+
 test('root page renders the redesigned password gate', async ({ page }) => {
   await page.goto('/');
 

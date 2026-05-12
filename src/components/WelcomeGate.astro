@@ -21,8 +21,8 @@ import '@fontsource/montserrat/latin-700.css';
     <form class="welcome-panel" method="post" action="/welcome/" data-welcome-form>
       <input type="hidden" name="next" value="/en/" data-next-input />
       <div class="panel-ornament" aria-hidden="true">&#9671;</div>
-      <p>Please enter the password from your invitation.</p>
-      <label class="sr-only" for="password">Wedding password</label>
+      <p data-welcome-text="prompt">Please enter the password from your invitation.</p>
+      <label class="sr-only" for="password" data-welcome-text="label">Wedding password</label>
       <div class="password-field">
         <input
           id="password"
@@ -30,26 +30,51 @@ import '@fontsource/montserrat/latin-700.css';
           type="password"
           autocomplete="current-password"
           placeholder="Password"
+          data-password-input
           required
         />
         <span aria-hidden="true">&#128274;</span>
       </div>
-      <p class="form-error" data-error-message hidden>
+      <p class="form-error" data-error-message data-welcome-text="error" hidden>
         The password was not recognised. Please check the invitation and try again.
       </p>
-      <button type="submit">Enter</button>
+      <button type="submit" data-welcome-text="button">Enter</button>
       <div class="panel-ornament" aria-hidden="true">&#9671;</div>
     </form>
 
     <nav class="welcome-language-links" aria-label="Choose destination language after entering the password">
-      <a href="/welcome/?next=/en/">English</a>
-      <a href="/welcome/?next=/it/">Italiano</a>
-      <a href="/welcome/?next=/de/">Deutsch</a>
+      <a href="/welcome/?next=/en/" data-language-link="en">English</a>
+      <a href="/welcome/?next=/it/" data-language-link="it">Italiano</a>
+      <a href="/welcome/?next=/de/" data-language-link="de">Deutsch</a>
     </nav>
   </div>
 </section>
 
 <script is:inline>
+  const welcomeCopy = {
+    en: {
+      prompt: 'Please enter the password from your invitation.',
+      label: 'Wedding password',
+      placeholder: 'Password',
+      error: 'The password was not recognised. Please check the invitation and try again.',
+      button: 'Enter',
+    },
+    it: {
+      prompt: 'Inserite la password indicata nel vostro invito.',
+      label: 'Password del matrimonio',
+      placeholder: 'Password',
+      error: "La password non è stata riconosciuta. Controllate l'invito e riprovate.",
+      button: 'Entra',
+    },
+    de: {
+      prompt: 'Bitte gebt das Passwort aus eurer Einladung ein.',
+      label: 'Hochzeitspasswort',
+      placeholder: 'Passwort',
+      error: 'Das Passwort wurde nicht erkannt. Bitte prüft die Einladung und versucht es erneut.',
+      button: 'Öffnen',
+    },
+  };
+  const welcomeLanguages = Object.keys(welcomeCopy);
   const params = new URLSearchParams(window.location.search);
   const next = params.get('next');
   const nextPath = next ? next.split('?')[0] : '';
@@ -64,12 +89,46 @@ import '@fontsource/montserrat/latin-700.css';
     nextPath !== '/login/'
       ? next
       : '/en/';
+  const languageMatch = safeNext.match(/^\/(en|it|de)(\/.*)?$/);
+  const activeLanguage = languageMatch ? languageMatch[1] : 'en';
+  const pathAfterLanguage = languageMatch ? (languageMatch[2] ?? '/') : '/';
   const nextInput = document.querySelector('[data-next-input]');
   const errorMessage = document.querySelector('[data-error-message]');
+  const passwordInput = document.querySelector('[data-password-input]');
 
   if (nextInput) {
     nextInput.value = safeNext;
   }
+
+  document.documentElement.lang = activeLanguage;
+
+  document.querySelectorAll('[data-welcome-text]').forEach((element) => {
+    const key = element.getAttribute('data-welcome-text');
+    const text = welcomeCopy[activeLanguage][key];
+
+    if (text) {
+      element.textContent = text;
+    }
+  });
+
+  if (passwordInput) {
+    passwordInput.setAttribute('placeholder', welcomeCopy[activeLanguage].placeholder);
+  }
+
+  welcomeLanguages.forEach((language) => {
+    const link = document.querySelector(`[data-language-link="${language}"]`);
+    if (!link) {
+      return;
+    }
+
+    link.setAttribute('href', `/welcome/?next=/${language}${pathAfterLanguage}`);
+
+    if (language === activeLanguage) {
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
+    }
+  });
 
   if (errorMessage && params.get('error') === '1') {
     errorMessage.hidden = false;
