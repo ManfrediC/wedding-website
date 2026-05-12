@@ -357,7 +357,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Closest to the party: Küsnacht',
           body: 'Staying in Küsnacht keeps you near Hotel Sonne after dinner and dancing. This is likely the easiest choice for guests who value convenience at the end of the evening.',
-          items: ['Hotel Sonne Küsnacht: likely priority for a room block.', 'OXEN Küsnacht: nearby option with a small number of rooms.', 'Late-night transport plan: TBD.'],
+          items: ['Hotel Sonne Küsnacht: likely priority for a room block.', 'OXEN Küsnacht: nearby option with a small number of rooms.', 'Current late-night trains run roughly hourly back towards Zürich HB; check SBB Mobile for the exact connection on the night.'],
           links: [
             { label: 'Hotel Sonne Küsnacht', href: 'https://sonne.ch/en/' },
             { label: 'OXEN Küsnacht', href: 'https://www.oxen.ch/' },
@@ -368,14 +368,14 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Central Zurich',
           body: 'Zurich city centre is practical for guests who want restaurants, sightseeing, train connections, and easy airport access.',
-          items: ['Look near Zurich HB, the Old Town, Bellevue, or Stadelhofen for the most convenient city-centre stay.', 'More economical hotels may be easier to find in Zurich Altstetten or Oerlikon; both are connected to the centre and airport by public transport.', 'Choose accommodation near a tram, train, or bus stop.', 'Use public transport for travelling around Zurich; driving by car is not recommended for ordinary wedding logistics.'],
+          items: ['Look near Zurich HB, the Old Town, Bellevue, or Stadelhofen for the most convenient city-centre stay.', 'More economical hotels may be easier to find in Zurich Altstetten or Oerlikon; both are connected to the centre and airport by public transport.', 'Choose accommodation near a tram, train, or bus stop.', 'Use public transport for travelling around Zurich; driving by car is not recommended due to lack of parking space and poor convenience.'],
           image: '/images/places/zurich-old-town.jpg',
           imageAlt: 'Zurich old town and the Limmat river',
         },
         {
           title: 'Richterswil',
           body: "Richterswil is farther down Lake Zurich, but it can be a quiet lakeside base for guests who would like to stay near Manfredi's family or who prefer a smaller B&B.",
-          items: ['B & B Caffètino-Vino Richterswil has five rooms in the historic village centre, close to the lake and station.', 'It is a B&B rather than a hotel; the house has no lift, and rooms are on the 2nd and 3rd floors.', 'Check the late-evening return journey from Küsnacht before booking, especially after the party.'],
+          items: ['B & B Caffètino-Vino Richterswil has five rooms in the historic village centre, close to the lake and station.', 'From Zürich HB, the S2 is usually the best direct train to Richterswil; the S8 is a slower direct alternative. Check SBB Mobile for the exact connection before travelling.', 'It is a B&B rather than a hotel; the house has no lift, and rooms are on the 2nd and 3rd floors.', 'Check the late-evening return journey from Küsnacht before booking, especially after the party.'],
           links: [
             { label: 'B & B Caffètino-Vino Richterswil', href: 'https://www.bnb-caffetino-vino.ch/' },
           ],
@@ -492,7 +492,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       sections: [
         {
           title: 'Public transport',
-          body: 'Zurich is easy to navigate by tram, train, bus, and boat. Use public transport for travelling around Zurich; driving by car is not recommended for ordinary wedding logistics.',
+          body: 'Zurich is easy to navigate by tram, train, bus, and boat. Use public transport for travelling around Zurich; driving by car is not recommended due to lack of parking space and poor convenience.',
           items: ['Download SBB Mobile before travelling and use it for Swiss-wide timetable searches, live platform checks, and tickets; use ZVV for Zurich-area zones and local tickets.', 'ZVV tickets are zone-based; Zurich city is zone 110, Küsnacht ZH is zone 140, and Richterswil is zone 153.', 'For central Zurich, a ZVV single or 24h ticket is usually easiest. For Küsnacht ZH or Richterswil, enter the destination in SBB Mobile or the ZVV app and buy the zones it assigns.', 'For day trips beyond Zurich, compare a normal point-to-point ticket, a Supersaver ticket, and a Saver Day Pass. Supersaver tickets can be cheaper when bought in advance, but they are tied to a specific train and are less flexible.', 'Children under 6 travel free in the Zurich network. Children aged 6 to 15 pay the reduced fare; for longer Swiss travel, check SBB child tickets and Junior Travelcard options.', 'For relaxed city exploring, consider renting a bike when weather and traffic confidence make it sensible.'],
           gallery: [
             { src: '/images/places/sbb-train.jpg', alt: 'SBB train travelling through the Swiss countryside' },
@@ -526,7 +526,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Money and budgeting',
           body: 'Switzerland uses Swiss francs and is often expensive, but planning ahead can keep costs manageable.',
-          items: ['Migros and Coop are the largest supermarket chains and are useful for breakfasts, snacks, picnic supplies, and children’s basics.', 'Taxis are usually expensive. Use them only when luggage, children, or accessibility needs make them genuinely useful.', 'Use public transport for travelling around Zurich; driving by car is not recommended for ordinary wedding logistics.', 'Low-cost options include lake walks, Old Town wandering, viewpoints, parks, supermarket picnics, and choosing accommodation near a tram, train, or bus stop.'],
+          items: ['Migros and Coop are the largest supermarket chains and are useful for breakfasts, snacks, picnic supplies, and children’s basics.', 'Taxis are usually expensive. Use them only when luggage, children, or accessibility needs make them genuinely useful.', 'Use public transport for travelling around Zurich; driving by car is not recommended due to lack of parking space and poor convenience.', 'Low-cost options include lake walks, Old Town wandering, viewpoints, parks, supermarket picnics, and choosing accommodation near a tram, train, or bus stop.'],
           image: '/images/places/zurich-lindenhof-view.jpg',
           imageAlt: 'Zurich old town and the Limmat from Lindenhof',
           exchangeRates: true,
@@ -779,21 +779,21 @@ applyLocalizedCopy('it', {
         title: 'Più vicino alla festa: Küsnacht',
         body:
           'Dormire a Küsnacht vi tiene vicino all’Hotel Sonne dopo cena e dopo la festa. È probabilmente la scelta più comoda per chi preferisce semplificare il rientro serale.',
-        items: ['Hotel Sonne Küsnacht: probabilmente la prima opzione per un eventuale blocco camere.', 'OXEN Küsnacht: opzione vicina con un piccolo numero di camere.', 'Piano per il rientro notturno: TBD.'],
+        items: ['Hotel Sonne Küsnacht: probabilmente la prima opzione per un eventuale blocco camere.', 'OXEN Küsnacht: opzione vicina con un piccolo numero di camere.', 'Attualmente i treni notturni verso Zürich HB circolano più o meno ogni ora; controllate il collegamento esatto in SBB Mobile la sera stessa.'],
         imageAlt: 'Hotel Sonne a Küsnacht',
       },
       {
         title: 'Centro di Zurigo',
         body:
           'Il centro di Zurigo è pratico per chi desidera ristoranti, visite, collegamenti ferroviari e facile accesso all’aeroporto.',
-        items: ['Cercate vicino a Zurich HB, centro storico, Bellevue o Stadelhofen per la soluzione più comoda in centro.', 'Hotel più economici possono essere più facili da trovare a Zurich Altstetten o Oerlikon; entrambe le zone sono collegate al centro e all’aeroporto con i mezzi pubblici.', 'Scegliete un alloggio vicino a una fermata di tram, treno o autobus.', 'Usate i mezzi pubblici per muovervi a Zurigo; spostarsi in auto non è consigliato per la normale logistica del matrimonio.'],
+        items: ['Cercate vicino a Zurich HB, centro storico, Bellevue o Stadelhofen per la soluzione più comoda in centro.', 'Hotel più economici possono essere più facili da trovare a Zurich Altstetten o Oerlikon; entrambe le zone sono collegate al centro e all’aeroporto con i mezzi pubblici.', 'Scegliete un alloggio vicino a una fermata di tram, treno o autobus.', 'Usate i mezzi pubblici per muovervi a Zurigo; spostarsi in auto non è consigliato per la mancanza di parcheggi e la scarsa praticità.'],
         imageAlt: 'Centro storico di Zurigo e fiume Limmat',
       },
       {
         title: 'Richterswil',
         body:
           'Richterswil si trova più a sud lungo il Lago di Zurigo, ma può essere una base tranquilla per chi desidera stare vicino alla famiglia di Manfredi o preferisce un piccolo B&B.',
-        items: ['B & B Caffètino-Vino Richterswil ha cinque camere nel centro storico del paese, vicino al lago e alla stazione.', 'È un B&B, non un hotel; la casa non ha ascensore e le camere si trovano al 2° e 3° piano.', 'Controllate il rientro serale da Küsnacht prima di prenotare, soprattutto dopo la festa.'],
+        items: ['B & B Caffètino-Vino Richterswil ha cinque camere nel centro storico del paese, vicino al lago e alla stazione.', 'Da Zürich HB, l’S2 è di solito il miglior treno diretto per Richterswil; l’S8 è un’alternativa diretta più lenta. Controllate il collegamento esatto in SBB Mobile prima di partire.', 'È un B&B, non un hotel; la casa non ha ascensore e le camere si trovano al 2° e 3° piano.', 'Controllate il rientro serale da Küsnacht prima di prenotare, soprattutto dopo la festa.'],
         imageAlt: 'Richterswil vista dal Lago di Zurigo',
       },
       {
@@ -874,7 +874,7 @@ applyLocalizedCopy('it', {
       {
         title: 'Trasporti pubblici',
         body:
-          'A Zurigo ci si muove facilmente con tram, treni, autobus e battelli. Usate i mezzi pubblici per muovervi a Zurigo; viaggiare in auto non è consigliato per la normale logistica del matrimonio.',
+          'A Zurigo ci si muove facilmente con tram, treni, autobus e battelli. Usate i mezzi pubblici per muovervi a Zurigo; viaggiare in auto non è consigliato per la mancanza di parcheggi e la scarsa praticità.',
         items: ['Scaricate SBB Mobile prima del viaggio e usatela per orari in tutta la Svizzera, controllo dei binari in tempo reale e biglietti; usate ZVV per le zone e i biglietti dell’area di Zurigo.', 'I biglietti ZVV sono basati sulle zone; la città di Zurigo è la zona 110, Küsnacht ZH la zona 140 e Richterswil la zona 153.', 'Per il centro di Zurigo, di solito è più semplice un biglietto singolo ZVV o un biglietto 24 ore. Per Küsnacht ZH o Richterswil, inserite la destinazione in SBB Mobile o nell’app ZVV e acquistate le zone indicate.', 'Per gite fuori Zurigo, confrontate un biglietto punto-punto, un Supersaver ticket e un Saver Day Pass. I Supersaver possono costare meno se acquistati in anticipo, ma sono legati a un treno specifico e sono meno flessibili.', 'I bambini sotto i 6 anni viaggiano gratis nella rete di Zurigo. I bambini dai 6 ai 15 anni pagano la tariffa ridotta; per viaggi più lunghi in Svizzera, controllate i biglietti bambini SBB e la Junior Travelcard.', 'Per esplorare la città con calma, valutate il noleggio di una bici quando meteo e traffico lo rendono sensato.'],
         gallery: [
           { src: '/images/places/sbb-train.jpg', alt: 'Treno SBB nella campagna svizzera' },
@@ -893,7 +893,7 @@ applyLocalizedCopy('it', {
         title: 'Costi e spese pratiche',
         body:
           'La Svizzera usa il franco svizzero ed è spesso costosa, ma una buona pianificazione aiuta a contenere le spese.',
-        items: ['Migros e Coop sono le principali catene di supermercati e sono utili per colazioni, snack, picnic e necessità per bambini.', 'I taxi sono di solito costosi. Usateli solo quando bagagli, bambini o esigenze di accessibilità li rendono davvero utili.', 'Usate i mezzi pubblici per muovervi a Zurigo; viaggiare in auto non è consigliato per la normale logistica del matrimonio.', 'Opzioni economiche includono passeggiate sul lago, centro storico, punti panoramici, parchi, picnic con prodotti del supermercato e alloggi vicino a tram, treno o autobus.'],
+        items: ['Migros e Coop sono le principali catene di supermercati e sono utili per colazioni, snack, picnic e necessità per bambini.', 'I taxi sono di solito costosi. Usateli solo quando bagagli, bambini o esigenze di accessibilità li rendono davvero utili.', 'Usate i mezzi pubblici per muovervi a Zurigo; viaggiare in auto non è consigliato per la mancanza di parcheggi e la scarsa praticità.', 'Opzioni economiche includono passeggiate sul lago, centro storico, punti panoramici, parchi, picnic con prodotti del supermercato e alloggi vicino a tram, treno o autobus.'],
         image: '/images/places/zurich-lindenhof-view.jpg',
         imageAlt: 'Centro storico di Zurigo e la Limmat dal Lindenhof',
         exchangeRates: true,
@@ -1110,21 +1110,21 @@ applyLocalizedCopy('de', {
         title: 'Am nächsten zur Feier: Küsnacht',
         body:
           'Eine Unterkunft in Küsnacht hält euch nach Abendessen und Feier nahe beim Hotel Sonne. Das ist wahrscheinlich die einfachste Wahl, wenn der späte Rückweg möglichst unkompliziert sein soll.',
-        items: ['Hotel Sonne Küsnacht: voraussichtlich erste Option für ein mögliches Zimmerkontingent.', 'OXEN Küsnacht: nahe Option mit wenigen Zimmern.', 'Plan für späte Rückfahrt: TBD.'],
+        items: ['Hotel Sonne Küsnacht: voraussichtlich erste Option für ein mögliches Zimmerkontingent.', 'OXEN Küsnacht: nahe Option mit wenigen Zimmern.', 'Aktuell fahren späte Züge ungefähr stündlich zurück Richtung Zürich HB; prüft die genaue Verbindung am Abend selbst in SBB Mobile.'],
         imageAlt: 'Hotel Sonne in Küsnacht',
       },
       {
         title: 'Zürich Zentrum',
         body:
           'Zürich Zentrum ist praktisch für Restaurants, Besichtigungen, Zugverbindungen und einfache Anreise zum Flughafen.',
-        items: ['Sucht nahe Zürich HB, Altstadt, Bellevue oder Stadelhofen für die bequemste zentrale Lage.', 'Günstigere Hotels finden sich eventuell eher in Zürich Altstetten oder Oerlikon; beide Quartiere sind mit dem Zentrum und dem Flughafen durch öffentlichen Verkehr verbunden.', 'Wählt eine Unterkunft nahe bei Tram, Zug oder Bus.', 'Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist für die normale Hochzeitslogistik nicht empfohlen.'],
+        items: ['Sucht nahe Zürich HB, Altstadt, Bellevue oder Stadelhofen für die bequemste zentrale Lage.', 'Günstigere Hotels finden sich eventuell eher in Zürich Altstetten oder Oerlikon; beide Quartiere sind mit dem Zentrum und dem Flughafen durch öffentlichen Verkehr verbunden.', 'Wählt eine Unterkunft nahe bei Tram, Zug oder Bus.', 'Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist wegen fehlender Parkplätze und geringer Bequemlichkeit nicht empfohlen.'],
         imageAlt: 'Zürcher Altstadt und Limmat',
       },
       {
         title: 'Richterswil',
         body:
           'Richterswil liegt weiter südlich am Zürichsee, kann aber eine ruhige Basis für Gäste sein, die nahe bei Manfredis Familie wohnen oder ein kleineres B&B bevorzugen.',
-        items: ['B & B Caffètino-Vino Richterswil hat fünf Zimmer im historischen Dorfkern, nahe beim See und Bahnhof.', 'Es ist ein B&B und kein Hotel; das Haus hat keinen Lift, und die Zimmer liegen im 2. und 3. Obergeschoss.', 'Prüft vor der Buchung die späte Rückfahrt ab Küsnacht, besonders nach der Feier.'],
+        items: ['B & B Caffètino-Vino Richterswil hat fünf Zimmer im historischen Dorfkern, nahe beim See und Bahnhof.', 'Ab Zürich HB ist die S2 meist der beste direkte Zug nach Richterswil; die S8 ist eine langsamere direkte Alternative. Prüft die genaue Verbindung vor der Fahrt in SBB Mobile.', 'Es ist ein B&B und kein Hotel; das Haus hat keinen Lift, und die Zimmer liegen im 2. und 3. Obergeschoss.', 'Prüft vor der Buchung die späte Rückfahrt ab Küsnacht, besonders nach der Feier.'],
         imageAlt: 'Richterswil vom Zürichsee aus gesehen',
       },
       {
@@ -1205,7 +1205,7 @@ applyLocalizedCopy('de', {
       {
         title: 'Öffentlicher Verkehr',
         body:
-          'In Zürich bewegt ihr euch gut mit Tram, Zug, Bus und Schiff. Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist für die normale Hochzeitslogistik nicht empfohlen.',
+          'In Zürich bewegt ihr euch gut mit Tram, Zug, Bus und Schiff. Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist wegen fehlender Parkplätze und geringer Bequemlichkeit nicht empfohlen.',
         items: ['Ladet SBB Mobile vor der Reise herunter und nutzt die App für Fahrpläne in der ganzen Schweiz, aktuelle Gleisangaben und Tickets; nutzt ZVV für Zonen und lokale Tickets im Raum Zürich.', 'ZVV-Tickets sind zonenbasiert; Zürich Stadt ist Zone 110, Küsnacht ZH Zone 140 und Richterswil Zone 153.', 'Für Zürich Zentrum ist meistens ein ZVV-Einzelticket oder ein 24h-Ticket am einfachsten. Für Küsnacht ZH oder Richterswil gebt das Ziel in SBB Mobile oder der ZVV-App ein und kauft die angezeigten Zonen.', 'Für Tagesausflüge ausserhalb Zürichs vergleicht ein normales Punkt-zu-Punkt-Ticket, ein Supersaver Ticket und einen Saver Day Pass. Supersaver Tickets können günstiger sein, wenn sie früh gekauft werden, sind aber an einen bestimmten Zug gebunden und weniger flexibel.', 'Kinder unter 6 Jahren fahren im Zürcher Verkehrsverbund kostenlos. Kinder von 6 bis 15 Jahren zahlen den reduzierten Tarif; für längere Reisen in der Schweiz prüft SBB-Kindertickets und Junior Travelcard-Optionen.', 'Für entspanntes Erkunden der Stadt könnt ihr ein Velo mieten, wenn Wetter und Verkehrssituation für euch passen.'],
         gallery: [
           { src: '/images/places/sbb-train.jpg', alt: 'SBB-Zug in der Schweizer Landschaft' },
@@ -1224,7 +1224,7 @@ applyLocalizedCopy('de', {
         title: 'Geld und Budget',
         body:
           'Die Schweiz verwendet Schweizer Franken und ist oft teuer, aber gute Planung hilft, die Kosten überschaubar zu halten.',
-        items: ['Migros und Coop sind die grössten Supermarktketten und nützlich für Frühstück, Snacks, Picknick und Kinderbedarf.', 'Taxis sind meist teuer. Nutzt sie nur, wenn Gepäck, Kinder oder Barrierefreiheitsbedarf sie wirklich sinnvoll machen.', 'Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist für die normale Hochzeitslogistik nicht empfohlen.', 'Günstige Optionen sind Spaziergänge am See, Altstadt, Aussichtspunkte, Parks, Picknicks aus dem Supermarkt und Unterkunft nahe Tram, Zug oder Bus.'],
+        items: ['Migros und Coop sind die grössten Supermarktketten und nützlich für Frühstück, Snacks, Picknick und Kinderbedarf.', 'Taxis sind meist teuer. Nutzt sie nur, wenn Gepäck, Kinder oder Barrierefreiheitsbedarf sie wirklich sinnvoll machen.', 'Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist wegen fehlender Parkplätze und geringer Bequemlichkeit nicht empfohlen.', 'Günstige Optionen sind Spaziergänge am See, Altstadt, Aussichtspunkte, Parks, Picknicks aus dem Supermarkt und Unterkunft nahe Tram, Zug oder Bus.'],
         image: '/images/places/zurich-lindenhof-view.jpg',
         imageAlt: 'Zürcher Altstadt und Limmat vom Lindenhof',
         exchangeRates: true,

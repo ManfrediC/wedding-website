@@ -159,11 +159,15 @@ test('English pages include requested travel and contact details', async ({ page
   await page.goto('/en/stay/');
   await expect(page.getByRole('link', { name: 'Hotel Sonne Küsnacht' })).toHaveAttribute('href', 'https://sonne.ch/en/');
   await expect(page.getByRole('link', { name: 'OXEN Küsnacht' })).toHaveAttribute('href', 'https://www.oxen.ch/');
+  await expect(page.getByText('late-night trains run roughly hourly back towards Zürich HB')).toBeVisible();
+  await expect(page.getByText('driving by car is not recommended due to lack of parking space and poor convenience')).toBeVisible();
   await expect(page.getByRole('link', { name: 'B & B Caffètino-Vino Richterswil' })).toHaveAttribute(
     'href',
     'https://www.bnb-caffetino-vino.ch/',
   );
   await expect(page.getByRole('heading', { name: 'Richterswil' })).toBeVisible();
+  await expect(page.getByText('the S2 is usually the best direct train to Richterswil')).toBeVisible();
+  await expect(page.getByText('the S8 is a slower direct alternative')).toBeVisible();
   await expect(page.locator('img[src="/images/places/richterswil-lake.jpg"]')).toHaveAttribute(
     'alt',
     'Richterswil village seen from Lake Zurich',
@@ -229,6 +233,8 @@ test('English pages include requested travel and contact details', async ({ page
     'href',
     'https://www.sbb.ch/en/tickets-offers/buy.html',
   );
+  await page.locator('summary').filter({ hasText: 'Do I need a car?' }).click();
+  await expect(page.getByText('lack of parking space and poor convenience')).toBeVisible();
   await page.locator('summary').filter({ hasText: 'What should UK guests check before travelling?' }).click();
   await expect(page.getByText('date of issue less than 10 years before arrival')).toBeVisible();
 });
@@ -326,6 +332,8 @@ test('Italian and German stay copy is localised and cleanly encoded', async ({ p
   await expect(page.getByRole('heading', { name: 'Accessibilità e mobilità' })).toBeVisible();
   await expect(page.getByText('il piano terra è accessibile in sedia a rotelle')).toBeVisible();
   await expect(page.getByText('B & B Caffètino-Vino Richterswil ha cinque camere')).toBeVisible();
+  await expect(page.getByText('l’S2 è di solito il miglior treno diretto per Richterswil')).toBeVisible();
+  await expect(page.getByText('mancanza di parcheggi e la scarsa praticità')).toBeVisible();
   await expect(page.getByRole('link', { name: 'FAQ accessibilità St. Peter' })).toHaveAttribute(
     'href',
     'https://www.st-peter-zh.ch/-4/besuch~2695/faq~3108/',
@@ -341,6 +349,8 @@ test('Italian and German stay copy is localised and cleanly encoded', async ({ p
   await expect(page.getByRole('heading', { name: 'Barrierefreiheit und Mobilität' })).toBeVisible();
   await expect(page.getByText('Laut offizieller FAQ der Kirche ist das Erdgeschoss rollstuhlgängig')).toBeVisible();
   await expect(page.getByText('B & B Caffètino-Vino Richterswil hat fünf Zimmer')).toBeVisible();
+  await expect(page.getByText('die S2 meist der beste direkte Zug nach Richterswil')).toBeVisible();
+  await expect(page.getByText('wegen fehlender Parkplätze und geringer Bequemlichkeit')).toBeVisible();
   await expect(page.getByRole('link', { name: 'Barrierefreiheit St. Peter' })).toHaveAttribute(
     'href',
     'https://www.st-peter-zh.ch/-4/besuch~2695/faq~3108/',

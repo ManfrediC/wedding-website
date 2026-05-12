@@ -67,3 +67,15 @@ Researched on 2026-05-10 for the wedding website travel page. June 2027 flight a
 - Sources:
   - <https://www.zvv.ch/de/fahrplan-und-informationen/fahrplanverfahren/bahn-und-schiff.html>
   - <https://www.sbb.ch/en/timetable/mobile-apps/sbb-mobile.html>
+
+## Zurich HB To Richterswil
+
+- Researched again on 2026-05-12 for the Stay page wording.
+- ZVV's current S-Bahn line listing shows S2 on the Zurich Flughafen - Zurich HB - Pfäffikon SZ - Ziegelbrücke route and S8 on the Winterthur - Wallisellen - Zurich HB - Thalwil - Pfäffikon SZ route. Both are useful lake-left-bank routes towards Richterswil/Pfäffikon SZ, but guests should always confirm the exact connection in SBB Mobile for their travel time.
+- A ZVV event travel note for Richterswil states that the Richterswil station area is reachable from Zurich by S-Bahn and points travellers to the online timetable/ZVV app for exact connections.
+- Guest-facing wording should say the S2 is usually the best direct Zurich HB to Richterswil train and the S8 is a slower direct alternative, with a check-SBB-Mobile caveat.
+- June 2027 late-night timetables are not yet guaranteed. It is safe only as current planning guidance to say late-night trains run roughly hourly back towards Zurich HB and that guests should check SBB Mobile on the night.
+- Sources:
+  - <https://www.zvv.ch/de/fahrplan-und-informationen/fahrplanverfahren/bahn-und-schiff.html>
+  - <https://www.zvv.ch/de/freizeit-und-events/freizeittipps/events/the-lake.html>
+  - <https://www.sbb.ch/en/timetable/mobile-apps/sbb-mobile.html>

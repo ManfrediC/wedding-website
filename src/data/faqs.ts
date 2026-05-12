@@ -25,7 +25,7 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
     {
       question: 'Do I need a car?',
       answer:
-        'No. Please use public transport for travelling around Zurich; driving by car is not recommended for ordinary wedding logistics.',
+        'No. Use public transport for travelling around Zurich; driving by car is not recommended due to lack of parking space and poor convenience.',
     },
     {
       question: 'How do I buy a train ticket?',
@@ -77,7 +77,7 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
     {
       question: "Serve un'auto?",
       answer:
-        'No. Vi consigliamo di usare i mezzi pubblici per muovervi a Zurigo; spostarsi in auto non è consigliato per la normale logistica del matrimonio.',
+        'No. Usate i mezzi pubblici per muovervi a Zurigo; spostarsi in auto non è consigliato per la mancanza di parcheggi e la scarsa praticità.',
     },
     {
       question: 'Come compro un biglietto del treno?',
@@ -129,7 +129,7 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
     {
       question: 'Brauche ich ein Auto?',
       answer:
-        'Nein. Bitte nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist für die normale Hochzeitslogistik nicht empfohlen.',
+        'Nein. Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist wegen fehlender Parkplätze und geringer Bequemlichkeit nicht empfohlen.',
     },
     {
       question: 'Wie kaufe ich ein Zugticket?',
