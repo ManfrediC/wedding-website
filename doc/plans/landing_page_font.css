@@ -1,0 +1,54 @@
+--serif-display: "Cormorant Garamond", "Playfair Display", "Didot", serif;
+--sans-small: "Montserrat", "Avenir Next", "Helvetica Neue", sans-serif;
+
+.monogram {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 38px;
+  line-height: 0.8;
+}
+
+.hero-title {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 300;
+  font-size: 96px;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+}
+
+.hero-title .ampersand {
+  font-family: "Cormorant Garamond", serif, italic;
+  color: #b58b4b;
+  font-weight: 300;
+}
+
+.date {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 32px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+}
+
+.password-card-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  line-height: 1.15;
+}
+
+.password-input {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+}
+
+.enter-button {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.language-selector {
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+}

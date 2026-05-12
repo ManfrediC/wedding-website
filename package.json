@@ -15,6 +15,8 @@
     "preview:protected": "node scripts/serve-protected-preview.mjs"
   },
   "dependencies": {
+    "@fontsource/cormorant-garamond": "^5.2.11",
+    "@fontsource/montserrat": "^5.2.8",
     "astro": "latest"
   },
   "devDependencies": {

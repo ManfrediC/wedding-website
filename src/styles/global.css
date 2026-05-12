@@ -610,6 +610,8 @@ button {
 }
 
 .welcome-page {
+  --welcome-serif-display: 'Cormorant Garamond', 'Playfair Display', Didot, serif;
+  --welcome-sans-small: Montserrat, 'Avenir Next', 'Helvetica Neue', sans-serif;
   position: relative;
   min-height: 100vh;
   padding: 3rem 5vw;
@@ -642,34 +644,21 @@ button {
   width: min(100%, 980px);
   display: grid;
   justify-items: center;
-  gap: 1rem;
-}
-
-.welcome-monogram {
-  display: grid;
-  justify-items: center;
-  gap: 0.2rem;
-  color: var(--colour-gold);
-}
-
-.welcome-monogram span {
-  display: none;
-}
-
-.welcome-monogram p {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: 1.9rem;
-  font-weight: 400;
-  line-height: 0.82;
-  white-space: pre-line;
+  gap: 1.15rem;
 }
 
 .welcome-shell h1 {
   color: var(--colour-green);
-  font-size: 4.65rem;
-  font-weight: 400;
-  line-height: 0.96;
+  font-family: var(--welcome-serif-display);
+  font-size: clamp(4.8rem, 7vw, 6rem);
+  font-weight: 300;
+  line-height: 1.05;
+}
+
+.welcome-ampersand {
+  color: var(--colour-gold);
+  font-style: italic;
+  font-weight: 300;
 }
 
 .welcome-rule {
@@ -682,9 +671,10 @@ button {
 .welcome-date {
   margin: 0;
   color: var(--colour-gold);
-  font-family: var(--font-display);
-  font-size: 1.55rem;
-  letter-spacing: 0.2em;
+  font-family: var(--welcome-serif-display);
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
 }
 
@@ -744,10 +734,10 @@ button {
   max-width: 20rem;
   margin: 0 auto;
   color: var(--colour-charcoal);
-  font-family: var(--font-body);
-  font-size: 1rem;
+  font-family: var(--welcome-serif-display);
+  font-size: 1.5rem;
   font-weight: 400;
-  line-height: 1.45;
+  line-height: 1.15;
 }
 
 .panel-ornament {
@@ -804,7 +794,8 @@ button {
   border-color: rgba(49, 72, 61, 0.3);
   padding-right: 2.7rem;
   background: rgba(255, 250, 242, 0.78);
-  font-family: var(--font-body);
+  font-family: var(--welcome-serif-display);
+  font-size: 1.125rem;
   font-weight: 400;
 }
 
@@ -814,10 +805,11 @@ button {
   border-color: var(--colour-gold);
   background: linear-gradient(180deg, #c8aa74, #b48d4f);
   color: white;
-  font-family: var(--font-body);
-  font-size: 0.84rem;
-  font-weight: 700;
+  font-family: var(--welcome-serif-display);
+  font-size: 1.25rem;
+  font-weight: 400;
   letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .welcome-redirect {
@@ -853,9 +845,10 @@ button {
   gap: 0.7rem 1.25rem;
   margin-top: 0.3rem;
   color: var(--colour-charcoal);
-  font-size: 0.78rem;
+  font-family: var(--welcome-sans-small);
+  font-size: 0.94rem;
   font-weight: 400;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.35em;
   text-transform: uppercase;
 }
 
@@ -1037,22 +1030,28 @@ button {
     gap: 0.9rem;
   }
 
-  .welcome-monogram p {
-    font-size: 1.55rem;
-  }
-
   .welcome-shell h1 {
-    font-size: 2.85rem;
+    font-size: clamp(3.1rem, 14vw, 4.4rem);
   }
 
   .welcome-date {
-    font-size: 1.15rem;
-    letter-spacing: 0.14em;
+    font-size: 1.25rem;
+    letter-spacing: 0.2em;
   }
 
   .welcome-panel {
     width: 100%;
     padding: 1.35rem;
+  }
+
+  .welcome-panel p {
+    font-size: 1.3rem;
+  }
+
+  .welcome-language-links {
+    gap: 0.5rem 0.9rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
   }
 
   .timeline li {

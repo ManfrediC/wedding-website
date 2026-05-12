@@ -1,16 +1,20 @@
 ---
-import { wedding } from '../data/site';
+import '@fontsource/cormorant-garamond/latin-300.css';
+import '@fontsource/cormorant-garamond/latin-300-italic.css';
+import '@fontsource/cormorant-garamond/latin-400.css';
+import '@fontsource/montserrat/latin-400.css';
+import '@fontsource/montserrat/latin-500.css';
+import '@fontsource/montserrat/latin-700.css';
 ---
 
 <section class="welcome-page" aria-labelledby="welcome-title">
   <div class="welcome-border" aria-hidden="true"></div>
   <div class="welcome-shell">
-    <div class="welcome-monogram" aria-label={wedding.couple.monogram}>
-      <span aria-hidden="true"></span>
-      <p>G<br />M</p>
-      <span aria-hidden="true"></span>
-    </div>
-    <h1 id="welcome-title">{wedding.couple.display}</h1>
+    <h1 id="welcome-title">
+      <span>Gabriela</span>
+      <span class="welcome-ampersand">&amp;</span>
+      <span>Manfredi</span>
+    </h1>
     <div class="welcome-rule" aria-hidden="true"></div>
     <p class="welcome-date">11 June 2027</p>
 
