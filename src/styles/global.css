@@ -148,8 +148,7 @@ img {
 
 .logout-button {
   width: auto;
-  border: 1px solid var(--colour-line);
-  border-radius: 4px;
+  border: 0;
   background: transparent;
   color: var(--colour-green);
   cursor: pointer;
@@ -162,8 +161,8 @@ img {
 }
 
 .logout-button:hover {
-  border-color: var(--colour-green);
-  background: rgba(49, 72, 61, 0.06);
+  text-decoration: underline;
+  text-underline-offset: 0.35rem;
 }
 
 .mobile-header-controls,

@@ -144,15 +144,23 @@ test('home hero keeps the Zurich image positioned below the spire', async ({ pag
   expect(backgroundPosition).toContain('50% 22%');
 });
 
-test('Schedule uses the selected Hotel Sonne reception image', async ({ page }) => {
+test('Schedule places venue images on the detail cards', async ({ page }) => {
   await page.goto('/en/schedule/');
 
   await expect(page.locator('.timeline-content h2').first()).toHaveText('Civil Ceremony at Stadthaus Zürich');
   const civilTimelineEntry = page.locator('.timeline-content').filter({ hasText: 'Civil Ceremony at Stadthaus Zürich' });
   await expect(civilTimelineEntry.getByText('only immediate family will be able to attend')).toBeVisible();
-  await expect(civilTimelineEntry.locator('img[src="/images/places/stadthaus-zurich.png"]')).toHaveAttribute(
+  await expect(civilTimelineEntry.locator('img[src="/images/places/stadthaus-zurich.png"]')).toHaveCount(0);
+
+  const civilDetailCard = page.locator('.info-card').filter({ hasText: 'The legal ceremony at Stadthaus Zürich' });
+  await expect(civilDetailCard.locator('img[src="/images/places/stadthaus-zurich.png"]')).toHaveAttribute(
     'alt',
     'Facade of Stadthaus Zürich under a blue sky',
+  );
+  const ceremonyDetailCard = page.locator('.info-card').filter({ hasText: 'The ceremony will take place at Kirche St. Peter' });
+  await expect(ceremonyDetailCard.locator('img[src="/images/places/st-peter-zurich.jpg"]')).toHaveAttribute(
+    'alt',
+    'Kirche St. Peter in Zurich',
   );
   await expect(page.locator('.timeline-date').filter({ hasText: 'Friday, 11 June 2027' })).toHaveCount(5);
   await expect(page.locator('.timeline-time').filter({ hasText: 'TBD' })).toHaveCount(6);

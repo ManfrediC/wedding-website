@@ -202,8 +202,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           title: 'Civil ceremony',
           body: 'The legal ceremony at Stadthaus Zürich will be a private step before the wedding celebration. Because of visitor constraints, only immediate family will be able to attend.',
           items: ['Date: TBD', 'Time: TBD', 'Location: Stadthaus Zürich'],
-          image: '/images/places/st-peter-zurich.jpg',
-          imageAlt: 'Kirche St. Peter in Zurich',
+          image: '/images/places/stadthaus-zurich.png',
+          imageAlt: 'Facade of Stadthaus Zürich under a blue sky',
         },
         {
           title: 'Ceremony',
@@ -689,7 +689,7 @@ applyLocalizedCopy('it', {
         title: 'Cerimonia civile',
         body: 'La cerimonia civile legale allo Stadthaus Zürich sarà un momento privato prima della celebrazione. Per i limiti di accesso potranno partecipare solo i familiari più stretti.',
         items: ['Data: TBD', 'Ora: TBD', 'Luogo: Stadthaus Zürich'],
-        imageAlt: 'Kirche St. Peter a Zurigo',
+        imageAlt: 'Facciata dello Stadthaus Zürich sotto un cielo blu',
       },
       {
         title: 'Cerimonia',
@@ -1025,7 +1025,7 @@ applyLocalizedCopy('de', {
         title: 'Zivile Trauung',
         body: 'Die zivile Trauung im Stadthaus Zürich ist ein privater rechtlicher Schritt vor der Hochzeitsfeier. Wegen Besucherbeschränkungen können nur die engsten Familienmitglieder teilnehmen.',
         items: ['Datum: TBD', 'Zeit: TBD', 'Ort: Stadthaus Zürich'],
-        imageAlt: 'Kirche St. Peter in Zürich',
+        imageAlt: 'Fassade des Stadthauses Zürich unter blauem Himmel',
       },
       {
         title: 'Trauung',

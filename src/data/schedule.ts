@@ -39,12 +39,6 @@ export const weddingSchedule: ScheduleEntry[] = [
       de: 'Die zivile Trauung ist ein privater rechtlicher Schritt vor der Hochzeitsfeier. Wegen Besucherbeschränkungen im Stadthaus Zürich können nur die engsten Familienmitglieder teilnehmen.',
     },
     status: { en: 'Private', it: 'Privata', de: 'Privat' },
-    image: '/images/places/stadthaus-zurich.png',
-    imageAlt: {
-      en: 'Facade of Stadthaus Zürich under a blue sky',
-      it: 'Facciata dello Stadthaus Zürich sotto un cielo blu',
-      de: 'Fassade des Stadthauses Zürich unter blauem Himmel',
-    },
   },
   {
     date: weddingDate,
