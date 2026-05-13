@@ -8,6 +8,7 @@ import { chromium } from '@playwright/test';
 const DEFAULT_LIVE_URL = 'https://wedding-website-2ng.pages.dev';
 const DEFAULT_CHANNELS = ['chrome', 'msedge'];
 const AUTH_COOKIE_NAME = 'gm_wedding_auth';
+const ROBOTS_HEADER_VALUE = 'noindex, nofollow';
 
 const args = parseArgs(process.argv.slice(2));
 const startPreview = Boolean(args['start-preview']);
@@ -50,7 +51,8 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
   const context = await browser.newContext({ viewport: { width: 1365, height: 900 } });
   const page = await context.newPage();
 
-  await page.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
+  const passwordGateResponse = await page.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
+  await assertRobotsHeader(passwordGateResponse, 'password gate');
   await waitForVisibleText(page, 'Gabriela & Manfredi', 'password gate heading');
   await waitForVisibleText(page, 'Please enter the password from your invitation.', 'password prompt');
   await assertAbsent(page, 'Private wedding website', 'password gate private wording');
@@ -87,7 +89,8 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
   await assertAbsent(page, 'K\u00fcsnacht to Zurich', 'Italian schedule English fallback');
   const desktopOverflow = await assertNoHorizontalOverflow(page, 'Italian schedule desktop');
 
-  await page.goto(`${baseUrl}/de/schedule/`, { waitUntil: 'networkidle' });
+  const germanScheduleResponse = await page.goto(`${baseUrl}/de/schedule/`, { waitUntil: 'networkidle' });
+  await assertRobotsHeader(germanScheduleResponse, 'German schedule');
   await waitForVisibleText(page, 'Unser Hochzeitstag', 'German schedule heading');
   await waitForVisibleText(page, 'Z\u00fcrichsee', 'German schedule lake location');
   await waitForVisibleText(page, 'K\u00fcsnacht nach Z\u00fcrich', 'German schedule return location');
@@ -119,7 +122,8 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
   }
 
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto(`${baseUrl}/de/schedule/`, { waitUntil: 'networkidle' });
+  const mobileScheduleResponse = await page.goto(`${baseUrl}/de/schedule/`, { waitUntil: 'networkidle' });
+  await assertRobotsHeader(mobileScheduleResponse, 'German schedule mobile');
   const mobileOverflow = await assertNoHorizontalOverflow(page, 'German schedule mobile');
 
   if (saveScreenshots) {
@@ -172,6 +176,13 @@ async function assertAbsent(page, text, label) {
   const count = await page.getByText(text, { exact: false }).count();
   if (count > 0) {
     throw new Error(`${label}: unexpected text ${JSON.stringify(text)} appeared ${count} time(s).`);
+  }
+}
+
+async function assertRobotsHeader(response, label) {
+  const actualValue = response?.headers()['x-robots-tag'];
+  if (actualValue !== ROBOTS_HEADER_VALUE) {
+    throw new Error(`${label}: expected X-Robots-Tag ${JSON.stringify(ROBOTS_HEADER_VALUE)}, got ${JSON.stringify(actualValue)}.`);
   }
 }
 

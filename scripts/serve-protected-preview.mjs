@@ -6,6 +6,7 @@ import { extname, join, resolve, sep } from 'node:path';
 
 const COOKIE_NAME = 'gm_wedding_auth';
 const MAX_AGE_SECONDS = 60 * 60 * 24 * 30;
+const ROBOTS_HEADER_VALUE = 'noindex, nofollow';
 const WELCOME_PATH = '/welcome/';
 
 const repoRoot = process.cwd();
@@ -70,7 +71,7 @@ const server = createServer(async (request, response) => {
 
     await serveStatic(url.pathname, response);
   } catch (error) {
-    response.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });
+    response.writeHead(500, withRobotsHeader({ 'Content-Type': 'text/plain; charset=utf-8' }));
     response.end(error instanceof Error ? error.message : 'Unexpected preview server error.');
   }
 });
@@ -134,6 +135,7 @@ async function handleLogin(request, response, url) {
   }
 
   response.writeHead(302, {
+    'X-Robots-Tag': ROBOTS_HEADER_VALUE,
     Location: next,
     'Set-Cookie': `${COOKIE_NAME}=${buildCookieValue()}; Path=/; Max-Age=${MAX_AGE_SECONDS}; HttpOnly; SameSite=Lax`,
   });
@@ -148,6 +150,7 @@ async function handleLogout(request, response, url) {
   welcomeUrl.searchParams.set('next', next);
 
   response.writeHead(302, {
+    'X-Robots-Tag': ROBOTS_HEADER_VALUE,
     Location: welcomeUrl.pathname + welcomeUrl.search,
     'Set-Cookie': `${COOKIE_NAME}=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax`,
   });
@@ -217,12 +220,12 @@ async function serveStatic(pathname, response) {
   const fileStat = await stat(filePath).catch(() => undefined);
 
   if (!fileStat?.isFile()) {
-    response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+    response.writeHead(404, withRobotsHeader({ 'Content-Type': 'text/plain; charset=utf-8' }));
     response.end('Not found');
     return;
   }
 
-  response.writeHead(200, { 'Content-Type': contentType(filePath) });
+  response.writeHead(200, withRobotsHeader({ 'Content-Type': contentType(filePath) }));
   response.end(await readFile(filePath));
 }
 
@@ -260,6 +263,13 @@ function contentType(filePath) {
 }
 
 function redirect(response, location) {
-  response.writeHead(302, { Location: location });
+  response.writeHead(302, withRobotsHeader({ Location: location }));
   response.end();
+}
+
+function withRobotsHeader(headers) {
+  return {
+    ...headers,
+    'X-Robots-Tag': ROBOTS_HEADER_VALUE,
+  };
 }

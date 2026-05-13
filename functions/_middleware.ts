@@ -6,6 +6,7 @@ type Env = {
 
 const COOKIE_NAME = 'gm_wedding_auth';
 const MAX_AGE_SECONDS = 60 * 60 * 24 * 30;
+const ROBOTS_HEADER_VALUE = 'noindex, nofollow';
 const WELCOME_PATH = '/welcome/';
 
 export const onRequest: PagesFunction<Env> = async (context) => {
@@ -13,37 +14,38 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const password = context.env.WEBSITE_PW ?? context.env.WEDDING_SITE_PASSWORD;
 
   if (!password || isPublicAsset(url.pathname)) {
-    return context.next();
+    return withRobotsHeader(await context.next());
   }
 
   if (isLogoutPath(url.pathname)) {
-    return handleLogout(context);
+    return withRobotsHeader(await handleLogout(context));
   }
 
   if (isLegacyLoginPath(url.pathname)) {
     const welcomeUrl = new URL(WELCOME_PATH, url.origin);
     const next = normaliseNext(url.searchParams.get('next'));
     welcomeUrl.searchParams.set('next', next);
-    return Response.redirect(welcomeUrl.toString(), 302);
+    return withRobotsHeader(Response.redirect(welcomeUrl.toString(), 302));
   }
 
   if (isWelcomePath(url.pathname)) {
     if (context.request.method === 'POST') {
-      return handleLogin(context, password);
+      return withRobotsHeader(await handleLogin(context, password));
     }
 
     if (await isAuthenticated(context, password)) {
-      return Response.redirect(new URL(normaliseNext(url.searchParams.get('next')), url.origin).toString(), 302);
+      const nextUrl = new URL(normaliseNext(url.searchParams.get('next')), url.origin);
+      return withRobotsHeader(Response.redirect(nextUrl.toString(), 302));
     }
 
-    return context.next();
+    return withRobotsHeader(await context.next());
   }
 
   if (await isAuthenticated(context, password)) {
-    return context.next();
+    return withRobotsHeader(await context.next());
   }
 
-  return Response.redirect(buildWelcomeUrl(url).toString(), 302);
+  return withRobotsHeader(Response.redirect(buildWelcomeUrl(url).toString(), 302));
 };
 
 async function handleLogin(context: EventContext<Env, string, unknown>, password: string) {
@@ -102,6 +104,20 @@ async function isAuthenticated(context: EventContext<Env, string, unknown>, pass
   const expectedCookie = await buildCookieValue(password, context.env.WEDDING_AUTH_SECRET);
   const actualCookie = readCookie(context.request.headers.get('Cookie') ?? '', COOKIE_NAME);
   return actualCookie === expectedCookie;
+}
+
+function withRobotsHeader(response: Response) {
+  const headers = new Headers(response.headers);
+  headers.set('X-Robots-Tag', ROBOTS_HEADER_VALUE);
+  const body = response.status === 204 || response.status === 205 || response.status === 304
+    ? null
+    : response.body;
+
+  return new Response(body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
 }
 
 function isPublicAsset(pathname: string) {
