@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page, type TestInfo } from '@playwright/test';
 
 const smokePaths = [
   '/en/travel/',
@@ -48,16 +48,30 @@ async function expectNoHorizontalOverflow(page: Page) {
   expect(overflow.scrollWidth).toBeLessThanOrEqual(overflow.viewport + 1);
 }
 
+async function attachDiagnosticScreenshot(page: Page, testInfo: TestInfo) {
+  const screenshotLimit = 32_767;
+  const size = await page.evaluate(() => ({
+    deviceScaleFactor: window.devicePixelRatio || 1,
+    height: document.documentElement.scrollHeight,
+    width: document.documentElement.scrollWidth,
+  }));
+  const fullPage =
+    Math.ceil(size.height * size.deviceScaleFactor) <= screenshotLimit &&
+    Math.ceil(size.width * size.deviceScaleFactor) <= screenshotLimit;
+
+  await testInfo.attach('screenshot', {
+    body: await page.screenshot({ fullPage }),
+    contentType: 'image/png',
+  });
+}
+
 for (const path of smokePaths) {
   test(`renders ${path} without broken media or horizontal overflow`, async ({ page }, testInfo) => {
     await page.goto(path);
     await expect(page.locator('.page-hero h1')).toBeVisible();
     await expectNoBrokenImages(page);
     await expectNoHorizontalOverflow(page);
-    await testInfo.attach('screenshot', {
-      body: await page.screenshot({ fullPage: true }),
-      contentType: 'image/png',
-    });
+    await attachDiagnosticScreenshot(page, testInfo);
   });
 }
 

@@ -2,13 +2,12 @@ import { defineConfig, devices } from '@playwright/test';
 
 declare const process: {
   env: {
-    CI?: string;
     PORT?: string;
   };
 };
 
-const port = process.env.PORT ?? '4321';
-const host = 'localhost';
+const port = process.env.PORT ?? '4322';
+const host = '127.0.0.1';
 const desktopViewport = { width: 1365, height: 900 };
 const narrowViewport = { width: 390, height: 844 };
 const firefoxLaunchOptions = {
@@ -24,12 +23,6 @@ export default defineConfig({
   use: {
     baseURL: `http://${host}:${port}`,
     trace: 'retain-on-failure',
-  },
-  webServer: {
-    command: `npm run dev -- --port ${port} --host ${host}`,
-    url: `http://${host}:${port}/en/`,
-    reuseExistingServer: !process.env.CI,
-    timeout: 60_000,
   },
   projects: [
     {

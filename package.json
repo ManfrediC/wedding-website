@@ -7,7 +7,7 @@
     "dev": "astro dev --host 127.0.0.1",
     "check": "astro check",
     "build": "astro check && astro build",
-    "test:e2e": "playwright test",
+    "test:e2e": "node scripts/run-e2e.mjs",
     "test:android": "node scripts/verify-android.mjs",
     "smoke:protected": "node scripts/smoke-protected-site.mjs --start-preview",
     "smoke:live": "node scripts/smoke-protected-site.mjs --base https://wedding-website-2ng.pages.dev",

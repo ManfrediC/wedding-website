@@ -51,8 +51,11 @@ The script builds the site, starts a network-accessible preview, and prints the 
 ```bash
 npm run check
 npm run build
+npm run test:e2e
 npm run smoke:protected
 ```
+
+`npm run test:e2e` builds the static site, serves it through Astro preview on a dedicated local test port, runs the Playwright matrix, and then stops the preview process.
 
 After a pushed Cloudflare Pages deployment, run:
 
