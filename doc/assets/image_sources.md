@@ -8,6 +8,7 @@ This file tracks non-couple imagery used in the website prototype.
 |---|---|---|---|---|
 | `public/images/places/zurich-old-town.jpg` | Wikimedia Commons, `Old town Zurich.jpg` | Tiia Monto | CC BY-SA 3.0 | Downloaded at reduced width for prototype use. |
 | `public/images/places/zurich-lindenhof-view.jpg` | Wikimedia Commons, `Zürich - Lindenhof - Limmat - rechtsseitige Altstadt.jpg` | Roland zh | CC BY-SA 3.0 | Local advice card image showing the Limmat and Zurich old town from Lindenhof, downloaded at 1600px width. |
+| `public/images/places/stadthaus-zurich.png` | Wikimedia Commons, `Stadthaus Zürich.jpg` | Tiia Monto | CC BY-SA 3.0 | Stadthaus Zürich facade image for the private civil ceremony schedule card; captured from the Commons 960px preview after direct CDN downloads were rate-limited. |
 | `public/images/places/st-peter-zurich.jpg` | Wikimedia Commons, `Kirche St. Peter Zürich.jpg` | Photones | CC BY-SA 3.0 | Downloaded at reduced width for prototype use. |
 | `public/images/places/kunsthaus-zurich.jpg` | Wikimedia Commons, `Heimplatz 2.jpeg` | Adrian Michael / User:Parpan05 | CC BY-SA 4.0 | Bright Heimplatz view with the full Pipilotti Rist `Tastende Lichter` sculpture and the Kunsthaus Zürich Chipperfield building; cropped to reduce pavement-heavy foreground for the Things to Do museums card. |
 | `public/images/places/chicago-skyline.jpg` | Wikimedia Commons, `Chicago Skyline from Lake Michigan.jpg` | Bladerunner2019 | CC BY-SA 3.0 | Chicago travel card image, downloaded at 1600px width. |

@@ -136,6 +136,10 @@ test('Schedule uses the selected Hotel Sonne reception image', async ({ page }) 
   await expect(page.locator('.timeline-content h2').first()).toHaveText('Civil Ceremony at Stadthaus Zürich');
   const civilTimelineEntry = page.locator('.timeline-content').filter({ hasText: 'Civil Ceremony at Stadthaus Zürich' });
   await expect(civilTimelineEntry.getByText('only immediate family will be able to attend')).toBeVisible();
+  await expect(civilTimelineEntry.locator('img[src="/images/places/stadthaus-zurich.png"]')).toHaveAttribute(
+    'alt',
+    'Facade of Stadthaus Zürich under a blue sky',
+  );
   await expect(page.locator('.timeline-date').filter({ hasText: 'Friday, 11 June 2027' })).toHaveCount(5);
   await expect(page.locator('.timeline-time').filter({ hasText: 'TBD' })).toHaveCount(6);
   await expect(page.getByRole('heading', { name: 'Reception and party' })).toBeVisible();
@@ -320,6 +324,10 @@ test('Italian and German pages have localised core content', async ({ page }) =>
   await page.goto('/it/schedule/');
   await expect(page.getByRole('heading', { name: 'Il giorno del matrimonio' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Cerimonia civile allo Stadthaus Zürich' })).toBeVisible();
+  await expect(page.locator('img[src="/images/places/stadthaus-zurich.png"]')).toHaveAttribute(
+    'alt',
+    'Facciata dello Stadthaus Zürich sotto un cielo blu',
+  );
   await expect(page.getByText('familiari più stretti')).toHaveCount(2);
   await expect(page.locator('.timeline-location').filter({ hasText: 'Lago di Zurigo' })).toBeVisible();
   await expect(page.locator('.timeline-location').filter({ hasText: 'Da Küsnacht a Zurigo' })).toBeVisible();
@@ -348,6 +356,10 @@ test('Italian and German pages have localised core content', async ({ page }) =>
   await page.goto('/de/schedule/');
   await expect(page.getByRole('heading', { name: 'Unser Hochzeitstag' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Zivile Trauung im Stadthaus Zürich' })).toBeVisible();
+  await expect(page.locator('img[src="/images/places/stadthaus-zurich.png"]')).toHaveAttribute(
+    'alt',
+    'Fassade des Stadthauses Zürich unter blauem Himmel',
+  );
   await expect(page.getByText('engsten Familienmitglieder')).toHaveCount(2);
   await expect(page.locator('.timeline-location').filter({ hasText: 'Zürichsee' })).toBeVisible();
   await expect(page.locator('.timeline-location').filter({ hasText: 'Küsnacht nach Zürich' })).toBeVisible();

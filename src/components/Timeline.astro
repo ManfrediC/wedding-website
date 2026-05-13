@@ -19,6 +19,14 @@ const { lang, entries } = Astro.props;
       </div>
       <div class="timeline-marker" aria-hidden="true"></div>
       <div class="timeline-content">
+        {entry.image && (
+          <img
+            class="timeline-image"
+            src={entry.image}
+            alt={entry.imageAlt?.[lang] ?? ''}
+            loading="lazy"
+          />
+        )}
         <p class="eyebrow">{entry.status[lang]}</p>
         <h2>{entry.title[lang]}</h2>
         <p class="timeline-location">{entry.location[lang]}</p>

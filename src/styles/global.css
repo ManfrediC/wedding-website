@@ -560,6 +560,16 @@ button {
   border-bottom: 1px solid var(--colour-line);
 }
 
+.timeline-image {
+  width: 100%;
+  aspect-ratio: 5 / 3;
+  margin-bottom: 1rem;
+  border: 1px solid var(--colour-line);
+  border-radius: 4px;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
 .timeline-location {
   color: var(--colour-green);
   font-weight: 700;

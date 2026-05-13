@@ -624,6 +624,11 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           links: [{ label: 'Source', href: 'https://commons.wikimedia.org/wiki/File:Old_town_Zurich.jpg' }],
         },
         {
+          title: 'Stadthaus Zürich',
+          body: 'Photo by Tiia Monto via Wikimedia Commons, licensed under CC BY-SA 3.0.',
+          links: [{ label: 'Source', href: 'https://commons.wikimedia.org/wiki/File:Stadthaus_Z%C3%BCrich.jpg' }],
+        },
+        {
           title: 'Kirche St. Peter',
           body: 'Photo by Photones via Wikimedia Commons, licensed under CC BY-SA 3.0.',
           links: [{ label: 'Source', href: 'https://commons.wikimedia.org/wiki/File:Kirche_St._Peter_Z%C3%BCrich.jpg' }],
@@ -984,6 +989,10 @@ applyLocalizedCopy('it', {
         body: 'Foto di Tiia Monto tramite Wikimedia Commons, licenza CC BY-SA 3.0.',
       },
       {
+        title: 'Stadthaus Zürich',
+        body: 'Foto di Tiia Monto tramite Wikimedia Commons, licenza CC BY-SA 3.0.',
+      },
+      {
         title: 'Kirche St. Peter',
         body: 'Foto di Photones tramite Wikimedia Commons, licenza CC BY-SA 3.0.',
       },
@@ -1313,6 +1322,10 @@ applyLocalizedCopy('de', {
     sections: [
       {
         title: 'Zürcher Altstadt',
+        body: 'Foto von Tiia Monto via Wikimedia Commons, lizenziert unter CC BY-SA 3.0.',
+      },
+      {
+        title: 'Stadthaus Zürich',
         body: 'Foto von Tiia Monto via Wikimedia Commons, lizenziert unter CC BY-SA 3.0.',
       },
       {
