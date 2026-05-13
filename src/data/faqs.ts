@@ -62,9 +62,9 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
       ],
     },
     {
-      question: 'What should I know about Swiss customs?',
+      question: 'What should I know about Swiss customs checks?',
       answer:
-        'Swiss customs rules are separate from passport control. As a starting point, goods for personal use or gifts are VAT-free only up to CHF 150 total value per person per day, and alcohol, tobacco, meat, butter, cream, oils, and similar sensitive goods have separate quantity allowances. Animal products are permitted only from EU member states, Iceland, Northern Ireland, and Norway; they are prohibited from other countries, so guests arriving from Great Britain or the USA should avoid packing meat, cheese, butter, cream, or similar animal-product food gifts. EU guests still need to stay within the allowances or declare and pay what is due. Swiss customs and border officers can be very strict at land borders, especially if you are driving or arriving by train with shopping, food, alcohol, or gifts. Checks are less likely at the airport, but they can still happen and the same rules apply. Use QuickZoll or the red channel if you are unsure.',
+        'Swiss customs rules are separate from passport control. As a starting point, goods for personal use or gifts are VAT-free only up to CHF 150 total value per person per day, and alcohol, tobacco, meat, butter, cream, oils, and similar sensitive goods have separate quantity allowances. Animal products are permitted only from EU member states, Iceland, Northern Ireland, and Norway; they are prohibited from other countries, so guests arriving from Great Britain or the USA should avoid packing meat, cheese, butter, cream, or similar animal-product food gifts. EU guests still need to stay within the allowances or declare and pay what is due. Swiss customs and border officers can be very strict at land borders, especially if you are driving or arriving by train with shopping, food, alcohol, or gifts. Checks are less likely at the airport, but they can still happen and the same rules apply.',
       links: [
         {
           label: 'Swiss customs allowances',
@@ -73,10 +73,6 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
         {
           label: 'Swiss VAT-free limit',
           href: 'https://www.bazg.admin.ch/en/value-added-tax-vat-chf-150-tax-free-limit',
-        },
-        {
-          label: 'QuickZoll app',
-          href: 'https://www.bazg.admin.ch/bazg/en/home/services/services-individuals/services-private-einfuhr/quickzoll-app.html',
         },
         {
           label: 'Swiss airport customs channels',
@@ -146,9 +142,9 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
       ],
     },
     {
-      question: 'Cosa bisogna sapere sulla dogana svizzera?',
+      question: 'Cosa bisogna sapere sui controlli doganali svizzeri?',
       answer:
-        'Le regole doganali svizzere sono separate dal controllo passaporti. Come punto di partenza, i beni per uso personale o regalo sono esenti da IVA solo fino a CHF 150 di valore totale per persona al giorno, e alcool, tabacco, carne, burro, panna, oli e altri prodotti sensibili hanno limiti quantitativi separati. I prodotti di origine animale sono ammessi solo dagli Stati membri UE, Islanda, Irlanda del Nord e Norvegia; sono vietati dagli altri paesi, quindi chi arriva dalla Gran Bretagna o dagli Stati Uniti dovrebbe evitare carne, formaggi, burro, panna o regali alimentari simili di origine animale. Anche chi arriva dall’UE deve rispettare le franchigie oppure dichiarare e pagare quanto dovuto. Le guardie doganali e di frontiera svizzere possono essere molto severe ai confini terrestri, soprattutto se si arriva in auto o in treno con acquisti, cibo, alcool o regali. I controlli sono meno probabili in aeroporto, ma possono comunque avvenire e valgono le stesse regole. In caso di dubbi, usate QuickZoll o il canale rosso.',
+        'Le regole doganali svizzere sono separate dal controllo passaporti. Come punto di partenza, i beni per uso personale o regalo sono esenti da IVA solo fino a CHF 150 di valore totale per persona al giorno, e alcool, tabacco, carne, burro, panna, oli e altri prodotti sensibili hanno limiti quantitativi separati. I prodotti di origine animale sono ammessi solo dagli Stati membri UE, Islanda, Irlanda del Nord e Norvegia; sono vietati dagli altri paesi, quindi chi arriva dalla Gran Bretagna o dagli Stati Uniti dovrebbe evitare carne, formaggi, burro, panna o regali alimentari simili di origine animale. Anche chi arriva dall’UE deve rispettare le franchigie oppure dichiarare e pagare quanto dovuto. Le guardie doganali e di frontiera svizzere possono essere molto severe ai confini terrestri, soprattutto se si arriva in auto o in treno con acquisti, cibo, alcool o regali. I controlli sono meno probabili in aeroporto, ma possono comunque avvenire e valgono le stesse regole.',
       links: [
         {
           label: 'Franchigie doganali svizzere',
@@ -157,10 +153,6 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
         {
           label: 'Limite svizzero esente IVA',
           href: 'https://www.bazg.admin.ch/en/value-added-tax-vat-chf-150-tax-free-limit',
-        },
-        {
-          label: 'App QuickZoll',
-          href: 'https://www.bazg.admin.ch/bazg/en/home/services/services-individuals/services-private-einfuhr/quickzoll-app.html',
         },
         {
           label: 'Canali doganali negli aeroporti svizzeri',
@@ -230,9 +222,9 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
       ],
     },
     {
-      question: 'Was sollte ich zum Schweizer Zoll wissen?',
+      question: 'Was sollte ich zu Schweizer Zollkontrollen wissen?',
       answer:
-        'Die Schweizer Zollregeln sind vom Passkontrollrecht getrennt. Als Ausgangspunkt gilt: Waren für den persönlichen Gebrauch oder als Geschenk sind nur bis zu einem Gesamtwert von CHF 150 pro Person und Tag mehrwertsteuerfrei; für Alkohol, Tabak, Fleisch, Butter, Rahm, Öle und ähnliche sensible Waren gelten zusätzliche Mengenfreigrenzen. Tierische Produkte sind nur aus EU-Mitgliedstaaten, Island, Nordirland und Norwegen erlaubt; aus anderen Ländern sind sie verboten. Gäste aus Grossbritannien oder den USA sollten daher kein Fleisch, keinen Käse, keine Butter, keinen Rahm und keine ähnlichen Lebensmittelgeschenke tierischen Ursprungs einpacken. Auch Gäste aus der EU müssen innerhalb der Freigrenzen bleiben oder die Waren deklarieren und die Abgaben bezahlen. Schweizer Zoll- und Grenzbeamte können an Landgrenzen sehr streng sein, besonders bei der Einreise mit Auto oder Zug und mit Einkäufen, Lebensmitteln, Alkohol oder Geschenken. Kontrollen sind am Flughafen weniger wahrscheinlich, können aber trotzdem stattfinden; die Regeln gelten gleich. Nutzt QuickZoll oder den roten Ausgang, wenn ihr unsicher seid.',
+        'Die Schweizer Zollregeln sind vom Passkontrollrecht getrennt. Als Ausgangspunkt gilt: Waren für den persönlichen Gebrauch oder als Geschenk sind nur bis zu einem Gesamtwert von CHF 150 pro Person und Tag mehrwertsteuerfrei; für Alkohol, Tabak, Fleisch, Butter, Rahm, Öle und ähnliche sensible Waren gelten zusätzliche Mengenfreigrenzen. Tierische Produkte sind nur aus EU-Mitgliedstaaten, Island, Nordirland und Norwegen erlaubt; aus anderen Ländern sind sie verboten. Gäste aus Grossbritannien oder den USA sollten daher kein Fleisch, keinen Käse, keine Butter, keinen Rahm und keine ähnlichen Lebensmittelgeschenke tierischen Ursprungs einpacken. Auch Gäste aus der EU müssen innerhalb der Freigrenzen bleiben oder die Waren deklarieren und die Abgaben bezahlen. Schweizer Zoll- und Grenzbeamte können an Landgrenzen sehr streng sein, besonders bei der Einreise mit Auto oder Zug und mit Einkäufen, Lebensmitteln, Alkohol oder Geschenken. Kontrollen sind am Flughafen weniger wahrscheinlich, können aber trotzdem stattfinden; die Regeln gelten gleich.',
       links: [
         {
           label: 'Schweizer Zollfreigrenzen',
@@ -241,10 +233,6 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
         {
           label: 'Schweizer Mehrwertsteuerfreigrenze',
           href: 'https://www.bazg.admin.ch/en/value-added-tax-vat-chf-150-tax-free-limit',
-        },
-        {
-          label: 'QuickZoll-App',
-          href: 'https://www.bazg.admin.ch/bazg/en/home/services/services-individuals/services-private-einfuhr/quickzoll-app.html',
         },
         {
           label: 'Schweizer Zollkanäle am Flughafen',

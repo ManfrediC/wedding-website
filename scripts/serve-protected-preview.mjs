@@ -34,6 +34,11 @@ const server = createServer(async (request, response) => {
       return;
     }
 
+    if (isLogoutPath(url.pathname)) {
+      await handleLogout(request, response, url);
+      return;
+    }
+
     if (isLegacyLoginPath(url.pathname)) {
       const welcomeUrl = new URL(WELCOME_PATH, url.origin);
       welcomeUrl.searchParams.set('next', normaliseNext(url.searchParams.get('next')));
@@ -135,6 +140,20 @@ async function handleLogin(request, response, url) {
   response.end();
 }
 
+async function handleLogout(request, response, url) {
+  const next = request.method === 'POST'
+    ? normaliseNext(String(new URLSearchParams(await readBody(request)).get('next') ?? ''))
+    : normaliseNext(url.searchParams.get('next'));
+  const welcomeUrl = new URL(WELCOME_PATH, url.origin);
+  welcomeUrl.searchParams.set('next', next);
+
+  response.writeHead(302, {
+    Location: welcomeUrl.pathname + welcomeUrl.search,
+    'Set-Cookie': `${COOKIE_NAME}=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax`,
+  });
+  response.end();
+}
+
 async function readBody(request) {
   const chunks = [];
   for await (const chunk of request) {
@@ -174,6 +193,10 @@ function isWelcomePath(pathname) {
 
 function isLegacyLoginPath(pathname) {
   return pathname === '/login/' || pathname === '/login';
+}
+
+function isLogoutPath(pathname) {
+  return pathname === '/logout/' || pathname === '/logout';
 }
 
 function normaliseNext(value) {

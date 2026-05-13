@@ -5,7 +5,8 @@ import { join } from 'node:path';
 const port = process.env.PORT ?? '4321';
 const host = process.env.ANDROID_HOST ?? 'localhost';
 const baseUrl = `http://${host}:${port}`;
-const screenshotDir = join(process.cwd(), 'tmp', 'android');
+const runId = new Date().toISOString().replaceAll(':', '-').replace(/\.\d+Z$/, 'Z');
+const screenshotDir = join(process.cwd(), 'tmp', 'android', runId);
 const paths = ['/en/travel/', '/en/stay/', '/en/switzerland-guide/'];
 const chromePackage = 'com.android.chrome';
 
@@ -34,6 +35,20 @@ function delay(ms) {
   });
 }
 
+async function assertPreviewAvailable() {
+  try {
+    const response = await fetch(`${baseUrl}/en/travel/`, { redirect: 'manual' });
+    if (!response.ok && (response.status < 300 || response.status >= 400)) {
+      throw new Error(`Unexpected status ${response.status}`);
+    }
+  } catch (error) {
+    throw new Error(`Start a local preview at ${baseUrl} before running Android verification.`, {
+      cause: error,
+    });
+  }
+}
+
+await assertPreviewAvailable();
 await mkdir(screenshotDir, { recursive: true });
 
 const devices = adbText('devices')

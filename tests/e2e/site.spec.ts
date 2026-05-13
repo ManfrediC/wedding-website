@@ -296,11 +296,12 @@ test('English pages include requested travel and contact details', async ({ page
     'href',
     'https://www.sem.admin.ch/sem/en/home/overview-einreise.html',
   );
-  await page.locator('summary').filter({ hasText: 'What should I know about Swiss customs?' }).click();
+  await page.locator('summary').filter({ hasText: 'What should I know about Swiss customs checks?' }).click();
   await expect(page.getByText('VAT-free only up to CHF 150 total value per person per day')).toBeVisible();
   await expect(page.getByText('Animal products are permitted only from EU member states')).toBeVisible();
   await expect(page.getByText('Swiss customs and border officers can be very strict at land borders')).toBeVisible();
   await expect(page.getByText('Checks are less likely at the airport')).toBeVisible();
+  await expect(page.getByText('Use QuickZoll or the red channel if you are unsure.')).toHaveCount(0);
   await expect(page.getByRole('link', { name: 'Swiss customs allowances' })).toHaveAttribute(
     'href',
     'https://www.bazg.admin.ch/en/duty-free-allowances-foodstuffs-alcohol-and-tobacco',
@@ -309,14 +310,16 @@ test('English pages include requested travel and contact details', async ({ page
   await page.goto('/it/faq/');
   await page.locator('summary').filter({ hasText: 'Ci sono requisiti di visto per la Svizzera?' }).click();
   await expect(page.getByText('i cittadini UE/AELS non hanno bisogno di visto')).toBeVisible();
-  await page.locator('summary').filter({ hasText: 'Cosa bisogna sapere sulla dogana svizzera?' }).click();
+  await page.locator('summary').filter({ hasText: 'Cosa bisogna sapere sui controlli doganali svizzeri?' }).click();
   await expect(page.getByText('I controlli sono meno probabili in aeroporto')).toBeVisible();
+  await expect(page.getByText('In caso di dubbi, usate QuickZoll o il canale rosso')).toHaveCount(0);
 
   await page.goto('/de/faq/');
   await page.locator('summary').filter({ hasText: 'Brauche ich ein Visum für die Schweiz?' }).click();
   await expect(page.getByText('EU-/EFTA-Bürgerinnen und -Bürger kein Visum')).toBeVisible();
-  await page.locator('summary').filter({ hasText: 'Was sollte ich zum Schweizer Zoll wissen?' }).click();
+  await page.locator('summary').filter({ hasText: 'Was sollte ich zu Schweizer Zollkontrollen wissen?' }).click();
   await expect(page.getByText('Kontrollen sind am Flughafen weniger wahrscheinlich')).toBeVisible();
+  await expect(page.getByText('Nutzt QuickZoll oder den roten Ausgang')).toHaveCount(0);
 });
 
 test('Italian and German guide copy reflects child fares and SBB Mobile', async ({ page }) => {

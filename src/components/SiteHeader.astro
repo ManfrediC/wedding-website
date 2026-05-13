@@ -15,6 +15,14 @@ const mobileLanguageLabels: Record<Lang, string> = {
   it: 'Lingua',
   de: 'Sprache',
 };
+
+const logoutLabels: Record<Lang, string> = {
+  en: 'Log out',
+  it: 'Esci',
+  de: 'Abmelden',
+};
+
+const logoutNext = `/${lang}${currentPath}`;
 ---
 
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -34,8 +42,14 @@ const mobileLanguageLabels: Record<Lang, string> = {
     ))}
   </nav>
 
-  <div class="header-language">
-    <LanguageSwitcher lang={lang} path={currentPath} />
+  <div class="header-actions">
+    <div class="header-language">
+      <LanguageSwitcher lang={lang} path={currentPath} />
+    </div>
+    <form class="logout-form" action="/logout/" method="post">
+      <input type="hidden" name="next" value={logoutNext} />
+      <button class="logout-button" type="submit">{logoutLabels[lang]}</button>
+    </form>
   </div>
 
   <div class="mobile-header-controls">
@@ -57,6 +71,11 @@ const mobileLanguageLabels: Record<Lang, string> = {
         ))}
       </nav>
     </details>
+
+    <form class="logout-form mobile-logout-form" action="/logout/" method="post">
+      <input type="hidden" name="next" value={logoutNext} />
+      <button class="logout-button" type="submit">{logoutLabels[lang]}</button>
+    </form>
   </div>
 </header>
 

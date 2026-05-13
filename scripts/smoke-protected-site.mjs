@@ -101,12 +101,14 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
   await waitForVisibleText(page, 'die S2 meist der beste direkte Zug nach Richterswil', 'German Stay S2 copy');
 
   await page.goto(`${baseUrl}/it/faq/`, { waitUntil: 'networkidle' });
-  await page.getByText('Cosa bisogna sapere sulla dogana svizzera?', { exact: true }).click();
+  await page.getByText('Cosa bisogna sapere sui controlli doganali svizzeri?', { exact: true }).click();
   await waitForVisibleText(page, 'I controlli sono meno probabili in aeroporto', 'Italian customs FAQ');
+  await assertAbsent(page, 'In caso di dubbi, usate QuickZoll o il canale rosso', 'Italian customs QuickZoll sentence');
 
   await page.goto(`${baseUrl}/de/faq/`, { waitUntil: 'networkidle' });
-  await page.getByText('Was sollte ich zum Schweizer Zoll wissen?', { exact: true }).click();
+  await page.getByText('Was sollte ich zu Schweizer Zollkontrollen wissen?', { exact: true }).click();
   await waitForVisibleText(page, 'Kontrollen sind am Flughafen weniger wahrscheinlich', 'German customs FAQ');
+  await assertAbsent(page, 'Nutzt QuickZoll oder den roten Ausgang', 'German customs QuickZoll sentence');
 
   const screenshots = [];
   if (saveScreenshots) {
@@ -125,6 +127,8 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
     await page.screenshot({ path: mobilePath, fullPage: true });
     screenshots.push(mobilePath);
   }
+
+  await assertLogoutClearsCookie(page, context, baseUrl);
 
   await browser.close();
 
@@ -199,6 +203,7 @@ async function assertMobileHeaderDisclosures(page) {
   await page.locator('.mobile-menu > summary').click();
   await page.locator('.mobile-menu[open] nav').waitFor({ state: 'visible', timeout: 10_000 });
   await page.locator('.mobile-menu nav').getByText('Ablauf', { exact: true }).waitFor({ state: 'visible', timeout: 10_000 });
+  await page.getByRole('button', { name: 'Abmelden' }).waitFor({ state: 'visible', timeout: 10_000 });
 
   const languageInsideMenu = await page.locator('.mobile-menu nav .language-switcher').count();
   if (languageInsideMenu > 0) {
@@ -224,7 +229,27 @@ async function assertMobileHeaderDisclosures(page) {
     throw new Error('Mobile header: page menu is visible while Language is open.');
   }
 
+  await page.getByRole('button', { name: 'Abmelden' }).waitFor({ state: 'visible', timeout: 10_000 });
+
   await page.setViewportSize({ width: 1365, height: 900 });
+}
+
+async function assertLogoutClearsCookie(page, context, baseUrl) {
+  await page.setViewportSize({ width: 1365, height: 900 });
+  await page.goto(`${baseUrl}/de/faq/`, { waitUntil: 'networkidle' });
+
+  await Promise.all([
+    page.waitForURL(/\/welcome\/\?next=%2Fde%2Ffaq%2F$/, { timeout: 20_000 }),
+    page.getByRole('button', { name: 'Abmelden' }).click(),
+  ]);
+
+  await waitForVisibleText(page, 'Bitte gebt das Passwort aus eurer Einladung ein.', 'logged-out password prompt');
+  const cookies = await context.cookies(baseUrl);
+  const authCookie = cookies.find((cookie) => cookie.name === AUTH_COOKIE_NAME);
+
+  if (authCookie) {
+    throw new Error(`Logout should clear auth cookie ${AUTH_COOKIE_NAME}.`);
+  }
 }
 
 async function assertPersistentAuthCookie(context, baseUrl) {

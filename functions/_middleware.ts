@@ -16,6 +16,10 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     return context.next();
   }
 
+  if (isLogoutPath(url.pathname)) {
+    return handleLogout(context);
+  }
+
   if (isLegacyLoginPath(url.pathname)) {
     const welcomeUrl = new URL(WELCOME_PATH, url.origin);
     const next = normaliseNext(url.searchParams.get('next'));
@@ -71,6 +75,29 @@ async function handleLogin(context: EventContext<Env, string, unknown>, password
   return response;
 }
 
+async function handleLogout(context: EventContext<Env, string, unknown>) {
+  const url = new URL(context.request.url);
+  const next = context.request.method === 'POST'
+    ? normaliseNext(String((await context.request.formData()).get('next') ?? ''))
+    : normaliseNext(url.searchParams.get('next'));
+  const welcomeUrl = new URL(WELCOME_PATH, url.origin);
+  welcomeUrl.searchParams.set('next', next);
+
+  const response = new Response(null, {
+    status: 302,
+    headers: {
+      Location: welcomeUrl.toString(),
+    },
+  });
+  const secureAttribute = url.protocol === 'https:' ? '; Secure' : '';
+  response.headers.set(
+    'Set-Cookie',
+    `${COOKIE_NAME}=; Path=/; Max-Age=0; HttpOnly${secureAttribute}; SameSite=Lax`,
+  );
+
+  return response;
+}
+
 async function isAuthenticated(context: EventContext<Env, string, unknown>, password: string) {
   const expectedCookie = await buildCookieValue(password, context.env.WEDDING_AUTH_SECRET);
   const actualCookie = readCookie(context.request.headers.get('Cookie') ?? '', COOKIE_NAME);
@@ -93,6 +120,10 @@ function isWelcomePath(pathname: string) {
 
 function isLegacyLoginPath(pathname: string) {
   return pathname === '/login/' || pathname === '/login';
+}
+
+function isLogoutPath(pathname: string) {
+  return pathname === '/logout/' || pathname === '/logout';
 }
 
 function buildWelcomeUrl(url: URL) {
