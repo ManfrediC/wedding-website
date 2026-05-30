@@ -16,8 +16,6 @@ type DietaryRequirementsCopy = FieldCopy & {
 };
 
 type RsvpCopy = {
-  formTitle: string;
-  formIntro: string;
   privacy: string;
   replacement: string;
   attendingLegend: string;
@@ -44,8 +42,6 @@ type RsvpCopy = {
 
 export const rsvpCopy: Record<Lang, RsvpCopy> = {
   en: {
-    formTitle: 'Please respond',
-    formIntro: 'Let us know whether you will be able to join us in Zurich.',
     privacy:
       'We will use your RSVP information only to plan the wedding, including attendance, seating, dietary requirements, accessibility arrangements, and guest support.',
     replacement: 'If you submit again with the same email address, your latest response will replace the previous one.',
@@ -81,8 +77,6 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
     error: 'Something went wrong. Please check the form and try again.',
   },
   it: {
-    formTitle: 'Conferma di presenza',
-    formIntro: 'Fateci sapere se potrete unirvi a noi a Zurigo.',
     privacy:
       'Useremo le informazioni della RSVP solo per organizzare il matrimonio, inclusi presenza, posti a sedere, esigenze alimentari, accessibilità e supporto agli ospiti.',
     replacement: 'Se inviate di nuovo il modulo con lo stesso indirizzo email, la risposta più recente sostituirà quella precedente.',
@@ -118,8 +112,6 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
     error: 'Qualcosa non ha funzionato. Controllate il modulo e riprovate.',
   },
   de: {
-    formTitle: 'Rückmeldung',
-    formIntro: 'Bitte sagt uns, ob ihr in Zürich mit uns feiern könnt.',
     privacy:
       'Wir verwenden eure RSVP-Angaben nur für die Hochzeitsplanung, einschliesslich Teilnahme, Sitzordnung, Ernährung, Barrierefreiheit und Gästebetreuung.',
     replacement: 'Wenn ihr mit derselben E-Mail-Adresse erneut absendet, ersetzt die neue Antwort die vorherige.',
