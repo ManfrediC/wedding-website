@@ -1107,6 +1107,7 @@ button.danger {
 
 .rsvp-field {
   display: grid;
+  align-content: start;
   gap: 0.45rem;
   min-width: 0;
 }
@@ -1115,8 +1116,14 @@ button.danger {
   display: none;
 }
 
-.rsvp-field[data-dietary-other-field]:not([hidden]) + .rsvp-field {
-  grid-column: 1 / -1;
+.rsvp-field[data-dietary-other-field] {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.rsvp-field[data-allergies-field] {
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .rsvp-field span,
@@ -1593,6 +1600,12 @@ button.danger {
   .admin-controls,
   .admin-summary-grid {
     grid-template-columns: 1fr;
+  }
+
+  .rsvp-field[data-dietary-other-field],
+  .rsvp-field[data-allergies-field] {
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .rsvp-submit-row button,

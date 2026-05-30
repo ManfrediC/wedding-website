@@ -182,6 +182,28 @@ test('RSVP page has no horizontal overflow on a narrow viewport', async ({ page 
   expect(overflow.scrollWidth).toBeLessThanOrEqual(overflow.viewport + 1);
 });
 
+test('RSVP dietary and allergy controls stay aligned', async ({ page }) => {
+  await signIntoSite(page, '/en/rsvp/');
+
+  const dietary = page.locator('select[name="dietary_requirements"]');
+  const allergies = page.locator('textarea[name="allergies"]');
+  const initialDietaryBox = await dietary.boundingBox();
+  const initialAllergiesBox = await allergies.boundingBox();
+  expect(initialDietaryBox).not.toBeNull();
+  expect(initialAllergiesBox).not.toBeNull();
+  expect(Math.abs(initialDietaryBox!.y - initialAllergiesBox!.y)).toBeLessThanOrEqual(2);
+
+  await dietary.selectOption('other');
+  const otherBox = await page.locator('input[name="dietary_requirements_other"]').boundingBox();
+  const updatedDietaryBox = await dietary.boundingBox();
+  const updatedAllergiesBox = await allergies.boundingBox();
+  expect(otherBox).not.toBeNull();
+  expect(updatedDietaryBox).not.toBeNull();
+  expect(updatedAllergiesBox).not.toBeNull();
+  expect(Math.abs(updatedDietaryBox!.y - updatedAllergiesBox!.y)).toBeLessThanOrEqual(2);
+  expect(otherBox!.y).toBeGreaterThan(updatedDietaryBox!.y);
+});
+
 test('RSVP page shows the privacy copy only inside the form', async ({ page }) => {
   await signIntoSite(page, '/en/rsvp/');
 
