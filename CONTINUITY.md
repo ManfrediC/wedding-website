@@ -4,13 +4,13 @@ This file records where the wedding website build stands so future Codex session
 
 ## Current Objective
 
-Start Phase 0/1 from the build specification:
+Implement the Cloudflare D1 RSVP system:
 
-- create the standard repo structure;
-- scaffold an Astro + TypeScript site;
-- add project memory/instruction files;
-- build the first password-aware multilingual prototype;
-- run a local E2E feedback loop with visual inspection.
+- store RSVP data in Cloudflare D1;
+- provide a multilingual guest RSVP form;
+- provide a private admin/viewing dashboard;
+- send admin notification and guest confirmation emails through Cloudflare Email Sending;
+- verify the protected guest/admin flow end to end before deployment.
 
 ## Known Inputs
 
@@ -26,13 +26,15 @@ Start Phase 0/1 from the build specification:
 - Reception and party: Hotel Sonne, Küsnacht.
 - Languages: English, Italian, German.
 - Privacy: site-wide password protection.
-- RSVP direction: Tally + Google Sheets unless changed later.
+- RSVP direction: Cloudflare D1 custom RSVP with a private admin/viewing system. Supersede responses by normalised email; no invitation codes; no guest-side editing links; omit travel/accommodation fields.
 - Location is Zurich and Küsnacht. Cambridge content from the draft site does not apply.
 
 ## Open Decisions
 
 - Final domain.
 - Shared wedding password.
+- Production RSVP admin password and admin cookie secret.
+- Verified Cloudflare Email Sending sender and production API token.
 - RSVP opening date and deadline.
 - Final hero image.
 - Exact ceremony, boat, reception, and late-night transport times.
@@ -42,6 +44,8 @@ Start Phase 0/1 from the build specification:
 
 ## Checkpoint Log
 
+- 2026-05-30: Implemented the Cloudflare D1 RSVP system. Added D1 database `wedding_rsvp` with `rsvp_responses`, Pages Functions for `/api/rsvp` and `/api/admin/rsvp`, same-email supersession, multilingual RSVP UI, private admin dashboard, CSV export hardened against spreadsheet formula injection, delete flow, local protected-preview RSVP store, and Cloudflare Email Sending integration for both admin notification and guest confirmation. Site logout now also expires the separate admin cookie. Cloudflare MCP read-back confirmed D1 database `f4166d9c-3f0f-43ff-8c43-2806aa0adbc5` and the expected table/indexes. Verified with `node --check` on runtime scripts, `npm run check`, `npm run build`, `npm run test:rsvp:e2e` (5 passed), `npm run test:e2e -- --reporter=list --output=tmp/full-test-results` (128 passed, 40 RSVP specs intentionally skipped outside the protected-preview runner), `npm run smoke:protected`, and desktop/mobile RSVP/admin visual screenshots with zero horizontal overflow. Production still needs real Cloudflare Pages secrets plus a verified Email Sending sender before real email delivery.
+- 2026-05-29: Captured the revised RSVP architecture in `doc/plans/2026-05-29_rsvp_cloudflare_d1_plan.md`: Cloudflare D1 as the system of record, multilingual in-site RSVP form, private admin dashboard, same-email supersession, no invitation codes, no travel/accommodation fields, notification email to `manfrediandgabriela@gmail.com`, and data retained until manual deletion. Read-only Cloudflare MCP/API check found existing Pages project `wedding-website` on `wedding-website-2ng.pages.dev` and no current D1 databases. No code or Cloudflare resources were changed.
 - 2026-05-13: Added HTTP-level indexing protection by setting `X-Robots-Tag: noindex, nofollow` from the Cloudflare Pages middleware for pass-through static responses and redirects, with the same header mirrored in the local protected preview server. Extended protected smoke coverage to assert the header on the password gate and authenticated Schedule pages. Verified with `node --check` on the edited scripts, `npx tsc --noEmit --pretty false`, `npm run check`, `npm run build`, and `npm run smoke:protected`.
 - 2026-05-13: Refined the logout and Schedule image placement follow-up: removed the visible box styling from the `Log out`/`Abmelden` button, removed the Stadthaus Zürich image from the vertical timeline, and placed it on the lower Civil ceremony card while keeping the Kirche St. Peter image on the Ceremony card. Verified with `npm run check`, `npm run build`, focused Schedule Playwright coverage, `npm run smoke:protected`, and a targeted mobile screenshot confirming Civil ceremony uses `stadthaus-zurich.png` while Ceremony uses `st-peter-zurich.jpg`.
 - 2026-05-13: Updated the Swiss customs FAQ in English, Italian, and German to refer to customs checks and removed the QuickZoll/red-channel recommendation from the guest-facing answer while keeping the official customs links. Added a localised logout button to the authenticated header, with separate desktop and mobile placement so it does not sit inside the Menu or Language disclosures, and wired `/logout/` through both Cloudflare middleware and local protected preview to clear `gm_wedding_auth` and return guests to the password gate. Hardened Android verification to save screenshots into per-run folders and fail visibly if no local preview is running. Verified with `node --check` on the edited scripts, `npm run check`, `npm run build`, full `npm run test:e2e` (128 passed), `npm run smoke:protected`, protected-preview desktop/mobile screenshots, and `npm run test:android` on the connected `SM-S911B` Android device against a live local preview.

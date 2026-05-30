@@ -1,6 +1,7 @@
 ---
 import FAQAccordion from '../../components/FAQAccordion.astro';
 import ExchangeRates from '../../components/ExchangeRates.astro';
+import RSVPForm from '../../components/RSVPForm.astro';
 import Timeline from '../../components/Timeline.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { faqs } from '../../data/faqs';
@@ -48,6 +49,8 @@ function isInlineLink(part: unknown): part is { text: string; href: string } {
       <FAQAccordion items={faqs[lang]} />
     </section>
   )}
+
+  {page === 'rsvp' && <RSVPForm lang={lang} />}
 
   {content.sections.length > 0 && (
     <section class="content-band">

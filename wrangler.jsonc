@@ -1,0 +1,15 @@
+{
+  "name": "wedding-website",
+  "pages_build_output_dir": "./dist",
+  "compatibility_date": "2026-05-29",
+  "d1_databases": [
+    {
+      "binding": "RSVP_DB",
+      "database_name": "wedding_rsvp",
+      "database_id": "f4166d9c-3f0f-43ff-8c43-2806aa0adbc5"
+    }
+  ],
+  "vars": {
+    "RSVP_NOTIFICATION_TO": "manfrediandgabriela@gmail.com"
+  }
+}

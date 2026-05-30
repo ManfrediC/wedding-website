@@ -5,6 +5,7 @@ type Env = {
 };
 
 const COOKIE_NAME = 'gm_wedding_auth';
+const ADMIN_COOKIE_NAME = 'gm_rsvp_admin';
 const MAX_AGE_SECONDS = 60 * 60 * 24 * 30;
 const ROBOTS_HEADER_VALUE = 'noindex, nofollow';
 const WELCOME_PATH = '/welcome/';
@@ -95,6 +96,10 @@ async function handleLogout(context: EventContext<Env, string, unknown>) {
   response.headers.set(
     'Set-Cookie',
     `${COOKIE_NAME}=; Path=/; Max-Age=0; HttpOnly${secureAttribute}; SameSite=Lax`,
+  );
+  response.headers.append(
+    'Set-Cookie',
+    `${ADMIN_COOKIE_NAME}=; Path=/; Max-Age=0; HttpOnly${secureAttribute}; SameSite=Lax`,
   );
 
   return response;

@@ -1,10 +1,20 @@
 import { createHash } from 'node:crypto';
 import { createServer } from 'node:http';
 import { existsSync } from 'node:fs';
-import { readFile, stat } from 'node:fs/promises';
-import { extname, join, resolve, sep } from 'node:path';
+import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
+import { dirname, extname, join, resolve, sep } from 'node:path';
+import {
+  handleAdminCsv,
+  handleAdminDelete,
+  handleAdminList,
+  handleAdminLogin,
+  handleAdminLogout,
+  handleRsvpPost,
+  summariseResponses,
+} from '../functions/_lib/rsvp.js';
 
 const COOKIE_NAME = 'gm_wedding_auth';
+const ADMIN_COOKIE_NAME = 'gm_rsvp_admin';
 const MAX_AGE_SECONDS = 60 * 60 * 24 * 30;
 const ROBOTS_HEADER_VALUE = 'noindex, nofollow';
 const WELCOME_PATH = '/welcome/';
@@ -17,6 +27,8 @@ const port = Number(readArg('port', process.env.PORT ?? '4321'));
 const host = readArg('host', process.env.HOST ?? '127.0.0.1');
 const password = process.env.WEBSITE_PW ?? localEnv.WEBSITE_PW;
 const authSecret = process.env.WEDDING_AUTH_SECRET ?? localEnv.WEDDING_AUTH_SECRET ?? 'local-protected-preview';
+const rsvpStore = await createPreviewRsvpStore(join(repoRoot, 'tmp', 'rsvp-preview-store.json'));
+const notificationMock = createNotificationMock();
 
 if (!password) {
   throw new Error('Set WEBSITE_PW=... in env/website_pw.env before starting the protected preview.');
@@ -66,6 +78,11 @@ const server = createServer(async (request, response) => {
       const welcomeUrl = new URL(WELCOME_PATH, url.origin);
       welcomeUrl.searchParams.set('next', normaliseNext(`${url.pathname}${url.search}`));
       redirect(response, welcomeUrl.pathname + welcomeUrl.search);
+      return;
+    }
+
+    if (url.pathname.startsWith('/api/')) {
+      await handleApiRequest(request, response, url);
       return;
     }
 
@@ -152,7 +169,10 @@ async function handleLogout(request, response, url) {
   response.writeHead(302, {
     'X-Robots-Tag': ROBOTS_HEADER_VALUE,
     Location: welcomeUrl.pathname + welcomeUrl.search,
-    'Set-Cookie': `${COOKIE_NAME}=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax`,
+    'Set-Cookie': [
+      `${COOKIE_NAME}=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax`,
+      `${ADMIN_COOKIE_NAME}=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax`,
+    ],
   });
   response.end();
 }
@@ -213,6 +233,207 @@ function normaliseNext(value) {
   }
 
   return value;
+}
+
+async function handleApiRequest(request, response, url) {
+  const webRequest = await toWebRequest(request, url);
+  const env = {
+    RSVP_ADMIN_PASSWORD: process.env.RSVP_ADMIN_PASSWORD ?? localEnv.RSVP_ADMIN_PASSWORD,
+    RSVP_ADMIN_SECRET: process.env.RSVP_ADMIN_SECRET ?? localEnv.RSVP_ADMIN_SECRET,
+    WEDDING_AUTH_SECRET: authSecret,
+    RSVP_NOTIFICATION_MODE: process.env.RSVP_NOTIFICATION_MODE ?? localEnv.RSVP_NOTIFICATION_MODE,
+    RSVP_NOTIFICATION_TO:
+      process.env.RSVP_NOTIFICATION_TO ?? localEnv.RSVP_NOTIFICATION_TO ?? 'manfrediandgabriela@gmail.com',
+    RSVP_NOTIFICATION_FROM: process.env.RSVP_NOTIFICATION_FROM ?? localEnv.RSVP_NOTIFICATION_FROM,
+    RSVP_NOTIFICATION_MOCK: notificationMock,
+  };
+  let apiResponse;
+
+  if (url.pathname === '/api/rsvp' && request.method === 'POST') {
+    apiResponse = await handleRsvpPost({ request: webRequest, env, store: rsvpStore });
+  } else if (url.pathname === '/api/admin/login' && request.method === 'POST') {
+    apiResponse = await handleAdminLogin({ request: webRequest, env });
+  } else if (url.pathname === '/api/admin/logout' && request.method === 'POST') {
+    apiResponse = await handleAdminLogout({ request: webRequest, env });
+  } else if ((url.pathname === '/api/admin/rsvp' || url.pathname === '/api/admin/rsvp/') && request.method === 'GET') {
+    apiResponse = await handleAdminList({ request: webRequest, env, store: rsvpStore });
+  } else if (url.pathname === '/api/admin/rsvp.csv' && request.method === 'GET') {
+    apiResponse = await handleAdminCsv({ request: webRequest, env, store: rsvpStore });
+  } else if (url.pathname === '/api/_preview/notifications' && request.method === 'GET') {
+    apiResponse = new Response(JSON.stringify({ ok: true, messages: notificationMock.messages }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json; charset=utf-8', 'X-Robots-Tag': ROBOTS_HEADER_VALUE },
+    });
+  } else {
+    const deleteMatch = url.pathname.match(/^\/api\/admin\/rsvp\/([^/]+)$/);
+    if (deleteMatch && request.method === 'DELETE') {
+      apiResponse = await handleAdminDelete({ request: webRequest, env, store: rsvpStore, id: deleteMatch[1] });
+    } else {
+      apiResponse = new Response(JSON.stringify({ ok: false, error: 'not_found' }), {
+        status: 404,
+        headers: { 'Content-Type': 'application/json; charset=utf-8', 'X-Robots-Tag': ROBOTS_HEADER_VALUE },
+      });
+    }
+  }
+
+  await sendWebResponse(apiResponse, response);
+}
+
+async function toWebRequest(request, url) {
+  const headers = new Headers();
+  for (const [key, value] of Object.entries(request.headers)) {
+    if (Array.isArray(value)) {
+      value.forEach((item) => headers.append(key, item));
+    } else if (value !== undefined) {
+      headers.set(key, value);
+    }
+  }
+
+  const body = request.method === 'GET' || request.method === 'HEAD'
+    ? undefined
+    : await readBody(request);
+
+  return new Request(url.toString(), {
+    method: request.method,
+    headers,
+    body,
+  });
+}
+
+async function sendWebResponse(apiResponse, response) {
+  const headers = {};
+  apiResponse.headers.forEach((value, key) => {
+    headers[key] = value;
+  });
+
+  response.writeHead(apiResponse.status, headers);
+  response.end(Buffer.from(await apiResponse.arrayBuffer()));
+}
+
+function createNotificationMock() {
+  const messages = [];
+
+  return {
+    messages,
+    async send(message) {
+      messages.push({ ...message, sentAt: new Date().toISOString() });
+    },
+  };
+}
+
+async function createPreviewRsvpStore(filePath) {
+  if (process.env.RSVP_PREVIEW_RESET !== '0') {
+    await writeJson(filePath, []);
+  }
+
+  async function readRows() {
+    if (!existsSync(filePath)) {
+      return [];
+    }
+
+    return JSON.parse(await readFile(filePath, 'utf8'));
+  }
+
+  async function writeRows(rows) {
+    await writeJson(filePath, rows);
+  }
+
+  return {
+    async upsertResponse(response) {
+      const rows = await readRows();
+      const existingIndex = rows.findIndex((row) => row.emailNormalized === response.emailNormalized);
+      const existing = existingIndex >= 0 ? rows[existingIndex] : undefined;
+      const row = {
+        id: existing?.id ?? response.id,
+        email: response.email,
+        emailNormalized: response.emailNormalized,
+        language: response.language,
+        attending: response.attending,
+        primaryGuestName: response.primaryGuestName,
+        adults: response.adults,
+        children: response.children,
+        dietaryRequirements: response.dietaryRequirements,
+        allergies: response.allergies,
+        accessibilityMobility: response.accessibilityMobility,
+        notes: response.notes,
+        notificationStatus: 'not_sent',
+        notificationError: '',
+        revisionCount: existing ? existing.revisionCount + 1 : 1,
+        createdAt: existing?.createdAt ?? response.createdAt,
+        updatedAt: response.updatedAt,
+      };
+
+      if (existingIndex >= 0) {
+        rows[existingIndex] = row;
+      } else {
+        rows.push(row);
+      }
+
+      await writeRows(rows);
+      return row;
+    },
+
+    async updateNotification(id, status, error) {
+      const rows = await readRows();
+      const row = rows.find((item) => item.id === id);
+
+      if (!row) {
+        return undefined;
+      }
+
+      row.notificationStatus = status;
+      row.notificationError = error;
+      row.updatedAt = new Date().toISOString();
+      await writeRows(rows);
+      return row;
+    },
+
+    async listResponses(options = {}) {
+      const filter = options.filter ?? 'all';
+      const search = String(options.search ?? '').trim().toLowerCase();
+      const limit = Math.max(1, Math.min(Number(options.limit) || 500, 500));
+      const rows = await readRows();
+
+      return rows
+        .filter((row) => {
+          if (filter === 'attending' && row.attending !== 'yes') {
+            return false;
+          }
+
+          if (filter === 'not_attending' && row.attending !== 'no') {
+            return false;
+          }
+
+          if (filter === 'notification_issue' && !['failed', 'not_configured'].includes(row.notificationStatus)) {
+            return false;
+          }
+
+          if (!search) {
+            return true;
+          }
+
+          return `${row.primaryGuestName} ${row.email}`.toLowerCase().includes(search);
+        })
+        .sort((left, right) => right.updatedAt.localeCompare(left.updatedAt))
+        .slice(0, limit);
+    },
+
+    async deleteResponse(id) {
+      const rows = await readRows();
+      const nextRows = rows.filter((row) => row.id !== id);
+      await writeRows(nextRows);
+      return rows.length !== nextRows.length;
+    },
+
+    async summary() {
+      return summariseResponses(await readRows());
+    },
+  };
+}
+
+async function writeJson(filePath, value) {
+  await mkdir(dirname(filePath), { recursive: true });
+  await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
 async function serveStatic(pathname, response) {

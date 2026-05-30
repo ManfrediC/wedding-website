@@ -1,0 +1,22 @@
+---
+import AdminRsvpDashboard from '../../components/AdminRsvpDashboard.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { wedding } from '../../data/site';
+---
+
+<BaseLayout title="RSVP Admin | Gabriela & Manfredi" hideChrome>
+  <div class="admin-page-shell">
+    <header class="admin-page-header">
+      <a class="monogram" href="/en/" aria-label="Gabriela and Manfredi home">{wedding.couple.monogram}</a>
+      <div>
+        <p class="eyebrow">Gabriela & Manfredi</p>
+        <h1>RSVP admin</h1>
+      </div>
+      <form class="logout-form" action="/logout/" method="post">
+        <input type="hidden" name="next" value="/admin/rsvp/" />
+        <button class="logout-button" type="submit">Log out</button>
+      </form>
+    </header>
+    <AdminRsvpDashboard />
+  </div>
+</BaseLayout>

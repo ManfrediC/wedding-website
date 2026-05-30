@@ -1,0 +1,215 @@
+---
+import { rsvpCopy } from '../data/rsvp';
+import type { Lang } from '../data/locales';
+
+type Props = {
+  lang: Lang;
+};
+
+const { lang } = Astro.props;
+const copy = rsvpCopy[lang];
+---
+
+<section class="content-band narrow rsvp-form-band" aria-labelledby="rsvp-form-heading">
+  <form class="rsvp-form" action="/api/rsvp" method="post" data-rsvp-form>
+    <input type="hidden" name="language" value={lang} />
+    <div class="rsvp-honeypot" aria-hidden="true">
+      <label>
+        Website
+        <input type="text" name="website" tabindex="-1" autocomplete="off" />
+      </label>
+    </div>
+
+    <div class="rsvp-form-heading">
+      <p class="eyebrow">{copy.formTitle}</p>
+      <h2 id="rsvp-form-heading">{copy.formIntro}</h2>
+      <p>{copy.privacy}</p>
+      <p class="small-note">{copy.replacement}</p>
+    </div>
+
+    <fieldset class="rsvp-fieldset">
+      <legend>{copy.attendingLegend}</legend>
+      <label class="rsvp-radio">
+        <input type="radio" name="attending" value="yes" required checked />
+        <span>{copy.attendingYes}</span>
+      </label>
+      <label class="rsvp-radio">
+        <input type="radio" name="attending" value="no" required />
+        <span>{copy.attendingNo}</span>
+      </label>
+    </fieldset>
+
+    <div class="rsvp-field-grid">
+      <label class="rsvp-field">
+        <span>{copy.primaryGuestName.label}</span>
+        <input type="text" name="primary_guest_name" autocomplete="name" required maxlength="120" />
+      </label>
+      <label class="rsvp-field">
+        <span>{copy.email.label}</span>
+        <input type="email" name="email" autocomplete="email" required maxlength="254" />
+      </label>
+    </div>
+
+    <fieldset class="rsvp-fieldset repeat-fieldset" data-repeat-group="adult">
+      <legend>{copy.adults.label}</legend>
+      {copy.adults.help && <p class="small-note">{copy.adults.help}</p>}
+      <div class="repeat-list" data-repeat-list>
+        <label class="rsvp-field repeat-row">
+          <span>{copy.adultName}</span>
+          <input type="text" name="adult_name" maxlength="120" required />
+        </label>
+      </div>
+      <button class="button secondary repeat-add" type="button" data-repeat-add>{copy.addAdult}</button>
+    </fieldset>
+
+    <fieldset class="rsvp-fieldset repeat-fieldset" data-repeat-group="child">
+      <legend>{copy.children.label}</legend>
+      {copy.children.help && <p class="small-note">{copy.children.help}</p>}
+      <div class="repeat-list" data-repeat-list>
+        <div class="repeat-row child-row">
+          <label class="rsvp-field">
+            <span>{copy.childName}</span>
+            <input type="text" name="child_name" maxlength="120" />
+          </label>
+          <label class="rsvp-field child-age-field">
+            <span>{copy.childAge}</span>
+            <input type="number" name="child_age" min="0" max="17" inputmode="numeric" />
+          </label>
+        </div>
+      </div>
+      <button class="button secondary repeat-add" type="button" data-repeat-add>{copy.addChild}</button>
+    </fieldset>
+
+    <div class="rsvp-field-grid">
+      <label class="rsvp-field">
+        <span>{copy.dietaryRequirements.label}</span>
+        <textarea name="dietary_requirements" rows="4" maxlength="1200"></textarea>
+        {copy.dietaryRequirements.help && <small>{copy.dietaryRequirements.help}</small>}
+      </label>
+      <label class="rsvp-field">
+        <span>{copy.allergies.label}</span>
+        <textarea name="allergies" rows="4" maxlength="1200"></textarea>
+      </label>
+    </div>
+
+    <label class="rsvp-field">
+      <span>{copy.accessibilityMobility.label}</span>
+      <textarea name="accessibility_mobility" rows="4" maxlength="1200"></textarea>
+    </label>
+
+    <label class="rsvp-field">
+      <span>{copy.notes.label}</span>
+      <textarea name="notes" rows="5" maxlength="1200"></textarea>
+      {copy.notes.help && <small>{copy.notes.help}</small>}
+    </label>
+
+    <div class="rsvp-submit-row">
+      <button type="submit" data-submit-label={copy.submit} data-sending-label={copy.sending}>{copy.submit}</button>
+      <p class="form-error" data-rsvp-status hidden></p>
+    </div>
+  </form>
+</section>
+
+<script is:inline define:vars={{ messages: { success: copy.success, error: copy.error } }}>
+  const form = document.querySelector('[data-rsvp-form]');
+
+  if (form instanceof HTMLFormElement) {
+    const status = form.querySelector('[data-rsvp-status]');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const attendingInputs = form.querySelectorAll('input[name="attending"]');
+    const adultInputs = () => form.querySelectorAll('input[name="adult_name"]');
+
+    const setStatus = (message, success = false) => {
+      if (!(status instanceof HTMLElement)) {
+        return;
+      }
+
+      status.hidden = false;
+      status.textContent = message;
+      status.classList.toggle('form-success', success);
+    };
+
+    const clearStatus = () => {
+      if (status instanceof HTMLElement) {
+        status.hidden = true;
+        status.textContent = '';
+        status.classList.remove('form-success');
+      }
+    };
+
+    const syncAttendanceFields = () => {
+      const isAttending = form.querySelector('input[name="attending"]:checked')?.value === 'yes';
+      adultInputs().forEach((input, index) => {
+        input.required = isAttending && index === 0;
+      });
+    };
+
+    form.querySelectorAll('[data-repeat-group]').forEach((group) => {
+      const list = group.querySelector('[data-repeat-list]');
+      const button = group.querySelector('[data-repeat-add]');
+
+      if (!(list instanceof HTMLElement) || !(button instanceof HTMLButtonElement)) {
+        return;
+      }
+
+      button.addEventListener('click', () => {
+        const row = list.querySelector('.repeat-row');
+        if (!(row instanceof HTMLElement)) {
+          return;
+        }
+
+        const clone = row.cloneNode(true);
+        if (!(clone instanceof HTMLElement)) {
+          return;
+        }
+
+        clone.querySelectorAll('input').forEach((input) => {
+          input.value = '';
+        });
+        list.append(clone);
+        syncAttendanceFields();
+        clone.querySelector('input')?.focus();
+      });
+    });
+
+    attendingInputs.forEach((input) => {
+      input.addEventListener('change', syncAttendanceFields);
+    });
+    syncAttendanceFields();
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      clearStatus();
+
+      if (!(submitButton instanceof HTMLButtonElement)) {
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = submitButton.dataset.sendingLabel ?? submitButton.textContent;
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        const body = await response.json().catch(() => undefined);
+
+        if (!response.ok || !body?.ok) {
+          setStatus(messages.error);
+          return;
+        }
+
+        form.reset();
+        syncAttendanceFields();
+        setStatus(messages.success, true);
+      } catch {
+        setStatus(messages.error);
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = submitButton.dataset.submitLabel ?? submitButton.textContent;
+      }
+    });
+  }
+</script>

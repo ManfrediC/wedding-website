@@ -1,0 +1,326 @@
+<section class="admin-dashboard" aria-labelledby="admin-dashboard-heading">
+  <div class="admin-panel" data-admin-login-panel>
+    <p class="eyebrow">Admin</p>
+    <h2 id="admin-dashboard-heading">RSVP admin</h2>
+    <form class="admin-login-form" data-admin-login-form>
+      <label class="rsvp-field">
+        <span>Admin password</span>
+        <input type="password" name="password" autocomplete="current-password" required />
+      </label>
+      <button type="submit">Log in</button>
+      <p class="form-error" data-admin-login-status hidden></p>
+    </form>
+  </div>
+
+  <div class="admin-panel" data-admin-data-panel hidden>
+    <div class="admin-heading-row">
+      <div>
+        <p class="eyebrow">Responses</p>
+        <h2>Current RSVPs</h2>
+      </div>
+      <div class="admin-actions">
+        <a class="button secondary" href="/api/admin/rsvp.csv" data-csv-link>Export CSV</a>
+        <button class="button secondary" type="button" data-admin-refresh>Refresh</button>
+      </div>
+    </div>
+
+    <div class="admin-summary-grid" data-admin-summary></div>
+
+    <div class="admin-controls">
+      <label class="rsvp-field">
+        <span>Search</span>
+        <input type="search" data-admin-search />
+      </label>
+      <label class="rsvp-field">
+        <span>Filter</span>
+        <select data-admin-filter>
+          <option value="all">All responses</option>
+          <option value="attending">Attending</option>
+          <option value="not_attending">Not attending</option>
+          <option value="notification_issue">Notification issue</option>
+        </select>
+      </label>
+    </div>
+
+    <p class="small-note" data-admin-empty hidden>No RSVP responses yet.</p>
+    <div class="admin-table-wrap">
+      <table class="admin-table" data-admin-table>
+        <thead>
+          <tr>
+            <th scope="col">Guest</th>
+            <th scope="col">Attendance</th>
+            <th scope="col">Adults</th>
+            <th scope="col">Children</th>
+            <th scope="col">Updated</th>
+            <th scope="col">Notification</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody data-admin-table-body></tbody>
+      </table>
+    </div>
+    <div class="admin-response-cards" data-admin-cards></div>
+    <p class="form-error" data-admin-status hidden></p>
+  </div>
+
+  <dialog class="admin-detail-dialog" data-admin-dialog>
+    <form method="dialog">
+      <button class="dialog-close" aria-label="Close" type="submit">Close</button>
+    </form>
+    <div data-admin-dialog-body></div>
+  </dialog>
+</section>
+
+<script is:inline>
+  const loginPanel = document.querySelector('[data-admin-login-panel]');
+  const dataPanel = document.querySelector('[data-admin-data-panel]');
+  const loginForm = document.querySelector('[data-admin-login-form]');
+  const loginStatus = document.querySelector('[data-admin-login-status]');
+  const adminStatus = document.querySelector('[data-admin-status]');
+  const tableBody = document.querySelector('[data-admin-table-body]');
+  const cards = document.querySelector('[data-admin-cards]');
+  const summary = document.querySelector('[data-admin-summary]');
+  const emptyState = document.querySelector('[data-admin-empty]');
+  const searchInput = document.querySelector('[data-admin-search]');
+  const filterInput = document.querySelector('[data-admin-filter]');
+  const csvLink = document.querySelector('[data-csv-link]');
+  const refreshButton = document.querySelector('[data-admin-refresh]');
+  const dialog = document.querySelector('[data-admin-dialog]');
+  const dialogBody = document.querySelector('[data-admin-dialog-body]');
+  let responses = [];
+
+  const textOrNone = (value) => value || 'None listed';
+  const attendanceLabel = (value) => (value === 'yes' ? 'Attending' : 'Not attending');
+
+  function setMessage(element, message) {
+    if (element instanceof HTMLElement) {
+      element.hidden = false;
+      element.textContent = message;
+    }
+  }
+
+  function clearMessage(element) {
+    if (element instanceof HTMLElement) {
+      element.hidden = true;
+      element.textContent = '';
+    }
+  }
+
+  async function loadResponses() {
+    clearMessage(adminStatus);
+    const query = new URLSearchParams();
+    const filter = filterInput instanceof HTMLSelectElement ? filterInput.value : 'all';
+    const search = searchInput instanceof HTMLInputElement ? searchInput.value.trim() : '';
+    query.set('filter', filter);
+    if (search) {
+      query.set('search', search);
+    }
+
+    const response = await fetch(`/api/admin/rsvp?${query.toString()}`, { headers: { Accept: 'application/json' } });
+
+    if (response.status === 401) {
+      loginPanel?.removeAttribute('hidden');
+      dataPanel?.setAttribute('hidden', '');
+      return;
+    }
+
+    const body = await response.json();
+    if (!response.ok || !body.ok) {
+      setMessage(adminStatus, 'Could not load RSVP responses.');
+      return;
+    }
+
+    responses = body.responses;
+    loginPanel?.setAttribute('hidden', '');
+    dataPanel?.removeAttribute('hidden');
+    updateCsvLink();
+    renderSummary(body.summary);
+    renderResponses();
+  }
+
+  function updateCsvLink() {
+    if (!(csvLink instanceof HTMLAnchorElement)) {
+      return;
+    }
+
+    const query = new URLSearchParams();
+    if (filterInput instanceof HTMLSelectElement) {
+      query.set('filter', filterInput.value);
+    }
+    if (searchInput instanceof HTMLInputElement && searchInput.value.trim()) {
+      query.set('search', searchInput.value.trim());
+    }
+    csvLink.href = `/api/admin/rsvp.csv?${query.toString()}`;
+  }
+
+  function renderSummary(values) {
+    if (!(summary instanceof HTMLElement)) {
+      return;
+    }
+
+    const items = [
+      ['Responses', values.responses],
+      ['Attending households', values.attendingHouseholds],
+      ['Not attending', values.notAttendingHouseholds],
+      ['Adults', values.adults],
+      ['Children', values.children],
+      ['Notification issues', values.notificationIssues],
+    ];
+
+    summary.replaceChildren(
+      ...items.map(([label, value]) => {
+        const item = document.createElement('div');
+        const number = document.createElement('strong');
+        const caption = document.createElement('span');
+        number.textContent = String(value);
+        caption.textContent = label;
+        item.append(number, caption);
+        return item;
+      }),
+    );
+  }
+
+  function renderResponses() {
+    if (!(tableBody instanceof HTMLElement) || !(cards instanceof HTMLElement)) {
+      return;
+    }
+
+    emptyState?.toggleAttribute('hidden', responses.length > 0);
+    tableBody.replaceChildren(...responses.map(renderTableRow));
+    cards.replaceChildren(...responses.map(renderCard));
+  }
+
+  function renderTableRow(response) {
+    const row = document.createElement('tr');
+    row.append(
+      cell(`${response.primaryGuestName}\n${response.email}`),
+      cell(attendanceLabel(response.attending)),
+      cell(response.adults.join(', ') || '0'),
+      cell(response.children.map((child) => `${child.name} (${child.age})`).join(', ') || '0'),
+      cell(new Date(response.updatedAt).toLocaleString()),
+      cell(response.notificationStatus),
+      actionCell(response),
+    );
+    return row;
+  }
+
+  function renderCard(response) {
+    const article = document.createElement('article');
+    article.className = 'admin-response-card';
+    const title = document.createElement('h3');
+    title.textContent = response.primaryGuestName;
+    const meta = document.createElement('p');
+    meta.textContent = `${attendanceLabel(response.attending)} · ${response.email}`;
+    const counts = document.createElement('p');
+    counts.textContent = `${response.adults.length} adults · ${response.children.length} children`;
+    article.append(title, meta, counts, actionWrap(response));
+    return article;
+  }
+
+  function cell(text) {
+    const item = document.createElement('td');
+    item.textContent = text;
+    return item;
+  }
+
+  function actionCell(response) {
+    const item = document.createElement('td');
+    item.append(actionWrap(response));
+    return item;
+  }
+
+  function actionWrap(response) {
+    const wrap = document.createElement('div');
+    wrap.className = 'admin-row-actions';
+    const detail = document.createElement('button');
+    detail.type = 'button';
+    detail.className = 'button secondary';
+    detail.textContent = 'Details';
+    detail.addEventListener('click', () => showDetails(response));
+    const remove = document.createElement('button');
+    remove.type = 'button';
+    remove.className = 'button danger';
+    remove.textContent = 'Delete';
+    remove.addEventListener('click', () => deleteResponse(response));
+    wrap.append(detail, remove);
+    return wrap;
+  }
+
+  function showDetails(response) {
+    if (!(dialog instanceof HTMLDialogElement) || !(dialogBody instanceof HTMLElement)) {
+      return;
+    }
+
+    const children = response.children.map((child) => `${child.name} (${child.age})`).join(', ');
+    dialogBody.innerHTML = '';
+    const title = document.createElement('h2');
+    title.textContent = response.primaryGuestName;
+    const list = document.createElement('dl');
+    [
+      ['Email', response.email],
+      ['Attendance', attendanceLabel(response.attending)],
+      ['Adults', response.adults.join(', ') || 'None listed'],
+      ['Children', children || 'None listed'],
+      ['Dietary requirements', textOrNone(response.dietaryRequirements)],
+      ['Allergies', textOrNone(response.allergies)],
+      ['Accessibility or mobility', textOrNone(response.accessibilityMobility)],
+      ['Notes', textOrNone(response.notes)],
+      ['Revision', String(response.revisionCount)],
+      ['Notification', response.notificationStatus],
+    ].forEach(([label, value]) => {
+      const term = document.createElement('dt');
+      const description = document.createElement('dd');
+      term.textContent = label;
+      description.textContent = value;
+      list.append(term, description);
+    });
+    dialogBody.append(title, list);
+    dialog.showModal();
+  }
+
+  async function deleteResponse(response) {
+    if (!window.confirm(`Delete RSVP for ${response.primaryGuestName}?`)) {
+      return;
+    }
+
+    const result = await fetch(`/api/admin/rsvp/${response.id}`, { method: 'DELETE', headers: { Accept: 'application/json' } });
+    const body = await result.json();
+
+    if (!result.ok || !body.ok) {
+      setMessage(adminStatus, 'Could not delete this response.');
+      return;
+    }
+
+    await loadResponses();
+  }
+
+  loginForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    clearMessage(loginStatus);
+
+    const response = await fetch('/api/admin/login', {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: new FormData(loginForm),
+    });
+
+    if (!response.ok) {
+      setMessage(loginStatus, 'The admin password was not recognised.');
+      return;
+    }
+
+    await loadResponses();
+  });
+
+  refreshButton?.addEventListener('click', () => {
+    void loadResponses();
+  });
+  searchInput?.addEventListener('input', () => {
+    void loadResponses();
+  });
+  filterInput?.addEventListener('change', () => {
+    void loadResponses();
+  });
+
+  void loadResponses();
+</script>

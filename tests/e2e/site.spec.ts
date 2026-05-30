@@ -367,7 +367,7 @@ test('Italian and German pages have localised core content', async ({ page }) =>
   await expect(page.getByText('Zurich Zoo, che può essere una buona idea per i più piccoli')).toBeVisible();
 
   await page.goto('/it/rsvp/');
-  await expect(page.getByRole('heading', { name: 'Cosa chiederà la RSVP' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Cosa chiede la RSVP' })).toBeVisible();
   await expect(page.getByText('Esigenze alimentari e allergie')).toBeVisible();
 
   await page.goto('/it/gifts/');
@@ -399,7 +399,7 @@ test('Italian and German pages have localised core content', async ({ page }) =>
   await expect(page.getByText('Der Zoo Zürich kann für kleinere Kinder eine gute Option sein')).toBeVisible();
 
   await page.goto('/de/rsvp/');
-  await expect(page.getByRole('heading', { name: 'Was die RSVP abfragen wird' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Was die RSVP abfragt' })).toBeVisible();
   await expect(page.getByText('Ernährungsanforderungen und Allergien')).toBeVisible();
 
   await page.goto('/de/gifts/');

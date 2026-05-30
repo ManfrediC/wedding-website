@@ -569,19 +569,19 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       title: 'RSVP',
       kicker: 'Response details',
       intro:
-        'The RSVP form is not open yet. Once ready, this page will embed the Tally form for your language and collect attendance, dietary needs, transport, and accommodation details.',
+        'Please use the form below to let us know whether you will be able to celebrate with us in Zurich.',
       notice:
-        'We will use RSVP information only to plan the wedding, including attendance, seating, dietary requirements, transport, and accommodation logistics.',
+        'We will use RSVP information only to plan the wedding, including attendance, seating, dietary requirements, accessibility arrangements, and guest support.',
       sections: [
         {
-          title: 'What the RSVP will ask',
-          body: 'The form will collect only the practical details needed for wedding planning.',
-          items: ['Guest names and email', 'Adults and children attending', 'Attendance by event', 'Dietary requirements and allergies', 'Accessibility or mobility considerations', 'Travel origin and accommodation status'],
+          title: 'What the RSVP asks',
+          body: 'The form collects only the practical details needed for wedding planning.',
+          items: ['Guest names and email', 'Adults and children attending', 'Children’s ages', 'Dietary requirements and allergies', 'Accessibility or mobility considerations', 'Optional notes about partial attendance or child meal needs'],
         },
         {
-          title: 'Invitation codes',
-          body: 'If invitation codes are used, we will add instructions here before RSVP opens.',
-          items: ['RSVP opening date: TBD', 'RSVP deadline: TBD', 'Edit-later policy: TBD'],
+          title: 'Updates',
+          body: 'If you need to change your answer later, please submit the form again with the same email address.',
+          items: ['RSVP opening date: TBD', 'RSVP deadline: TBD', 'Your latest submission will replace any earlier response from the same email address'],
         },
       ],
     },
@@ -938,19 +938,19 @@ applyLocalizedCopy('it', {
     title: 'RSVP',
     kicker: 'Conferma di presenza',
     intro:
-      'Il modulo RSVP non è ancora aperto. Quando sarà pronto, questa pagina includerà il modulo Tally nella lingua corretta e raccoglierà presenza, esigenze alimentari, trasporti e alloggio.',
+      'Usate il modulo qui sotto per farci sapere se potrete festeggiare con noi a Zurigo.',
     notice:
-      'Useremo le informazioni della RSVP solo per organizzare il matrimonio, inclusi presenza, posti a sedere, esigenze alimentari, trasporti e logistica degli alloggi.',
+      'Useremo le informazioni della RSVP solo per organizzare il matrimonio, inclusi presenza, posti a sedere, esigenze alimentari, accessibilità e supporto agli ospiti.',
     sections: [
       {
-        title: 'Cosa chiederà la RSVP',
-        body: 'Il modulo raccoglierà solo i dettagli pratici necessari per organizzare il matrimonio.',
-        items: ['Nomi ed email degli ospiti', 'Adulti e bambini presenti', 'Partecipazione ai vari momenti', 'Esigenze alimentari e allergie', 'Esigenze di accessibilità o mobilità', 'Origine del viaggio e stato dell’alloggio'],
+        title: 'Cosa chiede la RSVP',
+        body: 'Il modulo raccoglie solo i dettagli pratici necessari per organizzare il matrimonio.',
+        items: ['Nomi ed email degli ospiti', 'Adulti e bambini presenti', 'Età dei bambini', 'Esigenze alimentari e allergie', 'Esigenze di accessibilità o mobilità', 'Eventuali note sulla partecipazione parziale o sui pasti dei bambini'],
       },
       {
-        title: 'Codici invito',
-        body: 'Se useremo codici invito, aggiungeremo qui le istruzioni prima dell’apertura della RSVP.',
-        items: ['Apertura RSVP: TBD', 'Scadenza RSVP: TBD', 'Regole per eventuali modifiche: TBD'],
+        title: 'Aggiornamenti',
+        body: 'Se dovete modificare la vostra risposta, inviate di nuovo il modulo con lo stesso indirizzo email.',
+        items: ['Apertura RSVP: TBD', 'Scadenza RSVP: TBD', 'La risposta più recente sostituirà eventuali risposte precedenti dallo stesso indirizzo email'],
       },
     ],
   },
@@ -1274,19 +1274,19 @@ applyLocalizedCopy('de', {
     title: 'RSVP',
     kicker: 'Rückmeldung',
     intro:
-      'Das RSVP-Formular ist noch nicht geöffnet. Sobald es bereit ist, wird diese Seite das Tally-Formular in eurer Sprache enthalten und Teilnahme, Ernährung, Transport und Unterkunft abfragen.',
+      'Bitte nutzt das Formular unten, um uns mitzuteilen, ob ihr mit uns in Zürich feiern könnt.',
     notice:
-      'Wir verwenden RSVP-Informationen nur für die Hochzeitsplanung, einschliesslich Teilnahme, Sitzordnung, Ernährungsanforderungen, Transport und Unterkunftslogistik.',
+      'Wir verwenden RSVP-Informationen nur für die Hochzeitsplanung, einschliesslich Teilnahme, Sitzordnung, Ernährung, Barrierefreiheit und Gästebetreuung.',
     sections: [
       {
-        title: 'Was die RSVP abfragen wird',
-        body: 'Das Formular wird nur die praktischen Angaben erfassen, die für die Hochzeitsplanung nötig sind.',
-        items: ['Namen und E-Mail-Adressen der Gäste', 'Teilnehmende Erwachsene und Kinder', 'Teilnahme an den einzelnen Programmpunkten', 'Ernährungsanforderungen und Allergien', 'Hinweise zu Barrierefreiheit oder Mobilität', 'Anreiseort und Unterkunftsstatus'],
+        title: 'Was die RSVP abfragt',
+        body: 'Das Formular erfasst nur die praktischen Angaben, die für die Hochzeitsplanung nötig sind.',
+        items: ['Namen und E-Mail-Adressen der Gäste', 'Teilnehmende Erwachsene und Kinder', 'Alter der Kinder', 'Ernährungsanforderungen und Allergien', 'Hinweise zu Barrierefreiheit oder Mobilität', 'Optionale Notizen zu teilweiser Teilnahme oder Kinderessen'],
       },
       {
-        title: 'Einladungscodes',
-        body: 'Falls wir Einladungscodes verwenden, ergänzen wir die Anleitung hier, bevor die RSVP geöffnet wird.',
-        items: ['Öffnung der RSVP: TBD', 'RSVP-Frist: TBD', 'Regel für spätere Änderungen: TBD'],
+        title: 'Änderungen',
+        body: 'Wenn ihr eure Antwort später ändern müsst, sendet das Formular bitte erneut mit derselben E-Mail-Adresse ab.',
+        items: ['Öffnung der RSVP: TBD', 'RSVP-Frist: TBD', 'Die neueste Antwort ersetzt frühere Antworten von derselben E-Mail-Adresse'],
       },
     ],
   },
