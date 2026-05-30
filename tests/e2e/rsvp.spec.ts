@@ -31,17 +31,23 @@ async function submitAttendingRsvp(page: Page, email: string) {
   await page.getByLabel('Your name').fill('Lucia Guest');
   await page.getByLabel('Email').fill(email);
   await page.locator('input[name="adult_name"]').first().fill('Lucia Guest');
+  const adultDietary = page.locator('select[name="adult_dietary_requirements"]');
+  const adultDietaryOther = page.locator('input[name="adult_dietary_requirements_other"]');
+  const adultAllergies = page.locator('input[name="adult_allergies"]');
+  await expect(adultDietaryOther.first()).toBeHidden();
+  await adultDietary.first().selectOption('other');
+  await expect(adultDietaryOther.first()).toBeVisible();
+  await adultDietaryOther.first().fill('Kosher meal');
+  await adultAllergies.first().fill('=Peanuts');
   await page.getByRole('button', { name: 'Add adult' }).click();
   await page.locator('input[name="adult_name"]').nth(1).fill('Marco Guest');
+  await adultDietary.nth(1).selectOption('Vegetarian');
   await page.locator('input[name="child_name"]').first().fill('Sofia Guest');
   await page.locator('input[name="child_age"]').first().fill('8');
-  await expect(page.getByLabel('Please specify')).toBeHidden();
-  await page.getByLabel('Dietary requirements').selectOption('other');
-  await expect(page.getByLabel('Please specify')).toBeVisible();
-  await page.getByLabel('Please specify').fill('Kosher meal');
-  await page.getByLabel('Allergies').fill('=Peanuts');
+  await page.locator('select[name="child_dietary_requirements"]').first().selectOption('Vegan');
+  await page.locator('input[name="child_allergies"]').first().fill('Strawberries');
   await page.getByLabel('Accessibility or mobility considerations').fill('Step-free route preferred');
-  await page.locator('textarea[name="notes"]').fill('We may leave before the very end.');
+  await page.locator('textarea[name="notes"]').fill('=We may leave before the very end.');
   await page.getByRole('button', { name: 'Send RSVP' }).click();
   await expect(page.getByText('Thank you. Your RSVP has been received.')).toBeVisible();
 }
@@ -72,6 +78,12 @@ test('RSVP submission is stored, superseded by email, exported, and deleted thro
   await expect(responseRow.getByText('Marco Guest')).toBeVisible();
   await expect(responseRow.getByText('Sofia Guest (8)')).toBeVisible();
   await expect(page.getByText('sent')).toBeVisible();
+  await page.getByRole('button', { name: 'Details' }).click();
+  const initialDetailDialog = page.locator('dialog');
+  await expect(initialDetailDialog.getByText('Lucia Guest (Dietary: Kosher meal; Allergies: =Peanuts)')).toBeVisible();
+  await expect(initialDetailDialog.getByText('Marco Guest (Dietary: Vegetarian)')).toBeVisible();
+  await expect(initialDetailDialog.getByText('Sofia Guest (8) (Dietary: Vegan; Allergies: Strawberries)')).toBeVisible();
+  await page.getByRole('button', { name: 'Close' }).click();
 
   const notificationsBefore = await page.evaluate(async (): Promise<PreviewNotifications> => {
     const response = await fetch('/api/_preview/notifications');
@@ -92,7 +104,10 @@ test('RSVP submission is stored, superseded by email, exported, and deleted thro
   expect(csvBefore).toContain('Marco Guest');
   expect(csvBefore).toContain('Sofia Guest (8)');
   expect(csvBefore).toContain('Kosher meal');
-  expect(csvBefore).toContain("'=Peanuts");
+  expect(csvBefore).toContain('Vegetarian');
+  expect(csvBefore).toContain('Vegan');
+  expect(csvBefore).toContain('Allergies: =Peanuts');
+  expect(csvBefore).toContain("'=We may leave before the very end.");
 
   await page.goto('/en/rsvp/');
   await page.getByLabel('No, sadly I/we cannot attend').check();
@@ -166,7 +181,7 @@ test('RSVP form is multilingual and matches the current field scope', async ({ p
   await signIntoSite(page, '/it/rsvp/');
   await expect(page.getByText('Conferma di presenza').first()).toBeVisible();
   await expect(page.getByLabel('Il vostro nome')).toBeVisible();
-  await expect(page.getByLabel('Esigenze alimentari')).toContainText('Altro (specificare)');
+  await expect(page.locator('select[name="adult_dietary_requirements"]').first()).toContainText('Altro (specificare)');
   await expect(page.locator('.notice-band')).toHaveCount(0);
   await expect(page.getByText('Origine del viaggio')).toHaveCount(0);
   await expect(page.getByText('alloggio')).toHaveCount(0);
@@ -174,7 +189,7 @@ test('RSVP form is multilingual and matches the current field scope', async ({ p
   await page.goto('/de/rsvp/');
   await expect(page.getByText('Rückmeldung').first()).toBeVisible();
   await expect(page.getByLabel('Euer Name')).toBeVisible();
-  await expect(page.getByLabel('Ernährungsanforderungen')).toContainText('Andere (bitte angeben)');
+  await expect(page.locator('select[name="adult_dietary_requirements"]').first()).toContainText('Andere (bitte angeben)');
   await expect(page.locator('.notice-band')).toHaveCount(0);
   await expect(page.getByText('Anreiseort')).toHaveCount(0);
   await expect(page.getByText('Unterkunftsstatus')).toHaveCount(0);
@@ -203,16 +218,12 @@ test('RSVP form boxes stay aligned across languages', async ({ page }) => {
     const attendingNo = page.locator('.rsvp-radio').nth(1);
     await expectAlignedTop(attendingYes, attendingNo);
 
-    const adultGroup = page.locator('[data-repeat-group="adult"]');
-    const childGroup = page.locator('[data-repeat-group="child"]');
-    await expectAlignedTop(adultGroup, childGroup);
-
-    const dietary = page.locator('select[name="dietary_requirements"]');
-    const allergies = page.locator('textarea[name="allergies"]');
+    const dietary = page.locator('select[name="adult_dietary_requirements"]').first();
+    const allergies = page.locator('input[name="adult_allergies"]').first();
     await expectAlignedTop(dietary, allergies);
 
     await dietary.selectOption('other');
-    const otherBox = await page.locator('input[name="dietary_requirements_other"]').boundingBox();
+    const otherBox = await page.locator('input[name="adult_dietary_requirements_other"]').first().boundingBox();
     const updatedDietaryBox = await dietary.boundingBox();
     expect(otherBox).not.toBeNull();
     expect(updatedDietaryBox).not.toBeNull();

@@ -1193,16 +1193,6 @@ button.danger {
   display: none;
 }
 
-.rsvp-field[data-dietary-other-field] {
-  grid-column: 1;
-  grid-row: 2;
-}
-
-.rsvp-field[data-allergies-field] {
-  grid-column: 2;
-  grid-row: 1;
-}
-
 .rsvp-field span,
 .rsvp-repeat-heading {
   margin: 0;
@@ -1213,7 +1203,8 @@ button.danger {
   text-transform: uppercase;
 }
 
-.rsvp-field-grid > .rsvp-field > span {
+.rsvp-field-grid > .rsvp-field > span,
+.guest-row > .rsvp-field > span {
   display: flex;
   align-items: flex-end;
   min-height: 2em;
@@ -1268,7 +1259,7 @@ button.danger {
 
 .rsvp-guest-sections {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 1rem;
 }
 
@@ -1283,10 +1274,41 @@ button.danger {
   gap: 0.75rem;
 }
 
-.child-row {
+.guest-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(6rem, 8rem);
   gap: 0.75rem;
+  border: 1px solid rgba(49, 72, 61, 0.09);
+  border-radius: 6px;
+  background: rgba(255, 253, 248, 0.72);
+  padding: 0.8rem;
+}
+
+.adult-row {
+  grid-template-columns: minmax(0, 1.1fr) minmax(11rem, 0.8fr) minmax(0, 1fr);
+}
+
+.child-row {
+  grid-template-columns: minmax(0, 1.1fr) minmax(5.5rem, 0.35fr) minmax(11rem, 0.8fr) minmax(0, 1fr);
+}
+
+.adult-row .guest-dietary-other-field {
+  grid-column: 2;
+}
+
+.child-row .guest-dietary-other-field {
+  grid-column: 3;
+}
+
+.guest-dietary-other-field {
+  grid-row: 2;
+}
+
+.guest-allergies-field {
+  min-width: 0;
+}
+
+.guest-allergies-field input {
+  min-width: 0;
 }
 
 .repeat-add {
@@ -1713,7 +1735,7 @@ button.danger {
   .rsvp-field-grid,
   .rsvp-choice-grid,
   .rsvp-guest-sections,
-  .child-row,
+  .guest-row,
   .admin-page-header,
   .admin-heading-row,
   .admin-controls,
@@ -1721,8 +1743,9 @@ button.danger {
     grid-template-columns: 1fr;
   }
 
-  .rsvp-field[data-dietary-other-field],
-  .rsvp-field[data-allergies-field] {
+  .adult-row .guest-dietary-other-field,
+  .child-row .guest-dietary-other-field,
+  .guest-dietary-other-field {
     grid-column: auto;
     grid-row: auto;
   }

@@ -91,6 +91,42 @@
 
   const textOrNone = (value) => value || 'None listed';
   const attendanceLabel = (value) => (value === 'yes' ? 'Attending' : 'Not attending');
+  const adultName = (adult) => (typeof adult === 'string' ? adult : adult?.name ?? '');
+  const childName = (child) => {
+    if (typeof child === 'string') {
+      return child;
+    }
+
+    const name = child?.name ?? '';
+    const age = child?.age ?? '';
+    return age === '' ? name : `${name} (${age})`;
+  };
+
+  function describeGuest(label, guest) {
+    const details = [];
+    if (guest?.dietaryRequirements && guest.dietaryRequirements !== 'None') {
+      details.push(`Dietary: ${guest.dietaryRequirements}`);
+    }
+    if (guest?.allergies) {
+      details.push(`Allergies: ${guest.allergies}`);
+    }
+
+    return details.length ? `${label} (${details.join('; ')})` : label;
+  }
+
+  function formatAdults(adults, includeDetails = false) {
+    return adults
+      .map((adult) => (includeDetails ? describeGuest(adultName(adult), adult) : adultName(adult)))
+      .filter(Boolean)
+      .join(', ');
+  }
+
+  function formatChildren(children, includeDetails = false) {
+    return children
+      .map((child) => (includeDetails ? describeGuest(childName(child), child) : childName(child)))
+      .filter(Boolean)
+      .join(', ');
+  }
 
   function setMessage(element, message) {
     if (element instanceof HTMLElement) {
@@ -195,8 +231,8 @@
     row.append(
       cell(`${response.primaryGuestName}\n${response.email}`),
       cell(attendanceLabel(response.attending)),
-      cell(response.adults.join(', ') || '0'),
-      cell(response.children.map((child) => `${child.name} (${child.age})`).join(', ') || '0'),
+      cell(formatAdults(response.adults) || '0'),
+      cell(formatChildren(response.children) || '0'),
       cell(new Date(response.updatedAt).toLocaleString()),
       cell(response.notificationStatus),
       actionCell(response),
@@ -251,7 +287,6 @@
       return;
     }
 
-    const children = response.children.map((child) => `${child.name} (${child.age})`).join(', ');
     dialogBody.innerHTML = '';
     const title = document.createElement('h2');
     title.textContent = response.primaryGuestName;
@@ -259,8 +294,8 @@
     [
       ['Email', response.email],
       ['Attendance', attendanceLabel(response.attending)],
-      ['Adults', response.adults.join(', ') || 'None listed'],
-      ['Children', children || 'None listed'],
+      ['Adults', formatAdults(response.adults, true) || 'None listed'],
+      ['Children', formatChildren(response.children, true) || 'None listed'],
       ['Dietary requirements', textOrNone(response.dietaryRequirements)],
       ['Allergies', textOrNone(response.allergies)],
       ['Accessibility or mobility', textOrNone(response.accessibilityMobility)],

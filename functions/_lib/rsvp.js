@@ -286,10 +286,10 @@ export function validateRsvpInput(raw) {
   const primaryGuestName = cleanText(raw.primary_guest_name ?? raw.primaryGuestName, TEXT_LIMITS.name);
   const email = cleanEmail(raw.email);
   const emailNormalized = email.toLowerCase();
-  const adultNames = uniqueCleanList(valuesFor(raw.adult_name ?? raw.adultNames), TEXT_LIMITS.name);
-  const children = cleanChildren(valuesFor(raw.child_name ?? raw.childNames), valuesFor(raw.child_age ?? raw.childAges), errors);
-  const dietaryRequirements = cleanDietaryRequirements(raw, errors);
-  const allergies = cleanText(raw.allergies, TEXT_LIMITS.long);
+  const adults = cleanAdults(raw, errors);
+  const children = cleanChildren(raw, errors);
+  const legacyDietaryRequirements = cleanDietaryRequirements(raw, errors);
+  const legacyAllergies = cleanText(raw.allergies, TEXT_LIMITS.long);
   const accessibilityMobility = cleanText(raw.accessibility_mobility ?? raw.accessibilityMobility, TEXT_LIMITS.long);
   const notes = cleanText(raw.notes, TEXT_LIMITS.long);
 
@@ -309,7 +309,7 @@ export function validateRsvpInput(raw) {
     errors.email = 'invalid';
   }
 
-  if (adultNames.length > 20) {
+  if (adults.length > 20) {
     errors.adult_name = 'too_many';
   }
 
@@ -317,7 +317,7 @@ export function validateRsvpInput(raw) {
     errors.child_name = 'too_many';
   }
 
-  if (attending === 'yes' && adultNames.length === 0) {
+  if (attending === 'yes' && adults.length === 0) {
     errors.adult_name = 'required';
   }
 
@@ -326,6 +326,10 @@ export function validateRsvpInput(raw) {
   }
 
   const now = new Date().toISOString();
+  const attendingAdults = attending === 'yes' ? adults : [];
+  const attendingChildren = attending === 'yes' ? children : [];
+  const guestDietaryRequirements = summariseGuestField(attendingAdults, attendingChildren, 'dietaryRequirements');
+  const guestAllergies = summariseGuestField(attendingAdults, attendingChildren, 'allergies');
 
   return {
     ok: true,
@@ -336,10 +340,10 @@ export function validateRsvpInput(raw) {
       language,
       attending,
       primaryGuestName,
-      adults: attending === 'yes' ? adultNames : [],
-      children: attending === 'yes' ? children : [],
-      dietaryRequirements,
-      allergies,
+      adults: attendingAdults,
+      children: attendingChildren,
+      dietaryRequirements: guestDietaryRequirements || legacyDietaryRequirements,
+      allergies: guestAllergies || legacyAllergies,
       accessibilityMobility,
       notes,
       createdAt: now,
@@ -386,8 +390,10 @@ export function toCsv(responses) {
     'attending',
     'adult_count',
     'adult_names',
+    'adult_details',
     'child_count',
     'children',
+    'child_details',
     'dietary_requirements',
     'allergies',
     'accessibility_mobility',
@@ -403,9 +409,11 @@ export function toCsv(responses) {
     response.language,
     response.attending,
     String(response.adults.length),
-    response.adults.join('; '),
+    formatAdultNames(response.adults),
+    formatAdultDetails(response.adults),
     String(response.children.length),
-    response.children.map((child) => `${child.name} (${child.age})`).join('; '),
+    formatChildNames(response.children),
+    formatChildDetails(response.children),
     response.dietaryRequirements,
     response.allergies,
     response.accessibilityMobility,
@@ -420,6 +428,9 @@ export function toCsv(responses) {
 }
 
 export function mapRsvpRow(row) {
+  const adults = parseJsonArray(row.adults_json).map(normaliseAdult).filter(Boolean);
+  const children = parseJsonArray(row.children_json).map(normaliseChild).filter(Boolean);
+
   return {
     id: String(row.id),
     email: String(row.email),
@@ -427,8 +438,8 @@ export function mapRsvpRow(row) {
     language: String(row.language),
     attending: String(row.attending),
     primaryGuestName: String(row.primary_guest_name),
-    adults: parseJsonArray(row.adults_json),
-    children: parseJsonArray(row.children_json),
+    adults,
+    children,
     dietaryRequirements: String(row.dietary_requirements ?? ''),
     allergies: String(row.allergies ?? ''),
     accessibilityMobility: String(row.accessibility_mobility ?? ''),
@@ -486,20 +497,64 @@ function valuesFor(value) {
   return [value];
 }
 
-function uniqueCleanList(values, limit) {
-  const cleaned = values.map((value) => cleanText(value, limit)).filter(Boolean);
-  return [...new Set(cleaned)];
+function cleanAdults(raw, errors) {
+  const names = valuesFor(raw.adult_name ?? raw.adultNames);
+  const dietarySelections = valuesFor(raw.adult_dietary_requirements ?? raw.adultDietaryRequirements);
+  const dietaryOthers = valuesFor(raw.adult_dietary_requirements_other ?? raw.adultDietaryRequirementsOther);
+  const allergiesValues = valuesFor(raw.adult_allergies ?? raw.adultAllergies);
+  const adults = [];
+  const max = Math.max(names.length, dietarySelections.length, dietaryOthers.length, allergiesValues.length);
+
+  for (let index = 0; index < max; index += 1) {
+    const name = cleanText(names[index], TEXT_LIMITS.name);
+    const dietaryRequirements = cleanDietaryChoice(
+      dietarySelections[index],
+      dietaryOthers[index],
+      errors,
+      'adult_dietary_requirements',
+    );
+    const allergies = cleanText(allergiesValues[index], TEXT_LIMITS.long);
+
+    if (!name && !hasMeaningfulDietaryInput(dietarySelections[index], dietaryOthers[index]) && !allergies) {
+      continue;
+    }
+
+    if (!name) {
+      errors.adult_name = 'required';
+      continue;
+    }
+
+    adults.push({
+      name,
+      dietaryRequirements: dietaryRequirements || 'None',
+      allergies,
+    });
+  }
+
+  return adults;
 }
 
-function cleanChildren(names, ages, errors) {
+function cleanChildren(raw, errors) {
+  const names = valuesFor(raw.child_name ?? raw.childNames);
+  const ages = valuesFor(raw.child_age ?? raw.childAges);
+  const dietarySelections = valuesFor(raw.child_dietary_requirements ?? raw.childDietaryRequirements);
+  const dietaryOthers = valuesFor(raw.child_dietary_requirements_other ?? raw.childDietaryRequirementsOther);
+  const allergiesValues = valuesFor(raw.child_allergies ?? raw.childAllergies);
   const children = [];
-  const max = Math.max(names.length, ages.length);
+  const max = Math.max(names.length, ages.length, dietarySelections.length, dietaryOthers.length, allergiesValues.length);
 
   for (let index = 0; index < max; index += 1) {
     const name = cleanText(names[index], TEXT_LIMITS.name);
     const rawAge = cleanText(ages[index], 3);
+    const dietaryRequirements = cleanDietaryChoice(
+      dietarySelections[index],
+      dietaryOthers[index],
+      errors,
+      'child_dietary_requirements',
+    );
+    const allergies = cleanText(allergiesValues[index], TEXT_LIMITS.long);
 
-    if (!name && !rawAge) {
+    if (!name && !rawAge && !hasMeaningfulDietaryInput(dietarySelections[index], dietaryOthers[index]) && !allergies) {
       continue;
     }
 
@@ -509,10 +564,44 @@ function cleanChildren(names, ages, errors) {
       continue;
     }
 
-    children.push({ name, age });
+    children.push({
+      name,
+      age,
+      dietaryRequirements: dietaryRequirements || 'None',
+      allergies,
+    });
   }
 
   return children;
+}
+
+function cleanDietaryChoice(selectionValue, otherValue, errors, errorKey) {
+  const selection = cleanText(selectionValue, TEXT_LIMITS.long);
+  const other = cleanText(otherValue, TEXT_LIMITS.long);
+
+  if (!selection || selection === 'None') {
+    return selection ? 'None' : '';
+  }
+
+  if (selection === 'Vegetarian' || selection === 'Vegan') {
+    return selection;
+  }
+
+  if (selection === 'other') {
+    if (!other) {
+      errors[errorKey] = 'required';
+    }
+
+    return other;
+  }
+
+  return selection;
+}
+
+function hasMeaningfulDietaryInput(selectionValue, otherValue) {
+  const selection = cleanText(selectionValue, TEXT_LIMITS.long);
+  const other = cleanText(otherValue, TEXT_LIMITS.long);
+  return Boolean(other || (selection && selection !== 'None'));
 }
 
 function cleanDietaryRequirements(raw, errors) {
@@ -562,6 +651,119 @@ function createId() {
   return `rsvp_${Date.now().toString(36)}_${Math.random().toString(36).slice(2)}`;
 }
 
+function summariseGuestField(adults, children, key) {
+  const items = [
+    ...adults.map((adult) => ({ label: adult.name, value: adult[key] })),
+    ...children.map((child) => ({ label: formatChildName(child), value: child[key] })),
+  ];
+
+  return items
+    .filter(({ value }) => value && !(key === 'dietaryRequirements' && value === 'None'))
+    .map(({ label, value }) => `${label}: ${value}`)
+    .join('; ');
+}
+
+function formatAdultNames(adults) {
+  return adults.map(normaliseAdult).filter(Boolean).map((adult) => adult.name).join('; ');
+}
+
+function formatAdultDetails(adults) {
+  return adults.map(describeAdult).filter(Boolean).join('; ');
+}
+
+function formatChildNames(children) {
+  return children.map(normaliseChild).filter(Boolean).map(formatChildName).join('; ');
+}
+
+function formatChildDetails(children) {
+  return children.map(describeChild).filter(Boolean).join('; ');
+}
+
+function describeAdult(adult) {
+  const person = normaliseAdult(adult);
+  if (!person) {
+    return '';
+  }
+
+  return describeGuest(person.name, person);
+}
+
+function describeChild(child) {
+  const person = normaliseChild(child);
+  if (!person) {
+    return '';
+  }
+
+  return describeGuest(formatChildName(person), person);
+}
+
+function describeGuest(label, guest) {
+  const details = [];
+  if (guest.dietaryRequirements && guest.dietaryRequirements !== 'None') {
+    details.push(`Dietary: ${guest.dietaryRequirements}`);
+  }
+  if (guest.allergies) {
+    details.push(`Allergies: ${guest.allergies}`);
+  }
+
+  return details.length ? `${label} (${details.join('; ')})` : label;
+}
+
+function formatChildName(child) {
+  const person = normaliseChild(child);
+  if (!person) {
+    return '';
+  }
+
+  return person.age === '' ? person.name : `${person.name} (${person.age})`;
+}
+
+function normaliseAdult(value) {
+  if (typeof value === 'string') {
+    const name = cleanText(value, TEXT_LIMITS.name);
+    return name ? { name, dietaryRequirements: '', allergies: '' } : undefined;
+  }
+
+  if (!value || typeof value !== 'object') {
+    return undefined;
+  }
+
+  const name = cleanText(value.name, TEXT_LIMITS.name);
+  if (!name) {
+    return undefined;
+  }
+
+  return {
+    name,
+    dietaryRequirements: cleanText(value.dietaryRequirements ?? value.dietary_requirements, TEXT_LIMITS.long),
+    allergies: cleanText(value.allergies, TEXT_LIMITS.long),
+  };
+}
+
+function normaliseChild(value) {
+  if (typeof value === 'string') {
+    const name = cleanText(value, TEXT_LIMITS.name);
+    return name ? { name, age: '', dietaryRequirements: '', allergies: '' } : undefined;
+  }
+
+  if (!value || typeof value !== 'object') {
+    return undefined;
+  }
+
+  const name = cleanText(value.name, TEXT_LIMITS.name);
+  if (!name) {
+    return undefined;
+  }
+
+  const age = cleanText(value.age, 3);
+  return {
+    name,
+    age,
+    dietaryRequirements: cleanText(value.dietaryRequirements ?? value.dietary_requirements, TEXT_LIMITS.long),
+    allergies: cleanText(value.allergies, TEXT_LIMITS.long),
+  };
+}
+
 async function sendRsvpNotification(env, response) {
   const messages = [
     buildAdminNotification(env, response),
@@ -606,8 +808,8 @@ function buildAdminNotification(env, response) {
 function buildGuestConfirmation(env, response) {
   const copy = confirmationCopy[response.language] ?? confirmationCopy.en;
   const attendance = response.attending === 'yes' ? copy.attending : copy.notAttending;
-  const adults = response.adults.join(', ') || copy.noneListed;
-  const children = response.children.map((child) => `${child.name} (${child.age})`).join(', ') || copy.noneListed;
+  const adults = formatAdultDetails(response.adults) || copy.noneListed;
+  const children = formatChildDetails(response.children) || copy.noneListed;
   const details = [
     `${copy.attendance}: ${attendance}`,
     `${copy.adults}: ${adults}`,

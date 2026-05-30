@@ -8,6 +8,12 @@ type Props = {
 
 const { lang } = Astro.props;
 const copy = rsvpCopy[lang];
+const dietaryOptions = [
+  { value: 'None', label: copy.dietaryRequirements.options.none },
+  { value: 'Vegetarian', label: copy.dietaryRequirements.options.vegetarian },
+  { value: 'Vegan', label: copy.dietaryRequirements.options.vegan },
+  { value: 'other', label: copy.dietaryRequirements.options.other },
+];
 ---
 
 <section class="content-band narrow rsvp-form-band">
@@ -60,10 +66,26 @@ const copy = rsvpCopy[lang];
           <p class="rsvp-repeat-heading">{copy.adults.label}</p>
           {copy.adults.help && <p class="small-note">{copy.adults.help}</p>}
           <div class="repeat-list" data-repeat-list>
-            <label class="rsvp-field repeat-row">
-              <span>{copy.adultName}</span>
-              <input type="text" name="adult_name" maxlength="120" required />
-            </label>
+            <div class="repeat-row guest-row adult-row">
+              <label class="rsvp-field guest-name-field">
+                <span>{copy.adultName}</span>
+                <input type="text" name="adult_name" maxlength="120" required />
+              </label>
+              <label class="rsvp-field guest-dietary-field">
+                <span>{copy.dietaryRequirements.label}</span>
+                <select name="adult_dietary_requirements" data-dietary-select>
+                  {dietaryOptions.map((option) => <option value={option.value}>{option.label}</option>)}
+                </select>
+              </label>
+              <label class="rsvp-field guest-dietary-other-field" data-dietary-other-field hidden>
+                <span>{copy.dietaryRequirements.otherLabel}</span>
+                <input type="text" name="adult_dietary_requirements_other" maxlength="1200" data-dietary-other />
+              </label>
+              <label class="rsvp-field guest-allergies-field">
+                <span>{copy.allergies.label}</span>
+                <input type="text" name="adult_allergies" maxlength="1200" />
+              </label>
+            </div>
           </div>
           <button class="button secondary repeat-add" type="button" data-repeat-add>{copy.addAdult}</button>
         </div>
@@ -72,7 +94,7 @@ const copy = rsvpCopy[lang];
           <p class="rsvp-repeat-heading">{copy.children.label}</p>
           {copy.children.help && <p class="small-note">{copy.children.help}</p>}
           <div class="repeat-list" data-repeat-list>
-            <div class="repeat-row child-row">
+            <div class="repeat-row guest-row child-row">
               <label class="rsvp-field">
                 <span>{copy.childName}</span>
                 <input type="text" name="child_name" maxlength="120" />
@@ -81,33 +103,26 @@ const copy = rsvpCopy[lang];
                 <span>{copy.childAge}</span>
                 <input type="number" name="child_age" min="0" max="17" inputmode="numeric" />
               </label>
+              <label class="rsvp-field guest-dietary-field">
+                <span>{copy.dietaryRequirements.label}</span>
+                <select name="child_dietary_requirements" data-dietary-select>
+                  {dietaryOptions.map((option) => <option value={option.value}>{option.label}</option>)}
+                </select>
+              </label>
+              <label class="rsvp-field guest-dietary-other-field" data-dietary-other-field hidden>
+                <span>{copy.dietaryRequirements.otherLabel}</span>
+                <input type="text" name="child_dietary_requirements_other" maxlength="1200" data-dietary-other />
+              </label>
+              <label class="rsvp-field guest-allergies-field">
+                <span>{copy.allergies.label}</span>
+                <input type="text" name="child_allergies" maxlength="1200" />
+              </label>
             </div>
           </div>
           <button class="button secondary repeat-add" type="button" data-repeat-add>{copy.addChild}</button>
         </div>
       </div>
     </fieldset>
-
-    <div class="rsvp-field-grid">
-      <label class="rsvp-field">
-        <span>{copy.dietaryRequirements.label}</span>
-        <select name="dietary_requirements" required data-dietary-select aria-controls="dietary-requirements-other">
-          <option value="None">{copy.dietaryRequirements.options.none}</option>
-          <option value="Vegetarian">{copy.dietaryRequirements.options.vegetarian}</option>
-          <option value="Vegan">{copy.dietaryRequirements.options.vegan}</option>
-          <option value="other">{copy.dietaryRequirements.options.other}</option>
-        </select>
-        {copy.dietaryRequirements.help && <small>{copy.dietaryRequirements.help}</small>}
-      </label>
-      <label class="rsvp-field" id="dietary-requirements-other" data-dietary-other-field hidden>
-        <span>{copy.dietaryRequirements.otherLabel}</span>
-        <input type="text" name="dietary_requirements_other" maxlength="1200" data-dietary-other />
-      </label>
-      <label class="rsvp-field" data-allergies-field>
-        <span>{copy.allergies.label}</span>
-        <textarea name="allergies" rows="4" maxlength="1200"></textarea>
-      </label>
-    </div>
 
     <label class="rsvp-field">
       <span>{copy.accessibilityMobility.label}</span>
@@ -134,10 +149,8 @@ const copy = rsvpCopy[lang];
     const status = form.querySelector('[data-rsvp-status]');
     const submitButton = form.querySelector('button[type="submit"]');
     const attendingInputs = form.querySelectorAll('input[name="attending"]');
-    const dietarySelect = form.querySelector('[data-dietary-select]');
-    const dietaryOtherField = form.querySelector('[data-dietary-other-field]');
-    const dietaryOtherInput = form.querySelector('[data-dietary-other]');
     const adultInputs = () => form.querySelectorAll('input[name="adult_name"]');
+    const dietarySelects = () => form.querySelectorAll('[data-dietary-select]');
 
     const setStatus = (message, success = false) => {
       if (!(status instanceof HTMLElement)) {
@@ -164,8 +177,15 @@ const copy = rsvpCopy[lang];
       });
     };
 
-    const syncDietaryFields = () => {
-      const showOther = dietarySelect instanceof HTMLSelectElement && dietarySelect.value === 'other';
+    const syncDietaryField = (select) => {
+      if (!(select instanceof HTMLSelectElement)) {
+        return;
+      }
+
+      const scope = select.closest('.repeat-row') ?? form;
+      const dietaryOtherField = scope.querySelector('[data-dietary-other-field]');
+      const dietaryOtherInput = scope.querySelector('[data-dietary-other]');
+      const showOther = select.value === 'other';
       dietaryOtherField?.toggleAttribute('hidden', !showOther);
 
       if (dietaryOtherInput instanceof HTMLInputElement) {
@@ -174,6 +194,10 @@ const copy = rsvpCopy[lang];
           dietaryOtherInput.value = '';
         }
       }
+    };
+
+    const syncDietaryFields = () => {
+      dietarySelects().forEach(syncDietaryField);
     };
 
     form.querySelectorAll('[data-repeat-group]').forEach((group) => {
@@ -198,8 +222,15 @@ const copy = rsvpCopy[lang];
         clone.querySelectorAll('input').forEach((input) => {
           input.value = '';
         });
+        clone.querySelectorAll('textarea').forEach((textarea) => {
+          textarea.value = '';
+        });
+        clone.querySelectorAll('select').forEach((select) => {
+          select.selectedIndex = 0;
+        });
         list.append(clone);
         syncAttendanceFields();
+        syncDietaryFields();
         clone.querySelector('input')?.focus();
       });
     });
@@ -207,7 +238,11 @@ const copy = rsvpCopy[lang];
     attendingInputs.forEach((input) => {
       input.addEventListener('change', syncAttendanceFields);
     });
-    dietarySelect?.addEventListener('change', syncDietaryFields);
+    form.addEventListener('change', (event) => {
+      if (event.target instanceof HTMLSelectElement && event.target.matches('[data-dietary-select]')) {
+        syncDietaryField(event.target);
+      }
+    });
     syncAttendanceFields();
     syncDietaryFields();
 
