@@ -1039,9 +1039,21 @@ button.danger {
 
 .rsvp-form-band {
   padding-top: 1.5rem;
+  padding-bottom: 5rem;
 }
 
-.rsvp-form,
+.rsvp-form {
+  display: grid;
+  gap: 1.35rem;
+  max-width: 760px;
+  margin: 0 auto;
+  border: 1px solid rgba(49, 72, 61, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.96);
+  box-shadow: 0 16px 38px rgba(49, 72, 61, 0.06);
+  padding: clamp(1.35rem, 3vw, 2.3rem);
+}
+
 .admin-panel {
   display: grid;
   gap: 1.2rem;
@@ -1053,13 +1065,46 @@ button.danger {
 
 .rsvp-form-heading {
   display: grid;
-  gap: 0.6rem;
-  max-width: 680px;
+  gap: 0.85rem;
+  max-width: 650px;
 }
 
 .rsvp-form-heading h2,
 .rsvp-form-heading p {
   margin: 0;
+}
+
+.rsvp-form-heading p {
+  color: rgba(37, 37, 37, 0.9);
+  line-height: 1.65;
+}
+
+.rsvp-update-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  margin: 0;
+  border-top: 1px solid var(--colour-line);
+  padding: 0.85rem 0 0;
+  color: rgba(37, 37, 37, 0.72);
+  font-size: 0.84rem;
+  line-height: 1.45;
+  list-style: none;
+}
+
+.rsvp-update-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+.rsvp-update-list li::before {
+  content: '';
+  width: 0.35rem;
+  height: 0.35rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--colour-gold);
 }
 
 .rsvp-honeypot {
@@ -1074,28 +1119,60 @@ button.danger {
   display: grid;
   gap: 0.75rem;
   margin: 0;
-  border: 1px solid var(--colour-line);
-  border-radius: 4px;
-  padding: 1rem;
+  border: 0;
+  border-radius: 8px;
+  padding: 0;
 }
 
 .rsvp-fieldset legend {
-  padding: 0 0.35rem;
+  padding: 0;
   color: var(--colour-green);
+  font-size: 0.78rem;
   font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.rsvp-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 1rem;
 }
 
 .rsvp-radio {
   display: flex;
-  gap: 0.65rem;
   align-items: center;
+  gap: 0.75rem;
+  height: 100%;
+  min-height: 4.25rem;
+  border: 1px solid rgba(49, 72, 61, 0.14);
+  border-radius: 8px;
+  padding: 0.95rem 1rem;
+  background: rgba(255, 253, 248, 0.88);
+  box-shadow: 0 8px 22px rgba(49, 72, 61, 0.045);
+  cursor: pointer;
   line-height: 1.45;
+  transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
+}
+
+.rsvp-radio:hover,
+.rsvp-radio:has(input:checked) {
+  border-color: rgba(49, 72, 61, 0.48);
+  background: rgba(255, 253, 248, 1);
+}
+
+.rsvp-radio:has(input:checked) {
+  box-shadow:
+    inset 0 0 0 1px rgba(49, 72, 61, 0.18),
+    0 10px 24px rgba(49, 72, 61, 0.07);
 }
 
 .rsvp-radio input {
   width: 1.1rem;
   height: 1.1rem;
   flex: 0 0 auto;
+  margin: 0;
   accent-color: var(--colour-green);
 }
 
@@ -1108,7 +1185,7 @@ button.danger {
 .rsvp-field {
   display: grid;
   align-content: start;
-  gap: 0.45rem;
+  gap: 0.5rem;
   min-width: 0;
 }
 
@@ -1127,14 +1204,19 @@ button.danger {
 }
 
 .rsvp-field span,
-.rsvp-fieldset > legend {
+.rsvp-repeat-heading {
+  margin: 0;
+  color: var(--colour-green);
   font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
-.rsvp-field span {
-  color: var(--colour-green);
-  font-weight: 700;
+.rsvp-field-grid > .rsvp-field > span {
+  display: flex;
+  align-items: flex-end;
+  min-height: 2em;
 }
 
 .rsvp-field input,
@@ -1143,12 +1225,22 @@ button.danger {
 .admin-controls select {
   width: 100%;
   min-height: 48px;
-  border: 1px solid var(--colour-line);
-  border-radius: 4px;
+  border: 1px solid rgba(49, 72, 61, 0.16);
+  border-radius: 6px;
   padding: 0.75rem 0.9rem;
-  background: white;
+  background: rgba(255, 253, 248, 0.9);
   color: var(--colour-charcoal);
   font-size: 1rem;
+  transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
+}
+
+.rsvp-field input:focus,
+.rsvp-field select:focus,
+.rsvp-field textarea:focus {
+  border-color: var(--colour-gold);
+  background: #fffefa;
+  box-shadow: 0 0 0 3px rgba(180, 154, 106, 0.16);
+  outline: none;
 }
 
 .rsvp-field textarea {
@@ -1161,8 +1253,29 @@ button.danger {
   line-height: 1.45;
 }
 
-.repeat-fieldset .small-note {
+.rsvp-guests-fieldset {
+  gap: 0.85rem;
+  border: 1px solid rgba(49, 72, 61, 0.1);
+  background: rgba(250, 246, 239, 0.52);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.74);
+  padding: 1.1rem;
+}
+
+.rsvp-guests-fieldset .small-note,
+.rsvp-repeat-block .small-note {
   margin: 0;
+}
+
+.rsvp-guest-sections {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.rsvp-repeat-block {
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
 }
 
 .repeat-list {
@@ -1178,6 +1291,8 @@ button.danger {
 
 .repeat-add {
   justify-self: start;
+  min-height: 40px;
+  padding: 0.65rem 0.9rem;
 }
 
 .rsvp-submit-row {
@@ -1188,6 +1303,8 @@ button.danger {
 
 .rsvp-submit-row button {
   justify-self: start;
+  min-width: 8.5rem;
+  box-shadow: 0 10px 24px rgba(49, 72, 61, 0.16);
 }
 
 .admin-page-shell {
@@ -1594,6 +1711,8 @@ button.danger {
   }
 
   .rsvp-field-grid,
+  .rsvp-choice-grid,
+  .rsvp-guest-sections,
   .child-row,
   .admin-page-header,
   .admin-heading-row,

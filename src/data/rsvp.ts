@@ -17,12 +17,14 @@ type DietaryRequirementsCopy = FieldCopy & {
 
 type RsvpCopy = {
   privacy: string;
-  replacement: string;
+  updatesLabel: string;
+  updates: string[];
   attendingLegend: string;
   attendingYes: string;
   attendingNo: string;
   primaryGuestName: FieldCopy;
   email: FieldCopy;
+  guests: FieldCopy;
   adults: FieldCopy;
   adultName: string;
   addAdult: string;
@@ -44,12 +46,18 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
   en: {
     privacy:
       'We will use your RSVP information only to plan the wedding, including attendance, seating, dietary requirements, accessibility arrangements, and guest support.',
-    replacement: 'If you submit again with the same email address, your latest response will replace the previous one.',
+    updatesLabel: 'RSVP updates',
+    updates: [
+      'RSVP opening date: TBD',
+      'RSVP deadline: TBD',
+      'Your latest submission replaces earlier responses from the same email address.',
+    ],
     attendingLegend: 'Will you be able to join us?',
     attendingYes: 'Yes, I/we will attend',
     attendingNo: 'No, sadly I/we cannot attend',
     primaryGuestName: { label: 'Your name' },
     email: { label: 'Email' },
+    guests: { label: 'Guests attending', help: 'Add each adult and child who will attend.' },
     adults: { label: 'Adults attending', help: 'Add each adult who will attend.' },
     adultName: 'Adult name',
     addAdult: 'Add adult',
@@ -79,12 +87,18 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
   it: {
     privacy:
       'Useremo le informazioni della RSVP solo per organizzare il matrimonio, inclusi presenza, posti a sedere, esigenze alimentari, accessibilità e supporto agli ospiti.',
-    replacement: 'Se inviate di nuovo il modulo con lo stesso indirizzo email, la risposta più recente sostituirà quella precedente.',
+    updatesLabel: 'Aggiornamenti RSVP',
+    updates: [
+      'Apertura RSVP: TBD',
+      'Scadenza RSVP: TBD',
+      'La risposta più recente sostituisce le precedenti dallo stesso indirizzo email.',
+    ],
     attendingLegend: 'Potrete essere con noi?',
     attendingYes: 'Sì, parteciperò/parteciperemo',
     attendingNo: 'No, purtroppo non potrò/potremo partecipare',
     primaryGuestName: { label: 'Il vostro nome' },
     email: { label: 'Email' },
+    guests: { label: 'Ospiti presenti', help: 'Aggiungete ogni adulto e bambino che parteciperà.' },
     adults: { label: 'Adulti presenti', help: 'Aggiungete ogni adulto che parteciperà.' },
     adultName: 'Nome adulto',
     addAdult: 'Aggiungi adulto',
@@ -114,12 +128,18 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
   de: {
     privacy:
       'Wir verwenden eure RSVP-Angaben nur für die Hochzeitsplanung, einschliesslich Teilnahme, Sitzordnung, Ernährung, Barrierefreiheit und Gästebetreuung.',
-    replacement: 'Wenn ihr mit derselben E-Mail-Adresse erneut absendet, ersetzt die neue Antwort die vorherige.',
+    updatesLabel: 'RSVP-Hinweise',
+    updates: [
+      'Öffnung der RSVP: TBD',
+      'RSVP-Frist: TBD',
+      'Die neueste Antwort ersetzt frühere Antworten von derselben E-Mail-Adresse.',
+    ],
     attendingLegend: 'Könnt ihr dabei sein?',
     attendingYes: 'Ja, ich/wir nehmen teil',
     attendingNo: 'Nein, leider kann ich/können wir nicht teilnehmen',
     primaryGuestName: { label: 'Euer Name' },
     email: { label: 'E-Mail' },
+    guests: { label: 'Teilnehmende Gäste', help: 'Fügt jede erwachsene Person und jedes Kind hinzu, das teilnimmt.' },
     adults: { label: 'Teilnehmende Erwachsene', help: 'Fügt jede erwachsene Person hinzu, die teilnimmt.' },
     adultName: 'Name Erwachsene/r',
     addAdult: 'Erwachsene Person hinzufügen',

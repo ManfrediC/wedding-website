@@ -10,7 +10,7 @@ const { lang } = Astro.props;
 const copy = rsvpCopy[lang];
 ---
 
-<section class="content-band narrow rsvp-form-band" aria-labelledby="rsvp-form-heading">
+<section class="content-band narrow rsvp-form-band">
   <form class="rsvp-form" action="/api/rsvp" method="post" data-rsvp-form>
     <input type="hidden" name="language" value={lang} />
     <div class="rsvp-honeypot" aria-hidden="true">
@@ -22,19 +22,23 @@ const copy = rsvpCopy[lang];
 
     <div class="rsvp-form-heading">
       <p>{copy.privacy}</p>
-      <p class="small-note">{copy.replacement}</p>
+      <ul class="rsvp-update-list" aria-label={copy.updatesLabel}>
+        {copy.updates.map((item) => <li>{item}</li>)}
+      </ul>
     </div>
 
-    <fieldset class="rsvp-fieldset">
+    <fieldset class="rsvp-fieldset rsvp-choice-fieldset">
       <legend>{copy.attendingLegend}</legend>
-      <label class="rsvp-radio">
-        <input type="radio" name="attending" value="yes" required checked />
-        <span>{copy.attendingYes}</span>
-      </label>
-      <label class="rsvp-radio">
-        <input type="radio" name="attending" value="no" required />
-        <span>{copy.attendingNo}</span>
-      </label>
+      <div class="rsvp-choice-grid">
+        <label class="rsvp-radio">
+          <input type="radio" name="attending" value="yes" required checked />
+          <span>{copy.attendingYes}</span>
+        </label>
+        <label class="rsvp-radio">
+          <input type="radio" name="attending" value="no" required />
+          <span>{copy.attendingNo}</span>
+        </label>
+      </div>
     </fieldset>
 
     <div class="rsvp-field-grid">
@@ -48,34 +52,40 @@ const copy = rsvpCopy[lang];
       </label>
     </div>
 
-    <fieldset class="rsvp-fieldset repeat-fieldset" data-repeat-group="adult">
-      <legend>{copy.adults.label}</legend>
-      {copy.adults.help && <p class="small-note">{copy.adults.help}</p>}
-      <div class="repeat-list" data-repeat-list>
-        <label class="rsvp-field repeat-row">
-          <span>{copy.adultName}</span>
-          <input type="text" name="adult_name" maxlength="120" required />
-        </label>
-      </div>
-      <button class="button secondary repeat-add" type="button" data-repeat-add>{copy.addAdult}</button>
-    </fieldset>
+    <fieldset class="rsvp-fieldset rsvp-guests-fieldset">
+      <legend>{copy.guests.label}</legend>
+      {copy.guests.help && <p class="small-note">{copy.guests.help}</p>}
+      <div class="rsvp-guest-sections">
+        <div class="rsvp-repeat-block" data-repeat-group="adult">
+          <p class="rsvp-repeat-heading">{copy.adults.label}</p>
+          {copy.adults.help && <p class="small-note">{copy.adults.help}</p>}
+          <div class="repeat-list" data-repeat-list>
+            <label class="rsvp-field repeat-row">
+              <span>{copy.adultName}</span>
+              <input type="text" name="adult_name" maxlength="120" required />
+            </label>
+          </div>
+          <button class="button secondary repeat-add" type="button" data-repeat-add>{copy.addAdult}</button>
+        </div>
 
-    <fieldset class="rsvp-fieldset repeat-fieldset" data-repeat-group="child">
-      <legend>{copy.children.label}</legend>
-      {copy.children.help && <p class="small-note">{copy.children.help}</p>}
-      <div class="repeat-list" data-repeat-list>
-        <div class="repeat-row child-row">
-          <label class="rsvp-field">
-            <span>{copy.childName}</span>
-            <input type="text" name="child_name" maxlength="120" />
-          </label>
-          <label class="rsvp-field child-age-field">
-            <span>{copy.childAge}</span>
-            <input type="number" name="child_age" min="0" max="17" inputmode="numeric" />
-          </label>
+        <div class="rsvp-repeat-block" data-repeat-group="child">
+          <p class="rsvp-repeat-heading">{copy.children.label}</p>
+          {copy.children.help && <p class="small-note">{copy.children.help}</p>}
+          <div class="repeat-list" data-repeat-list>
+            <div class="repeat-row child-row">
+              <label class="rsvp-field">
+                <span>{copy.childName}</span>
+                <input type="text" name="child_name" maxlength="120" />
+              </label>
+              <label class="rsvp-field child-age-field">
+                <span>{copy.childAge}</span>
+                <input type="number" name="child_age" min="0" max="17" inputmode="numeric" />
+              </label>
+            </div>
+          </div>
+          <button class="button secondary repeat-add" type="button" data-repeat-add>{copy.addChild}</button>
         </div>
       </div>
-      <button class="button secondary repeat-add" type="button" data-repeat-add>{copy.addChild}</button>
     </fieldset>
 
     <div class="rsvp-field-grid">

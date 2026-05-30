@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Locator, type Page } from '@playwright/test';
 
 declare const process: {
   env: {
@@ -51,6 +51,14 @@ async function loginToAdmin(page: Page) {
   await page.getByLabel('Admin password').fill(adminPassword);
   await page.getByRole('button', { name: 'Log in' }).click();
   await expect(page.getByRole('heading', { name: 'Current RSVPs' })).toBeVisible();
+}
+
+async function expectAlignedTop(left: Locator, right: Locator) {
+  const leftBox = await left.boundingBox();
+  const rightBox = await right.boundingBox();
+  expect(leftBox).not.toBeNull();
+  expect(rightBox).not.toBeNull();
+  expect(Math.abs(leftBox!.y - rightBox!.y)).toBeLessThanOrEqual(2);
 }
 
 test('RSVP submission is stored, superseded by email, exported, and deleted through admin', async ({ page }) => {
@@ -159,6 +167,7 @@ test('RSVP form is multilingual and matches the current field scope', async ({ p
   await expect(page.getByText('Conferma di presenza').first()).toBeVisible();
   await expect(page.getByLabel('Il vostro nome')).toBeVisible();
   await expect(page.getByLabel('Esigenze alimentari')).toContainText('Altro (specificare)');
+  await expect(page.locator('.notice-band')).toHaveCount(0);
   await expect(page.getByText('Origine del viaggio')).toHaveCount(0);
   await expect(page.getByText('alloggio')).toHaveCount(0);
 
@@ -166,6 +175,7 @@ test('RSVP form is multilingual and matches the current field scope', async ({ p
   await expect(page.getByText('Rückmeldung').first()).toBeVisible();
   await expect(page.getByLabel('Euer Name')).toBeVisible();
   await expect(page.getByLabel('Ernährungsanforderungen')).toContainText('Andere (bitte angeben)');
+  await expect(page.locator('.notice-band')).toHaveCount(0);
   await expect(page.getByText('Anreiseort')).toHaveCount(0);
   await expect(page.getByText('Unterkunftsstatus')).toHaveCount(0);
 });
@@ -182,26 +192,33 @@ test('RSVP page has no horizontal overflow on a narrow viewport', async ({ page 
   expect(overflow.scrollWidth).toBeLessThanOrEqual(overflow.viewport + 1);
 });
 
-test('RSVP dietary and allergy controls stay aligned', async ({ page }) => {
+test('RSVP form boxes stay aligned across languages', async ({ page }) => {
+  await page.setViewportSize({ width: 1200, height: 900 });
   await signIntoSite(page, '/en/rsvp/');
 
-  const dietary = page.locator('select[name="dietary_requirements"]');
-  const allergies = page.locator('textarea[name="allergies"]');
-  const initialDietaryBox = await dietary.boundingBox();
-  const initialAllergiesBox = await allergies.boundingBox();
-  expect(initialDietaryBox).not.toBeNull();
-  expect(initialAllergiesBox).not.toBeNull();
-  expect(Math.abs(initialDietaryBox!.y - initialAllergiesBox!.y)).toBeLessThanOrEqual(2);
+  for (const path of ['/en/rsvp/', '/it/rsvp/', '/de/rsvp/']) {
+    await page.goto(path);
 
-  await dietary.selectOption('other');
-  const otherBox = await page.locator('input[name="dietary_requirements_other"]').boundingBox();
-  const updatedDietaryBox = await dietary.boundingBox();
-  const updatedAllergiesBox = await allergies.boundingBox();
-  expect(otherBox).not.toBeNull();
-  expect(updatedDietaryBox).not.toBeNull();
-  expect(updatedAllergiesBox).not.toBeNull();
-  expect(Math.abs(updatedDietaryBox!.y - updatedAllergiesBox!.y)).toBeLessThanOrEqual(2);
-  expect(otherBox!.y).toBeGreaterThan(updatedDietaryBox!.y);
+    const attendingYes = page.locator('.rsvp-radio').nth(0);
+    const attendingNo = page.locator('.rsvp-radio').nth(1);
+    await expectAlignedTop(attendingYes, attendingNo);
+
+    const adultGroup = page.locator('[data-repeat-group="adult"]');
+    const childGroup = page.locator('[data-repeat-group="child"]');
+    await expectAlignedTop(adultGroup, childGroup);
+
+    const dietary = page.locator('select[name="dietary_requirements"]');
+    const allergies = page.locator('textarea[name="allergies"]');
+    await expectAlignedTop(dietary, allergies);
+
+    await dietary.selectOption('other');
+    const otherBox = await page.locator('input[name="dietary_requirements_other"]').boundingBox();
+    const updatedDietaryBox = await dietary.boundingBox();
+    expect(otherBox).not.toBeNull();
+    expect(updatedDietaryBox).not.toBeNull();
+    await expectAlignedTop(dietary, allergies);
+    expect(otherBox!.y).toBeGreaterThan(updatedDietaryBox!.y);
+  }
 });
 
 test('RSVP page shows the privacy copy only inside the form', async ({ page }) => {
@@ -210,5 +227,9 @@ test('RSVP page shows the privacy copy only inside the form', async ({ page }) =
   await expect(page.locator('.notice-band')).toHaveCount(0);
   await expect(page.getByText('We will use your RSVP information only to plan the wedding')).toHaveCount(1);
   await expect(page.getByRole('heading', { name: 'What the RSVP asks' })).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: 'Updates' })).toHaveCount(0);
   await expect(page.getByText('Guest names and email')).toHaveCount(0);
+  await expect(page.locator('.rsvp-form').getByText('RSVP opening date: TBD')).toBeVisible();
+  await expect(page.locator('.rsvp-form').getByText('RSVP deadline: TBD')).toBeVisible();
+  await expect(page.locator('.rsvp-form').getByText('Your latest submission replaces earlier responses')).toBeVisible();
 });

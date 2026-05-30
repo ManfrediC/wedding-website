@@ -570,13 +570,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       kicker: 'Response details',
       intro:
         'Please use the form below to let us know whether you will be able to celebrate with us in Zurich.',
-      sections: [
-        {
-          title: 'Updates',
-          body: 'If you need to change your answer later, please submit the form again with the same email address.',
-          items: ['RSVP opening date: TBD', 'RSVP deadline: TBD', 'Your latest submission will replace any earlier response from the same email address'],
-        },
-      ],
+      sections: [],
     },
     gifts: {
       title: 'Gifts',
@@ -932,13 +926,8 @@ applyLocalizedCopy('it', {
     kicker: 'Conferma di presenza',
     intro:
       'Usate il modulo qui sotto per farci sapere se potrete festeggiare con noi a Zurigo.',
-    sections: [
-      {
-        title: 'Aggiornamenti',
-        body: 'Se dovete modificare la vostra risposta, inviate di nuovo il modulo con lo stesso indirizzo email.',
-        items: ['Apertura RSVP: TBD', 'Scadenza RSVP: TBD', 'La risposta più recente sostituirà eventuali risposte precedenti dallo stesso indirizzo email'],
-      },
-    ],
+    notice: undefined,
+    sections: [],
   },
   gifts: {
     title: 'Regali',
@@ -1261,13 +1250,8 @@ applyLocalizedCopy('de', {
     kicker: 'Rückmeldung',
     intro:
       'Bitte nutzt das Formular unten, um uns mitzuteilen, ob ihr mit uns in Zürich feiern könnt.',
-    sections: [
-      {
-        title: 'Änderungen',
-        body: 'Wenn ihr eure Antwort später ändern müsst, sendet das Formular bitte erneut mit derselben E-Mail-Adresse ab.',
-        items: ['Öffnung der RSVP: TBD', 'RSVP-Frist: TBD', 'Die neueste Antwort ersetzt frühere Antworten von derselben E-Mail-Adresse'],
-      },
-    ],
+    notice: undefined,
+    sections: [],
   },
   gifts: {
     title: 'Geschenke',
