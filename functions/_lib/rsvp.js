@@ -288,7 +288,7 @@ export function validateRsvpInput(raw) {
   const emailNormalized = email.toLowerCase();
   const adultNames = uniqueCleanList(valuesFor(raw.adult_name ?? raw.adultNames), TEXT_LIMITS.name);
   const children = cleanChildren(valuesFor(raw.child_name ?? raw.childNames), valuesFor(raw.child_age ?? raw.childAges), errors);
-  const dietaryRequirements = cleanText(raw.dietary_requirements ?? raw.dietaryRequirements, TEXT_LIMITS.long);
+  const dietaryRequirements = cleanDietaryRequirements(raw, errors);
   const allergies = cleanText(raw.allergies, TEXT_LIMITS.long);
   const accessibilityMobility = cleanText(raw.accessibility_mobility ?? raw.accessibilityMobility, TEXT_LIMITS.long);
   const notes = cleanText(raw.notes, TEXT_LIMITS.long);
@@ -513,6 +513,29 @@ function cleanChildren(names, ages, errors) {
   }
 
   return children;
+}
+
+function cleanDietaryRequirements(raw, errors) {
+  const selection = cleanText(raw.dietary_requirements ?? raw.dietaryRequirements, TEXT_LIMITS.long);
+  const other = cleanText(raw.dietary_requirements_other ?? raw.dietaryRequirementsOther, TEXT_LIMITS.long);
+
+  if (!selection) {
+    return '';
+  }
+
+  if (selection === 'None' || selection === 'Vegetarian' || selection === 'Vegan') {
+    return selection;
+  }
+
+  if (selection === 'other') {
+    if (!other) {
+      errors.dietary_requirements = 'required';
+    }
+
+    return other;
+  }
+
+  return selection;
 }
 
 function cleanEmail(value) {

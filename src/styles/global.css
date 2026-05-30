@@ -1111,6 +1111,14 @@ button.danger {
   min-width: 0;
 }
 
+.rsvp-field[hidden] {
+  display: none;
+}
+
+.rsvp-field[data-dietary-other-field]:not([hidden]) + .rsvp-field {
+  grid-column: 1 / -1;
+}
+
 .rsvp-field span,
 .rsvp-fieldset > legend {
   font-size: 0.78rem;

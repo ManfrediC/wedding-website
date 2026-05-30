@@ -35,7 +35,10 @@ async function submitAttendingRsvp(page: Page, email: string) {
   await page.locator('input[name="adult_name"]').nth(1).fill('Marco Guest');
   await page.locator('input[name="child_name"]').first().fill('Sofia Guest');
   await page.locator('input[name="child_age"]').first().fill('8');
-  await page.getByLabel('Dietary requirements').fill('Vegetarian option');
+  await expect(page.getByLabel('Please specify')).toBeHidden();
+  await page.getByLabel('Dietary requirements').selectOption('other');
+  await expect(page.getByLabel('Please specify')).toBeVisible();
+  await page.getByLabel('Please specify').fill('Kosher meal');
   await page.getByLabel('Allergies').fill('=Peanuts');
   await page.getByLabel('Accessibility or mobility considerations').fill('Step-free route preferred');
   await page.locator('textarea[name="notes"]').fill('We may leave before the very end.');
@@ -71,7 +74,7 @@ test('RSVP submission is stored, superseded by email, exported, and deleted thro
     'manfrediandgabriela@gmail.com',
     email,
   ]);
-  expect(notificationsBefore.messages[1].text).toContain('Vegetarian option');
+  expect(notificationsBefore.messages[1].text).toContain('Kosher meal');
 
   const csvBefore = await page.evaluate(async () => {
     const response = await fetch('/api/admin/rsvp.csv');
@@ -80,7 +83,7 @@ test('RSVP submission is stored, superseded by email, exported, and deleted thro
   expect(csvBefore).toContain('Lucia Guest');
   expect(csvBefore).toContain('Marco Guest');
   expect(csvBefore).toContain('Sofia Guest (8)');
-  expect(csvBefore).toContain('Vegetarian option');
+  expect(csvBefore).toContain('Kosher meal');
   expect(csvBefore).toContain("'=Peanuts");
 
   await page.goto('/en/rsvp/');
@@ -155,12 +158,14 @@ test('RSVP form is multilingual and matches the current field scope', async ({ p
   await signIntoSite(page, '/it/rsvp/');
   await expect(page.getByText('Conferma di presenza').first()).toBeVisible();
   await expect(page.getByLabel('Il vostro nome')).toBeVisible();
+  await expect(page.getByLabel('Esigenze alimentari')).toContainText('Altro (specificare)');
   await expect(page.getByText('Origine del viaggio')).toHaveCount(0);
   await expect(page.getByText('alloggio')).toHaveCount(0);
 
   await page.goto('/de/rsvp/');
   await expect(page.getByText('Rückmeldung').first()).toBeVisible();
   await expect(page.getByLabel('Euer Name')).toBeVisible();
+  await expect(page.getByLabel('Ernährungsanforderungen')).toContainText('Andere (bitte angeben)');
   await expect(page.getByText('Anreiseort')).toHaveCount(0);
   await expect(page.getByText('Unterkunftsstatus')).toHaveCount(0);
 });

@@ -83,8 +83,17 @@ const copy = rsvpCopy[lang];
     <div class="rsvp-field-grid">
       <label class="rsvp-field">
         <span>{copy.dietaryRequirements.label}</span>
-        <textarea name="dietary_requirements" rows="4" maxlength="1200"></textarea>
+        <select name="dietary_requirements" required data-dietary-select aria-controls="dietary-requirements-other">
+          <option value="None">{copy.dietaryRequirements.options.none}</option>
+          <option value="Vegetarian">{copy.dietaryRequirements.options.vegetarian}</option>
+          <option value="Vegan">{copy.dietaryRequirements.options.vegan}</option>
+          <option value="other">{copy.dietaryRequirements.options.other}</option>
+        </select>
         {copy.dietaryRequirements.help && <small>{copy.dietaryRequirements.help}</small>}
+      </label>
+      <label class="rsvp-field" id="dietary-requirements-other" data-dietary-other-field hidden>
+        <span>{copy.dietaryRequirements.otherLabel}</span>
+        <input type="text" name="dietary_requirements_other" maxlength="1200" data-dietary-other />
       </label>
       <label class="rsvp-field">
         <span>{copy.allergies.label}</span>
@@ -117,6 +126,9 @@ const copy = rsvpCopy[lang];
     const status = form.querySelector('[data-rsvp-status]');
     const submitButton = form.querySelector('button[type="submit"]');
     const attendingInputs = form.querySelectorAll('input[name="attending"]');
+    const dietarySelect = form.querySelector('[data-dietary-select]');
+    const dietaryOtherField = form.querySelector('[data-dietary-other-field]');
+    const dietaryOtherInput = form.querySelector('[data-dietary-other]');
     const adultInputs = () => form.querySelectorAll('input[name="adult_name"]');
 
     const setStatus = (message, success = false) => {
@@ -142,6 +154,18 @@ const copy = rsvpCopy[lang];
       adultInputs().forEach((input, index) => {
         input.required = isAttending && index === 0;
       });
+    };
+
+    const syncDietaryFields = () => {
+      const showOther = dietarySelect instanceof HTMLSelectElement && dietarySelect.value === 'other';
+      dietaryOtherField?.toggleAttribute('hidden', !showOther);
+
+      if (dietaryOtherInput instanceof HTMLInputElement) {
+        dietaryOtherInput.required = showOther;
+        if (!showOther) {
+          dietaryOtherInput.value = '';
+        }
+      }
     };
 
     form.querySelectorAll('[data-repeat-group]').forEach((group) => {
@@ -175,7 +199,9 @@ const copy = rsvpCopy[lang];
     attendingInputs.forEach((input) => {
       input.addEventListener('change', syncAttendanceFields);
     });
+    dietarySelect?.addEventListener('change', syncDietaryFields);
     syncAttendanceFields();
+    syncDietaryFields();
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -203,6 +229,7 @@ const copy = rsvpCopy[lang];
 
         form.reset();
         syncAttendanceFields();
+        syncDietaryFields();
         setStatus(messages.success, true);
       } catch {
         setStatus(messages.error);

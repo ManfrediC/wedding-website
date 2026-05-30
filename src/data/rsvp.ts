@@ -5,6 +5,16 @@ type FieldCopy = {
   help?: string;
 };
 
+type DietaryRequirementsCopy = FieldCopy & {
+  options: {
+    none: string;
+    vegetarian: string;
+    vegan: string;
+    other: string;
+  };
+  otherLabel: string;
+};
+
 type RsvpCopy = {
   formTitle: string;
   formIntro: string;
@@ -22,7 +32,7 @@ type RsvpCopy = {
   childName: string;
   childAge: string;
   addChild: string;
-  dietaryRequirements: FieldCopy;
+  dietaryRequirements: DietaryRequirementsCopy;
   allergies: FieldCopy;
   accessibilityMobility: FieldCopy;
   notes: FieldCopy;
@@ -51,7 +61,17 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
     childName: 'Child name',
     childAge: 'Age',
     addChild: 'Add child',
-    dietaryRequirements: { label: 'Dietary requirements', help: 'For children’s meal needs, use the notes box.' },
+    dietaryRequirements: {
+      label: 'Dietary requirements',
+      help: 'For children’s meal needs, use the notes box.',
+      options: {
+        none: 'None',
+        vegetarian: 'Vegetarian',
+        vegan: 'Vegan',
+        other: 'Other (specify)',
+      },
+      otherLabel: 'Please specify',
+    },
     allergies: { label: 'Allergies' },
     accessibilityMobility: { label: 'Accessibility or mobility considerations' },
     notes: { label: 'Notes', help: 'If you can only attend part of the day, please mention it here.' },
@@ -78,7 +98,17 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
     childName: 'Nome bambino',
     childAge: 'Età',
     addChild: 'Aggiungi bambino',
-    dietaryRequirements: { label: 'Esigenze alimentari', help: 'Per esigenze dei bambini, usate le note.' },
+    dietaryRequirements: {
+      label: 'Esigenze alimentari',
+      help: 'Per esigenze dei bambini, usate le note.',
+      options: {
+        none: 'Nessuna',
+        vegetarian: 'Vegetariano/a',
+        vegan: 'Vegano/a',
+        other: 'Altro (specificare)',
+      },
+      otherLabel: 'Specificare',
+    },
     allergies: { label: 'Allergie' },
     accessibilityMobility: { label: 'Considerazioni di accessibilità o mobilità' },
     notes: { label: 'Note', help: 'Se potete partecipare solo a una parte della giornata, indicatelo qui.' },
@@ -105,7 +135,17 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
     childName: 'Name des Kindes',
     childAge: 'Alter',
     addChild: 'Kind hinzufügen',
-    dietaryRequirements: { label: 'Ernährungsanforderungen', help: 'Essenswünsche für Kinder bitte in den Notizen angeben.' },
+    dietaryRequirements: {
+      label: 'Ernährungsanforderungen',
+      help: 'Essenswünsche für Kinder bitte in den Notizen angeben.',
+      options: {
+        none: 'Keine',
+        vegetarian: 'Vegetarisch',
+        vegan: 'Vegan',
+        other: 'Andere (bitte angeben)',
+      },
+      otherLabel: 'Bitte angeben',
+    },
     allergies: { label: 'Allergien' },
     accessibilityMobility: { label: 'Barrierefreiheit oder Mobilität' },
     notes: { label: 'Notizen', help: 'Wenn ihr nur an einem Teil des Tages teilnehmen könnt, schreibt es bitte hier.' },
