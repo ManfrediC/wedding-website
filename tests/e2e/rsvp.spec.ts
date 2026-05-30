@@ -209,4 +209,6 @@ test('RSVP page shows the privacy copy only inside the form', async ({ page }) =
 
   await expect(page.locator('.notice-band')).toHaveCount(0);
   await expect(page.getByText('We will use your RSVP information only to plan the wedding')).toHaveCount(1);
+  await expect(page.getByRole('heading', { name: 'What the RSVP asks' })).toHaveCount(0);
+  await expect(page.getByText('Guest names and email')).toHaveCount(0);
 });

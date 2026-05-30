@@ -572,11 +572,6 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         'Please use the form below to let us know whether you will be able to celebrate with us in Zurich.',
       sections: [
         {
-          title: 'What the RSVP asks',
-          body: 'The form collects only the practical details needed for wedding planning.',
-          items: ['Guest names and email', 'Adults and children attending', 'Children’s ages', 'Dietary requirements and allergies', 'Accessibility or mobility considerations', 'Optional notes about partial attendance or child meal needs'],
-        },
-        {
           title: 'Updates',
           body: 'If you need to change your answer later, please submit the form again with the same email address.',
           items: ['RSVP opening date: TBD', 'RSVP deadline: TBD', 'Your latest submission will replace any earlier response from the same email address'],
@@ -939,11 +934,6 @@ applyLocalizedCopy('it', {
       'Usate il modulo qui sotto per farci sapere se potrete festeggiare con noi a Zurigo.',
     sections: [
       {
-        title: 'Cosa chiede la RSVP',
-        body: 'Il modulo raccoglie solo i dettagli pratici necessari per organizzare il matrimonio.',
-        items: ['Nomi ed email degli ospiti', 'Adulti e bambini presenti', 'Età dei bambini', 'Esigenze alimentari e allergie', 'Esigenze di accessibilità o mobilità', 'Eventuali note sulla partecipazione parziale o sui pasti dei bambini'],
-      },
-      {
         title: 'Aggiornamenti',
         body: 'Se dovete modificare la vostra risposta, inviate di nuovo il modulo con lo stesso indirizzo email.',
         items: ['Apertura RSVP: TBD', 'Scadenza RSVP: TBD', 'La risposta più recente sostituirà eventuali risposte precedenti dallo stesso indirizzo email'],
@@ -1272,11 +1262,6 @@ applyLocalizedCopy('de', {
     intro:
       'Bitte nutzt das Formular unten, um uns mitzuteilen, ob ihr mit uns in Zürich feiern könnt.',
     sections: [
-      {
-        title: 'Was die RSVP abfragt',
-        body: 'Das Formular erfasst nur die praktischen Angaben, die für die Hochzeitsplanung nötig sind.',
-        items: ['Namen und E-Mail-Adressen der Gäste', 'Teilnehmende Erwachsene und Kinder', 'Alter der Kinder', 'Ernährungsanforderungen und Allergien', 'Hinweise zu Barrierefreiheit oder Mobilität', 'Optionale Notizen zu teilweiser Teilnahme oder Kinderessen'],
-      },
       {
         title: 'Änderungen',
         body: 'Wenn ihr eure Antwort später ändern müsst, sendet das Formular bitte erneut mit derselben E-Mail-Adresse ab.',
