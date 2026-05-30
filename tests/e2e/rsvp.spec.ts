@@ -181,3 +181,10 @@ test('RSVP page has no horizontal overflow on a narrow viewport', async ({ page 
 
   expect(overflow.scrollWidth).toBeLessThanOrEqual(overflow.viewport + 1);
 });
+
+test('RSVP page shows the privacy copy only inside the form', async ({ page }) => {
+  await signIntoSite(page, '/en/rsvp/');
+
+  await expect(page.locator('.notice-band')).toHaveCount(0);
+  await expect(page.getByText('We will use your RSVP information only to plan the wedding')).toHaveCount(1);
+});

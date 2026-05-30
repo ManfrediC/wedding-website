@@ -570,8 +570,6 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       kicker: 'Response details',
       intro:
         'Please use the form below to let us know whether you will be able to celebrate with us in Zurich.',
-      notice:
-        'We will use RSVP information only to plan the wedding, including attendance, seating, dietary requirements, accessibility arrangements, and guest support.',
       sections: [
         {
           title: 'What the RSVP asks',
@@ -939,8 +937,6 @@ applyLocalizedCopy('it', {
     kicker: 'Conferma di presenza',
     intro:
       'Usate il modulo qui sotto per farci sapere se potrete festeggiare con noi a Zurigo.',
-    notice:
-      'Useremo le informazioni della RSVP solo per organizzare il matrimonio, inclusi presenza, posti a sedere, esigenze alimentari, accessibilità e supporto agli ospiti.',
     sections: [
       {
         title: 'Cosa chiede la RSVP',
@@ -1275,8 +1271,6 @@ applyLocalizedCopy('de', {
     kicker: 'Rückmeldung',
     intro:
       'Bitte nutzt das Formular unten, um uns mitzuteilen, ob ihr mit uns in Zürich feiern könnt.',
-    notice:
-      'Wir verwenden RSVP-Informationen nur für die Hochzeitsplanung, einschliesslich Teilnahme, Sitzordnung, Ernährung, Barrierefreiheit und Gästebetreuung.',
     sections: [
       {
         title: 'Was die RSVP abfragt',
