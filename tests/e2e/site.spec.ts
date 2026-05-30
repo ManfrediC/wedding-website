@@ -227,6 +227,10 @@ test('English pages include requested travel and contact details', async ({ page
     'https://www.bnb-caffetino-vino.ch/',
   );
   await expect(page.getByRole('heading', { name: 'Richterswil' })).toBeVisible();
+  const richterswilCard = page.locator('.info-card').filter({ has: page.getByRole('heading', { name: 'Richterswil' }) });
+  await expect(richterswilCard.locator('li').first()).toContainText(
+    'From Zürich HB, the S2 is usually the best direct train to Richterswil',
+  );
   await expect(page.getByText('the S2 is usually the best direct train to Richterswil')).toBeVisible();
   await expect(page.getByText('the S8 is a slower direct alternative')).toBeVisible();
   await expect(page.locator('img[src="/images/places/richterswil-lake.jpg"]')).toHaveAttribute(

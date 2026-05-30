@@ -375,7 +375,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Richterswil',
           body: "Richterswil is farther down Lake Zurich, but it can be a quiet lakeside base for guests who would like to stay near Manfredi's family or who prefer a smaller B&B.",
-          items: ['B & B Caffètino-Vino Richterswil has five rooms in the historic village centre, close to the lake and station.', 'From Zürich HB, the S2 is usually the best direct train to Richterswil; the S8 is a slower direct alternative. Check SBB Mobile for the exact connection before travelling.', 'It is a B&B rather than a hotel; the house has no lift, and rooms are on the 2nd and 3rd floors.', 'Check the late-evening return journey from Küsnacht before booking, especially after the party.'],
+          items: ['From Zürich HB, the S2 is usually the best direct train to Richterswil; the S8 is a slower direct alternative. Check SBB Mobile for the exact connection before travelling.', 'B & B Caffètino-Vino Richterswil has five rooms in the historic village centre, close to the lake and station.', 'It is a B&B rather than a hotel; the house has no lift, and rooms are on the 2nd and 3rd floors.', 'Check the late-evening return journey from Küsnacht before booking, especially after the party.'],
           links: [
             { label: 'B & B Caffètino-Vino Richterswil', href: 'https://www.bnb-caffetino-vino.ch/' },
           ],
@@ -792,7 +792,7 @@ applyLocalizedCopy('it', {
         title: 'Richterswil',
         body:
           'Richterswil si trova più a sud lungo il Lago di Zurigo, ma può essere una base tranquilla per chi desidera stare vicino alla famiglia di Manfredi o preferisce un piccolo B&B.',
-        items: ['B & B Caffètino-Vino Richterswil ha cinque camere nel centro storico del paese, vicino al lago e alla stazione.', 'Da Zürich HB, l’S2 è di solito il miglior treno diretto per Richterswil; l’S8 è un’alternativa diretta più lenta. Controllate il collegamento esatto in SBB Mobile prima di partire.', 'È un B&B, non un hotel; la casa non ha ascensore e le camere si trovano al 2° e 3° piano.', 'Controllate il rientro serale da Küsnacht prima di prenotare, soprattutto dopo la festa.'],
+        items: ['Da Zürich HB, l’S2 è di solito il miglior treno diretto per Richterswil; l’S8 è un’alternativa diretta più lenta. Controllate il collegamento esatto in SBB Mobile prima di partire.', 'B & B Caffètino-Vino Richterswil ha cinque camere nel centro storico del paese, vicino al lago e alla stazione.', 'È un B&B, non un hotel; la casa non ha ascensore e le camere si trovano al 2° e 3° piano.', 'Controllate il rientro serale da Küsnacht prima di prenotare, soprattutto dopo la festa.'],
         imageAlt: 'Richterswil vista dal Lago di Zurigo',
       },
       {
@@ -1121,7 +1121,7 @@ applyLocalizedCopy('de', {
         title: 'Richterswil',
         body:
           'Richterswil liegt weiter südlich am Zürichsee, kann aber eine ruhige Basis für Gäste sein, die nahe bei Manfredis Familie wohnen oder ein kleineres B&B bevorzugen.',
-        items: ['B & B Caffètino-Vino Richterswil hat fünf Zimmer im historischen Dorfkern, nahe beim See und Bahnhof.', 'Ab Zürich HB ist die S2 meist der beste direkte Zug nach Richterswil; die S8 ist eine langsamere direkte Alternative. Prüft die genaue Verbindung vor der Fahrt in SBB Mobile.', 'Es ist ein B&B und kein Hotel; das Haus hat keinen Lift, und die Zimmer liegen im 2. und 3. Obergeschoss.', 'Prüft vor der Buchung die späte Rückfahrt ab Küsnacht, besonders nach der Feier.'],
+        items: ['Ab Zürich HB ist die S2 meist der beste direkte Zug nach Richterswil; die S8 ist eine langsamere direkte Alternative. Prüft die genaue Verbindung vor der Fahrt in SBB Mobile.', 'B & B Caffètino-Vino Richterswil hat fünf Zimmer im historischen Dorfkern, nahe beim See und Bahnhof.', 'Es ist ein B&B und kein Hotel; das Haus hat keinen Lift, und die Zimmer liegen im 2. und 3. Obergeschoss.', 'Prüft vor der Buchung die späte Rückfahrt ab Küsnacht, besonders nach der Feier.'],
         imageAlt: 'Richterswil vom Zürichsee aus gesehen',
       },
       {
