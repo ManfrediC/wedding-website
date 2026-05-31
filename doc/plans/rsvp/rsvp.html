@@ -1,0 +1,77 @@
+<section class="rsvp-panel">
+  <p class="eyebrow">Please respond</p>
+
+  <h2>Let us know whether you will be able to join us in Zurich.</h2>
+
+  <p class="intro">
+    Your RSVP helps us plan attendance, seating, dietary requirements,
+    accessibility arrangements, and guest support.
+  </p>
+
+  <form class="rsvp-form">
+    <fieldset class="attendance-choice">
+      <legend>Will you be able to join us?</legend>
+
+      <label class="choice-card">
+        <input type="radio" name="attending" value="yes" checked>
+        <span>
+          <strong>Yes, I/we will attend</strong>
+        </span>
+      </label>
+
+      <label class="choice-card">
+        <input type="radio" name="attending" value="no">
+        <span>
+          <strong>No, sadly I/we cannot attend</strong>
+        </span>
+      </label>
+    </fieldset>
+
+    <div class="form-grid two">
+      <label>
+        Your name
+        <input type="text" name="name">
+      </label>
+
+      <label>
+        Email
+        <input type="email" name="email">
+      </label>
+    </div>
+
+    <div class="form-section">
+      <div class="section-heading">
+        <h3>Guests attending</h3>
+        <p>Add each adult and child who will attend.</p>
+      </div>
+
+      <!-- adult / child inputs here -->
+    </div>
+
+    <div class="form-grid two">
+      <label>
+        Dietary requirements
+        <textarea name="dietary"></textarea>
+        <small>For children’s meal needs, use the notes box.</small>
+      </label>
+
+      <label>
+        Allergies
+        <textarea name="allergies"></textarea>
+      </label>
+    </div>
+
+    <label>
+      Accessibility or mobility considerations
+      <textarea name="accessibility"></textarea>
+    </label>
+
+    <label>
+      Notes
+      <textarea name="notes"></textarea>
+      <small>If you can only attend part of the day, please mention it here.</small>
+    </label>
+
+    <button type="submit">Send RSVP</button>
+  </form>
+</section>
