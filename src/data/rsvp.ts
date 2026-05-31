@@ -24,6 +24,9 @@ type RsvpCopy = {
   attendingNo: string;
   primaryGuestName: FieldCopy;
   email: FieldCopy;
+  phoneCountryCode: FieldCopy;
+  phoneNumber: FieldCopy;
+  address: FieldCopy;
   guests: FieldCopy;
   adults: FieldCopy;
   adultName: string;
@@ -45,7 +48,7 @@ type RsvpCopy = {
 export const rsvpCopy: Record<Lang, RsvpCopy> = {
   en: {
     privacy:
-      'We will use your RSVP information only to plan the wedding, including attendance, seating, dietary requirements, accessibility arrangements, and guest support.',
+      'We will use your RSVP information only to plan the wedding, including attendance, seating, dietary requirements, accessibility arrangements, guest support, and contacting you if needed.',
     updatesLabel: 'RSVP updates',
     updates: [
       'RSVP opening date: TBD',
@@ -57,6 +60,9 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
     attendingNo: 'No, sadly I/we cannot attend',
     primaryGuestName: { label: 'Your name' },
     email: { label: 'Email' },
+    phoneCountryCode: { label: 'Country code' },
+    phoneNumber: { label: 'Phone number', help: 'Choose a country code or include it in the number.' },
+    address: { label: 'Address', help: 'Optional.' },
     guests: { label: 'Guests attending', help: 'Add each adult and child who will attend, including individual dietary requirements and allergies.' },
     adults: { label: 'Adults attending', help: 'Add one row per adult.' },
     adultName: 'Adult name',
@@ -86,7 +92,7 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
   },
   it: {
     privacy:
-      'Useremo le informazioni della RSVP solo per organizzare il matrimonio, inclusi presenza, posti a sedere, esigenze alimentari, accessibilità e supporto agli ospiti.',
+      'Useremo le informazioni della RSVP solo per organizzare il matrimonio, inclusi presenza, posti a sedere, esigenze alimentari, accessibilità, supporto agli ospiti e per contattarvi se necessario.',
     updatesLabel: 'Aggiornamenti RSVP',
     updates: [
       'Apertura RSVP: TBD',
@@ -98,6 +104,9 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
     attendingNo: 'No, purtroppo non potrò/potremo partecipare',
     primaryGuestName: { label: 'Il vostro nome' },
     email: { label: 'Email' },
+    phoneCountryCode: { label: 'Prefisso internazionale' },
+    phoneNumber: { label: 'Numero di telefono', help: 'Scegliete un prefisso o includetelo nel numero.' },
+    address: { label: 'Indirizzo', help: 'Facoltativo.' },
     guests: { label: 'Ospiti presenti', help: 'Aggiungete ogni adulto e bambino che parteciperà, incluse esigenze alimentari e allergie individuali.' },
     adults: { label: 'Adulti presenti', help: 'Aggiungete una riga per ogni adulto.' },
     adultName: 'Nome adulto',
@@ -127,7 +136,7 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
   },
   de: {
     privacy:
-      'Wir verwenden eure RSVP-Angaben nur für die Hochzeitsplanung, einschliesslich Teilnahme, Sitzordnung, Ernährung, Barrierefreiheit und Gästebetreuung.',
+      'Wir verwenden eure RSVP-Angaben nur für die Hochzeitsplanung, einschliesslich Teilnahme, Sitzordnung, Ernährung, Barrierefreiheit, Gästebetreuung und um euch bei Bedarf zu kontaktieren.',
     updatesLabel: 'RSVP-Hinweise',
     updates: [
       'Öffnung der RSVP: TBD',
@@ -139,6 +148,9 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
     attendingNo: 'Nein, leider kann ich/können wir nicht teilnehmen',
     primaryGuestName: { label: 'Euer Name' },
     email: { label: 'E-Mail' },
+    phoneCountryCode: { label: 'Ländervorwahl' },
+    phoneNumber: { label: 'Telefonnummer', help: 'Wählt eine Vorwahl aus oder gebt sie direkt in der Nummer an.' },
+    address: { label: 'Adresse', help: 'Optional.' },
     guests: { label: 'Teilnehmende Gäste', help: 'Fügt jede erwachsene Person und jedes Kind hinzu, mit individuellen Essenswünschen und Allergien.' },
     adults: { label: 'Teilnehmende Erwachsene', help: 'Fügt eine Zeile pro erwachsene Person hinzu.' },
     adultName: 'Name Erwachsene/r',

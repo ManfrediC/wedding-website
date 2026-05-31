@@ -14,6 +14,17 @@ const dietaryOptions = [
   { value: 'Vegan', label: copy.dietaryRequirements.options.vegan },
   { value: 'other', label: copy.dietaryRequirements.options.other },
 ];
+const phoneCountryOptions = [
+  { value: '', label: 'Code' },
+  { value: '+41', label: 'CH +41' },
+  { value: '+39', label: 'IT +39' },
+  { value: '+44', label: 'UK +44' },
+  { value: '+1', label: 'US/CA +1' },
+  { value: '+49', label: 'DE +49' },
+  { value: '+33', label: 'FR +33' },
+  { value: '+34', label: 'ES +34' },
+  { value: '+43', label: 'AT +43' },
+];
 ---
 
 <section class="content-band narrow rsvp-form-band">
@@ -37,7 +48,7 @@ const dietaryOptions = [
       <legend>{copy.attendingLegend}</legend>
       <div class="rsvp-choice-grid">
         <label class="rsvp-radio">
-          <input type="radio" name="attending" value="yes" required checked />
+          <input type="radio" name="attending" value="yes" required />
           <span>{copy.attendingYes}</span>
         </label>
         <label class="rsvp-radio">
@@ -56,7 +67,29 @@ const dietaryOptions = [
         <span>{copy.email.label}</span>
         <input type="email" name="email" autocomplete="email" required maxlength="254" />
       </label>
+      <div class="rsvp-field rsvp-phone-field">
+        <span>{copy.phoneNumber.label}</span>
+        <div class="rsvp-phone-inputs">
+          <label>
+            <span class="sr-only">{copy.phoneCountryCode.label}</span>
+            <select name="phone_country_code" autocomplete="tel-country-code">
+              {phoneCountryOptions.map((option) => <option value={option.value}>{option.label}</option>)}
+            </select>
+          </label>
+          <label>
+            <span class="sr-only">{copy.phoneNumber.label}</span>
+            <input type="tel" name="phone_number" autocomplete="tel-national" required maxlength="80" />
+          </label>
+        </div>
+        {copy.phoneNumber.help && <small>{copy.phoneNumber.help}</small>}
+      </div>
     </div>
+
+    <label class="rsvp-field">
+      <span>{copy.address.label}</span>
+      <textarea name="address" rows="3" autocomplete="street-address" maxlength="1200"></textarea>
+      {copy.address.help && <small>{copy.address.help}</small>}
+    </label>
 
     <fieldset class="rsvp-fieldset rsvp-guests-fieldset">
       <legend>{copy.guests.label}</legend>
@@ -69,7 +102,7 @@ const dietaryOptions = [
             <div class="repeat-row guest-row adult-row">
               <label class="rsvp-field guest-name-field">
                 <span>{copy.adultName}</span>
-                <input type="text" name="adult_name" maxlength="120" required />
+                <input type="text" name="adult_name" maxlength="120" />
               </label>
               <label class="rsvp-field guest-dietary-field">
                 <span>{copy.dietaryRequirements.label}</span>

@@ -37,7 +37,6 @@
           <option value="all">All responses</option>
           <option value="attending">Attending</option>
           <option value="not_attending">Not attending</option>
-          <option value="notification_issue">Notification issue</option>
         </select>
       </label>
     </div>
@@ -52,7 +51,6 @@
             <th scope="col">Adults</th>
             <th scope="col">Children</th>
             <th scope="col">Updated</th>
-            <th scope="col">Notification</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -200,7 +198,6 @@
       ['Not attending', values.notAttendingHouseholds],
       ['Adults', values.adults],
       ['Children', values.children],
-      ['Notification issues', values.notificationIssues],
     ];
 
     summary.replaceChildren(
@@ -234,7 +231,6 @@
       cell(formatAdults(response.adults) || '0'),
       cell(formatChildren(response.children) || '0'),
       cell(new Date(response.updatedAt).toLocaleString()),
-      cell(response.notificationStatus),
       actionCell(response),
     );
     return row;
@@ -246,7 +242,7 @@
     const title = document.createElement('h3');
     title.textContent = response.primaryGuestName;
     const meta = document.createElement('p');
-    meta.textContent = `${attendanceLabel(response.attending)} · ${response.email}`;
+    meta.textContent = `${attendanceLabel(response.attending)} · ${response.email} · ${response.phoneNumber || 'No phone listed'}`;
     const counts = document.createElement('p');
     counts.textContent = `${response.adults.length} adults · ${response.children.length} children`;
     article.append(title, meta, counts, actionWrap(response));
@@ -293,6 +289,8 @@
     const list = document.createElement('dl');
     [
       ['Email', response.email],
+      ['Phone number', response.phoneNumber],
+      ['Address', textOrNone(response.address)],
       ['Attendance', attendanceLabel(response.attending)],
       ['Adults', formatAdults(response.adults, true) || 'None listed'],
       ['Children', formatChildren(response.children, true) || 'None listed'],
@@ -301,7 +299,6 @@
       ['Accessibility or mobility', textOrNone(response.accessibilityMobility)],
       ['Notes', textOrNone(response.notes)],
       ['Revision', String(response.revisionCount)],
-      ['Notification', response.notificationStatus],
     ].forEach(([label, value]) => {
       const term = document.createElement('dt');
       const description = document.createElement('dd');

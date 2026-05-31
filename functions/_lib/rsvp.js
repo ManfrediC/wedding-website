@@ -5,9 +5,11 @@ const RSVP_EXPORT_LIMIT = 500;
 const TEXT_LIMITS = {
   name: 120,
   email: 254,
+  phone: 80,
   short: 180,
   long: 1200,
 };
+const PHONE_COUNTRY_CODES = new Set(['+41', '+39', '+44', '+1', '+49', '+33', '+34', '+43']);
 
 export function createD1RsvpStore(db) {
   if (!db) {
@@ -25,6 +27,8 @@ export function createD1RsvpStore(db) {
             language,
             attending,
             primary_guest_name,
+            phone_number,
+            address,
             adult_count,
             adults_json,
             child_count,
@@ -38,12 +42,14 @@ export function createD1RsvpStore(db) {
             revision_count,
             created_at,
             updated_at
-          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'not_sent', '', 1, ?, ?)
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'not_sent', '', 1, ?, ?)
           ON CONFLICT(email_normalized) DO UPDATE SET
             email = excluded.email,
             language = excluded.language,
             attending = excluded.attending,
             primary_guest_name = excluded.primary_guest_name,
+            phone_number = excluded.phone_number,
+            address = excluded.address,
             adult_count = excluded.adult_count,
             adults_json = excluded.adults_json,
             child_count = excluded.child_count,
@@ -64,6 +70,8 @@ export function createD1RsvpStore(db) {
           response.language,
           response.attending,
           response.primaryGuestName,
+          response.phoneNumber,
+          response.address,
           response.adults.length,
           JSON.stringify(response.adults),
           response.children.length,
@@ -114,8 +122,8 @@ export function createD1RsvpStore(db) {
 
       const cleanedSearch = cleanText(search, TEXT_LIMITS.short);
       if (cleanedSearch) {
-        clauses.push('(primary_guest_name LIKE ? OR email LIKE ?)');
-        values.push(`%${cleanedSearch}%`, `%${cleanedSearch}%`);
+        clauses.push('(primary_guest_name LIKE ? OR email LIKE ? OR phone_number LIKE ? OR address LIKE ?)');
+        values.push(`%${cleanedSearch}%`, `%${cleanedSearch}%`, `%${cleanedSearch}%`, `%${cleanedSearch}%`);
       }
 
       const where = clauses.length ? `WHERE ${clauses.join(' AND ')}` : '';
@@ -286,6 +294,8 @@ export function validateRsvpInput(raw) {
   const primaryGuestName = cleanText(raw.primary_guest_name ?? raw.primaryGuestName, TEXT_LIMITS.name);
   const email = cleanEmail(raw.email);
   const emailNormalized = email.toLowerCase();
+  const phoneNumber = cleanPhoneNumber(raw, errors);
+  const address = cleanText(raw.address, TEXT_LIMITS.long);
   const adults = cleanAdults(raw, errors);
   const children = cleanChildren(raw, errors);
   const legacyDietaryRequirements = cleanDietaryRequirements(raw, errors);
@@ -307,6 +317,12 @@ export function validateRsvpInput(raw) {
 
   if (!email || !isLikelyEmail(email)) {
     errors.email = 'invalid';
+  }
+
+  if (!phoneNumber) {
+    errors.phone_number = 'required';
+  } else if (!isLikelyPhoneNumber(phoneNumber)) {
+    errors.phone_number = 'invalid';
   }
 
   if (adults.length > 20) {
@@ -340,6 +356,8 @@ export function validateRsvpInput(raw) {
       language,
       attending,
       primaryGuestName,
+      phoneNumber,
+      address,
       adults: attendingAdults,
       children: attendingChildren,
       dietaryRequirements: guestDietaryRequirements || legacyDietaryRequirements,
@@ -386,6 +404,8 @@ export function toCsv(responses) {
   const header = [
     'primary_guest_name',
     'email',
+    'phone_number',
+    'address',
     'language',
     'attending',
     'adult_count',
@@ -406,6 +426,8 @@ export function toCsv(responses) {
   const rows = responses.map((response) => [
     response.primaryGuestName,
     response.email,
+    response.phoneNumber,
+    response.address,
     response.language,
     response.attending,
     String(response.adults.length),
@@ -438,6 +460,8 @@ export function mapRsvpRow(row) {
     language: String(row.language),
     attending: String(row.attending),
     primaryGuestName: String(row.primary_guest_name),
+    phoneNumber: String(row.phone_number ?? ''),
+    address: String(row.address ?? ''),
     adults,
     children,
     dietaryRequirements: String(row.dietary_requirements ?? ''),
@@ -631,8 +655,33 @@ function cleanEmail(value) {
   return cleanText(value, TEXT_LIMITS.email).replace(/\s+/g, '');
 }
 
+function cleanPhoneNumber(raw, errors) {
+  const countryCode = cleanText(raw.phone_country_code ?? raw.phoneCountryCode, 8);
+  const number = cleanText(raw.phone_number ?? raw.phoneNumber, TEXT_LIMITS.phone);
+
+  if (!number) {
+    return '';
+  }
+
+  if (!countryCode) {
+    return number;
+  }
+
+  if (!PHONE_COUNTRY_CODES.has(countryCode)) {
+    errors.phone_country_code = 'invalid';
+    return number;
+  }
+
+  return `${countryCode} ${number}`;
+}
+
 function isLikelyEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function isLikelyPhoneNumber(value) {
+  const digits = value.replace(/\D/g, '');
+  return digits.length >= 5 && /^[+\d\s().-]+$/.test(value);
 }
 
 function cleanText(value, limit) {
@@ -788,6 +837,8 @@ function buildAdminNotification(env, response) {
     '',
     `Guest: ${response.primaryGuestName}`,
     `Email: ${response.email}`,
+    `Phone: ${response.phoneNumber}`,
+    `Address: ${response.address || 'None listed'}`,
     `Attendance: ${response.attending === 'yes' ? 'Attending' : 'Not attending'}`,
     `Adults: ${response.adults.length}`,
     `Children: ${response.children.length}`,
@@ -812,6 +863,8 @@ function buildGuestConfirmation(env, response) {
   const children = formatChildDetails(response.children) || copy.noneListed;
   const details = [
     `${copy.attendance}: ${attendance}`,
+    `${copy.phone}: ${response.phoneNumber}`,
+    `${copy.address}: ${response.address || copy.noneListed}`,
     `${copy.adults}: ${adults}`,
     `${copy.children}: ${children}`,
     `${copy.dietary}: ${response.dietaryRequirements || copy.noneListed}`,
@@ -845,6 +898,8 @@ const confirmationCopy = {
     greeting: (name) => `Dear ${name},`,
     received: 'Thank you. We have received your RSVP with the details below.',
     attendance: 'Attendance',
+    phone: 'Phone number',
+    address: 'Address',
     attending: 'Attending',
     notAttending: 'Not attending',
     adults: 'Adults',
@@ -862,6 +917,8 @@ const confirmationCopy = {
     greeting: (name) => `Gentile ${name},`,
     received: 'Grazie. Abbiamo ricevuto la vostra RSVP con i dettagli qui sotto.',
     attendance: 'Partecipazione',
+    phone: 'Numero di telefono',
+    address: 'Indirizzo',
     attending: 'Presente',
     notAttending: 'Non presente',
     adults: 'Adulti',
@@ -879,6 +936,8 @@ const confirmationCopy = {
     greeting: (name) => `Liebe/r ${name},`,
     received: 'Vielen Dank. Wir haben eure RSVP mit den folgenden Angaben erhalten.',
     attendance: 'Teilnahme',
+    phone: 'Telefonnummer',
+    address: 'Adresse',
     attending: 'Teilnahme',
     notAttending: 'Keine Teilnahme',
     adults: 'Erwachsene',

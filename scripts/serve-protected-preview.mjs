@@ -350,6 +350,8 @@ async function createPreviewRsvpStore(filePath) {
         language: response.language,
         attending: response.attending,
         primaryGuestName: response.primaryGuestName,
+        phoneNumber: response.phoneNumber,
+        address: response.address,
         adults: response.adults,
         children: response.children,
         dietaryRequirements: response.dietaryRequirements,
@@ -412,7 +414,7 @@ async function createPreviewRsvpStore(filePath) {
             return true;
           }
 
-          return `${row.primaryGuestName} ${row.email}`.toLowerCase().includes(search);
+          return `${row.primaryGuestName} ${row.email} ${row.phoneNumber ?? ''} ${row.address ?? ''}`.toLowerCase().includes(search);
         })
         .sort((left, right) => right.updatedAt.localeCompare(left.updatedAt))
         .slice(0, limit);

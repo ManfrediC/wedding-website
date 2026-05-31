@@ -373,7 +373,7 @@ test('Italian and German pages have localised core content', async ({ page }) =>
   await page.goto('/it/rsvp/');
   await expect(page.getByRole('heading', { name: 'RSVP' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Cosa chiede la RSVP' })).toHaveCount(0);
-  await expect(page.getByText('Esigenze alimentari e allergie')).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: 'Esigenze alimentari e allergie' })).toHaveCount(0);
 
   await page.goto('/it/gifts/');
   await expect(page.getByRole('heading', { name: 'Regali' })).toBeVisible();
@@ -406,7 +406,7 @@ test('Italian and German pages have localised core content', async ({ page }) =>
   await page.goto('/de/rsvp/');
   await expect(page.getByRole('heading', { name: 'RSVP' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Was die RSVP abfragt' })).toHaveCount(0);
-  await expect(page.getByText('Ernährungsanforderungen und Allergien')).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: 'Ernährungsanforderungen und Allergien' })).toHaveCount(0);
 
   await page.goto('/de/gifts/');
   await expect(page.getByRole('heading', { name: 'Geschenke' })).toBeVisible();

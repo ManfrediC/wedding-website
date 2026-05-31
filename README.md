@@ -51,7 +51,7 @@ The protected preview uses a local JSON RSVP store under `tmp/`; production uses
 
 ## Cloudflare RSVP Setup
 
-The RSVP system uses the `wedding_rsvp` D1 database bound as `RSVP_DB`. The schema lives in `migrations/0001_create_rsvp_responses.sql`, and the binding is declared in `wrangler.jsonc`.
+The RSVP system uses the `wedding_rsvp` D1 database bound as `RSVP_DB`. The schema migrations live in `migrations/`, and the binding is declared in `wrangler.jsonc`.
 
 Configure these Cloudflare Pages variables or secrets before enabling RSVP in production:
 

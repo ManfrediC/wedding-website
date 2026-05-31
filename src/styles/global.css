@@ -1193,6 +1193,21 @@ button.danger {
   display: none;
 }
 
+.rsvp-phone-field {
+  grid-column: 1 / -1;
+}
+
+.rsvp-phone-inputs {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, 0.34fr) minmax(0, 1fr);
+  gap: 0.75rem;
+}
+
+.rsvp-phone-inputs label {
+  display: grid;
+  min-width: 0;
+}
+
 .rsvp-field span,
 .rsvp-repeat-heading {
   margin: 0;
