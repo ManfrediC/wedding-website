@@ -357,10 +357,10 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Closest to the party: Küsnacht',
           body: 'Staying in Küsnacht keeps you near Hotel Sonne after dinner and dancing. This is likely the easiest choice for guests who value convenience at the end of the evening.',
-          items: ['Hotel Sonne Küsnacht: likely priority for a room block.', 'OXEN Küsnacht: nearby option with a small number of rooms.', 'Current late-night trains run roughly hourly back towards Zürich HB; check SBB Mobile for the exact connection on the night.'],
+          items: ['Hotel Sonne Küsnacht: likely priority for a room block.', 'OXEN Küsnacht: nearby option with a small number of rooms; some rooms use shared bathrooms.', 'Current late-night trains run roughly hourly back towards Zürich HB; check SBB Mobile for the exact connection on the night.'],
           links: [
             { label: 'Hotel Sonne Küsnacht', href: 'https://sonne.ch/en/' },
-            { label: 'OXEN Küsnacht', href: 'https://www.oxen.ch/' },
+            { label: 'OXEN Küsnacht', href: 'https://www.oxen.ch/zimmer' },
           ],
           image: '/images/places/hotel-sonne-kuesnacht.jpg',
           imageAlt: 'Hotel Sonne in Küsnacht',
@@ -368,7 +368,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Central Zurich',
           body: 'Zurich city centre is practical for guests who want restaurants, sightseeing, train connections, and easy airport access.',
-          items: ['Look near Zurich HB, the Old Town, Bellevue, or Stadelhofen for the most convenient city-centre stay.', 'More economical hotels may be easier to find in Zurich Altstetten or Oerlikon; both are connected to the centre and airport by public transport.', 'Choose accommodation near a tram, train, or bus stop.', 'Use public transport for travelling around Zurich; driving by car is not recommended due to lack of parking space and poor convenience.'],
+          items: ['Look near Zurich HB, the Old Town, Bellevue, or Stadelhofen for the most convenient city-centre stay.', 'Other towns on the S6 or S16 line, or places close to Zürich Stadelhofen or Zürich Tiefenbrunnen, can also be convenient because they keep the trip to Küsnacht straightforward.', 'More economical hotels may be easier to find in Zurich Altstetten or Oerlikon; both are connected to the centre and airport by public transport.', 'Choose accommodation near a tram, train, or bus stop.', 'Use public transport for travelling around Zurich; driving by car is not recommended due to lack of parking space and poor convenience.'],
           image: '/images/places/zurich-old-town.jpg',
           imageAlt: 'Zurich old town and the Limmat river',
         },
@@ -772,14 +772,18 @@ applyLocalizedCopy('it', {
         title: 'Più vicino alla festa: Küsnacht',
         body:
           'Dormire a Küsnacht vi tiene vicino all’Hotel Sonne dopo cena e dopo la festa. È probabilmente la scelta più comoda per chi preferisce semplificare il rientro serale.',
-        items: ['Hotel Sonne Küsnacht: probabilmente la prima opzione per un eventuale blocco camere.', 'OXEN Küsnacht: opzione vicina con un piccolo numero di camere.', 'Attualmente i treni notturni verso Zürich HB circolano più o meno ogni ora; controllate il collegamento esatto in SBB Mobile la sera stessa.'],
+        items: ['Hotel Sonne Küsnacht: probabilmente la prima opzione per un eventuale blocco camere.', 'OXEN Küsnacht: opzione vicina con un piccolo numero di camere; alcune camere hanno bagni condivisi.', 'Attualmente i treni notturni verso Zürich HB circolano più o meno ogni ora; controllate il collegamento esatto in SBB Mobile la sera stessa.'],
+        links: [
+          { label: 'Hotel Sonne Küsnacht', href: 'https://sonne.ch/en/' },
+          { label: 'Camere OXEN Küsnacht', href: 'https://www.oxen.ch/zimmer' },
+        ],
         imageAlt: 'Hotel Sonne a Küsnacht',
       },
       {
         title: 'Centro di Zurigo',
         body:
           'Il centro di Zurigo è pratico per chi desidera ristoranti, visite, collegamenti ferroviari e facile accesso all’aeroporto.',
-        items: ['Cercate vicino a Zurich HB, centro storico, Bellevue o Stadelhofen per la soluzione più comoda in centro.', 'Hotel più economici possono essere più facili da trovare a Zurich Altstetten o Oerlikon; entrambe le zone sono collegate al centro e all’aeroporto con i mezzi pubblici.', 'Scegliete un alloggio vicino a una fermata di tram, treno o autobus.', 'Usate i mezzi pubblici per muovervi a Zurigo; spostarsi in auto non è consigliato per la mancanza di parcheggi e la scarsa praticità.'],
+        items: ['Cercate vicino a Zurich HB, centro storico, Bellevue o Stadelhofen per la soluzione più comoda in centro.', 'Anche altri paesi lungo le linee S6 o S16, oppure zone vicine a Zürich Stadelhofen o Zürich Tiefenbrunnen, possono essere comodi perché semplificano il tragitto verso Küsnacht.', 'Hotel più economici possono essere più facili da trovare a Zurich Altstetten o Oerlikon; entrambe le zone sono collegate al centro e all’aeroporto con i mezzi pubblici.', 'Scegliete un alloggio vicino a una fermata di tram, treno o autobus.', 'Usate i mezzi pubblici per muovervi a Zurigo; spostarsi in auto non è consigliato per la mancanza di parcheggi e la scarsa praticità.'],
         imageAlt: 'Centro storico di Zurigo e fiume Limmat',
       },
       {
@@ -1096,14 +1100,18 @@ applyLocalizedCopy('de', {
         title: 'Am nächsten zur Feier: Küsnacht',
         body:
           'Eine Unterkunft in Küsnacht hält euch nach Abendessen und Feier nahe beim Hotel Sonne. Das ist wahrscheinlich die einfachste Wahl, wenn der späte Rückweg möglichst unkompliziert sein soll.',
-        items: ['Hotel Sonne Küsnacht: voraussichtlich erste Option für ein mögliches Zimmerkontingent.', 'OXEN Küsnacht: nahe Option mit wenigen Zimmern.', 'Aktuell fahren späte Züge ungefähr stündlich zurück Richtung Zürich HB; prüft die genaue Verbindung am Abend selbst in SBB Mobile.'],
+        items: ['Hotel Sonne Küsnacht: voraussichtlich erste Option für ein mögliches Zimmerkontingent.', 'OXEN Küsnacht: nahe Option mit wenigen Zimmern; einige Zimmer haben Gemeinschaftsbäder.', 'Aktuell fahren späte Züge ungefähr stündlich zurück Richtung Zürich HB; prüft die genaue Verbindung am Abend selbst in SBB Mobile.'],
+        links: [
+          { label: 'Hotel Sonne Küsnacht', href: 'https://sonne.ch/en/' },
+          { label: 'Zimmer OXEN Küsnacht', href: 'https://www.oxen.ch/zimmer' },
+        ],
         imageAlt: 'Hotel Sonne in Küsnacht',
       },
       {
         title: 'Zürich Zentrum',
         body:
           'Zürich Zentrum ist praktisch für Restaurants, Besichtigungen, Zugverbindungen und einfache Anreise zum Flughafen.',
-        items: ['Sucht nahe Zürich HB, Altstadt, Bellevue oder Stadelhofen für die bequemste zentrale Lage.', 'Günstigere Hotels finden sich eventuell eher in Zürich Altstetten oder Oerlikon; beide Quartiere sind mit dem Zentrum und dem Flughafen durch öffentlichen Verkehr verbunden.', 'Wählt eine Unterkunft nahe bei Tram, Zug oder Bus.', 'Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist wegen fehlender Parkplätze und geringer Bequemlichkeit nicht empfohlen.'],
+        items: ['Sucht nahe Zürich HB, Altstadt, Bellevue oder Stadelhofen für die bequemste zentrale Lage.', 'Auch andere Orte entlang der S6 oder S16 sowie Lagen nahe Zürich Stadelhofen oder Zürich Tiefenbrunnen können praktisch sein, weil die Fahrt nach Küsnacht einfach bleibt.', 'Günstigere Hotels finden sich eventuell eher in Zürich Altstetten oder Oerlikon; beide Quartiere sind mit dem Zentrum und dem Flughafen durch öffentlichen Verkehr verbunden.', 'Wählt eine Unterkunft nahe bei Tram, Zug oder Bus.', 'Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist wegen fehlender Parkplätze und geringer Bequemlichkeit nicht empfohlen.'],
         imageAlt: 'Zürcher Altstadt und Limmat',
       },
       {

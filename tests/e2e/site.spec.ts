@@ -219,7 +219,10 @@ test('English pages include requested travel and contact details', async ({ page
 
   await page.goto('/en/stay/');
   await expect(page.getByRole('link', { name: 'Hotel Sonne Küsnacht' })).toHaveAttribute('href', 'https://sonne.ch/en/');
-  await expect(page.getByRole('link', { name: 'OXEN Küsnacht' })).toHaveAttribute('href', 'https://www.oxen.ch/');
+  await expect(page.getByRole('link', { name: 'OXEN Küsnacht' })).toHaveAttribute('href', 'https://www.oxen.ch/zimmer');
+  await expect(page.getByText('some rooms use shared bathrooms')).toBeVisible();
+  await expect(page.getByText('Other towns on the S6 or S16 line')).toBeVisible();
+  await expect(page.getByText('Zürich Stadelhofen or Zürich Tiefenbrunnen')).toBeVisible();
   await expect(page.getByText('late-night trains run roughly hourly back towards Zürich HB')).toBeVisible();
   await expect(page.getByText('driving by car is not recommended due to lack of parking space and poor convenience')).toBeVisible();
   await expect(page.getByRole('link', { name: 'B & B Caffètino-Vino Richterswil' })).toHaveAttribute(
@@ -454,6 +457,9 @@ test('Italian and German stay copy is localised and cleanly encoded', async ({ p
   await page.goto('/it/stay/');
   await expect(page.getByRole('heading', { name: 'Accessibilità e mobilità' })).toBeVisible();
   await expect(page.getByText('il piano terra è accessibile in sedia a rotelle')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Camere OXEN Küsnacht' })).toHaveAttribute('href', 'https://www.oxen.ch/zimmer');
+  await expect(page.getByText('alcune camere hanno bagni condivisi')).toBeVisible();
+  await expect(page.getByText('Anche altri paesi lungo le linee S6 o S16')).toBeVisible();
   await expect(page.getByText('B & B Caffètino-Vino Richterswil ha cinque camere')).toBeVisible();
   await expect(page.getByText('l’S2 è di solito il miglior treno diretto per Richterswil')).toBeVisible();
   await expect(page.getByText('mancanza di parcheggi e la scarsa praticità')).toBeVisible();
@@ -475,6 +481,9 @@ test('Italian and German stay copy is localised and cleanly encoded', async ({ p
   await page.goto('/de/stay/');
   await expect(page.getByRole('heading', { name: 'Barrierefreiheit und Mobilität' })).toBeVisible();
   await expect(page.getByText('Laut offizieller FAQ der Kirche ist das Erdgeschoss rollstuhlgängig')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Zimmer OXEN Küsnacht' })).toHaveAttribute('href', 'https://www.oxen.ch/zimmer');
+  await expect(page.getByText('einige Zimmer haben Gemeinschaftsbäder')).toBeVisible();
+  await expect(page.getByText('Auch andere Orte entlang der S6 oder S16')).toBeVisible();
   await expect(page.getByText('B & B Caffètino-Vino Richterswil hat fünf Zimmer')).toBeVisible();
   await expect(page.getByText('die S2 meist der beste direkte Zug nach Richterswil')).toBeVisible();
   await expect(page.getByText('wegen fehlender Parkplätze und geringer Bequemlichkeit')).toBeVisible();
