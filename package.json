@@ -11,7 +11,7 @@
     "test:rsvp:e2e": "node scripts/run-rsvp-e2e.mjs",
     "test:android": "node scripts/verify-android.mjs",
     "smoke:protected": "node scripts/smoke-protected-site.mjs --start-preview",
-    "smoke:live": "node scripts/smoke-protected-site.mjs --base https://wedding-website-2ng.pages.dev",
+    "smoke:live": "node scripts/smoke-protected-site.mjs --base https://gabyandmanfredi.net",
     "preview": "astro preview --host 127.0.0.1",
     "preview:protected": "node scripts/serve-protected-preview.mjs"
   },

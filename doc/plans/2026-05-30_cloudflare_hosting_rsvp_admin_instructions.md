@@ -1,6 +1,7 @@
 # Cloudflare Hosting, Domain, RSVP Data, And Admin Instructions
 
 Prepared: 30 May 2026
+Updated: 31 May 2026
 
 ## 1. Current State
 
@@ -16,6 +17,13 @@ Cloudflare MCP/API checks on 30 May 2026 found:
 - D1 database: `wedding_rsvp`
 - D1 database ID: `f4166d9c-3f0f-43ff-8c43-2806aa0adbc5`
 - Latest confirmed production deployment: commit `2b3b20252135fdc1380ec6a73afbca6a3da1f811`, deployment `e8e0764e-3d3c-48e5-bfda-04bb41538e14`, status `success`
+
+31 May 2026 follow-up:
+
+- Final domain decision: use `gabyandmanfredi.net`.
+- Repo-side live smoke testing now targets `https://gabyandmanfredi.net`.
+- `npm run smoke:live` passed against `https://gabyandmanfredi.net` on 31 May 2026 after network access was approved, with desktop and mobile overflow both `0`.
+- Cloudflare MCP was reachable, but authenticated API readback returned Cloudflare error `10000: Authentication error`. Re-check current Pages custom domains, variables/secrets, DNS, and Email Sending state after the MCP credentials are refreshed.
 
 The repo already declares the RSVP D1 binding in `wrangler.jsonc` as `RSVP_DB`, and the RSVP schema lives in `migrations/0001_create_rsvp_responses.sql`. Cloudflare readback confirmed the `RSVP_DB` binding is present in both production and preview.
 
@@ -45,43 +53,33 @@ Redacted Pages readback after the worker confirmed this current status:
 | `RSVP_NOTIFICATION_FROM` | missing | missing | Still required before real email delivery can work. |
 | `RSVP_DB` binding | present | present | D1 database binding. |
 
+Local `env/cloudflare.env` status on 31 May 2026: `RSVP_NOTIFICATION_FROM` and `CLOUDFLARE_EMAIL_API_TOKEN` are blank. If the Email Sending token is already stored in Cloudflare Pages, keep the local file blank. If Cloudflare readback shows it is not stored, create or rotate the token and set it directly as a Pages secret; do not commit or log the token value.
+
 ## 2. Hosting And Domain
 
 Recommended path:
 
 1. Keep the site on Cloudflare Pages.
-2. Use the free `pages.dev` URL until the custom domain is bought and verified.
-3. Try to buy `gabyandmanfredi.wedding` through Cloudflare Registrar.
-4. If that exact domain is unavailable or expensive at renewal, fall back to a cheaper `.com` or `.ch` option, for example `gabyandmanfredi.com`, `gabrielaandmanfredi.com`, or `gaby-manfredi.com`.
+2. Use `gabyandmanfredi.net` as the production guest domain.
+3. Add both the apex domain and, if desired, `www.gabyandmanfredi.net` as Cloudflare Pages custom domains.
+4. Use `https://gabyandmanfredi.net` for live smoke and E2E checks. Keep the `pages.dev` URL only as a fallback/deployment reference.
 
-Why Cloudflare Registrar is the simplest option:
+If `gabyandmanfredi.net` was bought through Cloudflare Registrar, DNS, SSL, Pages custom domain setup, and Email Sending domain setup can all stay in the same account. If it was bought elsewhere, first add or confirm the zone in Cloudflare and point the registrar nameservers to Cloudflare before completing the Pages and Email Sending setup.
 
-- It is Cloudflare-native.
-- DNS, SSL, Pages custom domain setup, and Email Sending domain setup all stay in one account.
-- Cloudflare Registrar sells supported domains at registry/ICANN cost with no registrar markup, but the actual yearly price depends on the top-level domain.
-
-Before buying:
-
-1. Open Cloudflare dashboard.
-2. Go to **Domain Registration** or **Register domains**.
-3. Search `gabyandmanfredi.wedding`.
-4. Check both first-year price and renewal price.
-5. Buy only if the renewal price is acceptable.
-
-After buying the domain:
+After buying or connecting the domain:
 
 1. Open **Workers & Pages**.
 2. Select `wedding-website`.
 3. Open **Custom domains**.
 4. Select **Set up a domain**.
-5. Enter `gabyandmanfredi.wedding`.
+5. Enter `gabyandmanfredi.net`.
 6. Follow Cloudflare's DNS/activation prompts.
 7. Wait for the domain and certificate to become active.
 8. Test both:
-   - `https://gabyandmanfredi.wedding/`
-   - `https://www.gabyandmanfredi.wedding/`, if the `www` version is configured.
+   - `https://gabyandmanfredi.net/`
+   - `https://www.gabyandmanfredi.net/`, if the `www` version is configured.
 
-I attempted to check `gabyandmanfredi.wedding` via the Cloudflare Registrar MCP/API, but the current API token did not have permission for registrar availability checks. Do not assume the domain is available until the live Registrar dashboard confirms it.
+The old `gabyandmanfredi.wedding` purchase/availability path is no longer the plan unless the domain decision changes again.
 
 ## 3. Variables And Secrets
 
@@ -98,9 +96,9 @@ Use the **Production** environment first. Preview is already mostly configured, 
 | `RSVP_ADMIN_PASSWORD` | encrypted secret | Separate admin password for `/admin/rsvp/`. This is not the guest website password. | Done in production and preview. |
 | `RSVP_ADMIN_SECRET` | encrypted secret | Random signing secret for the admin cookie. Changing it logs admins out. | Done in production and preview. |
 | `RSVP_NOTIFICATION_TO` | variable or secret | Address that receives RSVP notifications. Current repo/default value is `manfrediandgabriela@gmail.com`. | Done in production and preview. |
-| `RSVP_NOTIFICATION_FROM` | variable or secret | Verified Cloudflare Email Sending sender, ideally `rsvp@gabyandmanfredi.wedding` or `no-reply@gabyandmanfredi.wedding`. | Still missing; required for real email delivery. |
+| `RSVP_NOTIFICATION_FROM` | variable or secret | Verified Cloudflare Email Sending sender, ideally `rsvp@gabyandmanfredi.net` or `no-reply@gabyandmanfredi.net`. | Still missing; required for real email delivery. |
 | `CLOUDFLARE_ACCOUNT_ID` | variable or secret | Cloudflare account ID used by the Email Sending API. Use `43b7bcd0ac30cffda3632878e83bd36d`. | Done in production and preview. |
-| `CLOUDFLARE_EMAIL_API_TOKEN` | encrypted secret | Cloudflare API token with permission to send email through Cloudflare Email Service. | Done in production and preview. |
+| `CLOUDFLARE_EMAIL_API_TOKEN` | encrypted secret | Cloudflare API token with permission to send email through Cloudflare Email Service. | Previously reported as done in production and preview, but local `env/cloudflare.env` is blank and current MCP readback failed. Re-check before go-live; do not create another token unless the current one is missing or being rotated. |
 
 Generate random cookie secrets locally with PowerShell:
 
@@ -163,11 +161,13 @@ Backups and retention:
 
 RSVP submissions are stored in D1 even if email sending is not configured. Without the email variables, the admin page will show notification status as `not_configured`.
 
-Current status:
+Last confirmed/reported status:
 
-- `RSVP_NOTIFICATION_TO`, `CLOUDFLARE_ACCOUNT_ID`, and `CLOUDFLARE_EMAIL_API_TOKEN` are set in production and preview.
-- A Cloudflare Email Sending API token has already been created and stored as `CLOUDFLARE_EMAIL_API_TOKEN`. Do not create another token unless rotating/revoking the current one.
+- On 30 May, `RSVP_NOTIFICATION_TO`, `CLOUDFLARE_ACCOUNT_ID`, and `CLOUDFLARE_EMAIL_API_TOKEN` were reported as set in production and preview.
+- On 30 May, a Cloudflare Email Sending API token was reported as created and stored as `CLOUDFLARE_EMAIL_API_TOKEN`. Do not create another token unless readback shows it is missing or you are rotating/revoking the current one.
 - `RSVP_NOTIFICATION_FROM` is still missing. Because the code requires a from address, real RSVP emails will remain `not_configured` until this is set to a Cloudflare-verified sender.
+
+31 May note: the local `env/cloudflare.env` currently has `CLOUDFLARE_EMAIL_API_TOKEN` blank, and Cloudflare MCP readback failed with authentication error `10000`. Treat the token's deployed status as unverified until the Cloudflare readback succeeds. If the token is still present as a Pages secret, no local value is needed. If it is missing, create or rotate the token and set it directly in Cloudflare Pages.
 
 To enable email:
 
@@ -175,9 +175,9 @@ To enable email:
 2. Open Cloudflare **Email Sending**.
 3. Onboard the domain.
 4. Let Cloudflare add the required SPF, DKIM, DMARC, MX, and bounce-handling DNS records.
-5. Create or verify a sender such as `rsvp@gabyandmanfredi.wedding`.
+5. Create or verify a sender such as `rsvp@gabyandmanfredi.net`.
 6. Set:
-   - `RSVP_NOTIFICATION_FROM=rsvp@gabyandmanfredi.wedding`
+   - `RSVP_NOTIFICATION_FROM=rsvp@gabyandmanfredi.net`
 7. Redeploy `master`.
 8. Submit one test RSVP and confirm both the admin notification and guest confirmation arrive.
 
@@ -188,21 +188,23 @@ To enable email:
 Already completed:
 
 - Cloudflare Pages project exists and deploys from `master`.
+- `https://gabyandmanfredi.net` serves the protected site and passed the live smoke check on 31 May 2026.
 - D1 database `wedding_rsvp` exists.
 - `RSVP_DB` binding is present in production and preview.
-- Guest password, RSVP admin password, RSVP admin secret, notification recipient, account ID, and Email Sending API token are configured in production.
-- Latest RSVP code is deployed to `https://wedding-website-2ng.pages.dev/`.
-- Local and live smoke checks pass.
+- Guest password, RSVP admin password, RSVP admin secret, notification recipient, and account ID were configured in production in the last confirmed readback.
+- The Email Sending API token was previously reported as configured in production, but this needs re-checking because local `env/cloudflare.env` is blank and current MCP readback failed.
+- Latest RSVP code is deployed to the Cloudflare Pages project; the last confirmed URL was `https://wedding-website-2ng.pages.dev/`.
+- Local, previous Pages.dev, and current `gabyandmanfredi.net` live smoke checks passed.
 
 Remaining before sending the RSVP page to guests:
 
-1. Decide whether to launch on the free URL or buy `gabyandmanfredi.wedding`.
-2. If launching email notifications, buy/connect the final domain and verify an Email Sending sender.
-3. Set `RSVP_NOTIFICATION_FROM` in production to that verified sender.
-4. Redeploy `master` after setting `RSVP_NOTIFICATION_FROM`.
-5. Open the live site and enter `WEBSITE_PW`.
-6. Submit one test RSVP.
-7. Open `/admin/rsvp/` and enter `RSVP_ADMIN_PASSWORD`.
+1. Optionally add and activate `www.gabyandmanfredi.net`.
+2. Confirm Cloudflare Pages variables/secrets by readback once MCP/API authentication is working again, especially `RSVP_NOTIFICATION_FROM` and `CLOUDFLARE_EMAIL_API_TOKEN`.
+3. If launching email notifications, verify an Email Sending sender on the final domain.
+4. Set `RSVP_NOTIFICATION_FROM` in production to that verified sender.
+5. Redeploy `master` after setting or changing `RSVP_NOTIFICATION_FROM` or any other Pages secret/binding.
+6. Submit one test RSVP at `https://gabyandmanfredi.net/en/rsvp/`.
+7. Open `https://gabyandmanfredi.net/admin/rsvp/` and enter `RSVP_ADMIN_PASSWORD`.
 8. Confirm the test RSVP appears in the admin dashboard with per-guest dietary/allergy details.
 9. Export CSV and verify the test row is present.
 10. Confirm the admin notification and guest confirmation email arrive.
@@ -216,7 +218,7 @@ npm run smoke:live
 Optional cleanup:
 
 - Set `WEDDING_AUTH_SECRET` in preview if preview deployments should use the same explicit guest-cookie signing behaviour as production.
-- Revoke and recreate `CLOUDFLARE_EMAIL_API_TOKEN` only if there is a reason to rotate it. The current token value was stored directly in Cloudflare and was not displayed.
+- Revoke and recreate `CLOUDFLARE_EMAIL_API_TOKEN` only if readback shows the token is missing or there is a reason to rotate it. If it already exists in Cloudflare Pages, do not create a duplicate token just because the local env file is blank.
 
 ## 7. Source Notes
 

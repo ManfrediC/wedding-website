@@ -92,7 +92,7 @@ After a pushed Cloudflare Pages deployment, run:
 npm run smoke:live
 ```
 
-Both smoke commands read `env/website_pw.env` without printing the password. `smoke:protected` starts the local protected preview automatically after `npm run build`; `smoke:live` checks the deployed Pages URL.
+Both smoke commands read `env/website_pw.env` without printing the password. `smoke:protected` starts the local protected preview automatically after `npm run build`; `smoke:live` checks the deployed custom domain at `https://gabyandmanfredi.net`.
 
 ## Privacy
 

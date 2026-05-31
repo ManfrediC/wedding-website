@@ -5,7 +5,7 @@ import net from 'node:net';
 import { join } from 'node:path';
 import { chromium } from '@playwright/test';
 
-const DEFAULT_LIVE_URL = 'https://wedding-website-2ng.pages.dev';
+const DEFAULT_LIVE_URL = 'https://gabyandmanfredi.net';
 const DEFAULT_CHANNELS = ['chrome', 'msedge'];
 const AUTH_COOKIE_NAME = 'gm_wedding_auth';
 const ROBOTS_HEADER_VALUE = 'noindex, nofollow';
