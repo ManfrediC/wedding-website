@@ -1211,10 +1211,13 @@ button.danger {
 .rsvp-field span,
 .rsvp-repeat-heading {
   margin: 0;
+  max-width: 100%;
   color: var(--colour-green);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.04em;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
   text-transform: uppercase;
 }
 

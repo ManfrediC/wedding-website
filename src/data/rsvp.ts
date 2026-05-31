@@ -160,7 +160,7 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
     childAge: 'Alter',
     addChild: 'Kind hinzufügen',
     dietaryRequirements: {
-      label: 'Ernährungsanforderungen',
+      label: 'Essenswunsch',
       help: 'Wählt einen Essenswunsch pro Gast aus.',
       options: {
         none: 'Keine',

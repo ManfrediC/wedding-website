@@ -73,6 +73,25 @@ async function expectAlignedTop(left: Locator, right: Locator) {
   expect(Math.abs(leftBox!.y - rightBox!.y)).toBeLessThanOrEqual(2);
 }
 
+async function expectRsvpLabelsFit(page: Page) {
+  const overflowingLabels = await page.locator('form[data-rsvp-form]').evaluate((form) =>
+    Array.from(form.querySelectorAll<HTMLElement>('.rsvp-field > span:not(.sr-only), .rsvp-repeat-heading'))
+      .map((element) => {
+        const box = element.getBoundingClientRect();
+        const parentBox = element.parentElement?.getBoundingClientRect();
+
+        return {
+          text: element.textContent?.trim(),
+          crossesParentRight: parentBox ? box.right > parentBox.right + 1 : false,
+          overflowsOwnBox: element.scrollWidth > element.clientWidth + 1,
+        };
+      })
+      .filter(({ crossesParentRight, overflowsOwnBox }) => crossesParentRight || overflowsOwnBox),
+  );
+
+  expect(overflowingLabels).toEqual([]);
+}
+
 test('RSVP submission is stored, superseded by email, exported, and deleted through admin', async ({ page }) => {
   const email = 'lucia.rsvp@example.test';
   await submitAttendingRsvp(page, email);
@@ -291,6 +310,7 @@ test('RSVP form boxes stay aligned across languages', async ({ page }) => {
 
   for (const path of ['/en/rsvp/', '/it/rsvp/', '/de/rsvp/']) {
     await page.goto(path);
+    await expectRsvpLabelsFit(page);
 
     const attendingYes = page.locator('.rsvp-radio').nth(0);
     const attendingNo = page.locator('.rsvp-radio').nth(1);
