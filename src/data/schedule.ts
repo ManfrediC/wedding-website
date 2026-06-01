@@ -50,9 +50,9 @@ export const weddingSchedule: ScheduleEntry[] = [
     },
     location: { en: 'Kirche St. Peter, Zurich', it: 'Kirche St. Peter, Zurigo', de: 'Kirche St. Peter, Zürich' },
     body: {
-      en: 'Please plan to arrive with time to settle in before the ceremony. The exact arrival time will be added once confirmed.',
-      it: "Vi consigliamo di arrivare con un po' di anticipo prima della cerimonia. L'orario preciso sarà aggiunto appena confermato.",
-      de: 'Bitte plant etwas Zeit ein, um vor der Trauung in Ruhe anzukommen. Die genaue Ankunftszeit folgt, sobald sie bestätigt ist.',
+      en: 'Please arrive early enough to be seated before the ceremony. We will add the exact arrival time once it is confirmed.',
+      it: "Arrivate con tempo sufficiente per prendere posto prima della cerimonia. Aggiungeremo l'orario preciso appena confermato.",
+      de: 'Bitte kommt früh genug, um vor der Trauung Platz zu nehmen. Die genaue Ankunftszeit ergänzen wir, sobald sie bestätigt ist.',
     },
     status: { en: 'To confirm', it: 'Da confermare', de: 'Noch zu bestätigen' },
   },

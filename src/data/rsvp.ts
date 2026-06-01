@@ -48,7 +48,7 @@ type RsvpCopy = {
 export const rsvpCopy: Record<Lang, RsvpCopy> = {
   en: {
     privacy:
-      'We will use your RSVP information only to plan the wedding, including attendance, seating, dietary requirements, accessibility arrangements, guest support, and contacting you if needed.',
+      'We will use your RSVP information only for wedding planning and to contact you if needed.',
     updatesLabel: 'RSVP updates',
     updates: [
       'RSVP opening date: TBD',
@@ -92,7 +92,7 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
   },
   it: {
     privacy:
-      'Useremo le informazioni della RSVP solo per organizzare il matrimonio, inclusi presenza, posti a sedere, esigenze alimentari, accessibilità, supporto agli ospiti e per contattarvi se necessario.',
+      'Useremo le informazioni della RSVP solo per organizzare il matrimonio e per contattarvi se necessario.',
     updatesLabel: 'Aggiornamenti RSVP',
     updates: [
       'Apertura RSVP: TBD',
@@ -136,7 +136,7 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
   },
   de: {
     privacy:
-      'Wir verwenden eure RSVP-Angaben nur für die Hochzeitsplanung, einschliesslich Teilnahme, Sitzordnung, Ernährung, Barrierefreiheit, Gästebetreuung und um euch bei Bedarf zu kontaktieren.',
+      'Wir verwenden eure RSVP-Angaben nur für die Hochzeitsplanung und um euch bei Bedarf zu kontaktieren.',
     updatesLabel: 'RSVP-Hinweise',
     updates: [
       'Öffnung der RSVP: TBD',

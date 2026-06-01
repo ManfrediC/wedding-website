@@ -78,7 +78,7 @@ export const homeContent: Record<
     cards: [
       {
         title: 'Schedule',
-        body: 'Ceremony, boat transfer, dinner, dancing, and details as they are confirmed.',
+        body: 'The main events of the day, with confirmed times added here.',
         href: '/en/schedule/',
         image: '/images/places/st-peter-zurich.jpg',
         imageAlt: 'Kirche St. Peter in Zurich',
@@ -118,7 +118,7 @@ export const homeContent: Record<
     cards: [
       {
         title: 'Programma',
-        body: 'Cerimonia, trasferimento in barca, cena, festa e dettagli appena confermati.',
+        body: 'Gli eventi principali della giornata, con gli orari confermati appena disponibili.',
         href: '/it/schedule/',
         image: '/images/places/st-peter-zurich.jpg',
         imageAlt: 'Kirche St. Peter a Zurigo',
@@ -158,7 +158,7 @@ export const homeContent: Record<
     cards: [
       {
         title: 'Ablauf',
-        body: 'Trauung, Bootstransfer, Abendessen, Feier und Details, sobald sie bestätigt sind.',
+        body: 'Die wichtigsten Stationen des Tages, mit bestätigten Zeiten sobald verfügbar.',
         href: '/de/schedule/',
         image: '/images/places/st-peter-zurich.jpg',
         imageAlt: 'Kirche St. Peter in Zürich',
@@ -196,11 +196,11 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       intro:
         'The exact timing is still being confirmed. This page will become the day-of reference for ceremony arrival, the boat transfer, dinner, dancing, and return travel.',
       notice:
-        'Boat details are provisional: we are planning a host-arranged transfer from Zurich towards Küsnacht, with boarding point and rain plan to follow.',
+        'Boat details are provisional. We are planning a transfer from Zurich towards Küsnacht, organised by us; the boarding point and rain plan will follow.',
       sections: [
         {
           title: 'Civil ceremony',
-          body: 'The legal ceremony at Stadthaus Zürich will be a private step before the wedding celebration. Because of visitor constraints, only immediate family will be able to attend.',
+          body: 'The civil ceremony at Stadthaus Zürich will take place privately before the wedding celebration. Because visitor numbers are limited, only immediate family can attend.',
           items: ['Date: TBD', 'Time: TBD', 'Location: Stadthaus Zürich'],
           image: '/images/places/stadthaus-zurich.png',
           imageAlt: 'Facade of Stadthaus Zürich under a blue sky',
@@ -214,7 +214,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'Boat transfer',
-          body: 'After the ceremony, we are planning a host-arranged boat transfer from Zurich towards Küsnacht.',
+          body: 'After the ceremony, we are planning a boat transfer from Zurich towards Küsnacht, organised by us.',
           items: ['Date: Friday, 11 June 2027', 'Time: TBD', 'Boarding point: TBD', 'Tickets: to be confirmed', 'Rain plan and accessibility details: TBD'],
           image: '/images/places/hotel-sonne-lake-arrival.jpg',
           imageAlt: 'A boat on Lake Zurich near Hotel Sonne',
@@ -301,7 +301,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'From Zurich Airport',
-          body: 'Zurich Airport has a very convenient train and S-Bahn connection to Zurich HB, with onward public transport to Küsnacht ZH and the wedding venues. For ordinary wedding logistics, use the train rather than driving or taking a taxi.',
+          body: 'Zurich Airport is well connected by train and S-Bahn to Zurich HB, Küsnacht ZH, and the wedding venues. For the wedding weekend, the train is usually easier than driving or taking a taxi.',
           items: ['Download SBB Mobile before travelling, then search to Küsnacht ZH rather than just Küsnacht.', 'The direct S16 from Zürich Flughafen to Küsnacht ZH is usually the simplest airport route. Current timetable patterns show departures around 01 and 31 minutes past the hour, often from platform 3, with a journey of about 26 minutes; confirm the exact platform and time in SBB Mobile on the day.', 'SBB trains usually leave for Zurich HB about every 10 minutes, and the journey takes about 15 minutes. This is a good fallback if the next direct S16 is not convenient.', 'For Küsnacht ZH or Hotel Sonne, use SBB Mobile or ZVV from the airport or from Zurich HB and buy the ticket shown by the app before boarding.', 'Taxis and ride-hailing can be useful with children, heavy luggage, or accessibility needs, but they are usually much more expensive than public transport.', 'A rental car is not recommended for Zurich-only wedding logistics.'],
           links: [
             { label: 'Zurich Airport public transport', href: 'https://www.flughafen-zuerich.ch/en/passengers/practical/parking-and-transport/train-tram-and-bus' },
@@ -325,7 +325,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'Zurich wedding map',
-          body: 'Key reference points for the wedding weekend:',
+          body: 'Useful places for the wedding weekend:',
           items: ['Kirche St. Peter is in Zurich old town, close to the lake and central tram connections.', 'Hotel Sonne is in Küsnacht ZH on the right bank of Lake Zurich.', "Richterswil, where Manfredi's parents live, is further south on the lake and is reachable by train.", 'Zurich Airport and Zurich HB are connected by frequent trains; use SBB Mobile or ZVV for the exact journey on the day.'],
           links: [
             { label: 'OpenStreetMap: Zurich, Küsnacht, and Richterswil', href: 'https://www.openstreetmap.org/#map=11/47.3370/8.5950' },
@@ -352,11 +352,11 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       title: 'Where to Stay',
       kicker: 'Accommodation',
       intro:
-        'Küsnacht is most convenient for the party, while central Zurich is best for sightseeing and transport. Room-block information will be added once confirmed.',
+        'Küsnacht is closest to the evening party. Central Zurich may suit guests who want more transport and restaurant options. Room-block details will follow once confirmed.',
       sections: [
         {
           title: 'Closest to the party: Küsnacht',
-          body: 'Staying in Küsnacht keeps you near Hotel Sonne after dinner and dancing. This is likely the easiest choice for guests who value convenience at the end of the evening.',
+          body: 'Stay in Küsnacht if you want the shortest trip back after dinner and dancing at Hotel Sonne.',
           items: ['Hotel Sonne Küsnacht: likely priority for a room block.', 'OXEN Küsnacht: nearby option with a small number of rooms; some rooms use shared bathrooms.', 'Current late-night trains run roughly hourly back towards Zürich HB; check SBB Mobile for the exact connection on the night.'],
           links: [
             { label: 'Hotel Sonne Küsnacht', href: 'https://sonne.ch/en/' },
@@ -374,7 +374,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'Richterswil',
-          body: "Richterswil is farther down Lake Zurich, but it can be a quiet lakeside base for guests who would like to stay near Manfredi's family or who prefer a smaller B&B.",
+          body: "Richterswil is farther down Lake Zurich. It may suit guests who want to stay near Manfredi's family or prefer a small B&B.",
           items: ['From Zürich HB, the S2 is usually the best direct train to Richterswil; the S8 is a slower direct alternative. Check SBB Mobile for the exact connection before travelling.', 'B & B Caffètino-Vino Richterswil has five rooms in the historic village centre, close to the lake and station.', 'It is a B&B rather than a hotel; the house has no lift, and rooms are on the 2nd and 3rd floors.', 'Check the late-evening return journey from Küsnacht before booking, especially after the party.'],
           links: [
             { label: 'B & B Caffètino-Vino Richterswil', href: 'https://www.bnb-caffetino-vino.ch/' },
@@ -413,7 +413,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       title: 'Things to Do',
       kicker: 'Zurich & Switzerland',
       intro:
-        'For guests with time around the wedding, Zurich offers lake walks, old town wandering, mountain views, museums, and day trips within easy reach.',
+        'Use this page if you have spare time around the wedding. It lists short Zurich plans, bad-weather options, and day trips that work from one hotel.',
       sections: [
         {
           title: 'Zurich first-day options',
@@ -422,14 +422,14 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           links: [
             { label: 'Uetliberg', href: 'https://www.ueetliberg.ch/en/uetliberg' },
             { label: 'Zurich Zoo', href: 'https://www.zoo.ch/en' },
-            { label: 'Zurich tourism', href: 'https://www.zuerich.com/en' },
+            { label: 'Official Zurich visitor information', href: 'https://www.zuerich.com/en' },
           ],
           image: '/images/minted/minted-photo-08.jpeg',
           imageAlt: 'Zurich and Lake Zurich from above',
         },
         {
           title: 'Museums and chocolate',
-          body: 'For a culture or rainy-day plan, Zurich has excellent museums and a well-organised chocolate museum for children and adults.',
+          body: 'Rain plan: Kunsthaus Zurich, Museum Rietberg, or Lindt Home of Chocolate in Kilchberg.',
           items: ['Kunsthaus Zurich has art from the Middle Ages to contemporary work, with Swiss painters, Impressionism, Classical Modernism, Dada, Giacometti, and Munch among the highlights.', 'Museum Rietberg focuses on arts and cultures from Asia, Africa, the Americas, and Oceania.', 'Lindt Home of Chocolate in Kilchberg is interactive and especially fun with children.'],
           links: [
             { label: 'Kunsthaus', href: 'https://www.kunsthaus.ch/en/sammlung/' },
@@ -488,7 +488,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       title: 'Switzerland Guide',
       kicker: 'Practical notes',
       intro:
-        'A few practical notes for guests visiting Switzerland: public transport, currency, weather, mobile phones, and straightforward planning.',
+        'Basics for visiting Switzerland: transport, money, weather, phones, and planning.',
       sections: [
         {
           title: 'Public transport',
@@ -526,7 +526,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'Money and budgeting',
-          body: 'Switzerland uses Swiss francs and is often expensive, but planning ahead can keep costs manageable.',
+          body: 'Switzerland uses Swiss francs and prices can be high. Supermarkets and public transport help keep day-to-day costs lower.',
           items: ['Migros and Coop are the largest supermarket chains and are useful for breakfasts, snacks, picnic supplies, and children’s basics.', 'Taxis are usually expensive. Use them only when luggage, children, or accessibility needs make them genuinely useful.', 'Use public transport for travelling around Zurich; driving by car is not recommended due to lack of parking space and poor convenience.', 'Low-cost options include lake walks, Old Town wandering, viewpoints, parks, supermarket picnics, and choosing accommodation near a tram, train, or bus stop.'],
           image: '/images/places/zurich-lindenhof-view.jpg',
           imageAlt: 'Zurich old town and the Limmat from Lindenhof',
@@ -562,7 +562,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
     faq: {
       title: 'Details & FAQ',
       kicker: 'Helpful answers',
-      intro: 'Answers to the questions guests are most likely to ask. More details will be added as the day becomes final.',
+      intro: 'Practical answers for invited guests. We will add confirmed timings and transport details when they are ready.',
       sections: [],
     },
     rsvp: {
@@ -576,11 +576,11 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       title: 'Gifts',
       kicker: 'With gratitude',
       intro:
-        'Your presence in Switzerland is already the greatest gift. We are so grateful that you are travelling to celebrate with us.',
+        'If you are travelling to Switzerland, please do not feel any obligation to bring or send a gift.',
       sections: [
         {
           title: 'Details to follow',
-          body: 'If we add a registry, honeymoon fund, or any further guidance, we will share it here before invitations are sent.',
+          body: 'If we decide to share registry or honeymoon-fund details, we will add them here before invitations are sent.',
         },
       ],
     },
@@ -592,7 +592,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       sections: [
         {
           title: 'Wedding questions',
-          body: 'We will use one shared email address for practical wedding questions while the site is being prepared.',
+          body: 'For now, please send wedding questions to gabyandmanfredi@gmail.com.',
           items: ['General questions: gabyandmanfredi@gmail.com', 'RSVP support: gabyandmanfredi@gmail.com', 'Wedding-week urgent contact: TBD'],
           links: [
             { label: 'gabyandmanfredi@gmail.com', href: 'mailto:gabyandmanfredi@gmail.com' },
@@ -670,11 +670,11 @@ applyLocalizedCopy('it', {
     intro:
       'Gli orari esatti sono ancora in fase di conferma. Questa pagina diventerà il riferimento per l’arrivo alla cerimonia, il trasferimento in barca, la cena, la festa e il rientro.',
     notice:
-      'I dettagli della barca sono provvisori: stiamo pianificando un trasferimento organizzato dagli sposi da Zurigo verso Küsnacht; punto d’imbarco e piano in caso di pioggia saranno aggiunti più avanti.',
+      'I dettagli della barca sono provvisori. Stiamo organizzando un trasferimento da Zurigo verso Küsnacht; punto d’imbarco e piano in caso di pioggia saranno aggiunti più avanti.',
     sections: [
       {
         title: 'Cerimonia civile',
-        body: 'La cerimonia civile legale allo Stadthaus Zürich sarà un momento privato prima della celebrazione. Per i limiti di accesso potranno partecipare solo i familiari più stretti.',
+        body: 'La cerimonia civile allo Stadthaus Zürich si terrà in forma privata prima della celebrazione. Poiché il numero di visitatori è limitato, potranno partecipare solo i familiari più stretti.',
         items: ['Data: TBD', 'Ora: TBD', 'Luogo: Stadthaus Zürich'],
         imageAlt: 'Facciata dello Stadthaus Zürich sotto un cielo blu',
       },
@@ -686,7 +686,7 @@ applyLocalizedCopy('it', {
       },
       {
         title: 'Trasferimento in barca',
-        body: 'Dopo la cerimonia stiamo pianificando un trasferimento in barca organizzato dagli sposi da Zurigo verso Küsnacht.',
+        body: 'Dopo la cerimonia, stiamo organizzando un trasferimento in barca da Zurigo verso Küsnacht.',
         items: ['Data: venerdì 11 giugno 2027', 'Ora: TBD', 'Punto d’imbarco: TBD', 'Biglietti: da confermare', 'Piano in caso di pioggia e dettagli di accessibilità: TBD'],
         imageAlt: 'Una barca sul Lago di Zurigo vicino all’Hotel Sonne',
       },
@@ -737,7 +737,7 @@ applyLocalizedCopy('it', {
       {
         title: 'Dall’aeroporto di Zurigo',
         body:
-          'L’aeroporto di Zurigo ha un collegamento ferroviario e S-Bahn molto comodo con Zurich HB, con proseguimento in mezzi pubblici verso Küsnacht ZH e i luoghi del matrimonio. Per gli spostamenti del matrimonio, usate il treno invece di guidare o prendere un taxi.',
+          'L’aeroporto di Zurigo è ben collegato in treno e S-Bahn a Zurich HB, Küsnacht ZH e ai luoghi del matrimonio. Per il fine settimana del matrimonio, il treno è di solito più semplice dell’auto o del taxi.',
         items: ['Scaricate SBB Mobile prima del viaggio e cercate Küsnacht ZH, non solo Küsnacht.', 'Il collegamento diretto S16 da Zürich Flughafen a Küsnacht ZH è di solito il percorso più semplice dall’aeroporto. Gli orari attuali mostrano spesso partenze intorno ai minuti 01 e 31, spesso dal binario 3, con un viaggio di circa 26 minuti; controllate sempre orario e binario in SBB Mobile il giorno stesso.', 'I treni SBB per Zurich HB partono di solito circa ogni 10 minuti e il viaggio dura circa 15 minuti, utile come alternativa se il prossimo S16 diretto non è comodo.', 'Per Küsnacht ZH o Hotel Sonne, usate SBB Mobile o ZVV dall’aeroporto o da Zurich HB e acquistate il biglietto indicato dall’app prima di salire.', 'Taxi e servizi ride-hailing possono essere utili con bambini, bagagli pesanti o necessità di accessibilità, ma di solito sono molto più costosi dei mezzi pubblici.', 'Un’auto a noleggio non è consigliata per gli spostamenti del matrimonio a Zurigo.'],
         imageAlt: "Treni alla stazione ferroviaria dell'aeroporto di Zurigo",
       },
@@ -752,7 +752,7 @@ applyLocalizedCopy('it', {
       {
         title: 'Mappa dei luoghi del matrimonio a Zurigo',
         body:
-          'Punti di riferimento principali per il fine settimana del matrimonio:',
+          'Luoghi utili per il fine settimana del matrimonio:',
         items: ['Kirche St. Peter si trova nel centro storico di Zurigo, vicino al lago e ai collegamenti tram centrali.', 'Hotel Sonne si trova a Küsnacht ZH, sulla sponda destra del Lago di Zurigo.', 'Richterswil, dove vivono i genitori di Manfredi, si trova più a sud lungo il lago ed è raggiungibile in treno.', 'L’aeroporto di Zurigo e Zurich HB sono collegati da treni frequenti; usate SBB Mobile o ZVV per il percorso esatto nel giorno del viaggio.'],
         imageAlt: 'Mappa basata su OpenStreetMap di Zurigo, Küsnacht, Richterswil, aeroporto di Zurigo, Kirche St. Peter e Hotel Sonne',
       },
@@ -766,12 +766,12 @@ applyLocalizedCopy('it', {
     title: 'Dove dormire',
     kicker: 'Alloggio',
     intro:
-      'Küsnacht è più comoda per la festa, mentre il centro di Zurigo è ideale per visitare la città e muoversi con i mezzi pubblici. Informazioni su eventuali camere riservate saranno aggiunte appena confermate.',
+      'Küsnacht è la zona più vicina alla festa serale. Il centro di Zurigo può essere adatto a chi desidera più opzioni di trasporto e ristoranti. Eventuali camere riservate saranno aggiunte appena confermate.',
     sections: [
       {
         title: 'Più vicino alla festa: Küsnacht',
         body:
-          'Dormire a Küsnacht vi tiene vicino all’Hotel Sonne dopo cena e dopo la festa. È probabilmente la scelta più comoda per chi preferisce semplificare il rientro serale.',
+          'Scegliete Küsnacht se volete il rientro più breve dopo cena e dopo la festa all’Hotel Sonne.',
         items: ['Hotel Sonne Küsnacht: probabilmente la prima opzione per un eventuale blocco camere.', 'OXEN Küsnacht: opzione vicina con un piccolo numero di camere; alcune camere hanno bagni condivisi.', 'Attualmente i treni notturni verso Zürich HB circolano più o meno ogni ora; controllate il collegamento esatto in SBB Mobile la sera stessa.'],
         links: [
           { label: 'Hotel Sonne Küsnacht', href: 'https://sonne.ch/en/' },
@@ -789,7 +789,7 @@ applyLocalizedCopy('it', {
       {
         title: 'Richterswil',
         body:
-          'Richterswil si trova più a sud lungo il Lago di Zurigo, ma può essere una base tranquilla per chi desidera stare vicino alla famiglia di Manfredi o preferisce un piccolo B&B.',
+          'Richterswil si trova più a sud lungo il Lago di Zurigo. Può essere adatto a chi desidera stare vicino alla famiglia di Manfredi o preferisce un piccolo B&B.',
         items: ['Da Zürich HB, l’S2 è di solito il miglior treno diretto per Richterswil; l’S8 è un’alternativa diretta più lenta. Controllate il collegamento esatto in SBB Mobile prima di partire.', 'B & B Caffètino-Vino Richterswil ha cinque camere nel centro storico del paese, vicino al lago e alla stazione.', 'È un B&B, non un hotel; la casa non ha ascensore e le camere si trovano al 2° e 3° piano.', 'Controllate il rientro serale da Küsnacht prima di prenotare, soprattutto dopo la festa.'],
         imageAlt: 'Richterswil vista dal Lago di Zurigo',
       },
@@ -824,17 +824,22 @@ applyLocalizedCopy('it', {
     title: 'Cosa fare',
     kicker: 'Zurigo e Svizzera',
     intro:
-      'Per chi ha tempo prima o dopo il matrimonio, Zurigo offre passeggiate sul lago, centro storico, musei, cioccolato e gite in giornata facilmente raggiungibili.',
+      'Usate questa pagina se avete tempo libero prima o dopo il matrimonio. Include programmi brevi a Zurigo, opzioni in caso di pioggia e gite fattibili senza cambiare hotel.',
     sections: [
       {
         title: 'Prime idee a Zurigo',
         body: 'Se arrivate con un po’ di tempo, queste sono opzioni semplici per conoscere la città senza organizzare una giornata troppo intensa.',
         items: ['Passeggiate nel centro storico: Niederdorf, Lindenhof, Grossmünster e le vie lungo la Limmat.', 'Uetliberg per una vista ampia sulla città e sul lago, se il tempo è buono.', 'Zurich Zoo, che può essere una buona idea per i più piccoli.', 'Caffè, gelaterie e una passeggiata lungo il lago a Bellevue, Bürkliplatz o Zürichhorn.'],
+        links: [
+          { label: 'Uetliberg', href: 'https://www.ueetliberg.ch/en/uetliberg' },
+          { label: 'Zurich Zoo', href: 'https://www.zoo.ch/en' },
+          { label: 'Informazioni ufficiali per visitare Zurigo', href: 'https://www.zuerich.com/en' },
+        ],
         imageAlt: 'Zurigo e il Lago di Zurigo dall’alto',
       },
       {
         title: 'Musei e cioccolato',
-        body: 'Per un programma culturale o in caso di pioggia, Zurigo ha ottimi musei e un museo del cioccolato ben organizzato anche per famiglie.',
+        body: 'In caso di pioggia: Kunsthaus Zürich, Museum Rietberg o Lindt Home of Chocolate a Kilchberg.',
         items: ['Il Kunsthaus Zürich espone arte dal Medioevo al contemporaneo, con pittori svizzeri, Impressionismo, Modernismo classico, Dada, Giacometti e Munch tra i punti forti.', 'Il Museum Rietberg è dedicato ad arti e culture di Asia, Africa, Americhe e Oceania.', 'Lindt Home of Chocolate a Kilchberg è interattivo e particolarmente adatto anche ai bambini.'],
         imageAlt: 'Scultura di Pipilotti Rist ed edificio Chipperfield del Kunsthaus Zürich a Heimplatz',
       },
@@ -867,7 +872,7 @@ applyLocalizedCopy('it', {
     title: 'Guida alla Svizzera',
     kicker: 'Note pratiche',
     intro:
-      'Alcune note pratiche per chi visita la Svizzera: mezzi pubblici, valuta, meteo, telefoni e pianificazione semplice.',
+      'Informazioni di base per visitare la Svizzera: trasporti, soldi, meteo, telefoni e pianificazione.',
     sections: [
       {
         title: 'Trasporti pubblici',
@@ -890,7 +895,7 @@ applyLocalizedCopy('it', {
       {
         title: 'Costi e spese pratiche',
         body:
-          'La Svizzera usa il franco svizzero ed è spesso costosa, ma una buona pianificazione aiuta a contenere le spese.',
+          'La Svizzera usa il franco svizzero e i prezzi possono essere alti. Supermercati e mezzi pubblici aiutano a ridurre le spese quotidiane.',
         items: ['Migros e Coop sono le principali catene di supermercati e sono utili per colazioni, snack, picnic e necessità per bambini.', 'I taxi sono di solito costosi. Usateli solo quando bagagli, bambini o esigenze di accessibilità li rendono davvero utili.', 'Usate i mezzi pubblici per muovervi a Zurigo; viaggiare in auto non è consigliato per la mancanza di parcheggi e la scarsa praticità.', 'Opzioni economiche includono passeggiate sul lago, centro storico, punti panoramici, parchi, picnic con prodotti del supermercato e alloggi vicino a tram, treno o autobus.'],
         image: '/images/places/zurich-lindenhof-view.jpg',
         imageAlt: 'Centro storico di Zurigo e la Limmat dal Lindenhof',
@@ -923,7 +928,7 @@ applyLocalizedCopy('it', {
   faq: {
     title: 'Dettagli e FAQ',
     kicker: 'Risposte utili',
-    intro: 'Risposte alle domande più probabili degli ospiti. Aggiungeremo altri dettagli quando il programma sarà definitivo.',
+    intro: 'Risposte pratiche per gli ospiti invitati. Aggiungeremo orari e trasporti quando saranno confermati.',
   },
   rsvp: {
     title: 'RSVP',
@@ -937,11 +942,11 @@ applyLocalizedCopy('it', {
     title: 'Regali',
     kicker: 'Con gratitudine',
     intro:
-      'La vostra presenza in Svizzera è già il regalo più grande. Vi siamo molto grati per il viaggio che farete per festeggiare con noi.',
+      'Se viaggiate fino in Svizzera per il matrimonio, non sentitevi obbligati a portare o inviare un regalo.',
     sections: [
       {
         title: 'Dettagli più avanti',
-        body: 'Se aggiungeremo una lista nozze, un fondo viaggio o altre indicazioni, le condivideremo qui prima dell’invio degli inviti.',
+        body: 'Se decideremo di condividere una lista nozze o un fondo viaggio, li aggiungeremo qui prima dell’invio degli inviti.',
       },
     ],
   },
@@ -953,7 +958,7 @@ applyLocalizedCopy('it', {
     sections: [
       {
         title: 'Domande sul matrimonio',
-        body: 'Useremo un unico indirizzo email condiviso per le domande pratiche mentre il sito viene preparato.',
+        body: 'Per ora, scriveteci a gabyandmanfredi@gmail.com per le domande sul matrimonio.',
         items: ['Domande generali: gabyandmanfredi@gmail.com', 'Supporto RSVP: gabyandmanfredi@gmail.com', 'Contatto urgente durante la settimana del matrimonio: TBD'],
       },
     ],
@@ -998,11 +1003,11 @@ applyLocalizedCopy('de', {
     intro:
       'Die genauen Zeiten werden noch bestätigt. Diese Seite wird später der Tagesüberblick für Ankunft, Trauung, Bootstransfer, Abendessen, Feier und Rückfahrt.',
     notice:
-      'Die Bootdetails sind vorläufig: Wir planen einen von uns organisierten Transfer von Zürich Richtung Küsnacht; Einstiegspunkt und Regenplan folgen.',
+      'Die Details zum Boot sind vorläufig. Wir planen einen Transfer von Zürich Richtung Küsnacht; Einstiegspunkt und Regenplan folgen.',
     sections: [
       {
         title: 'Zivile Trauung',
-        body: 'Die zivile Trauung im Stadthaus Zürich ist ein privater rechtlicher Schritt vor der Hochzeitsfeier. Wegen Besucherbeschränkungen können nur die engsten Familienmitglieder teilnehmen.',
+        body: 'Die zivile Trauung im Stadthaus Zürich findet vor der Hochzeitsfeier im privaten Rahmen statt. Da die Besucherzahl begrenzt ist, können nur die engsten Familienmitglieder teilnehmen.',
         items: ['Datum: TBD', 'Zeit: TBD', 'Ort: Stadthaus Zürich'],
         imageAlt: 'Fassade des Stadthauses Zürich unter blauem Himmel',
       },
@@ -1014,7 +1019,7 @@ applyLocalizedCopy('de', {
       },
       {
         title: 'Bootstransfer',
-        body: 'Nach der Trauung planen wir einen von uns organisierten Bootstransfer von Zürich Richtung Küsnacht.',
+        body: 'Nach der Trauung planen wir einen Bootstransfer von Zürich Richtung Küsnacht.',
         items: ['Datum: Freitag, 11. Juni 2027', 'Zeit: TBD', 'Einstiegspunkt: TBD', 'Tickets: noch zu bestätigen', 'Regenplan und Barrierefreiheitsdetails: TBD'],
         imageAlt: 'Ein Boot auf dem Zürichsee nahe beim Hotel Sonne',
       },
@@ -1065,7 +1070,7 @@ applyLocalizedCopy('de', {
       {
         title: 'Ab Flughafen Zürich',
         body:
-          'Der Flughafen Zürich hat eine sehr bequeme Zug- und S-Bahn-Verbindung zum Zürich HB, mit weiterem öffentlichem Verkehr nach Küsnacht ZH und zu den Hochzeitsorten. Für die normale Hochzeitslogistik nutzt den Zug statt Auto oder Taxi.',
+          'Der Flughafen Zürich ist mit Zug und S-Bahn gut an Zürich HB, Küsnacht ZH und die Hochzeitsorte angebunden. Für das Hochzeitswochenende ist der Zug meist einfacher als Auto oder Taxi.',
         items: ['Ladet SBB Mobile vor der Reise herunter und sucht nach Küsnacht ZH, nicht nur nach Küsnacht.', 'Die direkte S16 von Zürich Flughafen nach Küsnacht ZH ist meist die einfachste Verbindung ab Flughafen. Aktuelle Fahrplanmuster zeigen Abfahrten etwa um Minute 01 und 31, oft ab Gleis 3, mit rund 26 Minuten Fahrzeit; prüft genaue Zeit und Gleis am Reisetag in SBB Mobile.', 'SBB-Züge nach Zürich HB fahren in der Regel etwa alle 10 Minuten; die Fahrt dauert ungefähr 15 Minuten. Das ist eine gute Alternative, wenn die nächste direkte S16 zeitlich nicht passt.', 'Für Küsnacht ZH oder Hotel Sonne nutzt SBB Mobile oder ZVV ab Flughafen oder ab Zürich HB und kauft das von der App angezeigte Ticket vor dem Einsteigen.', 'Taxis und Ride-Hailing können mit Kindern, schwerem Gepäck oder Barrierefreiheitsbedarf sinnvoll sein, sind aber meist deutlich teurer als der öffentliche Verkehr.', 'Ein Mietwagen ist für Hochzeitslogistik innerhalb Zürichs nicht empfohlen.'],
         imageAlt: 'Züge im Bahnhof Zürich Flughafen',
       },
@@ -1080,7 +1085,7 @@ applyLocalizedCopy('de', {
       {
         title: 'Hochzeitskarte Zürich',
         body:
-          'Wichtige Orientierungspunkte für das Hochzeitswochenende:',
+          'Nützliche Orte für das Hochzeitswochenende:',
         items: ['Die Kirche St. Peter liegt in der Zürcher Altstadt, nahe beim See und bei zentralen Tramverbindungen.', 'Hotel Sonne liegt in Küsnacht ZH am rechten Zürichseeufer.', 'Richterswil, wo Manfredis Eltern wohnen, liegt weiter südlich am See und ist mit dem Zug erreichbar.', 'Flughafen Zürich und Zürich HB sind mit häufigen Zügen verbunden; nutzt SBB Mobile oder ZVV für die genaue Verbindung am Reisetag.'],
         imageAlt: 'Auf OpenStreetMap basierende Karte von Zürich, Küsnacht, Richterswil, Flughafen Zürich, Kirche St. Peter und Hotel Sonne',
       },
@@ -1094,12 +1099,12 @@ applyLocalizedCopy('de', {
     title: 'Unterkunft',
     kicker: 'Übernachten',
     intro:
-      'Küsnacht ist am praktischsten für die Feier; Zürich Zentrum ist gut für Besichtigungen und Verkehrsanbindungen. Informationen zu Zimmerkontingenten werden ergänzt, sobald sie bestätigt sind.',
+      'Küsnacht liegt am nächsten zur Abendfeier. Zürich Zentrum kann passen, wenn ihr mehr Verkehrs- und Restaurantoptionen möchtet. Informationen zu Zimmerkontingenten folgen, sobald sie bestätigt sind.',
     sections: [
       {
         title: 'Am nächsten zur Feier: Küsnacht',
         body:
-          'Eine Unterkunft in Küsnacht hält euch nach Abendessen und Feier nahe beim Hotel Sonne. Das ist wahrscheinlich die einfachste Wahl, wenn der späte Rückweg möglichst unkompliziert sein soll.',
+          'Wählt Küsnacht, wenn ihr nach Abendessen und Feier im Hotel Sonne den kürzesten Rückweg möchtet.',
         items: ['Hotel Sonne Küsnacht: voraussichtlich erste Option für ein mögliches Zimmerkontingent.', 'OXEN Küsnacht: nahe Option mit wenigen Zimmern; einige Zimmer haben Gemeinschaftsbäder.', 'Aktuell fahren späte Züge ungefähr stündlich zurück Richtung Zürich HB; prüft die genaue Verbindung am Abend selbst in SBB Mobile.'],
         links: [
           { label: 'Hotel Sonne Küsnacht', href: 'https://sonne.ch/en/' },
@@ -1117,7 +1122,7 @@ applyLocalizedCopy('de', {
       {
         title: 'Richterswil',
         body:
-          'Richterswil liegt weiter südlich am Zürichsee, kann aber eine ruhige Basis für Gäste sein, die nahe bei Manfredis Familie wohnen oder ein kleineres B&B bevorzugen.',
+          'Richterswil liegt weiter südlich am Zürichsee. Es kann passen, wenn ihr nahe bei Manfredis Familie wohnen oder ein kleineres B&B bevorzugen möchtet.',
         items: ['Ab Zürich HB ist die S2 meist der beste direkte Zug nach Richterswil; die S8 ist eine langsamere direkte Alternative. Prüft die genaue Verbindung vor der Fahrt in SBB Mobile.', 'B & B Caffètino-Vino Richterswil hat fünf Zimmer im historischen Dorfkern, nahe beim See und Bahnhof.', 'Es ist ein B&B und kein Hotel; das Haus hat keinen Lift, und die Zimmer liegen im 2. und 3. Obergeschoss.', 'Prüft vor der Buchung die späte Rückfahrt ab Küsnacht, besonders nach der Feier.'],
         imageAlt: 'Richterswil vom Zürichsee aus gesehen',
       },
@@ -1152,17 +1157,22 @@ applyLocalizedCopy('de', {
     title: 'Aktivitäten',
     kicker: 'Zürich und Schweiz',
     intro:
-      'Für Gäste mit Zeit rund um die Hochzeit bietet Zürich Seewege, Altstadt, Museen, Schokolade und gut erreichbare Tagesausflüge.',
+      'Nutzt diese Seite, wenn ihr rund um die Hochzeit freie Zeit habt. Sie enthält kurze Pläne für Zürich, Optionen bei Regen und Tagesausflüge ohne Hotelwechsel.',
     sections: [
       {
         title: 'Erste Ideen in Zürich',
         body: 'Wenn ihr etwas Zeit habt, sind dies einfache Möglichkeiten, die Stadt ohne ein zu volles Programm kennenzulernen.',
         items: ['Spaziergänge durch die Altstadt: Niederdorf, Lindenhof, Grossmünster und die Wege an der Limmat.', 'Uetliberg für einen weiten Blick über Stadt und See, wenn das Wetter passt.', 'Der Zoo Zürich kann für kleinere Kinder eine gute Option sein.', 'Cafés, Gelaterias und ein Spaziergang am See bei Bellevue, Bürkliplatz oder Zürichhorn.'],
+        links: [
+          { label: 'Uetliberg', href: 'https://www.ueetliberg.ch/en/uetliberg' },
+          { label: 'Zoo Zürich', href: 'https://www.zoo.ch/en' },
+          { label: 'Offizielle Besucherinformationen Zürich', href: 'https://www.zuerich.com/en' },
+        ],
         imageAlt: 'Zürich und der Zürichsee von oben',
       },
       {
         title: 'Museen und Schokolade',
-        body: 'Für Kultur oder einen Regentag hat Zürich sehr gute Museen und ein gut organisiertes Schokoladenmuseum für Kinder und Erwachsene.',
+        body: 'Bei Regen: Kunsthaus Zürich, Museum Rietberg oder Lindt Home of Chocolate in Kilchberg.',
         items: ['Das Kunsthaus Zürich zeigt Kunst vom Mittelalter bis zur Gegenwart, mit Schweizer Malerei, Impressionismus, Klassischer Moderne, Dada, Giacometti und Munch als Schwerpunkten.', 'Das Museum Rietberg widmet sich Kunst und Kulturen aus Asien, Afrika, Amerika und Ozeanien.', 'Lindt Home of Chocolate in Kilchberg ist interaktiv und besonders auch mit Kindern geeignet.'],
         imageAlt: 'Pipilotti-Rist-Skulptur und Chipperfield-Bau des Kunsthaus Zürich am Heimplatz',
       },
@@ -1195,7 +1205,7 @@ applyLocalizedCopy('de', {
     title: 'Hinweise zur Schweiz',
     kicker: 'Praktische Hinweise',
     intro:
-      'Einige praktische Hinweise für Gäste in der Schweiz: öffentlicher Verkehr, Währung, Wetter, Mobiltelefone und einfache Planung.',
+      'Grundlegende Hinweise für die Schweiz: Verkehr, Geld, Wetter, Mobiltelefone und Planung.',
     sections: [
       {
         title: 'Öffentlicher Verkehr',
@@ -1218,7 +1228,7 @@ applyLocalizedCopy('de', {
       {
         title: 'Geld und Budget',
         body:
-          'Die Schweiz verwendet Schweizer Franken und ist oft teuer, aber gute Planung hilft, die Kosten überschaubar zu halten.',
+          'Die Schweiz verwendet Schweizer Franken und Preise können hoch sein. Supermärkte und öffentlicher Verkehr helfen, Alltagskosten niedriger zu halten.',
         items: ['Migros und Coop sind die grössten Supermarktketten und nützlich für Frühstück, Snacks, Picknick und Kinderbedarf.', 'Taxis sind meist teuer. Nutzt sie nur, wenn Gepäck, Kinder oder Barrierefreiheitsbedarf sie wirklich sinnvoll machen.', 'Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist wegen fehlender Parkplätze und geringer Bequemlichkeit nicht empfohlen.', 'Günstige Optionen sind Spaziergänge am See, Altstadt, Aussichtspunkte, Parks, Picknicks aus dem Supermarkt und Unterkunft nahe Tram, Zug oder Bus.'],
         image: '/images/places/zurich-lindenhof-view.jpg',
         imageAlt: 'Zürcher Altstadt und Limmat vom Lindenhof',
@@ -1251,7 +1261,7 @@ applyLocalizedCopy('de', {
   faq: {
     title: 'Details und FAQ',
     kicker: 'Hilfreiche Antworten',
-    intro: 'Antworten auf die häufigsten Fragen der Gäste. Weitere Details werden ergänzt, sobald der Tagesablauf final ist.',
+    intro: 'Praktische Antworten für eingeladene Gäste. Bestätigte Zeiten und Transportdetails ergänzen wir, sobald sie feststehen.',
   },
   rsvp: {
     title: 'RSVP',
@@ -1265,11 +1275,11 @@ applyLocalizedCopy('de', {
     title: 'Geschenke',
     kicker: 'Mit Dankbarkeit',
     intro:
-      'Eure Anwesenheit in der Schweiz ist für uns schon das grösste Geschenk. Wir sind sehr dankbar, dass ihr die Reise auf euch nehmt, um mit uns zu feiern.',
+      'Wenn ihr für die Hochzeit in die Schweiz reist, fühlt euch bitte nicht verpflichtet, ein Geschenk mitzubringen oder zu schicken.',
     sections: [
       {
         title: 'Details folgen',
-        body: 'Falls wir eine Geschenkeliste, einen Reisefonds oder weitere Hinweise ergänzen, teilen wir sie hier, bevor die Einladungen verschickt werden.',
+        body: 'Falls wir eine Geschenkeliste oder einen Reisefonds teilen, ergänzen wir die Details hier, bevor die Einladungen verschickt werden.',
       },
     ],
   },
@@ -1281,7 +1291,7 @@ applyLocalizedCopy('de', {
     sections: [
       {
         title: 'Fragen zur Hochzeit',
-        body: 'Wir verwenden eine gemeinsame E-Mail-Adresse für praktische Fragen, während die Website vorbereitet wird.',
+        body: 'Schreibt Hochzeitsfragen vorerst bitte an gabyandmanfredi@gmail.com.',
         items: ['Allgemeine Fragen: gabyandmanfredi@gmail.com', 'RSVP-Unterstützung: gabyandmanfredi@gmail.com', 'Dringender Kontakt in der Hochzeitswoche: TBD'],
       },
     ],

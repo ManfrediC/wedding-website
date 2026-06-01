@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI-Writing Copy Scan</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --background: #faf8f3;
+        --paper: #fffdf8;
+        --ink: #2a2723;
+        --muted: #6f665d;
+        --line: #d8cec2;
+        --accent: #6d4f3f;
+        --accent-soft: #efe5da;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--background);
+        color: var(--ink);
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.5;
+      }
+
+      main {
+        width: min(1800px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      header {
+        margin-bottom: 24px;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(32px, 4vw, 52px);
+        font-weight: 400;
+      }
+
+      p {
+        max-width: 920px;
+        margin: 0 0 12px;
+      }
+
+      .meta,
+      .note {
+        color: var(--muted);
+      }
+
+      .toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+        margin: 24px 0 16px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        background: rgba(255, 253, 248, 0.96);
+        backdrop-filter: blur(8px);
+      }
+
+      .toolbar-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      button {
+        border: 1px solid var(--accent);
+        background: var(--paper);
+        color: var(--accent);
+        padding: 8px 12px;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: var(--accent-soft);
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        background: var(--paper);
+      }
+
+      table {
+        width: 100%;
+        min-width: 1180px;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        border-bottom: 1px solid var(--line);
+        border-right: 1px solid var(--line);
+        vertical-align: top;
+        text-align: left;
+      }
+
+      th:last-child,
+      td:last-child {
+        border-right: 0;
+      }
+
+      th {
+        position: sticky;
+        top: 73px;
+        z-index: 1;
+        background: var(--accent-soft);
+        font-size: 13px;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      td.implement,
+      th.implement {
+        width: 92px;
+        text-align: center;
+      }
+
+      td.location {
+        width: 230px;
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 13px;
+      }
+
+      td.sign {
+        width: 240px;
+        color: var(--muted);
+      }
+
+      td.current,
+      td.proposed {
+        width: 32%;
+      }
+
+      input[type="checkbox"] {
+        width: 24px;
+        height: 24px;
+        accent-color: var(--accent);
+        cursor: pointer;
+      }
+
+      tr:has(input[type="checkbox"]:checked) {
+        background: #f6efe7;
+      }
+
+      .screen-reader-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>AI-Writing Copy Scan</h1>
+        <p class="meta">Date: 1 June 2026 · Scope: guest-facing website copy in <code>src/data</code>, <code>src/components</code>, and localised page text.</p>
+        <p>
+          Reference:
+          <a href="https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing">Wikipedia:Signs of AI writing</a>
+        </p>
+        <p>This is a copy audit only. No website copy has been changed.</p>
+        <p>
+          English is the source of truth, so only English copy is listed below. If a row is approved, the Italian and German versions must be updated to carry the same meaning and tone, then reviewed by fluent speakers.
+        </p>
+        <p class="note">
+          Target voice: a practical note from the hosts to invited guests. Avoid tourism copy and generic or insincere-sounding warmth.
+        </p>
+      </header>
+
+      <section class="toolbar" aria-label="Audit controls">
+        <p id="selection-count">0 changes selected for implementation.</p>
+        <div class="toolbar-actions">
+          <button type="button" id="select-all">Select all</button>
+          <button type="button" id="clear-all">Clear all</button>
+        </div>
+      </section>
+
+      <section class="table-wrap" aria-label="Recommended phrase replacements">
+        <table>
+          <thead>
+            <tr>
+              <th class="implement" scope="col">Implement?</th>
+              <th scope="col">Location</th>
+              <th scope="col">Sign to reduce</th>
+              <th scope="col">Current phrase</th>
+              <th scope="col">Proposed English source phrase</th>
+            </tr>
+          </thead>
+          <tbody id="audit-body"></tbody>
+        </table>
+      </section>
+
+      <section aria-labelledby="translation-follow-up">
+        <h2 id="translation-follow-up">Translation Follow-Up</h2>
+        <p>When any English row is approved for implementation:</p>
+        <ul>
+          <li>Update the English source copy first.</li>
+          <li>Update the Italian and German copy to match the approved English meaning and level of directness.</li>
+          <li>Avoid translating tourism-style or generic-warmth phrasing back into the localised versions.</li>
+          <li>Keep Italian and German as draft until reviewed by fluent speakers.</li>
+        </ul>
+      </section>
+    </main>
+
+    <script>
+      const storageKey = "wedding-ai-copy-scan-selected-v1";
+      const rows = [
+        {
+          location: "src/data/content.ts home hero",
+          sign: 'Formulaic warmth; "journey" used as scenic filler',
+          current:
+            "We cannot wait to celebrate with you in Zurich. The day will begin in the old town at Kirche St. Peter, followed by a journey on Lake Zurich to Küsnacht and an evening by the water at Hotel Sonne.",
+          proposed:
+            "Here are the details for our wedding in Zurich and Küsnacht. The ceremony is planned for Kirche St. Peter, followed by a boat transfer towards Küsnacht and an evening at Hotel Sonne.",
+        },
+        {
+          location: "src/data/content.ts home closing",
+          sign: "Generic gratitude phrase",
+          current: "We are so grateful that you will be joining us in Switzerland.",
+          proposed: "We will keep this page updated as timings, travel details, and RSVP information are confirmed.",
+        },
+        {
+          location: "src/data/content.ts home schedule card",
+          sign: 'Vague "details as confirmed" placeholder',
+          current: "Ceremony, boat transfer, dinner, dancing, and details as they are confirmed.",
+          proposed: "The main events of the day, with confirmed times added here.",
+        },
+        {
+          location: "src/data/content.ts home stay card",
+          sign: "Generic recommendation label",
+          current: "Recommended areas, Hotel Sonne, nearby options, and room-block updates.",
+          proposed: "Where to stay in Küsnacht or central Zurich, including room-block details once confirmed.",
+        },
+        {
+          location: "src/data/content.ts home things-to-do card",
+          sign: "Tourism-style scenic list; soft adjective",
+          current: "Zurich, Lake Zurich, mountain views, day trips, and gentle pre-wedding ideas.",
+          proposed: "What to do if you have spare time before or after the wedding.",
+        },
+        {
+          location: "src/data/content.ts schedule intro",
+          sign: '"This page will become" sounds generated and self-referential',
+          current:
+            "The exact timing is still being confirmed. This page will become the day-of reference for ceremony arrival, the boat transfer, dinner, dancing, and return travel.",
+          proposed:
+            "The exact timing is still being confirmed. We will add arrival times, boat details, dinner, dancing, and return travel here once they are final.",
+        },
+        {
+          location: "src/data/content.ts schedule notice",
+          sign: "Awkward compound phrase",
+          current:
+            "Boat details are provisional: we are planning a host-arranged transfer from Zurich towards Küsnacht, with boarding point and rain plan to follow.",
+          proposed:
+            "Boat details are provisional. We are planning a transfer from Zurich towards Küsnacht, organised by us; the boarding point and rain plan will follow.",
+        },
+        {
+          location: "src/data/content.ts civil ceremony",
+          sign: '"Private step" sounds abstract',
+          current:
+            "The legal ceremony at Stadthaus Zürich will be a private step before the wedding celebration. Because of visitor constraints, only immediate family will be able to attend.",
+          proposed:
+            "The civil ceremony at Stadthaus Zürich will take place privately before the wedding celebration. Because visitor numbers are limited, only immediate family can attend.",
+        },
+        {
+          location: "src/data/content.ts boat transfer",
+          sign: "Awkward compound phrase",
+          current: "After the ceremony, we are planning a host-arranged boat transfer from Zurich towards Küsnacht.",
+          proposed: "After the ceremony, we are planning a boat transfer from Zurich towards Küsnacht, organised by us.",
+        },
+        {
+          location: "src/data/schedule.ts guest arrival",
+          sign: 'Vague "added once confirmed" placeholder',
+          current: "Please plan to arrive with time to settle in before the ceremony. The exact arrival time will be added once confirmed.",
+          proposed: "Please arrive early enough to be seated before the ceremony. We will add the exact arrival time once it is confirmed.",
+        },
+        {
+          location: "src/data/schedule.ts boat transfer",
+          sign: 'Awkward compound phrase; repeated "to be confirmed"',
+          current: "We are planning a host-arranged boat transfer after the ceremony. Boarding point, timing, and rain plan are still to be confirmed.",
+          proposed: "We are planning a boat transfer after the ceremony, organised by us. Boarding point, timing, and rain plan will follow.",
+        },
+        {
+          location: "src/data/content.ts airport transfer",
+          sign: 'Generic intensifier; "ordinary wedding logistics" sounds machine-like',
+          current:
+            "Zurich Airport has a very convenient train and S-Bahn connection to Zurich HB, with onward public transport to Küsnacht ZH and the wedding venues. For ordinary wedding logistics, use the train rather than driving or taking a taxi.",
+          proposed:
+            "Zurich Airport is well connected by train and S-Bahn to Zurich HB, Küsnacht ZH, and the wedding venues. For the wedding weekend, the train is usually easier than driving or taking a taxi.",
+        },
+        {
+          location: "src/data/content.ts map section",
+          sign: '"Key reference points" is generic AI/business phrasing',
+          current: "Key reference points for the wedding weekend:",
+          proposed: "Useful places for the wedding weekend:",
+        },
+        {
+          location: "src/data/content.ts stay intro",
+          sign: 'Formulaic "most convenient / best for" comparison; tourism framing',
+          current: "Küsnacht is most convenient for the party, while central Zurich is best for sightseeing and transport. Room-block information will be added once confirmed.",
+          proposed:
+            "Küsnacht is closest to the evening party. Central Zurich may suit guests who want more transport and restaurant options. Room-block details will follow once confirmed.",
+        },
+        {
+          location: "src/data/content.ts central Zurich stay",
+          sign: 'Tourism-style "sightseeing" framing',
+          current: "Zurich city centre is practical for guests who want restaurants, sightseeing, train connections, and easy airport access.",
+          proposed: "Central Zurich suits guests who want more train, tram, and restaurant options, plus an easier airport connection.",
+        },
+        {
+          location: "src/data/content.ts Küsnacht stay",
+          sign: 'Abstract "guests who value convenience"',
+          current: "Staying in Küsnacht keeps you near Hotel Sonne after dinner and dancing. This is likely the easiest choice for guests who value convenience at the end of the evening.",
+          proposed: "Stay in Küsnacht if you want the shortest trip back after dinner and dancing at Hotel Sonne.",
+        },
+        {
+          location: "src/data/content.ts Richterswil stay",
+          sign: '"Quiet lakeside base" sounds travel-brochure-like',
+          current: "Richterswil is farther down Lake Zurich, but it can be a quiet lakeside base for guests who would like to stay near Manfredi's family or who prefer a smaller B&B.",
+          proposed: "Richterswil is farther down Lake Zurich. It may suit guests who want to stay near Manfredi's family or prefer a small B&B.",
+        },
+        {
+          location: "src/data/content.ts things-to-do intro",
+          sign: 'Tourism "offers" plus broad list',
+          current: "For guests with time around the wedding, Zurich offers lake walks, old town wandering, mountain views, museums, and day trips within easy reach.",
+          proposed: "Use this page if you have spare time around the wedding. It lists short Zurich plans, bad-weather options, and day trips that work from one hotel.",
+        },
+        {
+          location: "src/data/content.ts first-day options",
+          sign: 'Over-explained "structured half-day activity"',
+          current: "Children may also enjoy Zurich Zoo, especially if you would like a structured half-day activity after travelling.",
+          proposed: "Zurich Zoo can also work well with children after travelling.",
+        },
+        {
+          location: "src/data/content.ts things-to-do link label",
+          sign: "Tourism-site cue in link label",
+          current: "Zurich tourism",
+          proposed: "Official Zurich visitor information",
+        },
+        {
+          location: "src/data/content.ts museums",
+          sign: "Generic praise; tourism framing",
+          current: "For a culture or rainy-day plan, Zurich has excellent museums and a well-organised chocolate museum for children and adults.",
+          proposed: "Rain plan: Kunsthaus Zurich, Museum Rietberg, or Lindt Home of Chocolate in Kilchberg.",
+        },
+        {
+          location: "src/data/content.ts day trips",
+          sign: '"These are practical" generic framing',
+          current: "These are practical day trips from Zurich if you would like a longer excursion without changing hotels.",
+          proposed: "These trips work from Zurich without changing hotels.",
+        },
+        {
+          location: "src/data/content.ts lake activities",
+          sign: "Tourism-brochure phrasing",
+          current: "A Lake Zurich boat excursion is a relaxed way to see the city and shoreline.",
+          proposed: "Check ZSG if you want a short boat trip outside the wedding schedule.",
+        },
+        {
+          location: "src/data/content.ts further away",
+          sign: '"Squeezed around" plus generated-feeling contrast',
+          current: "If Switzerland is part of a longer holiday, these are better with extra nights rather than squeezed around the wedding.",
+          proposed: "If Switzerland is part of a longer holiday, plan these only with extra nights.",
+        },
+        {
+          location: "src/data/content.ts further away item",
+          sign: 'Tourism phrase "classic high-Alpine scenery"',
+          current: "Lauterbrunnen and Jungfraujoch for classic high-Alpine scenery.",
+          proposed: "Lauterbrunnen or Jungfraujoch only if you have extra nights; both are long trips from Zurich.",
+        },
+        {
+          location: "src/data/content.ts Switzerland guide intro",
+          sign: 'Generic "practical notes" list',
+          current: "A few practical notes for guests visiting Switzerland: public transport, currency, weather, mobile phones, and straightforward planning.",
+          proposed: "Basics for visiting Switzerland: transport, money, weather, phones, and planning.",
+        },
+        {
+          location: "src/data/content.ts; src/data/faqs.ts transport advice",
+          sign: "Awkward negative phrasing repeated in several places",
+          current: "Use public transport for travelling around Zurich; driving by car is not recommended due to lack of parking space and poor convenience.",
+          proposed: "Use public transport around Zurich. Parking is limited, and driving is usually less convenient.",
+        },
+        {
+          location: "src/data/content.ts ticket section",
+          sign: "Meta phrasing about the notes themselves",
+          current: "There is no single best ticket for every guest. These notes are intended as practical starting points.",
+          proposed: "There is no single best ticket for every guest. Start here, then check SBB or ZVV before buying.",
+        },
+        {
+          location: "src/data/content.ts money section",
+          sign: 'Generic "planning ahead" reassurance',
+          current: "Switzerland uses Swiss francs and is often expensive, but planning ahead can keep costs manageable.",
+          proposed: "Switzerland uses Swiss francs and prices can be high. Supermarkets and public transport help keep day-to-day costs lower.",
+        },
+        {
+          location: "src/data/content.ts money section item",
+          sign: "Tourism-list framing",
+          current: "Low-cost options include lake walks, Old Town wandering, viewpoints, parks, supermarket picnics, and choosing accommodation near a tram, train, or bus stop.",
+          proposed: "Lower-cost choices: supermarket food, public transport, free walks, parks, and accommodation near tram, train, or bus.",
+        },
+        {
+          location: "src/data/content.ts personal recommendations",
+          sign: 'Polished but indirect "routes suited to" phrasing',
+          current:
+            "Guests can get in touch with Manfredi and family for practical advice, especially around hikes, family-friendly plans, longer trips, or whether a specific itinerary is worth the travel time.",
+          proposed: "For hikes, family plans, or longer Swiss trips, ask Manfredi or his family before booking.",
+        },
+        {
+          location: "src/data/content.ts FAQ intro",
+          sign: "Generic FAQ framing",
+          current: "Answers to the questions guests are most likely to ask. More details will be added as the day becomes final.",
+          proposed: "Practical answers for invited guests. We will add confirmed timings and transport details when they are ready.",
+        },
+        {
+          location: "src/data/content.ts RSVP intro",
+          sign: 'Over-formal "whether you will be able to"',
+          current: "Please use the form below to let us know whether you will be able to celebrate with us in Zurich.",
+          proposed: "Please use the form below to let us know if you can join us in Zurich.",
+        },
+        {
+          location: "src/data/content.ts gifts intro",
+          sign: "Common wedding cliche; reads like generated ceremonial copy",
+          current: "Your presence in Switzerland is already the greatest gift. We are so grateful that you are travelling to celebrate with us.",
+          proposed: "If you are travelling to Switzerland, please do not feel any obligation to bring or send a gift.",
+        },
+        {
+          location: "src/data/content.ts gifts section",
+          sign: "Placeholder heading",
+          current: "Details to follow",
+          proposed: "Gift information",
+        },
+        {
+          location: "src/data/content.ts gifts body",
+          sign: 'Conditional placeholder with vague "guidance"',
+          current: "If we add a registry, honeymoon fund, or any further guidance, we will share it here before invitations are sent.",
+          proposed: "If we decide to share registry or honeymoon-fund details, we will add them here before invitations are sent.",
+        },
+        {
+          location: "src/data/content.ts contact body",
+          sign: "Process-oriented internal phrasing",
+          current: "We will use one shared email address for practical wedding questions while the site is being prepared.",
+          proposed: "For now, please send wedding questions to gabyandmanfredi@gmail.com.",
+        },
+        {
+          location: "src/data/rsvp.ts RSVP privacy",
+          sign: "Long list of purposes; smoothed legal-ish wording",
+          current:
+            "We will use your RSVP information only to plan the wedding, including attendance, seating, dietary requirements, accessibility arrangements, guest support, and contacting you if needed.",
+          proposed: "We will use your RSVP information only for wedding planning and to contact you if needed.",
+        },
+        {
+          location: "src/components/ExchangeRates.astro source detail",
+          sign: "User-facing implementation detail; provenance overexplained",
+          current: "free open-source exchange-rate API, served via jsDelivr with a Cloudflare fallback.",
+          proposed: "exchange-rate data provider.",
+        },
+        {
+          location: "src/components/ExchangeRates.astro loading state",
+          sign: '"Latest" filler in loading state',
+          current: "Updating latest rates...",
+          proposed: "Updating exchange rates...",
+        },
+        {
+          location: "src/components/ExchangeRates.astro update note",
+          sign: "Overexplained provenance",
+          current: "Updated from daily open-source exchange-rate data for",
+          proposed: "Rates last updated on",
+        },
+        {
+          location: "src/data/photos.ts home photo strip",
+          sign: "Slightly generic warmth phrase",
+          current: "A few photos from Zurich and our favourite Swiss corners.",
+          proposed: "A few photos connected to Zurich, the wedding locations, and family.",
+        },
+      ];
+
+      function selectedIds() {
+        try {
+          const stored = JSON.parse(localStorage.getItem(storageKey) || "[]");
+          return Array.isArray(stored) ? new Set(stored) : new Set();
+        } catch {
+          return new Set();
+        }
+      }
+
+      function saveSelected(ids) {
+        localStorage.setItem(storageKey, JSON.stringify([...ids]));
+      }
+
+      function textCell(className, text) {
+        const cell = document.createElement("td");
+        cell.className = className;
+        cell.textContent = text;
+        return cell;
+      }
+
+      function updateCount() {
+        const count = document.querySelectorAll('input[type="checkbox"]:checked').length;
+        const label = count === 1 ? "change" : "changes";
+        document.getElementById("selection-count").textContent = `${count} ${label} selected for implementation.`;
+      }
+
+      function renderRows() {
+        const selected = selectedIds();
+        const body = document.getElementById("audit-body");
+
+        rows.forEach((row, index) => {
+          const id = `copy-change-${index + 1}`;
+          const tableRow = document.createElement("tr");
+          const checkboxCell = document.createElement("td");
+          const checkbox = document.createElement("input");
+          const label = document.createElement("label");
+          const hiddenText = document.createElement("span");
+
+          checkboxCell.className = "implement";
+          checkbox.type = "checkbox";
+          checkbox.id = id;
+          checkbox.checked = selected.has(id);
+          hiddenText.className = "screen-reader-only";
+          hiddenText.textContent = `Implement ${row.location}`;
+          label.append(checkbox, hiddenText);
+          checkboxCell.append(label);
+
+          checkbox.addEventListener("change", () => {
+            const nextSelected = selectedIds();
+            if (checkbox.checked) {
+              nextSelected.add(id);
+            } else {
+              nextSelected.delete(id);
+            }
+            saveSelected(nextSelected);
+            updateCount();
+          });
+
+          tableRow.append(
+            checkboxCell,
+            textCell("location", row.location),
+            textCell("sign", row.sign),
+            textCell("current", row.current),
+            textCell("proposed", row.proposed),
+          );
+          body.append(tableRow);
+        });
+
+        updateCount();
+      }
+
+      document.getElementById("select-all").addEventListener("click", () => {
+        const ids = new Set();
+        document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+          checkbox.checked = true;
+          ids.add(checkbox.id);
+        });
+        saveSelected(ids);
+        updateCount();
+      });
+
+      document.getElementById("clear-all").addEventListener("click", () => {
+        document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+          checkbox.checked = false;
+        });
+        saveSelected(new Set());
+        updateCount();
+      });
+
+      renderRows();
+    </script>
+  </body>
+</html>
