@@ -20,7 +20,7 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
     {
       question: 'Is the boat transfer included?',
       answer:
-        'We are planning a host-arranged boat transfer from Zurich towards Küsnacht after the ceremony. We expect to provide the necessary details for guests, and we will update this page once timing and exact arrangements are confirmed.',
+        "Yes. After the ceremony, guests will walk for about 12 minutes to Quai 6 at Bürkliplatz, Zürich, accompanied by family members. Please be at the boarding point by 3.45pm; the boat leaves for Küsnacht at 4pm. We recommend comfortable formal shoes for the walk and boat ride, and an umbrella in case of rain.",
     },
     {
       question: 'Do I need a car?',
@@ -100,7 +100,7 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
     {
       question: 'Il trasferimento in barca è incluso?',
       answer:
-        'Stiamo pianificando un trasferimento in barca organizzato dagli sposi da Zurigo verso Küsnacht dopo la cerimonia. Aggiorneremo questa pagina con orari e dettagli precisi appena confermati.',
+        'Sì. Dopo la cerimonia, gli ospiti cammineranno per circa 12 minuti fino al Quai 6 a Bürkliplatz, Zurigo, accompagnati dai familiari. Vi chiediamo di essere al punto d’imbarco entro le 15:45; la barca partirà per Küsnacht alle 16:00. Consigliamo scarpe eleganti ma comode per la passeggiata e la barca, e un ombrello in caso di pioggia.',
     },
     {
       question: "Serve un'auto?",
@@ -180,7 +180,7 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
     {
       question: 'Ist der Bootstransfer inbegriffen?',
       answer:
-        'Wir planen nach der Trauung einen von uns organisierten Bootstransfer von Zürich Richtung Küsnacht. Die genauen Zeiten und Details ergänzen wir, sobald alles bestätigt ist.',
+        'Ja. Nach der Trauung gehen die Gäste gemeinsam mit Familienmitgliedern etwa 12 Minuten zum Quai 6 am Bürkliplatz, Zürich. Bitte seid bis 15.45 Uhr am Einstiegspunkt; das Schiff fährt um 16.00 Uhr nach Küsnacht ab. Wir empfehlen bequeme formelle Schuhe für den Fussweg und die Bootsfahrt sowie einen Regenschirm bei Regen.',
     },
     {
       question: 'Brauche ich ein Auto?',

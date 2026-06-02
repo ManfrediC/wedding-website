@@ -190,6 +190,17 @@ img {
   max-width: 36rem;
 }
 
+.home-hero .hero-copy,
+.home-hero .eyebrow,
+.home-hero .hero-subtitle {
+  color: var(--colour-charcoal);
+}
+
+.home-hero .button.secondary {
+  border-color: var(--colour-charcoal);
+  color: var(--colour-charcoal);
+}
+
 .eyebrow {
   margin: 0 0 0.9rem;
   color: var(--colour-green);

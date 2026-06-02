@@ -129,12 +129,16 @@ test('root page renders the redesigned password gate', async ({ page }) => {
   await expect(page.locator('input[name="next"]')).toHaveValue('/en/');
 });
 
-test('home hero keeps the Zurich image positioned below the spire', async ({ page }) => {
+test('home hero keeps the Zurich image positioned below the spire with readable text', async ({ page }) => {
   await page.goto('/en/');
 
   const backgroundPosition = await page.locator('.home-hero').evaluate((element) => {
     return window.getComputedStyle(element).backgroundPosition;
   });
+
+  await expect(page.locator('.home-hero .hero-copy')).toHaveCSS('color', 'rgb(37, 37, 37)');
+  await expect(page.locator('.home-hero .hero-subtitle')).toHaveCSS('color', 'rgb(37, 37, 37)');
+  await expect(page.locator('.home-hero .button.secondary')).toHaveCSS('color', 'rgb(37, 37, 37)');
 
   if (page.viewportSize()?.width && page.viewportSize()!.width <= 700) {
     expect(backgroundPosition).toContain('58% 22%');
@@ -152,7 +156,7 @@ test('Schedule places venue images on the detail cards', async ({ page }) => {
   await expect(civilTimelineEntry.getByText('only immediate family will be able to attend')).toBeVisible();
   await expect(civilTimelineEntry.locator('img[src="/images/places/stadthaus-zurich.png"]')).toHaveCount(0);
 
-  const civilDetailCard = page.locator('.info-card').filter({ hasText: 'The legal ceremony at Stadthaus Zürich' });
+  const civilDetailCard = page.locator('.info-card').filter({ hasText: 'The civil ceremony at Stadthaus Zürich' });
   await expect(civilDetailCard.locator('img[src="/images/places/stadthaus-zurich.png"]')).toHaveAttribute(
     'alt',
     'Facade of Stadthaus Zürich under a blue sky',
@@ -163,10 +167,14 @@ test('Schedule places venue images on the detail cards', async ({ page }) => {
     'Kirche St. Peter in Zurich',
   );
   await expect(page.locator('.timeline-date').filter({ hasText: 'Friday, 11 June 2027' })).toHaveCount(5);
-  await expect(page.locator('.timeline-time').filter({ hasText: 'TBD' })).toHaveCount(6);
+  await expect(page.locator('.timeline-time').filter({ hasText: 'TBD' })).toHaveCount(5);
+  await expect(page.locator('.timeline-time').filter({ hasText: '4pm' })).toBeVisible();
+  await expect(page.locator('.timeline-location').filter({ hasText: 'Quai 6, Bürkliplatz, Zürich' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Reception and party' })).toBeVisible();
   await expect(page.getByText('Date: Friday, 11 June 2027')).toHaveCount(3);
-  await expect(page.getByText('Time: TBD')).toHaveCount(5);
+  await expect(page.getByText('Time: TBD')).toHaveCount(3);
+  await expect(page.getByText('Boarding time: please be there by 3.45pm')).toBeVisible();
+  await expect(page.getByText('Boarding point: Quai 6, Bürkliplatz, Zürich')).toBeVisible();
   await expect(page.locator('img[src="/images/places/hotel-sonne-lake-view.jpg"]')).toHaveAttribute(
     'alt',
     'Hotel Sonne Küsnacht seen from Lake Zurich',
@@ -202,16 +210,16 @@ test('English pages include requested travel and contact details', async ({ page
     'alt',
     'OpenStreetMap-based map of Zurich, Küsnacht, Richterswil, Zurich Airport, Kirche St. Peter, and Hotel Sonne',
   );
-  await expect(page.getByText('For ordinary wedding logistics, use the train rather than driving or taking a taxi.')).toBeVisible();
+  await expect(page.getByText('For the wedding weekend, the train is usually easier than driving or taking a taxi.')).toBeVisible();
   await expect(page.getByRole('heading', { name: 'By train to Küsnacht ZH' })).toBeVisible();
   await expect(page.locator('img[src="/images/places/kuesnacht-lake-view.jpg"]')).toHaveAttribute(
     'alt',
     'Küsnacht village seen from Lake Zurich',
   );
-  await expect(page.getByText('From Zurich HB: take an S6 or S16')).toBeVisible();
+  await expect(page.getByText('From Zürich HB: take an S6 or S16')).toBeVisible();
   await expect(page.getByText('From Zurich Airport: the simplest direct train is usually the S16')).toBeVisible();
   await expect(page.getByText('departures around 01 and 31 minutes past the hour')).toBeVisible();
-  await expect(page.getByText('From Richterswil: travel by train to Zurich HB')).toBeVisible();
+  await expect(page.getByText('From Richterswil: travel by train to Zürich HB')).toBeVisible();
   await expect(page.getByText('Also compare fares with a layover in New York')).toBeVisible();
   await expect(page.getByText('London Luton may also have useful easyJet flights')).toBeVisible();
   await expect(page.getByText('Bus 50 from EuroAirport to Basel SBB')).toBeVisible();
@@ -219,6 +227,8 @@ test('English pages include requested travel and contact details', async ({ page
 
   await page.goto('/en/stay/');
   await expect(page.getByRole('link', { name: 'Hotel Sonne Küsnacht' })).toHaveAttribute('href', 'https://sonne.ch/en/');
+  await expect(page.getByText('approximately 10% discount')).toBeVisible();
+  await expect(page.getByText('Dago-Carta wedding guest')).toBeVisible();
   await expect(page.getByRole('link', { name: 'OXEN Küsnacht' })).toHaveAttribute('href', 'https://www.oxen.ch/zimmer');
   await expect(page.getByText('some rooms use shared bathrooms')).toBeVisible();
   await expect(page.getByText('Other towns on the S6 or S16 line')).toBeVisible();
@@ -361,7 +371,7 @@ test('Italian and German pages have localised core content', async ({ page }) =>
     'Facciata dello Stadthaus Zürich sotto un cielo blu',
   );
   await expect(page.getByText('familiari più stretti')).toHaveCount(2);
-  await expect(page.locator('.timeline-location').filter({ hasText: 'Lago di Zurigo' })).toBeVisible();
+  await expect(page.locator('.timeline-location').filter({ hasText: 'Quai 6, Bürkliplatz, Zurigo' })).toBeVisible();
   await expect(page.locator('.timeline-location').filter({ hasText: 'Da Küsnacht a Zurigo' })).toBeVisible();
   await expect(page.locator('body')).not.toContainText('Lake Zurich');
   await expect(page.locator('body')).not.toContainText('Küsnacht to Zurich');
@@ -370,8 +380,8 @@ test('Italian and German pages have localised core content', async ({ page }) =>
 
   await page.goto('/it/things-to-do/');
   await expect(page.getByRole('heading', { name: 'Cosa fare' })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Prime idee a Zurigo' })).toBeVisible();
-  await expect(page.getByText('Zurich Zoo, che può essere una buona idea per i più piccoli')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Visitare Zurigo' })).toBeVisible();
+  await expect(page.getByText('Zurich Zoo se viaggiate con bambini')).toBeVisible();
 
   await page.goto('/it/rsvp/');
   await expect(page.getByRole('heading', { name: 'RSVP' })).toBeVisible();
@@ -380,7 +390,7 @@ test('Italian and German pages have localised core content', async ({ page }) =>
 
   await page.goto('/it/gifts/');
   await expect(page.getByRole('heading', { name: 'Regali' })).toBeVisible();
-  await expect(page.getByText('La vostra presenza in Svizzera è già il regalo più grande')).toBeVisible();
+  await expect(page.getByText('non sentitevi obbligati a portare o inviare un regalo')).toBeVisible();
 
   await page.goto('/it/credits/');
   await expect(page.getByRole('heading', { name: 'Crediti immagini' })).toBeVisible();
@@ -394,7 +404,7 @@ test('Italian and German pages have localised core content', async ({ page }) =>
     'Fassade des Stadthauses Zürich unter blauem Himmel',
   );
   await expect(page.getByText('engsten Familienmitglieder')).toHaveCount(2);
-  await expect(page.locator('.timeline-location').filter({ hasText: 'Zürichsee' })).toBeVisible();
+  await expect(page.locator('.timeline-location').filter({ hasText: 'Quai 6, Bürkliplatz, Zürich' })).toBeVisible();
   await expect(page.locator('.timeline-location').filter({ hasText: 'Küsnacht nach Zürich' })).toBeVisible();
   await expect(page.locator('body')).not.toContainText('Lake Zurich');
   await expect(page.locator('body')).not.toContainText('Küsnacht to Zurich');
@@ -403,8 +413,8 @@ test('Italian and German pages have localised core content', async ({ page }) =>
 
   await page.goto('/de/things-to-do/');
   await expect(page.getByRole('heading', { name: 'Aktivitäten' })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Erste Ideen in Zürich' })).toBeVisible();
-  await expect(page.getByText('Der Zoo Zürich kann für kleinere Kinder eine gute Option sein')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Zürich besichtigen' })).toBeVisible();
+  await expect(page.getByText('Zoo Zürich, wenn ihr mit Kindern reist')).toBeVisible();
 
   await page.goto('/de/rsvp/');
   await expect(page.getByRole('heading', { name: 'RSVP' })).toBeVisible();
@@ -413,7 +423,7 @@ test('Italian and German pages have localised core content', async ({ page }) =>
 
   await page.goto('/de/gifts/');
   await expect(page.getByRole('heading', { name: 'Geschenke' })).toBeVisible();
-  await expect(page.getByText('Eure Anwesenheit in der Schweiz ist für uns schon das grösste Geschenk')).toBeVisible();
+  await expect(page.getByText('fühlt euch bitte nicht verpflichtet, ein Geschenk mitzubringen oder zu schicken')).toBeVisible();
 
   await page.goto('/de/credits/');
   await expect(page.getByRole('heading', { name: 'Bildnachweise' })).toBeVisible();
@@ -508,7 +518,7 @@ test('Things to Do uses a distinct Local advice Zurich image', async ({ page }) 
 
   await expect(page.locator('img[src="/images/places/kunsthaus-zurich.jpg"]')).toHaveAttribute(
     'alt',
-    'Pipilotti Rist sculpture and Kunsthaus Zurich Chipperfield building at Heimplatz',
+    'Pipilotti Rist sculpture and Kunsthaus Zürich Chipperfield building at Heimplatz',
   );
   await expect(page.getByRole('heading', { name: 'Local advice' })).toBeVisible();
   await expect(page.locator('img[src="/images/places/zurich-lindenhof-view.jpg"]')).toHaveAttribute(

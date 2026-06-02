@@ -111,7 +111,7 @@ export const homeContent: Record<
     title: 'Gabriela & Manfredi',
     subtitle: 'Venerdì 11 giugno 2027 · Zurigo e Küsnacht, Svizzera',
     intro:
-      "Non vediamo l'ora di festeggiare con voi a Zurigo. La giornata inizierà nel centro storico alla Kirche St. Peter, proseguirà sul Lago di Zurigo verso Küsnacht e continuerà con una serata sul lago all'Hotel Sonne.",
+      "Non vediamo l'ora di festeggiare con voi a Zurigo. La giornata inizierà nel centro storico alla Kirche St. Peter, proseguirà sul Lago di Zurigo fino a Küsnacht e continuerà con una serata sul lago all'Hotel Sonne.",
     primaryCta: 'Vedi il programma',
     secondaryCta: 'Viaggio e alloggio',
     closing: 'Siamo felicissimi di poter condividere con voi questa giornata in Svizzera.',
@@ -196,7 +196,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       intro:
         'The exact timing is still being confirmed. This page will become the day-of reference for ceremony arrival, the boat transfer, dinner, dancing, and return travel.',
       notice:
-        'Boat details are provisional. We are planning a transfer from Zurich towards Küsnacht, organised by us; the boarding point and rain plan will follow.',
+        'The boat boarding point and departure time are now confirmed. Rain-plan and accessibility details will follow once final.',
       sections: [
         {
           title: 'Civil ceremony',
@@ -207,15 +207,15 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'Ceremony',
-          body: 'The ceremony will take place at Kirche St. Peter in Zurich old town.',
-          items: ['Date: Friday, 11 June 2027', 'Time: TBD', 'Guest arrival time: TBD', 'Ceremony languages: TBD'],
+          body: "The ceremony will take place at Kirche St. Peter in Zurich old town. Please arrive with plenty of time to settle in; we would like all guests to be seated by 1.40pm.",
+          items: ['Date: Friday, 11 June 2027', 'Time: TBD', 'Guests seated by: 1.40pm', 'Ceremony languages: TBD'],
           image: '/images/places/st-peter-zurich.jpg',
           imageAlt: 'Kirche St. Peter in Zurich',
         },
         {
           title: 'Boat transfer',
-          body: 'After the ceremony, we are planning a boat transfer from Zurich towards Küsnacht, organised by us.',
-          items: ['Date: Friday, 11 June 2027', 'Time: TBD', 'Boarding point: TBD', 'Tickets: to be confirmed', 'Rain plan and accessibility details: TBD'],
+          body: 'After the ceremony, guests will walk for about 12 minutes to Quai 6 at Bürkliplatz, Zürich, accompanied by family members.',
+          items: ['Date: Friday, 11 June 2027', 'Boarding time: please be there by 3.45pm', 'Departure: 4pm', 'Boarding point: Quai 6, Bürkliplatz, Zürich', 'Tickets: arranged for guests', 'Please bring comfortable formal shoes for the walk and boat ride, and an umbrella in case of rain.', 'Rain plan and accessibility details: TBD'],
           image: '/images/places/hotel-sonne-lake-arrival.jpg',
           imageAlt: 'A boat on Lake Zurich near Hotel Sonne',
         },
@@ -264,7 +264,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'From the UK',
           body: 'From London, direct flights are usually the simplest option. EasyJet can be budget-friendly, but check baggage rules carefully before comparing prices.',
-          items: ['Compare London Heathrow, Gatwick, City, Luton, and Stansted depending on where you live; Heathrow, Gatwick, and City are usually the most relevant for Zurich, but London Luton may also have useful easyJet flights.', 'For guests outside London, also compare Manchester, Edinburgh, Bristol, and other regional airports with direct or one-stop routes.', 'On EasyJet, the lowest fare may include only one small under-seat cabin bag, currently 45 x 36 x 20 cm including handles and wheels; add any large cabin bag or hold luggage online when booking if you need it.', 'Basel can be worth comparing if fares are much better, but it is less convenient: take Bus 50 from EuroAirport to Basel SBB, then a train to Zurich HB, then S6 or S16 to Küsnacht ZH. Expect roughly two or more hours in total and extra Swiss transport cost.', 'UK nationals should check passport validity before booking: current UK guidance for Switzerland says passports must be issued less than 10 years before arrival and expire at least 3 months after leaving the Schengen area.', 'The rail route is London St Pancras to Paris by Eurostar, transfer from Gare du Nord to Gare de Lyon, then TGV Lyria to Zurich HB; allow a generous connection in Paris.'],
+          items: ['Compare London Heathrow, Gatwick, City, Luton, and Stansted depending on where you live; Heathrow, Gatwick, and City are usually the most relevant for Zurich, but London Luton may also have useful easyJet flights.', 'For guests outside London, also compare Manchester, Edinburgh, Bristol, and other regional airports with direct or one-stop routes.', 'On EasyJet, the lowest fare may include only one small under-seat cabin bag, currently 45 x 36 x 20 cm including handles and wheels; add any large cabin bag or hold luggage online when booking if you need it.', 'Basel can be worth comparing if fares are much better, but it is less convenient: take Bus 50 from EuroAirport to Basel SBB, then a train to Zurich HB, then S6 or S16 to Küsnacht ZH. Expect roughly two or more hours in total and extra Swiss transport cost.', 'UK nationals should check passport validity before booking: current UK guidance for Switzerland says passports must be issued less than 10 years before arrival and expire at least 3 months after leaving the Schengen area.', 'The rail route can be a comfortable, more sustainable way to reach Switzerland within a day: travel from London St Pancras to Paris by Eurostar, transfer from Gare du Nord to Gare de Lyon, then take TGV Lyria to Zürich HB. Allow a generous connection in Paris.'],
           links: [
             { label: 'SWISS London-Zurich', href: 'https://www.swiss.com/lhg/gb/en/o-d/cy-cy/london-zurich' },
             { label: 'easyJet London-Zurich', href: 'https://www.easyjet.com/en/flights-from-london/to-zurich/' },
@@ -315,7 +315,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'By train to Küsnacht ZH',
           body: 'Küsnacht ZH is on Zurich’s right-bank S-Bahn line. Use SBB Mobile or ZVV for the exact train, platform, and ticket zones on the day.',
-          items: ['From Zurich HB: take an S6 or S16 towards the right bank of Lake Zurich and get off at Küsnacht ZH. From the station, Hotel Sonne is a short walk downhill towards the lake.', 'From Zurich Airport: the simplest direct train is usually the S16 towards Herrliberg-Feldmeilen or Meilen, getting off at Küsnacht ZH. Current timetable patterns show this direct route around 01 and 31 minutes past the hour and taking about 26 minutes, but platforms and times should be checked in SBB Mobile before boarding.', 'From Richterswil: travel by train to Zurich HB, then change to S6 or S16 towards Küsnacht ZH. This is usually clearer than trying to cross the lake late in the evening.', 'Buy the full journey in SBB Mobile or the ZVV app before boarding; enter Küsnacht ZH so the app chooses the right destination and required zones.'],
+          items: ['From Zürich HB: take an S6 or S16 along the right bank of Lake Zurich and get off at Küsnacht ZH. The journey is usually about 12 minutes. Platform numbers, including 43/44, can change, so check SBB Mobile and the station boards before boarding.', 'From Zurich Airport: the simplest direct train is usually the S16 to Herrliberg-Feldmeilen or Meilen, getting off at Küsnacht ZH. Current timetable patterns show this direct route around 01 and 31 minutes past the hour and taking about 26 minutes, but platforms and times should be checked in SBB Mobile before boarding.', 'From Richterswil: travel by train to Zürich HB, then change to an S6 or S16 for Küsnacht ZH. This is usually clearer than trying to cross the lake late in the evening.', 'Buy the full journey in SBB Mobile or the ZVV app before boarding; enter Küsnacht ZH so the app chooses the right destination and required zones.'],
           image: '/images/places/kuesnacht-lake-view.jpg',
           imageAlt: 'Küsnacht village seen from Lake Zurich',
           links: [
@@ -352,12 +352,12 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       title: 'Where to Stay',
       kicker: 'Accommodation',
       intro:
-        'Küsnacht is closest to the evening party. Central Zurich may suit guests who want more transport and restaurant options. Room-block details will follow once confirmed.',
+        'Küsnacht is closest to the evening party. Central Zurich may suit guests who want more transport and restaurant options.',
       sections: [
         {
           title: 'Closest to the party: Küsnacht',
           body: 'Stay in Küsnacht if you want the shortest trip back after dinner and dancing at Hotel Sonne.',
-          items: ['Hotel Sonne Küsnacht: likely priority for a room block.', 'OXEN Küsnacht: nearby option with a small number of rooms; some rooms use shared bathrooms.', 'Current late-night trains run roughly hourly back towards Zürich HB; check SBB Mobile for the exact connection on the night.'],
+          items: ['Hotel Sonne Küsnacht: guests booking directly with reception can receive an approximately 10% discount on rooms. Please let reception know that you are a Dago-Carta wedding guest when booking.', 'OXEN Küsnacht: nearby option with a small number of rooms; some rooms use shared bathrooms.', 'Current late-night trains run roughly hourly back towards Zürich HB; check SBB Mobile for the exact connection on the night.'],
           links: [
             { label: 'Hotel Sonne Küsnacht', href: 'https://sonne.ch/en/' },
             { label: 'OXEN Küsnacht', href: 'https://www.oxen.ch/zimmer' },
@@ -385,7 +385,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Booking guidance',
           body: 'Zurich can be expensive in June. We recommend booking early, checking cancellation terms, and comparing hotels with apartments if you are staying longer.',
-          items: ['Booking codes: TBD', 'Room-block deadlines: TBD', 'Approximate price bands: TBD'],
+          items: ['Hotel Sonne discount: direct booking with reception, mentioning the Dago-Carta wedding.', 'Booking codes for other hotels: TBD', 'Room-block deadlines: TBD', 'Approximate price bands: TBD'],
           links: [
             { label: 'Airbnb Zurich, June 2027', href: 'https://www.airbnb.com/s/Zurich--Switzerland/homes?checkin=2027-06-10&checkout=2027-06-13&adults=2' },
           ],
@@ -413,13 +413,17 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       title: 'Things to Do',
       kicker: 'Zurich & Switzerland',
       intro:
-        'Use this page if you have spare time around the wedding. It lists short Zurich plans, bad-weather options, and day trips that work from one hotel.',
+        'Use this page if you have spare time around the wedding or would like to extend your stay. It lists concise Zurich ideas, bad-weather options, and day trips that work from one hotel.',
       sections: [
         {
-          title: 'Zurich first-day options',
-          body: 'For a first day after travel, choose simple outdoor plans and keep the schedule flexible.',
-          items: ['Walk the Old Town, Lindenhof, and the Limmat.', 'Walk or run along the Limmat and the lake promenade.', 'Take the train up Uetliberg, or hike up if you want a little more effort.', 'Children may also enjoy Zurich Zoo, especially if you would like a structured half-day activity after travelling.'],
+          title: 'Sightseeing and visiting Zurich',
+          body: 'If you extend your stay, these are easy ways to see Zurich without overfilling the wedding weekend.',
+          items: ['Walk the Old Town, Lindenhof, and the Limmat, including Grossmünster and Fraumünster, where Marc Chagall designed the famous stained-glass windows.', 'Visit Grossmünster for its place in the Swiss-German Reformation, or Kunsthaus Zürich for a broad art collection.', 'Take a short Limmat or Lake Zurich boat ride for a relaxed view of the city from the water.', 'Visit Giacometti-Halle for the painted entrance hall, or Zurich Zoo if you are travelling with children.', 'Take the train up Uetliberg for city and lake views, then walk part of the Planetenweg if you would like gentle countryside and exercise. Check the current train connection in SBB Mobile before going.'],
           links: [
+            { label: 'Fraumünster', href: 'https://www.zuerich.com/en/visit/attractions/fraumunster' },
+            { label: 'Grossmünster', href: 'https://www.zuerich.com/en/visit/attractions/grossmunster' },
+            { label: 'Kunsthaus Zürich', href: 'https://www.kunsthaus.ch/en/' },
+            { label: 'Giacometti-Halle', href: 'https://www.zuerich.com/en/visit/attractions/giacometti-halle' },
             { label: 'Uetliberg', href: 'https://www.ueetliberg.ch/en/uetliberg' },
             { label: 'Zurich Zoo', href: 'https://www.zoo.ch/en' },
             { label: 'Official Zurich visitor information', href: 'https://www.zuerich.com/en' },
@@ -429,15 +433,15 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'Museums and chocolate',
-          body: 'Rain plan: Kunsthaus Zurich, Museum Rietberg, or Lindt Home of Chocolate in Kilchberg.',
-          items: ['Kunsthaus Zurich has art from the Middle Ages to contemporary work, with Swiss painters, Impressionism, Classical Modernism, Dada, Giacometti, and Munch among the highlights.', 'Museum Rietberg focuses on arts and cultures from Asia, Africa, the Americas, and Oceania.', 'Lindt Home of Chocolate in Kilchberg is interactive and especially fun with children.'],
+          body: 'Rain plan: Kunsthaus Zürich, Museum Rietberg, or Lindt Home of Chocolate in Kilchberg.',
+          items: ['Kunsthaus Zürich has art from the Middle Ages to contemporary work, with Swiss painters, Impressionism, Classical Modernism, Dada, Giacometti, and Munch among the highlights.', 'Museum Rietberg focuses on arts and cultures from Asia, Africa, the Americas, and Oceania.', 'Lindt Home of Chocolate in Kilchberg is interactive and especially fun with children; take the S8 towards Kilchberg and check the exact connection in SBB Mobile.'],
           links: [
             { label: 'Kunsthaus', href: 'https://www.kunsthaus.ch/en/sammlung/' },
             { label: 'Museum Rietberg', href: 'https://www.zuerich.com/en/visit/culture/museum-rietberg' },
             { label: 'Lindt', href: 'https://www.lindt-home-of-chocolate.com/en/' },
           ],
           image: '/images/places/kunsthaus-zurich.jpg',
-          imageAlt: 'Pipilotti Rist sculpture and Kunsthaus Zurich Chipperfield building at Heimplatz',
+          imageAlt: 'Pipilotti Rist sculpture and Kunsthaus Zürich Chipperfield building at Heimplatz',
         },
         {
           title: 'Lake and water',
@@ -454,11 +458,13 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Day trips',
           body: 'These are practical day trips from Zurich if you would like a longer excursion without changing hotels.',
-          items: ['Lucerne, ideally with a boat on Lake Lucerne.', 'Alpstein for hikes such as Seealpsee, Hoher Kasten, and Säntis, with routes at different difficulty levels.', 'Rhine Falls near Schaffhausen.', 'Bern for its old town, or Basel for art museums including Fondation Beyeler and Kunstmuseum Basel.'],
+          items: ['Lucerne, ideally with a boat on Lake Lucerne.', 'Rapperswil, reachable by train or a longer lake boat route, for the castle, rose garden, old town, wooden bridge, and children’s zoo.', 'Rheinfall near Schaffhausen, the largest waterfall in Europe by volume.', 'Einsiedeln for its monastery church with a richly decorated baroque interior and nearby walking options.', 'Alpstein for hikes such as Seealpsee, Hoher Kasten, and Säntis, with routes at different difficulty levels.', 'Bern for its old town, or Basel for art museums including Fondation Beyeler and Kunstmuseum Basel.'],
           links: [
             { label: 'Lake Lucerne boats', href: 'https://www.luzern.com/en/the-region/excursions/by-boat' },
+            { label: 'Rapperswil', href: 'https://www.zuerich.com/en/visit/attractions/rapperswil' },
+            { label: 'Rheinfall', href: 'https://rheinfall.ch/en/' },
+            { label: 'Einsiedeln Abbey', href: 'https://www.kloster-einsiedeln.ch/' },
             { label: 'Alpstein hikes', href: 'https://www.appenzell.ch/en/summer/hiking.html' },
-            { label: 'Rhine Falls', href: 'https://schaffhauserland.ch/en/regions/the-rhine-falls.html' },
             { label: 'Fondation Beyeler', href: 'https://www.fondationbeyeler.ch/en/' },
           ],
           image: '/images/minted/minted-gallery-07.jpg',
@@ -621,7 +627,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           links: [{ label: 'Source', href: 'https://commons.wikimedia.org/wiki/File:Kirche_St._Peter_Z%C3%BCrich.jpg' }],
         },
         {
-          title: 'Kunsthaus Zurich',
+          title: 'Kunsthaus Zürich',
           body: 'Photo by Adrian Michael via Wikimedia Commons, licensed under CC BY-SA 4.0; cropped for display.',
           links: [{ label: 'Source', href: 'https://commons.wikimedia.org/wiki/File:Heimplatz_2.jpeg' }],
         },
@@ -670,7 +676,7 @@ applyLocalizedCopy('it', {
     intro:
       'Gli orari esatti sono ancora in fase di conferma. Questa pagina diventerà il riferimento per l’arrivo alla cerimonia, il trasferimento in barca, la cena, la festa e il rientro.',
     notice:
-      'I dettagli della barca sono provvisori. Stiamo organizzando un trasferimento da Zurigo verso Küsnacht; punto d’imbarco e piano in caso di pioggia saranno aggiunti più avanti.',
+      'Il punto d’imbarco e l’orario di partenza della barca sono confermati. Piano in caso di pioggia e dettagli di accessibilità saranno aggiunti appena finali.',
     sections: [
       {
         title: 'Cerimonia civile',
@@ -680,14 +686,14 @@ applyLocalizedCopy('it', {
       },
       {
         title: 'Cerimonia',
-        body: 'La cerimonia si terrà alla Kirche St. Peter, nel centro storico di Zurigo.',
-        items: ['Data: venerdì 11 giugno 2027', 'Ora: TBD', 'Arrivo degli ospiti: TBD', 'Lingue della cerimonia: TBD'],
+        body: 'La cerimonia si terrà alla Kirche St. Peter, nel centro storico di Zurigo. Arrivate con ampio margine per sistemarvi; vorremmo che tutti gli ospiti fossero seduti entro le 13:40.',
+        items: ['Data: venerdì 11 giugno 2027', 'Ora: TBD', 'Ospiti seduti entro: 13:40', 'Lingue della cerimonia: TBD'],
         imageAlt: 'Kirche St. Peter a Zurigo',
       },
       {
         title: 'Trasferimento in barca',
-        body: 'Dopo la cerimonia, stiamo organizzando un trasferimento in barca da Zurigo verso Küsnacht.',
-        items: ['Data: venerdì 11 giugno 2027', 'Ora: TBD', 'Punto d’imbarco: TBD', 'Biglietti: da confermare', 'Piano in caso di pioggia e dettagli di accessibilità: TBD'],
+        body: 'Dopo la cerimonia, gli ospiti cammineranno per circa 12 minuti fino al Quai 6 a Bürkliplatz, Zurigo, accompagnati dai familiari.',
+        items: ['Data: venerdì 11 giugno 2027', 'Imbarco: arrivate entro le 15:45', 'Partenza: 16:00', 'Punto d’imbarco: Quai 6, Bürkliplatz, Zurigo', 'Biglietti: organizzati per gli ospiti', 'Portate scarpe eleganti ma comode per la camminata e la barca, e un ombrello in caso di pioggia.', 'Piano in caso di pioggia e dettagli di accessibilità: TBD'],
         imageAlt: 'Una barca sul Lago di Zurigo vicino all’Hotel Sonne',
       },
       {
@@ -724,7 +730,7 @@ applyLocalizedCopy('it', {
         title: 'Dal Regno Unito',
         body:
           'Dal Regno Unito, i voli diretti per Zurigo sono di solito la soluzione più semplice. EasyJet può essere conveniente, ma controllate con attenzione le regole sui bagagli prima di confrontare i prezzi.',
-        items: ['Confrontate Heathrow, Gatwick, City, Luton e Stansted in base a dove vivete; Heathrow, Gatwick e City sono di solito i più rilevanti per Zurigo, ma London Luton può avere voli easyJet utili.', 'Per chi vive fuori Londra, confrontate anche Manchester, Edimburgo, Bristol e altri aeroporti regionali con voli diretti o con uno scalo.', 'Con EasyJet, la tariffa più bassa può includere solo un piccolo bagaglio da mettere sotto il sedile, attualmente 45 x 36 x 20 cm incluse maniglie e ruote; aggiungete bagaglio a mano grande o bagaglio da stiva online se necessario.', 'Basilea può valere un confronto se le tariffe sono molto migliori, ma è meno comoda: dall’EuroAirport prendete il bus 50 per Basel SBB, poi un treno per Zurich HB e infine S6 o S16 per Küsnacht ZH. Calcolate circa due ore o più in totale e un costo extra per i trasporti svizzeri.', 'I cittadini britannici dovrebbero controllare la validità del passaporto prima di prenotare: secondo le indicazioni attuali del governo britannico per la Svizzera, il passaporto deve essere stato emesso meno di 10 anni prima dell’arrivo e scadere almeno 3 mesi dopo l’uscita dall’area Schengen.', 'Il viaggio in treno è Londra St Pancras-Parigi con Eurostar, trasferimento da Gare du Nord a Gare de Lyon, poi TGV Lyria per Zurich HB; prevedete una coincidenza ampia a Parigi.'],
+        items: ['Confrontate Heathrow, Gatwick, City, Luton e Stansted in base a dove vivete; Heathrow, Gatwick e City sono di solito i più rilevanti per Zurigo, ma London Luton può avere voli easyJet utili.', 'Per chi vive fuori Londra, confrontate anche Manchester, Edimburgo, Bristol e altri aeroporti regionali con voli diretti o con uno scalo.', 'Con EasyJet, la tariffa più bassa può includere solo un piccolo bagaglio da mettere sotto il sedile, attualmente 45 x 36 x 20 cm incluse maniglie e ruote; aggiungete bagaglio a mano grande o bagaglio da stiva online se necessario.', 'Basilea può valere un confronto se le tariffe sono molto migliori, ma è meno comoda: dall’EuroAirport prendete il bus 50 per Basel SBB, poi un treno per Zurich HB e infine S6 o S16 per Küsnacht ZH. Calcolate circa due ore o più in totale e un costo extra per i trasporti svizzeri.', 'I cittadini britannici dovrebbero controllare la validità del passaporto prima di prenotare: secondo le indicazioni attuali del governo britannico per la Svizzera, il passaporto deve essere stato emesso meno di 10 anni prima dell’arrivo e scadere almeno 3 mesi dopo l’uscita dall’area Schengen.', 'Il viaggio in treno può essere un modo comodo e più sostenibile per arrivare in Svizzera in giornata: Eurostar da London St Pancras a Parigi, trasferimento da Gare du Nord a Gare de Lyon, poi TGV Lyria per Zürich HB. Prevedete una coincidenza ampia a Parigi.'],
         imageAlt: 'Tower Bridge sul Tamigi a Londra',
       },
       {
@@ -742,10 +748,10 @@ applyLocalizedCopy('it', {
         imageAlt: "Treni alla stazione ferroviaria dell'aeroporto di Zurigo",
       },
       {
-        title: 'In treno verso Küsnacht ZH',
+        title: 'In treno per Küsnacht ZH',
         body:
           'Küsnacht ZH si trova sulla linea S-Bahn della riva destra del Lago di Zurigo. Usate SBB Mobile o ZVV per treno, binario e zone tariffarie esatte nel giorno del viaggio.',
-        items: ['Da Zurich HB: prendete un S6 o S16 verso la riva destra del Lago di Zurigo e scendete a Küsnacht ZH. Dalla stazione, Hotel Sonne è a pochi minuti a piedi in discesa verso il lago.', 'Dall’aeroporto di Zurigo: il treno diretto più semplice è di solito l’S16 verso Herrliberg-Feldmeilen o Meilen, scendendo a Küsnacht ZH. Gli orari attuali mostrano spesso questa tratta diretta intorno ai minuti 01 e 31 e circa 26 minuti di viaggio, ma orari e binari vanno controllati in SBB Mobile prima di salire.', 'Da Richterswil: viaggiate in treno fino a Zurich HB, poi cambiate con S6 o S16 verso Küsnacht ZH. Di solito è più chiaro che attraversare il lago la sera tardi.', 'Comprate l’intero percorso in SBB Mobile o nell’app ZVV prima di salire; inserite Küsnacht ZH così l’app sceglie la destinazione giusta e le zone necessarie.'],
+        items: ['Da Zürich HB: prendete un S6 o S16 lungo la riva destra del Lago di Zurigo e scendete a Küsnacht ZH. Il viaggio dura di solito circa 12 minuti. I binari, compresi 43/44, possono cambiare: controllate SBB Mobile e i tabelloni in stazione prima di salire.', 'Dall’aeroporto di Zurigo: il treno diretto più semplice è di solito l’S16 per Herrliberg-Feldmeilen o Meilen, scendendo a Küsnacht ZH. Gli orari attuali mostrano spesso questa tratta diretta intorno ai minuti 01 e 31 e circa 26 minuti di viaggio, ma orari e binari vanno controllati in SBB Mobile prima di salire.', 'Da Richterswil: viaggiate in treno fino a Zürich HB, poi cambiate con S6 o S16 per Küsnacht ZH. Di solito è più chiaro che attraversare il lago la sera tardi.', 'Comprate l’intero percorso in SBB Mobile o nell’app ZVV prima di salire; inserite Küsnacht ZH così l’app sceglie la destinazione giusta e le zone necessarie.'],
         image: '/images/places/kuesnacht-lake-view.jpg',
         imageAlt: 'Küsnacht vista dal Lago di Zurigo',
       },
@@ -766,13 +772,13 @@ applyLocalizedCopy('it', {
     title: 'Dove dormire',
     kicker: 'Alloggio',
     intro:
-      'Küsnacht è la zona più vicina alla festa serale. Il centro di Zurigo può essere adatto a chi desidera più opzioni di trasporto e ristoranti. Eventuali camere riservate saranno aggiunte appena confermate.',
+      'Küsnacht è la zona più vicina alla festa serale. Il centro di Zurigo può essere adatto a chi desidera più opzioni di trasporto e ristoranti.',
     sections: [
       {
         title: 'Più vicino alla festa: Küsnacht',
         body:
           'Scegliete Küsnacht se volete il rientro più breve dopo cena e dopo la festa all’Hotel Sonne.',
-        items: ['Hotel Sonne Küsnacht: probabilmente la prima opzione per un eventuale blocco camere.', 'OXEN Küsnacht: opzione vicina con un piccolo numero di camere; alcune camere hanno bagni condivisi.', 'Attualmente i treni notturni verso Zürich HB circolano più o meno ogni ora; controllate il collegamento esatto in SBB Mobile la sera stessa.'],
+        items: ['Hotel Sonne Küsnacht: chi prenota direttamente con la reception può ricevere uno sconto di circa il 10% sulle camere. Comunicate alla reception che siete ospiti del matrimonio Dago-Carta al momento della prenotazione.', 'OXEN Küsnacht: opzione vicina con un piccolo numero di camere; alcune camere hanno bagni condivisi.', 'Attualmente i treni notturni verso Zürich HB circolano più o meno ogni ora; controllate il collegamento esatto in SBB Mobile la sera stessa.'],
         links: [
           { label: 'Hotel Sonne Küsnacht', href: 'https://sonne.ch/en/' },
           { label: 'Camere OXEN Küsnacht', href: 'https://www.oxen.ch/zimmer' },
@@ -783,7 +789,7 @@ applyLocalizedCopy('it', {
         title: 'Centro di Zurigo',
         body:
           'Il centro di Zurigo è pratico per chi desidera ristoranti, visite, collegamenti ferroviari e facile accesso all’aeroporto.',
-        items: ['Cercate vicino a Zurich HB, centro storico, Bellevue o Stadelhofen per la soluzione più comoda in centro.', 'Anche altri paesi lungo le linee S6 o S16, oppure zone vicine a Zürich Stadelhofen o Zürich Tiefenbrunnen, possono essere comodi perché semplificano il tragitto verso Küsnacht.', 'Hotel più economici possono essere più facili da trovare a Zurich Altstetten o Oerlikon; entrambe le zone sono collegate al centro e all’aeroporto con i mezzi pubblici.', 'Scegliete un alloggio vicino a una fermata di tram, treno o autobus.', 'Usate i mezzi pubblici per muovervi a Zurigo; spostarsi in auto non è consigliato per la mancanza di parcheggi e la scarsa praticità.'],
+        items: ['Cercate vicino a Zurich HB, centro storico, Bellevue o Stadelhofen per la soluzione più comoda in centro.', 'Anche altri paesi lungo le linee S6 o S16, oppure zone vicine a Zürich Stadelhofen o Zürich Tiefenbrunnen, possono essere comodi perché semplificano il tragitto per Küsnacht.', 'Hotel più economici possono essere più facili da trovare a Zurich Altstetten o Oerlikon; entrambe le zone sono collegate al centro e all’aeroporto con i mezzi pubblici.', 'Scegliete un alloggio vicino a una fermata di tram, treno o autobus.', 'Usate i mezzi pubblici per muovervi a Zurigo; spostarsi in auto non è consigliato per la mancanza di parcheggi e la scarsa praticità.'],
         imageAlt: 'Centro storico di Zurigo e fiume Limmat',
       },
       {
@@ -797,7 +803,7 @@ applyLocalizedCopy('it', {
         title: 'Indicazioni per prenotare',
         body:
           'Zurigo può essere costosa a giugno. Consigliamo di prenotare presto, controllare le condizioni di cancellazione e confrontare hotel e appartamenti se vi fermate più a lungo.',
-        items: ['Codici di prenotazione: TBD', 'Scadenze per eventuali blocchi camere: TBD', 'Fasce di prezzo indicative: TBD'],
+        items: ['Sconto Hotel Sonne: prenotazione diretta con la reception, indicando il matrimonio Dago-Carta.', 'Codici di prenotazione per altri hotel: TBD', 'Scadenze per eventuali blocchi camere: TBD', 'Fasce di prezzo indicative: TBD'],
         imageAlt: 'Riva del Lago di Zurigo vicino a Küsnacht',
         links: [
           { label: 'Airbnb Zurigo, giugno 2027', href: 'https://www.airbnb.com/s/Zurich--Switzerland/homes?checkin=2027-06-10&checkout=2027-06-13&adults=2' },
@@ -824,13 +830,17 @@ applyLocalizedCopy('it', {
     title: 'Cosa fare',
     kicker: 'Zurigo e Svizzera',
     intro:
-      'Usate questa pagina se avete tempo libero prima o dopo il matrimonio. Include programmi brevi a Zurigo, opzioni in caso di pioggia e gite fattibili senza cambiare hotel.',
+      'Usate questa pagina se avete tempo libero prima o dopo il matrimonio, o se volete prolungare il soggiorno. Include idee concise per Zurigo, opzioni in caso di pioggia e gite fattibili senza cambiare hotel.',
     sections: [
       {
-        title: 'Prime idee a Zurigo',
-        body: 'Se arrivate con un po’ di tempo, queste sono opzioni semplici per conoscere la città senza organizzare una giornata troppo intensa.',
-        items: ['Passeggiate nel centro storico: Niederdorf, Lindenhof, Grossmünster e le vie lungo la Limmat.', 'Uetliberg per una vista ampia sulla città e sul lago, se il tempo è buono.', 'Zurich Zoo, che può essere una buona idea per i più piccoli.', 'Caffè, gelaterie e una passeggiata lungo il lago a Bellevue, Bürkliplatz o Zürichhorn.'],
+        title: 'Visitare Zurigo',
+        body: 'Se prolungate il soggiorno, queste sono opzioni semplici per vedere Zurigo senza riempire troppo il fine settimana del matrimonio.',
+        items: ['Passeggiate nel centro storico, al Lindenhof e lungo la Limmat, includendo Grossmünster e Fraumünster, dove Marc Chagall ha realizzato le famose vetrate.', 'Visitate Grossmünster per il suo legame con la Riforma svizzero-tedesca, oppure Kunsthaus Zürich per un’ampia collezione d’arte.', 'Fate un breve giro in battello sulla Limmat o sul Lago di Zurigo per vedere la città dall’acqua.', 'Visitate la Giacometti-Halle per l’atrio dipinto, oppure Zurich Zoo se viaggiate con bambini.', 'Salite in treno all’Uetliberg per la vista sulla città e sul lago, poi percorrete una parte del Planetenweg se desiderate una passeggiata tranquilla nella natura. Controllate il collegamento aggiornato in SBB Mobile prima di partire.'],
         links: [
+          { label: 'Fraumünster', href: 'https://www.zuerich.com/en/visit/attractions/fraumunster' },
+          { label: 'Grossmünster', href: 'https://www.zuerich.com/en/visit/attractions/grossmunster' },
+          { label: 'Kunsthaus Zürich', href: 'https://www.kunsthaus.ch/en/' },
+          { label: 'Giacometti-Halle', href: 'https://www.zuerich.com/en/visit/attractions/giacometti-halle' },
           { label: 'Uetliberg', href: 'https://www.ueetliberg.ch/en/uetliberg' },
           { label: 'Zurich Zoo', href: 'https://www.zoo.ch/en' },
           { label: 'Informazioni ufficiali per visitare Zurigo', href: 'https://www.zuerich.com/en' },
@@ -840,7 +850,7 @@ applyLocalizedCopy('it', {
       {
         title: 'Musei e cioccolato',
         body: 'In caso di pioggia: Kunsthaus Zürich, Museum Rietberg o Lindt Home of Chocolate a Kilchberg.',
-        items: ['Il Kunsthaus Zürich espone arte dal Medioevo al contemporaneo, con pittori svizzeri, Impressionismo, Modernismo classico, Dada, Giacometti e Munch tra i punti forti.', 'Il Museum Rietberg è dedicato ad arti e culture di Asia, Africa, Americhe e Oceania.', 'Lindt Home of Chocolate a Kilchberg è interattivo e particolarmente adatto anche ai bambini.'],
+        items: ['Il Kunsthaus Zürich espone arte dal Medioevo al contemporaneo, con pittori svizzeri, Impressionismo, Modernismo classico, Dada, Giacometti e Munch tra i punti forti.', 'Il Museum Rietberg è dedicato ad arti e culture di Asia, Africa, Americhe e Oceania.', 'Lindt Home of Chocolate a Kilchberg è interattivo e particolarmente adatto anche ai bambini; prendete l’S8 verso Kilchberg e controllate il collegamento esatto in SBB Mobile.'],
         imageAlt: 'Scultura di Pipilotti Rist ed edificio Chipperfield del Kunsthaus Zürich a Heimplatz',
       },
       {
@@ -852,7 +862,7 @@ applyLocalizedCopy('it', {
       {
         title: 'Gite in giornata',
         body: 'Queste gite sono pratiche da Zurigo se volete fare un’escursione più lunga senza cambiare hotel.',
-        items: ['Lucerna, idealmente con un giro in battello sul Lago dei Quattro Cantoni.', 'Alpstein per escursioni come Seealpsee, Hoher Kasten e Säntis, con percorsi di diversa difficoltà.', 'Cascate del Reno vicino a Sciaffusa.', 'Berna per il centro storico, o Basilea per musei d’arte come Fondation Beyeler e Kunstmuseum Basel.'],
+        items: ['Lucerna, idealmente con un giro in battello sul Lago dei Quattro Cantoni.', 'Rapperswil, raggiungibile in treno o con un giro più lungo in battello, per castello, roseto, centro storico, ponte di legno e zoo per bambini.', 'Rheinfall vicino a Sciaffusa, la cascata più grande d’Europa per volume d’acqua.', 'Einsiedeln per la chiesa del monastero con interni barocchi riccamente decorati e possibilità di passeggiate nei dintorni.', 'Alpstein per escursioni come Seealpsee, Hoher Kasten e Säntis, con percorsi di diversa difficoltà.', 'Berna per il centro storico, o Basilea per musei d’arte come Fondation Beyeler e Kunstmuseum Basel.'],
         imageAlt: 'Un lago di montagna in Svizzera',
       },
       {
@@ -1003,7 +1013,7 @@ applyLocalizedCopy('de', {
     intro:
       'Die genauen Zeiten werden noch bestätigt. Diese Seite wird später der Tagesüberblick für Ankunft, Trauung, Bootstransfer, Abendessen, Feier und Rückfahrt.',
     notice:
-      'Die Details zum Boot sind vorläufig. Wir planen einen Transfer von Zürich Richtung Küsnacht; Einstiegspunkt und Regenplan folgen.',
+      'Einstiegspunkt und Abfahrtszeit des Schiffs sind bestätigt. Regenplan und Barrierefreiheitsdetails folgen, sobald sie final sind.',
     sections: [
       {
         title: 'Zivile Trauung',
@@ -1013,14 +1023,14 @@ applyLocalizedCopy('de', {
       },
       {
         title: 'Trauung',
-        body: 'Die Trauung findet in der Kirche St. Peter in der Zürcher Altstadt statt.',
-        items: ['Datum: Freitag, 11. Juni 2027', 'Zeit: TBD', 'Ankunft der Gäste: TBD', 'Sprachen der Trauung: TBD'],
+        body: 'Die Trauung findet in der Kirche St. Peter in der Zürcher Altstadt statt. Bitte kommt mit genügend Zeit, damit ihr in Ruhe Platz nehmen könnt; wir möchten, dass alle Gäste bis 13.40 Uhr sitzen.',
+        items: ['Datum: Freitag, 11. Juni 2027', 'Zeit: TBD', 'Gäste sitzen bis: 13.40 Uhr', 'Sprachen der Trauung: TBD'],
         imageAlt: 'Kirche St. Peter in Zürich',
       },
       {
         title: 'Bootstransfer',
-        body: 'Nach der Trauung planen wir einen Bootstransfer von Zürich Richtung Küsnacht.',
-        items: ['Datum: Freitag, 11. Juni 2027', 'Zeit: TBD', 'Einstiegspunkt: TBD', 'Tickets: noch zu bestätigen', 'Regenplan und Barrierefreiheitsdetails: TBD'],
+        body: 'Nach der Trauung gehen die Gäste gemeinsam mit Familienmitgliedern etwa 12 Minuten zum Quai 6 am Bürkliplatz, Zürich.',
+        items: ['Datum: Freitag, 11. Juni 2027', 'Einsteigen: bitte bis 15.45 Uhr dort sein', 'Abfahrt: 16.00 Uhr', 'Einstiegspunkt: Quai 6, Bürkliplatz, Zürich', 'Tickets: für Gäste organisiert', 'Bitte bringt bequeme formelle Schuhe für den Fussweg und die Bootsfahrt mit, sowie einen Regenschirm bei Regen.', 'Regenplan und Barrierefreiheitsdetails: TBD'],
         imageAlt: 'Ein Boot auf dem Zürichsee nahe beim Hotel Sonne',
       },
       {
@@ -1057,7 +1067,7 @@ applyLocalizedCopy('de', {
         title: 'Aus dem Vereinigten Königreich',
         body:
           'Aus dem Vereinigten Königreich sind Direktflüge nach Zürich meistens die einfachste Option. EasyJet kann preislich attraktiv sein, aber prüft die Gepäckregeln sorgfältig, bevor ihr Preise vergleicht.',
-        items: ['Vergleicht London Heathrow, Gatwick, City, Luton und Stansted je nach Wohnort; Heathrow, Gatwick und City sind für Zürich meist am relevantesten, aber London Luton kann ebenfalls nützliche easyJet-Flüge haben.', 'Ausserhalb Londons lohnt sich auch der Vergleich von Manchester, Edinburgh, Bristol und anderen Regionalflughäfen mit Direkt- oder Umsteigeverbindungen.', 'Bei EasyJet kann der günstigste Tarif nur ein kleines Gepäckstück unter dem Sitz enthalten, derzeit 45 x 36 x 20 cm inklusive Griffe und Rollen; bucht grosses Handgepäck oder Aufgabegepäck online dazu, wenn ihr es braucht.', 'Basel kann einen Vergleich wert sein, wenn die Flugpreise deutlich besser sind, ist aber weniger bequem: vom EuroAirport mit Bus 50 nach Basel SBB, dann mit dem Zug nach Zürich HB und weiter mit S6 oder S16 nach Küsnacht ZH. Rechnet insgesamt mit ungefähr zwei Stunden oder mehr und zusätzlichen Schweizer Transportkosten.', 'Britische Staatsangehörige sollten vor der Buchung die Passgültigkeit prüfen: Die aktuelle britische Reiseinformation für die Schweiz verlangt, dass der Pass weniger als 10 Jahre vor Einreise ausgestellt wurde und mindestens 3 Monate nach Verlassen des Schengen-Raums gültig bleibt.', 'Die Bahnroute führt von London St Pancras mit Eurostar nach Paris, dann von Gare du Nord nach Gare de Lyon und mit TGV Lyria nach Zürich HB; plant in Paris grosszügig Zeit für den Wechsel ein.'],
+        items: ['Vergleicht London Heathrow, Gatwick, City, Luton und Stansted je nach Wohnort; Heathrow, Gatwick und City sind für Zürich meist am relevantesten, aber London Luton kann ebenfalls nützliche easyJet-Flüge haben.', 'Ausserhalb Londons lohnt sich auch der Vergleich von Manchester, Edinburgh, Bristol und anderen Regionalflughäfen mit Direkt- oder Umsteigeverbindungen.', 'Bei EasyJet kann der günstigste Tarif nur ein kleines Gepäckstück unter dem Sitz enthalten, derzeit 45 x 36 x 20 cm inklusive Griffe und Rollen; bucht grosses Handgepäck oder Aufgabegepäck online dazu, wenn ihr es braucht.', 'Basel kann einen Vergleich wert sein, wenn die Flugpreise deutlich besser sind, ist aber weniger bequem: vom EuroAirport mit Bus 50 nach Basel SBB, dann mit dem Zug nach Zürich HB und weiter mit S6 oder S16 nach Küsnacht ZH. Rechnet insgesamt mit ungefähr zwei Stunden oder mehr und zusätzlichen Schweizer Transportkosten.', 'Britische Staatsangehörige sollten vor der Buchung die Passgültigkeit prüfen: Die aktuelle britische Reiseinformation für die Schweiz verlangt, dass der Pass weniger als 10 Jahre vor Einreise ausgestellt wurde und mindestens 3 Monate nach Verlassen des Schengen-Raums gültig bleibt.', 'Die Bahnroute kann eine bequeme und nachhaltigere Möglichkeit sein, die Schweiz innerhalb eines Tages zu erreichen: Eurostar von London St Pancras nach Paris, dann von Gare du Nord nach Gare de Lyon und mit TGV Lyria nach Zürich HB. Plant in Paris grosszügig Zeit für den Wechsel ein.'],
         imageAlt: 'Tower Bridge über der Themse in London',
       },
       {
@@ -1078,7 +1088,7 @@ applyLocalizedCopy('de', {
         title: 'Mit dem Zug nach Küsnacht ZH',
         body:
           'Küsnacht ZH liegt an der S-Bahn-Linie am rechten Zürichseeufer. Nutzt SBB Mobile oder ZVV für den genauen Zug, das Gleis und die nötigen Zonen am Reisetag.',
-        items: ['Ab Zürich HB: nehmt S6 oder S16 in Richtung rechtes Zürichseeufer und steigt in Küsnacht ZH aus. Vom Bahnhof ist Hotel Sonne ein kurzer Fussweg bergab Richtung See.', 'Ab Flughafen Zürich: die einfachste direkte Verbindung ist meist die S16 Richtung Herrliberg-Feldmeilen oder Meilen bis Küsnacht ZH. Aktuelle Fahrplanmuster zeigen diese direkte Verbindung etwa um Minute 01 und 31 mit rund 26 Minuten Fahrzeit; Zeiten und Gleise bitte vor dem Einsteigen in SBB Mobile prüfen.', 'Ab Richterswil: fahrt mit dem Zug zum Zürich HB und steigt dort in S6 oder S16 Richtung Küsnacht ZH um. Das ist meist übersichtlicher als eine späte Seequerung.', 'Kauft die ganze Verbindung vor dem Einsteigen in SBB Mobile oder in der ZVV-App; gebt Küsnacht ZH ein, damit die App das richtige Ziel und die nötigen Zonen wählt.'],
+        items: ['Ab Zürich HB: nehmt S6 oder S16 entlang des rechten Zürichseeufers und steigt in Küsnacht ZH aus. Die Fahrt dauert meistens etwa 12 Minuten. Gleise, auch 43/44, können wechseln; prüft daher SBB Mobile und die Bahnhofsanzeigen vor dem Einsteigen.', 'Ab Flughafen Zürich: die einfachste direkte Verbindung ist meist die S16 nach Herrliberg-Feldmeilen oder Meilen bis Küsnacht ZH. Aktuelle Fahrplanmuster zeigen diese direkte Verbindung etwa um Minute 01 und 31 mit rund 26 Minuten Fahrzeit; Zeiten und Gleise bitte vor dem Einsteigen in SBB Mobile prüfen.', 'Ab Richterswil: fahrt mit dem Zug zum Zürich HB und steigt dort in S6 oder S16 nach Küsnacht ZH um. Das ist meist übersichtlicher als eine späte Seequerung.', 'Kauft die ganze Verbindung vor dem Einsteigen in SBB Mobile oder in der ZVV-App; gebt Küsnacht ZH ein, damit die App das richtige Ziel und die nötigen Zonen wählt.'],
         image: '/images/places/kuesnacht-lake-view.jpg',
         imageAlt: 'Küsnacht vom Zürichsee aus gesehen',
       },
@@ -1099,13 +1109,13 @@ applyLocalizedCopy('de', {
     title: 'Unterkunft',
     kicker: 'Übernachten',
     intro:
-      'Küsnacht liegt am nächsten zur Abendfeier. Zürich Zentrum kann passen, wenn ihr mehr Verkehrs- und Restaurantoptionen möchtet. Informationen zu Zimmerkontingenten folgen, sobald sie bestätigt sind.',
+      'Küsnacht liegt am nächsten zur Abendfeier. Zürich Zentrum kann passen, wenn ihr mehr Verkehrs- und Restaurantoptionen möchtet.',
     sections: [
       {
         title: 'Am nächsten zur Feier: Küsnacht',
         body:
           'Wählt Küsnacht, wenn ihr nach Abendessen und Feier im Hotel Sonne den kürzesten Rückweg möchtet.',
-        items: ['Hotel Sonne Küsnacht: voraussichtlich erste Option für ein mögliches Zimmerkontingent.', 'OXEN Küsnacht: nahe Option mit wenigen Zimmern; einige Zimmer haben Gemeinschaftsbäder.', 'Aktuell fahren späte Züge ungefähr stündlich zurück Richtung Zürich HB; prüft die genaue Verbindung am Abend selbst in SBB Mobile.'],
+        items: ['Hotel Sonne Küsnacht: Bei direkter Buchung über die Reception können Gäste ungefähr 10% Rabatt auf Zimmer erhalten. Bitte gebt bei der Buchung an, dass ihr Gäste der Dago-Carta-Hochzeit seid.', 'OXEN Küsnacht: nahe Option mit wenigen Zimmern; einige Zimmer haben Gemeinschaftsbäder.', 'Aktuell fahren späte Züge ungefähr stündlich zurück Richtung Zürich HB; prüft die genaue Verbindung am Abend selbst in SBB Mobile.'],
         links: [
           { label: 'Hotel Sonne Küsnacht', href: 'https://sonne.ch/en/' },
           { label: 'Zimmer OXEN Küsnacht', href: 'https://www.oxen.ch/zimmer' },
@@ -1130,7 +1140,7 @@ applyLocalizedCopy('de', {
         title: 'Buchungshinweise',
         body:
           'Zürich kann im Juni teuer sein. Wir empfehlen früh zu buchen, Stornierungsbedingungen zu prüfen und bei längeren Aufenthalten Hotels mit Apartments zu vergleichen.',
-        items: ['Buchungscodes: TBD', 'Fristen für Zimmerkontingente: TBD', 'Ungefähre Preisbereiche: TBD'],
+        items: ['Hotel-Sonne-Rabatt: direkte Buchung über die Reception mit Hinweis auf die Dago-Carta-Hochzeit.', 'Buchungscodes für andere Hotels: TBD', 'Fristen für Zimmerkontingente: TBD', 'Ungefähre Preisbereiche: TBD'],
         imageAlt: 'Zürichseeufer nahe Küsnacht',
         links: [
           { label: 'Airbnb Zürich, Juni 2027', href: 'https://www.airbnb.com/s/Zurich--Switzerland/homes?checkin=2027-06-10&checkout=2027-06-13&adults=2' },
@@ -1157,13 +1167,17 @@ applyLocalizedCopy('de', {
     title: 'Aktivitäten',
     kicker: 'Zürich und Schweiz',
     intro:
-      'Nutzt diese Seite, wenn ihr rund um die Hochzeit freie Zeit habt. Sie enthält kurze Pläne für Zürich, Optionen bei Regen und Tagesausflüge ohne Hotelwechsel.',
+      'Nutzt diese Seite, wenn ihr rund um die Hochzeit freie Zeit habt oder euren Aufenthalt verlängern möchtet. Sie enthält knappe Zürich-Ideen, Optionen bei Regen und Tagesausflüge ohne Hotelwechsel.',
     sections: [
       {
-        title: 'Erste Ideen in Zürich',
-        body: 'Wenn ihr etwas Zeit habt, sind dies einfache Möglichkeiten, die Stadt ohne ein zu volles Programm kennenzulernen.',
-        items: ['Spaziergänge durch die Altstadt: Niederdorf, Lindenhof, Grossmünster und die Wege an der Limmat.', 'Uetliberg für einen weiten Blick über Stadt und See, wenn das Wetter passt.', 'Der Zoo Zürich kann für kleinere Kinder eine gute Option sein.', 'Cafés, Gelaterias und ein Spaziergang am See bei Bellevue, Bürkliplatz oder Zürichhorn.'],
+        title: 'Zürich besichtigen',
+        body: 'Wenn ihr euren Aufenthalt verlängert, sind dies einfache Möglichkeiten, Zürich kennenzulernen, ohne das Hochzeitswochenende zu überladen.',
+        items: ['Spaziert durch die Altstadt, zum Lindenhof und entlang der Limmat, mit Grossmünster und Fraumünster, wo Marc Chagall die berühmten Glasfenster gestaltet hat.', 'Besucht das Grossmünster wegen seiner Bedeutung für die schweizerisch-deutsche Reformation oder das Kunsthaus Zürich für eine breite Kunstsammlung.', 'Macht eine kurze Limmat- oder Zürichsee-Bootsfahrt, um die Stadt vom Wasser aus zu sehen.', 'Besucht die Giacometti-Halle wegen der bemalten Eingangshalle oder den Zoo Zürich, wenn ihr mit Kindern reist.', 'Fahrt mit dem Zug auf den Uetliberg für Stadt- und Seeblick und geht bei Lust ein Stück des Planetenwegs. Prüft die aktuelle Verbindung vorher in SBB Mobile.'],
         links: [
+          { label: 'Fraumünster', href: 'https://www.zuerich.com/en/visit/attractions/fraumunster' },
+          { label: 'Grossmünster', href: 'https://www.zuerich.com/en/visit/attractions/grossmunster' },
+          { label: 'Kunsthaus Zürich', href: 'https://www.kunsthaus.ch/en/' },
+          { label: 'Giacometti-Halle', href: 'https://www.zuerich.com/en/visit/attractions/giacometti-halle' },
           { label: 'Uetliberg', href: 'https://www.ueetliberg.ch/en/uetliberg' },
           { label: 'Zoo Zürich', href: 'https://www.zoo.ch/en' },
           { label: 'Offizielle Besucherinformationen Zürich', href: 'https://www.zuerich.com/en' },
@@ -1173,7 +1187,7 @@ applyLocalizedCopy('de', {
       {
         title: 'Museen und Schokolade',
         body: 'Bei Regen: Kunsthaus Zürich, Museum Rietberg oder Lindt Home of Chocolate in Kilchberg.',
-        items: ['Das Kunsthaus Zürich zeigt Kunst vom Mittelalter bis zur Gegenwart, mit Schweizer Malerei, Impressionismus, Klassischer Moderne, Dada, Giacometti und Munch als Schwerpunkten.', 'Das Museum Rietberg widmet sich Kunst und Kulturen aus Asien, Afrika, Amerika und Ozeanien.', 'Lindt Home of Chocolate in Kilchberg ist interaktiv und besonders auch mit Kindern geeignet.'],
+        items: ['Das Kunsthaus Zürich zeigt Kunst vom Mittelalter bis zur Gegenwart, mit Schweizer Malerei, Impressionismus, Klassischer Moderne, Dada, Giacometti und Munch als Schwerpunkten.', 'Das Museum Rietberg widmet sich Kunst und Kulturen aus Asien, Afrika, Amerika und Ozeanien.', 'Lindt Home of Chocolate in Kilchberg ist interaktiv und besonders auch mit Kindern geeignet; nehmt die S8 Richtung Kilchberg und prüft die genaue Verbindung in SBB Mobile.'],
         imageAlt: 'Pipilotti-Rist-Skulptur und Chipperfield-Bau des Kunsthaus Zürich am Heimplatz',
       },
       {
@@ -1185,7 +1199,7 @@ applyLocalizedCopy('de', {
       {
         title: 'Tagesausflüge',
         body: 'Diese Ziele sind praktische Tagesausflüge ab Zürich, wenn ihr eine längere Unternehmung machen möchtet, ohne das Hotel zu wechseln.',
-        items: ['Luzern, idealerweise mit einer Bootsfahrt auf dem Vierwaldstättersee.', 'Alpstein für Wanderungen wie Seealpsee, Hoher Kasten und Säntis, mit Routen verschiedener Schwierigkeitsgrade.', 'Rheinfall bei Schaffhausen.', 'Bern für die Altstadt oder Basel für Kunstmuseen wie Fondation Beyeler und Kunstmuseum Basel.'],
+        items: ['Luzern, idealerweise mit einer Bootsfahrt auf dem Vierwaldstättersee.', 'Rapperswil, per Zug oder längerer Seefahrt erreichbar, mit Schloss, Rosengarten, Altstadt, Holzbrücke und Kinderzoo.', 'Rheinfall bei Schaffhausen, der wasserreichste Wasserfall Europas.', 'Einsiedeln mit der Klosterkirche und ihrem reich ausgestatteten barocken Innenraum sowie Spaziermöglichkeiten in der Umgebung.', 'Alpstein für Wanderungen wie Seealpsee, Hoher Kasten und Säntis, mit Routen verschiedener Schwierigkeitsgrade.', 'Bern für die Altstadt oder Basel für Kunstmuseen wie Fondation Beyeler und Kunstmuseum Basel.'],
         imageAlt: 'Ein Bergsee in der Schweiz',
       },
       {

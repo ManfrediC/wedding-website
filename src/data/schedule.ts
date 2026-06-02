@@ -50,11 +50,11 @@ export const weddingSchedule: ScheduleEntry[] = [
     },
     location: { en: 'Kirche St. Peter, Zurich', it: 'Kirche St. Peter, Zurigo', de: 'Kirche St. Peter, Zürich' },
     body: {
-      en: 'Please arrive early enough to be seated before the ceremony. We will add the exact arrival time once it is confirmed.',
-      it: "Arrivate con tempo sufficiente per prendere posto prima della cerimonia. Aggiungeremo l'orario preciso appena confermato.",
-      de: 'Bitte kommt früh genug, um vor der Trauung Platz zu nehmen. Die genaue Ankunftszeit ergänzen wir, sobald sie bestätigt ist.',
+      en: "Please plan to arrive at St Peter's church with plenty of time to settle in before the ceremony. We would like all guests to be seated by 1.40pm.",
+      it: 'Arrivate alla Kirche St. Peter con ampio margine per sistemarvi prima della cerimonia. Vorremmo che tutti gli ospiti fossero seduti entro le 13:40.',
+      de: 'Bitte kommt mit genügend Zeit in die Kirche St. Peter, damit ihr vor der Trauung in Ruhe Platz nehmen könnt. Wir möchten, dass alle Gäste bis 13.40 Uhr sitzen.',
     },
-    status: { en: 'To confirm', it: 'Da confermare', de: 'Noch zu bestätigen' },
+    status: { en: 'Confirmed', it: 'Confermato', de: 'Bestätigt' },
   },
   {
     date: weddingDate,
@@ -74,19 +74,19 @@ export const weddingSchedule: ScheduleEntry[] = [
   },
   {
     date: weddingDate,
-    time: toBeConfirmed,
+    time: { en: '4pm', it: '16:00', de: '16.00 Uhr' },
     title: {
-      en: 'Boat transfer towards Küsnacht',
-      it: 'Trasferimento in barca verso Küsnacht',
+      en: 'Boat transfer to Küsnacht',
+      it: 'Trasferimento in barca a Küsnacht',
       de: 'Bootstransfer nach Küsnacht',
     },
-    location: { en: 'Lake Zurich', it: 'Lago di Zurigo', de: 'Zürichsee' },
+    location: { en: 'Quai 6, Bürkliplatz, Zürich', it: 'Quai 6, Bürkliplatz, Zurigo', de: 'Quai 6, Bürkliplatz, Zürich' },
     body: {
-      en: 'We are planning a host-arranged boat transfer after the ceremony. Boarding point, timing, and rain plan are still to be confirmed.',
-      it: 'Stiamo pianificando un trasferimento in barca organizzato dagli sposi dopo la cerimonia. Punto di partenza, orari e piano in caso di pioggia sono ancora da confermare.',
-      de: 'Nach der Trauung planen wir einen von uns organisierten Bootstransfer. Abfahrtsort, Zeiten und Regenplan werden noch bestätigt.',
+      en: 'After the ceremony, guests will walk to Quai 6 at Bürkliplatz with family members. Please be there by 3.45pm for boarding; the boat leaves for Küsnacht at 4pm.',
+      it: 'Dopo la cerimonia, gli ospiti andranno a piedi al Quai 6 a Bürkliplatz accompagnati dai familiari. Vi chiediamo di essere lì entro le 15:45 per l’imbarco; la barca partirà per Küsnacht alle 16:00.',
+      de: 'Nach der Trauung gehen die Gäste gemeinsam mit Familienmitgliedern zum Quai 6 am Bürkliplatz. Bitte seid bis 15.45 Uhr zum Einsteigen dort; das Schiff fährt um 16.00 Uhr nach Küsnacht ab.',
     },
-    status: { en: 'Planned', it: 'Previsto', de: 'Geplant' },
+    status: { en: 'Confirmed', it: 'Confermato', de: 'Bestätigt' },
   },
   {
     date: weddingDate,
