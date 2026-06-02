@@ -83,7 +83,7 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
 
   await page.goto(`${baseUrl}/it/schedule/`, { waitUntil: 'networkidle' });
   await waitForVisibleText(page, 'Il giorno del matrimonio', 'Italian schedule heading');
-  await waitForVisibleText(page, 'Lago di Zurigo', 'Italian schedule lake location');
+  await waitForVisibleText(page, 'Quai 6, Bürkliplatz, Zurigo', 'Italian schedule boat boarding point');
   await waitForVisibleText(page, 'Da K\u00fcsnacht a Zurigo', 'Italian schedule return location');
   await assertAbsent(page, 'Lake Zurich', 'Italian schedule English fallback');
   await assertAbsent(page, 'K\u00fcsnacht to Zurich', 'Italian schedule English fallback');
@@ -92,7 +92,7 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
   const germanScheduleResponse = await page.goto(`${baseUrl}/de/schedule/`, { waitUntil: 'networkidle' });
   await assertRobotsHeader(germanScheduleResponse, 'German schedule');
   await waitForVisibleText(page, 'Unser Hochzeitstag', 'German schedule heading');
-  await waitForVisibleText(page, 'Z\u00fcrichsee', 'German schedule lake location');
+  await waitForVisibleText(page, 'Quai 6, Bürkliplatz, Z\u00fcrich', 'German schedule boat boarding point');
   await waitForVisibleText(page, 'K\u00fcsnacht nach Z\u00fcrich', 'German schedule return location');
   await assertAbsent(page, 'Lake Zurich', 'German schedule English fallback');
   await assertAbsent(page, 'K\u00fcsnacht to Zurich', 'German schedule English fallback');
