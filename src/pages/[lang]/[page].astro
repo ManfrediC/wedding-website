@@ -59,7 +59,10 @@ function isInlineLink(part: unknown): part is { text: string; href: string } {
           <article class={`info-card${section.variant === 'wide' ? ' info-card-wide' : ''}`}>
             {section.image && (
               <img
-                class={section.imageFit === 'contain' ? 'image-contain' : undefined}
+                class:list={[
+                  section.imageFit === 'contain' && 'image-contain',
+                  section.imageSize === 'reduced' && 'image-reduced',
+                ]}
                 src={section.image}
                 alt={section.imageAlt ?? ''}
                 loading="lazy"

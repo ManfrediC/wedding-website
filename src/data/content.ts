@@ -40,6 +40,7 @@ type Section = {
   image?: string;
   imageAlt?: string;
   imageFit?: 'cover' | 'contain';
+  imageSize?: 'reduced';
   exchangeRates?: boolean;
   gallery?: SectionImage[];
   variant?: 'wide';
@@ -230,39 +231,37 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       title: 'Travel Advice',
       kicker: 'How to get to Zurich',
       intro:
-        'Zurich Airport is the main arrival point. The notes below are based on current published routes and should be checked again when June 2027 timetables open.',
+        'Zurich Airport is the main arrival point. The suggestions below are based on current published routes.',
       notice:
-        'Please recheck official entry requirements before booking and again before travelling. Switzerland is part of the Schengen area and rules may change before June 2027.',
+        'Please check official entry requirements for your nationality before booking and again before travelling. Switzerland is part of the Schengen area.',
       sections: [
         {
           title: 'From Chicago',
-          body: 'Chicago O\'Hare (ORD) is the relevant airport. Current published schedules include nonstop ORD-ZRH flights, but June 2027 should be confirmed once bookings open.',
-          items: ['Check nonstop flights first, especially SWISS and United-operated services.', 'If nonstop prices are high, compare one-stop routes through major European hubs such as Frankfurt, Munich, Amsterdam, Paris, or London.', 'Also compare fares with a layover in New York, as Chicago-Zurich itineraries via New York can sometimes be cheaper than nonstop options.', 'Arrive by Thursday, 10 June 2027 at the latest; Wednesday, 9 June 2027 is better for jet lag and delayed bags.', 'Use public transport from Zurich Airport unless a wider Swiss or Italian road trip makes a car necessary.'],
+          body: 'Nonstop flights from Chicago O\'Hare (ORD) to Zurich (ZRH) are currently available.',
+          items: ['Check nonstop flights first, especially SWISS and United-operated services.', 'If nonstop prices are high, compare one-stop routes through major European hubs such as Frankfurt, Munich, Amsterdam, Paris, or London.', 'Also compare fares with a layover in New York, as Chicago-Zurich itineraries via New York can sometimes be cheaper than nonstop options.', 'Arrive by Thursday, 10 June 2027 at the latest; Wednesday, 9 June 2027 is better for jet lag and delayed bags.', 'We recommend using public trains from Zurich Airport.'],
           links: [
             { label: 'SWISS Chicago-Zurich', href: 'https://www.swiss.com/lhg/us/en/o-d/cy-cy/chicago-zurich' },
             { label: 'Google Flights', href: 'https://www.google.com/travel/flights?q=Flights%20from%20Chicago%20to%20Zurich' },
-            { label: 'Expedia', href: 'https://www.expedia.com/Flights' },
           ],
           image: '/images/places/chicago-skyline.jpg',
           imageAlt: 'Chicago skyline from Lake Michigan',
         },
         {
           title: 'From New York',
-          body: 'For New York, compare JFK and Newark (EWR). Current published schedules include nonstop flights from both airports to Zurich.',
-          items: ['Check JFK and Newark before considering LaGuardia; LaGuardia is usually useful only for domestic connections.', 'Nonstop flights are the most practical option when the price is reasonable; one-stop options can be useful if travelling from outside New York City.', 'Arrive by Thursday, 10 June 2027 at the latest; Wednesday, 9 June 2027 gives more breathing room.', 'Use public transport from Zurich Airport unless your wider trip genuinely needs a car.'],
+          body: 'Nonstop flights from JFK and Newark (EWR) to Zurich (ZRH) are currently available.',
+          items: ['Nonstop flights are the most practical option when the price is reasonable; one-stop options can be useful if travelling from outside New York City.', 'Arrive by Thursday, 10 June 2027 at the latest; Wednesday, 9 June 2027 is better for jet lag and delayed bags.', 'We recommend using public trains from Zurich Airport.'],
           links: [
             { label: 'SWISS New York-Zurich', href: 'https://www.swiss.com/lhg/us/en/o-d/cy-cy/new-york-zurich' },
             { label: 'Delta Zurich flights', href: 'https://www.delta.com/us/en/flight-deals/europe-flights/flights-to-zurich' },
             { label: 'Google Flights', href: 'https://www.google.com/travel/flights?q=Flights%20from%20New%20York%20to%20Zurich' },
-            { label: 'Expedia', href: 'https://www.expedia.com/Flights' },
           ],
           image: '/images/places/new-york-skyline.jpg',
           imageAlt: 'New York City skyline',
         },
         {
           title: 'From the UK',
-          body: 'From London, direct flights are usually the simplest option. EasyJet can be budget-friendly, but check baggage rules carefully before comparing prices.',
-          items: ['Compare London Heathrow, Gatwick, City, Luton, and Stansted depending on where you live; Heathrow, Gatwick, and City are usually the most relevant for Zurich, but London Luton may also have useful easyJet flights.', 'For guests outside London, also compare Manchester, Edinburgh, Bristol, and other regional airports with direct or one-stop routes.', 'On EasyJet, the lowest fare may include only one small under-seat cabin bag, currently 45 x 36 x 20 cm including handles and wheels; add any large cabin bag or hold luggage online when booking if you need it.', 'Basel can be worth comparing if fares are much better, but it is less convenient: take Bus 50 from EuroAirport to Basel SBB, then a train to Zurich HB, then S6 or S16 to Küsnacht ZH. Expect roughly two or more hours in total and extra Swiss transport cost.', 'UK nationals should check passport validity before booking: current UK guidance for Switzerland says passports must be issued less than 10 years before arrival and expire at least 3 months after leaving the Schengen area.', 'The rail route can be a comfortable, more sustainable way to reach Switzerland within a day: travel from London St Pancras to Paris by Eurostar, transfer from Gare du Nord to Gare de Lyon, then take TGV Lyria to Zürich HB. Allow a generous connection in Paris.'],
+          body: 'From London, direct flights are usually the simplest option.',
+          items: ['Compare London Heathrow, Gatwick, City, Luton, and Stansted depending on where you live.', 'For guests outside London, also compare Manchester, Bristol, and other airports with convenient routes.', 'EasyJet can be budget-friendly, but check baggage rules carefully before comparing prices.', 'Basel can be worth comparing if fares are much better, but it is less convenient: to get to Zurich, take Bus 50 from EuroAirport to Basel SBB, then a train to Zurich HB. Expect roughly two or more hours in total and extra Swiss transport cost.', 'The rail route can be a comfortable and sustainable way to reach Switzerland within a day: travel from London St Pancras to Paris by Eurostar, transfer from Gare du Nord to Gare de Lyon (plan enough time for the transfer), then take TGV Lyria to Zürich HB.'],
           links: [
             { label: 'SWISS London-Zurich', href: 'https://www.swiss.com/lhg/gb/en/o-d/cy-cy/london-zurich' },
             { label: 'easyJet London-Zurich', href: 'https://www.easyjet.com/en/flights-from-london/to-zurich/' },
@@ -272,7 +271,6 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
             { label: 'EuroAirport public transport', href: 'https://www.euroairport.com/en/transport' },
             { label: 'UK passport advice', href: 'https://www.gov.uk/foreign-travel-advice/switzerland/entry-requirements' },
             { label: 'Google Flights', href: 'https://www.google.com/travel/flights?q=Flights%20from%20London%20to%20Zurich' },
-            { label: 'Expedia UK', href: 'https://www.expedia.co.uk/Flights' },
             { label: 'SBB', href: 'https://www.sbb.ch/en' },
           ],
           image: '/images/places/london-skyline.jpg',
@@ -281,14 +279,15 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'From Sardinia',
           body: 'For guests travelling from Sardinia, Cagliari and Olbia are likely to be the most useful airports to compare first.',
-          items: ['For flying, check Cagliari (CAG) and Olbia (OLB) to Zurich (ZRH) first. Current Edelweiss schedules show seasonal Zurich routes for both airports, but June 2027 is not yet fully bookable.', 'EasyJet can be a budget-friendly option for Olbia-Zurich when available. Check the baggage allowance carefully, because the lowest fare may include only one small under-seat cabin bag, currently 45 x 36 x 20 cm including handles and wheels.', 'If there is no convenient direct flight, compare Cagliari or Olbia via Milan, Rome, or another European hub. Alghero may also work with a connection, but it is less likely to be the simplest route to Zurich.', 'For driving, take an overnight ferry from Sardinia to Genoa, then drive from Genoa to Zurich. The ferry leg is usually about 10-13 hours depending on route and operator; the Genoa-Zurich drive is roughly five hours before stops, border delays, and Gotthard or San Bernardino traffic.', 'If driving into Switzerland, buy the Swiss motorway vignette from the official Swiss portal and check Alpine tunnel traffic before leaving Genoa. Parking in Zurich and Küsnacht should be planned in advance.'],
+          items: ['For flying, check Cagliari (CAG) and Olbia (OLB) to Zurich (ZRH) first.', 'EasyJet can be a budget-friendly option for Olbia-Zurich when available. Check the baggage allowance carefully.', 'If there is no convenient direct flight, compare Cagliari or Olbia via Milan, Rome, or another European hub.', 'For driving, take an overnight ferry from Sardinia to Genoa, then drive from Genoa to Zurich. The ferry leg is usually about 10-13 hours depending on route and operator; the Genoa-Zurich drive is roughly five hours before stops, border delays, and Gotthard or San Bernardino traffic.', 'If driving into Switzerland, buy the Swiss motorway vignette from the official Swiss portal and check Alpine tunnel traffic before leaving Genoa. Note that parking in Zurich can be challenging and pricey.'],
           links: [
             { label: 'Edelweiss Cagliari-Zurich', href: 'https://www.flyedelweiss.com/ch/en/fly/flight-information/timetable.html?destination=CAG' },
             { label: 'Edelweiss Olbia-Zurich', href: 'https://www.flyedelweiss.com/ch/en/fly/flight-information/timetable.html?destination=OLB' },
             { label: 'easyJet Olbia-Zurich', href: 'https://www.easyjet.com/en/cheap-flights/sardinia-olbia/zurich' },
             { label: 'easyJet baggage', href: 'https://www.easyjet.com/en/help/preparing-to-fly/baggage' },
-            { label: 'GNV Genoa-Porto Torres', href: 'https://www.gnv.it/en/ferries-destinations/sardinia/genoa-porto-torres' },
-            { label: 'Moby Genoa-Olbia', href: 'https://www.moby.it/rotte/traghetti-sardegna/genova-olbia-genova/' },
+            { label: 'Grandi Navi Veloci', href: 'https://www.gnv.it/en/ferries-destinations/sardinia/genoa-porto-torres' },
+            { label: 'Moby', href: 'https://www.moby.it/rotte/traghetti-sardegna/genova-olbia-genova/' },
+            { label: 'Tirrenia', href: 'https://www.tirrenia.it/' },
             { label: 'Swiss e-vignette', href: 'https://www.bazg.admin.ch/en/electronic-vignette-via-portal-purchase' },
             { label: 'Google Flights', href: 'https://www.google.com/travel/flights?q=Flights%20from%20Sardinia%20to%20Zurich' },
             { label: 'Trenitalia', href: 'https://www.trenitalia.com/en.html' },
@@ -299,12 +298,20 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'From Zurich Airport',
-          body: 'Zurich Airport is well connected by train and S-Bahn to Zurich HB, Küsnacht ZH, and the wedding venues. For the wedding weekend, the train is usually easier than driving or taking a taxi.',
-          items: ['Download SBB Mobile before travelling, then search to Küsnacht ZH rather than just Küsnacht.', 'The direct S16 from Zürich Flughafen to Küsnacht ZH is usually the simplest airport route. Current timetable patterns show departures around 01 and 31 minutes past the hour, often from platform 3, with a journey of about 26 minutes; confirm the exact platform and time in SBB Mobile on the day.', 'SBB trains usually leave for Zurich HB about every 10 minutes, and the journey takes about 15 minutes. This is a good fallback if the next direct S16 is not convenient.', 'For Küsnacht ZH or Hotel Sonne, use SBB Mobile or ZVV from the airport or from Zurich HB and buy the ticket shown by the app before boarding.', 'Taxis and ride-hailing can be useful with children, heavy luggage, or accessibility needs, but they are usually much more expensive than public transport.', 'A rental car is not recommended for Zurich-only wedding logistics.'],
+          body: 'Zurich Airport is well connected by train and S-Bahn to Zurich HB, Küsnacht ZH, Richterswil and the wedding venues. In general, we recommend using public transport, as driving can be expensive and parking tends to be challenging.',
+          items: [
+            [
+              'Download ',
+              { text: 'the SBB Mobile app', href: 'https://www.sbb.ch/en/timetable/mobile-apps/sbb-mobile.html' },
+              ' before travelling, then search to Küsnacht ZH rather than just Küsnacht.',
+            ],
+            'The direct S16 from Zürich Flughafen to Küsnacht ZH is usually the simplest airport route. Departures are currently 01 and 31 minutes past the hour, often from platform 3, with a journey of about 26 minutes; confirm the exact platform and time in SBB Mobile on the day.',
+            'SBB trains usually leave for Zurich HB about every 10 minutes, and the journey takes about 15 minutes.',
+            'Buy the ticket via the app or from the ticket machine before boarding.',
+          ],
           links: [
             { label: 'Zurich Airport public transport', href: 'https://www.flughafen-zuerich.ch/en/passengers/practical/parking-and-transport/train-tram-and-bus' },
             { label: 'SBB', href: 'https://www.sbb.ch/en' },
-            { label: 'SBB Mobile', href: 'https://www.sbb.ch/en/timetable/mobile-apps/sbb-mobile.html' },
             { label: 'ZVV', href: 'https://www.zvv.ch/en' },
           ],
           image: '/images/places/zurich-airport-station.jpg',
@@ -312,8 +319,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'By train to Küsnacht ZH',
-          body: 'Küsnacht ZH is on Zurich’s right-bank S-Bahn line. Use SBB Mobile or ZVV for the exact train, platform, and ticket zones on the day.',
-          items: ['From Zürich HB: take an S6 or S16 along the right bank of Lake Zurich and get off at Küsnacht ZH. The journey is usually about 12 minutes. Platform numbers, including 43/44, can change, so check SBB Mobile and the station boards before boarding.', 'From Zurich Airport: the simplest direct train is usually the S16 to Herrliberg-Feldmeilen or Meilen, getting off at Küsnacht ZH. Current timetable patterns show this direct route around 01 and 31 minutes past the hour and taking about 26 minutes, but platforms and times should be checked in SBB Mobile before boarding.', 'From Richterswil: travel by train to Zürich HB, then change to an S6 or S16 for Küsnacht ZH. This is usually clearer than trying to cross the lake late in the evening.', 'Buy the full journey in SBB Mobile or the ZVV app before boarding; enter Küsnacht ZH so the app chooses the right destination and required zones.'],
+          body: 'Küsnacht ZH is on Zurich’s right-bank S-Bahn line.',
+          items: ['From Zürich HB: take an S6 or S16 along the right bank of Lake Zurich and get off at Küsnacht ZH. The journey is usually about 12 minutes. Platform numbers can change, so check SBB Mobile and the station boards before boarding.', 'From Zurich Airport: the simplest direct train is usually the S16 to Herrliberg-Feldmeilen or Meilen, getting off at Küsnacht ZH. Current departure times are 01 and 31 minutes past the hour, with travel taking 26 minutes; platforms and times should be checked in SBB Mobile before boarding.', 'From Richterswil: travel by train to Zürich HB, then change to an S6 or S16 for Küsnacht ZH. Taking a boat or ferry may be possible, but times should be confirmed', 'Buy the full journey in SBB Mobile or the ZVV app before boarding; enter Küsnacht ZH so the app chooses the right destination and required zones.'],
           image: '/images/places/kuesnacht-lake-view.jpg',
           imageAlt: 'Küsnacht village seen from Lake Zurich',
           links: [
@@ -326,11 +333,12 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           body: 'Useful places for the wedding weekend:',
           items: ['Kirche St. Peter is in Zurich old town, close to the lake and central tram connections.', 'Hotel Sonne is in Küsnacht ZH on the right bank of Lake Zurich.', "Richterswil, where Manfredi's parents live, is further south on the lake and is reachable by train.", 'Zurich Airport and Zurich HB are connected by frequent trains; use SBB Mobile or ZVV for the exact journey on the day.'],
           links: [
-            { label: 'OpenStreetMap: Zurich, Küsnacht, and Richterswil', href: 'https://www.openstreetmap.org/#map=11/47.3370/8.5950' },
+            { label: 'OpenStreetMap', href: 'https://www.openstreetmap.org/#map=11/47.3370/8.5950' },
           ],
           image: '/images/places/zurich-wedding-map.svg',
           imageAlt: 'OpenStreetMap-based map of Zurich, Küsnacht, Richterswil, Zurich Airport, Kirche St. Peter, and Hotel Sonne',
           imageFit: 'contain',
+          imageSize: 'reduced',
           variant: 'wide',
         },
         {
@@ -705,50 +713,59 @@ applyLocalizedCopy('it', {
     title: 'Viaggio',
     kicker: 'Come arrivare a Zurigo',
     intro:
-      'L’aeroporto di Zurigo è il principale punto di arrivo. Queste indicazioni si basano sulle rotte attualmente pubblicate e andranno ricontrollate quando saranno disponibili gli orari per giugno 2027.',
+      'L’aeroporto di Zurigo è il principale punto di arrivo. I suggerimenti qui sotto si basano sulle rotte attualmente pubblicate.',
     notice:
-      'Bozza in italiano da rivedere. Ricontrollate i requisiti ufficiali di ingresso prima di prenotare e di nuovo prima di partire. La Svizzera fa parte dell’area Schengen e le regole potrebbero cambiare prima di giugno 2027.',
+      'Controllate i requisiti ufficiali di ingresso per la vostra nazionalità prima di prenotare e di nuovo prima di partire. La Svizzera fa parte dell’area Schengen.',
     sections: [
       {
         title: 'Da Chicago',
         body:
-          "Chicago O'Hare (ORD) è l'aeroporto di riferimento. Gli orari attualmente pubblicati includono voli diretti ORD-ZRH, ma giugno 2027 andrà verificato quando le prenotazioni saranno aperte.",
-        items: ['Controllate prima i voli diretti, in particolare SWISS e i servizi operati da United.', 'Se i voli diretti sono costosi, confrontate itinerari con uno scalo in hub europei come Francoforte, Monaco, Amsterdam, Parigi o Londra.', 'Confrontate anche tariffe con scalo a New York: gli itinerari Chicago-Zurigo via New York possono talvolta costare meno dei voli diretti.', 'Arrivate entro giovedì 10 giugno 2027 al più tardi; mercoledì 9 giugno 2027 è preferibile per jet lag e possibili ritardi dei bagagli.', 'Dall’aeroporto di Zurigo usate i mezzi pubblici, salvo che un viaggio più ampio in Svizzera o Italia renda davvero necessaria l’auto.'],
+          "Sono attualmente disponibili voli diretti da Chicago O'Hare (ORD) a Zurigo (ZRH).",
+        items: ['Controllate prima i voli diretti, in particolare SWISS e i servizi operati da United.', 'Se i voli diretti sono costosi, confrontate itinerari con uno scalo in hub europei come Francoforte, Monaco, Amsterdam, Parigi o Londra.', 'Confrontate anche tariffe con scalo a New York: gli itinerari Chicago-Zurigo via New York possono talvolta costare meno dei voli diretti.', 'Arrivate entro giovedì 10 giugno 2027 al più tardi; mercoledì 9 giugno 2027 è preferibile per jet lag e possibili ritardi dei bagagli.', 'Consigliamo di usare i treni pubblici dall’aeroporto di Zurigo.'],
         imageAlt: 'Skyline di Chicago dal Lago Michigan',
       },
       {
         title: 'Da New York',
         body:
-          'Per New York, confrontate JFK e Newark (EWR). Gli orari attualmente pubblicati includono voli diretti da entrambi gli aeroporti a Zurigo.',
-        items: ['Controllate JFK e Newark prima di considerare LaGuardia; LaGuardia è di solito utile solo per coincidenze interne.', 'I voli diretti sono l’opzione più pratica quando il prezzo è ragionevole; uno scalo può essere utile per chi parte da fuori New York City.', 'Arrivate entro giovedì 10 giugno 2027 al più tardi; mercoledì 9 giugno 2027 lascia più margine.', 'Dall’aeroporto di Zurigo usate i mezzi pubblici, salvo che il resto del viaggio richieda davvero un’auto.'],
+          'Sono attualmente disponibili voli diretti da JFK e Newark (EWR) a Zurigo (ZRH).',
+        items: ['I voli diretti sono l’opzione più pratica quando il prezzo è ragionevole; uno scalo può essere utile per chi parte da fuori New York City.', 'Arrivate entro giovedì 10 giugno 2027 al più tardi; mercoledì 9 giugno 2027 è preferibile per jet lag e possibili ritardi dei bagagli.', 'Consigliamo di usare i treni pubblici dall’aeroporto di Zurigo.'],
         imageAlt: 'Skyline di New York City',
       },
       {
         title: 'Dal Regno Unito',
         body:
-          'Dal Regno Unito, i voli diretti per Zurigo sono di solito la soluzione più semplice. EasyJet può essere conveniente, ma controllate con attenzione le regole sui bagagli prima di confrontare i prezzi.',
-        items: ['Confrontate Heathrow, Gatwick, City, Luton e Stansted in base a dove vivete; Heathrow, Gatwick e City sono di solito i più rilevanti per Zurigo, ma London Luton può avere voli easyJet utili.', 'Per chi vive fuori Londra, confrontate anche Manchester, Edimburgo, Bristol e altri aeroporti regionali con voli diretti o con uno scalo.', 'Con EasyJet, la tariffa più bassa può includere solo un piccolo bagaglio da mettere sotto il sedile, attualmente 45 x 36 x 20 cm incluse maniglie e ruote; aggiungete bagaglio a mano grande o bagaglio da stiva online se necessario.', 'Basilea può valere un confronto se le tariffe sono molto migliori, ma è meno comoda: dall’EuroAirport prendete il bus 50 per Basel SBB, poi un treno per Zurich HB e infine S6 o S16 per Küsnacht ZH. Calcolate circa due ore o più in totale e un costo extra per i trasporti svizzeri.', 'I cittadini britannici dovrebbero controllare la validità del passaporto prima di prenotare: secondo le indicazioni attuali del governo britannico per la Svizzera, il passaporto deve essere stato emesso meno di 10 anni prima dell’arrivo e scadere almeno 3 mesi dopo l’uscita dall’area Schengen.', 'Il viaggio in treno può essere un modo comodo e più sostenibile per arrivare in Svizzera in giornata: Eurostar da London St Pancras a Parigi, trasferimento da Gare du Nord a Gare de Lyon, poi TGV Lyria per Zürich HB. Prevedete una coincidenza ampia a Parigi.'],
+          'Da Londra, i voli diretti sono di solito la soluzione più semplice.',
+        items: ['Confrontate London Heathrow, Gatwick, City, Luton e Stansted in base a dove vivete.', 'Per chi vive fuori Londra, confrontate anche Manchester, Bristol e altri aeroporti con collegamenti comodi.', 'EasyJet può essere conveniente, ma controllate con attenzione le regole sui bagagli prima di confrontare i prezzi.', 'Basilea può valere un confronto se le tariffe sono molto migliori, ma è meno comoda: per arrivare a Zurigo, prendete il bus 50 dall’EuroAirport a Basel SBB, poi un treno per Zurich HB. Calcolate circa due ore o più in totale e un costo extra per i trasporti svizzeri.', 'Il viaggio in treno può essere un modo comodo e sostenibile per arrivare in Svizzera in giornata: Eurostar da London St Pancras a Parigi, trasferimento da Gare du Nord a Gare de Lyon (prevedete abbastanza tempo per il cambio), poi TGV Lyria per Zürich HB.'],
         imageAlt: 'Tower Bridge sul Tamigi a Londra',
       },
       {
         title: 'Dalla Sardegna',
         body:
           'Per chi parte dalla Sardegna, Cagliari e Olbia sono probabilmente gli aeroporti più utili da confrontare per primi.',
-        items: ['Per volare, controllate prima Cagliari (CAG) e Olbia (OLB) verso Zurigo (ZRH). Gli orari attuali di Edelweiss mostrano rotte stagionali per Zurigo da entrambi gli aeroporti, ma giugno 2027 non è ancora completamente prenotabile.', 'EasyJet può essere conveniente per Olbia-Zurigo quando disponibile. Controllate con attenzione il bagaglio incluso, perché la tariffa più bassa può includere solo un piccolo bagaglio da mettere sotto il sedile, attualmente 45 x 36 x 20 cm incluse maniglie e ruote.', 'Se non c’è un volo diretto comodo, confrontate Cagliari o Olbia via Milano, Roma o un altro hub europeo. Alghero può funzionare con una coincidenza, ma è meno probabile che sia la soluzione più semplice per Zurigo.', 'Per arrivare in auto, prendete un traghetto notturno dalla Sardegna a Genova e poi guidate da Genova a Zurigo. Il traghetto dura di solito circa 10-13 ore a seconda della tratta e dell’operatore; Genova-Zurigo richiede circa cinque ore prima di pause, frontiera e traffico al Gottardo o al San Bernardino.', 'Se entrate in Svizzera in auto, acquistate la vignetta autostradale dal portale ufficiale svizzero e controllate il traffico nei tunnel alpini prima di lasciare Genova. Il parcheggio a Zurigo e Küsnacht va pianificato in anticipo.'],
+        items: ['Per volare, controllate prima Cagliari (CAG) e Olbia (OLB) verso Zurigo (ZRH).', 'EasyJet può essere conveniente per Olbia-Zurigo quando disponibile. Controllate con attenzione il bagaglio incluso.', 'Se non c’è un volo diretto comodo, confrontate Cagliari o Olbia via Milano, Roma o un altro hub europeo.', 'Per arrivare in auto, prendete un traghetto notturno dalla Sardegna a Genova e poi guidate da Genova a Zurigo. Il traghetto dura di solito circa 10-13 ore a seconda della tratta e dell’operatore; Genova-Zurigo richiede circa cinque ore prima di pause, frontiera e traffico al Gottardo o al San Bernardino.', 'Se entrate in Svizzera in auto, acquistate la vignetta autostradale dal portale ufficiale svizzero e controllate il traffico nei tunnel alpini prima di lasciare Genova. Il parcheggio a Zurigo può essere difficile e costoso.'],
         imageAlt: 'La costa vicino a Santa Maria Navarrese in Ogliastra, Sardegna',
       },
       {
         title: 'Dall’aeroporto di Zurigo',
         body:
-          'L’aeroporto di Zurigo è ben collegato in treno e S-Bahn a Zurich HB, Küsnacht ZH e ai luoghi del matrimonio. Per il fine settimana del matrimonio, il treno è di solito più semplice dell’auto o del taxi.',
-        items: ['Scaricate SBB Mobile prima del viaggio e cercate Küsnacht ZH, non solo Küsnacht.', 'Il collegamento diretto S16 da Zürich Flughafen a Küsnacht ZH è di solito il percorso più semplice dall’aeroporto. Gli orari attuali mostrano spesso partenze intorno ai minuti 01 e 31, spesso dal binario 3, con un viaggio di circa 26 minuti; controllate sempre orario e binario in SBB Mobile il giorno stesso.', 'I treni SBB per Zurich HB partono di solito circa ogni 10 minuti e il viaggio dura circa 15 minuti, utile come alternativa se il prossimo S16 diretto non è comodo.', 'Per Küsnacht ZH o Hotel Sonne, usate SBB Mobile o ZVV dall’aeroporto o da Zurich HB e acquistate il biglietto indicato dall’app prima di salire.', 'Taxi e servizi ride-hailing possono essere utili con bambini, bagagli pesanti o necessità di accessibilità, ma di solito sono molto più costosi dei mezzi pubblici.', 'Un’auto a noleggio non è consigliata per gli spostamenti del matrimonio a Zurigo.'],
+          'L’aeroporto di Zurigo è ben collegato in treno e S-Bahn a Zurich HB, Küsnacht ZH, Richterswil e ai luoghi del matrimonio. In generale, consigliamo di usare i mezzi pubblici, perché guidare può essere costoso e trovare parcheggio tende a essere difficile.',
+        items: [
+          [
+            'Scaricate ',
+            { text: 'l’app SBB Mobile', href: 'https://www.sbb.ch/en/timetable/mobile-apps/sbb-mobile.html' },
+            ' prima del viaggio e cercate Küsnacht ZH, non solo Küsnacht.',
+          ],
+          'Il collegamento diretto S16 da Zürich Flughafen a Küsnacht ZH è di solito il percorso più semplice dall’aeroporto. Le partenze sono attualmente ai minuti 01 e 31, spesso dal binario 3, con un viaggio di circa 26 minuti; controllate sempre orario e binario in SBB Mobile il giorno stesso.',
+          'I treni SBB per Zurich HB partono di solito circa ogni 10 minuti e il viaggio dura circa 15 minuti.',
+          'Comprate il biglietto tramite l’app o alla biglietteria automatica prima di salire.',
+        ],
         imageAlt: "Treni alla stazione ferroviaria dell'aeroporto di Zurigo",
       },
       {
         title: 'In treno per Küsnacht ZH',
         body:
-          'Küsnacht ZH si trova sulla linea S-Bahn della riva destra del Lago di Zurigo. Usate SBB Mobile o ZVV per treno, binario e zone tariffarie esatte nel giorno del viaggio.',
-        items: ['Da Zürich HB: prendete un S6 o S16 lungo la riva destra del Lago di Zurigo e scendete a Küsnacht ZH. Il viaggio dura di solito circa 12 minuti. I binari, compresi 43/44, possono cambiare: controllate SBB Mobile e i tabelloni in stazione prima di salire.', 'Dall’aeroporto di Zurigo: il treno diretto più semplice è di solito l’S16 per Herrliberg-Feldmeilen o Meilen, scendendo a Küsnacht ZH. Gli orari attuali mostrano spesso questa tratta diretta intorno ai minuti 01 e 31 e circa 26 minuti di viaggio, ma orari e binari vanno controllati in SBB Mobile prima di salire.', 'Da Richterswil: viaggiate in treno fino a Zürich HB, poi cambiate con S6 o S16 per Küsnacht ZH. Di solito è più chiaro che attraversare il lago la sera tardi.', 'Comprate l’intero percorso in SBB Mobile o nell’app ZVV prima di salire; inserite Küsnacht ZH così l’app sceglie la destinazione giusta e le zone necessarie.'],
+          'Küsnacht ZH si trova sulla linea S-Bahn della riva destra del Lago di Zurigo.',
+        items: ['Da Zürich HB: prendete un S6 o S16 lungo la riva destra del Lago di Zurigo e scendete a Küsnacht ZH. Il viaggio dura di solito circa 12 minuti. I binari possono cambiare: controllate SBB Mobile e i tabelloni in stazione prima di salire.', 'Dall’aeroporto di Zurigo: il treno diretto più semplice è di solito l’S16 per Herrliberg-Feldmeilen o Meilen, scendendo a Küsnacht ZH. Gli orari attuali sono ai minuti 01 e 31, con un viaggio di 26 minuti; orari e binari vanno controllati in SBB Mobile prima di salire.', 'Da Richterswil: viaggiate in treno fino a Zürich HB, poi cambiate con S6 o S16 per Küsnacht ZH. Una barca o un traghetto potrebbero essere possibili, ma gli orari vanno confermati.', 'Comprate l’intero percorso in SBB Mobile o nell’app ZVV prima di salire; inserite Küsnacht ZH così l’app sceglie la destinazione giusta e le zone necessarie.'],
         image: '/images/places/kuesnacht-lake-view.jpg',
         imageAlt: 'Küsnacht vista dal Lago di Zurigo',
       },
@@ -1041,50 +1058,59 @@ applyLocalizedCopy('de', {
     title: 'Anreise',
     kicker: 'Anreise nach Zürich',
     intro:
-      'Der Flughafen Zürich ist der wichtigste Ankunftsort. Diese Hinweise beruhen auf derzeit veröffentlichten Verbindungen und sollten nochmals geprüft werden, sobald die Fahrpläne und Flugpläne für Juni 2027 verfügbar sind.',
+      'Der Flughafen Zürich ist der wichtigste Ankunftsort. Die folgenden Vorschläge beruhen auf derzeit veröffentlichten Verbindungen.',
     notice:
-      'Deutscher Entwurf zur Prüfung. Bitte prüft die offiziellen Einreisebestimmungen vor der Buchung und nochmals vor der Reise. Die Schweiz gehört zum Schengen-Raum; die Regeln können sich bis Juni 2027 ändern.',
+      'Bitte prüft die offiziellen Einreisebestimmungen für eure Staatsangehörigkeit vor der Buchung und nochmals vor der Reise. Die Schweiz gehört zum Schengen-Raum.',
     sections: [
       {
         title: 'Aus Chicago',
         body:
-          "Chicago O'Hare (ORD) ist der relevante Flughafen. Aktuell veröffentlichte Flugpläne enthalten Direktflüge ORD-ZRH; Juni 2027 sollte geprüft werden, sobald Buchungen möglich sind.",
-        items: ['Prüft zuerst Direktflüge, insbesondere SWISS und von United durchgeführte Verbindungen.', 'Wenn Direktflüge teuer sind, vergleicht Verbindungen mit einem Umstieg über europäische Drehkreuze wie Frankfurt, München, Amsterdam, Paris oder London.', 'Vergleicht auch Tarife mit Umstieg in New York; Chicago-Zürich-Verbindungen über New York können manchmal günstiger sein als Direktflüge.', 'Kommt spätestens am Donnerstag, 10. Juni 2027 an; Mittwoch, 9. Juni 2027 ist wegen Jetlag und möglicher Gepäckverspätungen besser.', 'Nutzt ab Flughafen Zürich den öffentlichen Verkehr, sofern nicht eine längere Schweiz- oder Italienreise ein Auto wirklich nötig macht.'],
+          "Direktflüge von Chicago O'Hare (ORD) nach Zürich (ZRH) sind derzeit verfügbar.",
+        items: ['Prüft zuerst Direktflüge, insbesondere SWISS und von United durchgeführte Verbindungen.', 'Wenn Direktflüge teuer sind, vergleicht Verbindungen mit einem Umstieg über europäische Drehkreuze wie Frankfurt, München, Amsterdam, Paris oder London.', 'Vergleicht auch Tarife mit Umstieg in New York; Chicago-Zürich-Verbindungen über New York können manchmal günstiger sein als Direktflüge.', 'Kommt spätestens am Donnerstag, 10. Juni 2027 an; Mittwoch, 9. Juni 2027 ist wegen Jetlag und möglicher Gepäckverspätungen besser.', 'Wir empfehlen, ab Flughafen Zürich öffentliche Züge zu nutzen.'],
         imageAlt: 'Skyline von Chicago vom Lake Michigan',
       },
       {
         title: 'Aus New York',
         body:
-          'Für New York lohnt sich der Vergleich von JFK und Newark (EWR). Aktuell veröffentlichte Flugpläne enthalten Direktflüge von beiden Flughäfen nach Zürich.',
-        items: ['Prüft JFK und Newark, bevor ihr LaGuardia berücksichtigt; LaGuardia ist meistens nur für Inlandanschlüsse sinnvoll.', 'Direktflüge sind am praktischsten, wenn der Preis vernünftig ist; Umsteigeverbindungen können hilfreich sein, wenn ihr nicht direkt aus New York City reist.', 'Kommt spätestens am Donnerstag, 10. Juni 2027 an; Mittwoch, 9. Juni 2027 gibt mehr Spielraum.', 'Nutzt ab Flughafen Zürich den öffentlichen Verkehr, sofern eure weitere Reise nicht wirklich ein Auto erfordert.'],
+          'Direktflüge von JFK und Newark (EWR) nach Zürich (ZRH) sind derzeit verfügbar.',
+        items: ['Direktflüge sind am praktischsten, wenn der Preis vernünftig ist; Umsteigeverbindungen können hilfreich sein, wenn ihr nicht direkt aus New York City reist.', 'Kommt spätestens am Donnerstag, 10. Juni 2027 an; Mittwoch, 9. Juni 2027 ist wegen Jetlag und möglicher Gepäckverspätungen besser.', 'Wir empfehlen, ab Flughafen Zürich öffentliche Züge zu nutzen.'],
         imageAlt: 'Skyline von New York City',
       },
       {
         title: 'Aus dem Vereinigten Königreich',
         body:
-          'Aus dem Vereinigten Königreich sind Direktflüge nach Zürich meistens die einfachste Option. EasyJet kann preislich attraktiv sein, aber prüft die Gepäckregeln sorgfältig, bevor ihr Preise vergleicht.',
-        items: ['Vergleicht London Heathrow, Gatwick, City, Luton und Stansted je nach Wohnort; Heathrow, Gatwick und City sind für Zürich meist am relevantesten, aber London Luton kann ebenfalls nützliche easyJet-Flüge haben.', 'Ausserhalb Londons lohnt sich auch der Vergleich von Manchester, Edinburgh, Bristol und anderen Regionalflughäfen mit Direkt- oder Umsteigeverbindungen.', 'Bei EasyJet kann der günstigste Tarif nur ein kleines Gepäckstück unter dem Sitz enthalten, derzeit 45 x 36 x 20 cm inklusive Griffe und Rollen; bucht grosses Handgepäck oder Aufgabegepäck online dazu, wenn ihr es braucht.', 'Basel kann einen Vergleich wert sein, wenn die Flugpreise deutlich besser sind, ist aber weniger bequem: vom EuroAirport mit Bus 50 nach Basel SBB, dann mit dem Zug nach Zürich HB und weiter mit S6 oder S16 nach Küsnacht ZH. Rechnet insgesamt mit ungefähr zwei Stunden oder mehr und zusätzlichen Schweizer Transportkosten.', 'Britische Staatsangehörige sollten vor der Buchung die Passgültigkeit prüfen: Die aktuelle britische Reiseinformation für die Schweiz verlangt, dass der Pass weniger als 10 Jahre vor Einreise ausgestellt wurde und mindestens 3 Monate nach Verlassen des Schengen-Raums gültig bleibt.', 'Die Bahnroute kann eine bequeme und nachhaltigere Möglichkeit sein, die Schweiz innerhalb eines Tages zu erreichen: Eurostar von London St Pancras nach Paris, dann von Gare du Nord nach Gare de Lyon und mit TGV Lyria nach Zürich HB. Plant in Paris grosszügig Zeit für den Wechsel ein.'],
+          'Von London sind Direktflüge meistens die einfachste Option.',
+        items: ['Vergleicht London Heathrow, Gatwick, City, Luton und Stansted je nach Wohnort.', 'Ausserhalb Londons lohnt sich auch der Vergleich von Manchester, Bristol und anderen Flughäfen mit passenden Verbindungen.', 'EasyJet kann preislich attraktiv sein, aber prüft die Gepäckregeln sorgfältig, bevor ihr Preise vergleicht.', 'Basel kann einen Vergleich wert sein, wenn die Flugpreise deutlich besser sind, ist aber weniger bequem: Um nach Zürich zu kommen, nehmt Bus 50 vom EuroAirport nach Basel SBB und dann einen Zug nach Zürich HB. Rechnet insgesamt mit ungefähr zwei Stunden oder mehr und zusätzlichen Schweizer Transportkosten.', 'Die Bahnroute kann eine bequeme und nachhaltige Möglichkeit sein, die Schweiz innerhalb eines Tages zu erreichen: Eurostar von London St Pancras nach Paris, dann von Gare du Nord nach Gare de Lyon (plant genug Zeit für den Wechsel ein) und mit TGV Lyria nach Zürich HB.'],
         imageAlt: 'Tower Bridge über der Themse in London',
       },
       {
         title: 'Aus Sardinien',
         body:
           'Für Gäste aus Sardinien sind Cagliari und Olbia wahrscheinlich die sinnvollsten Flughäfen für den ersten Vergleich.',
-        items: ['Für Flüge prüft zuerst Cagliari (CAG) und Olbia (OLB) nach Zürich (ZRH). Aktuelle Edelweiss-Flugpläne zeigen saisonale Zürich-Verbindungen von beiden Flughäfen, aber Juni 2027 ist noch nicht vollständig buchbar.', 'EasyJet kann für Olbia-Zürich günstig sein, wenn die Verbindung verfügbar ist. Prüft die Gepäckbestimmungen sorgfältig, da der günstigste Tarif nur ein kleines Gepäckstück unter dem Sitz enthalten kann, derzeit 45 x 36 x 20 cm inklusive Griffe und Rollen.', 'Wenn es keinen passenden Direktflug gibt, vergleicht Cagliari oder Olbia via Mailand, Rom oder ein anderes europäisches Drehkreuz. Alghero kann mit Umstieg funktionieren, ist aber wahrscheinlich seltener die einfachste Route nach Zürich.', 'Mit dem Auto: nehmt eine Nachtfähre von Sardinien nach Genua und fahrt dann von Genua nach Zürich. Die Fähre dauert je nach Strecke und Anbieter meist etwa 10-13 Stunden; Genua-Zürich dauert vor Pausen, Grenze und Gotthard- oder San-Bernardino-Verkehr ungefähr fünf Stunden.', 'Wenn ihr mit dem Auto in die Schweiz fahrt, kauft die Autobahnvignette über das offizielle Schweizer Portal und prüft vor der Abfahrt in Genua den Verkehr an den Alpentunnels. Parken in Zürich und Küsnacht sollte vorab geplant werden.'],
+        items: ['Für Flüge prüft zuerst Cagliari (CAG) und Olbia (OLB) nach Zürich (ZRH).', 'EasyJet kann für Olbia-Zürich günstig sein, wenn die Verbindung verfügbar ist. Prüft die Gepäckbestimmungen sorgfältig.', 'Wenn es keinen passenden Direktflug gibt, vergleicht Cagliari oder Olbia via Mailand, Rom oder ein anderes europäisches Drehkreuz.', 'Mit dem Auto: nehmt eine Nachtfähre von Sardinien nach Genua und fahrt dann von Genua nach Zürich. Die Fähre dauert je nach Strecke und Anbieter meist etwa 10-13 Stunden; Genua-Zürich dauert vor Pausen, Grenze und Gotthard- oder San-Bernardino-Verkehr ungefähr fünf Stunden.', 'Wenn ihr mit dem Auto in die Schweiz fahrt, kauft die Autobahnvignette über das offizielle Schweizer Portal und prüft vor der Abfahrt in Genua den Verkehr an den Alpentunnels. Parken in Zürich kann schwierig und teuer sein.'],
         imageAlt: 'Die Kueste bei Santa Maria Navarrese in Ogliastra, Sardinien',
       },
       {
         title: 'Ab Flughafen Zürich',
         body:
-          'Der Flughafen Zürich ist mit Zug und S-Bahn gut an Zürich HB, Küsnacht ZH und die Hochzeitsorte angebunden. Für das Hochzeitswochenende ist der Zug meist einfacher als Auto oder Taxi.',
-        items: ['Ladet SBB Mobile vor der Reise herunter und sucht nach Küsnacht ZH, nicht nur nach Küsnacht.', 'Die direkte S16 von Zürich Flughafen nach Küsnacht ZH ist meist die einfachste Verbindung ab Flughafen. Aktuelle Fahrplanmuster zeigen Abfahrten etwa um Minute 01 und 31, oft ab Gleis 3, mit rund 26 Minuten Fahrzeit; prüft genaue Zeit und Gleis am Reisetag in SBB Mobile.', 'SBB-Züge nach Zürich HB fahren in der Regel etwa alle 10 Minuten; die Fahrt dauert ungefähr 15 Minuten. Das ist eine gute Alternative, wenn die nächste direkte S16 zeitlich nicht passt.', 'Für Küsnacht ZH oder Hotel Sonne nutzt SBB Mobile oder ZVV ab Flughafen oder ab Zürich HB und kauft das von der App angezeigte Ticket vor dem Einsteigen.', 'Taxis und Ride-Hailing können mit Kindern, schwerem Gepäck oder Barrierefreiheitsbedarf sinnvoll sein, sind aber meist deutlich teurer als der öffentliche Verkehr.', 'Ein Mietwagen ist für Hochzeitslogistik innerhalb Zürichs nicht empfohlen.'],
+          'Der Flughafen Zürich ist mit Zug und S-Bahn gut an Zürich HB, Küsnacht ZH, Richterswil und die Hochzeitsorte angebunden. Grundsätzlich empfehlen wir den öffentlichen Verkehr, da Autofahren teuer sein kann und Parkplätze oft schwierig zu finden sind.',
+        items: [
+          [
+            'Ladet ',
+            { text: 'die SBB Mobile App', href: 'https://www.sbb.ch/en/timetable/mobile-apps/sbb-mobile.html' },
+            ' vor der Reise herunter und sucht nach Küsnacht ZH, nicht nur nach Küsnacht.',
+          ],
+          'Die direkte S16 von Zürich Flughafen nach Küsnacht ZH ist meist die einfachste Verbindung ab Flughafen. Die Abfahrten sind derzeit um Minute 01 und 31, oft ab Gleis 3, mit rund 26 Minuten Fahrzeit; prüft genaue Zeit und Gleis am Reisetag in SBB Mobile.',
+          'SBB-Züge nach Zürich HB fahren in der Regel etwa alle 10 Minuten; die Fahrt dauert ungefähr 15 Minuten.',
+          'Kauft das Ticket vor dem Einsteigen über die App oder am Ticketautomaten.',
+        ],
         imageAlt: 'Züge im Bahnhof Zürich Flughafen',
       },
       {
         title: 'Mit dem Zug nach Küsnacht ZH',
         body:
-          'Küsnacht ZH liegt an der S-Bahn-Linie am rechten Zürichseeufer. Nutzt SBB Mobile oder ZVV für den genauen Zug, das Gleis und die nötigen Zonen am Reisetag.',
-        items: ['Ab Zürich HB: nehmt S6 oder S16 entlang des rechten Zürichseeufers und steigt in Küsnacht ZH aus. Die Fahrt dauert meistens etwa 12 Minuten. Gleise, auch 43/44, können wechseln; prüft daher SBB Mobile und die Bahnhofsanzeigen vor dem Einsteigen.', 'Ab Flughafen Zürich: die einfachste direkte Verbindung ist meist die S16 nach Herrliberg-Feldmeilen oder Meilen bis Küsnacht ZH. Aktuelle Fahrplanmuster zeigen diese direkte Verbindung etwa um Minute 01 und 31 mit rund 26 Minuten Fahrzeit; Zeiten und Gleise bitte vor dem Einsteigen in SBB Mobile prüfen.', 'Ab Richterswil: fahrt mit dem Zug zum Zürich HB und steigt dort in S6 oder S16 nach Küsnacht ZH um. Das ist meist übersichtlicher als eine späte Seequerung.', 'Kauft die ganze Verbindung vor dem Einsteigen in SBB Mobile oder in der ZVV-App; gebt Küsnacht ZH ein, damit die App das richtige Ziel und die nötigen Zonen wählt.'],
+          'Küsnacht ZH liegt an der S-Bahn-Linie am rechten Zürichseeufer.',
+        items: ['Ab Zürich HB: nehmt S6 oder S16 entlang des rechten Zürichseeufers und steigt in Küsnacht ZH aus. Die Fahrt dauert meistens etwa 12 Minuten. Gleise können wechseln; prüft daher SBB Mobile und die Bahnhofsanzeigen vor dem Einsteigen.', 'Ab Flughafen Zürich: die einfachste direkte Verbindung ist meist die S16 nach Herrliberg-Feldmeilen oder Meilen bis Küsnacht ZH. Aktuelle Abfahrtszeiten sind Minute 01 und 31, mit 26 Minuten Fahrzeit; Zeiten und Gleise bitte vor dem Einsteigen in SBB Mobile prüfen.', 'Ab Richterswil: fahrt mit dem Zug zum Zürich HB und steigt dort in S6 oder S16 nach Küsnacht ZH um. Eine Fahrt mit Boot oder Fähre kann möglich sein, die Zeiten sollten aber bestätigt werden.', 'Kauft die ganze Verbindung vor dem Einsteigen in SBB Mobile oder in der ZVV-App; gebt Küsnacht ZH ein, damit die App das richtige Ziel und die nötigen Zonen wählt.'],
         image: '/images/places/kuesnacht-lake-view.jpg',
         imageAlt: 'Küsnacht vom Zürichsee aus gesehen',
       },

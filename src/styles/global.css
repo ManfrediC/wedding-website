@@ -271,6 +271,22 @@ button {
   cursor: pointer;
 }
 
+.info-card .link-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7.8rem, 1fr));
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.info-card .link-list a {
+  width: auto;
+  min-height: 44px;
+  padding: 0.58rem 0.7rem;
+  font-size: 0.68rem;
+  line-height: 1.25;
+  text-align: center;
+}
+
 .button.primary,
 button {
   background: var(--colour-green);
@@ -419,6 +435,13 @@ button.danger {
 .info-card img.image-contain {
   object-fit: contain;
   background: #f4eadb;
+}
+
+.info-card img.image-reduced {
+  width: 75%;
+  margin: 0 auto;
+  border-right: 1px solid var(--colour-line);
+  border-left: 1px solid var(--colour-line);
 }
 
 .info-card h2 {
