@@ -17,16 +17,70 @@ const weddingDate = {
   de: 'Freitag, 11. Juni 2027',
 };
 
+const civilCeremonyDate = {
+  en: 'Thursday, 10 June 2027',
+  it: 'Giovedì 10 giugno 2027',
+  de: 'Donnerstag, 10. Juni 2027',
+};
+
+const followingDay = {
+  en: 'Saturday, 12 June 2027',
+  it: 'Sabato, 12 giugno 2027',
+  de: 'Samstag, 12. Juni 2027',
+};
+
+const civilCeremonyTime = {
+  en: '11:30',
+  it: '11:30',
+  de: '11.30 Uhr',
+};
+
+const guestArrivalTime = {
+  en: '13:30',
+  it: '13:30',
+  de: '13.30 Uhr',
+};
+
+const ceremonyTime = {
+  en: '14:00',
+  it: '14:00',
+  de: '14.00 Uhr',
+};
+
+const receptionTime = {
+  en: '17:00',
+  it: '17:00',
+  de: '17.00 Uhr',
+};
+
+const returnTime = {
+  en: '00:00',
+  it: '00:00',
+  de: '00.00 Uhr',
+};
+
 const toBeConfirmed = {
   en: 'TBD',
   it: 'TBD',
   de: 'TBD',
 };
 
+const confirmed = {
+  en: 'Confirmed',
+  it: 'Confermato',
+  de: 'Bestätigt',
+};
+
+const toBeConfirmedStatus = {
+  en: 'To be confirmed',
+  it: 'Da confermare',
+  de: 'Noch zu bestätigen',
+};
+
 export const weddingSchedule: ScheduleEntry[] = [
   {
-    date: toBeConfirmed,
-    time: toBeConfirmed,
+    date: civilCeremonyDate,
+    time: civilCeremonyTime,
     title: {
       en: 'Civil Ceremony at Stadthaus Zürich',
       it: 'Cerimonia civile allo Stadthaus Zürich',
@@ -42,7 +96,7 @@ export const weddingSchedule: ScheduleEntry[] = [
   },
   {
     date: weddingDate,
-    time: toBeConfirmed,
+    time: guestArrivalTime,
     title: {
       en: 'Guest arrival',
       it: 'Arrivo degli ospiti',
@@ -50,15 +104,15 @@ export const weddingSchedule: ScheduleEntry[] = [
     },
     location: { en: 'Kirche St. Peter, Zurich', it: 'Kirche St. Peter, Zurigo', de: 'Kirche St. Peter, Zürich' },
     body: {
-      en: "Please plan to arrive at St Peter's church with plenty of time to settle in before the ceremony. We would like all guests to be seated by 1.40pm.",
+      en: "Please plan to arrive at St Peter's church with plenty of time to settle in before the ceremony. We would like all guests to be seated by 13:40.",
       it: 'Arrivate alla Kirche St. Peter con ampio margine per sistemarvi prima della cerimonia. Vorremmo che tutti gli ospiti fossero seduti entro le 13:40.',
       de: 'Bitte kommt mit genügend Zeit in die Kirche St. Peter, damit ihr vor der Trauung in Ruhe Platz nehmen könnt. Wir möchten, dass alle Gäste bis 13.40 Uhr sitzen.',
     },
-    status: { en: 'Confirmed', it: 'Confermato', de: 'Bestätigt' },
+    status: confirmed,
   },
   {
     date: weddingDate,
-    time: toBeConfirmed,
+    time: ceremonyTime,
     title: {
       en: 'Ceremony',
       it: 'Cerimonia',
@@ -70,11 +124,11 @@ export const weddingSchedule: ScheduleEntry[] = [
       it: 'La giornata inizierà nel centro storico di Zurigo, alla Kirche St. Peter.',
       de: 'Der Tag beginnt in der Zürcher Altstadt in der Kirche St. Peter.',
     },
-    status: { en: 'To confirm', it: 'Da confermare', de: 'Noch zu bestätigen' },
+    status: confirmed,
   },
   {
     date: weddingDate,
-    time: { en: '4pm', it: '16:00', de: '16.00 Uhr' },
+    time: toBeConfirmed,
     title: {
       en: 'Boat transfer to Küsnacht',
       it: 'Trasferimento in barca a Küsnacht',
@@ -82,19 +136,19 @@ export const weddingSchedule: ScheduleEntry[] = [
     },
     location: { en: 'Quai 6, Bürkliplatz, Zürich', it: 'Quai 6, Bürkliplatz, Zurigo', de: 'Quai 6, Bürkliplatz, Zürich' },
     body: {
-      en: 'After the ceremony, guests will walk to Quai 6 at Bürkliplatz with family members. Please be there by 3.45pm for boarding; the boat leaves for Küsnacht at 4pm.',
-      it: 'Dopo la cerimonia, gli ospiti andranno a piedi al Quai 6 a Bürkliplatz accompagnati dai familiari. Vi chiediamo di essere lì entro le 15:45 per l’imbarco; la barca partirà per Küsnacht alle 16:00.',
-      de: 'Nach der Trauung gehen die Gäste gemeinsam mit Familienmitgliedern zum Quai 6 am Bürkliplatz. Bitte seid bis 15.45 Uhr zum Einsteigen dort; das Schiff fährt um 16.00 Uhr nach Küsnacht ab.',
+      en: 'After the ceremony, guests will walk to Quai 6 at Bürkliplatz with family members. Please board 15 minutes before departure; the boat leaves for Küsnacht around 16:30 (to be confirmed).',
+      it: 'Dopo la cerimonia, gli ospiti andranno a piedi al Quai 6 a Bürkliplatz accompagnati dai familiari. Vi chiediamo di salire a bordo 15 minuti prima della partenza; la barca partirà per Küsnacht intorno alle 16:30 (da confermare).',
+      de: 'Nach der Trauung gehen die Gäste gemeinsam mit Familienmitgliedern zum Quai 6 am Bürkliplatz. Bitte steigt 15 Minuten vor der Abfahrt ein; das Schiff fährt gegen 16.30 Uhr nach Küsnacht ab (noch zu bestätigen).',
     },
-    status: { en: 'Confirmed', it: 'Confermato', de: 'Bestätigt' },
+    status: toBeConfirmedStatus,
   },
   {
     date: weddingDate,
-    time: toBeConfirmed,
+    time: receptionTime,
     title: {
       en: 'Aperitivo, dinner, and dancing',
       it: 'Aperitivo, cena e festa',
-      de: 'Aperitif, Abendessen und Feier',
+      de: 'Apéro, Abendessen und Feier',
     },
     location: { en: 'Hotel Sonne, Küsnacht', it: 'Hotel Sonne, Küsnacht', de: 'Hotel Sonne, Küsnacht' },
     body: {
@@ -102,11 +156,11 @@ export const weddingSchedule: ScheduleEntry[] = [
       it: "La celebrazione continuerà sul lago all'Hotel Sonne di Küsnacht.",
       de: 'Die Feier geht direkt am Wasser im Hotel Sonne in Küsnacht weiter.',
     },
-    status: { en: 'To confirm', it: 'Da confermare', de: 'Noch zu bestätigen' },
+    status: confirmed,
   },
   {
-    date: weddingDate,
-    time: toBeConfirmed,
+    date: followingDay,
+    time: returnTime,
     title: {
       en: 'Return travel',
       it: 'Rientro',
@@ -114,10 +168,10 @@ export const weddingSchedule: ScheduleEntry[] = [
     },
     location: { en: 'Küsnacht to Zurich', it: 'Da Küsnacht a Zurigo', de: 'Küsnacht nach Zürich' },
     body: {
-      en: 'Late-night transport options will be added once the party timing is final.',
-      it: 'Le opzioni per il rientro serale saranno aggiunte quando gli orari della festa saranno definitivi.',
-      de: 'Informationen zur Rückfahrt am Abend folgen, sobald die Zeiten der Feier final sind.',
+      en: 'Return travel is planned after the celebration. Practical details and recommended transport options will be added closer to the date.',
+      it: 'Il rientro è previsto dopo la festa. I dettagli pratici e le opzioni di trasporto consigliate saranno aggiunti più avanti.',
+      de: 'Die Rückfahrt ist nach der Feier geplant. Praktische Details und empfohlene Transportmöglichkeiten folgen näher am Datum.',
     },
-    status: { en: 'To confirm', it: 'Da confermare', de: 'Noch zu bestätigen' },
+    status: confirmed,
   },
 ];
