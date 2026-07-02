@@ -363,7 +363,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Closest to the party: Küsnacht',
           body: 'Stay in Küsnacht if you want the shortest trip back after dinner and dancing at Hotel Sonne.',
-          items: ['Hotel Sonne Küsnacht: guests booking directly with reception can receive an approximately 10% discount on rooms. Please let reception know that you are a Dago-Carta wedding guest when booking.', 'OXEN Küsnacht: nearby option with a small number of rooms; some rooms use shared bathrooms.', 'Current late-night trains run roughly hourly back towards Zürich HB; check SBB Mobile for the exact connection on the night.'],
+          items: ['Hotel Sonne Küsnacht: guests booking directly with reception can receive an approximately 10% discount on rooms. Please let the reception know that you are a Dago-Carta wedding guest when booking.', 'OXEN Küsnacht: nearby option with a small number of rooms; some rooms use shared bathrooms.', 'Current late-night trains run roughly hourly back towards Zürich HB; check SBB Mobile for the exact connection on the night.'],
           links: [
             { label: 'Hotel Sonne Küsnacht', href: 'https://sonne.ch/en/' },
             { label: 'OXEN Küsnacht', href: 'https://www.oxen.ch/zimmer' },
@@ -372,16 +372,16 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           imageAlt: 'Hotel Sonne in Küsnacht',
         },
         {
-          title: 'Central Zurich',
-          body: 'Zurich city centre is practical for guests who want restaurants, sightseeing, train connections, and easy airport access.',
-          items: ['Look near Zurich HB, the Old Town, Bellevue, or Stadelhofen for the most convenient city-centre stay.', 'Other towns on the S6 or S16 line, or places close to Zürich Stadelhofen or Zürich Tiefenbrunnen, can also be convenient because they keep the trip to Küsnacht straightforward.', 'More economical hotels may be easier to find in Zurich Altstetten or Oerlikon; both are connected to the centre and airport by public transport.', 'Choose accommodation near a tram, train, or bus stop.', 'Use public transport for travelling around Zurich; driving by car is not recommended due to lack of parking space and poor convenience.'],
+          title: 'Zurich',
+          body: 'Zurich city centre provides sightseeing, restaurants, train connections, and easy airport access.',
+          items: ['Look near Zurich HB, the Old Town, Bellevue, or Stadelhofen for the most convenient city-centre stay.', 'Other towns on the S6 or S16 line, or places close to Zürich Stadelhofen or Zürich Tiefenbrunnen, can also be convenient because they keep the trip to Küsnacht straightforward.', 'More economical hotels may be easier to find in Zurich Oerlikon or Altstetten; both are connected to the centre and airport by public transport.', 'Accommodation near a tram, train, or bus stop is recommended.', 'Use public transport for travelling around Zurich; driving by car is not recommended due to lack of parking space and poor convenience.'],
           image: '/images/places/zurich-old-town.jpg',
           imageAlt: 'Zurich old town and the Limmat river',
         },
         {
           title: 'Richterswil',
           body: "Richterswil is farther down Lake Zurich. It may suit guests who want to stay near Manfredi's family or prefer a small B&B.",
-          items: ['From Zürich HB, the S2 is usually the best direct train to Richterswil; the S8 is a slower direct alternative. Check SBB Mobile for the exact connection before travelling.', 'B & B Caffètino-Vino Richterswil has five rooms in the historic village centre, close to the lake and station.', 'It is a B&B rather than a hotel; the house has no lift, and rooms are on the 2nd and 3rd floors.', 'Check the late-evening return journey from Küsnacht before booking, especially after the party.'],
+          items: ['From Zürich HB, the S2 is usually the best direct train to Richterswil; the S8 is a slower direct alternative. Check SBB Mobile for the exact connection before travelling.', 'B&B Caffètino-Vino Richterswil has five rooms in the picturesque village centre, close to the lake and station.', 'It is a B&B rather than a hotel; the house has no lift, and rooms are on the 2nd and 3rd floors.', 'Take note of the public transport connection for the return journey from Küsnacht after the party.'],
           links: [
             { label: 'B & B Caffètino-Vino Richterswil', href: 'https://www.bnb-caffetino-vino.ch/' },
           ],
@@ -391,7 +391,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Booking guidance',
           body: 'Zurich can be expensive in June. We recommend booking early, checking cancellation terms, and comparing hotels with apartments if you are staying longer.',
-          items: ['Hotel Sonne discount: direct booking with reception, mentioning the Dago-Carta wedding.', 'Booking codes for other hotels: TBD', 'Room-block deadlines: TBD', 'Approximate price bands: TBD'],
+          items: ['Hotel Sonne discount: direct booking with reception, mentioning the Dago-Carta wedding.'],
           links: [
             { label: 'Airbnb Zurich, June 2027', href: 'https://www.airbnb.com/s/Zurich--Switzerland/homes?checkin=2027-06-10&checkout=2027-06-13&adults=2' },
           ],
@@ -400,8 +400,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         },
         {
           title: 'Accessibility and mobility',
-          body: 'Please tell us in the RSVP or by email if steps, walking distances, hearing support, or transport arrangements may affect your plans. We will confirm venue-specific details as the wedding logistics become final.',
-          items: ['Kirche St. Peter: the official church FAQ says the ground floor is wheelchair-accessible, with a signposted lift from St. Peterhofstatt to the church; the gallery and choir area are not wheelchair-accessible. A hearing loop is listed.', 'Boat transfer: ZSG/ZVV state that Lake Zurich boats can carry wheelchairs up to 80 cm wide in 2nd class, with crew assistance at landing stages. The exact wedding boat and boarding point still need to be confirmed.', 'Hotel Sonne: room accessibility varies by category. Some room pages say not all rooms are accessible by lift, while selected rooms are described as lift-accessible; contact the hotel before booking if lift access is important.', 'OXEN: published room information places the rooms on the top floor with shared bathrooms; contact OXEN directly before booking if stairs or bathroom access may be an issue.', 'B & B Caffètino-Vino Richterswil: the B&B states that the old house has no lift and rooms are on the 2nd and 3rd floors.', 'For Zurich hotels or Airbnb apartments, use accessibility filters but confirm step-free entry, bathroom access, lift size, and distance to public transport directly with the property.'],
+          body: 'Please tell us in the RSVP or by email if steps, walking distances, or transport arrangements may affect your plans.',
+          items: ['Kirche St. Peter: the ground floor is wheelchair-accessible, with a lift from St. Peterhofstatt to the church. Assisted hearing devices can be provided.', 'Boat transfer: assistance by crew and family members can be provided.', 'Hotel Sonne: selected rooms are lift-accessible; contact the hotel before booking if lift access is important.', 'OXEN: the rooms are located on the top floor with shared bathrooms.', 'B & B Caffètino-Vino Richterswil: rooms are located on the 2nd and 3rd floors, no lift is available.'],
           links: [
             { label: 'St. Peter accessibility FAQ', href: 'https://www.st-peter-zh.ch/-4/besuch~2695/faq~3108/' },
             { label: 'ZVV accessible boats', href: 'https://www.zvv.ch/en/service/travel-without-barriers/limited-mobility/ships.html' },
@@ -423,8 +423,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
       sections: [
         {
           title: 'Sightseeing and visiting Zurich',
-          body: 'If you extend your stay, these are easy ways to see Zurich without overfilling the wedding weekend.',
-          items: ['Walk the Old Town, Lindenhof, and the Limmat, including Grossmünster and Fraumünster, where Marc Chagall designed the famous stained-glass windows.', 'Visit Grossmünster for its place in the Swiss-German Reformation, or Kunsthaus Zürich for a broad art collection.', 'Take a short Limmat or Lake Zurich boat ride for a relaxed view of the city from the water.', 'Visit Giacometti-Halle for the painted entrance hall, or Zurich Zoo if you are travelling with children.', 'Take the train up Uetliberg for city and lake views, then walk part of the Planetenweg if you would like gentle countryside and exercise. Check the current train connection in SBB Mobile before going.'],
+          body: 'We recommend the following activities in Zurich.',
+          items: ['Walk the Old Town, Lindenhof, and the Limmat, including Grossmünster and Fraumünster, where Marc Chagall designed the stained-glass windows.', 'Visit Grossmünster for its place in the Swiss Reformation, or Kunsthaus Zürich for a broad art collection.', 'Visit Giacometti-Halle for the painted entrance hall. Zurich Zoo might be an option if you are travelling with children.', 'Take the train up Uetliberg for city and lake views. It is also possible to walk up from the train station Zürich Triemli. Your hike can be extended to Felsenegg.'],
           links: [
             { label: 'Fraumünster', href: 'https://www.zuerich.com/en/visit/attractions/fraumunster' },
             { label: 'Grossmünster', href: 'https://www.zuerich.com/en/visit/attractions/grossmunster' },
