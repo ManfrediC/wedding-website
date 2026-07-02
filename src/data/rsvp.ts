@@ -51,8 +51,6 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
       'We will use your RSVP information only for wedding planning and to contact you if needed.',
     updatesLabel: 'RSVP updates',
     updates: [
-      'RSVP opening date: TBD',
-      'RSVP deadline: TBD',
       'Your latest submission replaces earlier responses from the same email address.',
     ],
     attendingLegend: 'Will you be able to join us?',
@@ -95,8 +93,6 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
       'Useremo le informazioni della RSVP solo per organizzare il matrimonio e per contattarvi se necessario.',
     updatesLabel: 'Aggiornamenti RSVP',
     updates: [
-      'Apertura RSVP: TBD',
-      'Scadenza RSVP: TBD',
       'La risposta più recente sostituisce le precedenti dallo stesso indirizzo email.',
     ],
     attendingLegend: 'Potrete essere con noi?',
@@ -139,8 +135,6 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
       'Wir verwenden eure RSVP-Angaben nur für die Hochzeitsplanung und um euch bei Bedarf zu kontaktieren.',
     updatesLabel: 'RSVP-Hinweise',
     updates: [
-      'Öffnung der RSVP: TBD',
-      'RSVP-Frist: TBD',
       'Die neueste Antwort ersetzt frühere Antworten von derselben E-Mail-Adresse.',
     ],
     attendingLegend: 'Könnt ihr dabei sein?',

@@ -207,7 +207,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Ceremony',
           body: "The ceremony will take place at Kirche St. Peter in Zurich old town. Please arrive with plenty of time to settle in; we would like all guests to be seated by 13:40.",
-          items: ['Date: Friday, 11 June 2027', 'Guest arrival: 13:30', 'Ceremony: 14:00', 'Guests seated by: 13:40', 'Ceremony languages: TBD'],
+          items: ['Date: Friday, 11 June 2027', 'Guest arrival: 13:30', 'Ceremony: 14:00', 'Guests seated by: 13:40', 'Ceremony languages: The ceremony will be multilingual; English, Italian and German scripts will be provided.'],
           image: '/images/places/st-peter-zurich.jpg',
           imageAlt: 'Kirche St. Peter in Zurich',
         },
@@ -710,7 +710,7 @@ applyLocalizedCopy('it', {
       {
         title: 'Cerimonia',
         body: 'La cerimonia si terrà alla Kirche St. Peter, nel centro storico di Zurigo. Arrivate con ampio margine per sistemarvi; vorremmo che tutti gli ospiti fossero seduti entro le 13:40.',
-        items: ['Data: venerdì 11 giugno 2027', 'Arrivo degli ospiti: 13:30', 'Cerimonia: 14:00', 'Ospiti seduti entro: 13:40', 'Lingue della cerimonia: TBD'],
+        items: ['Data: venerdì 11 giugno 2027', 'Arrivo degli ospiti: 13:30', 'Cerimonia: 14:00', 'Ospiti seduti entro: 13:40', 'Lingue della cerimonia: la cerimonia sarà multilingue; saranno forniti i testi in inglese, italiano e tedesco.'],
         imageAlt: 'Kirche St. Peter a Zurigo',
       },
       {
@@ -1096,7 +1096,7 @@ applyLocalizedCopy('de', {
       {
         title: 'Trauung',
         body: 'Die Trauung findet in der Kirche St. Peter in der Zürcher Altstadt statt. Bitte kommt mit genügend Zeit, damit ihr in Ruhe Platz nehmen könnt; wir möchten, dass alle Gäste bis 13.40 Uhr sitzen.',
-        items: ['Datum: Freitag, 11. Juni 2027', 'Ankunft der Gäste: 13.30 Uhr', 'Trauung: 14.00 Uhr', 'Gäste sitzen bis: 13.40 Uhr', 'Sprachen der Trauung: TBD'],
+        items: ['Datum: Freitag, 11. Juni 2027', 'Ankunft der Gäste: 13.30 Uhr', 'Trauung: 14.00 Uhr', 'Gäste sitzen bis: 13.40 Uhr', 'Sprachen der Trauung: Die Trauung wird mehrsprachig sein; englische, italienische und deutsche Texte werden bereitgestellt.'],
         imageAlt: 'Kirche St. Peter in Zürich',
       },
       {
