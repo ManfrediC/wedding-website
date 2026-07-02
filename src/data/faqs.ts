@@ -8,14 +8,14 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
         'Formal attire, e.g. suits for men and long dresses for ladies. Because part of the day will involve walking and a boat transfer, we recommend comfortable formal shoes (or an additional pair for walking) and a light layer for the evening.',
     },
     {
-      question: 'Are children invited?',
-      answer:
-        'We would like to keep our celebration an intimate, adults-focused evening, with the exception of the children in our immediate families. We hope it gives you a chance to relax and enjoy the night with us.',
-    },
-    {
       question: 'Can I bring a plus one?',
       answer:
         'We would love to celebrate with everyone, but due to limited space, we are only able to accommodate those guests who are formally listed on the invitation. If your invitation includes a plus-one, it will be indicated.',
+    },
+    {
+      question: 'Are children invited?',
+      answer:
+        'We would like to keep our celebration an intimate, adults-focused evening, with the exception of the children in our immediate families. We hope it gives you a chance to relax and enjoy the night with us.',
     },
     {
       question: 'How does the boat transfer work?',
