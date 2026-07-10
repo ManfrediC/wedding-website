@@ -23,6 +23,10 @@ const currentPath = `/${page}/`;
 function isInlineLink(part: unknown): part is { text: string; href: string } {
   return typeof part === 'object' && part !== null && 'text' in part && 'href' in part;
 }
+
+function isStrongText(part: unknown): part is { text: string; strong: true } {
+  return typeof part === 'object' && part !== null && 'text' in part && 'strong' in part;
+}
 ---
 
 <BaseLayout lang={lang} currentPath={currentPath} title={`${content.title} | Gabriela & Manfredi`}>
@@ -84,6 +88,8 @@ function isInlineLink(part: unknown): part is { text: string; href: string } {
                         ? item.map((part) =>
                             isInlineLink(part) ? (
                               <a href={part.href} target="_blank" rel="noreferrer">{part.text}</a>
+                            ) : isStrongText(part) ? (
+                              <strong>{part.text}</strong>
                             ) : (
                               part
                             ),

@@ -25,7 +25,12 @@ type InlineLink = {
   href: string;
 };
 
-type SectionItem = string | (string | InlineLink)[];
+type StrongText = {
+  text: string;
+  strong: true;
+};
+
+type SectionItem = string | (string | InlineLink | StrongText)[];
 
 type SectionImage = {
   src: string;
@@ -363,7 +368,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Closest to the party: Küsnacht',
           body: 'Stay in Küsnacht if you want the shortest trip back after dinner and dancing at Hotel Sonne.',
-          items: ['Hotel Sonne Küsnacht: guests booking directly with reception can receive an approximately 10% discount on rooms. Please let the reception know that you are a Dago-Carta wedding guest when booking.', 'OXEN Küsnacht: nearby option with a small number of rooms; some rooms use shared bathrooms.', 'Current late-night trains run roughly hourly back towards Zürich HB; check SBB Mobile for the exact connection on the night.'],
+          items: [[{ text: 'Hotel Sonne Küsnacht', strong: true }, ': guests booking directly with reception can receive an approximately 10% discount on rooms. Please let the reception know that you are a Dago-Carta wedding guest when booking.'], [{ text: 'OXEN Küsnacht', strong: true }, ': nearby option with a small number of rooms; some rooms use shared bathrooms.'], 'Current late-night trains run roughly hourly back towards Zürich HB; check SBB Mobile for the exact connection on the night.'],
           links: [
             { label: 'Hotel Sonne Küsnacht', href: 'https://sonne.ch/en/' },
             { label: 'OXEN Küsnacht', href: 'https://www.oxen.ch/zimmer' },
@@ -374,7 +379,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Zurich',
           body: 'Zurich city centre provides sightseeing, restaurants, train connections, and easy airport access.',
-          items: ['Look near Zurich HB, the Old Town, Bellevue, or Stadelhofen for the most convenient city-centre stay.', 'Other towns on the S6 or S16 line, or places close to Zürich Stadelhofen or Zürich Tiefenbrunnen, can also be convenient because they keep the trip to Küsnacht straightforward.', 'More economical hotels may be easier to find in Zurich Oerlikon or Altstetten; both are connected to the centre and airport by public transport.', 'Mama Shelter Zurich, opposite Zürich Oerlikon station, is worth considering as a more affordable option. Oerlikon is one stop from Zurich Airport on many direct trains, with direct connections to Zürich HB and Küsnacht ZH.', 'Accommodation near a tram, train, or bus stop is recommended.', 'Use public transport for travelling around Zurich; driving by car is not recommended due to lack of parking space and poor convenience.'],
+          items: ['Look near Zurich HB, the Old Town, Bellevue, or Stadelhofen for the most convenient city-centre stay.', 'Other towns on the S6 or S16 line, or places close to Zürich Stadelhofen or Zürich Tiefenbrunnen, can also be convenient because they keep the trip to Küsnacht straightforward.', 'More economical hotels may be easier to find in Zurich Oerlikon or Altstetten; both are connected to the centre and airport by public transport.', ['We recommend ', { text: 'Mama Shelter Zurich', strong: true }, ', opposite Zürich Oerlikon station, as a more affordable and well-connected option. Oerlikon is one stop from Zurich Airport on many direct trains, with direct connections to Zürich HB and Küsnacht ZH.'], 'Accommodation near a tram, train, or bus stop is recommended.', 'Use public transport for travelling around Zurich; driving by car is not recommended due to lack of parking space and poor convenience.'],
           links: [{ label: 'Mama Shelter Zurich', href: 'https://mamashelter.com/zurich/' }],
           image: '/images/places/zurich-old-town.jpg',
           imageAlt: 'Zurich old town and the Limmat river',
@@ -382,7 +387,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Richterswil',
           body: "Richterswil is farther down Lake Zurich. It may suit guests who want to stay near Manfredi's family or prefer a small B&B.",
-          items: ['From Zürich HB, the S2 is usually the best direct train to Richterswil; the S8 is a slower direct alternative. Check SBB Mobile for the exact connection before travelling.', 'B&B Caffètino-Vino Richterswil has five rooms in the picturesque village centre, close to the lake and station.', 'It is a B&B rather than a hotel; the house has no lift, and rooms are on the 2nd and 3rd floors.', 'Take note of the public transport connection for the return journey from Küsnacht after the party.'],
+          items: ['From Zürich HB, the S2 is usually the best direct train to Richterswil; the S8 is a slower direct alternative. Check SBB Mobile for the exact connection before travelling.', [{ text: 'B&B Caffètino-Vino Richterswil', strong: true }, ' has five rooms in the picturesque village centre, close to the lake and station.'], 'It is a B&B rather than a hotel; the house has no lift, and rooms are on the 2nd and 3rd floors.', 'Take note of the public transport connection for the return journey from Küsnacht after the party.'],
           links: [
             { label: 'B & B Caffètino-Vino Richterswil', href: 'https://www.bnb-caffetino-vino.ch/' },
           ],
@@ -811,7 +816,7 @@ applyLocalizedCopy('it', {
         title: 'Più vicino alla festa: Küsnacht',
         body:
           'Scegliete Küsnacht se volete il rientro più breve dopo cena e dopo la festa all’Hotel Sonne.',
-        items: ['Hotel Sonne Küsnacht: chi prenota direttamente con la reception può ricevere uno sconto di circa il 10% sulle camere. Comunicate alla reception che siete ospiti del matrimonio Dago-Carta al momento della prenotazione.', 'OXEN Küsnacht: opzione vicina con un piccolo numero di camere; alcune camere hanno bagni condivisi.', 'Attualmente i treni notturni verso Zürich HB circolano più o meno ogni ora; controllate il collegamento esatto in SBB Mobile la sera stessa.'],
+        items: [[{ text: 'Hotel Sonne Küsnacht', strong: true }, ': chi prenota direttamente con la reception può ricevere uno sconto di circa il 10% sulle camere. Comunicate alla reception che siete ospiti del matrimonio Dago-Carta al momento della prenotazione.'], [{ text: 'OXEN Küsnacht', strong: true }, ': opzione vicina con un piccolo numero di camere; alcune camere hanno bagni condivisi.'], 'Attualmente i treni notturni verso Zürich HB circolano più o meno ogni ora; controllate il collegamento esatto in SBB Mobile la sera stessa.'],
         links: [
           { label: 'Hotel Sonne Küsnacht', href: 'https://sonne.ch/en/' },
           { label: 'Camere OXEN Küsnacht', href: 'https://www.oxen.ch/zimmer' },
@@ -822,7 +827,7 @@ applyLocalizedCopy('it', {
         title: 'Centro di Zurigo',
         body:
           'Il centro di Zurigo è pratico per chi desidera ristoranti, visite, collegamenti ferroviari e facile accesso all’aeroporto.',
-        items: ['Cercate vicino a Zurich HB, centro storico, Bellevue o Stadelhofen per la soluzione più comoda in centro.', 'Anche altri paesi lungo le linee S6 o S16, oppure zone vicine a Zürich Stadelhofen o Zürich Tiefenbrunnen, possono essere comodi perché semplificano il tragitto per Küsnacht.', 'Hotel più economici possono essere più facili da trovare a Zurich Altstetten o Oerlikon; entrambe le zone sono collegate al centro e all’aeroporto con i mezzi pubblici.', 'Mama Shelter Zurich, di fronte alla stazione di Zürich Oerlikon, è un’opzione più economica da considerare. Con molti treni diretti, l’aeroporto di Zurigo dista una sola fermata; ci sono inoltre collegamenti diretti con Zürich HB e Küsnacht ZH.', 'Scegliete un alloggio vicino a una fermata di tram, treno o autobus.', 'Usate i mezzi pubblici per muovervi a Zurigo; spostarsi in auto non è consigliato per la mancanza di parcheggi e la scarsa praticità.'],
+        items: ['Cercate vicino a Zurich HB, centro storico, Bellevue o Stadelhofen per la soluzione più comoda in centro.', 'Anche altri paesi lungo le linee S6 o S16, oppure zone vicine a Zürich Stadelhofen o Zürich Tiefenbrunnen, possono essere comodi perché semplificano il tragitto per Küsnacht.', 'Hotel più economici possono essere più facili da trovare a Zurich Altstetten o Oerlikon; entrambe le zone sono collegate al centro e all’aeroporto con i mezzi pubblici.', ['Consigliamo ', { text: 'Mama Shelter Zurich', strong: true }, ', di fronte alla stazione di Zürich Oerlikon, come opzione più economica e ben collegata. Con molti treni diretti, l’aeroporto di Zurigo dista una sola fermata; ci sono inoltre collegamenti diretti con Zürich HB e Küsnacht ZH.'], 'Scegliete un alloggio vicino a una fermata di tram, treno o autobus.', 'Usate i mezzi pubblici per muovervi a Zurigo; spostarsi in auto non è consigliato per la mancanza di parcheggi e la scarsa praticità.'],
         links: [{ label: 'Mama Shelter Zurich', href: 'https://mamashelter.com/zurich/' }],
         imageAlt: 'Centro storico di Zurigo e fiume Limmat',
       },
@@ -830,7 +835,7 @@ applyLocalizedCopy('it', {
         title: 'Richterswil',
         body:
           'Richterswil si trova più a sud lungo il Lago di Zurigo. Può essere adatto a chi desidera stare vicino alla famiglia di Manfredi o preferisce un piccolo B&B.',
-        items: ['Da Zürich HB, l’S2 è di solito il miglior treno diretto per Richterswil; l’S8 è un’alternativa diretta più lenta. Controllate il collegamento esatto in SBB Mobile prima di partire.', 'B & B Caffètino-Vino Richterswil ha cinque camere nel centro storico del paese, vicino al lago e alla stazione.', 'È un B&B, non un hotel; la casa non ha ascensore e le camere si trovano al 2° e 3° piano.', 'Controllate il rientro serale da Küsnacht prima di prenotare, soprattutto dopo la festa.'],
+        items: ['Da Zürich HB, l’S2 è di solito il miglior treno diretto per Richterswil; l’S8 è un’alternativa diretta più lenta. Controllate il collegamento esatto in SBB Mobile prima di partire.', [{ text: 'B & B Caffètino-Vino Richterswil', strong: true }, ' ha cinque camere nel centro storico del paese, vicino al lago e alla stazione.'], 'È un B&B, non un hotel; la casa non ha ascensore e le camere si trovano al 2° e 3° piano.', 'Controllate il rientro serale da Küsnacht prima di prenotare, soprattutto dopo la festa.'],
         imageAlt: 'Richterswil vista dal Lago di Zurigo',
       },
       {
@@ -1198,7 +1203,7 @@ applyLocalizedCopy('de', {
         title: 'Am nächsten zur Feier: Küsnacht',
         body:
           'Wählt Küsnacht, wenn ihr nach Abendessen und Feier im Hotel Sonne den kürzesten Rückweg möchtet.',
-        items: ['Hotel Sonne Küsnacht: Bei direkter Buchung über die Reception können Gäste ungefähr 10% Rabatt auf Zimmer erhalten. Bitte gebt bei der Buchung an, dass ihr Gäste der Dago-Carta-Hochzeit seid.', 'OXEN Küsnacht: nahe Option mit wenigen Zimmern; einige Zimmer haben Gemeinschaftsbäder.', 'Aktuell fahren späte Züge ungefähr stündlich zurück Richtung Zürich HB; prüft die genaue Verbindung am Abend selbst in SBB Mobile.'],
+        items: [[{ text: 'Hotel Sonne Küsnacht', strong: true }, ': Bei direkter Buchung über die Reception können Gäste ungefähr 10% Rabatt auf Zimmer erhalten. Bitte gebt bei der Buchung an, dass ihr Gäste der Dago-Carta-Hochzeit seid.'], [{ text: 'OXEN Küsnacht', strong: true }, ': nahe Option mit wenigen Zimmern; einige Zimmer haben Gemeinschaftsbäder.'], 'Aktuell fahren späte Züge ungefähr stündlich zurück Richtung Zürich HB; prüft die genaue Verbindung am Abend selbst in SBB Mobile.'],
         links: [
           { label: 'Hotel Sonne Küsnacht', href: 'https://sonne.ch/en/' },
           { label: 'Zimmer OXEN Küsnacht', href: 'https://www.oxen.ch/zimmer' },
@@ -1209,7 +1214,7 @@ applyLocalizedCopy('de', {
         title: 'Zürich Zentrum',
         body:
           'Zürich Zentrum ist praktisch für Restaurants, Besichtigungen, Zugverbindungen und einfache Anreise zum Flughafen.',
-        items: ['Sucht nahe Zürich HB, Altstadt, Bellevue oder Stadelhofen für die bequemste zentrale Lage.', 'Auch andere Orte entlang der S6 oder S16 sowie Lagen nahe Zürich Stadelhofen oder Zürich Tiefenbrunnen können praktisch sein, weil die Fahrt nach Küsnacht einfach bleibt.', 'Günstigere Hotels finden sich eventuell eher in Zürich Altstetten oder Oerlikon; beide Quartiere sind mit dem Zentrum und dem Flughafen durch öffentlichen Verkehr verbunden.', 'Mama Shelter Zurich, direkt gegenüber dem Bahnhof Zürich Oerlikon, ist eine günstigere Option. Mit vielen Direktzügen ist der Flughafen Zürich nur eine Haltestelle entfernt; zudem bestehen Direktverbindungen nach Zürich HB und Küsnacht ZH.', 'Wählt eine Unterkunft nahe bei Tram, Zug oder Bus.', 'Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist wegen fehlender Parkplätze und geringer Bequemlichkeit nicht empfohlen.'],
+        items: ['Sucht nahe Zürich HB, Altstadt, Bellevue oder Stadelhofen für die bequemste zentrale Lage.', 'Auch andere Orte entlang der S6 oder S16 sowie Lagen nahe Zürich Stadelhofen oder Zürich Tiefenbrunnen können praktisch sein, weil die Fahrt nach Küsnacht einfach bleibt.', 'Günstigere Hotels finden sich eventuell eher in Zürich Altstetten oder Oerlikon; beide Quartiere sind mit dem Zentrum und dem Flughafen durch öffentlichen Verkehr verbunden.', ['Wir empfehlen ', { text: 'Mama Shelter Zurich', strong: true }, ', direkt gegenüber dem Bahnhof Zürich Oerlikon, als günstigere und gut angebundene Option. Mit vielen Direktzügen ist der Flughafen Zürich nur eine Haltestelle entfernt; zudem bestehen Direktverbindungen nach Zürich HB und Küsnacht ZH.'], 'Wählt eine Unterkunft nahe bei Tram, Zug oder Bus.', 'Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist wegen fehlender Parkplätze und geringer Bequemlichkeit nicht empfohlen.'],
         links: [{ label: 'Mama Shelter Zurich', href: 'https://mamashelter.com/zurich/' }],
         imageAlt: 'Zürcher Altstadt und Limmat',
       },
@@ -1217,7 +1222,7 @@ applyLocalizedCopy('de', {
         title: 'Richterswil',
         body:
           'Richterswil liegt weiter südlich am Zürichsee. Es kann passen, wenn ihr nahe bei Manfredis Familie wohnen oder ein kleineres B&B bevorzugen möchtet.',
-        items: ['Ab Zürich HB ist die S2 meist der beste direkte Zug nach Richterswil; die S8 ist eine langsamere direkte Alternative. Prüft die genaue Verbindung vor der Fahrt in SBB Mobile.', 'B & B Caffètino-Vino Richterswil hat fünf Zimmer im historischen Dorfkern, nahe beim See und Bahnhof.', 'Es ist ein B&B und kein Hotel; das Haus hat keinen Lift, und die Zimmer liegen im 2. und 3. Obergeschoss.', 'Prüft vor der Buchung die späte Rückfahrt ab Küsnacht, besonders nach der Feier.'],
+        items: ['Ab Zürich HB ist die S2 meist der beste direkte Zug nach Richterswil; die S8 ist eine langsamere direkte Alternative. Prüft die genaue Verbindung vor der Fahrt in SBB Mobile.', [{ text: 'B & B Caffètino-Vino Richterswil', strong: true }, ' hat fünf Zimmer im historischen Dorfkern, nahe beim See und Bahnhof.'], 'Es ist ein B&B und kein Hotel; das Haus hat keinen Lift, und die Zimmer liegen im 2. und 3. Obergeschoss.', 'Prüft vor der Buchung die späte Rückfahrt ab Küsnacht, besonders nach der Feier.'],
         imageAlt: 'Richterswil vom Zürichsee aus gesehen',
       },
       {

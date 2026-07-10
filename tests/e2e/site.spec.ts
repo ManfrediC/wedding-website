@@ -528,28 +528,52 @@ test('Italian and German stay copy is localised and cleanly encoded', async ({ p
 
 test('Stay pages recommend Mama Shelter and explain its direct train connections', async ({ page }) => {
   await page.goto('/en/stay/');
+  await expect(
+    page.getByText(
+      'We recommend Mama Shelter Zurich, opposite Zürich Oerlikon station, as a more affordable and well-connected option.',
+    ),
+  ).toBeVisible();
   await expect(page.getByRole('link', { name: 'Mama Shelter Zurich' })).toHaveAttribute(
     'href',
     'https://mamashelter.com/zurich/',
   );
   await expect(page.getByText('one stop from Zurich Airport on many direct trains')).toBeVisible();
   await expect(page.getByText('direct connections to Zürich HB and Küsnacht ZH')).toBeVisible();
+  for (const name of ['Hotel Sonne Küsnacht', 'OXEN Küsnacht', 'Mama Shelter Zurich', 'B&B Caffètino-Vino Richterswil']) {
+    await expect(page.locator('strong').filter({ hasText: name })).toBeVisible();
+  }
 
   await page.goto('/it/stay/');
+  await expect(
+    page.getByText(
+      'Consigliamo Mama Shelter Zurich, di fronte alla stazione di Zürich Oerlikon, come opzione più economica e ben collegata.',
+    ),
+  ).toBeVisible();
   await expect(page.getByRole('link', { name: 'Mama Shelter Zurich' })).toHaveAttribute(
     'href',
     'https://mamashelter.com/zurich/',
   );
   await expect(page.getByText('l’aeroporto di Zurigo dista una sola fermata')).toBeVisible();
   await expect(page.getByText('collegamenti diretti con Zürich HB e Küsnacht ZH')).toBeVisible();
+  for (const name of ['Hotel Sonne Küsnacht', 'OXEN Küsnacht', 'Mama Shelter Zurich', 'B & B Caffètino-Vino Richterswil']) {
+    await expect(page.locator('strong').filter({ hasText: name })).toBeVisible();
+  }
 
   await page.goto('/de/stay/');
+  await expect(
+    page.getByText(
+      'Wir empfehlen Mama Shelter Zurich, direkt gegenüber dem Bahnhof Zürich Oerlikon, als günstigere und gut angebundene Option.',
+    ),
+  ).toBeVisible();
   await expect(page.getByRole('link', { name: 'Mama Shelter Zurich' })).toHaveAttribute(
     'href',
     'https://mamashelter.com/zurich/',
   );
   await expect(page.getByText('der Flughafen Zürich nur eine Haltestelle entfernt')).toBeVisible();
   await expect(page.getByText('Direktverbindungen nach Zürich HB und Küsnacht ZH')).toBeVisible();
+  for (const name of ['Hotel Sonne Küsnacht', 'OXEN Küsnacht', 'Mama Shelter Zurich', 'B & B Caffètino-Vino Richterswil']) {
+    await expect(page.locator('strong').filter({ hasText: name })).toBeVisible();
+  }
 });
 
 test('Things to Do uses a distinct Local advice Zurich image', async ({ page }) => {
