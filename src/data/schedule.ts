@@ -2,7 +2,7 @@ import type { Lang } from './locales';
 
 export type ScheduleEntry = {
   date: Record<Lang, string>;
-  time: Record<Lang, string>;
+  time?: Record<Lang, string>;
   title: Record<Lang, string>;
   location: Record<Lang, string>;
   body: Record<Lang, string>;
@@ -27,12 +27,6 @@ const followingDay = {
   en: 'Saturday, 12 June 2027',
   it: 'Sabato, 12 giugno 2027',
   de: 'Samstag, 12. Juni 2027',
-};
-
-const civilCeremonyTime = {
-  en: '11:30',
-  it: '11:30',
-  de: '11.30 Uhr',
 };
 
 const guestArrivalTime = {
@@ -80,7 +74,6 @@ const toBeConfirmedStatus = {
 export const weddingSchedule: ScheduleEntry[] = [
   {
     date: civilCeremonyDate,
-    time: civilCeremonyTime,
     title: {
       en: 'Civil Ceremony at Stadthaus Zürich',
       it: 'Cerimonia civile allo Stadthaus Zürich',

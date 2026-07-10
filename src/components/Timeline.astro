@@ -15,7 +15,7 @@ const { lang, entries } = Astro.props;
     <li>
       <div class="timeline-meta">
         <div class="timeline-date">{entry.date[lang]}</div>
-        <div class="timeline-time">{entry.time[lang]}</div>
+        {entry.time && <div class="timeline-time">{entry.time[lang]}</div>}
       </div>
       <div class="timeline-marker" aria-hidden="true"></div>
       <div class="timeline-content">

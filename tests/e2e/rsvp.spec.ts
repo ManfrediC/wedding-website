@@ -304,6 +304,50 @@ test('RSVP requires an explicit attendance choice and contact phone', async ({ p
   expect(invalidPhoneResult).toEqual({ status: 400, phoneError: 'invalid' });
 });
 
+test('RSVP option controls expose and toggle the available choices', async ({ page }) => {
+  await signIntoSite(page, '/en/rsvp/');
+
+  const expectedPhoneCodes = ['', '+41', '+39', '+44', '+1', '+49', '+33', '+34', '+43'];
+  const expectedDietaryOptions = ['None', 'Vegetarian', 'Vegan', 'other'];
+  const phoneCodeValues = await page.locator('select[name="phone_country_code"] option').evaluateAll((options) =>
+    options.map((option) => (option as HTMLOptionElement).value),
+  );
+  expect(phoneCodeValues).toEqual(expectedPhoneCodes);
+
+  await page.getByLabel('Yes, I/we will attend').check();
+  await expect(page.locator('input[name="adult_name"]').first()).toHaveJSProperty('required', true);
+  await page.getByLabel('No, sadly I/we cannot attend').check();
+  await expect(page.locator('input[name="adult_name"]').first()).toHaveJSProperty('required', false);
+
+  for (const selector of ['select[name="adult_dietary_requirements"]', 'select[name="child_dietary_requirements"]']) {
+    const select = page.locator(selector).first();
+    const optionValues = await select.locator('option').evaluateAll((options) =>
+      options.map((option) => (option as HTMLOptionElement).value),
+    );
+    expect(optionValues).toEqual(expectedDietaryOptions);
+
+    const row = select.locator('xpath=ancestor::*[contains(@class, "repeat-row")][1]');
+    const otherField = row.locator('[data-dietary-other-field]');
+    const otherInput = row.locator('[data-dietary-other]');
+    await expect(otherField).toBeHidden();
+    await select.selectOption('other');
+    await expect(otherField).toBeVisible();
+    await expect(otherInput).toHaveJSProperty('required', true);
+    await otherInput.fill('Halal meal');
+    await select.selectOption('Vegan');
+    await expect(otherField).toBeHidden();
+    await expect(otherInput).toHaveValue('');
+    await expect(otherInput).toHaveJSProperty('required', false);
+  }
+
+  await page.getByRole('button', { name: 'Add adult' }).click();
+  await expect(page.locator('input[name="adult_name"]')).toHaveCount(2);
+  await page.getByRole('button', { name: 'Add child' }).click();
+  await expect(page.locator('input[name="child_name"]')).toHaveCount(2);
+  await expect(page.locator('input[name="child_age"]').first()).toHaveAttribute('min', '0');
+  await expect(page.locator('input[name="child_age"]').first()).toHaveAttribute('max', '17');
+});
+
 test('RSVP form boxes stay aligned across languages', async ({ page }) => {
   await page.setViewportSize({ width: 1200, height: 900 });
   await signIntoSite(page, '/en/rsvp/');
@@ -334,11 +378,11 @@ test('RSVP page shows the privacy copy only inside the form', async ({ page }) =
   await signIntoSite(page, '/en/rsvp/');
 
   await expect(page.locator('.notice-band')).toHaveCount(0);
-  await expect(page.getByText('We will use your RSVP information only to plan the wedding')).toHaveCount(1);
+  await expect(page.getByText('We will use your RSVP information only for wedding planning')).toHaveCount(1);
   await expect(page.getByRole('heading', { name: 'What the RSVP asks' })).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'Updates' })).toHaveCount(0);
   await expect(page.getByText('Guest names and email')).toHaveCount(0);
-  await expect(page.locator('.rsvp-form').getByText('RSVP opening date: TBD')).toBeVisible();
-  await expect(page.locator('.rsvp-form').getByText('RSVP deadline: TBD')).toBeVisible();
+  await expect(page.locator('.rsvp-form').getByText('RSVP opening date: TBD')).toHaveCount(0);
+  await expect(page.locator('.rsvp-form').getByText('RSVP deadline: TBD')).toHaveCount(0);
   await expect(page.locator('.rsvp-form').getByText('Your latest submission replaces earlier responses')).toBeVisible();
 });

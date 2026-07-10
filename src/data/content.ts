@@ -200,7 +200,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Civil ceremony',
           body: 'The civil ceremony at Stadthaus Zürich will take place privately before the wedding celebration. Because visitor numbers are limited, only immediate family can attend.',
-          items: ['Date: Thursday, 10 June 2027', 'Time: 11:30', 'Location: Stadthaus Zürich'],
+          items: ['Date: Thursday, 10 June 2027', 'Location: Stadthaus Zürich'],
           image: '/images/places/stadthaus-zurich.png',
           imageAlt: 'Facade of Stadthaus Zürich under a blue sky',
         },
@@ -374,7 +374,8 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         {
           title: 'Zurich',
           body: 'Zurich city centre provides sightseeing, restaurants, train connections, and easy airport access.',
-          items: ['Look near Zurich HB, the Old Town, Bellevue, or Stadelhofen for the most convenient city-centre stay.', 'Other towns on the S6 or S16 line, or places close to Zürich Stadelhofen or Zürich Tiefenbrunnen, can also be convenient because they keep the trip to Küsnacht straightforward.', 'More economical hotels may be easier to find in Zurich Oerlikon or Altstetten; both are connected to the centre and airport by public transport.', 'Accommodation near a tram, train, or bus stop is recommended.', 'Use public transport for travelling around Zurich; driving by car is not recommended due to lack of parking space and poor convenience.'],
+          items: ['Look near Zurich HB, the Old Town, Bellevue, or Stadelhofen for the most convenient city-centre stay.', 'Other towns on the S6 or S16 line, or places close to Zürich Stadelhofen or Zürich Tiefenbrunnen, can also be convenient because they keep the trip to Küsnacht straightforward.', 'More economical hotels may be easier to find in Zurich Oerlikon or Altstetten; both are connected to the centre and airport by public transport.', 'Mama Shelter Zurich, opposite Zürich Oerlikon station, is worth considering as a more affordable option. Oerlikon is one stop from Zurich Airport on many direct trains, with direct connections to Zürich HB and Küsnacht ZH.', 'Accommodation near a tram, train, or bus stop is recommended.', 'Use public transport for travelling around Zurich; driving by car is not recommended due to lack of parking space and poor convenience.'],
+          links: [{ label: 'Mama Shelter Zurich', href: 'https://mamashelter.com/zurich/' }],
           image: '/images/places/zurich-old-town.jpg',
           imageAlt: 'Zurich old town and the Limmat river',
         },
@@ -704,7 +705,7 @@ applyLocalizedCopy('it', {
       {
         title: 'Cerimonia civile',
         body: 'La cerimonia civile allo Stadthaus Zürich si terrà in forma privata prima della celebrazione. Poiché il numero di visitatori è limitato, potranno partecipare solo i familiari più stretti.',
-        items: ['Data: giovedì 10 giugno 2027', 'Ora: 11:30', 'Luogo: Stadthaus Zürich'],
+        items: ['Data: giovedì 10 giugno 2027', 'Luogo: Stadthaus Zürich'],
         imageAlt: 'Facciata dello Stadthaus Zürich sotto un cielo blu',
       },
       {
@@ -821,7 +822,8 @@ applyLocalizedCopy('it', {
         title: 'Centro di Zurigo',
         body:
           'Il centro di Zurigo è pratico per chi desidera ristoranti, visite, collegamenti ferroviari e facile accesso all’aeroporto.',
-        items: ['Cercate vicino a Zurich HB, centro storico, Bellevue o Stadelhofen per la soluzione più comoda in centro.', 'Anche altri paesi lungo le linee S6 o S16, oppure zone vicine a Zürich Stadelhofen o Zürich Tiefenbrunnen, possono essere comodi perché semplificano il tragitto per Küsnacht.', 'Hotel più economici possono essere più facili da trovare a Zurich Altstetten o Oerlikon; entrambe le zone sono collegate al centro e all’aeroporto con i mezzi pubblici.', 'Scegliete un alloggio vicino a una fermata di tram, treno o autobus.', 'Usate i mezzi pubblici per muovervi a Zurigo; spostarsi in auto non è consigliato per la mancanza di parcheggi e la scarsa praticità.'],
+        items: ['Cercate vicino a Zurich HB, centro storico, Bellevue o Stadelhofen per la soluzione più comoda in centro.', 'Anche altri paesi lungo le linee S6 o S16, oppure zone vicine a Zürich Stadelhofen o Zürich Tiefenbrunnen, possono essere comodi perché semplificano il tragitto per Küsnacht.', 'Hotel più economici possono essere più facili da trovare a Zurich Altstetten o Oerlikon; entrambe le zone sono collegate al centro e all’aeroporto con i mezzi pubblici.', 'Mama Shelter Zurich, di fronte alla stazione di Zürich Oerlikon, è un’opzione più economica da considerare. Con molti treni diretti, l’aeroporto di Zurigo dista una sola fermata; ci sono inoltre collegamenti diretti con Zürich HB e Küsnacht ZH.', 'Scegliete un alloggio vicino a una fermata di tram, treno o autobus.', 'Usate i mezzi pubblici per muovervi a Zurigo; spostarsi in auto non è consigliato per la mancanza di parcheggi e la scarsa praticità.'],
+        links: [{ label: 'Mama Shelter Zurich', href: 'https://mamashelter.com/zurich/' }],
         imageAlt: 'Centro storico di Zurigo e fiume Limmat',
       },
       {
@@ -1090,7 +1092,7 @@ applyLocalizedCopy('de', {
       {
         title: 'Zivile Trauung',
         body: 'Die zivile Trauung im Stadthaus Zürich findet vor der Hochzeitsfeier im privaten Rahmen statt. Da die Besucherzahl begrenzt ist, können nur die engsten Familienmitglieder teilnehmen.',
-        items: ['Datum: Donnerstag, 10. Juni 2027', 'Zeit: 11.30 Uhr', 'Ort: Stadthaus Zürich'],
+        items: ['Datum: Donnerstag, 10. Juni 2027', 'Ort: Stadthaus Zürich'],
         imageAlt: 'Fassade des Stadthauses Zürich unter blauem Himmel',
       },
       {
@@ -1207,7 +1209,8 @@ applyLocalizedCopy('de', {
         title: 'Zürich Zentrum',
         body:
           'Zürich Zentrum ist praktisch für Restaurants, Besichtigungen, Zugverbindungen und einfache Anreise zum Flughafen.',
-        items: ['Sucht nahe Zürich HB, Altstadt, Bellevue oder Stadelhofen für die bequemste zentrale Lage.', 'Auch andere Orte entlang der S6 oder S16 sowie Lagen nahe Zürich Stadelhofen oder Zürich Tiefenbrunnen können praktisch sein, weil die Fahrt nach Küsnacht einfach bleibt.', 'Günstigere Hotels finden sich eventuell eher in Zürich Altstetten oder Oerlikon; beide Quartiere sind mit dem Zentrum und dem Flughafen durch öffentlichen Verkehr verbunden.', 'Wählt eine Unterkunft nahe bei Tram, Zug oder Bus.', 'Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist wegen fehlender Parkplätze und geringer Bequemlichkeit nicht empfohlen.'],
+        items: ['Sucht nahe Zürich HB, Altstadt, Bellevue oder Stadelhofen für die bequemste zentrale Lage.', 'Auch andere Orte entlang der S6 oder S16 sowie Lagen nahe Zürich Stadelhofen oder Zürich Tiefenbrunnen können praktisch sein, weil die Fahrt nach Küsnacht einfach bleibt.', 'Günstigere Hotels finden sich eventuell eher in Zürich Altstetten oder Oerlikon; beide Quartiere sind mit dem Zentrum und dem Flughafen durch öffentlichen Verkehr verbunden.', 'Mama Shelter Zurich, direkt gegenüber dem Bahnhof Zürich Oerlikon, ist eine günstigere Option. Mit vielen Direktzügen ist der Flughafen Zürich nur eine Haltestelle entfernt; zudem bestehen Direktverbindungen nach Zürich HB und Küsnacht ZH.', 'Wählt eine Unterkunft nahe bei Tram, Zug oder Bus.', 'Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist wegen fehlender Parkplätze und geringer Bequemlichkeit nicht empfohlen.'],
+        links: [{ label: 'Mama Shelter Zurich', href: 'https://mamashelter.com/zurich/' }],
         imageAlt: 'Zürcher Altstadt und Limmat',
       },
       {

@@ -152,6 +152,10 @@ test('Schedule places venue images on the detail cards', async ({ page }) => {
   await page.goto('/en/schedule/');
 
   await expect(page.locator('.timeline-content h2').first()).toHaveText('Civil Ceremony at Stadthaus Zürich');
+  const civilTimelineItem = page.locator('.timeline > li').filter({
+    has: page.getByRole('heading', { name: 'Civil Ceremony at Stadthaus Zürich' }),
+  });
+  await expect(civilTimelineItem.locator('.timeline-time')).toHaveCount(0);
   const civilTimelineEntry = page.locator('.timeline-content').filter({ hasText: 'Civil Ceremony at Stadthaus Zürich' });
   await expect(civilTimelineEntry.getByText('only immediate family will be able to attend')).toBeVisible();
   await expect(civilTimelineEntry.locator('img[src="/images/places/stadthaus-zurich.png"]')).toHaveCount(0);
@@ -161,19 +165,22 @@ test('Schedule places venue images on the detail cards', async ({ page }) => {
     'alt',
     'Facade of Stadthaus Zürich under a blue sky',
   );
+  await expect(civilDetailCard.getByText('Time: 11:30', { exact: true })).toHaveCount(0);
   const ceremonyDetailCard = page.locator('.info-card').filter({ hasText: 'The ceremony will take place at Kirche St. Peter' });
   await expect(ceremonyDetailCard.locator('img[src="/images/places/st-peter-zurich.jpg"]')).toHaveAttribute(
     'alt',
     'Kirche St. Peter in Zurich',
   );
-  await expect(page.locator('.timeline-date').filter({ hasText: 'Friday, 11 June 2027' })).toHaveCount(5);
-  await expect(page.locator('.timeline-time').filter({ hasText: 'TBD' })).toHaveCount(5);
-  await expect(page.locator('.timeline-time').filter({ hasText: '4pm' })).toBeVisible();
+  await expect(page.locator('.timeline-date').filter({ hasText: 'Friday, 11 June 2027' })).toHaveCount(4);
+  await expect(page.locator('.timeline-time').filter({ hasText: 'TBD' })).toHaveCount(1);
+  await expect(page.getByText('the boat leaves for Küsnacht around 16:30')).toBeVisible();
   await expect(page.locator('.timeline-location').filter({ hasText: 'Quai 6, Bürkliplatz, Zürich' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Reception and party' })).toBeVisible();
   await expect(page.getByText('Date: Friday, 11 June 2027')).toHaveCount(3);
-  await expect(page.getByText('Time: TBD')).toHaveCount(3);
-  await expect(page.getByText('Boarding time: please be there by 3.45pm')).toBeVisible();
+  await expect(page.getByText('Guest arrival: 13:30')).toBeVisible();
+  await expect(page.getByText('Departure: around 16:30 (to be confirmed)')).toBeVisible();
+  await expect(page.getByText('Aperitivo, dinner, and dancing: 17:00')).toBeVisible();
+  await expect(page.getByText('Boarding time: 15 minutes before departure')).toBeVisible();
   await expect(page.getByText('Boarding point: Quai 6, Bürkliplatz, Zürich')).toBeVisible();
   await expect(page.locator('img[src="/images/places/hotel-sonne-lake-view.jpg"]')).toHaveAttribute(
     'alt',
@@ -202,7 +209,7 @@ test('English pages include requested travel and contact details', async ({ page
   );
   await expect(page.getByRole('heading', { name: 'Zurich wedding map' })).toBeVisible();
   await expect(page.getByText("Richterswil, where Manfredi's parents live")).toBeVisible();
-  await expect(page.getByRole('link', { name: 'OpenStreetMap: Zurich, Küsnacht, and Richterswil' })).toHaveAttribute(
+  await expect(page.getByRole('link', { name: 'OpenStreetMap', exact: true })).toHaveAttribute(
     'href',
     'https://www.openstreetmap.org/#map=11/47.3370/8.5950',
   );
@@ -210,7 +217,7 @@ test('English pages include requested travel and contact details', async ({ page
     'alt',
     'OpenStreetMap-based map of Zurich, Küsnacht, Richterswil, Zurich Airport, Kirche St. Peter, and Hotel Sonne',
   );
-  await expect(page.getByText('For the wedding weekend, the train is usually easier than driving or taking a taxi.')).toBeVisible();
+  await expect(page.getByText('In general, we recommend using public transport')).toBeVisible();
   await expect(page.getByRole('heading', { name: 'By train to Küsnacht ZH' })).toBeVisible();
   await expect(page.locator('img[src="/images/places/kuesnacht-lake-view.jpg"]')).toHaveAttribute(
     'alt',
@@ -218,12 +225,18 @@ test('English pages include requested travel and contact details', async ({ page
   );
   await expect(page.getByText('From Zürich HB: take an S6 or S16')).toBeVisible();
   await expect(page.getByText('From Zurich Airport: the simplest direct train is usually the S16')).toBeVisible();
-  await expect(page.getByText('departures around 01 and 31 minutes past the hour')).toBeVisible();
+  await expect(page.getByText('Current departure times are 01 and 31 minutes past the hour')).toBeVisible();
   await expect(page.getByText('From Richterswil: travel by train to Zürich HB')).toBeVisible();
   await expect(page.getByText('Also compare fares with a layover in New York')).toBeVisible();
-  await expect(page.getByText('London Luton may also have useful easyJet flights')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'easyJet Luton-Zurich', exact: true })).toHaveAttribute(
+    'href',
+    'https://www.easyjet.com/en/cheap-flights/london-luton/zurich',
+  );
   await expect(page.getByText('Bus 50 from EuroAirport to Basel SBB')).toBeVisible();
-  await expect(page.getByText('passports must be issued less than 10 years before arrival')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'UK passport advice', exact: true })).toHaveAttribute(
+    'href',
+    'https://www.gov.uk/foreign-travel-advice/switzerland/entry-requirements',
+  );
 
   await page.goto('/en/stay/');
   await expect(page.getByRole('link', { name: 'Hotel Sonne Küsnacht' })).toHaveAttribute('href', 'https://sonne.ch/en/');
@@ -341,7 +354,7 @@ test('English pages include requested travel and contact details', async ({ page
 
   await page.goto('/de/faq/');
   await page.locator('summary').filter({ hasText: 'Brauche ich ein Visum für die Schweiz?' }).click();
-  await expect(page.getByText('EU-/EFTA-Bürgerinnen und -Bürger kein Visum')).toBeVisible();
+  await expect(page.getByText('EU-/EFTA-Bürgerinnen und -Bürger brauchen kein Visum')).toBeVisible();
   await page.locator('summary').filter({ hasText: 'Was sollte ich zu Schweizer Zollkontrollen wissen?' }).click();
   await expect(page.getByText('Kontrollen sind am Flughafen weniger wahrscheinlich')).toBeVisible();
   await expect(page.getByText('Nutzt QuickZoll oder den roten Ausgang')).toHaveCount(0);
@@ -349,16 +362,16 @@ test('English pages include requested travel and contact details', async ({ page
 
 test('Italian and German guide copy reflects child fares and SBB Mobile', async ({ page }) => {
   await page.goto('/it/switzerland-guide/');
-  await expect(page.getByText('Scaricate SBB Mobile prima del viaggio')).toBeVisible();
-  await expect(page.getByText('Swiss Half Fare Card per visitatori')).toBeVisible();
-  await expect(page.getByText('costa CHF 150 per un mese')).toBeVisible();
+  await expect(page.getByText('Scaricate SBB Mobile per orari in tutta la Svizzera')).toBeVisible();
+  await expect(page.getByText('confrontate la Swiss Half Fare Card')).toBeVisible();
+  await expect(page.getByText('Nel 2026 costa CHF 150 per un mese')).toBeVisible();
   await expect(page.getByText('I bambini sotto i 6 anni viaggiano gratis')).toBeVisible();
 
   await page.goto('/de/switzerland-guide/');
   await expect(page.getByRole('heading', { name: 'Hinweise zur Schweiz' })).toBeVisible();
-  await expect(page.getByText('Ladet SBB Mobile vor der Reise herunter')).toBeVisible();
-  await expect(page.getByText('Swiss Half Fare Card für Besucherinnen und Besucher')).toBeVisible();
-  await expect(page.getByText('kostet sie CHF 150 für einen Monat')).toBeVisible();
+  await expect(page.getByText('Ladet SBB Mobile für Fahrpläne in der ganzen Schweiz')).toBeVisible();
+  await expect(page.getByText('vergleicht die Swiss Half Fare Card')).toBeVisible();
+  await expect(page.getByText('2026 kostet sie CHF 150 für einen Monat')).toBeVisible();
   await expect(page.getByText('Kinder unter 6 Jahren fahren im Zürcher Verkehrsverbund kostenlos')).toBeVisible();
 });
 
@@ -439,8 +452,8 @@ test('Switzerland Guide uses the selected section imagery', async ({ page }) => 
   const firstChildClass = await publicTransportCard.evaluate((article) => article.firstElementChild?.className ?? '');
   expect(String(firstChildClass)).toContain('media-grid-top');
   await expect(publicTransportCard.locator('.media-grid-top img')).toHaveCount(4);
-  await expect(page.getByText('Swiss Half Fare Card for visitors')).toBeVisible();
-  await expect(page.getByText('CHF 150 for one month')).toBeVisible();
+  await expect(page.getByText('compare the Swiss Half Fare Card')).toBeVisible();
+  await expect(page.getByText('In 2026 it costs CHF 150 for one month')).toBeVisible();
   await expect(page.getByRole('link', { name: 'Swiss Half Fare Card' })).toHaveAttribute(
     'href',
     'https://www.myswitzerland.com/en-ch/planning/transport-accommodation/tickets-public-transport/swiss-half-fare-card/',
@@ -511,6 +524,32 @@ test('Italian and German stay copy is localised and cleanly encoded', async ({ p
   );
   await expect(page.locator('body')).not.toContainText('Ã');
   await expect(page.locator('body')).not.toContainText('Â');
+});
+
+test('Stay pages recommend Mama Shelter and explain its direct train connections', async ({ page }) => {
+  await page.goto('/en/stay/');
+  await expect(page.getByRole('link', { name: 'Mama Shelter Zurich' })).toHaveAttribute(
+    'href',
+    'https://mamashelter.com/zurich/',
+  );
+  await expect(page.getByText('one stop from Zurich Airport on many direct trains')).toBeVisible();
+  await expect(page.getByText('direct connections to Zürich HB and Küsnacht ZH')).toBeVisible();
+
+  await page.goto('/it/stay/');
+  await expect(page.getByRole('link', { name: 'Mama Shelter Zurich' })).toHaveAttribute(
+    'href',
+    'https://mamashelter.com/zurich/',
+  );
+  await expect(page.getByText('l’aeroporto di Zurigo dista una sola fermata')).toBeVisible();
+  await expect(page.getByText('collegamenti diretti con Zürich HB e Küsnacht ZH')).toBeVisible();
+
+  await page.goto('/de/stay/');
+  await expect(page.getByRole('link', { name: 'Mama Shelter Zurich' })).toHaveAttribute(
+    'href',
+    'https://mamashelter.com/zurich/',
+  );
+  await expect(page.getByText('der Flughafen Zürich nur eine Haltestelle entfernt')).toBeVisible();
+  await expect(page.getByText('Direktverbindungen nach Zürich HB und Küsnacht ZH')).toBeVisible();
 });
 
 test('Things to Do uses a distinct Local advice Zurich image', async ({ page }) => {
