@@ -3,6 +3,8 @@
 Deploy the verified RSVP menu wording update and the two pending guest-information
 copy changes to production without exposing or losing RSVP data.
 
+Status: Complete on 25 July 2026.
+
 ## Measurable outcome
 
 - Cloudflare authentication is available to Wrangler.
@@ -12,6 +14,19 @@ copy changes to production without exposing or losing RSVP data.
 - The tested repository state is committed and pushed to `origin/master`.
 - The Cloudflare Pages production deployment succeeds.
 - The live protected-site smoke test passes.
+
+## Completion evidence
+
+- D1 migration `0003_replace_none_menu_with_meat.sql` is applied remotely.
+- Both existing RSVP records were verified with zero remaining targeted `None`
+  values and unchanged IDs, timestamps, and revision counts.
+- Commits `23abdc3` and `9a4d224` were pushed to `origin/master`.
+- Cloudflare Pages production deployment `6aefff1f` used source commit `9a4d224`.
+- The live protected-site smoke test passed with zero desktop and mobile
+  horizontal overflow.
+- Direct live readback confirmed the requested English, Italian, and German RSVP
+  menu/allergy labels, `Meat` storage values, aligned desktop controls, and no
+  label overflow at desktop or mobile widths.
 
 ## Verification surface
 
@@ -41,4 +56,3 @@ copy changes to production without exposing or losing RSVP data.
 - Stop deployment if required checks fail.
 - If a production verification fails, diagnose without destructive recovery; use
   the recorded bookmark only with explicit approval.
-
