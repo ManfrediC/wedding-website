@@ -1255,11 +1255,16 @@ button.danger {
   text-transform: uppercase;
 }
 
-.rsvp-field-grid > .rsvp-field > span,
-.guest-row > .rsvp-field > span {
+.rsvp-field-grid > .rsvp-field > span {
   display: flex;
   align-items: flex-end;
   min-height: 2em;
+}
+
+.guest-row > .rsvp-field > span {
+  display: flex;
+  align-items: flex-end;
+  min-height: 3.75em;
 }
 
 .rsvp-field input,
@@ -1336,11 +1341,11 @@ button.danger {
 }
 
 .adult-row {
-  grid-template-columns: minmax(0, 1.1fr) minmax(11rem, 0.8fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(11rem, 0.8fr) minmax(0, 1.15fr);
 }
 
 .child-row {
-  grid-template-columns: minmax(0, 1.1fr) minmax(5.5rem, 0.35fr) minmax(11rem, 0.8fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(5.5rem, 0.35fr) minmax(11rem, 0.8fr) minmax(0, 1.15fr);
 }
 
 .adult-row .guest-dietary-other-field {
@@ -1357,6 +1362,10 @@ button.danger {
 
 .guest-allergies-field {
   min-width: 0;
+}
+
+.guest-allergies-field > span {
+  letter-spacing: 0.02em;
 }
 
 .guest-allergies-field input {
@@ -1800,6 +1809,10 @@ button.danger {
   .guest-dietary-other-field {
     grid-column: auto;
     grid-row: auto;
+  }
+
+  .guest-row > .rsvp-field > span {
+    min-height: 0;
   }
 
   .rsvp-submit-row button,

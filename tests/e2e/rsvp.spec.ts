@@ -47,11 +47,13 @@ async function submitAttendingRsvp(page: Page, email: string) {
   await adultAllergies.first().fill('=Peanuts');
   await page.getByRole('button', { name: 'Add adult' }).click();
   await page.locator('input[name="adult_name"]').nth(1).fill('Marco Guest');
-  await adultDietary.nth(1).selectOption('Vegetarian');
+  await expect(adultDietary.nth(1)).toHaveValue('Meat');
   await page.locator('input[name="child_name"]').first().fill('Sofia Guest');
   await page.locator('input[name="child_age"]').first().fill('8');
   await page.locator('select[name="child_dietary_requirements"]').first().selectOption('Vegan');
   await page.locator('input[name="child_allergies"]').first().fill('Strawberries');
+  await page.getByRole('button', { name: 'Add child' }).click();
+  await expect(page.locator('select[name="child_dietary_requirements"]').nth(1)).toHaveValue('Meat');
   await page.getByLabel('Accessibility or mobility considerations').fill('Step-free route preferred');
   await page.locator('textarea[name="notes"]').fill('=We may leave before the very end.');
   await page.getByRole('button', { name: 'Send RSVP' }).click();
@@ -107,9 +109,11 @@ test('RSVP submission is stored, superseded by email, exported, and deleted thro
   const initialDetailDialog = page.locator('dialog');
   await expect(initialDetailDialog.getByText('+41 44 555 0123')).toBeVisible();
   await expect(initialDetailDialog.getByText('Example Street 12, 8001 Zurich, Switzerland')).toBeVisible();
-  await expect(initialDetailDialog.getByText('Lucia Guest (Dietary: Kosher meal; Allergies: =Peanuts)')).toBeVisible();
-  await expect(initialDetailDialog.getByText('Marco Guest (Dietary: Vegetarian)')).toBeVisible();
-  await expect(initialDetailDialog.getByText('Sofia Guest (8) (Dietary: Vegan; Allergies: Strawberries)')).toBeVisible();
+  await expect(initialDetailDialog.getByText('Lucia Guest (Menu: Kosher meal; Allergies and dietary requirements: =Peanuts)')).toBeVisible();
+  await expect(initialDetailDialog.getByText('Marco Guest (Menu: Meat)')).toBeVisible();
+  await expect(initialDetailDialog.getByText('Sofia Guest (8) (Menu: Vegan; Allergies and dietary requirements: Strawberries)')).toBeVisible();
+  await expect(initialDetailDialog.getByText('Desired menu', { exact: true })).toBeVisible();
+  await expect(initialDetailDialog.getByText('Allergies and dietary requirements', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Close' }).click();
 
   const notificationsBefore = await page.evaluate(async (): Promise<PreviewNotifications> => {
@@ -122,6 +126,8 @@ test('RSVP submission is stored, superseded by email, exported, and deleted thro
     email,
   ]);
   expect(notificationsBefore.messages[1].text).toContain('Kosher meal');
+  expect(notificationsBefore.messages[1].text).toContain('Desired menu: Lucia Guest: Kosher meal; Marco Guest: Meat; Sofia Guest (8): Vegan');
+  expect(notificationsBefore.messages[1].text).toContain('Allergies and dietary requirements: Lucia Guest: =Peanuts; Sofia Guest (8): Strawberries');
   expect(notificationsBefore.messages[1].text).toContain('+41 44 555 0123');
   expect(notificationsBefore.messages[1].text).toContain('Example Street 12, 8001 Zurich, Switzerland');
 
@@ -135,9 +141,11 @@ test('RSVP submission is stored, superseded by email, exported, and deleted thro
   expect(csvBefore).toContain('Marco Guest');
   expect(csvBefore).toContain('Sofia Guest (8)');
   expect(csvBefore).toContain('Kosher meal');
-  expect(csvBefore).toContain('Vegetarian');
+  expect(csvBefore).toContain('desired_menu');
+  expect(csvBefore).toContain('allergies_and_dietary_requirements');
+  expect(csvBefore).toContain('Menu: Meat');
   expect(csvBefore).toContain('Vegan');
-  expect(csvBefore).toContain('Allergies: =Peanuts');
+  expect(csvBefore).toContain('Allergies and dietary requirements: =Peanuts');
   expect(csvBefore).toContain("'=We may leave before the very end.");
 
   await page.goto('/en/rsvp/');
@@ -219,7 +227,11 @@ test('RSVP form is multilingual and matches the current field scope', async ({ p
   await expect(page.getByLabel('Prefisso internazionale')).toBeVisible();
   await expect(page.getByLabel('Numero di telefono')).toBeVisible();
   await expect(page.getByLabel('Indirizzo')).toBeVisible();
-  await expect(page.locator('select[name="adult_dietary_requirements"]').first()).toContainText('Altro (specificare)');
+  await expect(page.getByLabel('Scelta del menu').first()).toBeVisible();
+  await expect(page.getByLabel('Allergie ed esigenze alimentari').first()).toBeVisible();
+  await expect(page.locator('select[name="adult_dietary_requirements"]').first()).toHaveValue('Meat');
+  await expect(page.locator('select[name="adult_dietary_requirements"]').first()).toContainText('Carne');
+  await expect(page.locator('select[name="child_dietary_requirements"]').first()).toContainText('Altro (specificare)');
   await expect(page.locator('.notice-band')).toHaveCount(0);
   await expect(page.getByText('Origine del viaggio')).toHaveCount(0);
   await expect(page.getByText('alloggio')).toHaveCount(0);
@@ -230,7 +242,11 @@ test('RSVP form is multilingual and matches the current field scope', async ({ p
   await expect(page.getByLabel('Ländervorwahl')).toBeVisible();
   await expect(page.getByLabel('Telefonnummer')).toBeVisible();
   await expect(page.getByLabel('Adresse')).toBeVisible();
-  await expect(page.locator('select[name="adult_dietary_requirements"]').first()).toContainText('Andere (bitte angeben)');
+  await expect(page.getByLabel('Essenswunsch').first()).toBeVisible();
+  await expect(page.getByLabel('Allergien und Ernährungsanforderungen').first()).toBeVisible();
+  await expect(page.locator('select[name="adult_dietary_requirements"]').first()).toHaveValue('Meat');
+  await expect(page.locator('select[name="adult_dietary_requirements"]').first()).toContainText('Fleisch');
+  await expect(page.locator('select[name="child_dietary_requirements"]').first()).toContainText('Andere (bitte angeben)');
   await expect(page.locator('.notice-band')).toHaveCount(0);
   await expect(page.getByText('Anreiseort')).toHaveCount(0);
   await expect(page.getByText('Unterkunftsstatus')).toHaveCount(0);
@@ -308,7 +324,7 @@ test('RSVP option controls expose and toggle the available choices', async ({ pa
   await signIntoSite(page, '/en/rsvp/');
 
   const expectedPhoneCodes = ['', '+41', '+39', '+44', '+1', '+49', '+33', '+34', '+43'];
-  const expectedDietaryOptions = ['None', 'Vegetarian', 'Vegan', 'other'];
+  const expectedDietaryOptions = ['Meat', 'Vegetarian', 'Vegan', 'other'];
   const phoneCodeValues = await page.locator('select[name="phone_country_code"] option').evaluateAll((options) =>
     options.map((option) => (option as HTMLOptionElement).value),
   );
@@ -325,6 +341,7 @@ test('RSVP option controls expose and toggle the available choices', async ({ pa
       options.map((option) => (option as HTMLOptionElement).value),
     );
     expect(optionValues).toEqual(expectedDietaryOptions);
+    await expect(select).toHaveValue('Meat');
 
     const row = select.locator('xpath=ancestor::*[contains(@class, "repeat-row")][1]');
     const otherField = row.locator('[data-dietary-other-field]');

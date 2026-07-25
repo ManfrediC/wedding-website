@@ -414,8 +414,8 @@ export function toCsv(responses) {
     'child_count',
     'children',
     'child_details',
-    'dietary_requirements',
-    'allergies',
+    'desired_menu',
+    'allergies_and_dietary_requirements',
     'accessibility_mobility',
     'notes',
     'notification_status',
@@ -550,7 +550,7 @@ function cleanAdults(raw, errors) {
 
     adults.push({
       name,
-      dietaryRequirements: dietaryRequirements || 'None',
+      dietaryRequirements: dietaryRequirements || 'Meat',
       allergies,
     });
   }
@@ -591,7 +591,7 @@ function cleanChildren(raw, errors) {
     children.push({
       name,
       age,
-      dietaryRequirements: dietaryRequirements || 'None',
+      dietaryRequirements: dietaryRequirements || 'Meat',
       allergies,
     });
   }
@@ -603,8 +603,8 @@ function cleanDietaryChoice(selectionValue, otherValue, errors, errorKey) {
   const selection = cleanText(selectionValue, TEXT_LIMITS.long);
   const other = cleanText(otherValue, TEXT_LIMITS.long);
 
-  if (!selection || selection === 'None') {
-    return selection ? 'None' : '';
+  if (!selection || selection === 'None' || selection === 'Meat') {
+    return selection || '';
   }
 
   if (selection === 'Vegetarian' || selection === 'Vegan') {
@@ -625,7 +625,7 @@ function cleanDietaryChoice(selectionValue, otherValue, errors, errorKey) {
 function hasMeaningfulDietaryInput(selectionValue, otherValue) {
   const selection = cleanText(selectionValue, TEXT_LIMITS.long);
   const other = cleanText(otherValue, TEXT_LIMITS.long);
-  return Boolean(other || (selection && selection !== 'None'));
+  return Boolean(other || (selection && selection !== 'None' && selection !== 'Meat'));
 }
 
 function cleanDietaryRequirements(raw, errors) {
@@ -636,7 +636,7 @@ function cleanDietaryRequirements(raw, errors) {
     return '';
   }
 
-  if (selection === 'None' || selection === 'Vegetarian' || selection === 'Vegan') {
+  if (selection === 'None' || selection === 'Meat' || selection === 'Vegetarian' || selection === 'Vegan') {
     return selection;
   }
 
@@ -749,10 +749,10 @@ function describeChild(child) {
 function describeGuest(label, guest) {
   const details = [];
   if (guest.dietaryRequirements && guest.dietaryRequirements !== 'None') {
-    details.push(`Dietary: ${guest.dietaryRequirements}`);
+    details.push(`Menu: ${guest.dietaryRequirements}`);
   }
   if (guest.allergies) {
-    details.push(`Allergies: ${guest.allergies}`);
+    details.push(`Allergies and dietary requirements: ${guest.allergies}`);
   }
 
   return details.length ? `${label} (${details.join('; ')})` : label;
@@ -844,7 +844,7 @@ function buildAdminNotification(env, response) {
     `Children: ${response.children.length}`,
     `Revision: ${response.revisionCount}`,
     '',
-    'Open the RSVP admin page for dietary, allergy, accessibility, and note details.',
+    'Open the RSVP admin page for menu, allergy, dietary requirement, accessibility, and note details.',
   ].join('\n');
 
   return {
@@ -904,8 +904,8 @@ const confirmationCopy = {
     notAttending: 'Not attending',
     adults: 'Adults',
     children: 'Children',
-    dietary: 'Dietary requirements',
-    allergies: 'Allergies',
+    dietary: 'Desired menu',
+    allergies: 'Allergies and dietary requirements',
     accessibility: 'Accessibility or mobility considerations',
     notes: 'Notes',
     noneListed: 'None listed',
@@ -923,8 +923,8 @@ const confirmationCopy = {
     notAttending: 'Non presente',
     adults: 'Adulti',
     children: 'Bambini',
-    dietary: 'Esigenze alimentari',
-    allergies: 'Allergie',
+    dietary: 'Scelta del menu',
+    allergies: 'Allergie ed esigenze alimentari',
     accessibility: 'Esigenze di accessibilità o mobilità',
     notes: 'Note',
     noneListed: 'Nessuna indicazione',
@@ -943,7 +943,7 @@ const confirmationCopy = {
     adults: 'Erwachsene',
     children: 'Kinder',
     dietary: 'Essenswünsche',
-    allergies: 'Allergien',
+    allergies: 'Allergien und Ernährungsanforderungen',
     accessibility: 'Hinweise zu Barrierefreiheit oder Mobilität',
     notes: 'Anmerkungen',
     noneListed: 'Keine Angaben',

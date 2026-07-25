@@ -9,7 +9,7 @@ type Props = {
 const { lang } = Astro.props;
 const copy = rsvpCopy[lang];
 const dietaryOptions = [
-  { value: 'None', label: copy.dietaryRequirements.options.none },
+  { value: 'Meat', label: copy.dietaryRequirements.options.meat },
   { value: 'Vegetarian', label: copy.dietaryRequirements.options.vegetarian },
   { value: 'Vegan', label: copy.dietaryRequirements.options.vegan },
   { value: 'other', label: copy.dietaryRequirements.options.other },

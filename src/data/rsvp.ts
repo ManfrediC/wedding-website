@@ -7,7 +7,7 @@ type FieldCopy = {
 
 type DietaryRequirementsCopy = FieldCopy & {
   options: {
-    none: string;
+    meat: string;
     vegetarian: string;
     vegan: string;
     other: string;
@@ -61,7 +61,7 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
     phoneCountryCode: { label: 'Country code' },
     phoneNumber: { label: 'Phone number', help: 'Choose a country code or include it in the number.' },
     address: { label: 'Address', help: 'Optional.' },
-    guests: { label: 'Guests attending', help: 'Please add each guest named on your invitation, including individual dietary requirements and allergies.' },
+    guests: { label: 'Guests attending', help: 'Please add each guest named on your invitation, including their desired menu, allergies and dietary requirements.' },
     adults: { label: 'Adults attending', help: 'Please add only the adults named on your invitation.' },
     adultName: 'Adult name',
     addAdult: 'Add adult',
@@ -70,17 +70,17 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
     childAge: 'Age',
     addChild: 'Add child',
     dietaryRequirements: {
-      label: 'Dietary requirements',
-      help: 'Select a dietary requirement for each guest.',
+      label: 'Desired menu',
+      help: 'Select a menu for each guest.',
       options: {
-        none: 'None',
+        meat: 'Meat',
         vegetarian: 'Vegetarian',
         vegan: 'Vegan',
         other: 'Other (specify)',
       },
       otherLabel: 'Please specify',
     },
-    allergies: { label: 'Allergies' },
+    allergies: { label: 'Allergies and dietary requirements' },
     accessibilityMobility: { label: 'Accessibility or mobility considerations' },
     notes: { label: 'Notes' },
     submit: 'Send RSVP',
@@ -103,7 +103,7 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
     phoneCountryCode: { label: 'Prefisso internazionale' },
     phoneNumber: { label: 'Numero di telefono', help: 'Scegliete un prefisso o includetelo nel numero.' },
     address: { label: 'Indirizzo', help: 'Facoltativo.' },
-    guests: { label: 'Ospiti presenti', help: 'Aggiungete ogni ospite indicato nel vostro invito, incluse esigenze alimentari e allergie individuali.' },
+    guests: { label: 'Ospiti presenti', help: 'Aggiungete ogni ospite indicato nel vostro invito, inclusi la scelta del menu, le allergie e le esigenze alimentari individuali.' },
     adults: { label: 'Adulti presenti', help: 'Aggiungete solo gli adulti indicati nel vostro invito.' },
     adultName: 'Nome adulto',
     addAdult: 'Aggiungi adulto',
@@ -112,17 +112,17 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
     childAge: 'Età',
     addChild: 'Aggiungi bambino',
     dietaryRequirements: {
-      label: 'Esigenze alimentari',
-      help: 'Selezionate un’esigenza alimentare per ogni ospite.',
+      label: 'Scelta del menu',
+      help: 'Selezionate il menu desiderato per ogni ospite.',
       options: {
-        none: 'Nessuna',
+        meat: 'Carne',
         vegetarian: 'Vegetariano/a',
         vegan: 'Vegano/a',
         other: 'Altro (specificare)',
       },
       otherLabel: 'Specificare',
     },
-    allergies: { label: 'Allergie' },
+    allergies: { label: 'Allergie ed esigenze alimentari' },
     accessibilityMobility: { label: 'Considerazioni di accessibilità o mobilità' },
     notes: { label: 'Note' },
     submit: 'Invia RSVP',
@@ -145,7 +145,7 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
     phoneCountryCode: { label: 'Ländervorwahl' },
     phoneNumber: { label: 'Telefonnummer', help: 'Wählt eine Vorwahl aus oder gebt sie direkt in der Nummer an.' },
     address: { label: 'Adresse', help: 'Optional.' },
-    guests: { label: 'Teilnehmende Gäste', help: 'Bitte fügt jede in eurer Einladung genannte Person hinzu, mit individuellen Essenswünschen und Allergien.' },
+    guests: { label: 'Teilnehmende Gäste', help: 'Bitte fügt jede in eurer Einladung genannte Person mit individuellem Essenswunsch sowie Allergien und Ernährungsanforderungen hinzu.' },
     adults: { label: 'Teilnehmende Erwachsene', help: 'Bitte fügt nur die in eurer Einladung genannten Erwachsenen hinzu.' },
     adultName: 'Name Erwachsene/r',
     addAdult: 'Erwachsene Person hinzufügen',
@@ -157,14 +157,14 @@ export const rsvpCopy: Record<Lang, RsvpCopy> = {
       label: 'Essenswunsch',
       help: 'Wählt einen Essenswunsch pro Gast aus.',
       options: {
-        none: 'Keine',
+        meat: 'Fleisch',
         vegetarian: 'Vegetarisch',
         vegan: 'Vegan',
         other: 'Andere (bitte angeben)',
       },
       otherLabel: 'Bitte angeben',
     },
-    allergies: { label: 'Allergien' },
+    allergies: { label: 'Allergien und Ernährungsanforderungen' },
     accessibilityMobility: { label: 'Barrierefreiheit oder Mobilität' },
     notes: { label: 'Notizen' },
     submit: 'RSVP senden',

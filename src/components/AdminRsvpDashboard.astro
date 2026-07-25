@@ -103,10 +103,10 @@
   function describeGuest(label, guest) {
     const details = [];
     if (guest?.dietaryRequirements && guest.dietaryRequirements !== 'None') {
-      details.push(`Dietary: ${guest.dietaryRequirements}`);
+      details.push(`Menu: ${guest.dietaryRequirements}`);
     }
     if (guest?.allergies) {
-      details.push(`Allergies: ${guest.allergies}`);
+      details.push(`Allergies and dietary requirements: ${guest.allergies}`);
     }
 
     return details.length ? `${label} (${details.join('; ')})` : label;
@@ -294,8 +294,8 @@
       ['Attendance', attendanceLabel(response.attending)],
       ['Adults', formatAdults(response.adults, true) || 'None listed'],
       ['Children', formatChildren(response.children, true) || 'None listed'],
-      ['Dietary requirements', textOrNone(response.dietaryRequirements)],
-      ['Allergies', textOrNone(response.allergies)],
+      ['Desired menu', textOrNone(response.dietaryRequirements)],
+      ['Allergies and dietary requirements', textOrNone(response.allergies)],
       ['Accessibility or mobility', textOrNone(response.accessibilityMobility)],
       ['Notes', textOrNone(response.notes)],
       ['Revision', String(response.revisionCount)],
