@@ -546,7 +546,7 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
           title: 'Choosing tickets',
           body: 'There is no single best ticket for every guest. Use these notes as practical starting points.',
           items: [
-            'For Zurich city travel, use a ZVV single ticket, 24h ticket, or Zürich Card if you want museums, airport transfer, Uetliberg, or short boat rides.',
+            'For travel within and around Zurich, use a ZVV single or 24-hour ticket. These tickets also cover journeys to and from Zurich Airport, the Uetliberg, and selected short boat routes, provided that the required fare zones are included. The Zürich Card is a good alternative if you also plan to visit museums, as it combines public transport with free or discounted admission to many attractions.',
             'For the reception, search for Küsnacht ZH; the app will assign the required zones.',
             'For Richterswil, a day ticket is usually the best option, particularly if making several Zurich-network trips that day.',
             'For day trips such as Lucerne, Bern, Basel, or the mountains, check SBB early for Supersaver tickets or Saver Day Passes, but avoid inflexible tickets if plans may change.',
@@ -975,7 +975,7 @@ applyLocalizedCopy('it', {
         title: 'Come scegliere i biglietti',
         body: 'Non esiste un biglietto migliore per tutti. Usate queste note come punto di partenza pratico.',
         items: [
-          'Per muovervi nella città di Zurigo, usate un biglietto singolo ZVV, un biglietto 24 ore o la Zürich Card se volete includere musei, trasferimento dall’aeroporto, Uetliberg o brevi tratte in battello.',
+          'Per gli spostamenti a Zurigo e nei dintorni, usate un biglietto singolo ZVV o un biglietto 24 ore. Questi biglietti coprono anche i viaggi da e per l’aeroporto di Zurigo, l’Uetliberg e alcune brevi tratte in battello, purché siano incluse le zone tariffarie necessarie. La Zürich Card è una valida alternativa se prevedete anche di visitare musei, poiché combina il trasporto pubblico con l’ingresso gratuito o scontato a molte attrazioni.',
           'Per il ricevimento, cercate Küsnacht ZH; l’app assegnerà le zone necessarie.',
           'Per Richterswil, di solito un biglietto giornaliero è l’opzione migliore, soprattutto se fate diversi spostamenti nella rete di Zurigo nello stesso giorno.',
           'Per gite in giornata come Lucerna, Berna, Basilea o le montagne, controllate SBB in anticipo per Supersaver tickets o Saver Day Passes, ma evitate biglietti poco flessibili se i piani potrebbero cambiare.',
@@ -1362,7 +1362,7 @@ applyLocalizedCopy('de', {
         title: 'Tickets wählen',
         body: 'Es gibt nicht ein einziges bestes Ticket für alle Gäste. Nutzt diese Hinweise als praktische Ausgangspunkte.',
         items: [
-          'Für Fahrten in Zürich Stadt nutzt ein ZVV-Einzelticket, ein 24h-Ticket oder die Zürich Card, wenn ihr Museen, Flughafentransfer, Uetliberg oder kurze Schiffsfahrten einschliessen möchtet.',
+          'Für Fahrten in und um Zürich nutzt ein ZVV-Einzelticket oder ein 24h-Ticket. Diese Tickets gelten auch für Fahrten zum und vom Flughafen Zürich, auf den Uetliberg und auf ausgewählten kurzen Schiffsstrecken, sofern die erforderlichen Tarifzonen enthalten sind. Die Zürich Card ist eine gute Alternative, wenn ihr auch Museen besuchen möchtet, da sie den öffentlichen Verkehr mit freiem oder ermässigtem Eintritt zu vielen Attraktionen verbindet.',
           'Für den Empfang sucht nach Küsnacht ZH; die App weist die nötigen Zonen zu.',
           'Für Richterswil ist meistens ein Tagesticket die beste Option, besonders wenn ihr an diesem Tag mehrere Fahrten im Zürcher Verkehrsverbund macht.',
           'Für Tagesausflüge wie Luzern, Bern, Basel oder die Berge prüft früh SBB für Supersaver Tickets oder Saver Day Passes, vermeidet aber unflexible Tickets, wenn sich eure Pläne ändern könnten.',

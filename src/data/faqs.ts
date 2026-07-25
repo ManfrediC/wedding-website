@@ -20,7 +20,7 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
     {
       question: 'How does the boat transfer work?',
       answer:
-        "After the ceremony, guests will walk for about 12 minutes to Quai 6 at Bürkliplatz, Zürich, accompanied by family members. The exact timing will be confirmed closer to the date. We recommend comfortable shoes for the walk and boat ride and an umbrella in case of rain.",
+        "After the ceremony, guests will walk for about 12 minutes to Quai 6 at Bürkliplatz, Zürich, accompanied by family members. The exact timing will be confirmed closer to the date. We recommend comfortable shoes for the walk and boat ride, sun protection for sunny weather and an umbrella in case of rain.",
     },
     {
       question: 'Do I need a car?',
@@ -105,7 +105,7 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
     {
       question: 'Come funziona il trasferimento in barca?',
       answer:
-        'Dopo la cerimonia, gli ospiti cammineranno per circa 12 minuti fino al Quai 6 a Bürkliplatz, Zurigo, accompagnati dai familiari. L’orario esatto sarà confermato più vicino alla data. Consigliamo scarpe comode per la passeggiata e la barca, e un ombrello in caso di pioggia.',
+        'Dopo la cerimonia, gli ospiti cammineranno per circa 12 minuti fino al Quai 6 a Bürkliplatz, Zurigo, accompagnati dai familiari. L’orario esatto sarà confermato più vicino alla data. Consigliamo scarpe comode per la passeggiata e la barca, protezione solare in caso di bel tempo e un ombrello in caso di pioggia.',
     },
     {
       question: "Serve un'auto?",
@@ -190,7 +190,7 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
     {
       question: 'Wie funktioniert der Bootstransfer?',
       answer:
-        'Nach der Trauung gehen die Gäste gemeinsam mit Familienmitgliedern etwa 12 Minuten zum Quai 6 am Bürkliplatz, Zürich. Die genaue Zeit wird näher am Datum bestätigt. Wir empfehlen bequeme Schuhe für den Fussweg und die Bootsfahrt sowie einen Regenschirm bei Regen.',
+        'Nach der Trauung gehen die Gäste gemeinsam mit Familienmitgliedern etwa 12 Minuten zum Quai 6 am Bürkliplatz, Zürich. Die genaue Zeit wird näher am Datum bestätigt. Wir empfehlen bequeme Schuhe für den Fussweg und die Bootsfahrt, Sonnenschutz bei sonnigem Wetter sowie einen Regenschirm bei Regen.',
     },
     {
       question: 'Brauche ich ein Auto?',
