@@ -25,7 +25,7 @@ Implement the Cloudflare D1 RSVP system:
 - Ceremony: Kirche St. Peter, Zurich.
 - Reception and party: Hotel Sonne, Küsnacht.
 - Languages: English, Italian, German.
-- Privacy: site-wide password protection.
+- Privacy: site-wide password protection, except for the public animated invitation at `/petri-turicensis-vi-mmxxvii/`.
 - RSVP direction: Cloudflare D1 custom RSVP with a private admin/viewing system. Supersede responses by normalised email; no invitation codes; no guest-side editing links; omit travel/accommodation fields.
 - Location is Zurich and Küsnacht. Cambridge content from the draft site does not apply.
 
@@ -42,6 +42,8 @@ Implement the Cloudflare D1 RSVP system:
 - Wedding-week contact.
 
 ## Checkpoint Log
+
+- 2026-08-23: Integrated the supplied animated invitation at the public route `/petri-turicensis-vi-mmxxvii/` while keeping `/welcome/` and the rest of the wedding website password-protected. Removed the displayed password, browser-extension injections, returning-visitor persistence, query-token forwarding, and hard-coded deployment origin; the same-origin continuation now goes to `/welcome/`, and the animation restarts on every reload or later visit. Preserved replay, reduced-motion support, CSP, and `noindex`; production middleware and the protected preview allow only the exact bare and trailing-slash invitation paths. Added focused Playwright and protected-smoke coverage. Verified with `git diff --check` (line-ending warnings only), `npm run check`, `npm run build`, focused Chrome desktop/mobile invitation E2E (`4 passed`), `npm run smoke:protected` (desktop/mobile overflow 0), source/build integrity and forbidden-content scans, and visual review at 1440×900 and 390×844. The scope watchdog and adversarial reviewer both passed the implementation with no findings. No deployment or commit was performed.
 
 - 2026-07-25: Released the RSVP desired-menu update and the pending multilingual guest-information copy. Pushed commits `23abdc3` and `9a4d224` to `origin/master`; Cloudflare Pages Git deployment `6aefff1f` built production from `9a4d224`. The live protected-site smoke passed against `https://gabyandmanfredi.net` with 0px desktop/mobile horizontal overflow, and direct live Chrome readback confirmed `Desired menu`/`Meat`/`Allergies and dietary requirements`, `Scelta del menu`/`Carne`/`Allergie ed esigenze alimentari`, and `Essenswunsch`/`Fleisch`/`Allergien und Ernährungsanforderungen`. All three languages retained aligned desktop menu/allergy controls and zero label or page overflow at 1200px and 390px widths. Screenshots: `tmp/live-protected-smoke-2026-07-25T20-48-06-250Z-desktop.png` and `tmp/live-protected-smoke-2026-07-25T20-48-06-250Z-mobile.png`.
 

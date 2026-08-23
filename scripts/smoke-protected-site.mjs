@@ -9,6 +9,7 @@ const DEFAULT_LIVE_URL = 'https://gabyandmanfredi.net';
 const DEFAULT_CHANNELS = ['chrome', 'msedge'];
 const AUTH_COOKIE_NAME = 'gm_wedding_auth';
 const ROBOTS_HEADER_VALUE = 'noindex, nofollow';
+const INVITATION_PATH = '/petri-turicensis-vi-mmxxvii/';
 
 const args = parseArgs(process.argv.slice(2));
 const startPreview = Boolean(args['start-preview']);
@@ -51,6 +52,28 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
   const context = await browser.newContext({ viewport: { width: 1365, height: 900 } });
   const page = await context.newPage();
 
+  const invitationResponse = await page.goto(`${baseUrl}${INVITATION_PATH}`, { waitUntil: 'networkidle' });
+  await assertRobotsHeader(invitationResponse, 'public invitation');
+  await assertInvitationStartsClosed(page, 'public invitation');
+  await waitForVisibleText(page, 'Tap to open', 'public invitation prompt');
+  await assertAbsent(page, 'Password:', 'public invitation password');
+
+  await page.reload({ waitUntil: 'networkidle' });
+  await assertInvitationStartsClosed(page, 'reloaded public invitation');
+
+  const bareInvitationResponse = await page.goto(`${baseUrl}${INVITATION_PATH.slice(0, -1)}`, { waitUntil: 'networkidle' });
+  await assertRobotsHeader(bareInvitationResponse, 'bare public invitation route');
+  await assertInvitationStartsClosed(page, 'bare public invitation route');
+
+  await page.locator('#stage').click();
+  await page.locator('#continue.show').waitFor({ state: 'visible', timeout: 5_000 });
+  await page.locator('#continue').click();
+  await waitForVisibleText(page, 'Continue to the wedding website', 'invitation website link');
+  await Promise.all([
+    page.waitForURL('**/welcome/', { timeout: 20_000 }),
+    page.getByRole('link', { name: 'Continue to the wedding website' }).click(),
+  ]);
+  await waitForVisibleText(page, 'Please enter the password from your invitation.', 'invitation password gate');
   const passwordGateResponse = await page.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
   await assertRobotsHeader(passwordGateResponse, 'password gate');
   await waitForVisibleText(page, 'Gabriela & Manfredi', 'password gate heading');
@@ -81,6 +104,12 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
   await waitForVisibleText(page, 'We cannot wait to celebrate with you in Zurich.', 'authenticated root home');
   await assertAbsent(page, 'Please enter the password from your invitation.', 'authenticated root password prompt');
 
+  const authenticatedInvitationResponse = await page.goto(`${baseUrl}${INVITATION_PATH}`, { waitUntil: 'networkidle' });
+  await assertRobotsHeader(authenticatedInvitationResponse, 'authenticated public invitation');
+  await assertInvitationStartsClosed(page, 'authenticated public invitation');
+
+  await page.goto(`${baseUrl}/welcome/`, { waitUntil: 'networkidle' });
+  await waitForVisibleText(page, 'We cannot wait to celebrate with you in Zurich.', 'authenticated welcome redirect');
   await page.goto(`${baseUrl}/it/schedule/`, { waitUntil: 'networkidle' });
   await waitForVisibleText(page, 'Il giorno del matrimonio', 'Italian schedule heading');
   await waitForVisibleText(page, 'Quai 6, Bürkliplatz, Zurigo', 'Italian schedule boat boarding point');
@@ -183,6 +212,23 @@ async function assertRobotsHeader(response, label) {
   const actualValue = response?.headers()['x-robots-tag'];
   if (actualValue !== ROBOTS_HEADER_VALUE) {
     throw new Error(`${label}: expected X-Robots-Tag ${JSON.stringify(ROBOTS_HEADER_VALUE)}, got ${JSON.stringify(actualValue)}.`);
+  }
+}
+
+async function assertInvitationStartsClosed(page, label) {
+  const bodyClass = (await page.locator('body').getAttribute('class')) ?? '';
+  const suiteClass = (await page.locator('#suite').getAttribute('class')) ?? '';
+
+  if (!bodyClass.split(/\s+/).includes('locked')) {
+    throw new Error(`${label}: expected the page body to be locked.`);
+  }
+
+  if (!(await page.locator('#stage').isVisible())) {
+    throw new Error(`${label}: expected the closed-envelope stage to be visible.`);
+  }
+
+  if (suiteClass.split(/\s+/).includes('shown')) {
+    throw new Error(`${label}: invitation details were already shown.`);
   }
 }
 

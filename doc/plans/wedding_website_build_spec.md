@@ -19,7 +19,7 @@ Build a **fully custom wedding website** for Gabriela Dago and Manfredi Carta’
 The website should be:
 
 - **custom-built**, not a Minted/Joy template;
-- **site-wide password-protected**;
+- **password-protected except for the public animated invitation at `/petri-turicensis-vi-mmxxvii/`**;
 - **available in English, Italian, and German**;
 - **mobile-first**, because most guests will use it while travelling;
 - **easy to update** as timings, boat details, accommodation codes, and RSVP deadlines become final;
@@ -121,7 +121,7 @@ Avoid relying on Vercel password protection as the default because Vercel’s bu
 
 ## 4.3 Password protection
 
-The website should have **site-wide password protection**, not only a protected RSVP page.
+The wedding website should have **site-wide password protection**, not only a protected RSVP page. The animated invitation at `/petri-turicensis-vi-mmxxvii/` is the sole public exception and must not display the wedding password.
 
 Recommended implementation:
 
@@ -1123,7 +1123,7 @@ Because the website is password-protected, use a privacy-first setup.
 
 Required:
 
-- site-wide password gate;
+- site-wide password gate, except for `/petri-turicensis-vi-mmxxvii/`;
 - `noindex, nofollow` on all pages;
 - `robots.txt` disallowing crawlers;
 - no public guest list;
@@ -1440,7 +1440,7 @@ Recommended next actions in order:
 
 The website is ready to launch when:
 
-- site-wide password protection works;
+- password protection works on every route except the public animated invitation;
 - English, Italian, and German routes work;
 - all required pages exist;
 - all navigation items work;

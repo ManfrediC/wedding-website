@@ -204,6 +204,8 @@ function isPublicAsset(pathname) {
   return (
     pathname === '/robots.txt' ||
     pathname === '/favicon.svg' ||
+    pathname === '/petri-turicensis-vi-mmxxvii' ||
+    pathname === '/petri-turicensis-vi-mmxxvii/' ||
     pathname === '/images/minted/minted-hero.jpg' ||
     pathname.startsWith('/images/landing/') ||
     pathname.startsWith('/_astro/')
