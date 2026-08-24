@@ -43,6 +43,8 @@ Implement the Cloudflare D1 RSVP system:
 
 ## Checkpoint Log
 
+- 2026-08-24: Released the restored main-site `#415531` lettering in commit `0a3ef09`, pushed it to `origin/master`, and confirmed the Cloudflare Pages Git deployment on `https://gabyandmanfredi.net`. Production no longer serves `#858676`, still serves the Turicensis-matched `#EBEBEB` photo-band background, and leaves the public Turicensis page unchanged. `npm run smoke:live` passed with 0px desktop/mobile horizontal overflow; screenshots: `tmp/live-protected-smoke-2026-08-24T14-04-20-690Z-desktop.png` and `tmp/live-protected-smoke-2026-08-24T14-04-20-690Z-mobile.png`.
+
 - 2026-08-24: Restored main-site green lettering from `#858676` to `#415531` at the user's request. Retained the Turicensis-matched `#EBEBEB` photo-band background and left `public/petri-turicensis-vi-mmxxvii/index.html` unchanged. Verified with `git diff --check` (line-ending warnings only), `npm run check`, and `npm run build`. No deployment was performed at this checkpoint.
 
 - 2026-08-24: Released the main-site Turicensis colour harmonisation in commit `a6bc8fc`, pushed it to `origin/master`, and confirmed the Cloudflare Pages Git deployment on `https://gabyandmanfredi.net`. Production serves `#EBEBEB` for the photo band and `#858676` for main-site green lettering while retaining `#415531` for structural accents; the public Turicensis page remains unchanged. `npm run smoke:live` passed with 0px desktop/mobile horizontal overflow; screenshots: `tmp/live-protected-smoke-2026-08-24T13-52-34-423Z-desktop.png` and `tmp/live-protected-smoke-2026-08-24T13-52-34-423Z-mobile.png`.
