@@ -206,6 +206,8 @@ function isPublicAsset(pathname) {
     pathname === '/favicon.svg' ||
     pathname === '/petri-turicensis-vi-mmxxvii' ||
     pathname === '/petri-turicensis-vi-mmxxvii/' ||
+    pathname === '/petri-turicensis-vi-mmxxvii/assets/invitation-1320.webp' ||
+    pathname === '/petri-turicensis-vi-mmxxvii/assets/invitation-2640.webp' ||
     pathname === '/images/minted/minted-hero.jpg' ||
     pathname.startsWith('/images/landing/') ||
     pathname.startsWith('/_astro/')

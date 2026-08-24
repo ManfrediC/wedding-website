@@ -57,6 +57,7 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
   await assertInvitationStartsClosed(page, 'public invitation');
   await waitForVisibleText(page, 'Tap to open', 'public invitation prompt');
   await assertAbsent(page, 'Password:', 'public invitation password');
+  await assertPublicInvitationAssets(page, baseUrl);
 
   await page.reload({ waitUntil: 'networkidle' });
   await assertInvitationStartsClosed(page, 'reloaded public invitation');
@@ -229,6 +230,33 @@ async function assertInvitationStartsClosed(page, label) {
 
   if (suiteClass.split(/\s+/).includes('shown')) {
     throw new Error(`${label}: invitation details were already shown.`);
+  }
+}
+
+async function assertPublicInvitationAssets(page, baseUrl) {
+  for (const width of [1320, 2640]) {
+    const label = `public invitation ${width}px asset`;
+    const response = await page.request.get(
+      `${baseUrl}${INVITATION_PATH}assets/invitation-${width}.webp`,
+    );
+
+    if (!response.ok()) {
+      throw new Error(`${label}: expected an HTTP success response, received ${response.status()}.`);
+    }
+
+    const contentType = response.headers()['content-type'] ?? '';
+    if (!contentType.startsWith('image/webp')) {
+      throw new Error(`${label}: expected image/webp, received ${JSON.stringify(contentType)}.`);
+    }
+
+    const body = await response.body();
+    if (
+      body.length < 12 ||
+      body.subarray(0, 4).toString('ascii') !== 'RIFF' ||
+      body.subarray(8, 12).toString('ascii') !== 'WEBP'
+    ) {
+      throw new Error(`${label}: response is not a WebP file.`);
+    }
   }
 }
 
