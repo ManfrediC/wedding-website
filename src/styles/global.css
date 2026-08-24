@@ -3,10 +3,10 @@
   --colour-paper: #fffaf2;
   --colour-champagne: #e8d8bd;
   --colour-lake: #8ea4a8;
-  --colour-green: #31483d;
+  --colour-green: #415531;
   --colour-charcoal: #252525;
   --colour-gold: #b49a6a;
-  --colour-line: rgba(49, 72, 61, 0.18);
+  --colour-line: rgba(65, 85, 49, 0.18);
   --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --font-body: Montserrat, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
   color: var(--colour-charcoal);
@@ -722,10 +722,10 @@ button.danger {
 }
 
 .welcome-page {
-  --welcome-page-fill: var(--colour-ivory);
+  --welcome-page-fill: #edeae1;
   --welcome-page-background:
-    radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.86), transparent 28rem),
-    linear-gradient(180deg, rgba(255, 250, 242, 0.78), rgba(232, 216, 189, 0.2)),
+    radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.28), transparent 28rem),
+    linear-gradient(180deg, #f2f0ea 0%, #edeae1 52%, #e8e5dc 100%),
     var(--welcome-page-fill);
   --welcome-frame-border-width: 3rem;
   --welcome-frame-outer-line-offset: 1.5rem;
@@ -749,7 +749,7 @@ button.danger {
 
 .welcome-border {
   position: absolute;
-  inset: clamp(1rem, 1.55vw, 1.75rem);
+  inset: clamp(0.9rem, 1.395vw, 1.575rem);
   pointer-events: none;
 }
 
@@ -823,7 +823,7 @@ button.danger {
   display: grid;
   justify-items: center;
   gap: 1rem;
-  transform: translateY(1vh);
+  transform: translateY(1vh) scale(0.9);
 }
 
 .welcome-shell h1 {
@@ -1041,7 +1041,7 @@ button.danger {
 }
 
 .welcome-panel input {
-  border-color: rgba(49, 72, 61, 0.3);
+  border-color: rgba(65, 85, 49, 0.3);
   padding-right: 2.7rem;
   background: rgba(255, 250, 242, 0.78);
   font-family: var(--welcome-serif-display);
@@ -1102,10 +1102,10 @@ button.danger {
   gap: 1.35rem;
   max-width: 760px;
   margin: 0 auto;
-  border: 1px solid rgba(49, 72, 61, 0.14);
+  border: 1px solid rgba(65, 85, 49, 0.14);
   border-radius: 8px;
   background: rgba(255, 253, 248, 0.96);
-  box-shadow: 0 16px 38px rgba(49, 72, 61, 0.06);
+  box-shadow: 0 16px 38px rgba(65, 85, 49, 0.06);
   padding: clamp(1.35rem, 3vw, 2.3rem);
 }
 
@@ -1201,11 +1201,11 @@ button.danger {
   gap: 0.75rem;
   height: 100%;
   min-height: 4.25rem;
-  border: 1px solid rgba(49, 72, 61, 0.14);
+  border: 1px solid rgba(65, 85, 49, 0.14);
   border-radius: 8px;
   padding: 0.95rem 1rem;
   background: rgba(255, 253, 248, 0.88);
-  box-shadow: 0 8px 22px rgba(49, 72, 61, 0.045);
+  box-shadow: 0 8px 22px rgba(65, 85, 49, 0.045);
   cursor: pointer;
   line-height: 1.45;
   transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
@@ -1213,14 +1213,14 @@ button.danger {
 
 .rsvp-radio:hover,
 .rsvp-radio:has(input:checked) {
-  border-color: rgba(49, 72, 61, 0.48);
+  border-color: rgba(65, 85, 49, 0.48);
   background: rgba(255, 253, 248, 1);
 }
 
 .rsvp-radio:has(input:checked) {
   box-shadow:
-    inset 0 0 0 1px rgba(49, 72, 61, 0.18),
-    0 10px 24px rgba(49, 72, 61, 0.07);
+    inset 0 0 0 1px rgba(65, 85, 49, 0.18),
+    0 10px 24px rgba(65, 85, 49, 0.07);
 }
 
 .rsvp-radio input {
@@ -1294,7 +1294,7 @@ button.danger {
 .admin-controls select {
   width: 100%;
   min-height: 48px;
-  border: 1px solid rgba(49, 72, 61, 0.16);
+  border: 1px solid rgba(65, 85, 49, 0.16);
   border-radius: 6px;
   padding: 0.75rem 0.9rem;
   background: rgba(255, 253, 248, 0.9);
@@ -1324,7 +1324,7 @@ button.danger {
 
 .rsvp-guests-fieldset {
   gap: 0.85rem;
-  border: 1px solid rgba(49, 72, 61, 0.1);
+  border: 1px solid rgba(65, 85, 49, 0.1);
   background: rgba(250, 246, 239, 0.52);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.74);
   padding: 1.1rem;
@@ -1355,7 +1355,7 @@ button.danger {
 .guest-row {
   display: grid;
   gap: 0.75rem;
-  border: 1px solid rgba(49, 72, 61, 0.09);
+  border: 1px solid rgba(65, 85, 49, 0.09);
   border-radius: 6px;
   background: rgba(255, 253, 248, 0.72);
   padding: 0.8rem;
@@ -1408,7 +1408,7 @@ button.danger {
 .rsvp-submit-row button {
   justify-self: start;
   min-width: 8.5rem;
-  box-shadow: 0 10px 24px rgba(49, 72, 61, 0.16);
+  box-shadow: 0 10px 24px rgba(65, 85, 49, 0.16);
 }
 
 .admin-page-shell {
@@ -1723,7 +1723,7 @@ button.danger {
     border: 1px solid var(--colour-line);
     border-top: 0;
     padding: 0.75rem 1rem 0.85rem;
-    box-shadow: 0 14px 26px rgba(49, 72, 61, 0.1);
+    box-shadow: 0 14px 26px rgba(65, 85, 49, 0.1);
   }
 
   .mobile-language-menu .language-switcher a {
@@ -1891,6 +1891,7 @@ button.danger {
 
   .welcome-shell {
     gap: 0.9rem;
+    transform: translateY(1vh);
   }
 
   .welcome-shell h1 {

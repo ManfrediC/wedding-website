@@ -11,7 +11,7 @@
     <rect x="1215" y="385" width="160" height="175"/>
     <rect x="1395" y="355" width="135" height="205"/>
   </g>
-  <g fill="#31483d">
+  <g fill="#415531">
     <rect x="827" y="215" width="32" height="130"/>
     <path d="M843 145 L875 215 H811 Z"/>
     <rect x="948" y="190" width="36" height="120"/>
@@ -25,9 +25,9 @@
     <path d="M1290 790 C1435 755 1585 780 1745 748"/>
   </g>
   <g transform="translate(410 600)">
-    <path d="M0 72 H340 L295 120 H55 Z" fill="#31483d"/>
-    <rect x="60" y="24" width="220" height="54" fill="#f7f2e9" stroke="#31483d" stroke-width="4"/>
-    <path d="M86 24 V0 M142 24 V0 M198 24 V0 M254 24 V0" stroke="#31483d" stroke-width="5"/>
+    <path d="M0 72 H340 L295 120 H55 Z" fill="#415531"/>
+    <rect x="60" y="24" width="220" height="54" fill="#f7f2e9" stroke="#415531" stroke-width="4"/>
+    <path d="M86 24 V0 M142 24 V0 M198 24 V0 M254 24 V0" stroke="#415531" stroke-width="5"/>
     <circle cx="102" cy="52" r="10" fill="#8ea4a8"/>
     <circle cx="154" cy="52" r="10" fill="#8ea4a8"/>
     <circle cx="206" cy="52" r="10" fill="#8ea4a8"/>

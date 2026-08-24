@@ -328,7 +328,7 @@ Suggested starting palette:
 | Warm ivory | Main background | `#FAF6EF` |
 | Soft champagne | Cards and highlighted sections | `#E8D8BD` |
 | Lake blue-grey | Secondary accents | `#8EA4A8` |
-| Deep green | Buttons and navigation | `#31483D` |
+| Deep green | Buttons and navigation | `#415531` |
 | Charcoal | Body text | `#252525` |
 | Muted gold | Fine dividers and decorative lines | `#B49A6A` |
 

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="G and M monogram">
   <rect width="64" height="64" fill="#faf6ef"/>
   <path d="M32 9v46" stroke="#b49a6a" stroke-width="1"/>
-  <text x="18" y="39" fill="#31483d" font-family="Georgia, serif" font-size="22" text-anchor="middle">G</text>
-  <text x="46" y="39" fill="#31483d" font-family="Georgia, serif" font-size="22" text-anchor="middle">M</text>
+  <text x="18" y="39" fill="#415531" font-family="Georgia, serif" font-size="22" text-anchor="middle">G</text>
+  <text x="46" y="39" fill="#415531" font-family="Georgia, serif" font-size="22" text-anchor="middle">M</text>
 </svg>

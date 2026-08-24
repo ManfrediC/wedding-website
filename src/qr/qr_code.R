@@ -18,5 +18,5 @@ qr <- qr_code("https://gabyandmanfredi.net", ecl = "H")
 # Preview in R
 plot(
   qr,
-  col = c("#faf6ef", "#31483d")
+  col = c("#faf6ef", "#415531")
 )

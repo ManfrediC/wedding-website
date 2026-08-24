@@ -4,9 +4,9 @@
   <path d="M0 310 C140 260 260 330 405 285 C540 245 610 285 720 265 L720 520 L0 520 Z" fill="#7f9da0"/>
   <path d="M68 210 C188 145 260 152 355 182 C472 220 560 180 652 132" fill="none" stroke="#d1c3a6" stroke-width="34" opacity=".55"/>
   <g transform="translate(170 260)">
-    <path d="M0 98 H390 L328 154 H58 Z" fill="#31483d"/>
-    <rect x="70" y="34" width="250" height="70" fill="#faf6ef" stroke="#31483d" stroke-width="5"/>
-    <path d="M102 34 V0 M165 34 V0 M228 34 V0 M291 34 V0" stroke="#31483d" stroke-width="5"/>
+    <path d="M0 98 H390 L328 154 H58 Z" fill="#415531"/>
+    <rect x="70" y="34" width="250" height="70" fill="#faf6ef" stroke="#415531" stroke-width="5"/>
+    <path d="M102 34 V0 M165 34 V0 M228 34 V0 M291 34 V0" stroke="#415531" stroke-width="5"/>
     <circle cx="118" cy="68" r="12" fill="#8ea4a8"/>
     <circle cx="181" cy="68" r="12" fill="#8ea4a8"/>
     <circle cx="244" cy="68" r="12" fill="#8ea4a8"/>
