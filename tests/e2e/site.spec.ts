@@ -148,6 +148,33 @@ test('home hero keeps the Zurich image positioned below the spire with readable 
   expect(backgroundPosition).toContain('50% 22%');
 });
 
+test('main site uses the approved Cormorant and Montserrat typography', async ({ page }) => {
+  await page.goto('/en/');
+
+  const typography = await page.evaluate(() => {
+    const rootStyles = window.getComputedStyle(document.documentElement);
+    const heroHeading = window.getComputedStyle(document.querySelector('.home-hero h1')!);
+    const heroBody = window.getComputedStyle(document.querySelector('.home-hero .hero-copy')!);
+    const eyebrow = window.getComputedStyle(document.querySelector('.home-hero .eyebrow')!);
+
+    return {
+      displayVariable: rootStyles.getPropertyValue('--font-display'),
+      bodyVariable: rootStyles.getPropertyValue('--font-body'),
+      headingFamily: heroHeading.fontFamily,
+      headingWeight: heroHeading.fontWeight,
+      bodyFamily: heroBody.fontFamily,
+      eyebrowLetterSpacing: eyebrow.letterSpacing,
+    };
+  });
+
+  expect(typography.displayVariable).toContain('Cormorant Garamond');
+  expect(typography.bodyVariable).toContain('Montserrat');
+  expect(typography.headingFamily).toContain('Cormorant Garamond');
+  expect(typography.headingWeight).toBe('500');
+  expect(typography.bodyFamily).toContain('Montserrat');
+  expect(typography.eyebrowLetterSpacing).not.toBe('normal');
+});
+
 test('Schedule places venue images on the detail cards', async ({ page }) => {
   await page.goto('/en/schedule/');
 
