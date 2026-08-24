@@ -68,6 +68,17 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
 
   await page.locator('#stage').click();
   await page.locator('#continue.show').waitFor({ state: 'visible', timeout: 5_000 });
+  if ((await page.locator('#zoomImage').getAttribute('src')) !== null) {
+    throw new Error('public invitation zoom asset loaded before the viewer opened.');
+  }
+  await page.locator('#enlarge').click();
+  await page.locator('#zoomDialog[open]').waitFor({ state: 'visible', timeout: 5_000 });
+  await page.waitForFunction(() => {
+    const image = document.querySelector('#zoomImage');
+    return image instanceof HTMLImageElement && image.complete && image.naturalWidth === 2640;
+  });
+  await page.locator('#zoomClose').click();
+  await page.locator('#zoomDialog:not([open])').waitFor({ state: 'attached' });
   await page.locator('#continue').click();
   await waitForVisibleText(page, 'Continue to the wedding website', 'invitation website link');
   await Promise.all([

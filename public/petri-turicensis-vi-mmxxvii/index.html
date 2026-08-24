@@ -43,7 +43,8 @@ img{display:block;max-width:100%}
   will-change:transform;background:var(--ivory);
   box-shadow:0 2px 10px rgba(45,48,36,.18);
 }
-.card.is-settled{transition:none;will-change:auto}
+.card.is-settled{transition:none;will-change:auto;cursor:zoom-in}
+.card:focus-visible{outline:1px solid var(--forest);outline-offset:5px}
 .card img{width:100%;height:auto;aspect-ratio:11/17}
 
 .env-body{position:absolute;inset:0;z-index:4;background:#787B67;border-radius:3px;
@@ -71,10 +72,34 @@ img{display:block;max-width:100%}
 .hint{margin-top:22px;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;transition:opacity 400ms ease}
 .fade{opacity:0;pointer-events:none}
 
-.continue{position:absolute;left:50%;bottom:max(20px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:70;
-  background:none;border:none;cursor:pointer;font-family:inherit;font-size:9.5px;letter-spacing:.26em;
-  text-transform:uppercase;color:var(--sage);padding:14px 18px;opacity:0;transition:opacity 600ms ease}
-.continue.show{opacity:.85}
+.stage-actions{position:absolute;left:50%;bottom:max(20px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:70;
+  display:flex;align-items:center;opacity:0;pointer-events:none;transition:opacity 600ms ease;white-space:nowrap}
+.stage-actions.show{opacity:.85;pointer-events:auto}
+.stage-action{background:none;border:0;cursor:pointer;font-family:inherit;font-size:9.5px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--sage);padding:14px 18px}
+.stage-action+.stage-action{border-left:1px solid rgba(133,135,116,.45)}
+.stage-action:focus-visible,.zoom-control:focus-visible{outline:1px solid var(--forest);outline-offset:2px}
+
+.zoom-viewer{inset:0;width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;
+  background:var(--page);color:var(--sage);overflow:hidden}
+.zoom-viewer::backdrop{background:rgba(36,40,31,.72)}
+.zoom-shell{height:100%;display:flex;flex-direction:column}
+.zoom-toolbar{position:relative;z-index:2;display:flex;align-items:center;gap:12px;min-height:58px;
+  padding:8px max(12px,env(safe-area-inset-right)) 8px max(12px,env(safe-area-inset-left));
+  background:var(--ivory);box-shadow:0 1px 4px rgba(45,48,36,.14)}
+.zoom-title{margin-right:auto;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--forest)}
+.zoom-status{min-width:38px;text-align:center;font-size:9.5px;letter-spacing:.08em}
+.zoom-controls{display:flex;align-items:center;gap:4px}
+.zoom-control{min-width:40px;min-height:40px;padding:8px 10px;border:1px solid rgba(133,135,116,.38);
+  background:transparent;color:var(--forest);cursor:pointer;font:500 11px/1 'Cormorant Garamond',Garamond,serif;
+  letter-spacing:.08em;text-transform:uppercase}
+.zoom-control:disabled{cursor:default;opacity:.35}
+.zoom-viewport{flex:1;min-height:0;overflow:auto;padding:16px;overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;touch-action:pan-x pan-y pinch-zoom}
+.zoom-canvas{min-width:100%;min-height:100%;display:flex;align-items:flex-start;justify-content:center}
+.zoom-image{display:block;max-width:none;height:auto;aspect-ratio:11/17;box-shadow:0 2px 12px rgba(45,48,36,.18)}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);
+  white-space:nowrap;border:0}
 
 main{max-width:620px;margin:0 auto;padding:12vh 22px 16vh;opacity:0;transition:opacity 900ms ease}
 main.shown{opacity:1}
@@ -93,7 +118,12 @@ section{margin-bottom:8vh}
 .replay{display:block;margin:14px auto 0;background:none;border:none;cursor:pointer;font-family:inherit;
   font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--sage);opacity:.7;padding:8px}
 
-@media (prefers-reduced-motion: reduce){.env-flap,.card,#stage,main,.continue{transition-duration:1ms !important}}
+@media (max-width:420px){
+  .zoom-toolbar{gap:7px}
+  .zoom-title{letter-spacing:.16em}
+  .zoom-control{min-width:36px;padding:8px}
+}
+@media (prefers-reduced-motion: reduce){.env-flap,.card,#stage,main,.stage-actions{transition-duration:1ms !important}}
 </style>
 </head>
 <body class="locked">
@@ -102,7 +132,7 @@ section{margin-bottom:8vh}
   <div class="env" id="env">
     <div class="env-lining"></div>
 
-    <div class="card" id="card">
+    <div class="card" id="card" role="button" aria-label="Enlarge invitation" aria-disabled="true" tabindex="-1">
       <img
         src="/petri-turicensis-vi-mmxxvii/assets/invitation-1320.webp"
         srcset="/petri-turicensis-vi-mmxxvii/assets/invitation-1320.webp 1320w, /petri-turicensis-vi-mmxxvii/assets/invitation-2640.webp 2640w"
@@ -130,8 +160,38 @@ section{margin-bottom:8vh}
     <div class="name">You</div>
   </div>
   <div class="hint" id="hint">Tap to open</div>
-  <button class="continue" id="continue">Continue</button>
+  <div class="stage-actions" id="stageActions">
+    <button class="stage-action" id="enlarge" type="button">Enlarge</button>
+    <button class="stage-action continue" id="continue" type="button">Continue</button>
+  </div>
 </div>
+
+<dialog class="zoom-viewer" id="zoomDialog" aria-labelledby="zoomTitle" aria-describedby="zoomInstructions">
+  <div class="zoom-shell">
+    <div class="zoom-toolbar">
+      <h2 class="zoom-title" id="zoomTitle">Invitation</h2>
+      <p class="visually-hidden" id="zoomInstructions">Use the controls to enlarge the invitation, then scroll to move around it.</p>
+      <output class="zoom-status" id="zoomStatus" aria-live="polite">100%</output>
+      <div class="zoom-controls">
+        <button class="zoom-control" id="zoomOut" type="button" aria-label="Zoom out" disabled>&minus;</button>
+        <button class="zoom-control" id="zoomReset" type="button" aria-label="Reset zoom" disabled>Fit</button>
+        <button class="zoom-control" id="zoomIn" type="button" aria-label="Zoom in">+</button>
+        <button class="zoom-control" id="zoomClose" type="button">Close</button>
+      </div>
+    </div>
+    <div class="zoom-viewport" id="zoomViewport" tabindex="0">
+      <div class="zoom-canvas" id="zoomCanvas">
+        <img
+          class="zoom-image"
+          id="zoomImage"
+          data-src="/petri-turicensis-vi-mmxxvii/assets/invitation-2640.webp"
+          width="2640"
+          height="4080"
+          alt="Dr. Pedro and Mrs. Angela Dago request the honour of your presence at the marriage of their daughter Gabriela Danielle to Manfredi Christopher Carta, son of Mr. Renzo and Mrs. Anne Carta. Friday, the eleventh of June, two thousand twenty-seven, at two o'clock in the afternoon. Kirche St. Peter, Zurich, Switzerland.">
+      </div>
+    </div>
+  </div>
+</dialog>
 
 <main id="suite">
   <section>
@@ -160,10 +220,59 @@ section{margin-bottom:8vh}
       flap=document.getElementById('flap'),card=document.getElementById('card'),
       hint=document.getElementById('hint'),
       addressee=document.getElementById('addressee'),cont=document.getElementById('continue'),
-      suite=document.getElementById('suite');
-  var timers=[],opened=false,settled=false,baked=false;
+      stageActions=document.getElementById('stageActions'),enlarge=document.getElementById('enlarge'),
+      suite=document.getElementById('suite'),zoomDialog=document.getElementById('zoomDialog'),
+      zoomViewport=document.getElementById('zoomViewport'),zoomCanvas=document.getElementById('zoomCanvas'),
+      zoomImage=document.getElementById('zoomImage'),zoomStatus=document.getElementById('zoomStatus'),
+      zoomOut=document.getElementById('zoomOut'),zoomReset=document.getElementById('zoomReset'),
+      zoomIn=document.getElementById('zoomIn'),zoomClose=document.getElementById('zoomClose');
+  var timers=[],opened=false,settled=false,baked=false,zoomLevel=0,zoomReturnFocus=null;
+  var zoomScales=[1,1.5,2];
   var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function clear(){timers.forEach(clearTimeout);timers=[]}
+
+  function zoomFitWidth(){return Math.min(1320,Math.max(1,zoomViewport.clientWidth-32))}
+  function applyZoom(nextLevel,preserveCentre){
+    var centreX=0,centreY=0;
+    if(preserveCentre){
+      centreX=(zoomViewport.scrollLeft+zoomViewport.clientWidth/2)/Math.max(zoomViewport.scrollWidth,1);
+      centreY=(zoomViewport.scrollTop+zoomViewport.clientHeight/2)/Math.max(zoomViewport.scrollHeight,1);
+    }
+
+    zoomLevel=Math.max(0,Math.min(zoomScales.length-1,nextLevel));
+    var fitWidth=zoomFitWidth();
+    var width=Math.min(2640,Math.round(fitWidth*zoomScales[zoomLevel]));
+    zoomImage.style.width=width+'px';
+    zoomCanvas.style.width=Math.max(fitWidth,width)+'px';
+    zoomStatus.textContent=Math.round(zoomScales[zoomLevel]*100)+'%';
+    zoomOut.disabled=zoomLevel===0;
+    zoomReset.disabled=zoomLevel===0;
+    zoomIn.disabled=zoomLevel===zoomScales.length-1||width===2640;
+    if(zoomIn.disabled&&document.activeElement===zoomIn)zoomOut.focus();
+    if(zoomOut.disabled&&document.activeElement===zoomOut)zoomIn.focus();
+
+    requestAnimationFrame(function(){
+      if(preserveCentre){
+        zoomViewport.scrollLeft=Math.max(0,centreX*zoomViewport.scrollWidth-zoomViewport.clientWidth/2);
+        zoomViewport.scrollTop=Math.max(0,centreY*zoomViewport.scrollHeight-zoomViewport.clientHeight/2);
+      }else{
+        zoomViewport.scrollTo(0,0);
+      }
+    });
+  }
+  function resetZoom(){
+    zoomLevel=0;zoomImage.style.width='';zoomCanvas.style.width='';zoomStatus.textContent='100%';
+    zoomOut.disabled=true;zoomReset.disabled=true;zoomIn.disabled=false;
+    zoomViewport.scrollTo(0,0);
+  }
+  function openZoom(trigger){
+    if(!baked||zoomDialog.open)return;
+    zoomReturnFocus=trigger;
+    if(!zoomImage.getAttribute('src'))zoomImage.setAttribute('src',zoomImage.dataset.src);
+    zoomDialog.showModal();
+    requestAnimationFrame(function(){applyZoom(0,false);zoomIn.focus()});
+  }
+  function closeZoom(){if(zoomDialog.open)zoomDialog.close()}
 
   function finalMetrics(){
     var e=env.getBoundingClientRect();
@@ -181,6 +290,7 @@ section{margin-bottom:8vh}
     if(!settled)return;
     var metrics=finalMetrics();
     baked=true;card.classList.add('is-settled');
+    card.setAttribute('aria-disabled','false');card.tabIndex=0;
     card.style.width=metrics.width+'px';
     card.style.transform=settledT(metrics.dy);
   }
@@ -188,9 +298,10 @@ section{margin-bottom:8vh}
 
   function settle(){
     settled=true;baked=false;card.classList.remove('is-settled');card.style.width='';
+    card.setAttribute('aria-disabled','true');card.tabIndex=-1;
     card.style.transform=animatedFinalT();
     timers.push(setTimeout(bakeFinal,reduced?0:1180));
-    timers.push(setTimeout(function(){cont.classList.add('show')},reduced?0:1500));
+    timers.push(setTimeout(function(){cont.classList.add('show');stageActions.classList.add('show')},reduced?0:1500));
   }
 
   function open(){
@@ -209,10 +320,12 @@ section{margin-bottom:8vh}
   }
   function replay(){
     clear();opened=false;settled=false;baked=false;
+    zoomReturnFocus=null;if(zoomDialog.open)zoomDialog.close();resetZoom();
     stage.style.display='flex';suite.classList.remove('shown');
     document.body.classList.add('locked');window.scrollTo(0,0);
-    cont.classList.remove('show');card.style.zIndex=2;
+    cont.classList.remove('show');stageActions.classList.remove('show');card.style.zIndex=2;
     card.style.transition='none';card.classList.remove('is-settled');card.style.width='';
+    card.setAttribute('aria-disabled','true');card.tabIndex=-1;
     card.style.transform='translate(-50%,-50%) rotate(90deg)';
     card.offsetWidth;card.style.transition='';
     flap.style.zIndex=5;flap.style.transform='rotateX(0deg)';
@@ -220,12 +333,39 @@ section{margin-bottom:8vh}
     timers.push(setTimeout(function(){stage.classList.remove('gone')},20));
   }
 
+  card.addEventListener('click',function(e){
+    if(!settled)return;
+    e.stopPropagation();if(baked)openZoom(card);
+  });
+  card.addEventListener('keydown',function(e){
+    if(!baked||(e.key!=='Enter'&&e.key!==' '))return;
+    e.preventDefault();e.stopPropagation();openZoom(card);
+  });
   stage.addEventListener('click',function(){settled?reveal():open()});
+  enlarge.addEventListener('click',function(e){e.stopPropagation();openZoom(enlarge)});
   cont.addEventListener('click',function(e){e.stopPropagation();reveal()});
   document.getElementById('replay').addEventListener('click',function(e){e.stopPropagation();replay()});
+  zoomOut.addEventListener('click',function(){applyZoom(zoomLevel-1,true)});
+  zoomReset.addEventListener('click',function(){applyZoom(0,true)});
+  zoomIn.addEventListener('click',function(){applyZoom(zoomLevel+1,true)});
+  zoomClose.addEventListener('click',closeZoom);
+  zoomDialog.addEventListener('keydown',function(e){
+    if(e.key==='+'||e.key==='='){
+      e.preventDefault();if(!zoomIn.disabled)applyZoom(zoomLevel+1,true);
+    }else if(e.key==='-'||e.key==='_'){
+      e.preventDefault();if(!zoomOut.disabled)applyZoom(zoomLevel-1,true);
+    }else if(e.key==='0'){
+      e.preventDefault();applyZoom(0,true);
+    }
+  });
+  zoomDialog.addEventListener('close',function(){
+    var returnFocus=zoomReturnFocus;zoomReturnFocus=null;resetZoom();
+    if(returnFocus&&returnFocus.isConnected)returnFocus.focus();
+  });
   window.addEventListener('resize',function(){
     if(baked)bakeFinal();
     else if(settled)card.style.transform=animatedFinalT();
+    if(zoomDialog.open)applyZoom(zoomLevel,true);
   });
 })();
 </script>
