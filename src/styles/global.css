@@ -3,7 +3,8 @@
   --colour-paper: #fffaf2;
   --colour-champagne: #e8d8bd;
   --colour-lake: #8ea4a8;
-  --colour-green: #415531;
+  --colour-green: #858676;
+  --colour-forest: #415531;
   --colour-charcoal: #252525;
   --colour-gold: #b49a6a;
   --colour-line: rgba(65, 85, 49, 0.18);
@@ -96,7 +97,7 @@ img {
   top: 1rem;
   z-index: 30;
   transform: translateY(-150%);
-  background: var(--colour-green);
+  background: var(--colour-forest);
   color: white;
   padding: 0.7rem 1rem;
 }
@@ -145,7 +146,7 @@ img {
 
 .desktop-nav a[aria-current='page'],
 .language-switcher a[aria-current='true'] {
-  border-color: var(--colour-green);
+  border-color: var(--colour-forest);
 }
 
 .language-switcher {
@@ -278,7 +279,7 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--colour-green);
+  border: 1px solid var(--colour-forest);
   border-radius: 4px;
   padding: 0.8rem 1.25rem;
   background: transparent;
@@ -307,7 +308,7 @@ button {
 
 .button.primary,
 button {
-  background: var(--colour-green);
+  background: var(--colour-forest);
   color: white;
 }
 
@@ -387,7 +388,7 @@ button.danger {
 .photo-band {
   border-top: 1px solid var(--colour-line);
   border-bottom: 1px solid var(--colour-line);
-  background: #efe4d2;
+  background: #ebebeb;
 }
 
 .photo-grid {
@@ -636,7 +637,7 @@ button.danger {
   width: 0.85rem;
   height: 0.85rem;
   margin-top: 0.35rem;
-  border: 1px solid var(--colour-green);
+  border: 1px solid var(--colour-forest);
   border-radius: 50%;
   background: var(--colour-ivory);
 }
@@ -902,7 +903,7 @@ button.danger {
 }
 
 .language-grid a {
-  border: 1px solid var(--colour-green);
+  border: 1px solid var(--colour-forest);
   border-radius: 4px;
   padding: 0.85rem 1.35rem;
   color: var(--colour-green);
@@ -1228,7 +1229,7 @@ button.danger {
   height: 1.1rem;
   flex: 0 0 auto;
   margin: 0;
-  accent-color: var(--colour-green);
+  accent-color: var(--colour-forest);
 }
 
 .rsvp-field-grid {
@@ -1603,7 +1604,7 @@ button.danger {
   gap: 2rem;
   padding: 2rem 6vw;
   border-top: 1px solid var(--colour-line);
-  background: var(--colour-green);
+  background: var(--colour-forest);
   color: var(--colour-ivory);
 }
 
