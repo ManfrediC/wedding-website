@@ -4,15 +4,16 @@ import { languageNames, languages, type Lang } from '../data/locales';
 type Props = {
   lang: Lang;
   path?: string;
+  paths?: Record<Lang, string>;
 };
 
-const { lang, path = '/' } = Astro.props;
+const { lang, path = '/', paths } = Astro.props;
 ---
 
 <nav class="language-switcher" aria-label="Language">
   {languages.map((language) => (
     <a
-      href={`/${language}${path}`}
+      href={paths?.[language] ?? `/${language}${path}`}
       aria-current={language === lang ? 'true' : undefined}
     >
       {languageNames[language]}

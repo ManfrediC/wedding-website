@@ -6,9 +6,10 @@ import { wedding } from '../data/site';
 type Props = {
   lang: Lang;
   currentPath?: string;
+  languagePaths?: Record<Lang, string>;
 };
 
-const { lang, currentPath = '/' } = Astro.props;
+const { lang, currentPath = '/', languagePaths } = Astro.props;
 ---
 
 <footer class="site-footer">
@@ -22,5 +23,5 @@ const { lang, currentPath = '/' } = Astro.props;
     <p>For invited guests only. Please do not share the link or password publicly.</p>
     <p><a class="footer-link" href={`/${lang}/credits/`}>Image credits</a></p>
   </div>
-  <LanguageSwitcher lang={lang} path={currentPath} />
+  <LanguageSwitcher lang={lang} path={currentPath} paths={languagePaths} />
 </footer>

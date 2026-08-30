@@ -1,0 +1,19 @@
+---
+import FamilySchedulePage from '../../components/FamilySchedulePage.astro';
+import type { Lang } from '../../data/locales';
+
+type Props = {
+  lang: Lang;
+};
+
+export function getStaticPaths() {
+  return (['it', 'de'] as const).map((lang) => ({
+    params: { lang },
+    props: { lang },
+  }));
+}
+
+const { lang } = Astro.props;
+---
+
+<FamilySchedulePage lang={lang} />

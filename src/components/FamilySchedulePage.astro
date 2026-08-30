@@ -1,0 +1,42 @@
+---
+import Timeline from './Timeline.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { familyPageCopy, familySchedule } from '../data/family-schedule';
+import type { Lang } from '../data/locales';
+
+type Props = {
+  lang: Lang;
+};
+
+const { lang } = Astro.props;
+const copy = familyPageCopy[lang];
+const familyLanguagePaths: Record<Lang, string> = {
+  en: '/family/',
+  it: '/family/it/',
+  de: '/family/de/',
+};
+---
+
+<BaseLayout
+  lang={lang}
+  currentPath="/family/"
+  languagePaths={familyLanguagePaths}
+  showLogout={false}
+  title={`${copy.title} | Gabriela & Manfredi`}
+  description={copy.intro}
+>
+  <section class="page-hero">
+    <p class="eyebrow">{copy.kicker}</p>
+    <h1>{copy.title}</h1>
+    <p>{copy.intro}</p>
+    <p class="small-note">{copy.lastUpdated}</p>
+  </section>
+
+  <section class="notice-band" aria-label={copy.statusNoteLabel}>
+    <p>{copy.statusNote}</p>
+  </section>
+
+  <section class="content-band narrow family-timeline">
+    <Timeline lang={lang} entries={familySchedule} />
+  </section>
+</BaseLayout>

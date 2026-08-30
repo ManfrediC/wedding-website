@@ -16,10 +16,16 @@ const startPreview = Boolean(args['start-preview']);
 const saveScreenshots = !args['no-screenshots'];
 const runId = new Date().toISOString().replace(/[:.]/g, '-');
 const envValues = await loadEnvFile(join(process.cwd(), 'env', 'website_pw.env'));
+const familyEnvValues = await loadEnvFile(join(process.cwd(), 'env', 'family.env'));
 const password = process.env.WEBSITE_PW ?? envValues.WEBSITE_PW;
+const familyPassword = process.env.FAMILY_PW ?? familyEnvValues.FAMILY_PW ?? familyEnvValues.PW;
 
 if (!password) {
   throw new Error('Set WEBSITE_PW in env/website_pw.env or the process environment before running the smoke check.');
+}
+
+if (!familyPassword) {
+  throw new Error('Set PW in env/family.env or FAMILY_PW in the process environment before running the smoke check.');
 }
 
 let previewProcess;
@@ -35,6 +41,7 @@ try {
   const result = await runSmokeCheck({
     baseUrl,
     password,
+    familyPassword,
     saveScreenshots,
     screenshotPrefix: startPreview ? `local-protected-smoke-${runId}` : `live-protected-smoke-${runId}`,
     channelPreference: args['browser-channel'],
@@ -47,8 +54,22 @@ try {
   }
 }
 
-async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPrefix, channelPreference }) {
+async function runSmokeCheck({
+  baseUrl,
+  password,
+  familyPassword,
+  saveScreenshots,
+  screenshotPrefix,
+  channelPreference,
+}) {
   const { browser, channel } = await launchBrowser(channelPreference);
+  const familyResult = await runFamilySmoke({
+    browser,
+    baseUrl,
+    familyPassword,
+    saveScreenshots,
+    screenshotPrefix,
+  });
   const context = await browser.newContext({ viewport: { width: 1365, height: 900 } });
   const page = await context.newPage();
 
@@ -112,6 +133,23 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
   await assertReturningVisitorUsesCookie(browser, context, baseUrl);
   await assertMobileHeaderDisclosures(page);
 
+  for (const path of ['/family/', '/family/index.html']) {
+    const familyWithGuestCookie = await context.request.get(`${baseUrl}${path}`, { maxRedirects: 0 });
+    if (familyWithGuestCookie.status() !== 401) {
+      throw new Error(
+        `Guest-site authentication must not unlock ${path}; received HTTP ${familyWithGuestCookie.status()}.`,
+      );
+    }
+  }
+
+  for (const path of ['/%66amily/', '/family%2Findex.html']) {
+    const encodedResponse = await context.request.get(`${baseUrl}${path}`, { maxRedirects: 0 });
+    assertStatus(encodedResponse, 308, `guest-authenticated encoded family route ${path}`);
+    const redirectTarget = new URL(encodedResponse.headers().location ?? '', baseUrl).toString();
+    const canonicalResponse = await context.request.get(redirectTarget, { maxRedirects: 0 });
+    assertStatus(canonicalResponse, 401, `guest-authenticated canonical family route for ${path}`);
+  }
+
   await page.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
   await waitForVisibleText(page, 'We cannot wait to celebrate with you in Zurich.', 'authenticated root home');
   await assertAbsent(page, 'Please enter the password from your invitation.', 'authenticated root password prompt');
@@ -154,7 +192,7 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
   await waitForVisibleText(page, 'Kontrollen sind am Flughafen weniger wahrscheinlich', 'German customs FAQ');
   await assertAbsent(page, 'Nutzt QuickZoll oder den roten Ausgang', 'German customs QuickZoll sentence');
 
-  const screenshots = [];
+  const screenshots = [...familyResult.screenshots];
   if (saveScreenshots) {
     await mkdir('tmp', { recursive: true });
     const desktopPath = `tmp/${screenshotPrefix}-desktop.png`;
@@ -183,8 +221,193 @@ async function runSmokeCheck({ baseUrl, password, saveScreenshots, screenshotPre
     browserChannel: channel,
     desktopOverflow,
     mobileOverflow,
+    familyDesktopOverflow: familyResult.desktopOverflow,
+    familyMobileOverflow: familyResult.mobileOverflow,
     screenshots,
   };
+}
+
+async function runFamilySmoke({
+  browser,
+  baseUrl,
+  familyPassword,
+  saveScreenshots,
+  screenshotPrefix,
+}) {
+  const anonymousContext = await browser.newContext();
+  const correctAuthorization = basicAuthorization('family', familyPassword);
+
+  try {
+    const bareFamilyResponse = await anonymousContext.request.get(`${baseUrl}/family`, { maxRedirects: 0 });
+    assertStatus(bareFamilyResponse, 308, 'bare family route');
+    assertFamilyPrivacyHeaders(bareFamilyResponse.headers(), 'bare family route');
+    if (!(bareFamilyResponse.headers().location ?? '').endsWith('/family/')) {
+      throw new Error(
+        `Bare family route: expected a redirect to /family/, received ${JSON.stringify(bareFamilyResponse.headers().location)}.`,
+      );
+    }
+
+    for (const path of ['/family/', '/family/index.html']) {
+      const response = await anonymousContext.request.get(`${baseUrl}${path}`, { maxRedirects: 0 });
+      assertStatus(response, 401, `unauthenticated family route ${path}`);
+      assertFamilyChallenge(response.headers(), `unauthenticated family route ${path}`);
+      assertFamilyPrivacyHeaders(response.headers(), `unauthenticated family route ${path}`);
+      const body = await response.text();
+
+      if (body.includes('Civil ceremony') || body.includes('Family lunch')) {
+        throw new Error(`Unauthenticated family route ${path} exposed schedule content.`);
+      }
+    }
+
+    for (const path of ['/%66amily/', '/family%2Findex.html', '/%2566amily/']) {
+      const response = await anonymousContext.request.get(`${baseUrl}${path}`, { maxRedirects: 0 });
+      assertStatus(response, 308, `encoded family route ${path}`);
+      assertFamilyPrivacyHeaders(response.headers(), `encoded family route ${path}`);
+      const redirectTarget = new URL(response.headers().location ?? '', baseUrl);
+
+      if (!redirectTarget.pathname.startsWith('/family/')) {
+        throw new Error(
+          `Encoded family route ${path}: expected a canonical family redirect, received ${JSON.stringify(response.headers().location)}.`,
+        );
+      }
+
+      const canonicalResponse = await anonymousContext.request.get(redirectTarget.toString(), { maxRedirects: 0 });
+      assertStatus(canonicalResponse, 401, `canonical family route for ${path}`);
+      assertFamilyChallenge(canonicalResponse.headers(), `canonical family route for ${path}`);
+    }
+
+    const wrongPasswordResponse = await anonymousContext.request.get(`${baseUrl}/family/`, {
+      headers: { Authorization: basicAuthorization('family', 'incorrect-family-password') },
+      maxRedirects: 0,
+    });
+    assertStatus(wrongPasswordResponse, 401, 'family route with wrong password');
+    assertFamilyChallenge(wrongPasswordResponse.headers(), 'family route with wrong password');
+
+    const wrongUsernameResponse = await anonymousContext.request.get(`${baseUrl}/family/`, {
+      headers: { Authorization: basicAuthorization('guest', familyPassword) },
+      maxRedirects: 0,
+    });
+    assertStatus(wrongUsernameResponse, 401, 'family route with wrong username');
+
+    const directFileResponse = await anonymousContext.request.get(`${baseUrl}/family/index.html`, {
+      headers: { Authorization: correctAuthorization },
+      maxRedirects: 0,
+    });
+    await assertAuthenticatedFamilyFileResponse(directFileResponse, 'authenticated family index file');
+
+  } finally {
+    await anonymousContext.close();
+  }
+
+  const familyContext = await browser.newContext({
+    viewport: { width: 1365, height: 900 },
+    httpCredentials: {
+      username: 'family',
+      password: familyPassword,
+    },
+  });
+  const page = await familyContext.newPage();
+  const screenshots = [];
+
+  try {
+    const englishResponse = await page.goto(`${baseUrl}/family/`, { waitUntil: 'networkidle' });
+    assertStatus(englishResponse, 200, 'English family page');
+    assertFamilyPrivacyHeaders(englishResponse?.headers() ?? {}, 'English family page');
+    await waitForVisibleText(page, 'Family schedule', 'English family heading');
+    await waitForVisibleText(page, '11:30–12:00', 'civil ceremony time');
+    await waitForVisibleText(page, 'Around 13:15', 'family lunch time');
+    await waitForVisibleText(page, 'Venue to be confirmed', 'family lunch venue status');
+    const desktopOverflow = await assertNoHorizontalOverflow(page, 'English family schedule desktop');
+
+    const familyCredentialsGuestResponse = await familyContext.request.get(`${baseUrl}/en/`, {
+      maxRedirects: 0,
+    });
+    assertStatus(familyCredentialsGuestResponse, 302, 'guest page with only family credentials');
+
+    if (saveScreenshots) {
+      await mkdir('tmp', { recursive: true });
+      const desktopPath = `tmp/${screenshotPrefix}-family-desktop.png`;
+      await page.screenshot({ path: desktopPath, fullPage: true });
+      screenshots.push(desktopPath);
+    }
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(`${baseUrl}/family/`, { waitUntil: 'networkidle' });
+    const mobileOverflow = await assertNoHorizontalOverflow(page, 'English family schedule mobile');
+
+    if (saveScreenshots) {
+      const mobilePath = `tmp/${screenshotPrefix}-family-mobile.png`;
+      await page.screenshot({ path: mobilePath, fullPage: true });
+      screenshots.push(mobilePath);
+    }
+
+    return { desktopOverflow, mobileOverflow, screenshots };
+  } finally {
+    await familyContext.close();
+  }
+}
+
+function basicAuthorization(username, password) {
+  return `Basic ${Buffer.from(`${username}:${password}`, 'utf8').toString('base64')}`;
+}
+
+function assertStatus(response, expectedStatus, label) {
+  const actualStatus = response?.status();
+
+  if (actualStatus !== expectedStatus) {
+    throw new Error(`${label}: expected HTTP ${expectedStatus}, received ${actualStatus ?? 'no response'}.`);
+  }
+}
+
+async function assertAuthenticatedFamilyFileResponse(response, label) {
+  assertFamilyPrivacyHeaders(response.headers(), label);
+
+  if (response.status() === 308) {
+    if (!(response.headers().location ?? '').endsWith('/family/')) {
+      throw new Error(
+        `${label}: expected the canonical redirect to /family/, received ${JSON.stringify(response.headers().location)}.`,
+      );
+    }
+    return;
+  }
+
+  assertStatus(response, 200, label);
+  const body = await response.text();
+
+  if (!body.includes('Family schedule')) {
+    throw new Error(`${label}: response did not contain the schedule heading.`);
+  }
+}
+
+function assertFamilyChallenge(headers, label) {
+  const challenge = headers['www-authenticate'] ?? '';
+
+  if (!challenge.startsWith('Basic ') || !challenge.includes('charset="UTF-8"')) {
+    throw new Error(`${label}: expected a UTF-8 HTTP Basic authentication challenge, received ${JSON.stringify(challenge)}.`);
+  }
+}
+
+function assertFamilyPrivacyHeaders(headers, label) {
+  const cacheControl = headers['cache-control'] ?? '';
+  const vary = headers.vary ?? '';
+
+  if (!cacheControl.toLowerCase().includes('private') || !cacheControl.toLowerCase().includes('no-store')) {
+    throw new Error(`${label}: expected private, no-store caching, received ${JSON.stringify(cacheControl)}.`);
+  }
+
+  if (headers.pragma?.toLowerCase() !== 'no-cache') {
+    throw new Error(`${label}: expected Pragma: no-cache, received ${JSON.stringify(headers.pragma)}.`);
+  }
+
+  if (!vary.split(',').some((value) => value.trim().toLowerCase() === 'authorization')) {
+    throw new Error(`${label}: expected Vary: Authorization, received ${JSON.stringify(vary)}.`);
+  }
+
+  if (headers['x-robots-tag'] !== ROBOTS_HEADER_VALUE) {
+    throw new Error(
+      `${label}: expected X-Robots-Tag ${JSON.stringify(ROBOTS_HEADER_VALUE)}, received ${JSON.stringify(headers['x-robots-tag'])}.`,
+    );
+  }
 }
 
 async function launchBrowser(channelPreference) {

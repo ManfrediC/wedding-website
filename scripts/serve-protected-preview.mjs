@@ -1,4 +1,4 @@
-import { createHash } from 'node:crypto';
+import { createHash, timingSafeEqual } from 'node:crypto';
 import { createServer } from 'node:http';
 import { existsSync } from 'node:fs';
 import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
@@ -18,14 +18,20 @@ const ADMIN_COOKIE_NAME = 'gm_rsvp_admin';
 const MAX_AGE_SECONDS = 60 * 60 * 24 * 30;
 const ROBOTS_HEADER_VALUE = 'noindex, nofollow';
 const WELCOME_PATH = '/welcome/';
+const FAMILY_PATH = '/family';
+const FAMILY_USERNAME = 'family';
+const FAMILY_AUTH_CHALLENGE = 'Basic realm="Gabriela & Manfredi family schedule", charset="UTF-8"';
 
 const repoRoot = process.cwd();
 const distDir = resolve(repoRoot, 'dist');
 const localEnvPath = join(repoRoot, 'env', 'website_pw.env');
+const localFamilyEnvPath = join(repoRoot, 'env', 'family.env');
 const localEnv = await loadEnvFile(localEnvPath);
+const localFamilyEnv = await loadEnvFile(localFamilyEnvPath);
 const port = Number(readArg('port', process.env.PORT ?? '4321'));
 const host = readArg('host', process.env.HOST ?? '127.0.0.1');
 const password = process.env.WEBSITE_PW ?? localEnv.WEBSITE_PW;
+const familyPassword = process.env.FAMILY_PW ?? localFamilyEnv.FAMILY_PW ?? localFamilyEnv.PW;
 const authSecret = process.env.WEDDING_AUTH_SECRET ?? localEnv.WEDDING_AUTH_SECRET ?? 'local-protected-preview';
 const rsvpStore = await createPreviewRsvpStore(join(repoRoot, 'tmp', 'rsvp-preview-store.json'));
 const notificationMock = createNotificationMock();
@@ -41,6 +47,25 @@ if (!existsSync(distDir)) {
 const server = createServer(async (request, response) => {
   try {
     const url = new URL(request.url ?? '/', `http://${request.headers.host ?? `${host}:${port}`}`);
+    const canonicalPathname = normalisePathnameForSecurity(url.pathname);
+    const familyPathname = getFamilyPathname(canonicalPathname);
+
+    if (familyPathname) {
+      const canonicalFamilyPathname = familyPathname === FAMILY_PATH
+        ? `${FAMILY_PATH}/`
+        : familyPathname;
+
+      if (url.pathname !== canonicalFamilyPathname) {
+        const familyUrl = new URL(url);
+        familyUrl.pathname = canonicalFamilyPathname;
+        response.writeHead(308, familyPrivacyHeaders({ Location: familyUrl.pathname + familyUrl.search }));
+        response.end();
+        return;
+      }
+
+      await handleFamilyRequest(request, response, url.pathname);
+      return;
+    }
 
     if (isPublicAsset(url.pathname)) {
       await serveStatic(url.pathname, response);
@@ -138,6 +163,79 @@ function stripQuotes(value) {
   return value;
 }
 
+async function handleFamilyRequest(request, response, pathname) {
+  if (!familyPassword) {
+    sendFamilyError(response, 503, 'This private page is temporarily unavailable.');
+    return;
+  }
+
+  if (!hasValidFamilyCredentials(request, familyPassword)) {
+    sendFamilyError(response, 401, 'Authentication required.');
+    return;
+  }
+
+  await serveStatic(pathname, response, familyPrivacyHeaders());
+}
+
+function sendFamilyError(response, status, message) {
+  const headers = {
+    'Content-Type': 'text/plain; charset=utf-8',
+  };
+
+  if (status === 401) {
+    headers['WWW-Authenticate'] = FAMILY_AUTH_CHALLENGE;
+  }
+
+  response.writeHead(status, familyPrivacyHeaders(headers));
+  response.end(message);
+}
+
+function hasValidFamilyCredentials(request, expectedPassword) {
+  const credentials = parseBasicCredentials(request.headers.authorization);
+
+  return (
+    credentials?.username === FAMILY_USERNAME &&
+    timingSafeTextEqual(credentials.password, expectedPassword)
+  );
+}
+
+function parseBasicCredentials(header) {
+  const match = /^Basic\s+([A-Za-z0-9+/]+={0,2})$/i.exec(header?.trim() ?? '');
+
+  if (!match) {
+    return undefined;
+  }
+
+  try {
+    const bytes = Buffer.from(match[1], 'base64');
+    const canonicalValue = bytes.toString('base64').replace(/=+$/, '');
+
+    if (canonicalValue !== match[1].replace(/=+$/, '')) {
+      return undefined;
+    }
+
+    const decoded = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+    const separatorIndex = decoded.indexOf(':');
+
+    if (separatorIndex < 0) {
+      return undefined;
+    }
+
+    return {
+      username: decoded.slice(0, separatorIndex),
+      password: decoded.slice(separatorIndex + 1),
+    };
+  } catch {
+    return undefined;
+  }
+}
+
+function timingSafeTextEqual(left, right) {
+  const leftDigest = createHash('sha256').update(left).digest();
+  const rightDigest = createHash('sha256').update(right).digest();
+  return timingSafeEqual(leftDigest, rightDigest);
+}
+
 async function handleLogin(request, response, url) {
   const form = new URLSearchParams(await readBody(request));
   const submittedPassword = String(form.get('password') ?? '');
@@ -212,6 +310,60 @@ function isPublicAsset(pathname) {
     pathname.startsWith('/images/landing/') ||
     pathname.startsWith('/_astro/')
   );
+}
+
+function getFamilyPathname(pathname) {
+  const lowerPathname = pathname.toLowerCase();
+
+  if (lowerPathname === FAMILY_PATH) {
+    return FAMILY_PATH;
+  }
+
+  if (lowerPathname.startsWith(`${FAMILY_PATH}/`)) {
+    return `${FAMILY_PATH}${pathname.slice(FAMILY_PATH.length)}`;
+  }
+
+  return undefined;
+}
+
+function normalisePathnameForSecurity(pathname) {
+  let decodedPathname = pathname;
+
+  try {
+    for (let pass = 0; pass < 4; pass += 1) {
+      const nextPathname = decodeURIComponent(decodedPathname);
+
+      if (nextPathname === decodedPathname) {
+        break;
+      }
+
+      decodedPathname = nextPathname;
+    }
+  } catch {
+    return pathname.replace(/\\/g, '/');
+  }
+
+  const slashPathname = decodedPathname.replace(/\\/g, '/');
+  const hasTrailingSlash = slashPathname.endsWith('/');
+  const segments = [];
+
+  for (const segment of slashPathname.split('/')) {
+    if (!segment || segment === '.') {
+      continue;
+    }
+
+    if (segment === '..') {
+      segments.pop();
+      continue;
+    }
+
+    segments.push(segment);
+  }
+
+  const normalisedPathname = `/${segments.join('/')}`;
+  return hasTrailingSlash && normalisedPathname !== '/'
+    ? `${normalisedPathname}/`
+    : normalisedPathname;
 }
 
 function isWelcomePath(pathname) {
@@ -442,17 +594,17 @@ async function writeJson(filePath, value) {
   await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-async function serveStatic(pathname, response) {
+async function serveStatic(pathname, response, extraHeaders = {}) {
   const filePath = resolveStaticPath(pathname);
   const fileStat = await stat(filePath).catch(() => undefined);
 
   if (!fileStat?.isFile()) {
-    response.writeHead(404, withRobotsHeader({ 'Content-Type': 'text/plain; charset=utf-8' }));
+    response.writeHead(404, withRobotsHeader({ 'Content-Type': 'text/plain; charset=utf-8', ...extraHeaders }));
     response.end('Not found');
     return;
   }
 
-  response.writeHead(200, withRobotsHeader({ 'Content-Type': contentType(filePath) }));
+  response.writeHead(200, withRobotsHeader({ 'Content-Type': contentType(filePath), ...extraHeaders }));
   response.end(await readFile(filePath));
 }
 
@@ -499,4 +651,13 @@ function withRobotsHeader(headers) {
     ...headers,
     'X-Robots-Tag': ROBOTS_HEADER_VALUE,
   };
+}
+
+function familyPrivacyHeaders(headers = {}) {
+  return withRobotsHeader({
+    ...headers,
+    'Cache-Control': 'private, no-store',
+    Pragma: 'no-cache',
+    Vary: 'Authorization',
+  });
 }

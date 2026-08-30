@@ -483,6 +483,10 @@ button.danger {
   font-weight: 700;
 }
 
+.family-timeline .timeline li {
+  grid-template-columns: 7.5rem 2rem minmax(0, 1fr);
+}
+
 .exchange-rates {
   margin: 1.25rem 0;
   border-top: 1px solid var(--colour-line);
@@ -1922,6 +1926,15 @@ button.danger {
   .timeline li {
     grid-template-columns: 4.5rem 1.4rem 1fr;
     gap: 0.75rem;
+  }
+
+  .family-timeline .timeline li {
+    grid-template-columns: 5.5rem 1.4rem minmax(0, 1fr);
+    gap: 0.65rem;
+  }
+
+  .family-timeline .timeline-date {
+    letter-spacing: 0.04em;
   }
 
   .timeline-time {

@@ -1,4 +1,5 @@
 type Env = {
+  FAMILY_PW?: string;
   WEBSITE_PW?: string;
   WEDDING_SITE_PASSWORD?: string;
   WEDDING_AUTH_SECRET?: string;
@@ -9,10 +10,29 @@ const ADMIN_COOKIE_NAME = 'gm_rsvp_admin';
 const MAX_AGE_SECONDS = 60 * 60 * 24 * 30;
 const ROBOTS_HEADER_VALUE = 'noindex, nofollow';
 const WELCOME_PATH = '/welcome/';
+const FAMILY_PATH = '/family';
+const FAMILY_USERNAME = 'family';
+const FAMILY_AUTH_CHALLENGE = 'Basic realm="Gabriela & Manfredi family schedule", charset="UTF-8"';
 
 export const onRequest: PagesFunction<Env> = async (context) => {
   const url = new URL(context.request.url);
   const password = context.env.WEBSITE_PW ?? context.env.WEDDING_SITE_PASSWORD;
+  const canonicalPathname = normalisePathnameForSecurity(url.pathname);
+  const familyPathname = getFamilyPathname(canonicalPathname);
+
+  if (familyPathname) {
+    const canonicalFamilyPathname = familyPathname === FAMILY_PATH
+      ? `${FAMILY_PATH}/`
+      : familyPathname;
+
+    if (url.pathname !== canonicalFamilyPathname) {
+      const familyUrl = new URL(url);
+      familyUrl.pathname = canonicalFamilyPathname;
+      return withFamilyPrivacyHeaders(Response.redirect(familyUrl.toString(), 308));
+    }
+
+    return handleFamilyRequest(context, context.env.FAMILY_PW);
+  }
 
   if (!password || isPublicAsset(url.pathname)) {
     return withRobotsHeader(await context.next());
@@ -48,6 +68,112 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
   return withRobotsHeader(Response.redirect(buildWelcomeUrl(url).toString(), 302));
 };
+
+async function handleFamilyRequest(
+  context: EventContext<Env, string, unknown>,
+  password: string | undefined,
+) {
+  if (!password) {
+    return familyErrorResponse(503, 'This private page is temporarily unavailable.');
+  }
+
+  if (!(await hasValidFamilyCredentials(context.request, password))) {
+    return familyErrorResponse(401, 'Authentication required.');
+  }
+
+  return withFamilyPrivacyHeaders(await context.next());
+}
+
+function familyErrorResponse(status: 401 | 503, message: string) {
+  const headers = new Headers({
+    'Content-Type': 'text/plain; charset=utf-8',
+  });
+
+  if (status === 401) {
+    headers.set('WWW-Authenticate', FAMILY_AUTH_CHALLENGE);
+  }
+
+  return withFamilyPrivacyHeaders(new Response(message, { status, headers }));
+}
+
+async function hasValidFamilyCredentials(request: Request, expectedPassword: string) {
+  const credentials = parseBasicCredentials(request.headers.get('Authorization'));
+
+  if (!credentials || credentials.username !== FAMILY_USERNAME) {
+    return false;
+  }
+
+  return timingSafeTextEqual(credentials.password, expectedPassword);
+}
+
+function parseBasicCredentials(header: string | null) {
+  const match = /^Basic\s+([A-Za-z0-9+/]+={0,2})$/i.exec(header?.trim() ?? '');
+
+  if (!match) {
+    return undefined;
+  }
+
+  try {
+    const encodedBytes = atob(match[1]);
+    const bytes = Uint8Array.from(encodedBytes, (character) => character.charCodeAt(0));
+    const decoded = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+    const separatorIndex = decoded.indexOf(':');
+
+    if (separatorIndex < 0) {
+      return undefined;
+    }
+
+    return {
+      username: decoded.slice(0, separatorIndex),
+      password: decoded.slice(separatorIndex + 1),
+    };
+  } catch {
+    return undefined;
+  }
+}
+
+async function timingSafeTextEqual(left: string, right: string) {
+  const encoder = new TextEncoder();
+  const [leftDigest, rightDigest] = await Promise.all([
+    crypto.subtle.digest('SHA-256', encoder.encode(left)),
+    crypto.subtle.digest('SHA-256', encoder.encode(right)),
+  ]);
+  const subtle = crypto.subtle as SubtleCrypto & {
+    timingSafeEqual(first: ArrayBuffer, second: ArrayBuffer): boolean;
+  };
+
+  return subtle.timingSafeEqual(leftDigest, rightDigest);
+}
+
+function withFamilyPrivacyHeaders(response: Response) {
+  const headers = new Headers(response.headers);
+  headers.set('Cache-Control', 'private, no-store');
+  headers.set('Pragma', 'no-cache');
+  headers.set('X-Robots-Tag', ROBOTS_HEADER_VALUE);
+  appendVary(headers, 'Authorization');
+  const body = response.status === 204 || response.status === 205 || response.status === 304
+    ? null
+    : response.body;
+
+  return new Response(body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
+function appendVary(headers: Headers, value: string) {
+  const varyValues = (headers.get('Vary') ?? '')
+    .split(',')
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+  if (!varyValues.some((item) => item.toLowerCase() === value.toLowerCase())) {
+    varyValues.push(value);
+  }
+
+  headers.set('Vary', varyValues.join(', '));
+}
 
 async function handleLogin(context: EventContext<Env, string, unknown>, password: string) {
   const form = await context.request.formData();
@@ -137,6 +263,60 @@ function isPublicAsset(pathname: string) {
     pathname.startsWith('/images/landing/') ||
     pathname.startsWith('/_astro/')
   );
+}
+
+function getFamilyPathname(pathname: string) {
+  const lowerPathname = pathname.toLowerCase();
+
+  if (lowerPathname === FAMILY_PATH) {
+    return FAMILY_PATH;
+  }
+
+  if (lowerPathname.startsWith(`${FAMILY_PATH}/`)) {
+    return `${FAMILY_PATH}${pathname.slice(FAMILY_PATH.length)}`;
+  }
+
+  return undefined;
+}
+
+function normalisePathnameForSecurity(pathname: string) {
+  let decodedPathname = pathname;
+
+  try {
+    for (let pass = 0; pass < 4; pass += 1) {
+      const nextPathname = decodeURIComponent(decodedPathname);
+
+      if (nextPathname === decodedPathname) {
+        break;
+      }
+
+      decodedPathname = nextPathname;
+    }
+  } catch {
+    return pathname.replace(/\\/g, '/');
+  }
+
+  const slashPathname = decodedPathname.replace(/\\/g, '/');
+  const hasTrailingSlash = slashPathname.endsWith('/');
+  const segments: string[] = [];
+
+  for (const segment of slashPathname.split('/')) {
+    if (!segment || segment === '.') {
+      continue;
+    }
+
+    if (segment === '..') {
+      segments.pop();
+      continue;
+    }
+
+    segments.push(segment);
+  }
+
+  const normalisedPathname = `/${segments.join('/')}`;
+  return hasTrailingSlash && normalisedPathname !== '/'
+    ? `${normalisedPathname}/`
+    : normalisedPathname;
 }
 
 function isWelcomePath(pathname: string) {

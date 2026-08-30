@@ -6,9 +6,16 @@ import { wedding } from '../data/site';
 type Props = {
   lang: Lang;
   currentPath?: string;
+  languagePaths?: Record<Lang, string>;
+  showLogout?: boolean;
 };
 
-const { lang, currentPath = '/' } = Astro.props;
+const {
+  lang,
+  currentPath = '/',
+  languagePaths,
+  showLogout = true,
+} = Astro.props;
 
 const mobileLanguageLabels: Record<Lang, string> = {
   en: 'Language',
@@ -44,18 +51,20 @@ const logoutNext = `/${lang}${currentPath}`;
 
   <div class="header-actions">
     <div class="header-language">
-      <LanguageSwitcher lang={lang} path={currentPath} />
+      <LanguageSwitcher lang={lang} path={currentPath} paths={languagePaths} />
     </div>
-    <form class="logout-form" action="/logout/" method="post">
-      <input type="hidden" name="next" value={logoutNext} />
-      <button class="logout-button" type="submit">{logoutLabels[lang]}</button>
-    </form>
+    {showLogout && (
+      <form class="logout-form" action="/logout/" method="post">
+        <input type="hidden" name="next" value={logoutNext} />
+        <button class="logout-button" type="submit">{logoutLabels[lang]}</button>
+      </form>
+    )}
   </div>
 
   <div class="mobile-header-controls">
     <details class="mobile-disclosure mobile-language-menu" name="mobile-header-disclosure" data-mobile-header-disclosure>
       <summary>{mobileLanguageLabels[lang]}</summary>
-      <LanguageSwitcher lang={lang} path={currentPath} />
+      <LanguageSwitcher lang={lang} path={currentPath} paths={languagePaths} />
     </details>
 
     <details class="mobile-disclosure mobile-menu" name="mobile-header-disclosure" data-mobile-header-disclosure>
@@ -72,10 +81,12 @@ const logoutNext = `/${lang}${currentPath}`;
       </nav>
     </details>
 
-    <form class="logout-form mobile-logout-form" action="/logout/" method="post">
-      <input type="hidden" name="next" value={logoutNext} />
-      <button class="logout-button" type="submit">{logoutLabels[lang]}</button>
-    </form>
+    {showLogout && (
+      <form class="logout-form mobile-logout-form" action="/logout/" method="post">
+        <input type="hidden" name="next" value={logoutNext} />
+        <button class="logout-button" type="submit">{logoutLabels[lang]}</button>
+      </form>
+    )}
   </div>
 </header>
 

@@ -18,6 +18,8 @@ type Props = {
   lang?: Lang;
   currentPath?: string;
   hideChrome?: boolean;
+  languagePaths?: Record<Lang, string>;
+  showLogout?: boolean;
 };
 
 const {
@@ -26,6 +28,8 @@ const {
   lang = defaultLang,
   currentPath = '/',
   hideChrome = false,
+  languagePaths,
+  showLogout = true,
 } = Astro.props;
 ---
 
@@ -40,10 +44,19 @@ const {
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body class={hideChrome ? 'plain-page' : undefined}>
-    {!hideChrome && <SiteHeader lang={lang} currentPath={currentPath} />}
+    {!hideChrome && (
+      <SiteHeader
+        lang={lang}
+        currentPath={currentPath}
+        languagePaths={languagePaths}
+        showLogout={showLogout}
+      />
+    )}
     <main id="main-content">
       <slot />
     </main>
-    {!hideChrome && <SiteFooter lang={lang} currentPath={currentPath} />}
+    {!hideChrome && (
+      <SiteFooter lang={lang} currentPath={currentPath} languagePaths={languagePaths} />
+    )}
   </body>
 </html>
