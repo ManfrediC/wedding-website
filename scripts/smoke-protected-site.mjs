@@ -399,7 +399,7 @@ function assertFamilyPrivacyHeaders(headers, label) {
     throw new Error(`${label}: expected Pragma: no-cache, received ${JSON.stringify(headers.pragma)}.`);
   }
 
-  if (!vary.split(',').some((value) => value.trim().toLowerCase() === 'authorization')) {
+  if (!vary.split(/[,\n]/).some((value) => value.trim().toLowerCase() === 'authorization')) {
     throw new Error(`${label}: expected Vary: Authorization, received ${JSON.stringify(vary)}.`);
   }
 
