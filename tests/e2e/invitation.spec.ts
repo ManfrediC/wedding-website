@@ -161,7 +161,7 @@ test('invitation restarts on every visit and continues to the password gate', as
     height: Math.max(600, zoomViewportSize.height - 41),
   });
   await expect(zoomStatus).toHaveText('100%');
-  expect((await readZoomState(page)).width).toBeLessThan(fitState.width);
+  await expect.poll(async () => (await readZoomState(page)).width).toBeLessThan(fitState.width);
   await page.setViewportSize(zoomViewportSize);
 
   await page.getByRole('button', { name: 'Close' }).click();
@@ -177,6 +177,8 @@ test('invitation restarts on every visit and continues to the password gate', as
 
   await page.locator('#card').press('Enter');
   await expect(zoomDialog).toHaveAttribute('open', '');
+  // Opening the viewer sets its fitted width on the next animation frame.
+  await expect.poll(() => zoomImage.evaluate((image) => (image as HTMLElement).style.width)).not.toBe('');
   await page.keyboard.press('Shift+=');
   await expect(zoomStatus).toHaveText('150%');
   await page.keyboard.press('0');
@@ -234,4 +236,157 @@ test('invitation remains usable with reduced motion', async ({ page }) => {
   await page.locator('#continue').click();
   await expect(page.locator('#suite')).toHaveClass(/\bshown\b/);
   await expect(page.getByRole('link', { name: 'Continue to the wedding website' })).toBeVisible();
+});
+
+// Pause only script-created animations; CSS fades can continue normally.
+async function pauseInvitationAnimations(page: Page) {
+  await page.addInitScript(() => {
+    const animate = Element.prototype.animate;
+    Element.prototype.animate = function (...args) {
+      const animation = animate.apply(this, args);
+      animation.pause();
+      return animation;
+    };
+  });
+}
+
+async function seekPhase(page: Page, fraction: number) {
+  await page.evaluate((progress) => {
+    for (const animation of document.getAnimations().filter((item) => item.playState === 'paused')) {
+      animation.currentTime = Number(animation.effect!.getTiming().duration) * progress;
+    }
+  }, fraction);
+}
+
+async function finishPhase(page: Page, next: string) {
+  await page.evaluate(() => {
+    document.getAnimations().filter((item) => item.playState === 'paused').forEach((item) => item.finish());
+  });
+  await expect(page.locator('#stage')).toHaveAttribute('data-phase', next);
+}
+
+async function readMotion(page: Page) {
+  return page.evaluate(() => {
+    const card = document.querySelector<HTMLElement>('#card')!;
+    const pocket = document.querySelector<HTMLElement>('.env-body')!;
+    const bounds = card.getBoundingClientRect();
+    const front = pocket.getBoundingClientRect();
+    const flap = document.querySelector('#flap')!.getBoundingClientRect();
+    const actions = document.querySelector('#stageActions')!.getBoundingClientRect();
+    const y = Math.max(bounds.top, front.top) + 2;
+    const hit = document.elementFromPoint(bounds.x + bounds.width / 2, y);
+    return {
+      top: bounds.top, bottom: bounds.bottom, left: bounds.left, right: bounds.right,
+      pocketTop: front.top, pocketBottom: front.bottom, flapTop: flap.top,
+      occluded: hit === pocket, width: innerWidth, controlsTop: actions.top,
+      matrix: getComputedStyle(card).transform,
+    };
+  });
+}
+
+for (const viewport of [
+  { width: 1365, height: 900 },
+  { width: 390, height: 844 },
+  { width: 844, height: 390 },
+]) {
+  test(`invitation clears the envelope and viewport at ${viewport.width}x${viewport.height}`, async ({ page }, testInfo) => {
+    test.skip(!testInfo.project.name.endsWith('desktop'), 'Each browser uses explicit viewports here.');
+    await page.setViewportSize(viewport);
+    await pauseInvitationAnimations(page);
+    await page.goto(invitationPath);
+    await page.locator('#stage').click();
+    await expect(page.locator('#stage')).toHaveAttribute('data-phase', 'flap');
+    await expect(page.locator('#continue')).toBeDisabled();
+    await page.locator('#stage').dispatchEvent('click');
+    await finishPhase(page, 'withdraw');
+
+    for (const fraction of [0, 0.25, 0.5, 0.75, 0.999]) {
+      await seekPhase(page, fraction);
+      const frame = await readMotion(page);
+      expect(frame.top).toBeGreaterThanOrEqual(15);
+      expect(frame.bottom).toBeLessThanOrEqual(frame.controlsTop - 15);
+      expect(frame.left).toBeGreaterThanOrEqual(15);
+      expect(frame.right).toBeLessThanOrEqual(frame.width - 15);
+      if (frame.bottom > frame.pocketTop + 3) expect(frame.occluded).toBe(true);
+      if (fraction === 0.5) await testInfo.attach('withdrawing', { body: await page.screenshot(), contentType: 'image/png' });
+    }
+    await finishPhase(page, 'envelope-away');
+    const extracted = await readMotion(page);
+    expect(extracted.pocketTop - extracted.bottom).toBeGreaterThanOrEqual(7.5);
+    await finishPhase(page, 'turn');
+    for (const fraction of [0, 0.25, 0.5, 0.75, 0.999]) {
+      await seekPhase(page, fraction);
+      const frame = await readMotion(page);
+      expect(frame.top).toBeGreaterThanOrEqual(15);
+      expect(frame.bottom).toBeLessThanOrEqual(frame.controlsTop - 15);
+      expect(frame.left).toBeGreaterThanOrEqual(15);
+      expect(frame.right).toBeLessThanOrEqual(frame.width - 15);
+      expect(frame.flapTop - frame.bottom).toBeGreaterThanOrEqual(7.5);
+      if (fraction === 0.5) await testInfo.attach('turning', { body: await page.screenshot(), contentType: 'image/png' });
+    }
+    await finishPhase(page, 'enlarge');
+    for (const fraction of [0, 0.5, 0.999]) {
+      await seekPhase(page, fraction);
+      const frame = await readMotion(page);
+      expect(frame.top).toBeGreaterThanOrEqual(15);
+      expect(frame.bottom).toBeLessThanOrEqual(frame.controlsTop - 15);
+      expect(frame.left).toBeGreaterThanOrEqual(15);
+      expect(frame.right).toBeLessThanOrEqual(frame.width - 15);
+    }
+    await finishPhase(page, 'settled');
+    await expectSettledCard(page);
+    await testInfo.attach('settled', { body: await page.screenshot(), contentType: 'image/png' });
+  });
+}
+
+test('invitation cancels safely on resize and replay during motion', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  await pauseInvitationAnimations(page);
+  await page.goto(invitationPath);
+  await page.locator('#stage').click();
+  await expect(page.locator('#stage')).toHaveAttribute('data-phase', 'flap');
+  await finishPhase(page, 'withdraw');
+  await seekPhase(page, 0.5);
+  await page.setViewportSize({ width: 844, height: 390 });
+  await expectSettledCard(page);
+  await expect(page.locator('#continue')).toBeEnabled();
+  await page.locator('#continue').click();
+  await page.locator('#replay').click();
+  await expect(page.locator('#stage')).toHaveAttribute('data-phase', 'closed');
+  await page.locator('#stage').click();
+  await expect(page.locator('#stage')).toHaveAttribute('data-phase', 'flap');
+  // Exercise cancellation directly: the replay control is normally below the stage.
+  await page.locator('#replay').dispatchEvent('click');
+  await expect(page.locator('#stage')).toHaveAttribute('data-phase', 'closed');
+  await expect(page.locator('#continue')).toBeDisabled();
+  await page.locator('#stage').click();
+  await expect(page.locator('#stage')).toHaveAttribute('data-phase', 'flap');
+  expect(errors).toEqual([]);
+});
+
+test('invitation waits for image decoding and offers a retry after failure', async ({ page }) => {
+  await page.addInitScript(() => {
+    const decode = HTMLImageElement.prototype.decode;
+    let attempt = 0;
+    HTMLImageElement.prototype.decode = function () {
+      if (!this.closest('#card')) return decode.call(this);
+      attempt++;
+      if (attempt === 1) return Promise.reject(new Error('Simulated decode failure'));
+      return new Promise<void>((resolve, reject) => {
+        window.addEventListener('release-invitation-image', () => decode.call(this).then(resolve, reject), { once: true });
+      });
+    };
+  });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto(invitationPath);
+  await page.locator('#stage').click();
+  await expect(page.getByRole('status')).toHaveText('Invitation could not load. Tap to try again.');
+  await page.locator('#stage').click();
+  await expect(page.locator('#stage')).toHaveAttribute('data-phase', 'loading');
+  await expect(page.locator('#continue')).toBeDisabled();
+  await expect(page.locator('#enlarge')).toBeDisabled();
+  await page.evaluate(() => window.dispatchEvent(new Event('release-invitation-image')));
+  await expectSettledCard(page);
+  await expect(page.locator('#continue')).toBeEnabled();
 });
