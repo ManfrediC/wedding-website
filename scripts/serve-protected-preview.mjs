@@ -306,6 +306,11 @@ function isPublicAsset(pathname) {
     pathname === '/petri-turicensis-vi-mmxxvii/' ||
     pathname === '/petri-turicensis-vi-mmxxvii/assets/invitation-1320.webp' ||
     pathname === '/petri-turicensis-vi-mmxxvii/assets/invitation-2640.webp' ||
+    pathname === '/petri-turicensis-vi-mmxxvii-it' ||
+    pathname === '/petri-turicensis-vi-mmxxvii-it/' ||
+    pathname === '/petri-turicensis-vi-mmxxvii-it/assets/invitation-1320.webp' ||
+    pathname === '/petri-turicensis-vi-mmxxvii-it/assets/invitation-2640.webp' ||
+    pathname === '/petri-turicensis-vi-mmxxvii-it/assets/reception-2640.webp' ||
     pathname === '/images/minted/minted-hero.jpg' ||
     pathname.startsWith('/images/landing/') ||
     pathname.startsWith('/_astro/')

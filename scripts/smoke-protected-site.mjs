@@ -10,6 +10,7 @@ const DEFAULT_CHANNELS = ['chrome', 'msedge'];
 const AUTH_COOKIE_NAME = 'gm_wedding_auth';
 const ROBOTS_HEADER_VALUE = 'noindex, nofollow';
 const INVITATION_PATH = '/petri-turicensis-vi-mmxxvii/';
+const ITALIAN_INVITATION_PATH = '/petri-turicensis-vi-mmxxvii-it/';
 
 const args = parseArgs(process.argv.slice(2));
 const startPreview = Boolean(args['start-preview']);
@@ -72,6 +73,8 @@ async function runSmokeCheck({
   });
   const context = await browser.newContext({ viewport: { width: 1365, height: 900 } });
   const page = await context.newPage();
+
+  await assertItalianInvitation(page, baseUrl);
 
   const invitationResponse = await page.goto(`${baseUrl}${INVITATION_PATH}`, { waitUntil: 'networkidle' });
   await assertRobotsHeader(invitationResponse, 'public invitation');
@@ -467,11 +470,40 @@ async function assertInvitationStartsClosed(page, label) {
   }
 }
 
-async function assertPublicInvitationAssets(page, baseUrl) {
-  for (const width of [1320, 2640]) {
-    const label = `public invitation ${width}px asset`;
+async function assertItalianInvitation(page, baseUrl) {
+  const response = await page.goto(`${baseUrl}${ITALIAN_INVITATION_PATH.slice(0, -1)}`, { waitUntil: 'networkidle' });
+  await assertRobotsHeader(response, 'Italian public invitation');
+  await assertInvitationStartsClosed(page, 'Italian public invitation');
+  await waitForVisibleText(page, 'Tocca per aprire', 'Italian invitation prompt');
+  if (await page.locator('html').getAttribute('lang') !== 'it') throw new Error('Italian invitation language is missing.');
+  await assertPublicInvitationAssets(page, baseUrl, ITALIAN_INVITATION_PATH, [
+    'invitation-1320.webp', 'invitation-2640.webp', 'reception-2640.webp',
+  ]);
+  const blocked = await page.request.get(`${baseUrl}${ITALIAN_INVITATION_PATH}assets/private.pdf`, { maxRedirects: 0 });
+  assertStatus(blocked, 302, 'unlisted Italian invitation asset');
+  await page.locator('#stage').click();
+  await page.locator('#card.is-settled').waitFor();
+  await assertNoHorizontalOverflow(page, 'Italian invitation');
+  await page.locator('#enlarge').click();
+  await page.locator('#zoomDialog[open]').waitFor();
+  await page.waitForFunction(() => {
+    const image = document.querySelector('#zoomImage');
+    return image instanceof HTMLImageElement && image.complete && image.naturalWidth === 2640;
+  });
+  await page.locator('#zoomClose').click();
+  await page.locator('#continue').click();
+  await page.getByRole('link', { name: 'Vai al sito del matrimonio' }).click();
+  await waitForVisibleText(page, 'Inserite la password indicata nel vostro invito.', 'Italian password hand-off');
+  await assertInputValue(page, '[data-next-input]', '/it/', 'Italian destination');
+}
+
+async function assertPublicInvitationAssets(page, baseUrl, path = INVITATION_PATH, assets = [
+  'invitation-1320.webp', 'invitation-2640.webp',
+]) {
+  for (const asset of assets) {
+    const label = `public invitation ${path}${asset}`;
     const response = await page.request.get(
-      `${baseUrl}${INVITATION_PATH}assets/invitation-${width}.webp`,
+      `${baseUrl}${path}assets/${asset}`,
     );
 
     if (!response.ok()) {

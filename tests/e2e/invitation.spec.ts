@@ -284,16 +284,17 @@ async function readMotion(page: Page) {
   });
 }
 
+for (const motionPath of [invitationPath, '/petri-turicensis-vi-mmxxvii-it/']) {
 for (const viewport of [
   { width: 1365, height: 900 },
   { width: 390, height: 844 },
   { width: 844, height: 390 },
 ]) {
-  test(`invitation clears the envelope and viewport at ${viewport.width}x${viewport.height}`, async ({ page }, testInfo) => {
+  test(`invitation ${motionPath} clears the envelope and viewport at ${viewport.width}x${viewport.height}`, async ({ page }, testInfo) => {
     test.skip(!testInfo.project.name.endsWith('desktop'), 'Each browser uses explicit viewports here.');
     await page.setViewportSize(viewport);
     await pauseInvitationAnimations(page);
-    await page.goto(invitationPath);
+    await page.goto(motionPath);
     await page.locator('#stage').click();
     await expect(page.locator('#stage')).toHaveAttribute('data-phase', 'flap');
     await expect(page.locator('#continue')).toBeDisabled();
@@ -337,6 +338,8 @@ for (const viewport of [
     await expectSettledCard(page);
     await testInfo.attach('settled', { body: await page.screenshot(), contentType: 'image/png' });
   });
+}
+
 }
 
 test('invitation cancels safely on resize and replay during motion', async ({ page }) => {
@@ -389,4 +392,51 @@ test('invitation waits for image decoding and offers a retry after failure', asy
   await page.evaluate(() => window.dispatchEvent(new Event('release-invitation-image')));
   await expectSettledCard(page);
   await expect(page.locator('#continue')).toBeEnabled();
+});
+
+
+test('Italian invitation uses the approved wording and continues in Italian', async ({ page }, testInfo) => {
+  const errors: string[] = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  await page.goto('/petri-turicensis-vi-mmxxvii-it/');
+  await expect(page.locator('html')).toHaveAttribute('lang', 'it');
+  await expect(page).toHaveTitle('Gabriela & Manfredi · 11 giugno 2027');
+  await expect(page.locator('#hint')).toHaveText('Tocca per aprire');
+  await expect(page.locator('#addressee')).toContainText('Voi');
+  await expect(page.locator('#card img')).toHaveAttribute('alt', /Kirche St\. Peter, Zurigo, Svizzera/);
+  await expect(page.locator('#card img')).toHaveAttribute('srcset', /vi-mmxxvii-it\/assets\/invitation-2640\.webp 2640w/);
+  await openInvitation(page);
+  await expectSettledCard(page);
+  await expect(page.locator('#enlarge')).toHaveText('Ingrandisci');
+  await expect(page.locator('#continue')).toHaveText('Continua');
+  await testInfo.attach('Italian-invitation', { body: await page.screenshot(), contentType: 'image/png' });
+  await page.locator('#enlarge').click();
+  await expect(page.locator('#zoomDialog')).toHaveAttribute('open', '');
+  await expect.poll(async () => (await readZoomState(page)).naturalWidth).toBe(2640);
+  await expect(page.locator('#zoomTitle')).toHaveText('Invito');
+  await expect(page.locator('#zoomReset')).toHaveText('Adatta');
+  await page.locator('#zoomIn').click();
+  await expect(page.locator('#zoomStatus')).toHaveText('150%');
+  await page.getByRole('button', { name: 'Chiudi', exact: true }).click();
+  await page.locator('#continue').click();
+  await expect(page.locator('#suite')).toContainText('entro il 15 febbraio 2027');
+  await expect(page.locator('#suite')).toContainText('Kirche St. Peter, Zurigo');
+  const reception = page.locator('.card-img');
+  await expect(reception).toHaveAttribute('alt', 'Seguiranno cena e danze. Hotel Sonne, Seestrasse 120, Küsnacht, Svizzera.');
+  await expect.poll(() => reception.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBe(2640);
+  const receptionBounds = await reception.boundingBox();
+  if (!receptionBounds) throw new Error('Reception artwork is not visible.');
+  expect(receptionBounds.width / receptionBounds.height).toBeCloseTo(2640 / 1848, 3);
+  await testInfo.attach('Italian-details', { body: await page.screenshot({ fullPage: true }), contentType: 'image/png' });
+  await page.getByRole('button', { name: 'Riapri la busta' }).click();
+  await expect(page.locator('#hint')).toHaveText('Tocca per aprire');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.reload();
+  await revealInvitation(page);
+  await page.getByRole('link', { name: 'Vai al sito del matrimonio' }).click();
+  await expect(page).toHaveURL(/\/welcome\/\?next=\/it\//);
+  await expect(page.locator('html')).toHaveAttribute('lang', 'it');
+  await expect(page.getByText('Inserite la password indicata nel vostro invito.')).toBeVisible();
+  await expect(page.locator('[data-next-input]')).toHaveValue('/it/');
+  expect(errors).toEqual([]);
 });
