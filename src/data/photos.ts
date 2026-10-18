@@ -30,7 +30,7 @@ export const homePhotoStrip: Record<Lang, HomePhotoStrip> = {
     ],
   },
   it: {
-    title: "Un po' di Svizzera, un po' di noi",
+    title: 'Alcuni dei nostri luoghi preferiti in Svizzera',
     body: 'Alcune foto da Zurigo e dai nostri luoghi svizzeri preferiti.',
     photos: [
       { src: sharedPhotos[0], alt: 'Gabriela e Manfredi vestiti per una serata fuori' },
@@ -40,7 +40,7 @@ export const homePhotoStrip: Record<Lang, HomePhotoStrip> = {
     ],
   },
   de: {
-    title: 'Ein bisschen Schweiz, ein bisschen wir',
+    title: 'Einige unserer Lieblingsorte in der Schweiz',
     body: 'Ein paar Fotos aus Zürich und unseren liebsten Ecken der Schweiz.',
     photos: [
       { src: sharedPhotos[0], alt: 'Gabriela und Manfredi festlich angezogen' },

@@ -93,14 +93,14 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
         'Abbigliamento formale, ad esempio abiti da uomo e abiti lunghi da donna. Poiché parte della giornata includerà una passeggiata e un trasferimento in barca, consigliamo scarpe eleganti ma comode, o un paio aggiuntivo per camminare, e uno strato leggero per la sera.',
     },
     {
-      question: 'I bambini sono invitati?',
-      answer:
-        'Vorremmo mantenere la celebrazione intima e pensata soprattutto per adulti, con l’eccezione dei bambini delle nostre famiglie più strette. Speriamo che sia per voi un’occasione per rilassarvi e godervi la serata con noi.',
-    },
-    {
       question: 'Posso portare un accompagnatore?',
       answer:
         'Ci piacerebbe festeggiare con tutti, ma lo spazio è limitato e possiamo accogliere solo gli ospiti indicati formalmente nell’invito. Se il vostro invito include un accompagnatore, sarà indicato.',
+    },
+    {
+      question: 'I bambini sono invitati?',
+      answer:
+        'Vorremmo mantenere la celebrazione intima e pensata soprattutto per adulti, con l’eccezione dei bambini delle nostre famiglie più strette. Speriamo che sia per voi un’occasione per rilassarvi e godervi la serata con noi.',
     },
     {
       question: 'Come funziona il trasferimento in barca?',
@@ -178,14 +178,14 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
         'Formelle Kleidung, zum Beispiel Anzüge für Männer und lange Kleider für Frauen. Da ein Teil des Tages einen Fussweg und einen Bootstransfer umfasst, empfehlen wir bequeme formelle Schuhe, oder ein zusätzliches Paar zum Gehen, sowie eine leichte Schicht für den Abend.',
     },
     {
-      question: 'Sind Kinder eingeladen?',
-      answer:
-        'Wir möchten unsere Feier als intime, vor allem auf Erwachsene ausgerichtete Feier halten, mit Ausnahme der Kinder unserer engsten Familien. Wir hoffen, dass ihr dadurch entspannt mit uns feiern und den Abend geniessen könnt.',
-    },
-    {
       question: 'Kann ich eine Begleitung mitbringen?',
       answer:
         'Wir würden sehr gerne mit allen feiern, können wegen des begrenzten Platzes aber nur die Gäste berücksichtigen, die ausdrücklich auf der Einladung genannt sind. Wenn eure Einladung eine Begleitung einschliesst, wird das dort angegeben.',
+    },
+    {
+      question: 'Sind Kinder eingeladen?',
+      answer:
+        'Wir möchten unsere Feier als intime, vor allem auf Erwachsene ausgerichtete Feier halten, mit Ausnahme der Kinder unserer engsten Familien. Wir hoffen, dass ihr dadurch entspannt mit uns feiern und den Abend geniessen könnt.',
     },
     {
       question: 'Wie funktioniert der Bootstransfer?',

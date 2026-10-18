@@ -10,6 +10,23 @@ type Props = {
 };
 
 const { lang, currentPath = '/', languagePaths } = Astro.props;
+const copy = {
+  en: {
+    heading: 'Guest information',
+    privacy: 'For invited guests only. Please do not share the link or password publicly.',
+    credits: 'Image credits',
+  },
+  it: {
+    heading: 'Informazioni per gli ospiti',
+    privacy: 'Riservato agli ospiti invitati. Vi preghiamo di non condividere pubblicamente il link o la password.',
+    credits: 'Crediti immagini',
+  },
+  de: {
+    heading: 'Informationen für Gäste',
+    privacy: 'Nur für eingeladene Gäste. Bitte teilt den Link oder das Passwort nicht öffentlich.',
+    credits: 'Bildnachweise',
+  },
+}[lang];
 ---
 
 <footer class="site-footer">
@@ -19,9 +36,9 @@ const { lang, currentPath = '/', languagePaths } = Astro.props;
     <p>{wedding.location[lang]}</p>
   </div>
   <div>
-    <p class="footer-heading">Guest information</p>
-    <p>For invited guests only. Please do not share the link or password publicly.</p>
-    <p><a class="footer-link" href={`/${lang}/credits/`}>Image credits</a></p>
+    <p class="footer-heading">{copy.heading}</p>
+    <p>{copy.privacy}</p>
+    <p><a class="footer-link" href={`/${lang}/credits/`}>{copy.credits}</a></p>
   </div>
   <LanguageSwitcher lang={lang} path={currentPath} paths={languagePaths} />
 </footer>

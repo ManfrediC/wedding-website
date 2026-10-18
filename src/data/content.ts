@@ -138,14 +138,14 @@ export const homeContent: Record<
       },
       {
         title: 'Dove dormire',
-        body: "Zone consigliate, Hotel Sonne, opzioni vicine e aggiornamenti sui blocchi camere.",
+        body: 'Hotel Sonne e opzioni nelle vicinanze.',
         href: '/it/stay/',
         image: '/images/places/hotel-sonne-kuesnacht.jpg',
         imageAlt: "Hotel Sonne a Küsnacht",
       },
       {
         title: 'Cosa fare',
-        body: 'Zurigo, Lago di Zurigo, panorami alpini, gite e idee prima del matrimonio.',
+        body: 'Zurigo, Lago di Zurigo, panorami alpini, gite in giornata e viaggi in Svizzera.',
         href: '/it/things-to-do/',
         image: '/images/minted/minted-gallery-07.jpg',
         imageAlt: 'Un lago di montagna in Svizzera',
@@ -178,14 +178,14 @@ export const homeContent: Record<
       },
       {
         title: 'Unterkunft',
-        body: 'Empfohlene Gegenden, Hotel Sonne, nahe Optionen und Zimmerblock-Updates.',
+        body: 'Hotel Sonne und Unterkünfte in der Nähe.',
         href: '/de/stay/',
         image: '/images/places/hotel-sonne-kuesnacht.jpg',
         imageAlt: 'Hotel Sonne in Küsnacht',
       },
       {
         title: 'Aktivitäten',
-        body: 'Zürich, Zürichsee, Bergblicke, Tagesausflüge und entspannte Ideen vor der Hochzeit.',
+        body: 'Zürich, Zürichsee, Bergblicke, Tagesausflüge und Reisen in der Schweiz.',
         href: '/de/things-to-do/',
         image: '/images/minted/minted-gallery-07.jpg',
         imageAlt: 'Ein Bergsee in der Schweiz',
@@ -824,7 +824,7 @@ applyLocalizedCopy('it', {
         imageAlt: 'Hotel Sonne a Küsnacht',
       },
       {
-        title: 'Centro di Zurigo',
+        title: 'Zurigo',
         body:
           'Il centro di Zurigo è pratico per chi desidera ristoranti, visite, collegamenti ferroviari e facile accesso all’aeroporto.',
         items: ['Cercate vicino a Zurich HB, centro storico, Bellevue o Stadelhofen per la soluzione più comoda in centro.', 'Anche altri paesi lungo le linee S6 o S16, oppure zone vicine a Zürich Stadelhofen o Zürich Tiefenbrunnen, possono essere comodi perché semplificano il tragitto per Küsnacht.', 'Hotel più economici possono essere più facili da trovare a Zurich Altstetten o Oerlikon; entrambe le zone sono collegate al centro e all’aeroporto con i mezzi pubblici.', ['Consigliamo ', { text: 'Mama Shelter Zurich', strong: true }, ', di fronte alla stazione di Zürich Oerlikon, come opzione più economica e ben collegata. Con molti treni diretti, l’aeroporto di Zurigo dista una sola fermata; ci sono inoltre collegamenti diretti con Zürich HB e Küsnacht ZH.'], 'Scegliete un alloggio vicino a una fermata di tram, treno o autobus.', 'Usate i mezzi pubblici per muovervi a Zurigo; spostarsi in auto non è consigliato per la mancanza di parcheggi e la scarsa praticità.'],
@@ -842,7 +842,7 @@ applyLocalizedCopy('it', {
         title: 'Indicazioni per prenotare',
         body:
           'Zurigo può essere costosa a giugno. Consigliamo di prenotare presto, controllare le condizioni di cancellazione e confrontare hotel e appartamenti se vi fermate più a lungo.',
-        items: ['Sconto Hotel Sonne: prenotazione diretta con la reception, indicando il matrimonio Dago-Carta.', 'Codici di prenotazione per altri hotel: TBD', 'Scadenze per eventuali blocchi camere: TBD', 'Fasce di prezzo indicative: TBD'],
+        items: ['Sconto Hotel Sonne: prenotazione diretta con la reception, indicando il matrimonio Dago-Carta.'],
         imageAlt: 'Riva del Lago di Zurigo vicino a Küsnacht',
         links: [
           { label: 'Airbnb Zurigo, giugno 2027', href: 'https://www.airbnb.com/s/Zurich--Switzerland/homes?checkin=2027-06-10&checkout=2027-06-13&adults=2' },
@@ -851,8 +851,8 @@ applyLocalizedCopy('it', {
       {
         title: 'Accessibilità e mobilità',
         body:
-          'Segnalateci nella RSVP o via email se scale, distanze a piedi, supporto uditivo o trasporti possono influire sui vostri piani. Confermeremo i dettagli specifici con le sedi appena la logistica del matrimonio sarà definitiva.',
-        items: ['Kirche St. Peter: secondo la FAQ ufficiale della chiesa, il piano terra è accessibile in sedia a rotelle. È indicato un ascensore da St. Peterhofstatt alla chiesa; galleria e coro non sono accessibili in sedia a rotelle. È inoltre indicato un sistema a induzione magnetica.', 'Trasferimento in barca: ZSG/ZVV indicano che i battelli del Lago di Zurigo possono trasportare sedie a rotelle fino a 80 cm di larghezza in 2a classe, con assistenza dell’equipaggio agli approdi. La barca e il punto d’imbarco del matrimonio devono ancora essere confermati.', 'Hotel Sonne: l’accessibilità varia in base alla categoria di camera. Alcune pagine indicano che non tutte le camere sono raggiungibili in ascensore; altre camere sono indicate come accessibili con ascensore. Contattate l’hotel prima di prenotare se l’ascensore è importante.', 'OXEN: le informazioni pubblicate indicano che le camere si trovano all’ultimo piano e hanno bagni condivisi. Contattate direttamente OXEN prima di prenotare se scale o accesso al bagno possono essere un problema.', 'B & B Caffètino-Vino Richterswil: il B&B indica che la casa storica non ha ascensore e che le camere sono al 2° e 3° piano.', 'Per hotel a Zurigo o appartamenti Airbnb, usate i filtri di accessibilità, ma confermate direttamente con la struttura ingresso senza gradini, accesso al bagno, dimensioni dell’ascensore e distanza dai mezzi pubblici.'],
+          'Segnalateci nella RSVP o via email se scale, distanze a piedi o trasporti possono influire sui vostri piani.',
+        items: ['Kirche St. Peter: il piano terra è accessibile in sedia a rotelle, con un ascensore da St. Peterhofstatt alla chiesa. Possono essere forniti dispositivi di supporto uditivo.', 'Trasferimento in barca: l’equipaggio e i familiari possono fornire assistenza.', 'Hotel Sonne: alcune camere sono raggiungibili in ascensore; contattate l’hotel prima di prenotare se l’ascensore è importante.', 'OXEN: le camere si trovano all’ultimo piano e hanno bagni condivisi.', 'B & B Caffètino-Vino Richterswil: le camere si trovano al 2° e 3° piano e non è disponibile un ascensore.'],
         links: [
           { label: 'FAQ accessibilità St. Peter', href: 'https://www.st-peter-zh.ch/-4/besuch~2695/faq~3108/' },
           { label: 'Battelli accessibili ZVV', href: 'https://www.zvv.ch/en/service/travel-without-barriers/limited-mobility/ships.html' },
@@ -873,8 +873,8 @@ applyLocalizedCopy('it', {
     sections: [
       {
         title: 'Visitare Zurigo',
-        body: 'Se prolungate il soggiorno, queste sono opzioni semplici per vedere Zurigo senza riempire troppo il fine settimana del matrimonio.',
-        items: ['Passeggiate nel centro storico, al Lindenhof e lungo la Limmat, includendo Grossmünster e Fraumünster, dove Marc Chagall ha realizzato le famose vetrate.', 'Visitate Grossmünster per il suo legame con la Riforma svizzero-tedesca, oppure Kunsthaus Zürich per un’ampia collezione d’arte.', 'Fate un breve giro in battello sulla Limmat o sul Lago di Zurigo per vedere la città dall’acqua.', 'Visitate la Giacometti-Halle per l’atrio dipinto, oppure Zurich Zoo se viaggiate con bambini.', 'Salite in treno all’Uetliberg per la vista sulla città e sul lago, poi percorrete una parte del Planetenweg se desiderate una passeggiata tranquilla nella natura. Controllate il collegamento aggiornato in SBB Mobile prima di partire.'],
+        body: 'Vi consigliamo le seguenti attività a Zurigo.',
+        items: ['Passeggiate nel centro storico, al Lindenhof e lungo la Limmat, includendo Grossmünster e Fraumünster, dove Marc Chagall ha realizzato le vetrate.', 'Visitate Grossmünster per il suo ruolo nella Riforma svizzera, oppure Kunsthaus Zürich per un’ampia collezione d’arte.', 'Visitate la Giacometti-Halle per l’atrio dipinto. Lo zoo di Zurigo può essere un’opzione se viaggiate con bambini.', 'Salite in treno all’Uetliberg per la vista sulla città e sul lago. È anche possibile salire a piedi dalla stazione di Zürich Triemli e proseguire l’escursione fino a Felsenegg.'],
         links: [
           { label: 'Fraumünster', href: 'https://www.zuerich.com/en/visit/attractions/fraumunster' },
           { label: 'Grossmünster', href: 'https://www.zuerich.com/en/visit/attractions/grossmunster' },
@@ -1211,7 +1211,7 @@ applyLocalizedCopy('de', {
         imageAlt: 'Hotel Sonne in Küsnacht',
       },
       {
-        title: 'Zürich Zentrum',
+        title: 'Zürich',
         body:
           'Zürich Zentrum ist praktisch für Restaurants, Besichtigungen, Zugverbindungen und einfache Anreise zum Flughafen.',
         items: ['Sucht nahe Zürich HB, Altstadt, Bellevue oder Stadelhofen für die bequemste zentrale Lage.', 'Auch andere Orte entlang der S6 oder S16 sowie Lagen nahe Zürich Stadelhofen oder Zürich Tiefenbrunnen können praktisch sein, weil die Fahrt nach Küsnacht einfach bleibt.', 'Günstigere Hotels finden sich eventuell eher in Zürich Altstetten oder Oerlikon; beide Quartiere sind mit dem Zentrum und dem Flughafen durch öffentlichen Verkehr verbunden.', ['Wir empfehlen ', { text: 'Mama Shelter Zurich', strong: true }, ', direkt gegenüber dem Bahnhof Zürich Oerlikon, als günstigere und gut angebundene Option. Mit vielen Direktzügen ist der Flughafen Zürich nur eine Haltestelle entfernt; zudem bestehen Direktverbindungen nach Zürich HB und Küsnacht ZH.'], 'Wählt eine Unterkunft nahe bei Tram, Zug oder Bus.', 'Nutzt den öffentlichen Verkehr für Wege in Zürich; Autofahren ist wegen fehlender Parkplätze und geringer Bequemlichkeit nicht empfohlen.'],
@@ -1229,7 +1229,7 @@ applyLocalizedCopy('de', {
         title: 'Buchungshinweise',
         body:
           'Zürich kann im Juni teuer sein. Wir empfehlen früh zu buchen, Stornierungsbedingungen zu prüfen und bei längeren Aufenthalten Hotels mit Apartments zu vergleichen.',
-        items: ['Hotel-Sonne-Rabatt: direkte Buchung über die Reception mit Hinweis auf die Dago-Carta-Hochzeit.', 'Buchungscodes für andere Hotels: TBD', 'Fristen für Zimmerkontingente: TBD', 'Ungefähre Preisbereiche: TBD'],
+        items: ['Hotel-Sonne-Rabatt: direkte Buchung über die Reception mit Hinweis auf die Dago-Carta-Hochzeit.'],
         imageAlt: 'Zürichseeufer nahe Küsnacht',
         links: [
           { label: 'Airbnb Zürich, Juni 2027', href: 'https://www.airbnb.com/s/Zurich--Switzerland/homes?checkin=2027-06-10&checkout=2027-06-13&adults=2' },
@@ -1238,8 +1238,8 @@ applyLocalizedCopy('de', {
       {
         title: 'Barrierefreiheit und Mobilität',
         body:
-          'Bitte teilt uns in der RSVP oder per E-Mail mit, wenn Stufen, Gehstrecken, Hörunterstützung oder Transportfragen eure Planung beeinflussen. Wir klären die Details mit den jeweiligen Orten, sobald die Hochzeitslogistik final ist.',
-        items: ['Kirche St. Peter: Laut offizieller FAQ der Kirche ist das Erdgeschoss rollstuhlgängig. Es gibt einen ausgeschilderten Lift von der St. Peterhofstatt zur Kirche; Empore und Chorbereich sind nicht rollstuhlgängig. Eine Hörschlaufe ist ebenfalls aufgeführt.', 'Bootstransfer: ZSG/ZVV geben an, dass Zürichsee-Schiffe Rollstühle bis 80 cm Breite in der 2. Klasse mitnehmen können, mit Unterstützung der Crew an den Anlegestellen. Das genaue Hochzeitsboot und der Einstiegspunkt müssen noch bestätigt werden.', 'Hotel Sonne: Die Barrierefreiheit hängt von der Zimmerkategorie ab. Einige Zimmerseiten sagen, dass nicht alle Zimmer mit dem Lift erreichbar sind; einzelne Zimmer werden als liftzugänglich beschrieben. Kontaktiert das Hotel vor der Buchung, wenn Liftzugang wichtig ist.', 'OXEN: Die veröffentlichten Zimmerinformationen nennen Zimmer im obersten Stock mit Gemeinschaftsbädern. Kontaktiert OXEN direkt vor der Buchung, wenn Treppen oder Badzugang ein Thema sind.', 'B & B Caffètino-Vino Richterswil: Das B&B schreibt, dass das alte Haus keinen Lift hat und die Zimmer im 2. und 3. Stock liegen.', 'Für Hotels in Zürich oder Airbnb-Wohnungen: Nutzt Barrierefreiheitsfilter, bestätigt aber stufenfreien Zugang, Badezimmerzugang, Liftgrösse und Entfernung zum öffentlichen Verkehr direkt mit der Unterkunft.'],
+          'Bitte teilt uns in der RSVP oder per E-Mail mit, wenn Stufen, Gehstrecken oder Transportfragen eure Planung beeinflussen.',
+        items: ['Kirche St. Peter: Das Erdgeschoss ist rollstuhlgängig, mit einem Lift von der St. Peterhofstatt zur Kirche. Hörhilfen können bereitgestellt werden.', 'Bootstransfer: Die Crew und Familienmitglieder können Unterstützung leisten.', 'Hotel Sonne: Ausgewählte Zimmer sind mit dem Lift erreichbar; kontaktiert das Hotel vor der Buchung, wenn Liftzugang wichtig ist.', 'OXEN: Die Zimmer befinden sich im obersten Stock und haben Gemeinschaftsbäder.', 'B & B Caffètino-Vino Richterswil: Die Zimmer liegen im 2. und 3. Stock; es gibt keinen Lift.'],
         links: [
           { label: 'Barrierefreiheit St. Peter', href: 'https://www.st-peter-zh.ch/-4/besuch~2695/faq~3108/' },
           { label: 'Barrierefreie Schiffe ZVV', href: 'https://www.zvv.ch/en/service/travel-without-barriers/limited-mobility/ships.html' },
@@ -1260,8 +1260,8 @@ applyLocalizedCopy('de', {
     sections: [
       {
         title: 'Zürich besichtigen',
-        body: 'Wenn ihr euren Aufenthalt verlängert, sind dies einfache Möglichkeiten, Zürich kennenzulernen, ohne das Hochzeitswochenende zu überladen.',
-        items: ['Spaziert durch die Altstadt, zum Lindenhof und entlang der Limmat, mit Grossmünster und Fraumünster, wo Marc Chagall die berühmten Glasfenster gestaltet hat.', 'Besucht das Grossmünster wegen seiner Bedeutung für die schweizerisch-deutsche Reformation oder das Kunsthaus Zürich für eine breite Kunstsammlung.', 'Macht eine kurze Limmat- oder Zürichsee-Bootsfahrt, um die Stadt vom Wasser aus zu sehen.', 'Besucht die Giacometti-Halle wegen der bemalten Eingangshalle oder den Zoo Zürich, wenn ihr mit Kindern reist.', 'Fahrt mit dem Zug auf den Uetliberg für Stadt- und Seeblick und geht bei Lust ein Stück des Planetenwegs. Prüft die aktuelle Verbindung vorher in SBB Mobile.'],
+        body: 'Wir empfehlen die folgenden Aktivitäten in Zürich.',
+        items: ['Spaziert durch die Altstadt, zum Lindenhof und entlang der Limmat, mit Grossmünster und Fraumünster, wo Marc Chagall die Glasfenster gestaltet hat.', 'Besucht das Grossmünster wegen seiner Bedeutung für die Schweizer Reformation oder das Kunsthaus Zürich für eine breite Kunstsammlung.', 'Besucht die Giacometti-Halle wegen der bemalten Eingangshalle. Der Zoo Zürich kann eine Option sein, wenn ihr mit Kindern reist.', 'Fahrt mit dem Zug auf den Uetliberg für Stadt- und Seeblick. Ihr könnt auch vom Bahnhof Zürich Triemli hinaufwandern und die Wanderung bis zur Felsenegg verlängern.'],
         links: [
           { label: 'Fraumünster', href: 'https://www.zuerich.com/en/visit/attractions/fraumunster' },
           { label: 'Grossmünster', href: 'https://www.zuerich.com/en/visit/attractions/grossmunster' },
@@ -1476,7 +1476,6 @@ applyLocalizedCopy('de', {
 function mirrorLanguage(lang: Exclude<Lang, 'en'>): Record<PageKey, PageContent> {
   const labels = {
     it: {
-      suffix: 'Bozza in italiano da rivedere.',
       schedule: ['Il giorno del matrimonio', 'Programma', 'Gli orari esatti sono ancora da confermare.'],
       travel: ['Viaggio', 'Come arrivare a Zurigo', 'Indicazioni pratiche per arrivare da Sardegna, Londra, New York, Chicago e altre località.'],
       stay: ['Dove dormire', 'Alloggio', 'Küsnacht è più comoda per la festa; il centro di Zurigo è ideale per visitare la città.'],
@@ -1489,7 +1488,6 @@ function mirrorLanguage(lang: Exclude<Lang, 'en'>): Record<PageKey, PageContent>
       credits: ['Crediti immagini', 'Crediti', 'Immagini usate nel prototipo del sito privato del matrimonio.'],
     },
     de: {
-      suffix: 'Deutscher Entwurf zur Prüfung.',
       schedule: ['Unser Hochzeitstag', 'Ablauf', 'Die genauen Zeiten werden noch bestätigt.'],
       travel: ['Anreise', 'Anreise nach Zürich', 'Praktische Hinweise zur Anreise aus Sardinien, London, New York, Chicago und weiteren Orten.'],
       stay: ['Unterkunft', 'Übernachten', 'Küsnacht ist am praktischsten für die Feier; Zürich Zentrum eignet sich gut zum Erkunden.'],
@@ -1520,7 +1518,6 @@ function mirrorLanguage(lang: Exclude<Lang, 'en'>): Record<PageKey, PageContent>
           title,
           kicker,
           intro,
-          notice: englishPage.notice ? `${labels.suffix} ${englishPage.notice}` : labels.suffix,
           sections,
         },
       ];
