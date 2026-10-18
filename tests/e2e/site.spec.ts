@@ -102,6 +102,7 @@ test('welcome page language links localise the password gate', async ({ page }) 
 
   await page.getByRole('link', { name: 'Italiano' }).click();
   await expect(page).toHaveURL(/\/welcome\/\?next=\/it\/travel\/$/);
+  await expect(page.locator('.welcome-date')).toHaveText('11 giugno 2027');
   await expect(page.getByText('Inserite la password indicata nel vostro invito.')).toBeVisible();
   await expect(page.getByLabel('Password del matrimonio')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Entra' })).toBeVisible();
@@ -109,6 +110,7 @@ test('welcome page language links localise the password gate', async ({ page }) 
   await expect(page.getByRole('link', { name: 'Italiano' })).toHaveAttribute('aria-current', 'page');
 
   await page.goto('/welcome/?next=/de/&error=1');
+  await expect(page.locator('.welcome-date')).toHaveText('11. Juni 2027');
   await expect(page.getByText('Bitte gebt das Passwort aus eurer Einladung ein.')).toBeVisible();
   await expect(page.getByLabel('Hochzeitspasswort')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Öffnen' })).toBeVisible();
