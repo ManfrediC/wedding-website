@@ -430,8 +430,8 @@ test('Italian and German pages have localised core content', async ({ page }) =>
   await expect(page.getByRole('heading', { name: 'Cosa chiede la RSVP' })).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'Esigenze alimentari e allergie' })).toHaveCount(0);
 
-  await page.goto('/it/gifts/');
-  await expect(page.getByRole('heading', { name: 'Regali' })).toBeVisible();
+  await page.goto('/it/faq/');
+  await page.locator('summary').filter({ hasText: 'Avete una lista nozze?' }).click();
   await expect(page.getByText('non sentitevi obbligati a portare o inviare un regalo')).toBeVisible();
 
   await page.goto('/it/credits/');
@@ -463,8 +463,8 @@ test('Italian and German pages have localised core content', async ({ page }) =>
   await expect(page.getByRole('heading', { name: 'Was die RSVP abfragt' })).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'Ernährungsanforderungen und Allergien' })).toHaveCount(0);
 
-  await page.goto('/de/gifts/');
-  await expect(page.getByRole('heading', { name: 'Geschenke' })).toBeVisible();
+  await page.goto('/de/faq/');
+  await page.locator('summary').filter({ hasText: 'Habt ihr eine Wunschliste?' }).click();
   await expect(page.getByText('fühlt euch bitte nicht verpflichtet, ein Geschenk mitzubringen oder zu schicken')).toBeVisible();
 
   await page.goto('/de/credits/');

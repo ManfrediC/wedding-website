@@ -1643,7 +1643,17 @@ button.danger {
   margin-bottom: 0.5rem;
 }
 
-@media (max-width: 1060px) {
+@media (min-width: 1321px) and (max-width: 1440px) {
+  .site-header {
+    --site-header-inline-padding: 3vw;
+  }
+
+  .desktop-nav {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 1320px) {
   .desktop-nav,
   .header-actions {
     display: none;

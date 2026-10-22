@@ -225,7 +225,6 @@ Recommended routes:
 /en/switzerland-guide/
 /en/faq/
 /en/rsvp/
-/en/gifts/
 /en/contact/
 
 /it/
@@ -236,7 +235,6 @@ Recommended routes:
 /it/switzerland-guide/
 /it/faq/
 /it/rsvp/
-/it/gifts/
 /it/contact/
 
 /de/
@@ -247,7 +245,6 @@ Recommended routes:
 /de/switzerland-guide/
 /de/faq/
 /de/rsvp/
-/de/gifts/
 /de/contact/
 ```
 
@@ -395,7 +392,6 @@ Implementation should therefore include:
 
 | Route pattern | Page | Purpose |
 |---|---|---|
-| `/:lang/gifts/` | Gifts | Registry, honeymoon fund, or “your presence is enough” wording |
 | `/:lang/contact/` | Contact | Practical contact details and support route |
 | `/:lang/photos/` | Photos | Optional pre-wedding gallery; later guest photo-sharing link |
 | `/:lang/updates/` | Updates | Optional wedding-week notices and final transport updates |
@@ -405,15 +401,17 @@ Implementation should therefore include:
 Desktop navigation:
 
 ```txt
-Home | Schedule | Travel | Stay | Things to Do | Switzerland Guide | FAQ | RSVP
+Home | Schedule | Travel | Stay | Things to Do | Switzerland Guide | FAQ | RSVP | Gift registry
 ```
+
+Gift registry links directly to `https://www.zola.com/registry/gabrielaandmanfredi` in a new tab, after RSVP and before the language switcher. The labels are `Gift registry` (English), `Lista nozze` (Italian), and `Geschenke` (German). The FAQ includes the registry link and explains that gifts are optional. There is no standalone Gifts page.
 
 Mobile navigation:
 
 - compact menu;
 - visible RSVP button once RSVP opens;
 - language switcher in menu;
-- no more than eight primary links.
+- the same nine links, with Gift registry immediately after RSVP.
 
 ---
 
@@ -815,7 +813,6 @@ This wording may need adjustment if invitations later define plus ones per house
 ### FAQ topics still needed
 
 - RSVP deadline.
-- Gift/registry wording.
 - Photography during ceremony.
 - Social media preference.
 - Final late-night transport plan.
@@ -879,27 +876,19 @@ Suggested privacy note:
 
 ---
 
-## 8.9 Gifts Page
+## 8.9 Gift Registry in the FAQ
 
 ### Purpose
 
-Set expectations gracefully.
+Explain that gifts are optional and provide the registry link within the FAQ in all three languages. Do not create a standalone Gifts page.
 
-### Possible approaches
+### English copy
 
-#### Option A — no gifts expected
+Question: Do you have a gift registry?
 
-> Your presence in Switzerland is already the greatest gift. We are so grateful that you are travelling to celebrate with us.
+> If you are travelling to Switzerland, please do not feel any obligation to bring or send a gift. For those who would like to give a gift, our wedding registry is available on Zola.
 
-#### Option B — honeymoon fund
-
-> For those who would like to contribute, we will share details of a honeymoon fund closer to the wedding.
-
-#### Option C — registry
-
-> We will add registry details here once confirmed.
-
-Recommendation: decide the gift position before invitations are sent.
+Link: View our gift registry on Zola — `https://www.zola.com/registry/gabrielaandmanfredi`.
 
 ---
 
@@ -964,7 +953,6 @@ wedding-website/
         things-to-do.md
         switzerland-guide.md
         faq.md
-        gifts.md
         contact.md
       it/
         home.md
@@ -974,7 +962,6 @@ wedding-website/
         things-to-do.md
         switzerland-guide.md
         faq.md
-        gifts.md
         contact.md
       de/
         home.md
@@ -984,7 +971,6 @@ wedding-website/
         things-to-do.md
         switzerland-guide.md
         faq.md
-        gifts.md
         contact.md
     data/
       site.ts
@@ -1010,7 +996,6 @@ wedding-website/
         switzerland-guide.astro
         faq.astro
         rsvp.astro
-        gifts.astro
         contact.astro
   package.json
   README.md
@@ -1310,7 +1295,7 @@ Use the Joy sites for structure and tone inspiration only. Do not copy their des
 - Translate Italian and German.
 - Review all translations.
 - Keep factual pages synchronised.
-- Use warm copy on landing, schedule, gifts, and contact pages.
+- Use warm copy on landing, schedule, and contact pages and in the gift FAQ.
 - Use clear practical copy on travel/accommodation pages.
 
 ---
@@ -1368,7 +1353,7 @@ These are now the most important questions to answer.
 30. Which photograph should be the hero image?
 31. Should there be an “Our Story” page?
 32. Should restaurant recommendations be included?
-33. What should the gifts/registry wording be?
+33. Gift registry wording is confirmed in section 8.9.
 34. Who will review the Italian and German translations?
 35. Who should be listed as wedding-week contact?
 36. Should the site include a downloadable PDF travel guide?

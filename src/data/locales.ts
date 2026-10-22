@@ -1,3 +1,5 @@
+import { registryUrl } from './site';
+
 export const languages = ['en', 'it', 'de'] as const;
 
 export type Lang = (typeof languages)[number];
@@ -19,6 +21,7 @@ export const navItems = [
   { key: 'switzerland-guide', path: '/switzerland-guide/', labels: { en: 'Switzerland Guide', it: 'Guida Svizzera', de: 'Hinweise zur Schweiz' } },
   { key: 'faq', path: '/faq/', labels: { en: 'FAQ', it: 'FAQ', de: 'FAQ' } },
   { key: 'rsvp', path: '/rsvp/', labels: { en: 'RSVP', it: 'RSVP', de: 'RSVP' } },
+  { key: 'registry', href: registryUrl, labels: { en: 'Gift registry', it: 'Lista nozze', de: 'Geschenke' } },
 ] as const;
 
 export function isLang(value: unknown): value is Lang {

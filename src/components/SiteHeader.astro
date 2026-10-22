@@ -30,6 +30,11 @@ const logoutLabels: Record<Lang, string> = {
 };
 
 const logoutNext = `/${lang}${currentPath}`;
+const newTabLabels: Record<Lang, string> = {
+  en: 'opens in a new tab',
+  it: 'si apre in una nuova scheda',
+  de: 'öffnet in einem neuen Tab',
+};
 ---
 
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -41,8 +46,11 @@ const logoutNext = `/${lang}${currentPath}`;
   <nav class="desktop-nav" aria-label="Primary navigation">
     {navItems.map((item) => (
       <a
-        href={`/${lang}${item.path}`}
-        aria-current={currentPath === item.path ? 'page' : undefined}
+        href={'href' in item ? item.href : `/${lang}${item.path}`}
+        target={'href' in item ? '_blank' : undefined}
+        rel={'href' in item ? 'noopener noreferrer' : undefined}
+        aria-label={'href' in item ? `${item.labels[lang]} (${newTabLabels[lang]})` : undefined}
+        aria-current={'path' in item && currentPath === item.path ? 'page' : undefined}
       >
         {item.labels[lang]}
       </a>
@@ -72,8 +80,11 @@ const logoutNext = `/${lang}${currentPath}`;
       <nav aria-label="Mobile navigation">
         {navItems.map((item) => (
           <a
-            href={`/${lang}${item.path}`}
-            aria-current={currentPath === item.path ? 'page' : undefined}
+            href={'href' in item ? item.href : `/${lang}${item.path}`}
+            target={'href' in item ? '_blank' : undefined}
+            rel={'href' in item ? 'noopener noreferrer' : undefined}
+            aria-label={'href' in item ? `${item.labels[lang]} (${newTabLabels[lang]})` : undefined}
+            aria-current={'path' in item && currentPath === item.path ? 'page' : undefined}
           >
             {item.labels[lang]}
           </a>

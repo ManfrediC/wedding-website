@@ -1,3 +1,5 @@
+export const registryUrl = 'https://www.zola.com/registry/gabrielaandmanfredi';
+
 export const wedding = {
   couple: {
     personOne: 'Gabriela Dago',

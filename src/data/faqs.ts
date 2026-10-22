@@ -1,4 +1,5 @@
 import type { Lang } from './locales';
+import { registryUrl } from './site';
 
 export const faqs: Record<Lang, { question: string; answer: string; links?: { label: string; href: string }[] }[]> = {
   en: [
@@ -16,6 +17,12 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
       question: 'Are children invited?',
       answer:
         'We would like to keep our celebration an intimate, adults-focused evening, with the exception of the children in our immediate families. We hope it gives you a chance to relax and enjoy the night with us.',
+    },
+    {
+      question: 'Do you have a gift registry?',
+      answer:
+        'If you are travelling to Switzerland, please do not feel any obligation to bring or send a gift. For those who would like to give a gift, our wedding registry is available on Zola.',
+      links: [{ label: 'View our gift registry on Zola', href: registryUrl }],
     },
     {
       question: 'How does the boat transfer work?',
@@ -103,6 +110,12 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
         'Vorremmo mantenere la celebrazione intima e pensata soprattutto per adulti, con l’eccezione dei bambini delle nostre famiglie più strette. Speriamo che sia per voi un’occasione per rilassarvi e godervi la serata con noi.',
     },
     {
+      question: 'Avete una lista nozze?',
+      answer:
+        'Se viaggiate fino in Svizzera per il matrimonio, non sentitevi obbligati a portare o inviare un regalo. Per chi desidera farci un regalo, la nostra lista nozze è disponibile su Zola.',
+      links: [{ label: 'Visualizza la nostra lista nozze su Zola', href: registryUrl }],
+    },
+    {
       question: 'Come funziona il trasferimento in barca?',
       answer:
         'Dopo la cerimonia, gli ospiti cammineranno per circa 12 minuti fino al Quai 6 a Bürkliplatz, Zurigo, accompagnati dai familiari. L’orario esatto sarà confermato più vicino alla data. Consigliamo scarpe comode per la passeggiata e la barca, protezione solare in caso di bel tempo e un ombrello in caso di pioggia.',
@@ -186,6 +199,12 @@ export const faqs: Record<Lang, { question: string; answer: string; links?: { la
       question: 'Sind Kinder eingeladen?',
       answer:
         'Wir möchten unsere Feier als intime, vor allem auf Erwachsene ausgerichtete Feier halten, mit Ausnahme der Kinder unserer engsten Familien. Wir hoffen, dass ihr dadurch entspannt mit uns feiern und den Abend geniessen könnt.',
+    },
+    {
+      question: 'Habt ihr eine Wunschliste?',
+      answer:
+        'Wenn ihr für die Hochzeit in die Schweiz reist, fühlt euch bitte nicht verpflichtet, ein Geschenk mitzubringen oder zu schicken. Für alle, die uns etwas schenken möchten, haben wir eine Wunschliste bei Zola zusammengestellt.',
+      links: [{ label: 'Unsere Wunschliste bei Zola ansehen', href: registryUrl }],
     },
     {
       question: 'Wie funktioniert der Bootstransfer?',

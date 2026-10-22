@@ -8,7 +8,6 @@ export const pageKeys = [
   'switzerland-guide',
   'faq',
   'rsvp',
-  'gifts',
   'contact',
   'credits',
 ] as const;
@@ -608,18 +607,6 @@ export const pages: Record<Lang, Record<PageKey, PageContent>> = {
         'Please use the form below to let us know whether you will be able to celebrate with us in Zurich.',
       sections: [],
     },
-    gifts: {
-      title: 'Gifts',
-      kicker: 'With gratitude',
-      intro:
-        'If you are travelling to Switzerland, please do not feel any obligation to bring or send a gift.',
-      sections: [
-        {
-          title: 'Details to follow',
-          body: 'If we decide to share registry or honeymoon-fund details, we will add them here before invitations are sent.',
-        },
-      ],
-    },
     contact: {
       title: 'Contact',
       kicker: 'Questions',
@@ -1028,18 +1015,6 @@ applyLocalizedCopy('it', {
     notice: undefined,
     sections: [],
   },
-  gifts: {
-    title: 'Regali',
-    kicker: 'Con gratitudine',
-    intro:
-      'Se viaggiate fino in Svizzera per il matrimonio, non sentitevi obbligati a portare o inviare un regalo.',
-    sections: [
-      {
-        title: 'Dettagli più avanti',
-        body: 'Se decideremo di condividere una lista nozze o un fondo viaggio, li aggiungeremo qui prima dell’invio degli inviti.',
-      },
-    ],
-  },
   contact: {
     title: 'Contatti',
     kicker: 'Domande',
@@ -1415,18 +1390,6 @@ applyLocalizedCopy('de', {
     notice: undefined,
     sections: [],
   },
-  gifts: {
-    title: 'Geschenke',
-    kicker: 'Mit Dankbarkeit',
-    intro:
-      'Wenn ihr für die Hochzeit in die Schweiz reist, fühlt euch bitte nicht verpflichtet, ein Geschenk mitzubringen oder zu schicken.',
-    sections: [
-      {
-        title: 'Details folgen',
-        body: 'Falls wir eine Geschenkeliste oder einen Reisefonds teilen, ergänzen wir die Details hier, bevor die Einladungen verschickt werden.',
-      },
-    ],
-  },
   contact: {
     title: 'Kontakt',
     kicker: 'Fragen',
@@ -1483,7 +1446,6 @@ function mirrorLanguage(lang: Exclude<Lang, 'en'>): Record<PageKey, PageContent>
       'switzerland-guide': ['Guida alla Svizzera', 'Note pratiche', 'Trasporti, valuta, meteo, telefoni e consigli utili.'],
       faq: ['Dettagli e FAQ', 'Risposte utili', 'Domande frequenti. Altri dettagli saranno aggiunti più avanti.'],
       rsvp: ['RSVP', 'Conferma di presenza', 'La RSVP non è ancora aperta. Il modulo sarà aggiunto qui.'],
-      gifts: ['Regali', 'Con gratitudine', 'La vostra presenza in Svizzera è già il regalo più bello.'],
       contact: ['Contatti', 'Domande', 'Aggiungeremo un contatto dedicato al matrimonio appena confermato.'],
       credits: ['Crediti immagini', 'Crediti', 'Immagini usate nel prototipo del sito privato del matrimonio.'],
     },
@@ -1495,7 +1457,6 @@ function mirrorLanguage(lang: Exclude<Lang, 'en'>): Record<PageKey, PageContent>
       'switzerland-guide': ['Hinweise zur Schweiz', 'Praktische Hinweise', 'Öffentlicher Verkehr, Währung, Wetter, Telefon und nützliche Tipps.'],
       faq: ['Details und FAQ', 'Hilfreiche Antworten', 'Häufige Fragen. Weitere Details folgen.'],
       rsvp: ['RSVP', 'Rückmeldung', 'Die RSVP ist noch nicht geöffnet. Das Formular wird hier ergänzt.'],
-      gifts: ['Geschenke', 'Mit Dankbarkeit', 'Eure Anwesenheit in der Schweiz ist für uns schon das schönste Geschenk.'],
       contact: ['Kontakt', 'Fragen', 'Ein Hochzeitskontakt wird ergänzt, sobald er bestätigt ist.'],
       credits: ['Bildnachweise', 'Credits', 'Bilder, die im Prototyp dieser privaten Hochzeitswebsite verwendet werden.'],
     },
