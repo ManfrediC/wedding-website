@@ -24,6 +24,8 @@ src/        Astro pages, layouts, components, data, and styles
 
 ## Local Development
 
+Use Node.js **24.22.1**, as pinned in the root `.node-version` file, for local development and builds. Check the active version with `node --version` before installing dependencies.
+
 ```bash
 npm install
 npm run dev
@@ -48,6 +50,14 @@ RSVP_NOTIFICATION_FROM=rsvp@example.test
 ```
 
 The protected preview uses a local JSON RSVP store under `tmp/`; production uses the Cloudflare D1 binding.
+
+## Cloudflare Build Setup
+
+Cloudflare Pages reads the root `.node-version` file to select Node.js **24.22.1** for Git builds in production and preview. Keep the build root at the repository root, the build command as `npm run build`, and the output directory as `dist`. See [Cloudflare's build image documentation](https://developers.cloudflare.com/pages/configuration/build-image/).
+
+If `NODE_VERSION` is already set in the Pages build environment, remove that duplicate setting or keep it at `24.22.1` in both production and preview. After each deployment, check the build log confirms the Node.js version pinned in `.node-version`.
+
+This selects the build tool version; Pages Functions run on Cloudflare's managed Workers runtime.
 
 ## Cloudflare RSVP Setup
 

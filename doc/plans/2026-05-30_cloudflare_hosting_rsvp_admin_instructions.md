@@ -1,7 +1,7 @@
 # Cloudflare Hosting, Domain, RSVP Data, And Admin Instructions
 
 Prepared: 30 May 2026
-Updated: 31 May 2026
+Updated: 22 October 2026
 
 ## 1. Current State
 
@@ -60,6 +60,16 @@ Redacted Pages readback after the worker confirmed the 30 May status:
 Local `env/cloudflare.env` status on 31 May 2026: `CLOUDFLARE_EMAIL_API_TOKEN` is blank locally and should stay untracked. `RSVP_NOTIFICATION_FROM` is now tracked safely in `wrangler.jsonc` because it is not a secret.
 
 ## 2. Hosting And Domain
+
+### Build Runtime
+
+The repository pins Node.js to `24.22.1` in the root `.node-version` file. Cloudflare Pages supports this file for selecting the Node.js build version; see [Cloudflare's build image documentation](https://developers.cloudflare.com/pages/configuration/build-image/).
+
+Use the repository root as the build root, `npm run build` as the build command, and `dist` as the output directory. In both production and preview, remove any duplicate `NODE_VERSION` build variable or keep it at `24.22.1`. After each Git deployment, confirm that the Node.js version in its build log matches `.node-version`.
+
+This pin applies to builds. Pages Functions continue to use Cloudflare's managed Workers runtime.
+
+### Domain
 
 Recommended path:
 
