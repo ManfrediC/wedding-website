@@ -423,7 +423,7 @@ test('Italian and German pages have localised core content', async ({ page }) =>
   await page.goto('/it/things-to-do/');
   await expect(page.getByRole('heading', { name: 'Cosa fare' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Visitare Zurigo' })).toBeVisible();
-  await expect(page.getByText('Zurich Zoo se viaggiate con bambini')).toBeVisible();
+  await expect(page.getByText('Lo zoo di Zurigo può essere un’opzione se viaggiate con bambini.')).toBeVisible();
 
   await page.goto('/it/rsvp/');
   await expect(page.getByRole('heading', { name: 'RSVP' })).toBeVisible();
@@ -456,7 +456,7 @@ test('Italian and German pages have localised core content', async ({ page }) =>
   await page.goto('/de/things-to-do/');
   await expect(page.getByRole('heading', { name: 'Aktivitäten' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Zürich besichtigen' })).toBeVisible();
-  await expect(page.getByText('Zoo Zürich, wenn ihr mit Kindern reist')).toBeVisible();
+  await expect(page.getByText('Der Zoo Zürich kann eine Option sein, wenn ihr mit Kindern reist.')).toBeVisible();
 
   await page.goto('/de/rsvp/');
   await expect(page.getByRole('heading', { name: 'RSVP' })).toBeVisible();
@@ -532,7 +532,7 @@ test('Italian and German stay copy is localised and cleanly encoded', async ({ p
 
   await page.goto('/de/stay/');
   await expect(page.getByRole('heading', { name: 'Barrierefreiheit und Mobilität' })).toBeVisible();
-  await expect(page.getByText('Laut offizieller FAQ der Kirche ist das Erdgeschoss rollstuhlgängig')).toBeVisible();
+  await expect(page.getByText('Kirche St. Peter: Das Erdgeschoss ist rollstuhlgängig')).toBeVisible();
   await expect(page.getByRole('link', { name: 'Zimmer OXEN Küsnacht' })).toHaveAttribute('href', 'https://www.oxen.ch/zimmer');
   await expect(page.getByText('einige Zimmer haben Gemeinschaftsbäder')).toBeVisible();
   await expect(page.getByText('Auch andere Orte entlang der S6 oder S16')).toBeVisible();

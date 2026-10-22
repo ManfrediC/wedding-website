@@ -18,10 +18,10 @@
   "dependencies": {
     "@fontsource/cormorant-garamond": "^5.2.11",
     "@fontsource/montserrat": "^5.2.8",
-    "astro": "latest"
+    "astro": "7.4.2"
   },
   "devDependencies": {
-    "@astrojs/check": "latest",
+    "@astrojs/check": "0.9.12",
     "@cloudflare/workers-types": "latest",
     "@playwright/test": "^1.59.1",
     "typescript": "latest"

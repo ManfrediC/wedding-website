@@ -4,7 +4,7 @@ Private multilingual wedding website for Gabriela Dago and Manfredi Carta's wedd
 
 ## Stack
 
-- Astro
+- Astro 7.4.2
 - TypeScript
 - Static pages hosted on Cloudflare Pages
 - Cloudflare Pages Functions middleware for site-wide password protection
@@ -24,10 +24,12 @@ src/        Astro pages, layouts, components, data, and styles
 
 ## Local Development
 
-Use Node.js **24.22.1**, as pinned in the root `.node-version` file, for local development and builds. Check the active version with `node --version` before installing dependencies.
+Use Node.js **24.22.1**, as pinned in the root `.node-version` file, for local development and builds. Check the active version with `node --version` before installing dependencies. Astro and `@astrojs/check` use exact versions in `package.json`; `package-lock.json` records the resolved dependency tree.
+
+The Astro configuration keeps `compressHTML: true` to preserve the site's existing whitespace and appearance when upgrading the compiler.
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
