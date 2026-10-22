@@ -63,6 +63,17 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   }
 
   if (await isAuthenticated(context, password)) {
+    // Retired pages must bypass cached assets and Pages' welcome-page fallback.
+    if (/^\/(en|it|de)\/gifts(?:\/index\.html)?\/?$/.test(canonicalPathname)) {
+      return withRobotsHeader(new Response('Page not found.', {
+        status: 404,
+        headers: {
+          'Content-Type': 'text/plain; charset=utf-8',
+          'Cache-Control': 'private, no-store',
+        },
+      }));
+    }
+
     return withRobotsHeader(await context.next());
   }
 
